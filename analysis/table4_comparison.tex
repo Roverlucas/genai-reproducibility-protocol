@@ -1,0 +1,23 @@
+
+\begin{table*}[t]
+\centering
+\caption{Comparison of our protocol with existing reproducibility tools and frameworks for GenAI experiments. Checkmarks (\ding{51}) indicate full support; tildes ($\sim$) indicate partial support; dashes (--) indicate no support.}
+\label{tab:comparison}
+\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\textbf{Feature} & \textbf{Ours} & \textbf{MLflow} & \textbf{W\&B} & \textbf{DVC} & \textbf{OpenAI Evals} & \textbf{LangSmith} \\
+\midrule
+Prompt versioning (Prompt Card) & \ding{51} & -- & $\sim$ & -- & $\sim$ & $\sim$ \\
+Run-level provenance (W3C PROV) & \ding{51} & -- & -- & -- & -- & -- \\
+Cryptographic output hashing & \ding{51} & -- & -- & \ding{51} & -- & -- \\
+Seed \& param logging & \ding{51} & \ding{51} & \ding{51} & -- & \ding{51} & \ding{51} \\
+Environment fingerprinting & \ding{51} & $\sim$ & $\sim$ & $\sim$ & -- & -- \\
+Model weights hashing & \ding{51} & -- & $\sim$ & \ding{51} & -- & -- \\
+Overhead $<$1\% of inference & \ding{51} & $\sim$ & $\sim$ & N/A & N/A & $\sim$ \\
+Designed for GenAI text output & \ding{51} & -- & -- & -- & \ding{51} & \ding{51} \\
+Open standard (PROV-JSON) & \ding{51} & -- & -- & -- & -- & -- \\
+Local-first (no cloud dependency) & \ding{51} & \ding{51} & -- & \ding{51} & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table*}

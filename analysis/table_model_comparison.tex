@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Reproducibility comparison: LLaMA~3 8B (local) vs.\ GPT-4 (API) under greedy decoding ($t{=}0$). GPT-4 shows significantly lower reproducibility due to server-side non-determinism.}
+\label{tab:model-comparison}
+\small
+\begin{tabular}{@{}llcc@{}}
+\toprule
+\textbf{Task} & \textbf{Metric} & \textbf{LLaMA~3 8B} & \textbf{GPT-4} \\
+\midrule
+  Summarization & EMR & 0.840 & 0.200 \\
+   & NED & 0.0148 & 0.0718 \\
+   & ROUGE-L & 0.9823 & 0.9295 \\
+\midrule
+  Extraction & EMR & 1.000 & 0.520 \\
+   & NED & 0.0000 & 0.0343 \\
+   & ROUGE-L & 1.0000 & 0.9748 \\
+\bottomrule
+\end{tabular}
+\end{table}

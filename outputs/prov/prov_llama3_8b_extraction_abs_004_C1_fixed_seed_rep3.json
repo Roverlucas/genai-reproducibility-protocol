@@ -1,0 +1,113 @@
+{
+  "prefix": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "lgai": "http://example.org/lgai#"
+  },
+  "entity": {
+    "lgai:prompt_ddc1746ca23d": {
+      "prov:label": "Prompt Artifact",
+      "prov:type": "lgai:Prompt",
+      "lgai:prompt_hash": "ddc1746ca23ddafc9f63790dbd2d86930c1248713bf7c854b4e119ba9f0063c1",
+      "lgai:task_category": "structured_extraction"
+    },
+    "lgai:model_llama3:8b_8_0B": {
+      "prov:label": "ModelVersion Artifact",
+      "prov:type": "lgai:ModelVersion",
+      "lgai:model_name": "llama3:8b",
+      "lgai:model_version": "8.0B",
+      "lgai:weights_hash": "",
+      "lgai:model_source": "ollama-local"
+    },
+    "lgai:params_5f7d7b01f15d": {
+      "prov:label": "InferenceParameters Artifact",
+      "prov:type": "lgai:InferenceParameters",
+      "lgai:temperature": "0.0",
+      "lgai:top_p": "1.0",
+      "lgai:top_k": "0",
+      "lgai:max_tokens": "1024",
+      "lgai:decoding_strategy": "greedy",
+      "lgai:seed": "42"
+    },
+    "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3_output": {
+      "prov:label": "Output Artifact",
+      "prov:type": "lgai:Output",
+      "lgai:output_hash": "fab4f8a89e157ce1a55d1b43172b12b7812d495bf7e66ade3ab25d2f20420ccc",
+      "lgai:timestamp_generated": "2026-02-07T22:04:51.931013+00:00"
+    },
+    "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3_metadata": {
+      "prov:label": "ExecutionMetadata",
+      "prov:type": "lgai:ExecutionMetadata",
+      "lgai:environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+      "lgai:code_commit": "no-git-repo",
+      "lgai:execution_duration_ms": "3809.23"
+    },
+    "lgai:input_419c83137159": {
+      "prov:label": "Input Text",
+      "prov:type": "lgai:InputText",
+      "lgai:input_hash": "419c8313715952478b6ac4cf1aac7b994a1eb98137a8b8f219670271245a06e7"
+    }
+  },
+  "activity": {
+    "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3": {
+      "prov:label": "RunGeneration Activity",
+      "prov:type": "lgai:RunGeneration",
+      "prov:startTime": "2026-02-07T22:04:48.121779+00:00",
+      "prov:endTime": "2026-02-07T22:04:51.931013+00:00"
+    }
+  },
+  "agent": {
+    "lgai:researcher_lucas_rover": {
+      "prov:type": "prov:Person",
+      "prov:label": "Researcher",
+      "lgai:researcher_id": "lucas_rover",
+      "lgai:affiliation": "UTFPR - Universidade Tecnologica Federal do Parana"
+    },
+    "lgai:system_cd45d428": {
+      "prov:type": "prov:SoftwareAgent",
+      "prov:label": "SystemExecutor",
+      "lgai:environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1"
+    }
+  },
+  "wasGeneratedBy": {
+    "_:wgb_llama3_8b_extraction_abs_004_C1_fixed_seed_rep3": {
+      "prov:entity": "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3_output",
+      "prov:activity": "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3"
+    }
+  },
+  "used": {
+    "_:u1_llama3_8b_extraction_abs_004_C1_fixed_seed_rep3": {
+      "prov:activity": "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3",
+      "prov:entity": "lgai:prompt_ddc1746ca23d"
+    },
+    "_:u2_llama3_8b_extraction_abs_004_C1_fixed_seed_rep3": {
+      "prov:activity": "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3",
+      "prov:entity": "lgai:model_llama3:8b_8_0B"
+    },
+    "_:u3_llama3_8b_extraction_abs_004_C1_fixed_seed_rep3": {
+      "prov:activity": "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3",
+      "prov:entity": "lgai:params_5f7d7b01f15d"
+    },
+    "_:u4_llama3_8b_extraction_abs_004_C1_fixed_seed_rep3": {
+      "prov:activity": "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3",
+      "prov:entity": "lgai:input_419c83137159"
+    }
+  },
+  "wasAssociatedWith": {
+    "_:waw_llama3_8b_extraction_abs_004_C1_fixed_seed_rep3": {
+      "prov:activity": "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3",
+      "prov:agent": "lgai:researcher_lucas_rover"
+    }
+  },
+  "wasAttributedTo": {
+    "_:wat_llama3_8b_extraction_abs_004_C1_fixed_seed_rep3": {
+      "prov:entity": "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3_output",
+      "prov:agent": "lgai:system_cd45d428"
+    }
+  },
+  "wasDerivedFrom": {
+    "_:wdf_llama3_8b_extraction_abs_004_C1_fixed_seed_rep3": {
+      "prov:generatedEntity": "lgai:llama3_8b_extraction_abs_004_C1_fixed_seed_rep3_output",
+      "prov:usedEntity": "lgai:prompt_ddc1746ca23d"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Inference execution time (ms) per task and condition. Protocol overhead excluded.}
+\label{tab:exec-times}
+\small
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+\textbf{Task} & \textbf{Condition} & \textbf{N} & \textbf{Mean} & \textbf{Std} & \textbf{Median} \\
+\midrule
+  Summarization & C1 & 25 & 5279 & 801 & 5215 \\
+   & C2 & 25 & 5396 & 823 & 5353 \\
+   & C3_t0.0 & 15 & 5522 & 899 & 5327 \\
+   & C3_t0.3 & 15 & 5276 & 638 & 5087 \\
+   & C3_t0.7 & 15 & 4991 & 564 & 4870 \\
+\midrule
+  Extraction & C1 & 25 & 5244 & 1173 & 4787 \\
+   & C2 & 25 & 5281 & 1131 & 4859 \\
+   & C3_t0.0 & 15 & 5414 & 1153 & 4895 \\
+   & C3_t0.3 & 15 & 5273 & 952 & 5081 \\
+   & C3_t0.7 & 15 & 5638 & 1326 & 5176 \\
+\bottomrule
+\end{tabular}
+\end{table}

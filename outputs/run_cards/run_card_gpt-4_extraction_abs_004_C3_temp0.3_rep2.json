@@ -1,0 +1,39 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "gpt-4_extraction_abs_004_C3_temp0.3_rep2",
+  "task_id": "extraction",
+  "task_category": "structured_extraction",
+  "prompt_card_ref": "prompt_card_extraction_v1_v1_0.json",
+  "prompt_hash": "ddc1746ca23ddafc9f63790dbd2d86930c1248713bf7c854b4e119ba9f0063c1",
+  "model_name": "gpt-4",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "openai-api",
+  "inference_params": {
+    "temperature": 0.3,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "sampling",
+    "seed": 456
+  },
+  "params_hash": "a0e7b39b0130cad4de3535baa2007d540b2236a0c08d3f4f8dee1a7d43af12a3",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "no-git-repo",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-07T22:41:23.094711+00:00",
+  "timestamp_end": "2026-02-07T22:41:28.098122+00:00",
+  "execution_duration_ms": 5003.41,
+  "output_hash": "956548a95355f16ba07d895ad5b2f4f2988a55f6d12cf752bf79a3e5152e4cd1",
+  "output_metrics": {},
+  "logging_overhead_ms": 19.23,
+  "storage_kb": 4.39,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

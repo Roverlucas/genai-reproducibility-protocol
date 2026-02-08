@@ -1,0 +1,112 @@
+{
+  "prefix": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "lgai": "http://example.org/lgai#"
+  },
+  "entity": {
+    "lgai:prompt_c9644358805b": {
+      "prov:label": "Prompt Artifact",
+      "prov:type": "lgai:Prompt",
+      "lgai:prompt_hash": "c9644358805b358076a2836466429c97a31bfd6ec5fbb42e9e9b32bcf6190b94",
+      "lgai:task_category": "scientific_summarization"
+    },
+    "lgai:model_gpt-4_api-managed": {
+      "prov:label": "ModelVersion Artifact",
+      "prov:type": "lgai:ModelVersion",
+      "lgai:model_name": "gpt-4",
+      "lgai:model_version": "api-managed",
+      "lgai:weights_hash": "proprietary-not-available",
+      "lgai:model_source": "openai-api"
+    },
+    "lgai:params_6628f30e46b9": {
+      "prov:label": "InferenceParameters Artifact",
+      "prov:type": "lgai:InferenceParameters",
+      "lgai:temperature": "0.0",
+      "lgai:top_p": "1.0",
+      "lgai:max_tokens": "1024",
+      "lgai:decoding_strategy": "greedy",
+      "lgai:seed": "42"
+    },
+    "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3_output": {
+      "prov:label": "Output Artifact",
+      "prov:type": "lgai:Output",
+      "lgai:output_hash": "15002a9442cefdcee686628ca0f4bbfe70e8359f2105ae5daa98efb5e445e19f",
+      "lgai:timestamp_generated": "2026-02-07T22:29:43.229033+00:00"
+    },
+    "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3_metadata": {
+      "prov:label": "ExecutionMetadata",
+      "prov:type": "lgai:ExecutionMetadata",
+      "lgai:environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+      "lgai:code_commit": "no-git-repo",
+      "lgai:execution_duration_ms": "3214.39"
+    },
+    "lgai:input_5604f45919dd": {
+      "prov:label": "Input Text",
+      "prov:type": "lgai:InputText",
+      "lgai:input_hash": "5604f45919dde5a2d7a15751a6ad41bc48e8fe64be6af8b68066a81726774fae"
+    }
+  },
+  "activity": {
+    "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3": {
+      "prov:label": "RunGeneration Activity",
+      "prov:type": "lgai:RunGeneration",
+      "prov:startTime": "2026-02-07T22:29:40.014648+00:00",
+      "prov:endTime": "2026-02-07T22:29:43.229033+00:00"
+    }
+  },
+  "agent": {
+    "lgai:researcher_lucas_rover": {
+      "prov:type": "prov:Person",
+      "prov:label": "Researcher",
+      "lgai:researcher_id": "lucas_rover",
+      "lgai:affiliation": "UTFPR - Universidade Tecnologica Federal do Parana"
+    },
+    "lgai:system_cd45d428": {
+      "prov:type": "prov:SoftwareAgent",
+      "prov:label": "SystemExecutor",
+      "lgai:environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1"
+    }
+  },
+  "wasGeneratedBy": {
+    "_:wgb_gpt-4_summarization_abs_002_C2_same_params_rep3": {
+      "prov:entity": "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3_output",
+      "prov:activity": "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3"
+    }
+  },
+  "used": {
+    "_:u1_gpt-4_summarization_abs_002_C2_same_params_rep3": {
+      "prov:activity": "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3",
+      "prov:entity": "lgai:prompt_c9644358805b"
+    },
+    "_:u2_gpt-4_summarization_abs_002_C2_same_params_rep3": {
+      "prov:activity": "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3",
+      "prov:entity": "lgai:model_gpt-4_api-managed"
+    },
+    "_:u3_gpt-4_summarization_abs_002_C2_same_params_rep3": {
+      "prov:activity": "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3",
+      "prov:entity": "lgai:params_6628f30e46b9"
+    },
+    "_:u4_gpt-4_summarization_abs_002_C2_same_params_rep3": {
+      "prov:activity": "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3",
+      "prov:entity": "lgai:input_5604f45919dd"
+    }
+  },
+  "wasAssociatedWith": {
+    "_:waw_gpt-4_summarization_abs_002_C2_same_params_rep3": {
+      "prov:activity": "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3",
+      "prov:agent": "lgai:researcher_lucas_rover"
+    }
+  },
+  "wasAttributedTo": {
+    "_:wat_gpt-4_summarization_abs_002_C2_same_params_rep3": {
+      "prov:entity": "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3_output",
+      "prov:agent": "lgai:system_cd45d428"
+    }
+  },
+  "wasDerivedFrom": {
+    "_:wdf_gpt-4_summarization_abs_002_C2_same_params_rep3": {
+      "prov:generatedEntity": "lgai:gpt-4_summarization_abs_002_C2_same_params_rep3_output",
+      "prov:usedEntity": "lgai:prompt_c9644358805b"
+    }
+  }
+}

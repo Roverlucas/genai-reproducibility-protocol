@@ -1,0 +1,36 @@
+{
+  "prompt_card_version": "1.0",
+  "created_at": "2026-02-07T22:28:50.095184+00:00",
+  "prompt_id": "extraction_v1",
+  "prompt_hash": "ddc1746ca23ddafc9f63790dbd2d86930c1248713bf7c854b4e119ba9f0063c1",
+  "version": "1.0",
+  "prompt_text": "You are a structured information extraction assistant. Read the following scientific abstract and extract the information into the exact JSON format below. Use only information explicitly stated in the abstract. If a field is not mentioned, use null.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string — main goal of the study\",\n  \"method\": \"string — methodology or approach used\",\n  \"key_result\": \"string — most important quantitative or qualitative result\",\n  \"model_or_system\": \"string — name of the model/system proposed (if any)\",\n  \"benchmark\": \"string — evaluation benchmark or dataset used (if any)\"\n}",
+  "system_instructions": "",
+  "few_shot_examples": [],
+  "task_category": "structured_extraction",
+  "objective": "Extract structured JSON with 5 fields from a scientific abstract.",
+  "designed_by": "lucas_rover",
+  "assumptions": [
+    "Input is a well-formed English scientific abstract",
+    "Output must be valid JSON",
+    "Fields not present in the abstract should be null"
+  ],
+  "limitations": [
+    "Fixed schema - does not capture all possible metadata",
+    "English-only",
+    "JSON parsing may fail if model adds explanation text"
+  ],
+  "interaction_regime": "single-turn",
+  "target_models": [
+    "llama3:8b",
+    "gpt-4"
+  ],
+  "expected_output_format": "JSON object with 5 string fields",
+  "change_log": [
+    {
+      "version": "1.0",
+      "date": "2026-02-07",
+      "description": "Initial version"
+    }
+  ]
+}

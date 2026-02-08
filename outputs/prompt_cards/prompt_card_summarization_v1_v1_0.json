@@ -1,0 +1,36 @@
+{
+  "prompt_card_version": "1.0",
+  "created_at": "2026-02-07T22:28:50.094866+00:00",
+  "prompt_id": "summarization_v1",
+  "prompt_hash": "c9644358805b358076a2836466429c97a31bfd6ec5fbb42e9e9b32bcf6190b94",
+  "version": "1.0",
+  "prompt_text": "You are a scientific summarization assistant. Read the following scientific abstract and produce a concise summary in exactly 3 sentences. The summary must: (1) state the main contribution or finding, (2) describe the methodology used, and (3) report the key quantitative result if available. Do not add any information not present in the original abstract. Do not include any preamble or explanation — output only the 3-sentence summary.",
+  "system_instructions": "",
+  "few_shot_examples": [],
+  "task_category": "scientific_summarization",
+  "objective": "Generate a concise 3-sentence summary of a scientific abstract, preserving key contributions, methods, and results.",
+  "designed_by": "lucas_rover",
+  "assumptions": [
+    "Input is a well-formed English scientific abstract",
+    "Output should be exactly 3 sentences",
+    "No external knowledge should be added"
+  ],
+  "limitations": [
+    "Designed for single abstracts, not full papers",
+    "English-only",
+    "May struggle with highly technical domain-specific terminology"
+  ],
+  "interaction_regime": "single-turn",
+  "target_models": [
+    "llama3:8b",
+    "gpt-4"
+  ],
+  "expected_output_format": "3 sentences of plain text",
+  "change_log": [
+    {
+      "version": "1.0",
+      "date": "2026-02-07",
+      "description": "Initial version"
+    }
+  ]
+}
