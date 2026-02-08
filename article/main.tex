@@ -27,8 +27,7 @@
 %% Additional packages
 \usepackage{booktabs}
 \usepackage{pifont}
-\usepackage{graphicx}
-\usepackage{xcolor}
+%% graphicx and xcolor already loaded by acmart.cls
 \usepackage{listings}
 \usepackage{subcaption}
 \usepackage{multirow}
@@ -64,21 +63,23 @@
 \renewcommand{\shortauthors}{Rover}
 
 \begin{abstract}
-{\bf Background:}
+\textbf{Background:}
 Generative AI models produce non-deterministic outputs that vary across runs, even under nominally identical configurations. This variability threatens the reproducibility of studies that rely on large language model (LLM) outputs, yet most existing experiment-tracking tools were not designed for the specific challenges of text-generation workflows.
 
-{\bf Objectives:}
+\textbf{Objectives:}
 We propose a lightweight, open-standard protocol for logging, versioning, and provenance tracking of generative AI experiments. The protocol introduces two novel documentation artifacts---Prompt Cards and Run Cards---and adopts the W3C PROV data model to create auditable, machine-readable provenance graphs linking every output to its full generation context.
 
-{\bf Methods:}
+\textbf{Methods:}
 We formalize the protocol and evaluate it empirically through 330 controlled experiments. These experiments employ two models---LLaMA~3 8B (locally deployed) and GPT-4 (cloud API)---on two NLP tasks (scientific summarization and structured extraction) across five experimental conditions that systematically vary the seed, temperature, and decoding strategy. We measure output variability using Exact Match Rate, Normalized Edit Distance, and ROUGE-L, and quantify the protocol's own overhead in terms of time and storage.
 
-{\bf Results:}
+\textbf{Results:}
 Under greedy decoding ($t{=}0$), LLaMA~3 achieves perfect reproducibility on extraction (EMR = 1.000) and near-perfect on summarization (EMR = 0.840). In stark contrast, GPT-4 under identical greedy settings achieves only EMR = 0.520 for extraction and EMR = 0.200 for summarization, revealing significant server-side non-determinism that is invisible without systematic logging. Increasing temperature to 0.7 eliminates exact matches for both models. The protocol adds a mean overhead of 33.56\,ms per run (0.69\% of inference time) and 4.17\,KB per run record, totaling 4.87\,MB for all 330 runs.
 
-{\bf Conclusions:}
+\textbf{Conclusions:}
 Our results demonstrate that (1)~local inference is substantially more reproducible than API-based inference even under nominally identical parameters, (2)~structured output tasks are inherently more reproducible than open-ended generation, (3)~temperature is the dominant \textit{user-controllable} factor affecting variability, and (4)~comprehensive provenance logging can be achieved with negligible overhead. The protocol, reference implementation, and all experimental data are publicly available.
 \end{abstract}
+
+\keywords{reproducibility, generative AI, provenance, large language models, experiment tracking, W3C PROV}
 
 \received{February 2026}
 
@@ -88,7 +89,7 @@ Our results demonstrate that (1)~local inference is substantially more reproduci
 \section{Introduction}
 \label{sec:introduction}
 
-The rapid adoption of large language models (LLMs) in scientific research has introduced a fundamental challenge: how to ensure that studies relying on generative AI outputs are reproducible, auditable, and scientifically rigorous. Unlike traditional computational experiments, in which deterministic algorithms produce identical results given identical inputs, LLMs exhibit inherent variability in their outputs due to stochastic sampling, floating-point non-determinism, and opaque model-versioning practices \cite{chen2023chatgpt, zhu2024reproducibility}.
+The rapid adoption of large language models (LLMs) in scientific research has introduced a fundamental challenge: how to ensure that studies relying on generative AI outputs are reproducible, auditable, and scientifically rigorous. Unlike traditional computational experiments, in which deterministic algorithms produce identical results given identical inputs, LLMs exhibit inherent variability in their outputs due to stochastic sampling, floating-point non-determinism, and opaque model-versioning practices \cite{chen2023chatgpt, zhu2023reproducibility}.
 
 This reproducibility challenge is not merely theoretical. \citet{baker2016reproducibility} reported that over 70\% of researchers have failed to reproduce another scientist's experiment, a crisis that extends to AI research \cite{hutson2018artificial, gundersen2018state}. For generative AI specifically, the problem is compounded by several factors unique to text-generation workflows: (1)~the same prompt can yield semantically similar yet textually distinct outputs across runs; (2)~API-based models may undergo silent updates that alter behavior; (3)~temperature and sampling parameters create a high-dimensional space of possible outputs; and (4)~no established standard exists for documenting the full context needed to understand, audit, or reproduce a generative output.
 
@@ -115,7 +116,7 @@ The remainder of this paper is organized as follows. Section~\ref{sec:related-wo
 
 The reproducibility crisis in AI has been documented extensively. \citet{gundersen2018state} surveyed 400 AI papers and found that only 6\% provided sufficient information for full reproducibility. \citet{pineau2021improving} reported on the NeurIPS 2019 Reproducibility Program, which introduced reproducibility checklists and found significant gaps between reported and actual reproducibility. \citet{gundersen2018sources} identified three levels of reproducibility in AI---method, data, and experiment---and argued that all three are necessary for scientific progress.
 
-For generative AI specifically, \citet{chen2023chatgpt} demonstrated that ChatGPT's outputs on NLP benchmarks exhibit non-trivial variability across identical queries, even with temperature set to zero. \citet{zhu2024reproducibility} showed that reproducibility degrades further when tasks involve subjective judgment, such as social computing annotations.
+For generative AI specifically, \citet{chen2023chatgpt} demonstrated that ChatGPT's outputs on NLP benchmarks exhibit non-trivial variability across identical queries, even with temperature set to zero. \citet{zhu2023reproducibility} showed that reproducibility degrades further when tasks involve subjective judgment, such as social computing annotations.
 
 \subsection{Experiment Tracking Tools}
 
