@@ -217,10 +217,10 @@ print("ABSTRACT WORD COUNTS")
 print("=" * 80)
 with open("/Users/lucasrover/paper-experiment/data/inputs/abstracts.json") as f:
     abstracts_data = json.load(f)
-for ab in abstracts_data:
+for ab in abstracts_data["abstracts"]:
     wc = len(ab["text"].split())
     print(f"  {ab['id']}: {wc} words")
-print(f"  Range: {min(len(a['text'].split()) for a in abstracts_data)}--{max(len(a['text'].split()) for a in abstracts_data)}")
+print(f"  Range: {min(len(a['text'].split()) for a in abstracts_data['abstracts'])}--{max(len(a['text'].split()) for a in abstracts_data['abstracts'])}")
 
 # ----- Protocol code line count -----
 print("\n" + "=" * 80)
