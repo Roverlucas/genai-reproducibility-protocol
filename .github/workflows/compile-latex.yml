@@ -1,0 +1,49 @@
+name: Compile LaTeX
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'article/**.tex'
+      - 'article/**.bib'
+      - 'article/figures/**'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: article
+          root_file: main.tex
+          latexmk_use_lualatex: false
+          latexmk_shell_escape: false
+          args: -pdf -interaction=nonstopmode -file-line-error
+
+      - name: Compile cover letter
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: article
+          root_file: cover_letter.tex
+          args: -pdf -interaction=nonstopmode -file-line-error
+
+      - name: Commit updated PDFs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add article/main.pdf article/cover_letter.pdf
+          if git diff --staged --quiet; then
+            echo "No PDF changes to commit"
+          else
+            git commit -m "Auto-compile: update PDFs from LaTeX sources"
+            git push
+          fi
