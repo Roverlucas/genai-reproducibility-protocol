@@ -41,8 +41,17 @@ def get_environment_hash() -> str:
     return hash_dict(env_info)
 
 
-def get_environment_metadata() -> dict:
-    """Collect detailed environment metadata."""
+def get_environment_metadata(anonymize_hostname: bool = False) -> dict:
+    """Collect detailed environment metadata.
+
+    Args:
+        anonymize_hostname: If True, replaces hostname with its SHA-256 hash.
+            Recommended for privacy-sensitive deployments where the hostname
+            may reveal institutional information.
+    """
+    hostname = platform.node()
+    if anonymize_hostname:
+        hostname = hash_text(hostname)[:16]  # truncated hash
     return {
         "os": platform.system(),
         "os_version": platform.version(),
@@ -50,7 +59,7 @@ def get_environment_metadata() -> dict:
         "architecture": platform.machine(),
         "processor": platform.processor(),
         "python_version": sys.version,
-        "hostname": platform.node(),
+        "hostname": hostname,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 

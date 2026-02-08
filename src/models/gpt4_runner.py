@@ -20,7 +20,12 @@ def get_client() -> OpenAI:
 
 
 def get_model_info(model: str = "gpt-4") -> dict:
-    """Get model metadata for GPT-4."""
+    """Get model metadata for GPT-4.
+
+    Note: The API may return a specific version (e.g., 'gpt-4-0613')
+    in the response's model field, which is captured in run_inference()
+    as 'model_id_returned'.
+    """
     return {
         "model_name": model,
         "model_version": "api-managed",

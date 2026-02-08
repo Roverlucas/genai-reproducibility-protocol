@@ -17,7 +17,7 @@ OLLAMA_API_URL = "http://localhost:11434"
 
 
 def _ollama_api(endpoint: str, payload: dict, timeout: int = 120) -> dict:
-    """Make a request to the Ollama REST API."""
+    """Make a POST request to the Ollama REST API."""
     url = f"{OLLAMA_API_URL}{endpoint}"
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
@@ -25,18 +25,37 @@ def _ollama_api(endpoint: str, payload: dict, timeout: int = 120) -> dict:
         return json.loads(resp.read().decode("utf-8"))
 
 
+def _ollama_get(endpoint: str, timeout: int = 10) -> dict:
+    """Make a GET request to the Ollama REST API."""
+    url = f"{OLLAMA_API_URL}{endpoint}"
+    req = urllib.request.Request(url)
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return json.loads(resp.read().decode("utf-8"))
+
+
+def get_ollama_version() -> str:
+    """Query the Ollama server version."""
+    try:
+        result = _ollama_get("/api/version")
+        return result.get("version", "unknown")
+    except Exception:
+        return "unknown"
+
+
 def get_model_info(model: str = "llama3:8b") -> dict:
-    """Get model metadata from Ollama."""
+    """Get model metadata from Ollama, including digest and server version."""
     try:
         result = _ollama_api("/api/show", {"name": model})
+        ollama_ver = get_ollama_version()
         return {
             "model_name": model,
             "model_version": result.get("details", {}).get("parameter_size", ""),
             "family": result.get("details", {}).get("family", ""),
             "format": result.get("details", {}).get("format", ""),
             "quantization": result.get("details", {}).get("quantization_level", ""),
-            "digest": result.get("modelinfo", {}).get("general.file_type", ""),
+            "weights_hash": result.get("digest", ""),
             "model_source": "ollama-local",
+            "ollama_version": ollama_ver,
         }
     except Exception as e:
         return {"model_name": model, "error": str(e), "model_source": "ollama-local"}
