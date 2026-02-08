@@ -1,0 +1,100 @@
+# Suggested Reviewers for JAIR Submission
+# Paper: "Logging, Versioning, and Provenance in Generative AI Studies"
+# Date: 2026-02-08
+
+suggested_reviewers:
+
+  - name: "Paolo Missier"
+    affiliation: "University of Birmingham, School of Computer Science"
+    country: "United Kingdom"
+    email: "p.missier@bham.ac.uk"
+    expertise: "W3C PROV specification, data provenance, ML pipelines"
+    key_publications:
+      - "Missier et al. (2013). The W3C PROV Family of Specifications for Modelling Provenance Metadata. EDBT 2013."
+      - "Chapman, Lauro, Missier & Torlone (2023). Supporting Better Insights of Data Science Pipelines with Fine-grained Provenance."
+    justification: >
+      Paolo Missier was a core contributor to the W3C PROV specification, which is
+      foundational to the provenance model used in our paper. He is now Director of
+      the Institute for Data and AI at Birmingham and actively researches data
+      provenance in data science and ML pipelines. His deep expertise in PROV
+      standards makes him uniquely qualified to evaluate the provenance architecture
+      of our protocol.
+    conflict_check: "No co-authorship or institutional affiliation with any author."
+
+  - name: "Sheeba Samuel"
+    affiliation: "Chemnitz University of Technology (TU Chemnitz), Distributed and Self-organizing Systems Group"
+    country: "Germany"
+    email: "sheeba.samuel@informatik.tu-chemnitz.de"
+    expertise: "Provenance ontologies, ML reproducibility, REPRODUCE-ME"
+    key_publications:
+      - "Samuel & Daniel (2022). End-to-End Provenance Representation for the Understandability and Reproducibility of Scientific Experiments. J Biomedical Semantics."
+      - "Samuel (2024). FAIR Jupyter: A Knowledge Graph Approach to Semantic Sharing. TGDK."
+    justification: >
+      Sheeba Samuel developed the REPRODUCE-ME ontology and MLProvLab tool for
+      tracking provenance in ML notebooks, directly relevant to our Prompt Card /
+      Run Card approach. Her work on W3C PROV-O extensions for ML reproducibility
+      closely parallels our protocol's contribution. She is cited in our manuscript
+      (Samuel & Daniel, 2022).
+    conflict_check: "No co-authorship or institutional affiliation with any author."
+
+  - name: "Edward Raff"
+    affiliation: "CrowdStrike / University of Maryland, Baltimore County (Visiting Professor)"
+    country: "United States"
+    email: "to be verified via edwardraff.com or UMBC faculty page"
+    expertise: "Empirical ML reproducibility, quantitative reproducibility assessment"
+    key_publications:
+      - "Raff (2019). A Step Toward Quantifying Independently Reproducible Machine Learning Research. NeurIPS 2019."
+      - "Raff et al. (2025). What Do Machine Learning Researchers Mean by 'Reproducible'? AAAI 2025."
+    justification: >
+      Edward Raff is one of the leading empirical researchers on ML reproducibility.
+      His NeurIPS 2019 study attempted to reproduce 255 ML papers, directly analogous
+      to our empirical approach with 330 GenAI experiments. His 2025 AAAI paper on the
+      semantics of "reproducibility" provides a taxonomic framework highly relevant to
+      how our paper defines and measures reproducibility.
+    conflict_check: "No co-authorship or institutional affiliation with any author."
+
+  - name: "Marius Schlegel"
+    affiliation: "Technische Universitat Ilmenau, Databases and Information Systems Group"
+    country: "Germany"
+    email: "marius.schlegel@tu-ilmenau.de"
+    expertise: "W3C PROV + ML experiment provenance, MLflow2PROV"
+    key_publications:
+      - "Schlegel & Sattler (2023). MLflow2PROV: Extracting Provenance from Machine Learning Experiments. DEEM@SIGMOD 2023."
+      - "Schlegel & Sattler (2025). Capturing End-to-End Provenance for Machine Learning Pipelines. Information Systems (Elsevier)."
+    justification: >
+      Marius Schlegel developed MLflow2PROV, a tool that extracts W3C PROV-compliant
+      provenance graphs from ML systems -- the most directly comparable system to our
+      protocol's combination of Run Cards with W3C PROV. His work on end-to-end
+      provenance capture closely mirrors our technical architecture.
+    conflict_check: "No co-authorship or institutional affiliation with any author."
+
+  - name: "Koustuv Sinha"
+    affiliation: "Meta AI (FAIR), New York / McGill University / Mila Quebec AI Institute"
+    country: "Canada / United States"
+    email: "to be verified via koustuvsinha.com"
+    expertise: "ML reproducibility programs, NeurIPS Reproducibility Challenge"
+    key_publications:
+      - "Pineau, Vincent-Lamarre, Sinha et al. (2021). Improving Reproducibility in Machine Learning Research. JMLR."
+      - "Machine Learning Reproducibility Challenge (MLRC) 2022-2025 -- founding organizer."
+    justification: >
+      Koustuv Sinha is the founding organizer of the Machine Learning Reproducibility
+      Challenge and co-authored the seminal NeurIPS reproducibility program report. As
+      General Chair of MLRC and an Associate Editor at ReScience C, he has extensive
+      hands-on experience evaluating reproducibility claims, providing valuable context
+      for assessing our 330-experiment empirical study.
+    conflict_check: "No co-authorship or institutional affiliation with any author."
+
+# Alternative reviewer (if geographic diversity needed):
+#  - name: "Adriane Chapman"
+#    affiliation: "University of Southampton"
+#    country: "United Kingdom"
+#    email: "Adriane.Chapman@soton.ac.uk"
+#    expertise: "LLMs + provenance, W3C PROV"
+#    key_publications:
+#      - "Chapman et al. (2024). LLMs for the Post-hoc Creation of Provenance. EuroS&P Workshops."
+#    justification: "Combines LLM expertise with W3C PROV provenance work."
+
+# Note on Odd Erik Gundersen (NTNU):
+#   Excluded because he holds an editorial-adjacent role at JAIR
+#   (Electronic Publishing Editor) and co-authored JAIR's own
+#   reproducibility mechanisms paper (2024). Potential conflict.

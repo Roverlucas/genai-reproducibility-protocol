@@ -1,0 +1,25 @@
+
+\begin{table}[t]
+\centering
+\caption{Protocol overhead: logging time and storage costs for 330~runs (190 LLaMA~3 + 140 GPT-4).}
+\label{tab:overhead}
+\small
+\begin{tabular}{@{}lrl@{}}
+\toprule
+\textbf{Metric} & \textbf{Value} & \textbf{Unit} \\
+\midrule
+\multicolumn{3}{l}{\textit{Logging time overhead}} \\
+\quad Mean per run & 33.56 $\pm$ 5.68 & ms \\
+\quad Min / Max & 12.85 / 51.20 & ms \\
+\quad Total (330 runs) & 11074 & ms \\
+\quad Mean overhead ratio & 0.694\% & of inference time \\
+\quad Max overhead ratio & 1.621\% & of inference time \\
+\midrule
+\multicolumn{3}{l}{\textit{Storage overhead}} \\
+\quad Run logs (330 files) & 1382 & KB \\
+\quad PROV documents (331 files) & 1736 & KB \\
+\quad Run Cards (330 files) & 454 & KB \\
+\quad Total output & 4.87 & MB \\
+\bottomrule
+\end{tabular}
+\end{table}

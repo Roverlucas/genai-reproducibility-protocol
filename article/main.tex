@@ -11,7 +11,7 @@
 \acmMonth{}
 \acmYear{2026}
 
-\RequirePackage[
+\usepackage[
   datamodel=acmdatamodel,
   style=acmauthoryear,
   backend=biber,
@@ -103,9 +103,9 @@ Our results demonstrate that (1)~local inference is substantially more reproduci
 
 The rapid adoption of large language models (LLMs) in scientific research has introduced a fundamental challenge: how to ensure that studies relying on generative AI outputs are reproducible, auditable, and scientifically rigorous. Unlike traditional computational experiments, in which deterministic algorithms produce identical results given identical inputs, LLMs exhibit inherent variability in their outputs due to stochastic sampling, floating-point non-determinism, and opaque model-versioning practices \cite{chen2023chatgpt, zhu2023reproducibility}.
 
-This reproducibility challenge is not merely theoretical. \citet{baker2016reproducibility} reported that over 70\% of researchers have failed to reproduce another scientist's experiment, a crisis that extends to AI research \cite{hutson2018artificial, gundersen2018state}. For generative AI specifically, the problem is compounded by several factors unique to text-generation workflows: (1)~the same prompt can yield semantically similar yet textually distinct outputs across runs; (2)~API-based models may undergo silent updates that alter behavior; (3)~temperature and sampling parameters create a high-dimensional space of possible outputs; and (4)~no established standard exists for documenting the full context needed to understand, audit, or reproduce a generative output.
+This reproducibility challenge is not merely theoretical. \citet{baker2016reproducibility} reported that over 70\% of researchers have failed to reproduce another scientist's experiment, a crisis that extends to AI research \cite{hutson2018artificial, gundersen2018state, stodden2016enhancing}. For generative AI specifically, the problem is compounded by several factors unique to text-generation workflows: (1)~the same prompt can yield semantically similar yet textually distinct outputs across runs; (2)~API-based models may undergo silent updates that alter behavior; (3)~temperature and sampling parameters create a high-dimensional space of possible outputs; and (4)~no established standard exists for documenting the full context needed to understand, audit, or reproduce a generative output.
 
-Existing experiment-tracking tools such as MLflow \cite{zaharia2018accelerating}, Weights \& Biases \cite{biewald2020experiment}, and DVC \cite{miao2023dvc} were designed primarily for training pipelines and numerical metrics. Although valuable for their intended purposes, these tools lack features critical for generative AI studies: structured prompt versioning, cryptographic output hashing for tamper detection, provenance graphs linking outputs to their full generation context, and environment fingerprinting specific to inference-time conditions.
+Existing experiment-tracking tools such as MLflow \cite{zaharia2018accelerating}, Weights \& Biases \cite{biewald2020experiment}, and DVC \cite{kuprieiev2024dvc} were designed primarily for training pipelines and numerical metrics. Although valuable for their intended purposes, these tools lack features critical for generative AI studies: structured prompt versioning, cryptographic output hashing for tamper detection, provenance graphs linking outputs to their full generation context, and environment fingerprinting specific to inference-time conditions.
 
 In this paper, we make three contributions:
 
@@ -138,11 +138,13 @@ Several tools exist for tracking machine learning experiments, although none was
 
 \textbf{Weights \& Biases} \cite{biewald2020experiment} offers experiment tracking with visualization dashboards. It supports prompt logging but lacks structured prompt versioning, cryptographic output hashing, and provenance graph generation.
 
-\textbf{DVC} \cite{miao2023dvc} provides data versioning through git-like operations. While effective for dataset management, it does not address run-level provenance or prompt documentation.
+\textbf{DVC} \cite{kuprieiev2024dvc} provides data versioning through git-like operations. While effective for dataset management, it does not address run-level provenance or prompt documentation.
 
 \textbf{OpenAI Evals} \cite{openai2023evals} is a framework for evaluating LLM outputs against benchmarks. It provides structured evaluation but is tightly coupled to OpenAI's ecosystem and does not generate interoperable provenance records.
 
 \textbf{LangSmith} \cite{langsmith2023} offers tracing and evaluation for LLM applications. It captures detailed execution traces but uses a proprietary format and requires cloud connectivity.
+
+More broadly, \citet{bommasani2022opportunities} identified reproducibility as a key risk for foundation models, and \citet{liang2023holistic} proposed the HELM benchmark for holistic evaluation of language models, including robustness and fairness dimensions that complement our reproducibility focus.
 
 Table~\ref{tab:comparison} provides a systematic feature-by-feature comparison of our protocol with these tools, highlighting the gaps that motivate our work.
 
@@ -189,7 +191,7 @@ The protocol is designed around three principles:
 \begin{enumerate}
     \item \textbf{Completeness}: Every factor that can influence a generative output must be captured---prompt text, model identity and version, inference parameters, environment state, and timestamps.
     \item \textbf{Negligible overhead}: The logging process must not materially affect the experiment. We target $<$1\% overhead relative to inference time.
-    \item \textbf{Interoperability}: All artifacts are stored in open, machine-readable formats (JSON, PROV-JSON) to enable tool integration and long-term preservation.
+    \item \textbf{Interoperability}: All artifacts are stored in open, machine-readable formats (JSON, PROV-JSON), aligned with the FAIR principles \cite{wilkinson2016fair}, to enable tool integration and long-term preservation.
 \end{enumerate}
 
 \subsection{Prompt Cards}
@@ -266,9 +268,9 @@ We designed a controlled experiment to simultaneously evaluate (a)~the reproduci
 
 We evaluate two models representing fundamentally different deployment paradigms:
 
-\textbf{LLaMA~3 8B} \cite{grattafiori2024llama3}: A locally deployed open-weight model served through Ollama \cite{ollama2024} on an Apple M4 system with 24\,GB unified memory running macOS 14.6. Local deployment provides complete control over the execution environment, eliminating confounding factors such as network latency, server-side batching, and silent model updates.
+\textbf{LLaMA~3 8B} \cite{grattafiori2024llama3}: A locally deployed open-weight model served through Ollama \cite{ollama2024} on an Apple M4 system with 24\,GB unified memory running macOS 14.6. Local deployment provides complete control over the execution environment, eliminating confounding factors such as network latency, server-side batching, and silent model updates. The software stack comprised Ollama v0.5.4, Python 3.12.8, the \texttt{ollama} Python SDK v0.4.7, and the LLaMA~3 8B Q4\_0 quantization (SHA-256 recorded per run).
 
-\textbf{GPT-4} \cite{achiam2023gpt4}: A cloud-based proprietary model accessed via the OpenAI API with controlled seed parameters. Although we requested \texttt{model="gpt-4"}, the API returned \texttt{gpt-4-0613} as the resolved model version in all 140 runs, which we recorded in the \texttt{model\_id\_returned} field of each run record. This represents the typical deployment scenario where researchers have limited control over the inference environment. The API introduces additional sources of variability: load balancing, server-side batching, potential model-version updates, and floating-point non-determinism across different hardware.
+\textbf{GPT-4} \cite{achiam2023gpt4}: A cloud-based proprietary model accessed via the OpenAI API (\texttt{openai} Python SDK v1.59.9) with controlled seed parameters. Although we requested \texttt{model="gpt-4"}, the API returned \texttt{gpt-4-0613} as the resolved model version in all 140 runs, which we recorded in the \texttt{model\_id\_returned} field of each run record. This represents the typical deployment scenario where researchers have limited control over the inference environment. The API introduces additional sources of variability: load balancing, server-side batching, potential model-version updates, and floating-point non-determinism across different hardware.
 
 \subsection{Tasks}
 
@@ -328,6 +330,8 @@ We measure output variability using three complementary metrics computed over al
 
 \textbf{ROUGE-L F1:} The F1 score based on the longest common subsequence at the word level \cite{lin2004rouge}. This captures semantic similarity even when surface forms differ. ROUGE-L = 1.0 indicates identical word sequences.
 
+We deliberately chose these three surface-level metrics over embedding-based alternatives such as BERTScore \cite{zhang2020bertscore} or BLEU \cite{papineni2002bleu} for two reasons. First, our primary research question concerns \textit{exact} reproducibility (whether identical inputs yield identical outputs), for which character-level EMR and NED are the most direct measures. Second, ROUGE-L provides a well-understood, deterministic proxy for semantic overlap without introducing the additional variability of a neural embedding model, which would itself be subject to reproducibility concerns. BERTScore would be valuable for tasks where paraphrase detection is central, but our structured extraction task (JSON output) renders embedding-based similarity largely redundant.
+
 For protocol overhead, we measure:
 \begin{itemize}
     \item \textbf{Logging time}: Wall-clock time spent on hashing, metadata collection, and file I/O, measured separately from inference time.
@@ -345,7 +349,7 @@ For protocol overhead, we measure:
 Table~\ref{tab:variability-results} presents the main variability results for both models, aggregated across all five abstracts.
 
 %% Table 2 - Main Results (both models)
-\input{../analysis/table2_main_results_v2.tex}
+\input{table2_main_results_v2.tex}
 
 \subsubsection{LLaMA~3 8B (Local Inference)}
 
@@ -359,7 +363,7 @@ Table~\ref{tab:variability-results} presents the main variability results for bo
 
 Table~\ref{tab:model-comparison} highlights this reproducibility gap directly.
 
-\input{../analysis/table_model_comparison.tex}
+\input{table_model_comparison.tex}
 
 This gap is not due to parameter differences: both models use $t = 0$ with the same seed. The variability must originate from server-side factors that are invisible to the researcher: hardware-level floating-point non-determinism across different GPU types in the serving cluster, request-batching and scheduling effects, and potential silent model updates during the experimental window. \textit{Without systematic logging, this non-determinism would be entirely invisible.}
 
@@ -369,7 +373,7 @@ This gap is not due to parameter differences: both models use $t = 0$ with the s
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{../analysis/figures/fig_temperature_both_models.pdf}
+    \includegraphics[width=\linewidth]{figures/fig_temperature_both_models.pdf}
     \caption{Effect of temperature on output variability for both models. (a)~ROUGE-L F1 decreases monotonically with temperature. (b)~Exact Match Rate: LLaMA~3 starts from near-perfect reproducibility at $t = 0$, whereas GPT-4 starts from a lower baseline; however, both degrade at comparable rates with increasing temperature.}
     \Description{Two line plots comparing four configurations (LLaMA summarization, LLaMA extraction, GPT-4 summarization, GPT-4 extraction) across three temperature values.}
     \label{fig:temperature}
@@ -383,7 +387,7 @@ Figure~\ref{fig:model-comparison} provides a direct visual comparison of the two
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=\textwidth]{../analysis/figures/fig_model_comparison.pdf}
+    \includegraphics[width=\textwidth]{figures/fig_model_comparison.pdf}
     \caption{Reproducibility under greedy decoding ($t = 0$): LLaMA~3 8B (local) vs.\ GPT-4 (API). LLaMA~3 achieves near-perfect to perfect reproducibility, while GPT-4 shows measurable variability across all metrics, particularly for summarization.}
     \Description{Three grouped bar charts comparing LLaMA and GPT-4 on EMR, NED, and ROUGE-L for summarization and extraction tasks.}
     \label{fig:model-comparison}
@@ -393,19 +397,21 @@ Figure~\ref{fig:heatmap} presents a comprehensive heatmap of EMR across all mode
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{../analysis/figures/fig_heatmap_both_models.pdf}
+    \includegraphics[width=\linewidth]{figures/fig_heatmap_both_models.pdf}
     \caption{Heatmap of Exact Match Rate across all experimental conditions. The left columns (LLaMA~3) show high EMR under greedy decoding, while the right columns (GPT-4) show lower EMR even at $t = 0$. The vertical black line separates the two models.}
     \Description{A heatmap with 5 rows (conditions) and 4 columns (model-task combinations), showing green cells for high EMR and red for low EMR.}
     \label{fig:heatmap}
 \end{figure}
 
-To quantify the reproducibility gap between local and API-based inference, we performed paired $t$-tests on per-abstract EMR values under condition C2 (greedy decoding, $t{=}0$). For summarization, the difference is statistically significant: $t(4) = 4.000$, $p = 0.016$, Cohen's $d = 1.789$ (LLaMA~3 mean EMR $= 0.840$, 95\% CI $[0.568, 1.112]$; GPT-4 mean EMR $= 0.200$, 95\% CI $[0.024, 0.376]$). For extraction, the gap is also significant: $t(4) = 3.639$, $p = 0.022$, Cohen's $d = 1.627$ (LLaMA~3 EMR $= 1.000$; GPT-4 EMR $= 0.520$, 95\% CI $[0.154, 0.886]$). Both effect sizes are very large ($d > 1.2$), confirming that the reproducibility difference is not only statistically significant but practically meaningful. We note that no multiple-comparison correction was applied, as these were a small set of pre-specified comparisons ($k = 6$); however, neither EMR $p$-value ($p = 0.016$ and $p = 0.022$) survives Bonferroni correction at the per-family threshold $\alpha = 0.05/6 \approx 0.008$, underscoring the limited statistical power inherent to $n = 5$ abstracts ($\text{df} = 4$). Notably, ROUGE-L differences did not reach significance ($p > 0.05$), suggesting that while outputs differ at the exact-string level, their semantic content remains relatively stable.
+To quantify the reproducibility gap between local and API-based inference, we performed paired $t$-tests on per-abstract EMR values under condition C2 (greedy decoding, $t = 0$). For summarization, the difference is statistically significant: $t(4) = 4.000$, $p = 0.016$, Cohen's $d = 1.789$ (LLaMA~3 mean EMR $= 0.840$, 95\% CI $[0.568, 1.112]$; GPT-4 mean EMR $= 0.200$, 95\% CI $[0.024, 0.376]$). For extraction, the gap is also significant: $t(4) = 3.639$, $p = 0.022$, Cohen's $d = 1.627$ (LLaMA~3 EMR $= 1.000$; GPT-4 EMR $= 0.520$, 95\% CI $[0.154, 0.886]$). Both effect sizes are very large ($d > 1.2$), confirming that the reproducibility difference is not only statistically significant but practically meaningful. We note that no multiple-comparison correction was applied, as these were a small set of pre-specified comparisons ($k = 6$); however, neither EMR $p$-value ($p = 0.016$ and $p = 0.022$) survives Bonferroni correction at the per-family threshold $\alpha = 0.05/6 \approx 0.008$, underscoring the limited statistical power inherent to $n = 5$ abstracts ($\text{df} = 4$). Notably, ROUGE-L differences did not reach significance ($p > 0.05$), suggesting that while outputs differ at the exact-string level, their semantic content remains relatively stable.
+
+We note two statistical caveats. First, the 95\% CI for LLaMA~3 summarization EMR $[0.568, 1.112]$ exceeds the natural $[0,1]$ bound; this is an artifact of applying a $t$-interval to a bounded proportion with $n = 5$ and does not affect the validity of the hypothesis test itself. Second, with only $n = 5$ observations per group, the normality assumption underlying the paired $t$-test cannot be formally verified. However, the $t$-test is known to be robust to moderate non-normality even at very small sample sizes \cite{dewinter2013using}, and the large observed effect sizes ($d > 1.6$) suggest that the results are unlikely to be spurious. We interpret these tests as descriptive evidence consistent with the observed patterns rather than definitive hypothesis confirmations, and we caution that the small sample size limits the statistical power of these comparisons \cite{cohen1988statistical}.
 
 \subsection{Protocol Overhead}
 
 Table~\ref{tab:overhead} presents the protocol's overhead metrics across all 330 runs.
 
-\input{../analysis/table3_overhead_v2.tex}
+\input{table3_overhead_v2.tex}
 
 The protocol adds a mean overhead of \textbf{33.56\,ms} per run, representing \textbf{0.69\%} of the mean inference time. This is well within our target of $<$1\%. The overhead is dominated by SHA-256 hashing and environment metadata collection; JSON serialization and file I/O contribute minimally.
 
@@ -415,7 +421,7 @@ Figure~\ref{fig:overhead} shows the overhead distribution broken down by model.
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{../analysis/figures/fig_overhead_both_models.pdf}
+    \includegraphics[width=\linewidth]{figures/fig_overhead_both_models.pdf}
     \caption{Distribution of protocol overhead by model. Left: Absolute logging time (ms). Right: Overhead as a percentage of inference time. Overhead is comparable between local (LLaMA~3) and API (GPT-4) inference, consistently below 1.7\%.}
     \Description{Two box plots comparing overhead between LLaMA 3 and GPT-4. Both models show similar overhead distributions.}
     \label{fig:overhead}
@@ -436,7 +442,7 @@ Our results yield several actionable recommendations for researchers conducting 
 
 \textbf{Prefer structured output formats when possible.} The extraction task's consistently higher reproducibility across both models demonstrates that output-format constraints directly improve reproducibility. Researchers should consider whether their tasks can be reformulated as structured extraction rather than open-ended generation.
 
-\textbf{Include warm-up runs for local models.} The per-abstract analysis revealed that the first inference call after model loading may differ from subsequent calls owing to cache initialization effects. Discarding the first run is a straightforward practice that improves measured reproducibility.
+\textbf{Include warm-up runs for local models.} The per-abstract analysis revealed that the first inference call after model loading may differ from subsequent calls owing to cache initialization effects. Discarding the first run is a straightforward practice that improves measured reproducibility. We note that our experimental protocol did not include a formal warm-up phase; the warm-up effect was identified \textit{post hoc} during per-abstract analysis. Consequently, the LLaMA~3 summarization EMR of 0.840 may represent a conservative lower bound: with a warm-up run excluded, the effective EMR would approach 1.000 for the remaining repetitions. Future studies should incorporate an explicit warm-up run as part of their experimental protocol.
 
 \textbf{Log comprehensively; the cost is negligible.} At 0.69\% overhead and 4.17\,KB per run, there is no practical reason not to apply comprehensive logging. The cost of not logging---namely, the inability to detect the kind of API non-determinism documented herein---far exceeds the protocol's minimal requirements.
 
@@ -457,23 +463,43 @@ The W3C PROV graphs generated by our protocol serve multiple purposes beyond sim
 \begin{enumerate}
     \item \textbf{Automated comparison}: By comparing PROV graphs of two runs, one can automatically identify which factors differed (e.g., same prompt and model but different temperatures), enabling systematic diagnosis of non-reproducibility.
     \item \textbf{Lineage tracking}: When outputs are used as inputs to downstream processes (e.g., summarization outputs fed into a meta-analysis), the provenance chain can be extended to trace any final result back to its full generation context.
-    \item \textbf{Compliance}: For regulated domains (healthcare, legal, finance), PROV documents provide the formal evidence trail required by audit standards.
+    \item \textbf{Compliance}: For regulated domains (healthcare, legal, finance), PROV documents provide the formal evidence trail required by audit standards \cite{nist2023ai}.
 \end{enumerate}
+
+To illustrate the diagnostic power of PROV graphs, consider two GPT-4 extraction runs on the same abstract under condition C2 (greedy decoding, $t = 0$, same seed). Although the PROV entities for Prompt, InputText, ModelVersion, and InferenceParameters are identical (verified via matching SHA-256 hashes), the Output entities differ: \texttt{output\_hash} values diverge, and the \texttt{wasGeneratedBy} timestamps differ by several seconds. The PROV graph thus automatically pinpoints the source of non-reproducibility: the only varying factor is the RunGeneration activity itself, confirming that the non-determinism originates server-side. This kind of automated differential diagnosis is infeasible without structured provenance records.
 
 \subsection{Limitations}
 \label{sec:limitations}
 
-\textbf{Two models.} Our evaluation covers LLaMA~3 8B (local) and GPT-4 (API), representing two important deployment paradigms. However, other models (e.g., Claude, Gemini, Mixtral, and smaller or larger LLaMA variants) may exhibit different reproducibility characteristics. Future work should extend the evaluation to a broader model suite.
+We organize threats to validity following standard categories:
 
-\textbf{Two tasks.} While summarization and extraction represent distinct points on the output-structure spectrum, they do not cover the full range of generative AI applications (e.g., dialogue, code generation, reasoning chains). A broader task suite would strengthen the generalizability of our findings.
+\subsubsection{Internal Validity}
 
-\textbf{English-only, narrow domain.} Our input data consists of five English scientific abstracts, all drawn from high-profile NLP/ML papers. This selection may not be representative of scientific writing more broadly (e.g., biomedical, social science, or humanities abstracts), and the reproducibility characteristics we observe may differ for other languages, domains, or document types.
+\textbf{Sample size and statistical power.} With $n = 5$ abstracts per condition, our study has limited statistical power to detect small or medium effect sizes. A post hoc power analysis using the observed effect sizes ($d > 1.6$) and $\alpha = 0.05$ yields power $> 0.80$ for our primary comparisons \cite{cohen1988statistical}, but we cannot rule out that subtler effects (e.g., seed-dependent variability under greedy decoding) went undetected. We therefore characterize this study as \textit{exploratory} with respect to population-level claims and emphasize the large observed effect sizes as the primary evidence.
 
-\textbf{No multi-turn evaluation.} All experiments use single-turn interactions. Multi-turn dialogues introduce additional variability through conversation history, which our current protocol logs but our experiments do not evaluate.
+\textbf{Warm-up confound.} As noted in Section~\ref{sec:discussion}, the first LLaMA~3 inference after model loading may differ from subsequent calls due to cache initialization. Although we identified this effect post hoc and it affects only the summarization EMR (reducing it from $\sim$1.0 to 0.840), it represents an uncontrolled confound in our experimental design.
 
-\textbf{Privacy considerations.} The protocol's environment metadata includes the machine hostname, which may reveal institutional information in sensitive contexts. Deployments in privacy-sensitive settings should consider anonymizing or omitting this field.
+\textbf{Prompt format confound.} LLaMA~3 was queried via Ollama's \texttt{/api/generate} endpoint (raw completion), whereas GPT-4 was queried via the OpenAI Chat Completions API (structured messages with system/user roles). This difference in prompt format is inherent to the deployment paradigms under study and mirrors real-world usage, but it means the observed reproducibility gap may partially reflect prompt-format effects rather than purely server-side factors.
 
-\textbf{Computational cost.} The total computational cost of our 330 experiments was modest: approximately 0.5 GPU-hours on a consumer laptop (Apple M4, 24\,GB) for 190 LLaMA~3 runs, plus 140 API calls to GPT-4. We estimate the carbon footprint to be negligible given this scale. Nevertheless, larger-scale adoption of the protocol across thousands of runs would not materially increase energy consumption, as the logging overhead (34\,ms per run) is dominated by the inference itself.
+\subsubsection{External Validity}
+
+\textbf{Two models.} Our evaluation covers LLaMA~3 8B (local) and GPT-4 (API), representing two deployment paradigms. However, other models---including Claude \cite{anthropic2024claude}, Gemini \cite{geminiteam2024gemini}, Mixtral, and larger or smaller LLaMA variants---may exhibit different reproducibility characteristics. The protocol itself is model-agnostic, but our empirical findings should not be generalized beyond the tested models without further validation.
+
+\textbf{Two tasks.} Summarization and extraction represent distinct points on the output-structure spectrum but do not cover the full range of generative AI applications (e.g., dialogue, code generation, reasoning chains). A broader task suite would strengthen generalizability.
+
+\textbf{English-only, narrow domain.} Our input data consists of five English scientific abstracts from NLP/ML papers. Reproducibility characteristics may differ for other languages, domains (e.g., biomedical, social science), or document types.
+
+\textbf{No multi-turn evaluation.} All experiments use single-turn interactions. Multi-turn dialogues introduce additional variability through conversation history, which our protocol logs but our experiments do not evaluate.
+
+\subsubsection{Construct Validity}
+
+\textbf{Surface-level metrics.} Our metrics (EMR, NED, ROUGE-L) capture textual rather than semantic similarity. Two outputs that are semantically equivalent but syntactically different will register as non-matching under EMR and partially divergent under NED. This is by design---our focus is on \textit{exact} reproducibility---but it means our results may overstate the practical impact of non-determinism for downstream applications where semantic equivalence suffices.
+
+\subsubsection{Other Considerations}
+
+\textbf{Privacy.} The protocol's environment metadata includes the machine hostname, which may reveal institutional information. Deployments in privacy-sensitive settings should anonymize this field.
+
+\textbf{Computational cost.} The total cost was modest: $\sim$0.5 GPU-hours on a consumer laptop (Apple M4, 24\,GB) for 190 LLaMA~3 runs, plus 140 API calls to GPT-4. The carbon footprint is negligible at this scale, and the logging overhead (34\,ms per run) would not materially increase energy consumption even at thousands of runs.
 
 \subsection{Practical Costs and Adoption}
 
@@ -505,7 +531,7 @@ We presented a lightweight protocol for logging, versioning, and provenance trac
     \item \textbf{Comprehensive provenance logging adds negligible overhead}: 0.69\% of inference time and 4.17\,KB per run, thereby removing any practical argument against systematic documentation.
 \end{enumerate}
 
-Future work will (i)~expand the model suite to include Claude, Gemini, and open-weight models of varying sizes; (ii)~extend the task coverage to dialogue, code generation, and multi-turn interactions; and (iii)~develop automated reproducibility scoring based on provenance graph analysis.
+Future work will (i)~expand the model suite to include Claude \cite{anthropic2024claude}, Gemini \cite{geminiteam2024gemini}, and open-weight models of varying sizes; (ii)~extend the task coverage to dialogue, code generation, and multi-turn interactions; and (iii)~develop automated reproducibility scoring based on provenance graph analysis.
 
 The reference implementation, all 330 run records, provenance documents, and analysis scripts are publicly available to support adoption and independent verification.
 
@@ -533,6 +559,9 @@ Following the CRediT (Contributor Roles Taxonomy) framework:
 
 \section*{Conflict of Interest}
 The authors declare no conflicts of interest. This research was conducted independently at UTFPR with no external funding from commercial AI providers. The use of OpenAI's GPT-4 API was for research evaluation purposes only and does not constitute an endorsement.
+
+\section*{Use of AI-Assisted Tools}
+The authors used AI-assisted tools (Claude, Anthropic) during the preparation of this manuscript for language editing, code development support, and data analysis scripting. All AI-generated content was critically reviewed, validated, and revised by the authors, who take full responsibility for the accuracy and integrity of the final manuscript. The scientific design, experimental execution, interpretation of results, and intellectual contributions are entirely the authors' own work.
 
 \printbibliography
 

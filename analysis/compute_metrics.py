@@ -135,27 +135,27 @@ def compute_aggregated_variability(variability_results):
             "n_abstracts": len(agg["exact_match_rates"]),
             "exact_match_rate": {
                 "mean": float(np.mean(agg["exact_match_rates"])),
-                "std": float(np.std(agg["exact_match_rates"])),
+                "std": float(np.std(agg["exact_match_rates"], ddof=1)),
             },
             "edit_distance_normalized": {
                 "mean": float(np.mean(agg["edit_dist_normalized_means"])),
-                "std": float(np.std(agg["edit_dist_normalized_means"])),
+                "std": float(np.std(agg["edit_dist_normalized_means"], ddof=1)),
             },
             "edit_distance_raw": {
                 "mean": float(np.mean(agg["edit_dist_means"])),
-                "std": float(np.std(agg["edit_dist_means"])),
+                "std": float(np.std(agg["edit_dist_means"], ddof=1)),
             },
             "rouge_l": {
                 "mean": float(np.mean(agg["rouge_l_means"])),
-                "std": float(np.std(agg["rouge_l_means"])),
+                "std": float(np.std(agg["rouge_l_means"], ddof=1)),
             },
             "avg_output_length_chars": {
                 "mean": float(np.mean(agg["avg_lengths_chars"])),
-                "std": float(np.std(agg["avg_lengths_chars"])),
+                "std": float(np.std(agg["avg_lengths_chars"], ddof=1)),
             },
             "avg_output_length_words": {
                 "mean": float(np.mean(agg["avg_lengths_words"])),
-                "std": float(np.std(agg["avg_lengths_words"])),
+                "std": float(np.std(agg["avg_lengths_words"], ddof=1)),
             },
         }
 
@@ -209,7 +209,7 @@ def compute_execution_time_analysis(all_runs):
             "condition": condition,
             "n_runs": len(durations),
             "mean_ms": float(np.mean(durations)),
-            "std_ms": float(np.std(durations)),
+            "std_ms": float(np.std(durations, ddof=1)),
             "min_ms": float(np.min(durations)),
             "max_ms": float(np.max(durations)),
             "median_ms": float(np.median(durations)),
