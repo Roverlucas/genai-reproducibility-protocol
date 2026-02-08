@@ -1,8 +1,8 @@
 {
   "experiment_date": "2026-02-07T22:42:49.797880+00:00",
   "researcher": "lucas_rover",
-  "total_runs": 140,
-  "llama_runs": 0,
+  "total_runs": 330,
+  "llama_runs": 190,
   "gpt4_runs": 140,
   "tasks": [
     "summarization",
