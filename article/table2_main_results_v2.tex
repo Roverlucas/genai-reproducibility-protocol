@@ -1,6 +1,6 @@
 \begin{table*}[t]
 \centering
-\caption{Output variability across experimental conditions for LLaMA~3 8B (local) and GPT-4 (API). Values are means over 30~abstracts; per-abstract standard deviations are available in the project repository. EMR = Exact Match Rate ($\uparrow$), NED = Normalized Edit Distance ($\downarrow$), ROUGE-L = word-level LCS F1 ($\uparrow$), BS-F1 = BERTScore F1 ($\uparrow$). GPT-4 C1 extraction is omitted due to insufficient data (8 of 300 planned runs). GPT-4 extraction C3 conditions are based on 14--17 abstracts (vs.\ 30 for all other conditions) due to API quota exhaustion.}
+\caption{Output variability across experimental conditions for LLaMA~3 8B (local) and GPT-4 (API). Values are means over 30~abstracts; per-abstract standard deviations are available in the project repository. EMR = Exact Match Rate ($\uparrow$), NED = Normalized Edit Distance ($\downarrow$), ROUGE-L = word-level LCS F1 ($\uparrow$), BS-F1 = BERTScore F1 ($\uparrow$). For GPT-4, C2 uses the same parameters as C1 (seed~=~42, $t{=}0$), effectively subsuming C1 as the definitive test of API determinism (see Section~\ref{sec:experimental-design}). GPT-4 extraction C3 conditions are based on 14--17 abstracts (vs.\ 30 for all other conditions) due to API quota exhaustion.}
 \label{tab:variability-results}
 \small
 \begin{tabular}{@{}lllcccc@{}}
@@ -19,13 +19,12 @@
    &  & C3 ($t{=}0.3$) & 0.211 & 0.1224 & 0.8838 & 0.9851 \\
    &  & C3 ($t{=}0.7$) & 0.000 & 0.2530 & 0.7719 & 0.9693 \\
 \midrule
-  \multirow{10}{*}{\rotatebox[origin=c]{90}{GPT-4 (API)}} & Summarization & C1 (fixed seed, $t{=}0$) & 0.111 & 0.0879 & 0.8963 & 0.9897 \\
-   &  & C2 (var.\ seeds, $t{=}0$) & 0.230 & 0.1365 & 0.8695 & 0.9839 \\
+  \multirow{8}{*}{\rotatebox[origin=c]{90}{GPT-4 (API)}} & Summarization & C2 (greedy, $t{=}0$) & 0.230 & 0.1365 & 0.8695 & 0.9839 \\
    &  & C3 ($t{=}0.0$) & 0.144 & 0.1623 & 0.8479 & 0.9804 \\
    &  & C3 ($t{=}0.3$) & 0.000 & 0.2832 & 0.7238 & 0.9662 \\
    &  & C3 ($t{=}0.7$) & 0.000 & 0.4366 & 0.5554 & 0.9477 \\
 \cmidrule{2-7}
-   & Extraction & C2 (var.\ seeds, $t{=}0$) & 0.443 & 0.0724 & 0.9384 & 0.9904 \\
+   & Extraction & C2 (greedy, $t{=}0$) & 0.443 & 0.0724 & 0.9384 & 0.9904 \\
    &  & C3 ($t{=}0.0$) & 0.381 & 0.0721 & 0.9356 & 0.9900 \\
    &  & C3 ($t{=}0.3$) & 0.143 & 0.1477 & 0.8669 & 0.9799 \\
    &  & C3 ($t{=}0.7$) & 0.000 & 0.2247 & 0.7890 & 0.9708 \\

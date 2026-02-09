@@ -118,6 +118,67 @@ def run_inference(
     }
 
 
+def run_inference_chat(
+    prompt: str,
+    input_text: str = "",
+    model: str = "llama3:8b",
+    temperature: float = 0.0,
+    top_p: float = 1.0,
+    top_k: int = 0,
+    seed: Optional[int] = None,
+    max_tokens: int = 1024,
+    system_prompt: str = "",
+    timeout: int = 180,
+) -> dict:
+    """Run inference via Ollama /api/chat (chat template format).
+
+    Uses the same message structure as the OpenAI Chat Completions API
+    to control for prompt-format confounds in reproducibility comparisons.
+    """
+    user_content = prompt
+    if input_text:
+        user_content = f"{prompt}\n\n{input_text}"
+
+    messages = []
+    if system_prompt:
+        messages.append({"role": "system", "content": system_prompt})
+    messages.append({"role": "user", "content": user_content})
+
+    options = {
+        "temperature": temperature,
+        "top_p": top_p,
+        "top_k": top_k,
+        "num_predict": max_tokens,
+    }
+    if seed is not None:
+        options["seed"] = seed
+
+    payload = {
+        "model": model,
+        "messages": messages,
+        "stream": False,
+        "options": options,
+    }
+
+    start_time = time.perf_counter()
+    result = _ollama_api("/api/chat", payload, timeout=timeout)
+    end_time = time.perf_counter()
+
+    inference_duration_ms = (end_time - start_time) * 1000
+
+    message = result.get("message", {})
+    return {
+        "output_text": message.get("content", ""),
+        "inference_duration_ms": round(inference_duration_ms, 2),
+        "model_reported_duration_ns": result.get("total_duration", 0),
+        "eval_count": result.get("eval_count", 0),
+        "prompt_eval_count": result.get("prompt_eval_count", 0),
+        "done": result.get("done", False),
+        "done_reason": result.get("done_reason", ""),
+        "api_mode": "chat",
+    }
+
+
 def get_inference_params(
     temperature: float = 0.0,
     top_p: float = 1.0,

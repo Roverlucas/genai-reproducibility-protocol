@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\caption{JSON extraction quality metrics by model and condition. \textit{Raw Valid} = output parses directly as JSON; \textit{Extracted Valid} = JSON extracted via regex from outputs containing preamble text; \textit{Schema} = all five expected fields present; \textit{Field EMR} = pairwise exact match across runs for each extracted field. LLaMA~3 always prepends introductory text (e.g., ``Here is the extracted information in JSON format:''), yielding 0\% raw validity but near-perfect extracted validity at $t{=}0$.}
+\label{tab:json-metrics}
+\small
+\begin{tabular}{@{}llccccccccc@{}}
+\toprule
+\textbf{Model} & \textbf{Cond.} & \textbf{Raw} & \textbf{Extr.} & \textbf{Schema} & \multicolumn{5}{c}{\textbf{Field-Level EMR}} & \textbf{Overall} \\
+\cmidrule(lr){6-10}
+ & & \textbf{Valid} & \textbf{Valid} & \textbf{Compl.} & obj & meth & key\_r & mod/sys & bench & \textbf{Field EMR} \\
+\midrule
+\multirow{5}{*}{\rotatebox[origin=c]{90}{LLaMA~3}} & C1 ($t{=}0$)   & 0\% & 100\% & 100\% & 0.027 & 0.027 & 0.040 & 0.090 & 0.174 & 0.071 \\
+ & C2 ($t{=}0$)   & 0\% & 100\% & 100\% & 0.027 & 0.027 & 0.040 & 0.090 & 0.174 & 0.071 \\
+ & C3 ($t{=}0.0$) & 0\% & 100\% & 100\% & 0.022 & 0.022 & 0.036 & 0.085 & 0.170 & 0.067 \\
+ & C3 ($t{=}0.3$) & 0\% & 97.8\% & 97.8\% & 0.017 & 0.010 & 0.027 & 0.092 & 0.213 & 0.072 \\
+ & C3 ($t{=}0.7$) & 0\% & 92.2\% & 92.2\% & 0.012 & 0.004 & 0.022 & 0.068 & 0.295 & 0.080 \\
+\midrule
+\multirow{4}{*}{\rotatebox[origin=c]{90}{GPT-4}} & C2 ($t{=}0$) & 100\% & 100\% & 100\% & 0.021 & 0.018 & 0.017 & 0.037 & 0.080 & 0.035 \\
+ & C3 ($t{=}0.0$) & 100\% & 100\% & 100\% & 0.027 & 0.018 & 0.020 & 0.036 & 0.121 & 0.045 \\
+ & C3 ($t{=}0.3$) & 100\% & 100\% & 100\% & 0.015 & 0.011 & 0.016 & 0.048 & 0.159 & 0.050 \\
+ & C3 ($t{=}0.7$) & 100\% & 100\% & 100\% & 0.003 & 0.003 & 0.005 & 0.028 & 0.102 & 0.028 \\
+\bottomrule
+\end{tabular}
+\end{table*}

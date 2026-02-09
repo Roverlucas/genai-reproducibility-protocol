@@ -1,0 +1,6206 @@
+[
+  {
+    "model": "gpt4",
+    "condition": "C2_same_params",
+    "n_runs": 150,
+    "n_abstracts": 30,
+    "overall_validity": {
+      "json_valid_raw_count": 150,
+      "json_valid_extracted_count": 150,
+      "json_valid_total": 150,
+      "json_validity_rate_raw": 1.0,
+      "json_validity_rate_extracted": 1.0,
+      "json_validity_rate": 1.0
+    },
+    "overall_compliance": {
+      "schema_compliant_count": 150,
+      "schema_compliant_of_valid": 1.0,
+      "schema_compliance_rate": 1.0
+    },
+    "field_accuracy": {
+      "field_accuracy": {
+        "objective": 0.020760626398210292,
+        "method": 0.017897091722595078,
+        "key_result": 0.0170917225950783,
+        "model_or_system": 0.036957494407158835,
+        "benchmark": 0.08008948545861297
+      },
+      "overall_field_emr": 0.03455928411633109
+    },
+    "field_presence": {
+      "present_rate": 1.0,
+      "non_empty_rate": 0.9253333333333333,
+      "per_field_present_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 1.0,
+        "benchmark": 1.0
+      },
+      "per_field_non_empty_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 0.88,
+        "benchmark": 0.7466666666666667
+      }
+    },
+    "per_abstract_validity": {
+      "abs_016": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_002": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_008": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_021": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_017": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_020": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_024": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_013": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_006": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_025": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_018": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_012": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_028": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_029": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_023": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_014": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_010": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_027": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_004": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_005": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_001": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_009": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_022": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_015": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_011": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_026": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_003": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_007": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_030": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_019": {
+        "json_valid_raw_count": 5,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      }
+    },
+    "per_abstract_compliance": {
+      "abs_016": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_002": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_008": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_021": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_017": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_020": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_024": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_013": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_006": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_025": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_018": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_012": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_028": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_029": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_023": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_014": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_010": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_027": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_004": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_005": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_001": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_009": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_022": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_015": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_011": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_026": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_003": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_007": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_030": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_019": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      }
+    },
+    "per_abstract_field_accuracy": {
+      "abs_016": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.6,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.92
+      },
+      "abs_002": {
+        "field_accuracy": {
+          "objective": 0.3,
+          "method": 0.3,
+          "key_result": 0.4,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_008": {
+        "field_accuracy": {
+          "objective": 0.6,
+          "method": 0.6,
+          "key_result": 0.6,
+          "model_or_system": 0.6,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.68
+      },
+      "abs_021": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_017": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_020": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.6,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.92
+      },
+      "abs_024": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.6,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.92
+      },
+      "abs_013": {
+        "field_accuracy": {
+          "objective": 0.6,
+          "method": 0.4,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.4
+        },
+        "overall_field_emr": 0.68
+      },
+      "abs_006": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.6,
+          "key_result": 0.6,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.84
+      },
+      "abs_025": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_018": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.6,
+          "key_result": 0.6,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.84
+      },
+      "abs_012": {
+        "field_accuracy": {
+          "objective": 0.4,
+          "method": 1.0,
+          "key_result": 0.4,
+          "model_or_system": 0.6,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.68
+      },
+      "abs_028": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8
+      },
+      "abs_029": {
+        "field_accuracy": {
+          "objective": 0.4,
+          "method": 1.0,
+          "key_result": 0.4,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.76
+      },
+      "abs_023": {
+        "field_accuracy": {
+          "objective": 0.3,
+          "method": 0.2,
+          "key_result": 0.4,
+          "model_or_system": 1.0,
+          "benchmark": 0.4
+        },
+        "overall_field_emr": 0.46
+      },
+      "abs_014": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.6,
+          "key_result": 0.4,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8
+      },
+      "abs_010": {
+        "field_accuracy": {
+          "objective": 0.6,
+          "method": 0.6,
+          "key_result": 0.4,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.72
+      },
+      "abs_027": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 0.6,
+          "model_or_system": 0.4,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_004": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.4,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.4
+        },
+        "overall_field_emr": 0.76
+      },
+      "abs_005": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_001": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.6,
+          "model_or_system": 1.0,
+          "benchmark": 0.6
+        },
+        "overall_field_emr": 0.84
+      },
+      "abs_009": {
+        "field_accuracy": {
+          "objective": 0.1,
+          "method": 0.0,
+          "key_result": 0.3,
+          "model_or_system": 1.0,
+          "benchmark": 0.6
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_022": {
+        "field_accuracy": {
+          "objective": 0.3,
+          "method": 0.3,
+          "key_result": 0.6,
+          "model_or_system": 0.6,
+          "benchmark": 0.6
+        },
+        "overall_field_emr": 0.48
+      },
+      "abs_015": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_011": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.4,
+          "key_result": 0.3,
+          "model_or_system": 0.6,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.66
+      },
+      "abs_026": {
+        "field_accuracy": {
+          "objective": 0.4,
+          "method": 0.2,
+          "key_result": 0.1,
+          "model_or_system": 0.6,
+          "benchmark": 0.6
+        },
+        "overall_field_emr": 0.38
+      },
+      "abs_003": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.6,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.92
+      },
+      "abs_007": {
+        "field_accuracy": {
+          "objective": 0.6,
+          "method": 1.0,
+          "key_result": 0.6,
+          "model_or_system": 1.0,
+          "benchmark": 0.3
+        },
+        "overall_field_emr": 0.7
+      },
+      "abs_030": {
+        "field_accuracy": {
+          "objective": 0.6,
+          "method": 0.6,
+          "key_result": 0.6,
+          "model_or_system": 0.4,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.64
+      },
+      "abs_019": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      }
+    }
+  },
+  {
+    "model": "gpt4",
+    "condition": "C3_temp0.0",
+    "n_runs": 45,
+    "n_abstracts": 21,
+    "overall_validity": {
+      "json_valid_raw_count": 45,
+      "json_valid_extracted_count": 45,
+      "json_valid_total": 45,
+      "json_validity_rate_raw": 1.0,
+      "json_validity_rate_extracted": 1.0,
+      "json_validity_rate": 1.0
+    },
+    "overall_compliance": {
+      "schema_compliant_count": 45,
+      "schema_compliant_of_valid": 1.0,
+      "schema_compliance_rate": 1.0
+    },
+    "field_accuracy": {
+      "field_accuracy": {
+        "objective": 0.02727272727272727,
+        "method": 0.01818181818181818,
+        "key_result": 0.020202020202020204,
+        "model_or_system": 0.03636363636363636,
+        "benchmark": 0.12121212121212122
+      },
+      "overall_field_emr": 0.04464646464646465
+    },
+    "field_presence": {
+      "present_rate": 1.0,
+      "non_empty_rate": 0.9111111111111111,
+      "per_field_present_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 1.0,
+        "benchmark": 1.0
+      },
+      "per_field_non_empty_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 0.8888888888888888,
+        "benchmark": 0.6666666666666666
+      }
+    },
+    "per_abstract_validity": {
+      "abs_007": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_010": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_002": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_021": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_022": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_008": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_004": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_001": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_015": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_020": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_009": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_006": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_003": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_011": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_005": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_025": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_029": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_018": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_026": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_023": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_019": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      }
+    },
+    "per_abstract_compliance": {
+      "abs_007": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_010": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_002": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_021": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_022": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_008": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_004": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_001": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_015": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_020": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_009": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_006": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_003": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_011": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_005": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_025": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_029": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_018": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_026": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_023": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_019": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      }
+    },
+    "per_abstract_field_accuracy": {
+      "abs_007": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_010": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_002": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_021": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_022": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_008": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8666666666666667
+      },
+      "abs_004": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.6666666666666666
+      },
+      "abs_001": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_015": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_020": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_009": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.2
+      },
+      "abs_006": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_003": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8666666666666667
+      },
+      "abs_011": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_005": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_025": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_029": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_018": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_026": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_023": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_019": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8
+      }
+    }
+  },
+  {
+    "model": "gpt4",
+    "condition": "C3_temp0.3",
+    "n_runs": 46,
+    "n_abstracts": 20,
+    "overall_validity": {
+      "json_valid_raw_count": 46,
+      "json_valid_extracted_count": 46,
+      "json_valid_total": 46,
+      "json_validity_rate_raw": 1.0,
+      "json_validity_rate_extracted": 1.0,
+      "json_validity_rate": 1.0
+    },
+    "overall_compliance": {
+      "schema_compliant_count": 46,
+      "schema_compliant_of_valid": 1.0,
+      "schema_compliance_rate": 1.0
+    },
+    "field_accuracy": {
+      "field_accuracy": {
+        "objective": 0.014492753623188406,
+        "method": 0.010628019323671498,
+        "key_result": 0.01642512077294686,
+        "model_or_system": 0.04830917874396135,
+        "benchmark": 0.15845410628019324
+      },
+      "overall_field_emr": 0.04966183574879227
+    },
+    "field_presence": {
+      "present_rate": 1.0,
+      "non_empty_rate": 0.8956521739130435,
+      "per_field_present_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 1.0,
+        "benchmark": 1.0
+      },
+      "per_field_non_empty_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 0.8695652173913043,
+        "benchmark": 0.6086956521739131
+      }
+    },
+    "per_abstract_validity": {
+      "abs_007": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_001": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_004": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_002": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_008": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_022": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_027": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_028": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_010": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_015": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_009": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_006": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_003": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_005": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_017": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_011": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_026": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_029": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_012": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_021": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      }
+    },
+    "per_abstract_compliance": {
+      "abs_007": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_001": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_004": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_002": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_008": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_022": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_027": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_028": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_010": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_015": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_009": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_006": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_003": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_005": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_017": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_011": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_026": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_029": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_012": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_021": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      }
+    },
+    "per_abstract_field_accuracy": {
+      "abs_007": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_001": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 1.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_004": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8666666666666667
+      },
+      "abs_002": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.3333333333333333
+      },
+      "abs_008": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.5333333333333333
+      },
+      "abs_022": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_027": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8
+      },
+      "abs_028": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_010": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_015": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_009": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.13333333333333333
+      },
+      "abs_006": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_003": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_005": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8666666666666667
+      },
+      "abs_017": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_011": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.2
+      },
+      "abs_026": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.0,
+          "benchmark": 0.0
+        },
+        "overall_field_emr": 0.0
+      },
+      "abs_029": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_012": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_021": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      }
+    }
+  },
+  {
+    "model": "gpt4",
+    "condition": "C3_temp0.7",
+    "n_runs": 55,
+    "n_abstracts": 28,
+    "overall_validity": {
+      "json_valid_raw_count": 55,
+      "json_valid_extracted_count": 55,
+      "json_valid_total": 55,
+      "json_validity_rate_raw": 1.0,
+      "json_validity_rate_extracted": 1.0,
+      "json_validity_rate": 1.0
+    },
+    "overall_compliance": {
+      "schema_compliant_count": 55,
+      "schema_compliant_of_valid": 1.0,
+      "schema_compliance_rate": 1.0
+    },
+    "field_accuracy": {
+      "field_accuracy": {
+        "objective": 0.003367003367003367,
+        "method": 0.0026936026936026937,
+        "key_result": 0.0047138047138047135,
+        "model_or_system": 0.028282828282828285,
+        "benchmark": 0.10168350168350168
+      },
+      "overall_field_emr": 0.028148148148148148
+    },
+    "field_presence": {
+      "present_rate": 1.0,
+      "non_empty_rate": 0.9127272727272727,
+      "per_field_present_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 1.0,
+        "benchmark": 1.0
+      },
+      "per_field_non_empty_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 0.8727272727272727,
+        "benchmark": 0.6909090909090909
+      }
+    },
+    "per_abstract_validity": {
+      "abs_006": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_014": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_005": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_003": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_011": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_023": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_009": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_025": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_029": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_008": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_001": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_007": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_010": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_028": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_002": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_004": {
+        "json_valid_raw_count": 3,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_024": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_022": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_019": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_027": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_016": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_015": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_013": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_021": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_030": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_012": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_018": {
+        "json_valid_raw_count": 2,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 2,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_017": {
+        "json_valid_raw_count": 1,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 1,
+        "json_validity_rate_raw": 1.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      }
+    },
+    "per_abstract_compliance": {
+      "abs_006": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_014": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_005": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_003": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_011": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_023": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_009": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_025": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_029": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_008": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_001": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_007": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_010": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_028": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_002": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_004": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_024": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_022": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_019": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_027": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_016": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_015": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_013": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_021": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_030": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_012": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_018": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_017": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      }
+    },
+    "per_abstract_field_accuracy": {
+      "abs_006": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.26666666666666666
+      },
+      "abs_014": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_005": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_003": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.5333333333333333
+      },
+      "abs_011": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.2
+      },
+      "abs_023": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_009": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.13333333333333333
+      },
+      "abs_025": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_029": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_008": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.3333333333333333
+      },
+      "abs_001": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.2
+      },
+      "abs_007": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_010": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_028": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.2
+      },
+      "abs_002": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.2
+      },
+      "abs_004": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_024": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_022": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_019": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8
+      },
+      "abs_027": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_016": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_015": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_013": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_021": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_030": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_012": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_018": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.0
+        },
+        "overall_field_emr": 0.2
+      },
+      "abs_017": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      }
+    }
+  },
+  {
+    "model": "llama3",
+    "condition": "C1_fixed_seed",
+    "n_runs": 150,
+    "n_abstracts": 30,
+    "overall_validity": {
+      "json_valid_raw_count": 0,
+      "json_valid_extracted_count": 150,
+      "json_valid_total": 150,
+      "json_validity_rate_raw": 0.0,
+      "json_validity_rate_extracted": 1.0,
+      "json_validity_rate": 1.0
+    },
+    "overall_compliance": {
+      "schema_compliant_count": 150,
+      "schema_compliant_of_valid": 1.0,
+      "schema_compliance_rate": 1.0
+    },
+    "field_accuracy": {
+      "field_accuracy": {
+        "objective": 0.026487695749440716,
+        "method": 0.026487695749440716,
+        "key_result": 0.03991051454138703,
+        "model_or_system": 0.0894854586129754,
+        "benchmark": 0.17413870246085011
+      },
+      "overall_field_emr": 0.07130201342281879
+    },
+    "field_presence": {
+      "present_rate": 1.0,
+      "non_empty_rate": 0.84,
+      "per_field_present_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 1.0,
+        "benchmark": 1.0
+      },
+      "per_field_non_empty_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 0.8666666666666667,
+        "model_or_system": 0.7333333333333333,
+        "benchmark": 0.6
+      }
+    },
+    "per_abstract_validity": {
+      "abs_020": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_030": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_014": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_028": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_016": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_025": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_019": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_027": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_003": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_011": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_001": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_010": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_012": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_002": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_008": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_007": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_005": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_021": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_023": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_015": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_024": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_009": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_006": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_026": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_018": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_017": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_029": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_022": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_004": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_013": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      }
+    },
+    "per_abstract_compliance": {
+      "abs_020": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_030": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_014": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_028": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_016": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_025": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_019": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_027": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_003": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_011": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_001": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_010": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_012": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_002": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_008": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_007": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_005": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_021": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_023": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_015": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_024": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_009": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_006": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_026": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_018": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_017": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_029": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_022": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_004": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_013": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      }
+    },
+    "per_abstract_field_accuracy": {
+      "abs_020": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_030": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_014": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_028": {
+        "field_accuracy": {
+          "objective": 0.6,
+          "method": 0.6,
+          "key_result": 0.6,
+          "model_or_system": 1.0,
+          "benchmark": 0.6
+        },
+        "overall_field_emr": 0.68
+      },
+      "abs_016": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_025": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_019": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_027": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_003": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_011": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_001": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_010": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_012": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_002": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_008": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_007": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_005": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_021": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_023": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_015": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_024": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_009": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_006": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_026": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_018": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_017": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_029": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_022": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_004": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_013": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      }
+    }
+  },
+  {
+    "model": "llama3",
+    "condition": "C2_var_seed",
+    "n_runs": 150,
+    "n_abstracts": 30,
+    "overall_validity": {
+      "json_valid_raw_count": 0,
+      "json_valid_extracted_count": 150,
+      "json_valid_total": 150,
+      "json_validity_rate_raw": 0.0,
+      "json_validity_rate_extracted": 1.0,
+      "json_validity_rate": 1.0
+    },
+    "overall_compliance": {
+      "schema_compliant_count": 150,
+      "schema_compliant_of_valid": 1.0,
+      "schema_compliance_rate": 1.0
+    },
+    "field_accuracy": {
+      "field_accuracy": {
+        "objective": 0.026487695749440716,
+        "method": 0.026487695749440716,
+        "key_result": 0.03991051454138703,
+        "model_or_system": 0.0894854586129754,
+        "benchmark": 0.17413870246085011
+      },
+      "overall_field_emr": 0.07130201342281879
+    },
+    "field_presence": {
+      "present_rate": 1.0,
+      "non_empty_rate": 0.84,
+      "per_field_present_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 1.0,
+        "benchmark": 1.0
+      },
+      "per_field_non_empty_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 0.8666666666666667,
+        "model_or_system": 0.7333333333333333,
+        "benchmark": 0.6
+      }
+    },
+    "per_abstract_validity": {
+      "abs_020": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_015": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_024": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_003": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_009": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_025": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_010": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_008": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_006": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_001": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_022": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_028": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_017": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_004": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_016": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_018": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_027": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_012": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_026": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_030": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_002": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_014": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_005": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_013": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_019": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_029": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_023": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_011": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_007": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_021": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 5,
+        "json_valid_total": 5,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      }
+    },
+    "per_abstract_compliance": {
+      "abs_020": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_015": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_024": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_003": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_009": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_025": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_010": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_008": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_006": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_001": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_022": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_028": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_017": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_004": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_016": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_018": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_027": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_012": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_026": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_030": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_002": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_014": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_005": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_013": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_019": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_029": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_023": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_011": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_007": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_021": {
+        "schema_compliant_count": 5,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      }
+    },
+    "per_abstract_field_accuracy": {
+      "abs_020": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_015": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_024": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_003": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_009": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_025": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_010": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_008": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_006": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_001": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_022": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_028": {
+        "field_accuracy": {
+          "objective": 0.6,
+          "method": 0.6,
+          "key_result": 0.6,
+          "model_or_system": 1.0,
+          "benchmark": 0.6
+        },
+        "overall_field_emr": 0.68
+      },
+      "abs_017": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_004": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_016": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_018": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_027": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_012": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_026": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_030": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_002": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_014": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_005": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_013": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_019": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_029": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_023": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_011": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_007": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_021": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      }
+    }
+  },
+  {
+    "model": "llama3",
+    "condition": "C3_temp0.0",
+    "n_runs": 90,
+    "n_abstracts": 30,
+    "overall_validity": {
+      "json_valid_raw_count": 0,
+      "json_valid_extracted_count": 90,
+      "json_valid_total": 90,
+      "json_validity_rate_raw": 0.0,
+      "json_validity_rate_extracted": 1.0,
+      "json_validity_rate": 1.0
+    },
+    "overall_compliance": {
+      "schema_compliant_count": 90,
+      "schema_compliant_of_valid": 1.0,
+      "schema_compliance_rate": 1.0
+    },
+    "field_accuracy": {
+      "field_accuracy": {
+        "objective": 0.021972534332084893,
+        "method": 0.021972534332084893,
+        "key_result": 0.03545568039950062,
+        "model_or_system": 0.0853932584269663,
+        "benchmark": 0.17028714107365792
+      },
+      "overall_field_emr": 0.06701622971285892
+    },
+    "field_presence": {
+      "present_rate": 1.0,
+      "non_empty_rate": 0.84,
+      "per_field_present_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 1.0,
+        "benchmark": 1.0
+      },
+      "per_field_non_empty_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 0.8666666666666667,
+        "model_or_system": 0.7333333333333333,
+        "benchmark": 0.6
+      }
+    },
+    "per_abstract_validity": {
+      "abs_024": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_022": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_019": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_027": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_021": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_028": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_004": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_010": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_016": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_001": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_013": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_015": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_007": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_002": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_008": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_030": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_017": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_011": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_005": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_029": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_014": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_012": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_023": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_025": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_020": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_026": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_018": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_009": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_006": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_003": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      }
+    },
+    "per_abstract_compliance": {
+      "abs_024": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_022": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_019": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_027": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_021": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_028": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_004": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_010": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_016": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_001": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_013": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_015": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_007": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_002": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_008": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_030": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_017": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_011": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_005": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_029": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_014": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_012": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_023": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_025": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_020": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_026": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_018": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_009": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_006": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_003": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      }
+    },
+    "per_abstract_field_accuracy": {
+      "abs_024": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_022": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_019": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_027": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_021": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_028": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_004": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_010": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_016": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_001": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_013": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_015": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_007": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_002": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_008": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_030": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_017": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_011": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_005": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_029": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_014": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_012": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_023": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_025": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_020": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_026": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_018": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_009": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_006": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_003": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      }
+    }
+  },
+  {
+    "model": "llama3",
+    "condition": "C3_temp0.3",
+    "n_runs": 90,
+    "n_abstracts": 30,
+    "overall_validity": {
+      "json_valid_raw_count": 0,
+      "json_valid_extracted_count": 88,
+      "json_valid_total": 90,
+      "json_validity_rate_raw": 0.0,
+      "json_validity_rate_extracted": 0.9777777777777777,
+      "json_validity_rate": 0.9777777777777777
+    },
+    "overall_compliance": {
+      "schema_compliant_count": 88,
+      "schema_compliant_of_valid": 1.0,
+      "schema_compliance_rate": 0.9777777777777777
+    },
+    "field_accuracy": {
+      "field_accuracy": {
+        "objective": 0.01698014629049112,
+        "method": 0.01044932079414838,
+        "key_result": 0.02664576802507837,
+        "model_or_system": 0.09221525600835946,
+        "benchmark": 0.21264367816091953
+      },
+      "overall_field_emr": 0.07178683385579937
+    },
+    "field_presence": {
+      "present_rate": 1.0,
+      "non_empty_rate": 0.8227272727272728,
+      "per_field_present_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 1.0,
+        "benchmark": 1.0
+      },
+      "per_field_non_empty_rate": {
+        "objective": 0.9886363636363636,
+        "method": 1.0,
+        "key_result": 0.8636363636363636,
+        "model_or_system": 0.7159090909090909,
+        "benchmark": 0.5454545454545454
+      }
+    },
+    "per_abstract_validity": {
+      "abs_030": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_008": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_022": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_027": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_004": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_028": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_002": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_010": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_007": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_001": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_015": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_013": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_016": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_021": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 1,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 0.3333333333333333,
+        "json_validity_rate": 0.3333333333333333
+      },
+      "abs_019": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_024": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_011": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_003": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_029": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_005": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_014": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_006": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_023": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_009": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_026": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_018": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_020": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_025": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_012": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_017": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      }
+    },
+    "per_abstract_compliance": {
+      "abs_030": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_008": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_022": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_027": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_004": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_028": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_002": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_010": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_007": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_001": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_015": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_013": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_016": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_021": {
+        "schema_compliant_count": 1,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 0.3333333333333333
+      },
+      "abs_019": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_024": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_011": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_003": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_029": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_005": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_014": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_006": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_023": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_009": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_026": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_018": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_020": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_025": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_012": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_017": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      }
+    },
+    "per_abstract_field_accuracy": {
+      "abs_030": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_008": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8666666666666667
+      },
+      "abs_022": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_027": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8666666666666667
+      },
+      "abs_004": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.6666666666666666
+      },
+      "abs_028": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.3333333333333333
+      },
+      "abs_002": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_010": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.0
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_007": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_001": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_015": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_013": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_016": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_021": {
+        "field_accuracy": {
+          "objective": null,
+          "method": null,
+          "key_result": null,
+          "model_or_system": null,
+          "benchmark": null
+        },
+        "overall_field_emr": null
+      },
+      "abs_019": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.5333333333333333
+      },
+      "abs_024": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_011": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_003": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8666666666666667
+      },
+      "abs_029": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.2
+      },
+      "abs_005": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.5333333333333333
+      },
+      "abs_014": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_006": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6666666666666666
+      },
+      "abs_023": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6666666666666666
+      },
+      "abs_009": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 1.0
+      },
+      "abs_026": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.5333333333333333
+      },
+      "abs_018": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_020": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8666666666666667
+      },
+      "abs_025": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_012": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_017": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.7333333333333333
+      }
+    }
+  },
+  {
+    "model": "llama3",
+    "condition": "C3_temp0.7",
+    "n_runs": 90,
+    "n_abstracts": 30,
+    "overall_validity": {
+      "json_valid_raw_count": 0,
+      "json_valid_extracted_count": 83,
+      "json_valid_total": 90,
+      "json_validity_rate_raw": 0.0,
+      "json_validity_rate_extracted": 0.9222222222222223,
+      "json_validity_rate": 0.9222222222222223
+    },
+    "overall_compliance": {
+      "schema_compliant_count": 83,
+      "schema_compliant_of_valid": 1.0,
+      "schema_compliance_rate": 0.9222222222222223
+    },
+    "field_accuracy": {
+      "field_accuracy": {
+        "objective": 0.011754334410813987,
+        "method": 0.004407875404055245,
+        "key_result": 0.022333235380546577,
+        "model_or_system": 0.06788128122245078,
+        "benchmark": 0.2953276520717014
+      },
+      "overall_field_emr": 0.08034087569791361
+    },
+    "field_presence": {
+      "present_rate": 1.0,
+      "non_empty_rate": 0.8072289156626506,
+      "per_field_present_rate": {
+        "objective": 1.0,
+        "method": 1.0,
+        "key_result": 1.0,
+        "model_or_system": 1.0,
+        "benchmark": 1.0
+      },
+      "per_field_non_empty_rate": {
+        "objective": 0.9759036144578314,
+        "method": 0.9879518072289156,
+        "key_result": 0.8554216867469879,
+        "model_or_system": 0.7590361445783133,
+        "benchmark": 0.4578313253012048
+      }
+    },
+    "per_abstract_validity": {
+      "abs_009": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_025": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_020": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_018": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 0.6666666666666666,
+        "json_validity_rate": 0.6666666666666666
+      },
+      "abs_017": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_005": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 0.6666666666666666,
+        "json_validity_rate": 0.6666666666666666
+      },
+      "abs_003": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_012": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_006": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_014": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_029": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_011": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_026": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_023": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_002": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_004": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_016": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_001": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_007": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_013": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_030": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_024": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 0.6666666666666666,
+        "json_validity_rate": 0.6666666666666666
+      },
+      "abs_008": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_019": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 0.6666666666666666,
+        "json_validity_rate": 0.6666666666666666
+      },
+      "abs_021": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 0.6666666666666666,
+        "json_validity_rate": 0.6666666666666666
+      },
+      "abs_027": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_022": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 0.6666666666666666,
+        "json_validity_rate": 0.6666666666666666
+      },
+      "abs_015": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_010": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 3,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 1.0,
+        "json_validity_rate": 1.0
+      },
+      "abs_028": {
+        "json_valid_raw_count": 0,
+        "json_valid_extracted_count": 2,
+        "json_valid_total": 3,
+        "json_validity_rate_raw": 0.0,
+        "json_validity_rate_extracted": 0.6666666666666666,
+        "json_validity_rate": 0.6666666666666666
+      }
+    },
+    "per_abstract_compliance": {
+      "abs_009": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_025": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_020": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_018": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 0.6666666666666666
+      },
+      "abs_017": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_005": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 0.6666666666666666
+      },
+      "abs_003": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_012": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_006": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_014": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_029": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_011": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_026": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_023": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_002": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_004": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_016": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_001": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_007": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_013": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_030": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_024": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 0.6666666666666666
+      },
+      "abs_008": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_019": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 0.6666666666666666
+      },
+      "abs_021": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 0.6666666666666666
+      },
+      "abs_027": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_022": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 0.6666666666666666
+      },
+      "abs_015": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_010": {
+        "schema_compliant_count": 3,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 1.0
+      },
+      "abs_028": {
+        "schema_compliant_count": 2,
+        "schema_compliant_of_valid": 1.0,
+        "schema_compliance_rate": 0.6666666666666666
+      }
+    },
+    "per_abstract_field_accuracy": {
+      "abs_009": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_025": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_020": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6666666666666666
+      },
+      "abs_018": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_017": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_005": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_003": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.7333333333333333
+      },
+      "abs_012": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.26666666666666666
+      },
+      "abs_006": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6666666666666666
+      },
+      "abs_014": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_029": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.13333333333333333
+      },
+      "abs_011": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_026": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.26666666666666666
+      },
+      "abs_023": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_002": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 0.0
+        },
+        "overall_field_emr": 0.06666666666666667
+      },
+      "abs_004": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_016": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.5333333333333333
+      },
+      "abs_001": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_007": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 0.0
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_013": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.3333333333333333,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4666666666666667
+      },
+      "abs_030": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.3333333333333333,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6666666666666666
+      },
+      "abs_024": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_008": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 1.0,
+          "key_result": 1.0,
+          "model_or_system": 0.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.8
+      },
+      "abs_019": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_021": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.0
+        },
+        "overall_field_emr": 0.4
+      },
+      "abs_027": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 1.0,
+          "key_result": 0.3333333333333333,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_022": {
+        "field_accuracy": {
+          "objective": 1.0,
+          "method": 0.0,
+          "key_result": 1.0,
+          "model_or_system": 0.0,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.6
+      },
+      "abs_015": {
+        "field_accuracy": {
+          "objective": 0.3333333333333333,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 1.0,
+          "benchmark": 0.3333333333333333
+        },
+        "overall_field_emr": 0.3333333333333333
+      },
+      "abs_010": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.3333333333333333,
+          "benchmark": 1.0
+        },
+        "overall_field_emr": 0.26666666666666666
+      },
+      "abs_028": {
+        "field_accuracy": {
+          "objective": 0.0,
+          "method": 0.0,
+          "key_result": 0.0,
+          "model_or_system": 0.0,
+          "benchmark": 0.0
+        },
+        "overall_field_emr": 0.0
+      }
+    }
+  }
+]

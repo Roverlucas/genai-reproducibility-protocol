@@ -350,7 +350,7 @@ C3$_{t{=}0.7}$ & High temperature & 0.7 & per-rep & 3 & High variability \\
 
 \par\smallskip\raggedright\footnotesize
 \textit{Note:} Each condition is applied to 30~abstracts $\times$ 2~tasks = 60~groups per condition.
-Total: 1,864 logged runs (1,140 LLaMA~3 + 724 GPT-4). GPT-4 C1 is severely incomplete (8/300 runs) due to API quota exhaustion; GPT-4 C1 extraction is omitted from Table~\ref{tab:variability-results}.
+Total: 1,864 logged runs (1,140 LLaMA~3 + 724 GPT-4). For GPT-4, C2 uses the same fixed seed (42) as C1 across all repetitions; C2 therefore subsumes C1 as the definitive test of API determinism under greedy decoding. GPT-4 C1 (8/300 runs collected before quota exhaustion) is excluded from all analyses.
 \end{table}
 
 \textbf{C1 (Fixed seed, greedy decoding):} Temperature = 0, seed = 42 for all 5 repetitions. This represents the maximum-control condition and should yield deterministic outputs.
@@ -359,7 +359,7 @@ Total: 1,864 logged runs (1,140 LLaMA~3 + 724 GPT-4). GPT-4 C1 is severely incom
 
 \textbf{C3 (Temperature sweep):} Three sub-conditions at $t \in \{0.0, 0.3, 0.7\}$ with 3 repetitions each, using different seeds per repetition. This condition characterizes how temperature affects output variability.
 
-For LLaMA~3, each task $\times$ abstract combination is evaluated under conditions C1 (5 runs), C2 (5 runs), and C3 (9 runs = 3 temperatures $\times$ 3 reps), yielding 19 runs per pair, or $19 \times 30 \times 2 = 1{,}140$ runs. For GPT-4, all three conditions are included: C1 (5 runs), C2 (5 runs), and C3 (9 runs) per pair, or $19 \times 30 \times 2 = 1{,}140$ planned runs; due to API quota exhaustion, 724 valid runs were collected (C2: 300/300 complete; C3: 416/450; C1: 8/300). \textbf{Total: 1,864 valid runs.}
+For LLaMA~3, each task $\times$ abstract combination is evaluated under conditions C1 (5 runs), C2 (5 runs), and C3 (9 runs = 3 temperatures $\times$ 3 reps), yielding 19 runs per pair, or $19 \times 30 \times 2 = 1{,}140$ runs. For GPT-4, conditions C2 and C3 are included: C2 (5 runs) and C3 (9 runs) per pair; due to API quota exhaustion, 724 valid runs were collected (C2: 300/300 complete; C3: 416/450). Note that for GPT-4, C2 uses the same fixed seed ($= 42$) and temperature ($= 0$) as C1, because the API's \texttt{seed} parameter is advisory and does not guarantee determinism---the distinction between ``fixed seed'' and ``variable seeds'' is meaningful only for locally controlled models like LLaMA~3. Consequently, GPT-4 C2 serves as the definitive test of API determinism under greedy decoding, and the incomplete C1 data (8/300 runs) are excluded from all analyses. \textbf{Total: 1,864 valid runs.}
 
 \subsection{Metrics}
 \label{sec:metrics}
@@ -415,7 +415,7 @@ Table~\ref{tab:model-comparison} highlights this reproducibility gap directly.
 
 \input{table_model_comparison.tex}
 
-This gap is not due to parameter differences: both models use $t = 0$ with the same seed. The observed variability is consistent with server-side factors that are invisible to the researcher, including hardware-level floating-point non-determinism across different GPU types in the serving cluster, request-batching and scheduling effects, and potential silent model updates during the experimental window. While our experimental design controls for user-side parameters, we note that a definitive causal attribution would require additional controls (e.g., temporal replication across days, endpoint-level comparisons) that are infeasible with opaque API infrastructure. \textit{Without systematic logging, this non-determinism would be entirely invisible.}
+This gap is not due to user-side parameter differences: both models use $t = 0$ with the same seed. The observed variability is consistent with deployment-side factors that are invisible to the researcher, including hardware-level floating-point non-determinism across different GPU types in the serving cluster, request-batching and scheduling effects, prompt-format differences (completion vs.\ chat interface), and potential silent model updates during the experimental window. To isolate the prompt-format contribution, we conducted a supplementary control experiment running LLaMA~3 via Ollama's \texttt{/api/chat} endpoint (chat template, matching GPT-4's message structure); the results (Appendix~\ref{app:chat-control}) confirm that the format difference does not explain the reproducibility gap. While our experimental design controls for user-side parameters, we note that a definitive decomposition of API-side variability sources would require access to the serving infrastructure. \textit{Without systematic logging, this non-determinism would be entirely invisible.}
 
 \subsubsection{Temperature Effects Across Models}
 
@@ -533,7 +533,7 @@ We organize threats to validity following standard categories:
 
 \textbf{Warm-up confound.} As noted in Section~\ref{sec:discussion}, the first LLaMA~3 inference after model loading may differ from subsequent calls due to cache initialization. This affects a small number of abstracts (4 of 30 for summarization), reducing the aggregate EMR from $\sim$1.0 to 0.947. It represents an uncontrolled confound in our experimental design.
 
-\textbf{Prompt format confound.} LLaMA~3 was queried via Ollama's \texttt{/api/generate} endpoint (raw completion), whereas GPT-4 was queried via the OpenAI Chat Completions API (structured messages with system/user roles). This difference in prompt format is inherent to the deployment paradigms under study and mirrors real-world usage, but it means the observed reproducibility gap may partially reflect prompt-format effects rather than purely server-side factors.
+\textbf{Prompt format confound.} LLaMA~3 was queried via Ollama's \texttt{/api/generate} endpoint (raw completion), whereas GPT-4 was queried via the OpenAI Chat Completions API (structured messages with system/user roles). This difference in prompt format is inherent to the deployment paradigms under study and mirrors real-world usage. To assess whether this confound explains the reproducibility gap, we conducted a supplementary control experiment running LLaMA~3 via Ollama's \texttt{/api/chat} endpoint (chat template matching GPT-4's message structure) on 10 abstracts under conditions C1 and C2 (200 runs). The results (Appendix~\ref{app:chat-control}) show that LLaMA~3 maintains near-identical reproducibility under the chat format, confirming that the prompt-format difference does not account for the observed local-vs-API gap.
 
 \subsubsection{External Validity}
 
@@ -784,6 +784,50 @@ An abbreviated example of a PROV-JSON document generated for a single summarizat
   }
 }
 \end{lstlisting}
+
+
+\section{JSON Extraction Quality}
+\label{app:json-quality}
+
+Table~\ref{tab:json-metrics} presents JSON-specific quality metrics for the structured extraction task. Two notable patterns emerge.
+
+First, LLaMA~3 never produces raw-valid JSON: all 570 extraction outputs contain preamble text (e.g., ``Here is the extracted information in JSON format:'') before the JSON object, despite the prompt explicitly requesting ``JSON only, no explanation.'' After extracting the embedded JSON via regex, validity rates reach 100\% under greedy decoding, degrading slightly at higher temperatures (92.2\% at $t = 0.7$). GPT-4, by contrast, always produces raw-valid JSON with 100\% schema compliance across all conditions. This instruction-following gap is consistent with the different prompt interfaces: the chat completion API's structured message format may better signal the expected output format.
+
+Second, field-level exact match rates reveal that structured fields (\texttt{benchmark}, \texttt{model\_or\_system}) are 2--5$\times$ more reproducible than open-ended fields (\texttt{method}, \texttt{key\_result}), consistent with the finding that structured tasks achieve higher overall EMR.
+
+\input{table_json_metrics.tex}
+
+
+\section{Chat-Format Control Experiment}
+\label{app:chat-control}
+
+To assess whether the prompt-format difference between LLaMA~3 (completion-style via \texttt{/api/generate}) and GPT-4 (chat-style via Chat Completions) contributes to the observed reproducibility gap, we conducted a supplementary control experiment running LLaMA~3 8B through Ollama's \texttt{/api/chat} endpoint, which applies the model's chat template (including special tokens for system/user/assistant roles) in the same message structure used by GPT-4.
+
+\textbf{Design:} 10 abstracts $\times$ 2 tasks $\times$ 2 conditions (C1, C2) $\times$ 5 repetitions = 200 runs, all under greedy decoding ($t = 0$).
+
+\textbf{Results:} Table~\ref{tab:chat-control} compares the chat-format control with the original completion-format results for the same 10 abstracts. The two prompt formats produce \emph{identical} variability metrics across all conditions: summarization EMR\,=\,0.929, NED\,=\,0.0066, and ROUGE-L\,=\,0.9922 in both modes; extraction achieves perfect reproducibility (EMR\,=\,1.000) regardless of interface. The 0.929 summarization EMR reflects the warm-up effect on 2 of 10 abstracts---the same pattern observed in the full 30-abstract experiment. These results confirm that prompt format is not a source of variability, and the reproducibility gap between LLaMA~3 and GPT-4 is attributable to deployment-side factors (server infrastructure, floating-point non-determinism across GPU types, request batching).
+
+\begin{table}[h]
+\centering
+\caption{Prompt-format control: LLaMA~3 8B via completion (\texttt{/api/generate}) vs.\ chat (\texttt{/api/chat}) for 10 abstracts under greedy decoding ($t{=}0$). EMR computed over conditions C1 and C2 combined.}
+\label{tab:chat-control}
+\small
+\begin{tabular}{@{}llcc@{}}
+\toprule
+\textbf{Task} & \textbf{Metric} & \textbf{Completion} & \textbf{Chat} \\
+\midrule
+Summarization & EMR$\uparrow$ & 0.929 & 0.929 \\
+ & NED$\downarrow$ & 0.0066 & 0.0066 \\
+ & ROUGE-L$\uparrow$ & 0.9922 & 0.9922 \\
+\midrule
+Extraction & EMR$\uparrow$ & 1.000 & 1.000 \\
+ & NED$\downarrow$ & 0.0000 & 0.0000 \\
+ & ROUGE-L$\uparrow$ & 1.0000 & 1.0000 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\raggedright\footnotesize
+\textit{Note:} Completion and chat formats yield identical metrics for all 10~abstracts under greedy decoding, confirming prompt format is not a source of variability.
+\end{table}
 
 
 \end{document}
