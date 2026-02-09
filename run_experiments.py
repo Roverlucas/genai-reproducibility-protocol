@@ -358,7 +358,7 @@ def save_experiment_summary(llama_runs: list, gpt4_runs: list):
         "tasks": ["summarization", "extraction"],
         "models": [LLAMA_MODEL, GPT4_MODEL],
         "conditions": ["C1_fixed_seed", "C2_var_seed/same_params", "C3_var_temp"],
-        "n_abstracts": 5,
+        "n_abstracts": len(load_abstracts()),
     }
 
     filepath = OUTPUT_DIR / "experiment_summary.json"

@@ -1,0 +1,336 @@
+{
+  "study": "protocol_minimality_ablation",
+  "description": "Shows that removing any protocol field group makes at least one audit question unanswerable, justifying the 'minimal' claim.",
+  "n_run_records_analysed": 1864,
+  "audit_questions": {
+    "Q1": {
+      "text": "Can we verify the exact prompt used?",
+      "requires": [
+        "prompt_hash",
+        "prompt_text"
+      ]
+    },
+    "Q2": {
+      "text": "Can we verify the model identity?",
+      "requires": [
+        "model_name",
+        "model_version",
+        "weights_hash"
+      ]
+    },
+    "Q3": {
+      "text": "Can we verify the generation parameters?",
+      "requires": [
+        "inference_params",
+        "params_hash"
+      ]
+    },
+    "Q4": {
+      "text": "Can we detect output tampering?",
+      "requires": [
+        "output_hash",
+        "output_text"
+      ]
+    },
+    "Q5": {
+      "text": "Can we verify the execution environment?",
+      "requires": [
+        "environment",
+        "environment_hash"
+      ]
+    },
+    "Q6": {
+      "text": "Can we reproduce the exact timing?",
+      "requires": [
+        "execution_duration_ms",
+        "timestamp_end",
+        "timestamp_start"
+      ]
+    },
+    "Q7": {
+      "text": "Can we assess protocol overhead?",
+      "requires": [
+        "logging_overhead_ms",
+        "storage_kb"
+      ]
+    },
+    "Q8": {
+      "text": "Can we trace provenance?",
+      "requires": [
+        "run_id",
+        "task_category",
+        "task_id"
+      ]
+    },
+    "Q9": {
+      "text": "Can we verify input integrity?",
+      "requires": [
+        "input_hash",
+        "input_text"
+      ]
+    },
+    "Q10": {
+      "text": "Can we compare across runs?",
+      "requires": [
+        "inference_params",
+        "model_name",
+        "model_version",
+        "output_hash",
+        "params_hash",
+        "prompt_hash",
+        "run_id",
+        "task_category",
+        "task_id"
+      ]
+    }
+  },
+  "field_groups": {
+    "IDENTIFICATION": [
+      "interaction_regime",
+      "run_id",
+      "task_category",
+      "task_id"
+    ],
+    "MODEL_CONTEXT": [
+      "model_name",
+      "model_source",
+      "model_version",
+      "weights_hash"
+    ],
+    "PARAMETERS": [
+      "inference_params",
+      "params_hash"
+    ],
+    "HASHING": [
+      "environment_hash",
+      "input_hash",
+      "output_hash",
+      "params_hash",
+      "prompt_hash"
+    ],
+    "ENVIRONMENT": [
+      "code_commit",
+      "environment",
+      "environment_hash"
+    ],
+    "TIMING": [
+      "execution_duration_ms",
+      "logging_overhead_ms",
+      "timestamp_end",
+      "timestamp_start"
+    ],
+    "IO": [
+      "input_hash",
+      "input_text",
+      "output_hash",
+      "output_metrics",
+      "output_text",
+      "prompt_text"
+    ],
+    "OVERHEAD": [
+      "logging_overhead_ms",
+      "storage_kb"
+    ]
+  },
+  "ablation_results": [
+    {
+      "group": "IDENTIFICATION",
+      "fields": [
+        "interaction_regime",
+        "run_id",
+        "task_category",
+        "task_id"
+      ],
+      "questions_lost": [
+        "Q8",
+        "Q10"
+      ],
+      "questions_lost_text": [
+        "Can we trace provenance?",
+        "Can we compare across runs?"
+      ],
+      "loss_score": 0.2,
+      "mean_bytes": 158.6,
+      "total_bytes": 295566,
+      "pct_of_record": 3.8,
+      "overhead_weight": 0.0,
+      "estimated_ms": 0.0,
+      "verdict": "ESSENTIAL (low)"
+    },
+    {
+      "group": "MODEL_CONTEXT",
+      "fields": [
+        "model_name",
+        "model_source",
+        "model_version",
+        "weights_hash"
+      ],
+      "questions_lost": [
+        "Q2",
+        "Q10"
+      ],
+      "questions_lost_text": [
+        "Can we verify the model identity?",
+        "Can we compare across runs?"
+      ],
+      "loss_score": 0.2,
+      "mean_bytes": 106.1,
+      "total_bytes": 197768,
+      "pct_of_record": 2.6,
+      "overhead_weight": 0.0,
+      "estimated_ms": 0.0,
+      "verdict": "ESSENTIAL (low)"
+    },
+    {
+      "group": "PARAMETERS",
+      "fields": [
+        "inference_params",
+        "params_hash"
+      ],
+      "questions_lost": [
+        "Q3",
+        "Q10"
+      ],
+      "questions_lost_text": [
+        "Can we verify the generation parameters?",
+        "Can we compare across runs?"
+      ],
+      "loss_score": 0.2,
+      "mean_bytes": 206.5,
+      "total_bytes": 384971,
+      "pct_of_record": 5.0,
+      "overhead_weight": 0.05,
+      "estimated_ms": 1.271,
+      "verdict": "ESSENTIAL (low)"
+    },
+    {
+      "group": "HASHING",
+      "fields": [
+        "environment_hash",
+        "input_hash",
+        "output_hash",
+        "params_hash",
+        "prompt_hash"
+      ],
+      "questions_lost": [
+        "Q1",
+        "Q3",
+        "Q4",
+        "Q5",
+        "Q9",
+        "Q10"
+      ],
+      "questions_lost_text": [
+        "Can we verify the exact prompt used?",
+        "Can we verify the generation parameters?",
+        "Can we detect output tampering?",
+        "Can we verify the execution environment?",
+        "Can we verify input integrity?",
+        "Can we compare across runs?"
+      ],
+      "loss_score": 0.6,
+      "mean_bytes": 409.0,
+      "total_bytes": 762376,
+      "pct_of_record": 9.9,
+      "overhead_weight": 0.4,
+      "estimated_ms": 10.17,
+      "verdict": "ESSENTIAL (high)"
+    },
+    {
+      "group": "ENVIRONMENT",
+      "fields": [
+        "code_commit",
+        "environment",
+        "environment_hash"
+      ],
+      "questions_lost": [
+        "Q5"
+      ],
+      "questions_lost_text": [
+        "Can we verify the execution environment?"
+      ],
+      "loss_score": 0.1,
+      "mean_bytes": 547.9,
+      "total_bytes": 1021222,
+      "pct_of_record": 13.3,
+      "overhead_weight": 0.35,
+      "estimated_ms": 8.899,
+      "verdict": "ESSENTIAL (low)"
+    },
+    {
+      "group": "TIMING",
+      "fields": [
+        "execution_duration_ms",
+        "logging_overhead_ms",
+        "timestamp_end",
+        "timestamp_start"
+      ],
+      "questions_lost": [
+        "Q6",
+        "Q7"
+      ],
+      "questions_lost_text": [
+        "Can we reproduce the exact timing?",
+        "Can we assess protocol overhead?"
+      ],
+      "loss_score": 0.2,
+      "mean_bytes": 163.8,
+      "total_bytes": 305349,
+      "pct_of_record": 4.0,
+      "overhead_weight": 0.1,
+      "estimated_ms": 2.543,
+      "verdict": "ESSENTIAL (low)"
+    },
+    {
+      "group": "IO",
+      "fields": [
+        "input_hash",
+        "input_text",
+        "output_hash",
+        "output_metrics",
+        "output_text",
+        "prompt_text"
+      ],
+      "questions_lost": [
+        "Q1",
+        "Q4",
+        "Q9",
+        "Q10"
+      ],
+      "questions_lost_text": [
+        "Can we verify the exact prompt used?",
+        "Can we detect output tampering?",
+        "Can we verify input integrity?",
+        "Can we compare across runs?"
+      ],
+      "loss_score": 0.4,
+      "mean_bytes": 2413.8,
+      "total_bytes": 4499266,
+      "pct_of_record": 58.6,
+      "overhead_weight": 0.0,
+      "estimated_ms": 0.0,
+      "verdict": "ESSENTIAL (med)"
+    },
+    {
+      "group": "OVERHEAD",
+      "fields": [
+        "logging_overhead_ms",
+        "storage_kb"
+      ],
+      "questions_lost": [
+        "Q7"
+      ],
+      "questions_lost_text": [
+        "Can we assess protocol overhead?"
+      ],
+      "loss_score": 0.1,
+      "mean_bytes": 45.8,
+      "total_bytes": 85353,
+      "pct_of_record": 1.1,
+      "overhead_weight": 0.1,
+      "estimated_ms": 2.543,
+      "verdict": "ESSENTIAL (low)"
+    }
+  ],
+  "protocol_is_minimal": true
+}

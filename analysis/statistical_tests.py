@@ -48,10 +48,11 @@ def rouge_l_f1(a, b):
     return 2 * p * r / (p + r)
 
 def parse_abstract(run):
+    import re
     rid = run.get("run_id", "")
-    for i in range(1, 6):
-        if f"abs_00{i}" in rid:
-            return f"abs_{i}"
+    match = re.search(r"(abs_\d+)", rid)
+    if match:
+        return match.group(1)
     return "unknown"
 
 def parse_model(run):
@@ -111,9 +112,10 @@ print("=" * 80)
 print("PER-ABSTRACT METRICS UNDER C2 (GREEDY DECODING)")
 print("=" * 80)
 
-abstracts = ["abs_1", "abs_2", "abs_3", "abs_4", "abs_5"]
+abstracts = sorted(set(parse_abstract(r) for r in runs if parse_abstract(r) != "unknown"))
 tasks = ["summarization", "extraction"]
 models = ["llama", "gpt4"]
+print(f"Found {len(abstracts)} abstracts: {abstracts[:5]}...{abstracts[-3:]}")
 
 # Collect per-abstract EMR for paired t-tests
 per_abstract = {}  # (model, task) -> [emr_abs1, ..., emr_abs5]
@@ -237,3 +239,74 @@ for root, dirs, files in os.walk("/Users/lucasrover/paper-experiment/src/protoco
             total += lines
             print(f"  {f}: {lines} lines")
 print(f"  Total protocol core: {total} lines")
+
+# ----- Post-hoc power analysis -----
+print("\n" + "=" * 80)
+print("POST-HOC POWER ANALYSIS")
+print("=" * 80)
+
+from scipy.stats import norm
+
+def post_hoc_power(cohens_d, n, alpha=0.05):
+    """Compute post-hoc power for a paired t-test."""
+    t_crit = stats.t.ppf(1 - alpha/2, df=n-1)
+    ncp = abs(cohens_d) * np.sqrt(n)  # non-centrality parameter
+    # Approximate using normal distribution
+    power = 1 - norm.cdf(t_crit - ncp) + norm.cdf(-t_crit - ncp)
+    return power
+
+n_abstracts = len(abstracts)
+print(f"Sample size: {n_abstracts} abstracts")
+
+for task in tasks:
+    llama_emr = np.array([x for x in per_abstract[("llama", task)]["emr"] if x is not None])
+    gpt4_emr = np.array([x for x in per_abstract[("gpt4", task)]["emr"] if x is not None])
+    n = min(len(llama_emr), len(gpt4_emr))
+    if n < 2:
+        continue
+
+    diff = llama_emr[:n] - gpt4_emr[:n]
+    mean_diff = np.mean(diff)
+    std_diff = np.std(diff, ddof=1)
+    d = abs(mean_diff / std_diff) if std_diff > 0 else float('inf')
+    power = post_hoc_power(d, n) if d != float('inf') else 1.0
+
+    print(f"\n  {task.upper()} (EMR, LLaMA vs GPT-4, C2):")
+    print(f"    n={n}, Cohen's d={d:.3f}, power={power:.3f}")
+    if power >= 0.80:
+        print(f"    -> ADEQUATE (>= 0.80)")
+    else:
+        # Compute required n for 0.80 power
+        for target_n in range(n, 200):
+            if post_hoc_power(d, target_n) >= 0.80:
+                print(f"    -> INSUFFICIENT (need n={target_n} for 0.80 power)")
+                break
+
+# ----- Effect sizes across all conditions -----
+print("\n" + "=" * 80)
+print("EFFECT SIZES: ALL CONDITIONS (Cohen's d, LLaMA vs GPT-4)")
+print("=" * 80)
+print(f"{'Task':<15} {'Condition':<12} {'Metric':<10} {'Cohen d':>8} {'Power':>8}")
+print("-" * 60)
+
+for task in tasks:
+    for cond in ["C2", "C3_t0.0", "C3_t0.3", "C3_t0.7"]:
+        llama_vals = []
+        gpt4_vals = []
+        for ab in abstracts:
+            lk = ("llama", task, cond, ab)
+            gk = ("gpt4", task, cond, ab)
+            if lk in groups and gk in groups:
+                lm = compute_group_metrics(groups[lk])
+                gm = compute_group_metrics(groups[gk])
+                if lm["emr"] is not None and gm["emr"] is not None:
+                    llama_vals.append(lm["emr"])
+                    gpt4_vals.append(gm["emr"])
+
+        if len(llama_vals) >= 2:
+            la = np.array(llama_vals)
+            ga = np.array(gpt4_vals)
+            diff = la - ga
+            d = abs(np.mean(diff)) / np.std(diff, ddof=1) if np.std(diff, ddof=1) > 0 else float('inf')
+            pw = post_hoc_power(d, len(la)) if d != float('inf') else 1.0
+            print(f"  {task:<15} {cond:<12} {'EMR':<10} {d:>7.3f} {pw:>7.3f}")

@@ -13,13 +13,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.metrics.variability import compute_all_metrics
+from src.metrics.variability import compute_all_metrics, get_bert_scorer
 from src.metrics.overhead import (
     compute_logging_overhead,
     compute_storage_overhead,
     compute_overhead_ratio,
     compute_directory_size,
 )
+from src.metrics.validation import json_validity_rate, schema_compliance_rate, field_level_accuracy
 
 OUTPUT_DIR = Path(__file__).parent.parent / "outputs"
 ANALYSIS_DIR = Path(__file__).parent
@@ -58,9 +59,10 @@ def parse_model(run):
 
 def parse_abstract(run_id):
     """Parse abstract id from run_id."""
-    for abs_id in ["abs_001", "abs_002", "abs_003", "abs_004", "abs_005"]:
-        if abs_id in run_id:
-            return abs_id
+    import re
+    match = re.search(r"(abs_\d+)", run_id)
+    if match:
+        return match.group(1)
     return "unknown"
 
 
@@ -82,7 +84,7 @@ def group_runs(all_runs):
     return by_model_task_condition, by_model_task_condition_abstract
 
 
-def compute_variability_analysis(by_mtca):
+def compute_variability_analysis(by_mtca, scorer=None):
     """Compute variability metrics for each (model, task, condition, abstract) group."""
     results = {}
 
@@ -93,11 +95,18 @@ def compute_variability_analysis(by_mtca):
         if len(outputs) < 2:
             continue
 
-        metrics = compute_all_metrics(outputs)
+        metrics = compute_all_metrics(outputs, scorer=scorer)
         metrics["model"] = model
         metrics["task"] = task
         metrics["condition"] = condition
         metrics["abstract"] = abstract
+
+        # Add JSON validation metrics for extraction tasks
+        if task == "extraction":
+            metrics["json_validity"] = json_validity_rate(outputs)
+            metrics["schema_compliance"] = schema_compliance_rate(outputs)
+            metrics["field_accuracy"] = field_level_accuracy(outputs)
+
         results[f"{model}_{task}_{condition}_{abstract}"] = metrics
 
     return results
@@ -112,6 +121,7 @@ def compute_aggregated_variability(variability_results):
         "edit_dist_means": [],
         "edit_dist_normalized_means": [],
         "rouge_l_means": [],
+        "bertscore_f1_means": [],
         "avg_lengths_chars": [],
         "avg_lengths_words": [],
     })
@@ -123,6 +133,9 @@ def compute_aggregated_variability(variability_results):
         agg["edit_dist_means"].append(metrics["edit_distance"]["mean"])
         agg["edit_dist_normalized_means"].append(metrics["edit_distance"]["normalized_mean"])
         agg["rouge_l_means"].append(metrics["rouge_l"]["mean"])
+        bs = metrics.get("bert_score", {})
+        if bs and bs.get("bertscore_f1_mean") is not None:
+            agg["bertscore_f1_means"].append(bs["bertscore_f1_mean"])
         agg["avg_lengths_chars"].append(metrics["avg_output_length_chars"])
         agg["avg_lengths_words"].append(metrics["avg_output_length_words"])
 
@@ -156,6 +169,10 @@ def compute_aggregated_variability(variability_results):
             "avg_output_length_words": {
                 "mean": float(np.mean(agg["avg_lengths_words"])),
                 "std": float(np.std(agg["avg_lengths_words"], ddof=1)),
+            },
+            "bertscore_f1": {
+                "mean": float(np.mean(agg["bertscore_f1_means"])) if agg["bertscore_f1_means"] else None,
+                "std": float(np.std(agg["bertscore_f1_means"], ddof=1)) if len(agg["bertscore_f1_means"]) > 1 else None,
             },
         }
 
@@ -237,14 +254,20 @@ def main():
     for key, runs in sorted(by_mtc.items()):
         print(f"  {key[0]:12s} | {key[1]:15s} | {key[2]:10s} | {len(runs)} runs")
 
+    # Pre-load BERTScore model (once)
+    print("\n--- Loading BERTScore model ---")
+    scorer = get_bert_scorer()
+    print("  BERTScore model loaded.")
+
     # Variability analysis
     print("\n--- Computing Variability Metrics ---")
-    var_results = compute_variability_analysis(by_mtca)
+    var_results = compute_variability_analysis(by_mtca, scorer=scorer)
 
     # Aggregated variability
     agg_var = compute_aggregated_variability(var_results)
 
-    print("\n--- Aggregated Variability (mean across 5 abstracts) ---")
+    n_abstracts = len(set(parse_abstract(r["run_id"]) for r in all_runs if parse_abstract(r["run_id"]) != "unknown"))
+    print(f"\n--- Aggregated Variability (mean across {n_abstracts} abstracts) ---")
     print(f"{'Model':<12} {'Task':<15} {'Condition':<10} {'ExactMatch':>12} {'EditDist(norm)':>15} {'ROUGE-L':>10}")
     print("-" * 80)
     for key, v in sorted(agg_var.items()):

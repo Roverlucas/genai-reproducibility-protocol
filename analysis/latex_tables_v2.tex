@@ -1,37 +1,38 @@
 % Auto-generated LaTeX tables for JAIR paper (v2: LLaMA + GPT-4)
-% Generated from 330 experimental runs
+% Generated from 1864 experimental runs
 
 % === table2_main_results_v2 ===
 \begin{table*}[t]
 \centering
-\caption{Output variability across experimental conditions for LLaMA~3 8B (local) and GPT-4 (API). Mean over 5~abstracts. EMR = Exact Match Rate, NED = Normalized Edit Distance, ROUGE-L = word-level LCS F1.}
+\caption{Output variability across experimental conditions for LLaMA~3 8B (local) and GPT-4 (API). Mean over 30~abstracts. EMR = Exact Match Rate, NED = Normalized Edit Distance, ROUGE-L = word-level LCS F1, BS-F1 = BERTScore F1.}
 \label{tab:variability-results}
 \small
-\begin{tabular}{@{}lllccc@{}}
+\begin{tabular}{@{}lllcccc@{}}
 \toprule
-\textbf{Model} & \textbf{Task} & \textbf{Condition} & \textbf{EMR}$\uparrow$ & \textbf{NED}$\downarrow$ & \textbf{ROUGE-L}$\uparrow$ \\
+\textbf{Model} & \textbf{Task} & \textbf{Condition} & \textbf{EMR}$\uparrow$ & \textbf{NED}$\downarrow$ & \textbf{ROUGE-L}$\uparrow$ & \textbf{BS-F1}$\uparrow$ \\
 \midrule
-  \multirow{9}{*}{\rotatebox[origin=c]{90}{LLaMA~3 8B}} & Summarization & C1 (fixed seed, $t{=}0$) & 0.840 & 0.0148 & 0.9823 \\
-   &  & C2 (var.\ seeds, $t{=}0$) & 0.840 & 0.0148 & 0.9823 \\
-   &  & C3 ($t{=}0.0$) & 0.733 & 0.0247 & 0.9706 \\
-   &  & C3 ($t{=}0.3$) & 0.000 & 0.2289 & 0.7820 \\
-   &  & C3 ($t{=}0.7$) & 0.000 & 0.4323 & 0.5550 \\
-\cmidrule{2-6}
-   & Extraction & C1 (fixed seed, $t{=}0$) & \textbf{1.000} & \textbf{0.0000} & \textbf{1.0000} \\
-   &  & C2 (var.\ seeds, $t{=}0$) & \textbf{1.000} & \textbf{0.0000} & \textbf{1.0000} \\
-   &  & C3 ($t{=}0.0$) & \textbf{1.000} & \textbf{0.0000} & \textbf{1.0000} \\
-   &  & C3 ($t{=}0.3$) & 0.133 & 0.1883 & 0.8458 \\
-   &  & C3 ($t{=}0.7$) & 0.000 & 0.3031 & 0.7447 \\
+  \multirow{10}{*}{\rotatebox[origin=c]{90}{LLaMA~3 8B}} & Summarization & C1 (fixed seed, $t{=}0$) & 0.947 & 0.0050 & 0.9945 & 0.9990 \\
+   &  & C2 (same params, $t{=}0$) & 0.947 & 0.0050 & 0.9945 & 0.9990 \\
+   &  & C3 ($t{=}0.0$) & 0.911 & 0.0083 & 0.9909 & 0.9984 \\
+   &  & C3 ($t{=}0.3$) & 0.000 & 0.2790 & 0.7441 & 0.9669 \\
+   &  & C3 ($t{=}0.7$) & 0.000 & 0.4438 & 0.5589 & 0.9432 \\
+\cmidrule{2-7}
+   & Extraction & C1 (fixed seed, $t{=}0$) & 0.987 & 0.0031 & 0.9966 & 0.9997 \\
+   &  & C2 (same params, $t{=}0$) & 0.987 & 0.0031 & 0.9966 & 0.9997 \\
+   &  & C3 ($t{=}0.0$) & 0.978 & 0.0052 & 0.9943 & 0.9996 \\
+   &  & C3 ($t{=}0.3$) & 0.211 & 0.1224 & 0.8838 & 0.9851 \\
+   &  & C3 ($t{=}0.7$) & 0.000 & 0.2530 & 0.7719 & 0.9693 \\
 \midrule
-  \multirow{8}{*}{\rotatebox[origin=c]{90}{GPT-4 (API)}} & Summarization & C2 (var.\ seeds, $t{=}0$) & 0.200 & 0.0718 & 0.9295 \\
-   &  & C3 ($t{=}0.0$) & 0.000 & 0.0778 & 0.9248 \\
-   &  & C3 ($t{=}0.3$) & 0.000 & 0.1721 & 0.8052 \\
-   &  & C3 ($t{=}0.7$) & 0.000 & 0.3598 & 0.6143 \\
-\cmidrule{2-6}
-   & Extraction & C2 (var.\ seeds, $t{=}0$) & 0.520 & 0.0343 & 0.9748 \\
-   &  & C3 ($t{=}0.0$) & 0.333 & 0.0257 & 0.9770 \\
-   &  & C3 ($t{=}0.3$) & 0.400 & 0.0679 & 0.9413 \\
-   &  & C3 ($t{=}0.7$) & 0.000 & 0.1648 & 0.8557 \\
+  \multirow{10}{*}{\rotatebox[origin=c]{90}{GPT-4 (API)}} & Summarization & C1 (fixed seed, $t{=}0$) & 0.111 & 0.0879 & 0.8963 & 0.9897 \\
+   &  & C2 (same params, $t{=}0$) & 0.230 & 0.1365 & 0.8695 & 0.9839 \\
+   &  & C3 ($t{=}0.0$) & 0.144 & 0.1623 & 0.8479 & 0.9804 \\
+   &  & C3 ($t{=}0.3$) & 0.000 & 0.2832 & 0.7238 & 0.9662 \\
+   &  & C3 ($t{=}0.7$) & 0.000 & 0.4366 & 0.5554 & 0.9477 \\
+\cmidrule{2-7}
+   & Extraction & C2 (same params, $t{=}0$) & 0.443 & 0.0724 & 0.9384 & 0.9904 \\
+   &  & C3 ($t{=}0.0$) & 0.381 & 0.0721 & 0.9356 & 0.9900 \\
+   &  & C3 ($t{=}0.3$) & 0.143 & 0.1477 & 0.8669 & 0.9799 \\
+   &  & C3 ($t{=}0.7$) & 0.000 & 0.2247 & 0.7890 & 0.9708 \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -40,7 +41,7 @@
 
 \begin{table}[t]
 \centering
-\caption{Protocol overhead: logging time and storage costs for 330~runs (190 LLaMA~3 + 140 GPT-4).}
+\caption{Protocol overhead: logging time and storage costs for 1864~runs (1140 LLaMA~3 + 724 GPT-4).}
 \label{tab:overhead}
 \small
 \begin{tabular}{@{}lrl@{}}
@@ -48,17 +49,17 @@
 \textbf{Metric} & \textbf{Value} & \textbf{Unit} \\
 \midrule
 \multicolumn{3}{l}{\textit{Logging time overhead}} \\
-\quad Mean per run & 33.56 $\pm$ 5.68 & ms \\
-\quad Min / Max & 12.85 / 51.20 & ms \\
-\quad Total (330 runs) & 11074 & ms \\
-\quad Mean overhead ratio & 0.694\% & of inference time \\
+\quad Mean per run & 25.43 $\pm$ 9.00 & ms \\
+\quad Min / Max & 11.05 / 51.88 & ms \\
+\quad Total (1864 runs) & 47393 & ms \\
+\quad Mean overhead ratio & 0.545\% & of inference time \\
 \quad Max overhead ratio & 1.621\% & of inference time \\
 \midrule
 \multicolumn{3}{l}{\textit{Storage overhead}} \\
-\quad Run logs (330 files) & 1382 & KB \\
+\quad Run logs (1864 files) & 7729 & KB \\
 \quad PROV documents (331 files) & 1736 & KB \\
-\quad Run Cards (330 files) & 454 & KB \\
-\quad Total output & 4.87 & MB \\
+\quad Run Cards (1864 files) & 2610 & KB \\
+\quad Total output & 19.52 & MB \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -74,13 +75,13 @@
 \toprule
 \textbf{Task} & \textbf{Metric} & \textbf{LLaMA~3 8B} & \textbf{GPT-4} \\
 \midrule
-  Summarization & EMR & 0.840 & 0.200 \\
-   & NED & 0.0148 & 0.0718 \\
-   & ROUGE-L & 0.9823 & 0.9295 \\
+  Summarization & EMR & 0.947 & 0.230 \\
+   & NED & 0.0050 & 0.1365 \\
+   & ROUGE-L & 0.9945 & 0.8695 \\
 \midrule
-  Extraction & EMR & 1.000 & 0.520 \\
-   & NED & 0.0000 & 0.0343 \\
-   & ROUGE-L & 1.0000 & 0.9748 \\
+  Extraction & EMR & 0.987 & 0.443 \\
+   & NED & 0.0031 & 0.0724 \\
+   & ROUGE-L & 0.9966 & 0.9384 \\
 \bottomrule
 \end{tabular}
 \end{table}

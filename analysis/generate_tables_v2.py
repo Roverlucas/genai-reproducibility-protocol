@@ -17,7 +17,7 @@ def table_main_results(analysis):
     agg = analysis["variability_aggregated"]
 
     condition_order_llama = ["C1", "C2", "C3_t0.0", "C3_t0.3", "C3_t0.7"]
-    condition_order_gpt4 = ["C2", "C3_t0.0", "C3_t0.3", "C3_t0.7"]
+    condition_order_gpt4 = ["C1", "C2", "C3_t0.0", "C3_t0.3", "C3_t0.7"]
     condition_labels = {
         "C1": r"C1 (fixed seed, $t{=}0$)",
         "C2": r"C2 (same params, $t{=}0$)",
@@ -29,12 +29,12 @@ def table_main_results(analysis):
     lines = []
     lines.append(r"\begin{table*}[t]")
     lines.append(r"\centering")
-    lines.append(r"\caption{Output variability across experimental conditions for LLaMA~3 8B (local) and GPT-4 (API). Mean over 5~abstracts. EMR = Exact Match Rate, NED = Normalized Edit Distance, ROUGE-L = word-level LCS F1.}")
+    lines.append(r"\caption{Output variability across experimental conditions for LLaMA~3 8B (local) and GPT-4 (API). Mean over 30~abstracts. EMR = Exact Match Rate, NED = Normalized Edit Distance, ROUGE-L = word-level LCS F1, BS-F1 = BERTScore F1.}")
     lines.append(r"\label{tab:variability-results}")
     lines.append(r"\small")
-    lines.append(r"\begin{tabular}{@{}lllccc@{}}")
+    lines.append(r"\begin{tabular}{@{}lllcccc@{}}")
     lines.append(r"\toprule")
-    lines.append(r"\textbf{Model} & \textbf{Task} & \textbf{Condition} & \textbf{EMR}$\uparrow$ & \textbf{NED}$\downarrow$ & \textbf{ROUGE-L}$\uparrow$ \\")
+    lines.append(r"\textbf{Model} & \textbf{Task} & \textbf{Condition} & \textbf{EMR}$\uparrow$ & \textbf{NED}$\downarrow$ & \textbf{ROUGE-L}$\uparrow$ & \textbf{BS-F1}$\uparrow$ \\")
     lines.append(r"\midrule")
 
     # LLaMA section
@@ -48,18 +48,20 @@ def table_main_results(analysis):
             em = v["exact_match_rate"]["mean"]
             ed = v["edit_distance_normalized"]["mean"]
             rl = v["rouge_l"]["mean"]
+            bs = v.get("bertscore_f1", {}).get("mean")
 
             if prev_task is not None and task != prev_task:
-                lines.append(r"\cmidrule{2-6}")
-            model_label = r"\multirow{9}{*}{\rotatebox[origin=c]{90}{LLaMA~3 8B}}" if task == "summarization" and cond == "C1" else ""
+                lines.append(r"\cmidrule{2-7}")
+            model_label = r"\multirow{10}{*}{\rotatebox[origin=c]{90}{LLaMA~3 8B}}" if task == "summarization" and cond == "C1" else ""
             task_label = task.capitalize() if task != prev_task else ""
             cond_label = condition_labels[cond]
 
             em_str = r"\textbf{1.000}" if em == 1.0 else f"{em:.3f}"
             ed_str = r"\textbf{0.0000}" if ed == 0.0 else f"{ed:.4f}"
             rl_str = r"\textbf{1.0000}" if rl == 1.0 else f"{rl:.4f}"
+            bs_str = f"{bs:.4f}" if bs is not None else "--"
 
-            lines.append(f"  {model_label} & {task_label} & {cond_label} & {em_str} & {ed_str} & {rl_str} \\\\")
+            lines.append(f"  {model_label} & {task_label} & {cond_label} & {em_str} & {ed_str} & {rl_str} & {bs_str} \\\\")
             prev_task = task
 
     lines.append(r"\midrule")
@@ -75,18 +77,20 @@ def table_main_results(analysis):
             em = v["exact_match_rate"]["mean"]
             ed = v["edit_distance_normalized"]["mean"]
             rl = v["rouge_l"]["mean"]
+            bs = v.get("bertscore_f1", {}).get("mean")
 
             if prev_task is not None and task != prev_task:
-                lines.append(r"\cmidrule{2-6}")
-            model_label = r"\multirow{8}{*}{\rotatebox[origin=c]{90}{GPT-4 (API)}}" if task == "summarization" and cond == "C2" else ""
+                lines.append(r"\cmidrule{2-7}")
+            model_label = r"\multirow{10}{*}{\rotatebox[origin=c]{90}{GPT-4 (API)}}" if task == "summarization" and cond == "C1" else ""
             task_label = task.capitalize() if task != prev_task else ""
             cond_label = condition_labels[cond]
 
             em_str = f"{em:.3f}"
             ed_str = f"{ed:.4f}"
             rl_str = f"{rl:.4f}"
+            bs_str = f"{bs:.4f}" if bs is not None else "--"
 
-            lines.append(f"  {model_label} & {task_label} & {cond_label} & {em_str} & {ed_str} & {rl_str} \\\\")
+            lines.append(f"  {model_label} & {task_label} & {cond_label} & {em_str} & {ed_str} & {rl_str} & {bs_str} \\\\")
             prev_task = task
 
     lines.append(r"\bottomrule")
@@ -97,16 +101,19 @@ def table_main_results(analysis):
 
 
 def table_overhead(analysis):
-    """Table 3: Protocol overhead metrics (330 runs)."""
+    """Table 3: Protocol overhead metrics."""
     oh = analysis["overhead"]
     log_oh = oh["logging_overhead"]
     ratio_oh = oh["overhead_ratio"]
     dirs = oh["directory_sizes"]
+    n_runs = analysis["n_total_runs"]
+    n_llama = dirs["runs"]["file_count"]  # approximate
+    n_prov = dirs["provenance"]["file_count"]
 
     return rf"""
 \begin{{table}}[t]
 \centering
-\caption{{Protocol overhead: logging time and storage costs for 330~runs (190 LLaMA~3 + 140 GPT-4).}}
+\caption{{Protocol overhead: logging time and storage costs for {n_runs}~runs (1140 LLaMA~3 + 724 GPT-4).}}
 \label{{tab:overhead}}
 \small
 \begin{{tabular}}{{@{{}}lrl@{{}}}}
@@ -116,14 +123,14 @@ def table_overhead(analysis):
 \multicolumn{{3}}{{l}}{{\textit{{Logging time overhead}}}} \\
 \quad Mean per run & {log_oh['mean_ms']:.2f} $\pm$ {log_oh['std_ms']:.2f} & ms \\
 \quad Min / Max & {log_oh['min_ms']:.2f} / {log_oh['max_ms']:.2f} & ms \\
-\quad Total (330 runs) & {log_oh['total_ms']:.0f} & ms \\
+\quad Total ({n_runs} runs) & {log_oh['total_ms']:.0f} & ms \\
 \quad Mean overhead ratio & {ratio_oh['mean_percent']:.3f}\% & of inference time \\
 \quad Max overhead ratio & {ratio_oh['max_percent']:.3f}\% & of inference time \\
 \midrule
 \multicolumn{{3}}{{l}}{{\textit{{Storage overhead}}}} \\
-\quad Run logs (330 files) & {dirs['runs']['total_kb']:.0f} & KB \\
-\quad PROV documents (331 files) & {dirs['provenance']['total_kb']:.0f} & KB \\
-\quad Run Cards (330 files) & {dirs['run_cards']['total_kb']:.0f} & KB \\
+\quad Run logs ({dirs['runs']['file_count']} files) & {dirs['runs']['total_kb']:.0f} & KB \\
+\quad PROV documents ({n_prov} files) & {dirs['provenance']['total_kb']:.0f} & KB \\
+\quad Run Cards ({dirs['run_cards']['file_count']} files) & {dirs['run_cards']['total_kb']:.0f} & KB \\
 \quad Total output & {dirs['total_output']['total_mb']:.2f} & MB \\
 \bottomrule
 \end{{tabular}}
@@ -189,7 +196,7 @@ def main():
     output_path = ANALYSIS_DIR / "latex_tables_v2.tex"
     with open(output_path, "w") as f:
         f.write("% Auto-generated LaTeX tables for JAIR paper (v2: LLaMA + GPT-4)\n")
-        f.write("% Generated from 330 experimental runs\n\n")
+        f.write(f"% Generated from {analysis['n_total_runs']} experimental runs\n\n")
         for name, content in tables.items():
             f.write(f"% === {name} ===\n")
             f.write(content)

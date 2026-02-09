@@ -1,0 +1,39 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "gpt-4_summarization_abs_026_C3_temp0.7_rep2",
+  "task_id": "summarization",
+  "task_category": "scientific_summarization",
+  "prompt_card_ref": "prompt_card_summarization_v1_v1_0.json",
+  "prompt_hash": "c9644358805b358076a2836466429c97a31bfd6ec5fbb42e9e9b32bcf6190b94",
+  "model_name": "gpt-4",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "openai-api",
+  "inference_params": {
+    "temperature": 0.7,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "sampling",
+    "seed": 456
+  },
+  "params_hash": "5447fb2b813323f7f5cb11a2bed3f3fcec33012ab0b86071902caed178ffc386",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "957a604c13f80360f0ef4b2eca5fd5e1dd856cd7",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-08T14:03:34.435953+00:00",
+  "timestamp_end": "2026-02-08T14:03:37.365013+00:00",
+  "execution_duration_ms": 2929.06,
+  "output_hash": "b2571276f3f00ee94784efe9cca355bd854d50e505cbde252c0ea857ac61bcc0",
+  "output_metrics": {},
+  "logging_overhead_ms": 15.63,
+  "storage_kb": 4.19,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

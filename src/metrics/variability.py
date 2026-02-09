@@ -112,13 +112,50 @@ def _rouge_l_f1(hypothesis: str, reference: str) -> float:
     return 2 * precision * recall / (precision + recall)
 
 
-def compute_all_metrics(outputs: List[str]) -> dict:
+def get_bert_scorer():
+    """Create and cache a BERTScorer instance (loads model once)."""
+    from bert_score import BERTScorer
+    scorer = BERTScorer(lang="en", rescale_with_baseline=False)
+    return scorer
+
+
+def bert_score_stats(outputs: list, scorer=None) -> dict:
+    """Compute pairwise BERTScore (P, R, F1) for all output pairs."""
+    import itertools
+
+    if len(outputs) < 2:
+        return {"bertscore_f1_mean": None, "bertscore_f1_std": None}
+
+    pairs = list(itertools.combinations(range(len(outputs)), 2))
+    refs = [outputs[i] for i, j in pairs]
+    cands = [outputs[j] for i, j in pairs]
+
+    if scorer is not None:
+        P, R, F1 = scorer.score(cands, refs)
+    else:
+        from bert_score import score as bert_score_fn
+        P, R, F1 = bert_score_fn(cands, refs, lang="en", verbose=False)
+
+    f1_list = F1.tolist()
+
+    return {
+        "bertscore_f1_mean": float(np.mean(f1_list)),
+        "bertscore_f1_std": float(np.std(f1_list)),
+        "bertscore_f1_min": float(np.min(f1_list)),
+        "bertscore_f1_max": float(np.max(f1_list)),
+        "bertscore_precision_mean": float(np.mean(P.tolist())),
+        "bertscore_recall_mean": float(np.mean(R.tolist())),
+    }
+
+
+def compute_all_metrics(outputs: List[str], scorer=None) -> dict:
     """Compute all variability metrics for a set of outputs."""
     return {
         "n_outputs": len(outputs),
         "exact_match_rate": exact_match_all_pairs(outputs),
         "edit_distance": edit_distance_stats(outputs),
         "rouge_l": rouge_l_scores(outputs),
+        "bert_score": bert_score_stats(outputs, scorer=scorer),
         "avg_output_length_chars": float(np.mean([len(o) for o in outputs])),
         "avg_output_length_words": float(np.mean([len(o.split()) for o in outputs])),
     }
