@@ -14,7 +14,7 @@ This repository contains the reference implementation, experimental data, and an
 paper-experiment/
 ├── article/                  # Manuscript and submission materials
 │   ├── main.tex             # JAIR-formatted manuscript
-│   ├── references.bib       # Bibliography (34 entries)
+│   ├── references.bib       # Bibliography (36 entries)
 │   ├── cover_letter.tex     # Cover letter for JAIR
 │   ├── jair_significance_statement.tex  # JAIR significance statement
 │   ├── reviewer-suggestions.yaml  # Suggested reviewers

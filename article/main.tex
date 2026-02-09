@@ -136,7 +136,7 @@ In this paper, we make three contributions:
 \begin{enumerate}
     \item \textbf{A lightweight protocol} for logging, versioning, and provenance tracking of generative AI experiments. The protocol introduces \textit{Prompt Cards} and \textit{Run Cards} as structured documentation artifacts, and adopts the W3C PROV data model \cite{w3cprov2013} for machine-readable provenance graphs.
 
-    \item \textbf{An empirical evaluation} of both the protocol's effectiveness and the reproducibility characteristics of LLM outputs. Through 1,864 controlled experiments with LLaMA~3 8B (local) and GPT-4 (API) across two tasks, 30 abstracts, and five conditions, we quantify output variability using three complementary metrics and measure the protocol's overhead. Our results reveal a striking reproducibility gap between local and API-based inference that is invisible without systematic logging.
+    \item \textbf{An empirical evaluation} of both the protocol's effectiveness and the reproducibility characteristics of LLM outputs. Through 1,864 controlled experiments with LLaMA~3 8B (local) and GPT-4 (API) across two tasks, 30 abstracts, and five conditions, we quantify output variability using four complementary metrics and measure the protocol's overhead. Our results reveal a striking reproducibility gap between local and API-based inference that is invisible without systematic logging.
 
     \item \textbf{A reference implementation} in Python that demonstrates the protocol's practical applicability, together with all experimental data, to facilitate adoption and independent verification.
 \end{enumerate}
@@ -244,7 +244,7 @@ Prompt Cards serve two purposes: they document design intent (supporting human u
 \subsection{Run Cards}
 \label{sec:run-cards}
 
-A \textit{Run Card} captures the complete execution context of a single generative AI run. Each Run Card records 22 core fields organized into five groups (the complete schema, including additional optional fields, is given in Appendix~\ref{app:schema}):
+A \textit{Run Card} captures the complete execution context of a single generative AI run. Each Run Card records 22 core fields organized into five groups (the complete JSON schema in Appendix~\ref{app:schema} includes these fields plus additional metadata such as \texttt{researcher\_id}, \texttt{affiliation}, \texttt{system\_logs}, and \texttt{errors}):
 
 \begin{enumerate}
     \item \textbf{Identification}: \texttt{run\_id}, \texttt{task\_id}, \texttt{task\_category}, \texttt{prompt\_card\_ref}
@@ -369,10 +369,10 @@ We adopt an operational definition of reproducibility at three levels, each mapp
 \begin{itemize}
     \item \textbf{Exact reproducibility} (string-level): Two outputs are identical character-by-character. Measured by \textit{Exact Match Rate (EMR)}.
     \item \textbf{Near reproducibility} (edit-level): Two outputs differ only in minor surface variations (punctuation, whitespace, synonym substitution). Measured by \textit{Normalized Edit Distance (NED)}.
-    \item \textbf{Semantic reproducibility} (meaning-level): Two outputs convey the same information despite different phrasing. Measured by \textit{ROUGE-L F1} and, for a subset of conditions, \textit{BERTScore F1}.
+    \item \textbf{Semantic reproducibility} (meaning-level): Two outputs convey the same information despite different phrasing. Measured by \textit{ROUGE-L F1} and \textit{BERTScore F1}.
 \end{itemize}
 
-This three-level framework allows us to distinguish between outputs that are bitwise identical (EMR~=~1), textually close (NED~$<$~0.05), and semantically equivalent (ROUGE-L~$>$~0.90). We measure output variability using these complementary metrics, computed over all pairwise comparisons within each condition group:
+This three-level framework allows us to distinguish between outputs that are bitwise identical (EMR~=~1), textually close (NED~$<$~0.05), and semantically equivalent (ROUGE-L~$>$~0.90). All variability metrics are computed over all $\binom{n}{2}$ unique output pairs within each experimental group (defined by model, task, condition, and abstract):
 
 \textbf{Exact Match Rate (EMR):} The fraction of output pairs that are character-for-character identical. EMR = 1.0 indicates perfect reproducibility; EMR = 0.0 indicates that no two outputs match exactly.
 
@@ -380,7 +380,7 @@ This three-level framework allows us to distinguish between outputs that are bit
 
 \textbf{ROUGE-L F1:} The F1 score based on the longest common subsequence at the word level \cite{lin2004rouge}. This captures semantic similarity even when surface forms differ. ROUGE-L = 1.0 indicates identical word sequences.
 
-Our primary metrics (EMR, NED, ROUGE-L) focus on exact and near reproducibility, which are the most direct measures for our research question. To complement these surface-level metrics, we also compute \textbf{BERTScore F1} \cite{zhang2020bertscore}---an embedding-based semantic similarity metric---for all conditions. BERTScore captures meaning-level equivalence that surface metrics may miss (e.g., paraphrases), providing a fourth perspective on reproducibility. For the structured extraction task, we additionally report \textbf{JSON validity rate}, \textbf{schema compliance rate}, and \textbf{field-level accuracy}, which measure whether outputs are syntactically valid JSON, contain all expected fields, and agree on individual field values across runs, respectively.
+Our primary metrics (EMR, NED, ROUGE-L) focus on exact and near reproducibility, which are the most direct measures for our research question. To complement these surface-level metrics, we also compute \textbf{BERTScore F1} \cite{zhang2020bertscore}---an embedding-based semantic similarity metric---for all conditions. BERTScore captures meaning-level equivalence that surface metrics may miss (e.g., paraphrases), providing a fourth perspective on reproducibility. For the structured extraction task, we additionally report \textbf{JSON validity rate}, \textbf{schema compliance rate}, and \textbf{field-level accuracy}, which measure whether outputs are syntactically valid JSON, contain all expected fields, and agree on individual field values across runs, respectively (see Appendix~\ref{app:json-quality} for detailed results).
 
 For protocol overhead, we measure:
 \begin{itemize}
@@ -429,7 +429,7 @@ This gap is not due to user-side parameter differences: both models use $t = 0$ 
     \label{fig:temperature}
 \end{figure}
 
-For LLaMA~3, increasing temperature from 0 to 0.7 reduces ROUGE-L from 0.991 to 0.559 (summarization) and from 0.994 to 0.772 (extraction). For GPT-4, the same increase reduces ROUGE-L from 0.848 to 0.555 (summarization) and from 0.936 to 0.789 (extraction). The \textit{relative} rate of degradation is comparable, but GPT-4 starts from a lower baseline owing to its inherent server-side non-determinism.
+Within the C3 temperature sweep, increasing temperature from 0.0 to 0.7 reduces ROUGE-L from 0.991 to 0.559 (LLaMA summarization) and from 0.994 to 0.772 (LLaMA extraction). For GPT-4, the same sweep reduces ROUGE-L from 0.848 to 0.555 (summarization) and from 0.936 to 0.789 (extraction). The \textit{relative} rate of degradation is comparable, but GPT-4 starts from a lower baseline owing to its inherent server-side non-determinism.
 
 Notably, BERTScore F1 remains above 0.94 across all conditions, even when EMR drops to zero at $t = 0.7$ (Table~\ref{tab:variability-results}). This indicates that while textual outputs diverge substantially at higher temperatures, their semantic content remains highly similar. The gap between surface-level metrics (EMR, NED) and semantic metrics (BERTScore) underscores that non-determinism in LLM outputs is primarily a \textit{phrasing} phenomenon rather than a \textit{meaning} phenomenon---a distinction with important practical implications for downstream applications that tolerate paraphrase variation.
 
@@ -440,7 +440,7 @@ Figure~\ref{fig:model-comparison} provides a direct visual comparison of the two
 \begin{figure*}[t]
     \centering
     \includegraphics[width=\textwidth]{figures/fig_model_comparison.pdf}
-    \caption{Reproducibility under greedy decoding ($t = 0$), averaged across conditions C1, C2, and C3 at $t{=}0$: LLaMA~3 8B (local) vs.\ GPT-4 (API). LLaMA~3 achieves near-perfect to perfect reproducibility, while GPT-4 shows measurable variability across all metrics, particularly for summarization. Condition-specific values are given in Table~\ref{tab:variability-results}.}
+    \caption{Reproducibility under greedy decoding ($t{=}0$), averaged across conditions C1, C2, and C3 at $t{=}0$: LLaMA~3 8B (local) vs.\ GPT-4 (API). LLaMA~3 achieves near-perfect to perfect reproducibility, while GPT-4 shows measurable variability across all metrics, particularly for summarization. Condition-specific values are given in Table~\ref{tab:variability-results}.}
     \Description{Three grouped bar charts comparing LLaMA and GPT-4 on EMR, NED, and ROUGE-L for summarization and extraction tasks.}
     \label{fig:model-comparison}
 \end{figure*}
@@ -455,7 +455,7 @@ Figure~\ref{fig:heatmap} presents a comprehensive heatmap of EMR across all mode
     \label{fig:heatmap}
 \end{figure}
 
-To quantify the reproducibility gap between local and API-based inference, we performed paired $t$-tests on per-abstract EMR values under condition C2 (greedy decoding, $t = 0$) across all 30 abstracts. For summarization, the difference is highly significant: $t(29) = 17.250$, $p < 0.0001$, Cohen's $d = 3.149$ (LLaMA~3 mean EMR $= 0.947$, 95\% CI $[0.895, 0.998]$; GPT-4 mean EMR $= 0.230$, 95\% CI $[0.157, 0.303]$). For extraction, the gap is equally significant: $t(29) = 8.996$, $p < 0.0001$, Cohen's $d = 1.642$ (LLaMA~3 EMR $= 0.987$, 95\% CI $[0.959, 1.000]$; GPT-4 EMR $= 0.443$, 95\% CI $[0.316, 0.571]$). Both effect sizes are very large ($d > 1.6$), confirming that the reproducibility difference is not only statistically significant but practically meaningful. All $p$-values survive Bonferroni correction at the per-family threshold $\alpha = 0.05/6 \approx 0.008$, and all differences in NED and ROUGE-L are also significant ($p < 0.0001$). A post hoc power analysis confirms that $n = 30$ abstracts provides statistical power $> 0.999$ for all primary comparisons \cite{cohen1988statistical}.
+To quantify the reproducibility gap between local and API-based inference, we performed paired $t$-tests on per-abstract EMR values under condition C2 (greedy decoding, $t = 0$) across all 30 abstracts. For summarization, the difference is highly significant: $t(29) = 17.250$, $p < 0.0001$, Cohen's $d = 3.149$ (LLaMA~3 mean EMR $= 0.947$, 95\% CI $[0.895, 0.998]$; GPT-4 mean EMR $= 0.230$, 95\% CI $[0.157, 0.303]$). For extraction, the gap is equally significant: $t(29) = 8.996$, $p < 0.0001$, Cohen's $d = 1.642$ (LLaMA~3 EMR $= 0.987$, 95\% CI $[0.959, 1.000]$; GPT-4 EMR $= 0.443$, 95\% CI $[0.316, 0.571]$). Both effect sizes are very large ($d > 1.6$), confirming that the reproducibility difference is not only statistically significant but practically meaningful. All $p$-values survive Bonferroni correction at the per-family threshold $\alpha = 0.05/6 \approx 0.008$ (six primary comparisons: EMR, NED, and ROUGE-L for each of the two tasks). A post hoc power analysis confirms that $n = 30$ abstracts provides statistical power $> 0.999$ for all primary comparisons \cite{cohen1988statistical}.
 
 \textbf{Robustness check.} Since EMR values are bounded on $[0, 1]$ and the paired differences are not normally distributed (Shapiro--Wilk: $W = 0.894$, $p = 0.006$ for summarization; $W = 0.885$, $p = 0.004$ for extraction), we additionally report non-parametric Wilcoxon signed-rank tests. All results remain highly significant: summarization $W = 0.0$, $p < 0.001$; extraction $W = 0.0$, $p < 0.001$. The convergence of parametric and non-parametric tests confirms that the reproducibility gap is robust to distributional assumptions.
 
@@ -531,7 +531,7 @@ We organize threats to validity following standard categories:
 
 \textbf{Sample size and statistical power.} With $n = 30$ abstracts per condition, our study has adequate statistical power for the primary comparisons. A post hoc power analysis using the observed effect sizes ($d > 1.6$) and $\alpha = 0.05$ yields power $> 0.999$ for all primary comparisons \cite{cohen1988statistical}. However, for one secondary comparison (extraction EMR under C3$_{t=0.3}$, $d = 0.207$), power is low (0.084), meaning that subtler effects may go undetected in some conditions.
 
-\textbf{Warm-up confound.} As noted in Section~\ref{sec:discussion}, the first LLaMA~3 inference after model loading may differ from subsequent calls due to cache initialization. This affects a small number of abstracts (4 of 30 for summarization), reducing the aggregate EMR from $\sim$1.0 to 0.947. It represents an uncontrolled confound in our experimental design.
+\textbf{Warm-up confound.} As noted above, the first LLaMA~3 inference after model loading may differ from subsequent calls due to cache initialization. This affects a small number of abstracts (4 of 30 for summarization), reducing the aggregate EMR from $\sim$1.0 to 0.947. It represents an uncontrolled confound in our experimental design.
 
 \textbf{Prompt format confound.} LLaMA~3 was queried via Ollama's \texttt{/api/generate} endpoint (raw completion), whereas GPT-4 was queried via the OpenAI Chat Completions API (structured messages with system/user roles). This difference in prompt format is inherent to the deployment paradigms under study and mirrors real-world usage. To assess whether this confound explains the reproducibility gap, we conducted a supplementary control experiment running LLaMA~3 via Ollama's \texttt{/api/chat} endpoint (chat template matching GPT-4's message structure) on 10 abstracts under conditions C1 and C2 (200 runs). The results (Appendix~\ref{app:chat-control}) show that LLaMA~3 maintains near-identical reproducibility under the chat format, confirming that the prompt-format difference does not account for the observed local-vs-API gap.
 
@@ -589,12 +589,12 @@ We presented a lightweight protocol for logging, versioning, and provenance trac
 
     \item \textbf{Task structure is a primary determinant of reproducibility.} Structured extraction consistently outperforms open-ended summarization across both models, with the JSON format constraint reducing the model's output space.
 
-    \item \textbf{Temperature is the dominant user-controllable factor.} Increasing from $t = 0$ to $t = 0.7$ reduces ROUGE-L from 0.991 to 0.559 (LLaMA summarization) and from 0.936 to 0.789 (GPT-4 extraction), while seed variation has no measurable effect under greedy decoding for local models.
+    \item \textbf{Temperature is the dominant user-controllable factor.} Within the C3 temperature sweep, increasing from $t = 0.0$ to $t = 0.7$ reduces ROUGE-L from 0.991 to 0.559 (LLaMA summarization) and from 0.936 to 0.789 (GPT-4 extraction), while seed variation has no measurable effect under greedy decoding for local models.
 
     \item \textbf{Comprehensive provenance logging adds negligible overhead}: 0.545\% of inference time and approximately 4\,KB per run, thereby removing any practical argument against systematic documentation.
 \end{enumerate}
 
-These findings carry a broader implication: a significant portion of published research that relies on API-based LLMs may contain non-reproducible results without the authors' knowledge. The cost of systematic provenance logging---half a percent of inference time and four kilobytes per run---is trivially small compared to the cost of publishing non-reproducible science.
+These findings carry a broader implication: a substantial portion of published research that relies on API-based LLMs may contain non-reproducible results without the authors' knowledge. The cost of systematic provenance logging---half a percent of inference time and four kilobytes per run---is trivially small compared to the cost of publishing non-reproducible science.
 
 Looking ahead, we plan to (i)~expand the model suite to include Claude \cite{anthropic2024claude}, Gemini \cite{geminiteam2024gemini}, and open-weight models of varying sizes; (ii)~extend the task coverage to dialogue, code generation, and multi-turn interactions; and (iii)~develop automated reproducibility scoring based on provenance graph analysis. Ultimately, we envision a future in which every generative AI output carries a provenance certificate, and reproducibility metrics are reported alongside accuracy as a standard component of empirical evaluation.
 
@@ -632,6 +632,7 @@ The authors used AI-assisted tools (Claude, Anthropic) during the preparation of
 
 
 %% ============================================================
+\clearpage
 \appendix
 
 \section{Reproducibility Checklist}
@@ -793,7 +794,7 @@ Table~\ref{tab:json-metrics} presents JSON-specific quality metrics for the stru
 
 First, LLaMA~3 never produces raw-valid JSON: all 570 extraction outputs contain preamble text (e.g., ``Here is the extracted information in JSON format:'') before the JSON object, despite the prompt explicitly requesting ``JSON only, no explanation.'' After extracting the embedded JSON via regex, validity rates reach 100\% under greedy decoding, degrading slightly at higher temperatures (92.2\% at $t = 0.7$). GPT-4, by contrast, always produces raw-valid JSON with 100\% schema compliance across all conditions. This instruction-following gap is consistent with the different prompt interfaces: the chat completion API's structured message format may better signal the expected output format.
 
-Second, field-level exact match rates reveal that structured fields (\texttt{benchmark}, \texttt{model\_or\_system}) are 2--5$\times$ more reproducible than open-ended fields (\texttt{method}, \texttt{key\_result}), consistent with the finding that structured tasks achieve higher overall EMR.
+Second, field-level exact match rates reveal that structured fields (\texttt{benchmark}, \texttt{model\_or\_system}) are 2--6$\times$ more reproducible than open-ended fields (\texttt{method}, \texttt{key\_result}), consistent with the finding that structured tasks achieve higher overall EMR. Note that field-level EMR measures pairwise exact match on individual extracted field values (short strings sensitive to minor wording differences), whereas the overall extraction EMR in Table~\ref{tab:variability-results} measures whole-output character identity; these are complementary but distinct metrics.
 
 \input{table_json_metrics.tex}
 
