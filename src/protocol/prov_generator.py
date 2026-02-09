@@ -10,8 +10,8 @@ from pathlib import Path
 from typing import Optional
 
 
-NAMESPACE_PREFIX = "lgai"
-NAMESPACE_URI = "http://example.org/lgai#"
+NAMESPACE_PREFIX = "genai"
+NAMESPACE_URI = "https://genai-prov.org/ns#"
 PROV_URI = "http://www.w3.org/ns/prov#"
 
 

@@ -1,5 +1,5 @@
 # Suggested Reviewers for JAIR Submission
-# Paper: "Logging, Versioning, and Provenance in Generative AI Studies"
+# Paper: "Hidden Non-Determinism in Large Language Model APIs: A Lightweight Provenance Protocol for Reproducible Generative AI Research"
 # Date: 2026-02-08
 
 suggested_reviewers:
@@ -48,7 +48,7 @@ suggested_reviewers:
     justification: >
       Edward Raff is one of the leading empirical researchers on ML reproducibility.
       His NeurIPS 2019 study attempted to reproduce 255 ML papers, directly analogous
-      to our empirical approach with 330 GenAI experiments. His 2025 AAAI paper on the
+      to our empirical approach with 1,864 GenAI experiments. His 2025 AAAI paper on the
       semantics of "reproducibility" provides a taxonomic framework highly relevant to
       how our paper defines and measures reproducibility.
     conflict_check: "No co-authorship or institutional affiliation with any author."
@@ -81,7 +81,7 @@ suggested_reviewers:
       Challenge and co-authored the seminal NeurIPS reproducibility program report. As
       General Chair of MLRC and an Associate Editor at ReScience C, he has extensive
       hands-on experience evaluating reproducibility claims, providing valuable context
-      for assessing our 330-experiment empirical study.
+      for assessing our 1,864-run empirical study.
     conflict_check: "No co-authorship or institutional affiliation with any author."
 
 # Alternative reviewer (if geographic diversity needed):
