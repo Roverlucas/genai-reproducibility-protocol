@@ -1,6 +1,6 @@
 \begin{table*}[t]
 \centering
-\caption{JSON extraction quality metrics by model and condition. \textit{Raw Valid} = output parses directly as JSON; \textit{Extracted Valid} = JSON extracted via regex from outputs containing preamble text; \textit{Schema} = all five expected fields present; \textit{Field EMR} = pairwise exact match across runs for each extracted field. LLaMA~3 always prepends introductory text (e.g., ``Here is the extracted information in JSON format:''), yielding 0\% raw validity but near-perfect extracted validity at $t{=}0$.}
+\caption{JSON extraction quality metrics by model and condition. \textit{Raw Valid} = output parses directly as JSON; \textit{Extracted Valid} = JSON extracted via regex from outputs containing preamble text; \textit{Schema} = all five expected fields present; \textit{Field EMR} = pairwise exact match across runs for each extracted field. LLaMA~3 always prepends introductory text (e.g., ``Here is the extracted information in JSON format:''), yielding 0\% raw validity but near-perfect extracted validity at $t{=}0$. Note: Field EMR values are low because they are computed across all pairwise run combinations within a condition (including cross-abstract pairs); see Section~\ref{app:json-quality} for interpretation.}
 \label{tab:json-metrics}
 \small
 \begin{tabular}{@{}llccccccccc@{}}
