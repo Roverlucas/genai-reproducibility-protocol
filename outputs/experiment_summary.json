@@ -1,9 +1,9 @@
 {
-  "experiment_date": "2026-02-07T22:42:49.797880+00:00",
+  "experiment_date": "2026-02-08T03:00:00.000000+00:00",
   "researcher": "lucas_rover",
-  "total_runs": 330,
-  "llama_runs": 190,
-  "gpt4_runs": 140,
+  "total_runs": 1864,
+  "llama_runs": 1140,
+  "gpt4_runs": 724,
   "tasks": [
     "summarization",
     "extraction"
@@ -17,5 +17,6 @@
     "C2_var_seed/same_params",
     "C3_var_temp"
   ],
-  "n_abstracts": 5
+  "n_abstracts": 30,
+  "gpt4_note": "724 of 1140 planned runs completed due to API quota exhaustion (C1: 8/300, C2: 300/300, C3: 416/450)"
 }

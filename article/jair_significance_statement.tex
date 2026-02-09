@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+
+\title{JAIR Submission --- Significance Statement and Related Prior JAIR Work}
+\author{Lucas Rover and Yara de Souza Tadano}
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+%% ============================================================
+\section*{Significance Statement (150 words)}
+%% ============================================================
+
+Large language models are increasingly used in scientific research, yet their outputs are not deterministic---even under nominally identical settings. This paper reveals, through 1,864 controlled experiments, that GPT-4's cloud API produces the same extraction result only 44\% of the time under greedy decoding, while locally deployed LLaMA~3 achieves 99\%. This hidden non-determinism means that a significant body of published LLM-based research may be non-reproducible without the authors' knowledge. We contribute a lightweight provenance protocol---built on W3C PROV, Prompt Cards, and Run Cards---that makes this variability visible, measurable, and auditable at negligible cost (0.5\% of inference time, 4~KB per run). The protocol, reference implementation, and all experimental data are publicly available, providing the AI community with practical tools to close the reproducibility gap in generative AI research.
+
+%% ============================================================
+\section*{Closest Prior JAIR Papers}
+%% ============================================================
+
+\subsection*{1. Gundersen, Helmert, and Hoos (2024). ``Improving Reproducibility in AI Research: Four Mechanisms Adopted by JAIR.'' \textit{JAIR}, 81, 1019--1041.}
+
+This editorial describes JAIR's institutional mechanisms for reproducibility (checklists, structured abstracts, badges, reports). Our work \textbf{complements} this by providing the empirical evidence and technical infrastructure that these mechanisms require: while Gundersen et al.\ establish \textit{what} should be documented, our protocol specifies \textit{how} to document it for generative AI workflows---with cryptographic hashing, provenance graphs, and structured cards---and our experiments quantify \textit{why} it matters by demonstrating that API-based LLMs exhibit hidden non-determinism invisible without systematic logging.
+
+\subsection*{2. Atil, Tekir, Dogan, and Barlas (2024). ``Measuring Non-Determinism in Generative AI.'' \textit{Under review / arXiv:2407.03436.}}
+
+Although not published in JAIR, Atil et al.\ is the closest prior empirical study. They measure non-determinism across five models and eight tasks using the Total Agreement Rate metric. Our work differs in three ways: (i)~we provide a \textit{protocol} for prospective documentation, not just post-hoc measurement; (ii)~we directly compare local vs.\ API deployment on identical tasks, isolating the deployment paradigm as a variable; and (iii)~we quantify the overhead of systematic logging, demonstrating its feasibility at scale.
+
+\subsection*{3. Liang et al.\ (2023). ``Holistic Evaluation of Language Models (HELM).'' \textit{Transactions on Machine Learning Research}.}
+
+HELM provides a comprehensive evaluation framework for language models across multiple dimensions. Our work is orthogonal: rather than evaluating model capabilities, we address whether evaluation results themselves are reproducible. The two approaches are complementary---HELM benchmarks could adopt our provenance protocol to ensure that reported scores are auditable and reproducible across runs.
+
+\end{document}

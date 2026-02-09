@@ -310,3 +310,25 @@ for task in tasks:
             d = abs(np.mean(diff)) / np.std(diff, ddof=1) if np.std(diff, ddof=1) > 0 else float('inf')
             pw = post_hoc_power(d, len(la)) if d != float('inf') else 1.0
             print(f"  {task:<15} {cond:<12} {'EMR':<10} {d:>7.3f} {pw:>7.3f}")
+
+# ----- Robustness checks: Shapiro-Wilk normality + Wilcoxon signed-rank -----
+print("\n" + "=" * 80)
+print("ROBUSTNESS CHECKS: SHAPIRO-WILK NORMALITY + WILCOXON SIGNED-RANK")
+print("=" * 80)
+
+for task in tasks:
+    llama_emr = np.array(per_abstract[("llama", task)]["emr"])
+    gpt4_emr = np.array(per_abstract[("gpt4", task)]["emr"])
+    diff = llama_emr - gpt4_emr
+
+    # Shapiro-Wilk on paired differences
+    sw_stat, sw_p = stats.shapiro(diff)
+
+    # Wilcoxon signed-rank test
+    w_stat, w_p = stats.wilcoxon(llama_emr, gpt4_emr, alternative="two-sided")
+
+    print(f"\n--- {task.upper()} (EMR, C2) ---")
+    print(f"  Shapiro-Wilk on differences: W = {sw_stat:.4f}, p = {sw_p:.6f}")
+    print(f"    Normality assumption: {'MET' if sw_p > 0.05 else 'VIOLATED (p < 0.05)'}")
+    print(f"  Wilcoxon signed-rank: W = {w_stat:.1f}, p = {w_p:.2e}")
+    print(f"    Conclusion: {'SIGNIFICANT' if w_p < 0.05 else 'NOT SIGNIFICANT'}")

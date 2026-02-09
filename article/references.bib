@@ -1,5 +1,15 @@
 % Bibliography for JAIR article:
-% "Logging, Versioning, and Provenance in Generative AI Studies"
+% "Hidden Non-Determinism in Large Language Model APIs"
+
+@article{gundersen2024improving,
+  author  = {Gundersen, Odd Erik and Helmert, Malte and Hoos, Holger H.},
+  title   = {Improving Reproducibility in {AI} Research: Four Mechanisms Adopted by {JAIR}},
+  journal = {Journal of Artificial Intelligence Research},
+  volume  = {81},
+  pages   = {1019--1041},
+  year    = {2024},
+  doi     = {10.1613/jair.1.16905}
+}
 
 @inproceedings{vaswani2017attention,
   author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, {\L}ukasz and Polosukhin, Illia},
@@ -175,7 +185,8 @@
   year          = {2024},
   eprint        = {2407.21783},
   archiveprefix = {arXiv},
-  primaryclass  = {cs.AI}
+  primaryclass  = {cs.AI},
+  note          = {arXiv preprint}
 }
 
 @misc{achiam2023gpt4,
@@ -184,7 +195,8 @@
   year          = {2023},
   eprint        = {2303.08774},
   archiveprefix = {arXiv},
-  primaryclass  = {cs.CL}
+  primaryclass  = {cs.CL},
+  note          = {arXiv preprint}
 }
 
 @article{gundersen2018sources,
@@ -244,7 +256,8 @@
   year          = {2023},
   eprint        = {2304.02554},
   archiveprefix = {arXiv},
-  primaryclass  = {cs.CL}
+  primaryclass  = {cs.CL},
+  note          = {arXiv preprint}
 }
 
 @misc{zhu2023reproducibility,
@@ -253,7 +266,8 @@
   year          = {2023},
   eprint        = {2304.10145},
   archiveprefix = {arXiv},
-  primaryclass  = {cs.CL}
+  primaryclass  = {cs.CL},
+  note          = {arXiv preprint}
 }
 
 %% ============================================================
@@ -292,23 +306,21 @@
   url       = {https://openreview.net/forum?id=SkeHuCVFDr}
 }
 
-@inproceedings{papineni2002bleu,
-  author    = {Papineni, Kishore and Roukos, Salim and Ward, Todd and Zhu, Wei-Jing},
-  title     = {{BLEU}: A Method for Automatic Evaluation of Machine Translation},
-  booktitle = {Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics},
-  pages     = {311--318},
-  year      = {2002},
-  publisher = {Association for Computational Linguistics},
-  doi       = {10.3115/1073083.1073135}
-}
-
-@misc{liang2023holistic,
-  author        = {Liang, Percy and Bommasani, Rishi and Lee, Tony and Tsipras, Dimitris and Soylu, Dilara and Yasunaga, Michihiro and Zhang, Yian and Narayanan, Deepak and Wu, Yuhuai and Kumar, Ananya and others},
-  title         = {Holistic Evaluation of Language Models},
-  year          = {2023},
-  eprint        = {2211.09110},
+@misc{atil2024nondeterminism,
+  author        = {Atil, Berk and Aykent, Sarp and Chittams, Alexa and Fu, Lisheng and Passonneau, Rebecca J. and Radcliffe, Evan and Rajagopal, Guru Rajan and Sloan, Adam and Tudrej, Tomasz and Ture, Ferhan and Wu, Zhe and Xu, Lixinyu and Baldwin, Breck},
+  title         = {Non-Determinism of ``Deterministic'' {LLM} Settings},
+  year          = {2024},
+  eprint        = {2408.04667},
   archiveprefix = {arXiv},
   primaryclass  = {cs.CL}
+}
+
+@article{liang2023holistic,
+  author    = {Liang, Percy and Bommasani, Rishi and Lee, Tony and Tsipras, Dimitris and Soylu, Dilara and Yasunaga, Michihiro and Zhang, Yian and Narayanan, Deepak and Wu, Yuhuai and Kumar, Ananya and others},
+  title     = {Holistic Evaluation of Language Models},
+  journal   = {Transactions on Machine Learning Research},
+  year      = {2023},
+  url       = {https://openreview.net/forum?id=iO4LZibEqW}
 }
 
 @article{wilkinson2016fair,
@@ -332,15 +344,15 @@
   doi     = {10.1126/science.aah6168}
 }
 
-@article{dewinter2013using,
-  author  = {de Winter, Joost C. F.},
-  title   = {Using the Student's $t$-test with Extremely Small Sample Sizes},
-  journal = {Practical Assessment, Research, and Evaluation},
-  volume  = {18},
-  number  = {10},
-  pages   = {1--12},
-  year    = {2013},
-  doi     = {10.7275/e4r6-dj05}
+@article{ouyang2024nondeterminism,
+  author    = {Ouyang, Shuyin and Zhang, Jie M. and Harman, Mark and Wang, Meng},
+  title     = {An Empirical Study of the Non-determinism of {ChatGPT} in Code Generation},
+  journal   = {ACM Transactions on Software Engineering and Methodology},
+  volume    = {34},
+  number    = {2},
+  pages     = {1--28},
+  year      = {2024},
+  doi       = {10.1145/3697010}
 }
 
 @techreport{nist2023ai,
@@ -351,11 +363,71 @@
   doi         = {10.6028/NIST.AI.100-1}
 }
 
+@inproceedings{belz2021systematic,
+  author    = {Belz, Anya and Agarwal, Shubham and Shimorina, Anastasia and Reiter, Ehud},
+  title     = {A Systematic Review of Reproducibility Research in Natural Language Processing},
+  booktitle = {Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics},
+  pages     = {381--393},
+  year      = {2021},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2021.eacl-main.29}
+}
+
+@inproceedings{dodge2019show,
+  author    = {Dodge, Jesse and Gururangan, Suchin and Card, Dallas and Schwartz, Roy and Smith, Noah A.},
+  title     = {Show Your Work: Improved Reporting of Experimental Results},
+  booktitle = {Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing},
+  pages     = {2185--2194},
+  year      = {2019},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/D19-1224}
+}
+
+@article{kapoor2023leakage,
+  author  = {Kapoor, Sayash and Narayanan, Arvind},
+  title   = {Leakage and the Reproducibility Crisis in Machine-Learning-Based Science},
+  journal = {Patterns},
+  volume  = {4},
+  number  = {9},
+  pages   = {100804},
+  year    = {2023},
+  doi     = {10.1016/j.patter.2023.100804}
+}
+
+@misc{euaiact2024,
+  author = {{European Parliament and Council of the European Union}},
+  title  = {Regulation ({EU}) 2024/1689 Laying Down Harmonised Rules on Artificial Intelligence ({AI Act})},
+  year   = {2024},
+  url    = {https://eur-lex.europa.eu/eli/reg/2024/1689/oj}
+}
+
+@inproceedings{yuan2025nondeterminism,
+  author    = {Yuan, Jiayi and Li, Hao and Ding, Xinheng and Xie, Wenya and Li, Yu-Jhe and Zhao, Wentian and Wan, Kun and Shi, Jing and Hu, Xia and Liu, Zirui},
+  title     = {Understanding and Mitigating Numerical Sources of Nondeterminism in {LLM} Inference},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {38},
+  year      = {2025},
+  publisher = {Curran Associates, Inc.},
+  eprint    = {2506.09501},
+  archiveprefix = {arXiv}
+}
+
+@article{padovani2025yprov,
+  author  = {Padovani, Gabriele and Anantharaj, Valentine and Fiore, Sandro},
+  title   = {{yProv4ML}: Effortless Provenance Tracking for Machine Learning Systems},
+  journal = {SoftwareX},
+  volume  = {29},
+  pages   = {102028},
+  year    = {2025},
+  doi     = {10.1016/j.softx.2025.102028}
+}
+
 @misc{bommasani2022opportunities,
   author        = {Bommasani, Rishi and Hudson, Drew A. and Adeli, Ehsan and Altman, Russ and Arber, Simran and von Arx, Sydney and Bernstein, Michael S. and Bohg, Jeannette and Bosselut, Antoine and Brunskill, Emma and others},
   title         = {On the Opportunities and Risks of Foundation Models},
   year          = {2022},
   eprint        = {2108.07258},
   archiveprefix = {arXiv},
-  primaryclass  = {cs.LG}
+  primaryclass  = {cs.LG},
+  note          = {arXiv preprint}
 }

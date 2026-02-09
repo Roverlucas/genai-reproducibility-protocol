@@ -182,7 +182,7 @@ def fig_comprehensive_heatmap(analysis):
                 matrix[i, j] = agg[key]["exact_match_rate"]["mean"]
 
     fig, ax = plt.subplots(figsize=(7, 4.5))
-    im = ax.imshow(matrix, cmap="RdYlGn", aspect="auto", vmin=0, vmax=1)
+    im = ax.imshow(matrix, cmap="viridis", aspect="auto", vmin=0, vmax=1)
 
     ax.set_xticks(range(len(combos)))
     ax.set_xticklabels([c[2] for c in combos], fontsize=9)
@@ -195,7 +195,7 @@ def fig_comprehensive_heatmap(analysis):
             if np.isnan(val):
                 ax.text(j, i, "N/A", ha="center", va="center", fontsize=9, color="gray")
             else:
-                color = "white" if val < 0.5 else "black"
+                color = "white" if val < 0.4 else "black"
                 ax.text(j, i, f"{val:.2f}", ha="center", va="center",
                        fontsize=10, color=color, fontweight="bold")
 
