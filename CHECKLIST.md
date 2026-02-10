@@ -8,7 +8,7 @@
 
 ## Pre-Submission Phase
 
-- [x] Manuscript complete (38 pages, 7 models, 4 tasks, 3,804 experiments)
+- [x] Manuscript complete (41 pages, 8 models, 4 tasks, 3,904 experiments)
 - [x] All tables include bootstrap 95% CIs (10,000 resamples)
 - [x] Holm-Bonferroni correction applied across 68 hypothesis tests
 - [x] Balanced subsample sensitivity analysis (10 abstracts)
@@ -22,8 +22,8 @@
 - [x] Research highlights document
 - [x] Reproducibility checklist (Appendix A, NeurIPS-style)
 - [x] GitHub repository public: https://github.com/Roverlucas/genai-reproducibility-protocol
-- [x] All 3,804 run records, PROV documents, and analysis scripts in repo
-- [x] pytest suite: 49 tests, 100% passing
+- [x] All 3,904 run records, PROV documents, and analysis scripts in repo
+- [x] pytest suite: 51 tests, 100% passing
 - [x] GitHub Actions CI: LaTeX compilation + pytest with coverage
 - [x] Visual abstract / graphical abstract ready
 - [x] `jair.cls` formatting verified (no review mode, metadata populated)
