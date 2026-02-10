@@ -31,7 +31,7 @@ paper-experiment/
 │   │   ├── run_card.py      # Run Card generation
 │   │   └── prov_generator.py # W3C PROV-JSON generation
 │   ├── models/              # Model inference wrappers
-│   │   ├── llama_runner.py  # Ollama/LLaMA 3 8B inference
+│   │   ├── llama_runner.py  # Ollama inference (LLaMA 3, Mistral, Gemma 2)
 │   │   └── gpt4_runner.py   # OpenAI GPT-4 API inference
 │   ├── metrics/             # Variability and overhead metrics
 │   │   ├── variability.py   # EMR, NED, ROUGE-L, BERTScore
@@ -42,10 +42,10 @@ paper-experiment/
 ├── data/
 │   └── inputs/
 │       └── abstracts.json   # 30 scientific abstracts (input data)
-├── outputs/                  # Experimental outputs (1,864 runs)
-│   ├── runs/                # 1,864 individual run JSON files
-│   ├── run_cards/           # 1,864 Run Card documents
-│   ├── prov/                # 331 W3C PROV-JSON provenance documents
+├── outputs/                  # Experimental outputs (3,604 runs)
+│   ├── runs/                # 3,604 individual run JSON files
+│   ├── run_cards/           # 3,604 Run Card documents
+│   ├── prov/                # W3C PROV-JSON provenance documents
 │   ├── prompt_cards/        # 2 Prompt Card documents
 │   ├── all_runs.json        # Consolidated run data (~8 MB)
 │   └── experiment_summary.json  # Experiment metadata
@@ -69,8 +69,9 @@ paper-experiment/
 ### Prerequisites
 
 - Python 3.10+
-- [Ollama](https://ollama.com/) (for local LLaMA 3 8B inference)
+- [Ollama](https://ollama.com/) v0.15+ (for local inference: LLaMA 3 8B, Mistral 7B, Gemma 2 9B)
 - OpenAI API key (for GPT-4 experiments, optional)
+- Anthropic API key (for Claude experiments, optional)
 
 ### Setup
 
@@ -79,6 +80,8 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ollama pull llama3:8b
+ollama pull mistral:7b
+ollama pull gemma2:9b
 ```
 
 ### Running Experiments
@@ -125,18 +128,26 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
-## Key Results (1,864 Runs across 30 Abstracts)
+## Key Results (3,604 Runs across 5 Models, 4 Tasks, 30 Abstracts)
 
-| Model | Task | Condition | EMR | NED | ROUGE-L |
-|-------|------|-----------|-----|-----|---------|
-| LLaMA 3 8B | Extraction | Greedy (t=0) | **0.987** | 0.0031 | 0.9966 |
-| LLaMA 3 8B | Summarization | Greedy (t=0) | 0.947 | 0.0050 | 0.9945 |
-| GPT-4 | Extraction | Greedy (t=0) | 0.443 | 0.0724 | 0.9384 |
-| GPT-4 | Summarization | Greedy (t=0) | 0.230 | 0.1365 | 0.8695 |
+| Model | Source | Task | EMR | NED | ROUGE-L |
+|-------|--------|------|-----|-----|---------|
+| Gemma 2 9B | Local | Extraction | **1.000** | 0.000 | 1.000 |
+| Gemma 2 9B | Local | Summarization | **1.000** | 0.000 | 1.000 |
+| LLaMA 3 8B | Local | Extraction | **0.987** | 0.003 | 0.997 |
+| LLaMA 3 8B | Local | Summarization | 0.947 | 0.014 | 0.986 |
+| Mistral 7B | Local | Extraction | **0.960** | 0.001 | 1.000 |
+| Mistral 7B | Local | Summarization | 0.840 | 0.046 | 0.955 |
+| GPT-4 | API | Extraction | 0.443 | 0.072 | 0.938 |
+| GPT-4 | API | Summarization | 0.230 | 0.137 | 0.870 |
+| Claude Sonnet 4.5 | API | Extraction | 0.190 | 0.101 | 0.904 |
+| Claude Sonnet 4.5 | API | Summarization | 0.020 | 0.242 | 0.764 |
 
-**Protocol overhead:** 25.43 ms mean (0.545% of inference time), ~4.1 KB per run record, 19.52 MB total.
+**Headline result:** Local models average EMR = 0.956 vs. API models EMR = 0.221 under greedy decoding (>4x gap).
 
-**Statistical significance:** All primary comparisons p < 0.0001 (paired t-test), Cohen's d > 1.6, power > 0.999.
+**Protocol overhead:** 21-30 ms mean (<1% of inference time), ~4 KB per run record.
+
+**Statistical significance:** All primary comparisons p < 0.001 (Wilcoxon signed-rank), Cohen's d > 1.6, power > 0.999.
 
 **Note:** GPT-4 experiments used the `gpt-4-0613` snapshot. The GPT-4 C1 condition was severely incomplete (8/300 runs) due to API quota exhaustion; C2 and C3 conditions are complete.
 

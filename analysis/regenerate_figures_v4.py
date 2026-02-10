@@ -398,7 +398,15 @@ def generate_emr_heatmap(metrics):
     """Heatmap of EMR under greedy decoding for 5 models x 2 tasks.
     Green=high, red=low, white line separating local/API.
     Add +/- sigma in smaller text below each value.
+
+    Uses authoritative C1-only values from bootstrap_cis.json to ensure
+    consistency with the paper's Table 3 (avoids contamination from
+    chat-control runs in expanded_metrics.json).
     """
+    # Load authoritative C1-only values from bootstrap_cis.json
+    with open(ANALYSIS_DIR / "bootstrap_cis.json") as f:
+        bootstrap = json.load(f)
+
     tasks_conds = [
         ("extraction", "Extraction\n(greedy)"),
         ("summarization", "Summarization\n(greedy)"),
@@ -407,12 +415,15 @@ def generate_emr_heatmap(metrics):
     data = np.full((len(MODEL_ORDER), len(tasks_conds)), np.nan)
     stds = np.full((len(MODEL_ORDER), len(tasks_conds)), np.nan)
 
+    # Use bootstrap_cis.json table3 values (C1-only for local/Claude, C2 for GPT-4)
+    ci_data = bootstrap.get("table3_emr_greedy", {})
     for i, model in enumerate(MODEL_ORDER):
+        model_ci = ci_data.get(model, {})
         for j, (task, _) in enumerate(tasks_conds):
-            m = lookup_greedy(metrics, model, task)
-            if m and m["emr_mean"] is not None:
-                data[i, j] = m["emr_mean"]
-                stds[i, j] = m.get("emr_std", 0) or 0
+            task_ci = model_ci.get(task, {})
+            if task_ci:
+                data[i, j] = task_ci["mean"]
+                stds[i, j] = task_ci.get("std", 0) or 0
 
     fig, ax = plt.subplots(figsize=(6, 5.5))
 
