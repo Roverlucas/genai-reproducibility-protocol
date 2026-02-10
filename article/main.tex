@@ -1,15 +1,15 @@
-\documentclass[manuscript, screen, review]{jair}
+\documentclass[manuscript, screen]{jair}
 
 \setcopyright{cc}
 \copyrightyear{2026}
 %% DOI, AE name, volume/article/month to be filled by JAIR editorial office
-\acmDOI{}
+\acmDOI{10.1613/jair.1.XXXXX}
 
-\JAIRAE{}
+\JAIRAE{TBD}
 \JAIRTrack{}
-\acmVolume{}
-\acmArticle{}
-\acmMonth{}
+\acmVolume{0}
+\acmArticle{0}
+\acmMonth{2}
 \acmYear{2026}
 
 \usepackage[
@@ -34,6 +34,19 @@
 \usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{enumitem}
+\usepackage{microtype} % improved typography: character protrusion and font expansion
+
+%% PDF metadata
+\hypersetup{
+  pdfauthor={Lucas Rover, Yara de Souza Tadano},
+  pdftitle={Hidden Non-Determinism in Large Language Model APIs},
+  pdfsubject={Reproducibility Protocol for Generative AI},
+  pdfkeywords={reproducibility, LLM, non-determinism, provenance, W3C PROV},
+  colorlinks=true,
+  linkcolor=blue!70!black,
+  citecolor=blue!70!black,
+  urlcolor=blue!70!black,
+}
 
 \lstset{
   basicstyle=\ttfamily\small,
@@ -133,7 +146,7 @@ Importantly, ``non-reproducible'' does not necessarily mean ``unreliable'': our 
 
 A related subtlety concerns the \texttt{seed} parameter offered by some APIs. For API-served models, the seed parameter is advisory, not a guarantee of determinism: OpenAI explicitly documents that ``determinism is not guaranteed'' even when a seed is specified \cite{openai2024seed}, and Anthropic's Claude API does not support a seed parameter at all. Our experimental design accounts for this by treating seed variation as a control condition and measuring actual output reproducibility directly, rather than relying on API-side determinism guarantees.
 
-This reproducibility challenge is not merely theoretical. \citet{baker2016reproducibility} reported that over 70\% of researchers have failed to reproduce another scientist's experiment, a crisis that extends to AI research \cite{hutson2018artificial, gundersen2018state, stodden2016enhancing, kapoor2023leakage}. For generative AI specifically, the problem is compounded by several factors unique to text-generation workflows: (1)~the same prompt can yield semantically similar yet textually distinct outputs across runs; (2)~API-based models may undergo silent updates that alter behavior; (3)~temperature and sampling parameters create a high-dimensional space of possible outputs; and (4)~no established standard exists for documenting the full context needed to understand, audit, or reproduce a generative output.
+This reproducibility challenge is not merely theoretical. \citet{baker2016reproducibility} reported that over 70\% of researchers have failed to reproduce another scientist's experiment, a crisis that extends to AI research \cite{hutson2018artificial, gundersen2018state, stodden2016enhancing, kapoor2023leakage, mukherjee2025llmreproducibility}. For generative AI specifically, the problem is compounded by several factors unique to text-generation workflows: (1)~the same prompt can yield semantically similar yet textually distinct outputs across runs; (2)~API-based models may undergo silent updates that alter behavior; (3)~temperature and sampling parameters create a high-dimensional space of possible outputs; and (4)~no established standard exists for documenting the full context needed to understand, audit, or reproduce a generative output.
 
 Existing experiment-tracking tools such as MLflow \cite{zaharia2018accelerating}, Weights \& Biases \cite{biewald2020experiment}, and DVC \cite{kuprieiev2024dvc} were designed primarily for training pipelines and numerical metrics. Although valuable for their intended purposes, these tools lack features critical for generative AI studies: structured prompt versioning, cryptographic output hashing for tamper detection, provenance graphs linking outputs to their full generation context, and environment fingerprinting specific to inference-time conditions.
 
@@ -156,9 +169,9 @@ The remainder of this paper is organized as follows. Section~\ref{sec:related-wo
 
 \subsection{Reproducibility in AI Research}
 
-The reproducibility crisis in AI has been documented extensively. \citet{gundersen2018state} surveyed 400 AI papers and found that only 6\% provided sufficient information for full reproducibility. \citet{pineau2021improving} reported on the NeurIPS 2019 Reproducibility Program, which introduced reproducibility checklists and found significant gaps between reported and actual reproducibility. More recently, \citet{gundersen2024improving} described four institutional mechanisms adopted by JAIR---reproducibility checklists, structured abstracts, badges, and reproducibility reports---establishing a community standard for what should be documented in AI research. \citet{gundersen2018sources} identified three levels of reproducibility in AI---method, data, and experiment---and argued that all three are necessary for scientific progress. \citet{belz2021systematic} conducted a systematic review of 601 NLP papers and confirmed pervasive under-reporting of experimental details, while \citet{dodge2019show} proposed improved reporting standards for ML experiments, including confidence intervals and significance tests across multiple runs. More broadly, \citet{kapoor2023leakage} identified data leakage as a widespread driver of irreproducible results across 17 scientific fields that use ML-based methods.
+The reproducibility crisis in AI has been documented extensively. \citet{gundersen2018state} surveyed 400 AI papers and found that only 6\% provided sufficient information for full reproducibility. \citet{pineau2021improving} reported on the NeurIPS 2019 Reproducibility Program, which introduced reproducibility checklists and found significant gaps between reported and actual reproducibility. More recently, \citet{gundersen2024improving} described four institutional mechanisms adopted by JAIR---reproducibility checklists, structured abstracts, badges, and reproducibility reports---establishing a community standard for what should be documented in AI research. \citet{gundersen2018sources} identified three levels of reproducibility in AI---method, data, and experiment---and argued that all three are necessary for scientific progress. \citet{belz2021systematic} conducted a systematic review of 601 NLP papers and confirmed pervasive under-reporting of experimental details; \citet{belz2022quantified} further showed that missing information makes it practically impossible to assess reproducibility of human evaluations in NLP. \citet{rogers2021changing} proposed incentive structures to improve reproducibility norms in computational linguistics. \citet{dodge2019show} proposed improved reporting standards for ML experiments, including confidence intervals and significance tests across multiple runs, and \citet{gundersen2022sources} provided a comprehensive taxonomy of irreproducibility sources in machine learning. More broadly, \citet{kapoor2023leakage} identified data leakage as a widespread driver of irreproducible results across 17 scientific fields that use ML-based methods.
 
-For generative AI specifically, \citet{chen2023chatgpt} demonstrated that ChatGPT's outputs on NLP benchmarks exhibit non-trivial variability across identical queries, even with temperature set to zero. \citet{zhu2023reproducibility} showed that reproducibility degrades further when tasks involve subjective judgment, such as social computing annotations. Most recently, \citet{atil2024nondeterminism} systematically measured the non-determinism of five LLMs under supposedly deterministic settings across eight tasks, finding accuracy variations up to 15\% across runs and introducing the Total Agreement Rate (TAR) metric. \citet{ouyang2024nondeterminism} confirmed that temperature zero does not guarantee determinism in ChatGPT code generation. Most recently, \citet{yuan2025nondeterminism} traced such non-determinism to numerical precision issues in GPU kernels and proposed LayerCast as a mitigation strategy---a hardware-level fix that reduces but does not eliminate non-determinism, and that is not available to researchers using closed API services. Our Exact Match Rate (EMR) metric is closely related to \citeauthor{atil2024nondeterminism}'s Total Agreement Rate (TAR), which measures the fraction of runs producing the modal output; EMR instead measures the fraction of \textit{all output pairs} that match exactly, providing a more sensitive measure when agreement is low and no clear modal output exists. Our work complements these studies in four specific ways. First, whereas prior studies (including Atil et al.'s five-model, eight-task study) measure variability post hoc, we provide a structured provenance protocol that enables \textit{prospective} documentation and audit---answering not only ``how much variability?'' but also ``why did these outputs differ?'' through cryptographic hashing and W3C PROV graphs. Second, we directly compare local and API-based inference on identical tasks with identical prompts across \textit{seven} models and \textit{four} independent API providers (OpenAI, Anthropic, DeepSeek, and Perplexity), isolating the deployment paradigm as a variable and confirming that API non-determinism is a consistent pattern across providers---while revealing substantial variation in its magnitude (EMR ranging from 0.010 to 0.800 across providers). Third, we extend beyond single-turn evaluation to include multi-turn refinement and retrieval-augmented generation, demonstrating that reproducibility characteristics generalize across interaction regimes. Fourth, we quantify the overhead of systematic logging, demonstrating that the ``cost of knowing'' is negligible.
+For generative AI specifically, \citet{chen2023chatgpt} demonstrated that ChatGPT's outputs on NLP benchmarks exhibit non-trivial variability across identical queries, even with temperature set to zero. \citet{zhu2023reproducibility} showed that reproducibility degrades further when tasks involve subjective judgment, such as social computing annotations. Most recently, \citet{atil2024nondeterminism} systematically measured the non-determinism of five LLMs under supposedly deterministic settings across eight tasks, finding accuracy variations up to 15\% across runs and introducing the Total Agreement Rate (TAR) metric. \citet{ouyang2024nondeterminism} confirmed that temperature zero does not guarantee determinism in ChatGPT code generation. Most recently, \citet{yuan2025nondeterminism} traced such non-determinism to numerical precision issues in GPU kernels and proposed LayerCast as a mitigation strategy---a hardware-level fix that reduces but does not eliminate non-determinism, and that is not available to researchers using closed API services. The PyTorch documentation \cite{pytorch2024deterministic} further catalogues sources of non-determinism in GPU operations, providing the \texttt{torch.use\_deterministic\_algorithms()} flag as a partial mitigation for training; however, this flag is unavailable for API-served inference. Our Exact Match Rate (EMR) metric is closely related to \citeauthor{atil2024nondeterminism}'s Total Agreement Rate (TAR), which measures the fraction of runs producing the modal output; EMR instead measures the fraction of \textit{all output pairs} that match exactly, providing a more sensitive measure when agreement is low and no clear modal output exists. Our work complements these studies in four specific ways. First, whereas prior studies (including Atil et al.'s five-model, eight-task study) measure variability post hoc, we provide a structured provenance protocol that enables \textit{prospective} documentation and audit---answering not only ``how much variability?'' but also ``why did these outputs differ?'' through cryptographic hashing and W3C PROV graphs. Second, we directly compare local and API-based inference on identical tasks with identical prompts across \textit{seven} models and \textit{four} independent API providers (OpenAI, Anthropic, DeepSeek, and Perplexity), isolating the deployment paradigm as a variable and confirming that API non-determinism is a consistent pattern across providers---while revealing substantial variation in its magnitude (EMR ranging from 0.010 to 0.800 across providers). Third, we extend beyond single-turn evaluation to include multi-turn refinement and retrieval-augmented generation, demonstrating that reproducibility characteristics generalize across interaction regimes. Fourth, we quantify the overhead of systematic logging, demonstrating that the ``cost of knowing'' is negligible.
 
 \subsection{Experiment Tracking Tools}
 
@@ -395,6 +408,10 @@ We evaluate seven models representing two fundamentally different deployment par
 
 \textbf{Claude Sonnet 4.5} \cite{anthropic2024claude}: Accessed via the Anthropic API using a lightweight \texttt{urllib}-based runner (no SDK dependency). Claude's API does not support a \texttt{seed} parameter; we set \texttt{temperature=0} for greedy decoding and logged a seed value for protocol parity (marked as \texttt{logged-only-not-sent-to-api}). This provides an independent replication of the API non-determinism phenomenon on a second cloud provider.
 
+\textbf{DeepSeek Chat} (DeepSeek): Accessed via the OpenAI-compatible API. DeepSeek Chat represents a third independent API provider, allowing us to test whether the non-determinism pattern generalizes beyond the two largest Western providers. No seed parameter is supported; we set \texttt{temperature=0} for greedy decoding. DeepSeek Chat is evaluated under conditions C1 and C2 on single-turn tasks only (10 abstracts, 100 runs).
+
+\textbf{Perplexity Sonar} (Perplexity): An online, search-augmented language model accessed via the Perplexity API. Unlike the other six models, Sonar incorporates real-time web search results into its generation context, introducing an additional source of variability beyond model-internal non-determinism. This model represents a fourth independent API provider and a qualitatively different deployment paradigm (search-augmented generation). Evaluated under C1 on single-turn tasks only (10 abstracts, 100 runs).
+
 \subsection{Tasks}
 
 We evaluate four tasks that span the output-structure spectrum and interaction complexity:
@@ -577,8 +594,8 @@ Figure~\ref{fig:heatmap} provides a comprehensive heatmap of EMR across all mode
 \begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{figures/fig_emr_heatmap.pdf}
-    \caption{Heatmap of Exact Match Rate under greedy decoding for seven models. The horizontal white line separates local models (top three, green) from API-served models (bottom two, red). Gemma~2 9B achieves perfect 1.000 across all tasks.}
-    \Description{A heatmap with 5 rows (models) and 2 columns (tasks), using a red-yellow-green colormap where green indicates high EMR and red indicates low EMR.}
+    \caption{Heatmap of Exact Match Rate under greedy decoding for seven models. The horizontal white line separates local models (top three, green) from API-served models (bottom four, red/orange). Gemma~2 9B achieves perfect 1.000 across all tasks; DeepSeek Chat achieves the highest API reproducibility.}
+    \Description{A heatmap with 7 rows (models) and 2 columns (tasks), using a red-yellow-green colormap where green indicates high EMR and red indicates low EMR.}
     \label{fig:heatmap}
 \end{figure}
 
@@ -586,7 +603,7 @@ Figure~\ref{fig:heatmap} provides a comprehensive heatmap of EMR across all mode
     \centering
     \includegraphics[width=\linewidth]{figures/fig_three_level_radar.pdf}
     \caption{Three-level reproducibility profiles under greedy decoding. Local models (solid lines) occupy the outer region across all five metrics, while API models (dashed lines) show pronounced deficits in EMR and NED while maintaining high BERTScore, indicating that API non-determinism is primarily lexical rather than semantic.}
-    \Description{Radar chart with five axes showing EMR extraction, EMR summarization, 1-NED, ROUGE-L, and BERTScore for seven models.}
+    \Description{Radar chart with five axes showing EMR extraction, EMR summarization, 1-NED, ROUGE-L, and BERTScore for seven models (three local, four API).}
     \label{fig:radar}
 \end{figure}
 
@@ -1105,6 +1122,12 @@ Claude Sonnet 4.5 & Extraction & 10 (49)$^\ddagger$ & 10 (50) & 10 (30) & 10 (30
  & Summarization & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
  & Multi-turn & 10 (50) & -- & -- & -- & -- \\
  & RAG & 10 (50) & -- & -- & -- & -- \\
+\addlinespace
+DeepSeek Chat & Extraction & 10 (50) & -- & -- & -- & -- \\
+ & Summarization & 10 (50) & -- & -- & -- & -- \\
+\addlinespace
+Perplexity Sonar & Extraction & 10 (50) & -- & -- & -- & -- \\
+ & Summarization & 10 (50) & -- & -- & -- & -- \\
 \bottomrule
 \end{tabular}
 \par\smallskip\raggedright\footnotesize
@@ -1181,6 +1204,26 @@ To address potential ``apples-to-oranges'' concerns, we document the exact paylo
 \end{quote}
 
 \noindent No \texttt{seed} parameter (not supported by the Anthropic API), no system message, no stop sequences. The seed value in the Run Card is marked \texttt{seed\_status: "logged-only-not-sent-to-api"}.
+
+\textbf{DeepSeek Chat (DeepSeek).} Accessed via the OpenAI-compatible API:
+
+\begin{quote}\small\ttfamily
+\{"model": "deepseek-chat",\\
+\phantom{x}"messages": [\{"role": "user", "content": "<prompt>"\}],\\
+\phantom{x}"temperature": 0.0, "max\_tokens": 1024\}
+\end{quote}
+
+\noindent No seed parameter, system message, or stop sequences. DeepSeek Chat achieved the highest API reproducibility (EMR = 0.800 for extraction), suggesting effective internal determinism under greedy decoding.
+
+\textbf{Perplexity Sonar (Perplexity).} Accessed via the Perplexity API:
+
+\begin{quote}\small\ttfamily
+\{"model": "sonar",\\
+\phantom{x}"messages": [\{"role": "user", "content": "<prompt>"\}],\\
+\phantom{x}"temperature": 0.0, "max\_tokens": 1024\}
+\end{quote}
+
+\noindent Perplexity Sonar is an online model with real-time search augmentation. No seed parameter or system message. The search-augmented nature introduces an additional source of variability: retrieved web content may differ across requests, contributing to the lowest observed reproducibility (EMR = 0.010--0.100).
 
 \textbf{Key symmetry points.} Across all seven models: (1)~identical prompt text (verified by \texttt{prompt\_hash}); (2)~identical temperature ($t{=}0.0$); (3)~identical max token limit (1,024); (4)~no system messages; (5)~no stop sequences; (6)~no post-processing or text normalization of outputs.
 
