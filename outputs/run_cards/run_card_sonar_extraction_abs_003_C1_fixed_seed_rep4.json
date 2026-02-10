@@ -1,0 +1,39 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "sonar_extraction_abs_003_C1_fixed_seed_rep4",
+  "task_id": "extraction",
+  "task_category": "information_extraction",
+  "prompt_card_ref": "extraction_v1",
+  "prompt_hash": "ddc1746ca23ddafc9f63790dbd2d86930c1248713bf7c854b4e119ba9f0063c1",
+  "model_name": "sonar",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "perplexity-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 1024
+  },
+  "params_hash": "74e536cb8296e15875f54788042fd65566e46fdd1b8b52daa1e191a5430031de",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "8721894d3a1aa09f13f8c6ad2c04029c3be59f54",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T19:30:16.115534+00:00",
+  "timestamp_end": "2026-02-10T19:30:18.982219+00:00",
+  "execution_duration_ms": 2866.68,
+  "output_hash": "64d165ad59aced0ee15ec16b7957e04767b80cd0bd80ee7e0b20c49ee6170cf0",
+  "output_metrics": {},
+  "logging_overhead_ms": 21.31,
+  "storage_kb": 4.82,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

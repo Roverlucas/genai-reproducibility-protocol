@@ -1,0 +1,39 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "deepseek-chat_extraction_abs_003_C1_fixed_seed_rep4",
+  "task_id": "extraction",
+  "task_category": "information_extraction",
+  "prompt_card_ref": "extraction_v1",
+  "prompt_hash": "ddc1746ca23ddafc9f63790dbd2d86930c1248713bf7c854b4e119ba9f0063c1",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 1024
+  },
+  "params_hash": "74e536cb8296e15875f54788042fd65566e46fdd1b8b52daa1e191a5430031de",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "8721894d3a1aa09f13f8c6ad2c04029c3be59f54",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T19:27:54.508678+00:00",
+  "timestamp_end": "2026-02-10T19:27:58.411403+00:00",
+  "execution_duration_ms": 3902.73,
+  "output_hash": "fa1be8c775d6f6def8fde268a659feb05856ce28c5bd51562b7372ebc69c5551",
+  "output_metrics": {},
+  "logging_overhead_ms": 21.4,
+  "storage_kb": 4.53,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

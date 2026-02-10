@@ -26,15 +26,19 @@ MODEL_FILE_PREFIX = {
     "gemma2_9b": "gemma2_9b",
     "gpt-4": "gpt4",
     "sonnet-4-5": "claude_sonnet",
+    "deepseek-chat": "deepseek_chat",
+    "sonar": "perplexity_sonar",
 }
 
 # For Table 3 (greedy decoding EMR): which condition to use per model
 TABLE3_CONDITIONS = {
-    "llama3_8b":      "C1_fixed_seed",
-    "mistral_7b":     "C1_fixed_seed",
-    "gemma2_9b":      "C1_fixed_seed",
-    "gpt4":           "C2_same_params",
-    "claude_sonnet":  "C1_fixed_seed",
+    "llama3_8b":         "C1_fixed_seed",
+    "mistral_7b":        "C1_fixed_seed",
+    "gemma2_9b":         "C1_fixed_seed",
+    "gpt4":              "C2_same_params",
+    "claude_sonnet":     "C1_fixed_seed",
+    "deepseek_chat":     "C1_fixed_seed",
+    "perplexity_sonar":  "C1_fixed_seed",
 }
 
 TABLE3_TASKS = ["extraction", "summarization"]
@@ -167,9 +171,9 @@ def main():
     bootstrap_results = {}
 
     # Table 3
-    print("\n  --- Table 3: EMR Greedy (5 models x extraction, summarization) ---")
+    print("\n  --- Table 3: EMR Greedy (7 models x extraction, summarization) ---")
     table3 = {}
-    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet"]:
+    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar"]:
         cond = TABLE3_CONDITIONS[model]
         table3[model] = {}
         for task in TABLE3_TASKS:
@@ -225,7 +229,7 @@ def main():
 
     print("\n  --- Balanced Table 3 (first 10 abstracts) ---")
     balanced_table3 = {}
-    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet"]:
+    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar"]:
         cond = TABLE3_CONDITIONS[model]
         balanced_table3[model] = {}
         for task in TABLE3_TASKS:
@@ -248,7 +252,7 @@ def main():
 
     print("\n  --- Local vs API averages (10-abstract subsample) ---")
     local_models = ["llama3_8b", "mistral_7b", "gemma2_9b"]
-    api_models = ["gpt4", "claude_sonnet"]
+    api_models = ["gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar"]
     for label, model_list in [("Local", local_models), ("API", api_models)]:
         all_emrs_sub = []
         all_emrs_full = []
@@ -307,7 +311,7 @@ def main():
     print("\nTable 3 -- EMR under Greedy Decoding (with 95% Bootstrap CIs):")
     print(f"  {'Model':<20s} | {'Extraction':>30s} | {'Summarization':>30s}")
     print("  " + "-" * 85)
-    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet"]:
+    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar"]:
         ext = table3[model]["extraction"]
         summ = table3[model]["summarization"]
         def fmt(ci):

@@ -10,12 +10,14 @@ GPT4_MODEL = "gpt-4"
 MISTRAL_MODEL = "mistral:7b"
 GEMMA2_MODEL = "gemma2:9b"
 CLAUDE_MODEL = "claude-sonnet-4-5-20250929"
+DEEPSEEK_MODEL = "deepseek-chat"
+PERPLEXITY_MODEL = "sonar"
 
 # All local models (served via Ollama)
 LOCAL_MODELS = [LLAMA_MODEL, MISTRAL_MODEL, GEMMA2_MODEL]
 
 # API models
-API_MODELS = [GPT4_MODEL, CLAUDE_MODEL]
+API_MODELS = [GPT4_MODEL, CLAUDE_MODEL, DEEPSEEK_MODEL, PERPLEXITY_MODEL]
 
 # Number of repetitions per condition
 N_REPS = 5

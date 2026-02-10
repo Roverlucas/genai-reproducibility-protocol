@@ -179,14 +179,86 @@
         },
         "delta": 0.0
       }
+    },
+    "deepseek_chat": {
+      "extraction": {
+        "subsample_10": {
+          "mean": 0.8,
+          "ci_lower": 0.68,
+          "ci_upper": 0.92,
+          "n_abstracts": 10,
+          "std": 0.2108
+        },
+        "full": {
+          "mean": 0.8,
+          "ci_lower": 0.68,
+          "ci_upper": 0.92,
+          "n_abstracts": 10,
+          "std": 0.2108
+        },
+        "delta": 0.0
+      },
+      "summarization": {
+        "subsample_10": {
+          "mean": 0.76,
+          "ci_lower": 0.64,
+          "ci_upper": 0.88,
+          "n_abstracts": 10,
+          "std": 0.2066
+        },
+        "full": {
+          "mean": 0.76,
+          "ci_lower": 0.64,
+          "ci_upper": 0.88,
+          "n_abstracts": 10,
+          "std": 0.2066
+        },
+        "delta": 0.0
+      }
+    },
+    "perplexity_sonar": {
+      "extraction": {
+        "subsample_10": {
+          "mean": 0.1,
+          "ci_lower": 0.02,
+          "ci_upper": 0.23,
+          "n_abstracts": 10,
+          "std": 0.1886
+        },
+        "full": {
+          "mean": 0.1,
+          "ci_lower": 0.02,
+          "ci_upper": 0.23,
+          "n_abstracts": 10,
+          "std": 0.1886
+        },
+        "delta": 0.0
+      },
+      "summarization": {
+        "subsample_10": {
+          "mean": 0.01,
+          "ci_lower": 0.0,
+          "ci_upper": 0.03,
+          "n_abstracts": 10,
+          "std": 0.0316
+        },
+        "full": {
+          "mean": 0.01,
+          "ci_lower": 0.0,
+          "ci_upper": 0.03,
+          "n_abstracts": 10,
+          "std": 0.0316
+        },
+        "delta": 0.0
+      }
     }
   },
   "local_avg_emr_sub10": 0.9533,
   "local_avg_emr_full": 0.96,
-  "api_avg_emr_sub10": 0.19,
-  "api_avg_emr_full": 0.2787,
-  "local_api_gap_ratio_sub10": 5.0,
-  "local_api_gap_ratio_full": 3.4,
+  "api_avg_emr_sub10": 0.3038,
+  "api_avg_emr_full": 0.325,
+  "local_api_gap_ratio_sub10": 3.1,
+  "local_api_gap_ratio_full": 3.0,
   "llama3_10_vs_30": {
     "extraction": {
       "sub10": {
