@@ -1,0 +1,45 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "sonnet-4-5_rag_extraction_abs_003_C1_fixed_seed_rep0",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "prompt_card_ref": "prompt_card_rag_extraction_v1_0.json",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "798df7eed2b7330b62f75040c9b1663c2d05e17eb1a44fef54ecc10b2f8fa2da",
+  "interaction_regime": "single-turn-with-context",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Brown et al. 2020 - Language Models are Few-Shot Learners (NeurIPS)",
+    "retrieved_text": "Related work: GPT-2 (Radford et al., 2019) explored language model scaling up to 1.5B parameters. Scaling laws (Kaplan et al., 2020) showed predictable performance improvements with model size. In-context learning was first observed in large autoregressive models performing tasks through prompting.",
+    "n_chunks": 1
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "6fe31fd70f043bf1aba26073b7dd7c7735ff7e38",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T16:34:46.532755+00:00",
+  "timestamp_end": "2026-02-10T16:34:50.620290+00:00",
+  "execution_duration_ms": 4087.53,
+  "output_hash": "2ed725d763be4ce5ae0713275ac15e4a32d727601d86dcbae00a1e9b38ca652a",
+  "output_metrics": {},
+  "logging_overhead_ms": 25.86,
+  "storage_kb": 5.17,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

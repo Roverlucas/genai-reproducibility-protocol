@@ -1,0 +1,45 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "sonnet-4-5_rag_extraction_abs_002_C1_fixed_seed_rep3",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "prompt_card_ref": "prompt_card_rag_extraction_v1_0.json",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "798df7eed2b7330b62f75040c9b1663c2d05e17eb1a44fef54ecc10b2f8fa2da",
+  "interaction_regime": "single-turn-with-context",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Devlin et al. 2019 - BERT: Pre-training of Deep Bidirectional Transformers (NAACL)",
+    "retrieved_text": "Related work: ELMo (Peters et al., 2018) demonstrated that deep contextualized word representations improve NLP tasks. GPT (Radford et al., 2018) showed that generative pre-training followed by discriminative fine-tuning achieves strong results. The GLUE benchmark (Wang et al., 2018) and SQuAD (Rajpurkar et al., 2016) are standard NLU evaluation suites.",
+    "n_chunks": 1
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "6fe31fd70f043bf1aba26073b7dd7c7735ff7e38",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T16:34:38.269768+00:00",
+  "timestamp_end": "2026-02-10T16:34:42.171713+00:00",
+  "execution_duration_ms": 3901.95,
+  "output_hash": "f6090e6c8b9f5842b8ceb1baf36fa402c8808d21f50c36553c5e4dab51e58f22",
+  "output_metrics": {},
+  "logging_overhead_ms": 24.33,
+  "storage_kb": 4.95,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

@@ -1,0 +1,53 @@
+{
+  "run_id": "sonnet-4-5_rag_extraction_abs_004_C1_fixed_seed_rep0",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "interaction_regime": "single-turn-with-context",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "prompt_text": "You are given a scientific abstract and additional context retrieved from related papers. Extract information from the PRIMARY abstract into the JSON format below. Use the retrieved context only to disambiguate or enrich fields, but the abstract is the authoritative source.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string\",\n  \"method\": \"string\",\n  \"key_result\": \"string\",\n  \"model_or_system\": \"string\",\n  \"benchmark\": \"string\"\n}",
+  "input_text": "Transfer learning, where a model is first pre-trained on a data-rich task before being fine-tuned on a downstream task, has emerged as a powerful technique in natural language processing (NLP). The effectiveness of transfer learning has given rise to a diversity of approaches, methodology, and practice. In this paper, we explore the landscape of transfer learning techniques for NLP by introducing a unified framework that converts all text-based language problems into a text-to-text format. Our systematic study compares pre-training objectives, architectures, unlabeled data sets, transfer approaches, and other factors on dozens of language understanding tasks. We also explore the limits of transfer learning by scaling up models and data as much as computationally feasible. Our largest model, which we refer to as T5, achieves state-of-the-art results on many benchmarks while being flexible enough to be cast into any text-based task. To promote reproducibility and enable direct comparison of the many approaches we cover, we release our data set, pre-trained models, and code.",
+  "input_hash": "419c8313715952478b6ac4cf1aac7b994a1eb98137a8b8f219670271245a06e7",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "798df7eed2b7330b62f75040c9b1663c2d05e17eb1a44fef54ecc10b2f8fa2da",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Raffel et al. 2020 - Exploring the Limits of Transfer Learning with T5 (JMLR)",
+    "retrieved_text": "Related work: BERT (Devlin et al., 2019) established masked language modeling for pre-training. UniLM (Dong et al., 2019) unified different pre-training objectives. The Colossal Clean Crawled Corpus (C4) was introduced specifically for studying transfer learning at scale.",
+    "n_chunks": 1
+  },
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-02-10T16:35:07.794371+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "6fe31fd70f043bf1aba26073b7dd7c7735ff7e38",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-02-10T16:35:07.794290+00:00",
+  "timestamp_end": "2026-02-10T16:35:12.608332+00:00",
+  "output_text": "```json\n{\n  \"objective\": \"To explore the landscape of transfer learning techniques for NLP by introducing a unified framework that converts all text-based language problems into a text-to-text format, and to systematically compare various factors including pre-training objectives, architectures, unlabeled data sets, and transfer approaches\",\n  \"method\": \"Unified text-to-text framework that converts all language problems into a common format; systematic study comparing pre-training objectives, architectures, unlabeled data sets, transfer approaches, and other factors across dozens of language understanding tasks; scaling up models and data to explore limits of transfer learning\",\n  \"key_result\": \"Largest model (T5) achieves state-of-the-art results on many benchmarks while being flexible enough to be cast into any text-based task\",\n  \"model_or_system\": \"T5 (Text-to-Text Transfer Transformer)\",\n  \"benchmark\": \"Multiple language understanding tasks and benchmarks (specific benchmarks not detailed in abstract)\"\n}\n```",
+  "output_metrics": {},
+  "execution_duration_ms": 4814.04,
+  "logging_overhead_ms": 26.25,
+  "system_logs": "{\"inference_duration_ms\": 4787.6, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 457, \"output_tokens\": 230}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_012A3y7C28pz4Us1YDtbMRmq\"}",
+  "errors": [],
+  "output_hash": "8ea5184fe06dc1f9c51efa210fc004058f129700392645ffc2c8b9af275ca89d",
+  "storage_kb": 5.12
+}

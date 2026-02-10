@@ -1,0 +1,40 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "sonnet-4-5_multiturn_refinement_abs_007_C1_fixed_seed_rep2",
+  "task_id": "multiturn_refinement",
+  "task_category": "iterative_structured_extraction",
+  "prompt_card_ref": "prompt_card_multiturn_refinement_v1_0.json",
+  "prompt_hash": "9eda47b5621ad7e12f0c3858d37302eca2a96b3aec305dd4f17c4f3dc95ed54b",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "798df7eed2b7330b62f75040c9b1663c2d05e17eb1a44fef54ecc10b2f8fa2da",
+  "interaction_regime": "multi-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "6fe31fd70f043bf1aba26073b7dd7c7735ff7e38",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T16:30:40.144813+00:00",
+  "timestamp_end": "2026-02-10T16:30:51.684599+00:00",
+  "execution_duration_ms": 11539.79,
+  "output_hash": "210ee2336820b5b861e3fac6df44be5f64e688f367deeef37f4b7ebd0d5db8a7",
+  "output_metrics": {},
+  "logging_overhead_ms": 27.18,
+  "storage_kb": 13.97,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

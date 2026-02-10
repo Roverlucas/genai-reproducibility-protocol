@@ -1,0 +1,1801 @@
+{
+  "description": "Statistical tests for 5-model reproducibility study",
+  "n_bootstrap": 10000,
+  "alpha": 0.05,
+  "bootstrap_cis_per_condition": [
+    {
+      "model": "claude_sonnet",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.19000000000000003,
+      "emr_std": 0.30713731999438515,
+      "bootstrap_ci_low": 0.05,
+      "bootstrap_ci_high": 0.39999999999999997
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "extraction",
+      "condition": "C2_var_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.07999999999999999,
+      "emr_std": 0.07888106377466154,
+      "bootstrap_ci_low": 0.04,
+      "bootstrap_ci_high": 0.13
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "extraction",
+      "condition": "C3_temp0_0",
+      "n_abstracts": 10,
+      "emr_mean": 0.06666666666666667,
+      "emr_std": 0.1405456737852613,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.16666666666666666
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "extraction",
+      "condition": "C3_temp0_3",
+      "n_abstracts": 10,
+      "emr_mean": 0.7,
+      "emr_std": 0.39907299991262163,
+      "bootstrap_ci_low": 0.4666666666666666,
+      "bootstrap_ci_high": 0.9333333333333332
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "extraction",
+      "condition": "C3_temp0_7",
+      "n_abstracts": 10,
+      "emr_mean": 0.13333333333333333,
+      "emr_std": 0.17213259316477408,
+      "bootstrap_ci_low": 0.03333333333333333,
+      "bootstrap_ci_high": 0.23333333333333334
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "multiturn_refinement",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.04,
+      "emr_std": 0.0699205898780101,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.08
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "rag_extraction",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "summarization",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.02,
+      "emr_std": 0.04216370213557839,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.05
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "summarization",
+      "condition": "C2_var_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.03,
+      "emr_std": 0.09486832980505139,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.09
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "summarization",
+      "condition": "C3_temp0_0",
+      "n_abstracts": 10,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "summarization",
+      "condition": "C3_temp0_3",
+      "n_abstracts": 10,
+      "emr_mean": 0.2333333333333333,
+      "emr_std": 0.31622776601683794,
+      "bootstrap_ci_low": 0.06666666666666667,
+      "bootstrap_ci_high": 0.4333333333333333
+    },
+    {
+      "model": "claude_sonnet",
+      "task": "summarization",
+      "condition": "C3_temp0_7",
+      "n_abstracts": 10,
+      "emr_mean": 0.03333333333333333,
+      "emr_std": 0.10540925533894596,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.1
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 1.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 1.0,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "extraction",
+      "condition": "C2_var_seed",
+      "n_abstracts": 10,
+      "emr_mean": 1.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 1.0,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "extraction",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 10,
+      "emr_mean": 1.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 1.0,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "extraction",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 10,
+      "emr_mean": 0.19999999999999998,
+      "emr_std": 0.32203059435976533,
+      "bootstrap_ci_low": 0.03333333333333333,
+      "bootstrap_ci_high": 0.4
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "extraction",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 10,
+      "emr_mean": 0.03333333333333333,
+      "emr_std": 0.10540925533894596,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.1
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "multiturn_refinement",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 1.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 1.0,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "rag_extraction",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 1.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 1.0,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "summarization",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 1.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 1.0,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "summarization",
+      "condition": "C2_var_seed",
+      "n_abstracts": 10,
+      "emr_mean": 1.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 1.0,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "summarization",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 10,
+      "emr_mean": 1.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 1.0,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "summarization",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 10,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "summarization",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 10,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "gpt4",
+      "task": "extraction",
+      "condition": "C2_same_params",
+      "n_abstracts": 30,
+      "emr_mean": 0.44333333333333336,
+      "emr_std": 0.3410767264609729,
+      "bootstrap_ci_low": 0.32333333333333336,
+      "bootstrap_ci_high": 0.5666666666666667
+    },
+    {
+      "model": "gpt4",
+      "task": "extraction",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 14,
+      "emr_mean": 0.38095238095238093,
+      "emr_std": 0.43080411510590927,
+      "bootstrap_ci_low": 0.16666666666666669,
+      "bootstrap_ci_high": 0.5952380952380952
+    },
+    {
+      "model": "gpt4",
+      "task": "extraction",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 14,
+      "emr_mean": 0.14285714285714285,
+      "emr_std": 0.28387687575088005,
+      "bootstrap_ci_low": 0.023809523809523808,
+      "bootstrap_ci_high": 0.3095238095238095
+    },
+    {
+      "model": "gpt4",
+      "task": "extraction",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 17,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "gpt4",
+      "task": "summarization",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 3,
+      "emr_mean": 0.1111111111111111,
+      "emr_std": 0.19245008972987526,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.3333333333333333
+    },
+    {
+      "model": "gpt4",
+      "task": "summarization",
+      "condition": "C2_same_params",
+      "n_abstracts": 30,
+      "emr_mean": 0.23,
+      "emr_std": 0.1967844961653089,
+      "bootstrap_ci_low": 0.16333333333333327,
+      "bootstrap_ci_high": 0.3
+    },
+    {
+      "model": "gpt4",
+      "task": "summarization",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 30,
+      "emr_mean": 0.14444444444444443,
+      "emr_std": 0.3117535785552716,
+      "bootstrap_ci_low": 0.04444444444444444,
+      "bootstrap_ci_high": 0.26666666666666666
+    },
+    {
+      "model": "gpt4",
+      "task": "summarization",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 30,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "gpt4",
+      "task": "summarization",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 30,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "llama3_8b",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 30,
+      "emr_mean": 0.9866666666666667,
+      "emr_std": 0.07302967433402216,
+      "bootstrap_ci_low": 0.9599999999999999,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "llama3_8b",
+      "task": "extraction",
+      "condition": "C2_var_seed",
+      "n_abstracts": 30,
+      "emr_mean": 0.9866666666666667,
+      "emr_std": 0.07302967433402216,
+      "bootstrap_ci_low": 0.9599999999999999,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "llama3_8b",
+      "task": "extraction",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 30,
+      "emr_mean": 0.9777777777777777,
+      "emr_std": 0.12171612389003691,
+      "bootstrap_ci_low": 0.9333333333333332,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "llama3_8b",
+      "task": "extraction",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 30,
+      "emr_mean": 0.21111111111111108,
+      "emr_std": 0.34445062409485616,
+      "bootstrap_ci_low": 0.1,
+      "bootstrap_ci_high": 0.3444444444444444
+    },
+    {
+      "model": "llama3_8b",
+      "task": "extraction",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 30,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "llama3_8b",
+      "task": "multiturn_refinement",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.8799999999999999,
+      "emr_std": 0.1932183566158592,
+      "bootstrap_ci_low": 0.76,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "llama3_8b",
+      "task": "rag_extraction",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.96,
+      "emr_std": 0.12649110640673517,
+      "bootstrap_ci_low": 0.8799999999999999,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "llama3_8b",
+      "task": "summarization",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 30,
+      "emr_mean": 0.9311111111111112,
+      "emr_std": 0.1596452004863102,
+      "bootstrap_ci_low": 0.8711111111111113,
+      "bootstrap_ci_high": 0.9814814814814814
+    },
+    {
+      "model": "llama3_8b",
+      "task": "summarization",
+      "condition": "C2_var_seed",
+      "n_abstracts": 30,
+      "emr_mean": 0.9311111111111112,
+      "emr_std": 0.1596452004863102,
+      "bootstrap_ci_low": 0.8711111111111113,
+      "bootstrap_ci_high": 0.9814814814814814
+    },
+    {
+      "model": "llama3_8b",
+      "task": "summarization",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 30,
+      "emr_mean": 0.911111111111111,
+      "emr_std": 0.230497269094507,
+      "bootstrap_ci_low": 0.8222222222222222,
+      "bootstrap_ci_high": 0.9777777777777779
+    },
+    {
+      "model": "llama3_8b",
+      "task": "summarization",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 30,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "llama3_8b",
+      "task": "summarization",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 30,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "mistral_7b",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.96,
+      "emr_std": 0.12649110640673517,
+      "bootstrap_ci_low": 0.8799999999999999,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "mistral_7b",
+      "task": "extraction",
+      "condition": "C2_var_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.96,
+      "emr_std": 0.12649110640673517,
+      "bootstrap_ci_low": 0.8799999999999999,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "mistral_7b",
+      "task": "extraction",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 10,
+      "emr_mean": 0.9333333333333332,
+      "emr_std": 0.21081851067789195,
+      "bootstrap_ci_low": 0.7999999999999999,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "mistral_7b",
+      "task": "extraction",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 10,
+      "emr_mean": 0.13333333333333333,
+      "emr_std": 0.3220305943597653,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.33333333333333337
+    },
+    {
+      "model": "mistral_7b",
+      "task": "extraction",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 10,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "mistral_7b",
+      "task": "multiturn_refinement",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 1.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 1.0,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "mistral_7b",
+      "task": "rag_extraction",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 1.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 1.0,
+      "bootstrap_ci_high": 1.0
+    },
+    {
+      "model": "mistral_7b",
+      "task": "summarization",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.8400000000000001,
+      "emr_std": 0.2065591117977289,
+      "bootstrap_ci_low": 0.72,
+      "bootstrap_ci_high": 0.96
+    },
+    {
+      "model": "mistral_7b",
+      "task": "summarization",
+      "condition": "C2_var_seed",
+      "n_abstracts": 10,
+      "emr_mean": 0.8400000000000001,
+      "emr_std": 0.2065591117977289,
+      "bootstrap_ci_low": 0.72,
+      "bootstrap_ci_high": 0.96
+    },
+    {
+      "model": "mistral_7b",
+      "task": "summarization",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 10,
+      "emr_mean": 0.7333333333333333,
+      "emr_std": 0.34426518632954817,
+      "bootstrap_ci_low": 0.5333333333333332,
+      "bootstrap_ci_high": 0.9333333333333332
+    },
+    {
+      "model": "mistral_7b",
+      "task": "summarization",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 10,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    },
+    {
+      "model": "mistral_7b",
+      "task": "summarization",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 10,
+      "emr_mean": 0.0,
+      "emr_std": 0.0,
+      "bootstrap_ci_low": 0.0,
+      "bootstrap_ci_high": 0.0
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "comparison": "LLaMA 3 8B vs GPT-4",
+      "n_abstracts": 30,
+      "mean_a": 0.9866666666666667,
+      "mean_b": 0.44333333333333336,
+      "std_a": 0.07302967433402216,
+      "std_b": 0.3410767264609729,
+      "mean_diff": 0.5433333333333333,
+      "std_diff": 0.3308123057100437,
+      "ttest_t": 8.995914534448499,
+      "ttest_p": 6.87700078307062e-10,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 1.5985667826267052e-05,
+      "wilcoxon_sig": "***",
+      "cohens_d": 1.642421771968676,
+      "ci_diff_low": 0.4198059882661063,
+      "ci_diff_high": 0.6668606784005603,
+      "bootstrap_ci_diff": [
+        0.4233333333333333,
+        0.6566666666666666
+      ],
+      "bootstrap_ci_a": [
+        0.9599999999999999,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.32333333333333336,
+        0.5666666666666667
+      ],
+      "power": 0.9999999999981825,
+      "shapiro_W": 0.8848720134362135,
+      "shapiro_p": 0.0036547629594669566,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C2 (greedy)",
+      "condition_a": "C2_var_seed",
+      "condition_b": "C2_same_params"
+    },
+    {
+      "comparison": "LLaMA 3 8B vs GPT-4",
+      "n_abstracts": 14,
+      "mean_a": 1.0,
+      "mean_b": 0.38095238095238093,
+      "std_a": 0.0,
+      "std_b": 0.43080411510590927,
+      "mean_diff": 0.6190476190476192,
+      "std_diff": 0.4308041151059094,
+      "ttest_t": 5.376606247145323,
+      "ttest_p": 0.00012609794972874818,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.0038678686666596975,
+      "wilcoxon_sig": "**",
+      "cohens_d": 1.4369584628861585,
+      "ci_diff_low": 0.3703087284586972,
+      "ci_diff_high": 0.8677865096365411,
+      "bootstrap_ci_diff": [
+        0.40476190476190477,
+        0.8333333333333333
+      ],
+      "bootstrap_ci_a": [
+        1.0,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.16666666666666669,
+        0.5952380952380952
+      ],
+      "power": 0.9993505837304683,
+      "shapiro_W": 0.7538113282841286,
+      "shapiro_p": 0.0014154500867575481,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C3 temp=0.0",
+      "condition_a": "C3_temp0.0",
+      "condition_b": "C3_temp0.0"
+    },
+    {
+      "comparison": "LLaMA 3 8B vs GPT-4",
+      "n_abstracts": 14,
+      "mean_a": 0.2380952380952381,
+      "mean_b": 0.14285714285714285,
+      "std_a": 0.3563483225498991,
+      "std_b": 0.28387687575088005,
+      "mean_diff": 0.09523809523809523,
+      "std_diff": 0.46092755662274365,
+      "ttest_t": 0.7731113434850683,
+      "ttest_p": 0.45328513842722323,
+      "ttest_sig": "n.s.",
+      "wilcoxon_W": 10.0,
+      "wilcoxon_p": 0.4903143196690689,
+      "wilcoxon_sig": "n.s.",
+      "cohens_d": 0.20662269779640222,
+      "ci_diff_low": -0.17089355266414902,
+      "ci_diff_high": 0.3613697431403395,
+      "bootstrap_ci_diff": [
+        -0.11904761904761905,
+        0.33333333333333337
+      ],
+      "bootstrap_ci_a": [
+        0.07142857142857142,
+        0.42857142857142855
+      ],
+      "bootstrap_ci_b": [
+        0.023809523809523808,
+        0.3095238095238095
+      ],
+      "power": 0.08435758354750715,
+      "shapiro_W": 0.8603875762630904,
+      "shapiro_p": 0.030824264386579623,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C3 temp=0.3",
+      "condition_a": "C3_temp0.3",
+      "condition_b": "C3_temp0.3"
+    },
+    {
+      "comparison": "LLaMA 3 8B vs GPT-4",
+      "n_abstracts": 17,
+      "mean_a": 0.0,
+      "mean_b": 0.0,
+      "std_a": 0.0,
+      "std_b": 0.0,
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "ttest_t": "NaN",
+      "ttest_p": 1.0,
+      "ttest_sig": "n/a (zero variance)",
+      "wilcoxon_W": "NaN",
+      "wilcoxon_p": 1.0,
+      "wilcoxon_sig": "n/a (all tied)",
+      "cohens_d": 0.0,
+      "ci_diff_low": 0.0,
+      "ci_diff_high": 0.0,
+      "bootstrap_ci_diff": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_a": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.0
+      ],
+      "power": 0.03401403242332916,
+      "shapiro_W": "NaN",
+      "shapiro_p": "NaN",
+      "normality": "n/a",
+      "task": "extraction",
+      "condition_label": "C3 temp=0.7",
+      "condition_a": "C3_temp0.7",
+      "condition_b": "C3_temp0.7"
+    },
+    {
+      "comparison": "LLaMA 3 8B vs GPT-4",
+      "n_abstracts": 30,
+      "mean_a": 0.9311111111111112,
+      "mean_b": 0.23,
+      "std_a": 0.1596452004863102,
+      "std_b": 0.1967844961653089,
+      "mean_diff": 0.7011111111111112,
+      "std_diff": 0.2289656903475319,
+      "ttest_t": 16.7716993008951,
+      "ttest_p": 1.8239441423394912e-16,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 1.5619673982958802e-06,
+      "wilcoxon_sig": "***",
+      "cohens_d": 3.062079344931291,
+      "ci_diff_low": 0.615613917228288,
+      "ci_diff_high": 0.7866083049939345,
+      "bootstrap_ci_diff": [
+        0.6211111111111112,
+        0.7799999999999998
+      ],
+      "bootstrap_ci_a": [
+        0.8711111111111113,
+        0.9814814814814814
+      ],
+      "bootstrap_ci_b": [
+        0.16333333333333327,
+        0.3
+      ],
+      "power": 1.0,
+      "shapiro_W": 0.9002899858338734,
+      "shapiro_p": 0.00853698525922796,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C2 (greedy)",
+      "condition_a": "C2_var_seed",
+      "condition_b": "C2_same_params"
+    },
+    {
+      "comparison": "LLaMA 3 8B vs GPT-4",
+      "n_abstracts": 30,
+      "mean_a": 0.911111111111111,
+      "mean_b": 0.14444444444444443,
+      "std_a": 0.230497269094507,
+      "std_b": 0.3117535785552716,
+      "mean_diff": 0.7666666666666667,
+      "std_diff": 0.35178798909574877,
+      "ttest_t": 11.93675282945304,
+      "ttest_p": 1.0300771034874417e-12,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 2.099886019331642e-06,
+      "wilcoxon_sig": "***",
+      "cohens_d": 2.179342929351682,
+      "ci_diff_low": 0.6353068727005226,
+      "ci_diff_high": 0.8980264606328109,
+      "bootstrap_ci_diff": [
+        0.6333333333333334,
+        0.8777777777777779
+      ],
+      "bootstrap_ci_a": [
+        0.8222222222222222,
+        0.9777777777777779
+      ],
+      "bootstrap_ci_b": [
+        0.04444444444444444,
+        0.26666666666666666
+      ],
+      "power": 1.0,
+      "shapiro_W": 0.6874069695004541,
+      "shapiro_p": 1.0284332163702906e-06,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C3 temp=0.0",
+      "condition_a": "C3_temp0.0",
+      "condition_b": "C3_temp0.0"
+    },
+    {
+      "comparison": "LLaMA 3 8B vs GPT-4",
+      "n_abstracts": 30,
+      "mean_a": 0.0,
+      "mean_b": 0.0,
+      "std_a": 0.0,
+      "std_b": 0.0,
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "ttest_t": "NaN",
+      "ttest_p": 1.0,
+      "ttest_sig": "n/a (zero variance)",
+      "wilcoxon_W": "NaN",
+      "wilcoxon_p": 1.0,
+      "wilcoxon_sig": "n/a (all tied)",
+      "cohens_d": 0.0,
+      "ci_diff_low": 0.0,
+      "ci_diff_high": 0.0,
+      "bootstrap_ci_diff": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_a": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.0
+      ],
+      "power": 0.04083222341948398,
+      "shapiro_W": "NaN",
+      "shapiro_p": "NaN",
+      "normality": "n/a",
+      "task": "summarization",
+      "condition_label": "C3 temp=0.3",
+      "condition_a": "C3_temp0.3",
+      "condition_b": "C3_temp0.3"
+    },
+    {
+      "comparison": "LLaMA 3 8B vs GPT-4",
+      "n_abstracts": 30,
+      "mean_a": 0.0,
+      "mean_b": 0.0,
+      "std_a": 0.0,
+      "std_b": 0.0,
+      "mean_diff": 0.0,
+      "std_diff": 0.0,
+      "ttest_t": "NaN",
+      "ttest_p": 1.0,
+      "ttest_sig": "n/a (zero variance)",
+      "wilcoxon_W": "NaN",
+      "wilcoxon_p": 1.0,
+      "wilcoxon_sig": "n/a (all tied)",
+      "cohens_d": 0.0,
+      "ci_diff_low": 0.0,
+      "ci_diff_high": 0.0,
+      "bootstrap_ci_diff": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_a": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.0
+      ],
+      "power": 0.04083222341948398,
+      "shapiro_W": "NaN",
+      "shapiro_p": "NaN",
+      "normality": "n/a",
+      "task": "summarization",
+      "condition_label": "C3 temp=0.7",
+      "condition_a": "C3_temp0.7",
+      "condition_b": "C3_temp0.7"
+    },
+    {
+      "comparison": "Mistral 7B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.96,
+      "mean_b": 0.19000000000000003,
+      "std_a": 0.12649110640673517,
+      "std_b": 0.30713731999438515,
+      "mean_diff": 0.77,
+      "std_diff": 0.3198958163736021,
+      "ttest_t": 7.61170879298372,
+      "ttest_p": 3.286474606379264e-05,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.00390625,
+      "wilcoxon_sig": "**",
+      "cohens_d": 2.407033667175963,
+      "ci_diff_low": 0.5411603185660201,
+      "ci_diff_high": 0.9988396814339799,
+      "bootstrap_ci_diff": [
+        0.5599999999999999,
+        0.93
+      ],
+      "bootstrap_ci_a": [
+        0.8799999999999999,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.05,
+        0.39999999999999997
+      ],
+      "power": 0.9999999559137976,
+      "shapiro_W": 0.7649233006996871,
+      "shapiro_p": 0.005423675279975309,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C1 (fixed seed)",
+      "condition_a": "C1_fixed_seed",
+      "condition_b": "C1_fixed_seed"
+    },
+    {
+      "comparison": "Mistral 7B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.96,
+      "mean_b": 0.07999999999999999,
+      "std_a": 0.12649110640673517,
+      "std_b": 0.07888106377466154,
+      "mean_diff": 0.8799999999999999,
+      "std_diff": 0.15491933384829668,
+      "ttest_t": 17.96292478040997,
+      "ttest_p": 2.3366350305042e-08,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.001953125,
+      "wilcoxon_sig": "**",
+      "cohens_d": 5.680375574437544,
+      "ci_diff_low": 0.7691773846632459,
+      "ci_diff_high": 0.9908226153367539,
+      "bootstrap_ci_diff": [
+        0.78,
+        0.96
+      ],
+      "bootstrap_ci_a": [
+        0.8799999999999999,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.04,
+        0.13
+      ],
+      "power": 1.0,
+      "shapiro_W": 0.7699121601434737,
+      "shapiro_p": 0.006238421330160355,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C2 (variable seed)",
+      "condition_a": "C2_var_seed",
+      "condition_b": "C2_var_seed"
+    },
+    {
+      "comparison": "Mistral 7B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.9333333333333332,
+      "mean_b": 0.06666666666666667,
+      "std_a": 0.21081851067789195,
+      "std_b": 0.1405456737852613,
+      "mean_diff": 0.8666666666666668,
+      "std_diff": 0.2330686329267003,
+      "ttest_t": 11.758942438532786,
+      "ttest_p": 9.151111215642437e-07,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.001953125,
+      "wilcoxon_sig": "**",
+      "cohens_d": 3.7185040980578115,
+      "ci_diff_low": 0.6999394105374099,
+      "ci_diff_high": 1.0333939227959237,
+      "bootstrap_ci_diff": [
+        0.7000000000000001,
+        1.0
+      ],
+      "bootstrap_ci_a": [
+        0.7999999999999999,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.16666666666666666
+      ],
+      "power": 1.0,
+      "shapiro_W": 0.6496887307091788,
+      "shapiro_p": 0.00021758321842693242,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C3 temp=0.0",
+      "condition_a": "C3_temp0.0",
+      "condition_b": "C3_temp0_0"
+    },
+    {
+      "comparison": "Mistral 7B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.13333333333333333,
+      "mean_b": 0.7,
+      "std_a": 0.3220305943597653,
+      "std_b": 0.39907299991262163,
+      "mean_diff": -0.5666666666666667,
+      "std_diff": 0.4172218523448575,
+      "ttest_t": -4.294974797439246,
+      "ttest_p": 0.002005378838709994,
+      "ttest_sig": "**",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.0078125,
+      "wilcoxon_sig": "**",
+      "cohens_d": -1.358190285292834,
+      "ci_diff_low": -0.8651292000634334,
+      "ci_diff_high": -0.26820413326989995,
+      "bootstrap_ci_diff": [
+        -0.8,
+        -0.3333333333333333
+      ],
+      "bootstrap_ci_a": [
+        0.0,
+        0.33333333333333337
+      ],
+      "bootstrap_ci_b": [
+        0.4666666666666666,
+        0.9333333333333332
+      ],
+      "power": 0.9789645246145798,
+      "shapiro_W": 0.8307073828853981,
+      "shapiro_p": 0.0341236061963307,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C3 temp=0.3",
+      "condition_a": "C3_temp0.3",
+      "condition_b": "C3_temp0_3"
+    },
+    {
+      "comparison": "Mistral 7B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.0,
+      "mean_b": 0.13333333333333333,
+      "std_a": 0.0,
+      "std_b": 0.17213259316477408,
+      "mean_diff": -0.13333333333333333,
+      "std_diff": 0.17213259316477408,
+      "ttest_t": -2.449489742783178,
+      "ttest_p": 0.03678749787978615,
+      "ttest_sig": "*",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.125,
+      "wilcoxon_sig": "n.s.",
+      "cohens_d": -0.7745966692414834,
+      "ci_diff_low": -0.2564695725963933,
+      "ci_diff_high": -0.010197094070273374,
+      "bootstrap_ci_diff": [
+        -0.23333333333333334,
+        -0.03333333333333333
+      ],
+      "bootstrap_ci_a": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_b": [
+        0.03333333333333333,
+        0.23333333333333334
+      ],
+      "power": 0.5743012886183831,
+      "shapiro_W": 0.6404852222225357,
+      "shapiro_p": 0.0001686790761030033,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C3 temp=0.7",
+      "condition_a": "C3_temp0.7",
+      "condition_b": "C3_temp0_7"
+    },
+    {
+      "comparison": "Mistral 7B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.8400000000000001,
+      "mean_b": 0.02,
+      "std_a": 0.2065591117977289,
+      "std_b": 0.04216370213557839,
+      "mean_diff": 0.82,
+      "std_diff": 0.21499353995462803,
+      "ttest_t": 12.061142310998315,
+      "ttest_p": 7.373567649678528e-07,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.001953125,
+      "wilcoxon_sig": "**",
+      "cohens_d": 3.8140680886181593,
+      "ci_diff_low": 0.6662028864543768,
+      "ci_diff_high": 0.9737971135456231,
+      "bootstrap_ci_diff": [
+        0.6900000000000001,
+        0.95
+      ],
+      "bootstrap_ci_a": [
+        0.72,
+        0.96
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.05
+      ],
+      "power": 1.0,
+      "shapiro_W": 0.7466215091772711,
+      "shapiro_p": 0.003246152797746155,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C1 (fixed seed)",
+      "condition_a": "C1_fixed_seed",
+      "condition_b": "C1_fixed_seed"
+    },
+    {
+      "comparison": "Mistral 7B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.8400000000000001,
+      "mean_b": 0.03,
+      "std_a": 0.2065591117977289,
+      "std_b": 0.09486832980505139,
+      "mean_diff": 0.8099999999999999,
+      "std_diff": 0.2024845673131659,
+      "ttest_t": 12.65007471297709,
+      "ttest_p": 4.906620661607926e-07,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.001953125,
+      "wilcoxon_sig": "**",
+      "cohens_d": 4.000304866430837,
+      "ci_diff_low": 0.6651512664200449,
+      "ci_diff_high": 0.954848733579955,
+      "bootstrap_ci_diff": [
+        0.69,
+        0.9299999999999999
+      ],
+      "bootstrap_ci_a": [
+        0.72,
+        0.96
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.09
+      ],
+      "power": 1.0,
+      "shapiro_W": 0.6992403130899163,
+      "shapiro_p": 0.0008624411409146764,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C2 (variable seed)",
+      "condition_a": "C2_var_seed",
+      "condition_b": "C2_var_seed"
+    },
+    {
+      "comparison": "Mistral 7B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.7333333333333333,
+      "mean_b": 0.0,
+      "std_a": 0.34426518632954817,
+      "std_b": 0.0,
+      "mean_diff": 0.7333333333333333,
+      "std_diff": 0.34426518632954817,
+      "ttest_t": 6.736096792653739,
+      "ttest_p": 8.49778080618928e-05,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.001953125,
+      "wilcoxon_sig": "**",
+      "cohens_d": 2.130140840414079,
+      "ci_diff_low": 0.4870608548072134,
+      "ci_diff_high": 0.9796058118594532,
+      "bootstrap_ci_diff": [
+        0.5333333333333332,
+        0.9333333333333332
+      ],
+      "bootstrap_ci_a": [
+        0.5333333333333332,
+        0.9333333333333332
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.0
+      ],
+      "power": 0.9999961604284371,
+      "shapiro_W": 0.6404852222225357,
+      "shapiro_p": 0.0001686790761030033,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C3 temp=0.0",
+      "condition_a": "C3_temp0.0",
+      "condition_b": "C3_temp0_0"
+    },
+    {
+      "comparison": "Mistral 7B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.0,
+      "mean_b": 0.2333333333333333,
+      "std_a": 0.0,
+      "std_b": 0.31622776601683794,
+      "mean_diff": -0.2333333333333333,
+      "std_diff": 0.31622776601683794,
+      "ttest_t": -2.333333333333333,
+      "ttest_p": 0.044503537305576484,
+      "ttest_sig": "*",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.0625,
+      "wilcoxon_sig": "n.s.",
+      "cohens_d": -0.7378647873726217,
+      "ci_diff_low": -0.4595490496131538,
+      "ci_diff_high": -0.007117617053512826,
+      "bootstrap_ci_diff": [
+        -0.4333333333333333,
+        -0.06666666666666667
+      ],
+      "bootstrap_ci_a": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_b": [
+        0.06666666666666667,
+        0.4333333333333333
+      ],
+      "power": 0.5283733854300497,
+      "shapiro_W": 0.7274063842973586,
+      "shapiro_p": 0.0018948773425635725,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C3 temp=0.3",
+      "condition_a": "C3_temp0.3",
+      "condition_b": "C3_temp0_3"
+    },
+    {
+      "comparison": "Mistral 7B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.0,
+      "mean_b": 0.03333333333333333,
+      "std_a": 0.0,
+      "std_b": 0.10540925533894596,
+      "mean_diff": -0.03333333333333333,
+      "std_diff": 0.10540925533894596,
+      "ttest_t": -1.0,
+      "ttest_p": 0.34343639613791355,
+      "ttest_sig": "n.s.",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 1.0,
+      "wilcoxon_sig": "n.s.",
+      "cohens_d": -0.316227766016838,
+      "ci_diff_low": -0.10873857209327348,
+      "ci_diff_high": 0.04207190542660682,
+      "bootstrap_ci_diff": [
+        -0.1,
+        0.0
+      ],
+      "bootstrap_ci_a": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.1
+      ],
+      "power": 0.10399895888364273,
+      "shapiro_W": 0.36572062769765235,
+      "shapiro_p": 1.0036928213864587e-07,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C3 temp=0.7",
+      "condition_a": "C3_temp0.7",
+      "condition_b": "C3_temp0_7"
+    },
+    {
+      "comparison": "Gemma 2 9B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 1.0,
+      "mean_b": 0.19000000000000003,
+      "std_a": 0.0,
+      "std_b": 0.30713731999438515,
+      "mean_diff": 0.8099999999999999,
+      "std_diff": 0.30713731999438515,
+      "ttest_t": 8.33973841011315,
+      "ttest_p": 1.5853133328244887e-05,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.00390625,
+      "wilcoxon_sig": "**",
+      "cohens_d": 2.6372568465948967,
+      "ci_diff_low": 0.5902871970606947,
+      "ci_diff_high": 1.0297128029393052,
+      "bootstrap_ci_diff": [
+        0.6000000000000001,
+        0.95
+      ],
+      "bootstrap_ci_a": [
+        1.0,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.05,
+        0.39999999999999997
+      ],
+      "power": 0.9999999993899557,
+      "shapiro_W": 0.6607600165811761,
+      "shapiro_p": 0.0002957009966373465,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C1 (fixed seed)",
+      "condition_a": "C1_fixed_seed",
+      "condition_b": "C1_fixed_seed"
+    },
+    {
+      "comparison": "Gemma 2 9B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 1.0,
+      "mean_b": 0.07999999999999999,
+      "std_a": 0.0,
+      "std_b": 0.07888106377466154,
+      "mean_diff": 0.9200000000000002,
+      "std_diff": 0.07888106377466153,
+      "ttest_t": 36.88205138391458,
+      "ttest_p": 3.924809255434721e-11,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.001953125,
+      "wilcoxon_sig": "**",
+      "cohens_d": 11.663128715253533,
+      "ci_diff_low": 0.8635718862784836,
+      "ci_diff_high": 0.9764281137215167,
+      "bootstrap_ci_diff": [
+        0.8700000000000001,
+        0.96
+      ],
+      "bootstrap_ci_a": [
+        1.0,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.04,
+        0.13
+      ],
+      "power": 1.0,
+      "shapiro_W": 0.8197045454065927,
+      "shapiro_p": 0.025134415251800823,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C2 (variable seed)",
+      "condition_a": "C2_var_seed",
+      "condition_b": "C2_var_seed"
+    },
+    {
+      "comparison": "Gemma 2 9B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 1.0,
+      "mean_b": 0.06666666666666667,
+      "std_a": 0.0,
+      "std_b": 0.1405456737852613,
+      "mean_diff": 0.9333333333333333,
+      "std_diff": 0.14054567378526128,
+      "ttest_t": 21.000000000000004,
+      "ttest_p": 5.901994059532851e-09,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.001953125,
+      "wilcoxon_sig": "**",
+      "cohens_d": 6.640783086353598,
+      "ci_diff_low": 0.8327930149867465,
+      "ci_diff_high": 1.0338736516799203,
+      "bootstrap_ci_diff": [
+        0.8333333333333334,
+        1.0
+      ],
+      "bootstrap_ci_a": [
+        1.0,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.16666666666666666
+      ],
+      "power": 1.0,
+      "shapiro_W": 0.509274852063527,
+      "shapiro_p": 4.6723331183920265e-06,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C3 temp=0.0",
+      "condition_a": "C3_temp0.0",
+      "condition_b": "C3_temp0_0"
+    },
+    {
+      "comparison": "Gemma 2 9B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.19999999999999998,
+      "mean_b": 0.7,
+      "std_a": 0.32203059435976533,
+      "std_b": 0.39907299991262163,
+      "mean_diff": -0.5,
+      "std_diff": 0.45133546692422,
+      "ttest_t": -3.503245248726853,
+      "ttest_p": 0.006689285790436476,
+      "ttest_sig": "**",
+      "wilcoxon_W": 2.5,
+      "wilcoxon_p": 0.01953125,
+      "wilcoxon_sig": "*",
+      "cohens_d": -1.1078234188139946,
+      "ci_diff_low": -0.8228659431737353,
+      "ci_diff_high": -0.17713405682626476,
+      "bootstrap_ci_diff": [
+        -0.7666666666666666,
+        -0.23333333333333334
+      ],
+      "bootstrap_ci_a": [
+        0.03333333333333333,
+        0.4
+      ],
+      "bootstrap_ci_b": [
+        0.4666666666666666,
+        0.9333333333333332
+      ],
+      "power": 0.8927133989221929,
+      "shapiro_W": 0.9092613243311267,
+      "shapiro_p": 0.27595555873164135,
+      "normality": "met",
+      "task": "extraction",
+      "condition_label": "C3 temp=0.3",
+      "condition_a": "C3_temp0.3",
+      "condition_b": "C3_temp0_3"
+    },
+    {
+      "comparison": "Gemma 2 9B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.03333333333333333,
+      "mean_b": 0.13333333333333333,
+      "std_a": 0.10540925533894596,
+      "std_b": 0.17213259316477408,
+      "mean_diff": -0.1,
+      "std_diff": 0.22498285257018433,
+      "ttest_t": -1.4055638569974547,
+      "ttest_p": 0.19342205960333217,
+      "ttest_sig": "n.s.",
+      "wilcoxon_W": 3.0,
+      "wilcoxon_p": 0.375,
+      "wilcoxon_sig": "n.s.",
+      "cohens_d": -0.4444783184923153,
+      "ci_diff_low": -0.2609430373110613,
+      "ci_diff_high": 0.06094303731106124,
+      "bootstrap_ci_diff": [
+        -0.2333333333333333,
+        0.03333333333333333
+      ],
+      "bootstrap_ci_a": [
+        0.0,
+        0.1
+      ],
+      "bootstrap_ci_b": [
+        0.03333333333333333,
+        0.23333333333333334
+      ],
+      "power": 0.19595720429580335,
+      "shapiro_W": 0.8021766044887101,
+      "shapiro_p": 0.015408869221726223,
+      "normality": "violated",
+      "task": "extraction",
+      "condition_label": "C3 temp=0.7",
+      "condition_a": "C3_temp0.7",
+      "condition_b": "C3_temp0_7"
+    },
+    {
+      "comparison": "Gemma 2 9B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 1.0,
+      "mean_b": 0.02,
+      "std_a": 0.0,
+      "std_b": 0.04216370213557839,
+      "mean_diff": 0.9800000000000001,
+      "std_diff": 0.04216370213557838,
+      "ttest_t": 73.50000000000001,
+      "ttest_p": 8.078436999597808e-14,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.001953125,
+      "wilcoxon_sig": "**",
+      "cohens_d": 23.2427408022376,
+      "ci_diff_low": 0.949837904496024,
+      "ci_diff_high": 1.010162095503976,
+      "bootstrap_ci_diff": [
+        0.95,
+        1.0
+      ],
+      "bootstrap_ci_a": [
+        1.0,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.05
+      ],
+      "power": 1.0,
+      "shapiro_W": 0.5092748520635271,
+      "shapiro_p": 4.6723331183920265e-06,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C1 (fixed seed)",
+      "condition_a": "C1_fixed_seed",
+      "condition_b": "C1_fixed_seed"
+    },
+    {
+      "comparison": "Gemma 2 9B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 1.0,
+      "mean_b": 0.03,
+      "std_a": 0.0,
+      "std_b": 0.09486832980505139,
+      "mean_diff": 0.97,
+      "std_diff": 0.09486832980505139,
+      "ttest_t": 32.33333333333333,
+      "ttest_p": 1.2728762833461126e-10,
+      "ttest_sig": "***",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.001953125,
+      "wilcoxon_sig": "**",
+      "cohens_d": 10.224697767877759,
+      "ci_diff_low": 0.9021352851160538,
+      "ci_diff_high": 1.0378647148839462,
+      "bootstrap_ci_diff": [
+        0.9099999999999999,
+        1.0
+      ],
+      "bootstrap_ci_a": [
+        1.0,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.09
+      ],
+      "power": 1.0,
+      "shapiro_W": 0.36572062769765235,
+      "shapiro_p": 1.0036928213864587e-07,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C2 (variable seed)",
+      "condition_a": "C2_var_seed",
+      "condition_b": "C2_var_seed"
+    },
+    {
+      "comparison": "Gemma 2 9B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 1.0,
+      "mean_b": 0.0,
+      "std_a": 0.0,
+      "std_b": 0.0,
+      "mean_diff": 1.0,
+      "std_diff": 0.0,
+      "ttest_t": "NaN",
+      "ttest_p": 1.0,
+      "ttest_sig": "n/a (zero variance)",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.001953125,
+      "wilcoxon_sig": "**",
+      "cohens_d": "inf",
+      "ci_diff_low": 1.0,
+      "ci_diff_high": 1.0,
+      "bootstrap_ci_diff": [
+        1.0,
+        1.0
+      ],
+      "bootstrap_ci_a": [
+        1.0,
+        1.0
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.0
+      ],
+      "power": 1.0,
+      "shapiro_W": "NaN",
+      "shapiro_p": "NaN",
+      "normality": "n/a",
+      "task": "summarization",
+      "condition_label": "C3 temp=0.0",
+      "condition_a": "C3_temp0.0",
+      "condition_b": "C3_temp0_0"
+    },
+    {
+      "comparison": "Gemma 2 9B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.0,
+      "mean_b": 0.2333333333333333,
+      "std_a": 0.0,
+      "std_b": 0.31622776601683794,
+      "mean_diff": -0.2333333333333333,
+      "std_diff": 0.31622776601683794,
+      "ttest_t": -2.333333333333333,
+      "ttest_p": 0.044503537305576484,
+      "ttest_sig": "*",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 0.0625,
+      "wilcoxon_sig": "n.s.",
+      "cohens_d": -0.7378647873726217,
+      "ci_diff_low": -0.4595490496131538,
+      "ci_diff_high": -0.007117617053512826,
+      "bootstrap_ci_diff": [
+        -0.4333333333333333,
+        -0.06666666666666667
+      ],
+      "bootstrap_ci_a": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_b": [
+        0.06666666666666667,
+        0.4333333333333333
+      ],
+      "power": 0.5283733854300497,
+      "shapiro_W": 0.7274063842973586,
+      "shapiro_p": 0.0018948773425635725,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C3 temp=0.3",
+      "condition_a": "C3_temp0.3",
+      "condition_b": "C3_temp0_3"
+    },
+    {
+      "comparison": "Gemma 2 9B vs Claude Sonnet 4.5",
+      "n_abstracts": 10,
+      "mean_a": 0.0,
+      "mean_b": 0.03333333333333333,
+      "std_a": 0.0,
+      "std_b": 0.10540925533894596,
+      "mean_diff": -0.03333333333333333,
+      "std_diff": 0.10540925533894596,
+      "ttest_t": -1.0,
+      "ttest_p": 0.34343639613791355,
+      "ttest_sig": "n.s.",
+      "wilcoxon_W": 0.0,
+      "wilcoxon_p": 1.0,
+      "wilcoxon_sig": "n.s.",
+      "cohens_d": -0.316227766016838,
+      "ci_diff_low": -0.10873857209327348,
+      "ci_diff_high": 0.04207190542660682,
+      "bootstrap_ci_diff": [
+        -0.1,
+        0.0
+      ],
+      "bootstrap_ci_a": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_ci_b": [
+        0.0,
+        0.1
+      ],
+      "power": 0.10399895888364273,
+      "shapiro_W": 0.36572062769765235,
+      "shapiro_p": 1.0036928213864587e-07,
+      "normality": "violated",
+      "task": "summarization",
+      "condition_label": "C3 temp=0.7",
+      "condition_a": "C3_temp0.7",
+      "condition_b": "C3_temp0_7"
+    }
+  ],
+  "aggregate_comparisons": [
+    {
+      "comparison": "Local (LLaMA+Mistral+Gemma) vs API (GPT-4+Claude)",
+      "n_a": 150,
+      "n_b": 74,
+      "mean_a": 0.9804444444444445,
+      "mean_b": 0.2972972972972973,
+      "std_a": 0.09937813102326565,
+      "std_b": 0.34573974942215546,
+      "ttest_t": 16.661178572667968,
+      "ttest_p": 1.4084035194355008e-27,
+      "ttest_sig": "***",
+      "mannwhitney_U": 10208.0,
+      "mannwhitney_p": 7.253974034701836e-36,
+      "mannwhitney_sig": "***",
+      "cohens_d": 3.1874299676004614,
+      "bootstrap_ci_a": [
+        0.9626666666666667,
+        0.9946666666666666
+      ],
+      "bootstrap_ci_b": [
+        0.22072072072072071,
+        0.38019144144144135
+      ],
+      "bootstrap_ci_diff": [
+        0.6005884384384386,
+        0.7614936936936938
+      ],
+      "task": "extraction",
+      "condition_label": "greedy conditions (C1/C2/C3_t0)"
+    },
+    {
+      "comparison": "Local (LLaMA+Mistral+Gemma) vs API (GPT-4+Claude)",
+      "n_a": 150,
+      "n_b": 93,
+      "mean_a": 0.9155555555555555,
+      "mean_b": 0.12974910394265232,
+      "std_a": 0.19263083044564924,
+      "std_b": 0.22865191810253005,
+      "ttest_t": 27.61815859891734,
+      "ttest_p": 8.092423143228193e-65,
+      "ttest_sig": "***",
+      "mannwhitney_U": 13570.0,
+      "mannwhitney_p": 2.060629158914569e-41,
+      "mannwhitney_sig": "***",
+      "cohens_d": 3.7939266826657803,
+      "bootstrap_ci_a": [
+        0.8842962962962964,
+        0.9444481481481481
+      ],
+      "bootstrap_ci_b": [
+        0.08673835125448029,
+        0.1781362007168459
+      ],
+      "bootstrap_ci_diff": [
+        0.7298101553166069,
+        0.8395431302270011
+      ],
+      "task": "summarization",
+      "condition_label": "greedy conditions (C1/C2/C3_t0)"
+    },
+    {
+      "comparison": "Local (all) vs API (all)",
+      "n_a": 300,
+      "n_b": 167,
+      "mean_a": 0.948,
+      "mean_b": 0.20399201596806385,
+      "std_a": 0.1564254490005001,
+      "std_b": 0.2975086736771107,
+      "ttest_t": 30.08527392324663,
+      "ttest_p": 1.3985405924194337e-79,
+      "ttest_sig": "***",
+      "mannwhitney_U": 47461.0,
+      "mannwhitney_p": 3.2141137676599607e-74,
+      "mannwhitney_sig": "***",
+      "cohens_d": 3.419817376395157,
+      "bootstrap_ci_a": [
+        0.9295555555555556,
+        0.9648166666666668
+      ],
+      "bootstrap_ci_b": [
+        0.16047904191616766,
+        0.2503043912175648
+      ],
+      "bootstrap_ci_diff": [
+        0.6942758261255267,
+        0.7907364825903748
+      ],
+      "task": "all (extraction + summarization)",
+      "condition_label": "greedy conditions (C1/C2/C3_t0)"
+    }
+  ],
+  "per_model_aggregate_greedy": {
+    "claude_sonnet": {
+      "n": 60,
+      "mean": 0.06444444444444444,
+      "std": 0.15475716554900887,
+      "ci_low": 0.03111111111111111,
+      "ci_high": 0.10777777777777778
+    },
+    "gemma2_9b": {
+      "n": 60,
+      "mean": 1.0,
+      "std": 0.0,
+      "ci_low": 1.0,
+      "ci_high": 1.0
+    },
+    "gpt4": {
+      "n": 107,
+      "mean": 0.28224299065420566,
+      "std": 0.32875209565646696,
+      "ci_low": 0.22118380062305298,
+      "ci_high": 0.34579439252336447
+    },
+    "llama3_8b": {
+      "n": 180,
+      "mean": 0.954074074074074,
+      "std": 0.14808895982972495,
+      "ci_low": 0.9314783950617284,
+      "ci_high": 0.9749382716049382
+    },
+    "mistral_7b": {
+      "n": 60,
+      "mean": 0.8777777777777779,
+      "std": 0.22269253432973934,
+      "ci_low": 0.8177777777777778,
+      "ci_high": 0.9311111111111111
+    }
+  },
+  "latex_snippet": "% --- Statistical tests LaTeX snippet (auto-generated) ---\n% Include in paper with \\input{statistical_tests_table.tex}\n\n\\begin{table}[t]\n\\centering\n\\caption{Statistical comparisons of output reproducibility (EMR) between local and API-hosted models under greedy decoding conditions. Paired $t$-tests and Wilcoxon signed-rank tests are reported with Cohen's $d$ effect sizes and bootstrap 95\\% CIs.}\n\\label{tab:statistical-tests}\n\\small\n\\begin{tabular}{llccrrl}\n\\toprule\nComparison & Task & $n$ & Cohen's $d$ & $t$-test $p$ & Wilcoxon $p$ & Sig. \\\\\n\\midrule\nLLaMA 3 8B vs. GPT-4 & Extraction (C2 (greedy)) & 30 & 1.64 & 6.9e-10 & 1.6e-05 & $^{***}$ \\\\\nLLaMA 3 8B vs. GPT-4 & Extraction (C3 temp=0.0) & 14 & 1.44 & 1.3e-04 & 3.9e-03 & $^{***}$ \\\\\nLLaMA 3 8B vs. GPT-4 & Summarization (C2 (greedy)) & 30 & 3.06 & 1.8e-16 & 1.6e-06 & $^{***}$ \\\\\nLLaMA 3 8B vs. GPT-4 & Summarization (C3 temp=0.0) & 30 & 2.18 & 1.0e-12 & 2.1e-06 & $^{***}$ \\\\\nMistral 7B vs. Claude Sonnet 4.5 & Extraction (C1 (fixed seed)) & 10 & 2.41 & 3.3e-05 & 3.9e-03 & $^{***}$ \\\\\nMistral 7B vs. Claude Sonnet 4.5 & Extraction (C2 (variable seed)) & 10 & 5.68 & 2.3e-08 & 2.0e-03 & $^{***}$ \\\\\nMistral 7B vs. Claude Sonnet 4.5 & Extraction (C3 temp=0.0) & 10 & 3.72 & 9.2e-07 & 2.0e-03 & $^{***}$ \\\\\nMistral 7B vs. Claude Sonnet 4.5 & Summarization (C1 (fixed seed)) & 10 & 3.81 & 7.4e-07 & 2.0e-03 & $^{***}$ \\\\\nMistral 7B vs. Claude Sonnet 4.5 & Summarization (C2 (variable seed)) & 10 & 4.00 & 4.9e-07 & 2.0e-03 & $^{***}$ \\\\\nMistral 7B vs. Claude Sonnet 4.5 & Summarization (C3 temp=0.0) & 10 & 2.13 & 8.5e-05 & 2.0e-03 & $^{***}$ \\\\\nGemma 2 9B vs. Claude Sonnet 4.5 & Extraction (C1 (fixed seed)) & 10 & 2.64 & 1.6e-05 & 3.9e-03 & $^{***}$ \\\\\nGemma 2 9B vs. Claude Sonnet 4.5 & Extraction (C2 (variable seed)) & 10 & 11.66 & 3.9e-11 & 2.0e-03 & $^{***}$ \\\\\nGemma 2 9B vs. Claude Sonnet 4.5 & Extraction (C3 temp=0.0) & 10 & 6.64 & 5.9e-09 & 2.0e-03 & $^{***}$ \\\\\nGemma 2 9B vs. Claude Sonnet 4.5 & Summarization (C1 (fixed seed)) & 10 & 23.24 & 8.1e-14 & 2.0e-03 & $^{***}$ \\\\\nGemma 2 9B vs. Claude Sonnet 4.5 & Summarization (C2 (variable seed)) & 10 & 10.22 & 1.3e-10 & 2.0e-03 & $^{***}$ \\\\\nGemma 2 9B vs. Claude Sonnet 4.5 & Summarization (C3 temp=0.0) & 10 & $\\infty$ & 1.0e+00 & 2.0e-03 & n/a (zero variance) \\\\\n\\midrule\nLocal (LLaMA+Mistral+Gemma) vs API (GPT-4+Claude) & Extraction & 150+74 & 3.19 & 1.4e-27 & 7.3e-36$^\\dagger$ & $^{***}$ \\\\\nLocal (LLaMA+Mistral+Gemma) vs API (GPT-4+Claude) & Summarization & 150+93 & 3.79 & 8.1e-65 & 2.1e-41$^\\dagger$ & $^{***}$ \\\\\nLocal (all) vs API (all) & All (Extraction + Summarization) & 300+167 & 3.42 & 1.4e-79 & 3.2e-74$^\\dagger$ & $^{***}$ \\\\\n\\bottomrule\n\\end{tabular}\n\\vspace{2pt}\n\\raggedright\\footnotesize\n$^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$. $^\\dagger$Mann--Whitney $U$ (independent samples).\n\\end{table}\n\n% --- Per-model aggregate EMR with bootstrap CIs ---\n\\begin{table}[t]\n\\centering\n\\caption{Per-model aggregate EMR under greedy decoding (C1/C2/C3\\_t0) with bootstrap 95\\% confidence intervals.}\n\\label{tab:model-emr-ci}\n\\small\n\\begin{tabular}{lcccl}\n\\toprule\nModel & Type & $n$ & Mean EMR & 95\\% CI \\\\\n\\midrule\nGemma 2 9B & Local & 60 & 1.000 & [1.000, 1.000] \\\\\nMistral 7B & Local & 60 & 0.878 & [0.818, 0.931] \\\\\nLLaMA 3 8B & Local & 180 & 0.954 & [0.931, 0.975] \\\\\nGPT-4 & API & 107 & 0.282 & [0.221, 0.346] \\\\\nClaude Sonnet 4.5 & API & 60 & 0.064 & [0.031, 0.108] \\\\\n\\bottomrule\n\\end{tabular}\n\\end{table}"
+}

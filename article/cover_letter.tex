@@ -13,7 +13,7 @@ Ponta Grossa, Paran\'a, Brazil\\
 UTFPR -- Universidade Tecnol\'ogica Federal do Paran\'a\\
 Ponta Grossa, Paran\'a, Brazil}
 
-\date{February 9, 2026}
+\date{February 2026}
 
 \begin{document}
 
@@ -30,16 +30,16 @@ This work addresses a timely and critical challenge in AI research: the reproduc
 \begin{enumerate}
     \item \textbf{A lightweight protocol} introducing novel documentation artifacts---Prompt Cards and Run Cards---built on the W3C PROV data model for machine-readable provenance graphs.
 
-    \item \textbf{An empirical evaluation} through 1,864 controlled experiments with LLaMA~3 8B (local) and GPT-4 (API) across 30 scientific abstracts, documenting a striking reproducibility gap between local and API-based inference. Notably, GPT-4 achieves only 23\% exact match rate for summarization under nominally deterministic settings---a finding that is invisible without systematic logging.
+    \item \textbf{An empirical evaluation} through 3,604 controlled experiments with five models---three locally deployed (LLaMA~3 8B, Mistral 7B, Gemma~2 9B) and two API-served (GPT-4, Claude Sonnet 4.5)---across four NLP tasks (extraction, summarization, multi-turn refinement, RAG extraction), 30 scientific abstracts, and five experimental conditions. We document a striking reproducibility gap between local and API-based inference: local models achieve near-perfect reproducibility (average EMR = 0.960; Gemma~2 9B attains perfect EMR = 1.000 across all tasks), while API-served models exhibit substantial hidden non-determinism (average EMR = 0.158), with Claude Sonnet 4.5 achieving only EMR = 0.020 for summarization. This 6$\times$ gap is observed independently across two cloud providers.
 
-    \item \textbf{A reference implementation} in Python with all experimental data publicly available for independent verification.
+    \item \textbf{A reference implementation} in Python with all 3,604 run records, provenance documents, and analysis scripts publicly available for independent verification.
 \end{enumerate}
 
-A supplementary chat-format control experiment (200 additional runs using Ollama's \texttt{/api/chat} endpoint) confirms that the prompt-format difference between the two deployment paradigms does not explain the reproducibility gap, strengthening the internal validity of our findings.
+Supplementary control experiments (200 additional runs using Ollama's \texttt{/api/chat} endpoint) show that the prompt-format difference between deployment paradigms does not explain the reproducibility gap, strengthening the internal validity of our findings.
 
-We believe this work is well-suited for JAIR for several reasons: (a) it addresses a foundational methodological issue affecting all AI research that uses generative models; (b) it provides rigorous empirical evidence rather than purely conceptual arguments; (c) the protocol and tools are immediately practical for the AI research community; and (d) the paper's scope---spanning reproducibility, provenance, and empirical methodology---aligns with JAIR's broad interest in AI foundations.
+We believe this work is well-suited for JAIR for several reasons: (a) it addresses a foundational methodological issue affecting all AI research that uses generative models, directly complementing the reproducibility mechanisms recently adopted by JAIR (Gundersen et al., 2024); (b) it provides rigorous empirical evidence across five models, four tasks, and two independent API providers; (c) the protocol and tools are immediately practical for the AI research community; and (d) the paper's scope---spanning reproducibility, provenance, and empirical methodology---aligns with JAIR's broad interest in AI foundations.
 
-The protocol adds negligible overhead (0.545\% of inference time, approximately 4~KB per run) while providing complete audit trails, tamper detection via cryptographic hashing, and interoperable provenance graphs. We hope this work will contribute to raising the bar for reproducibility in generative AI research.
+The protocol adds less than 1\% overhead to inference time (approximately 4~KB per run) while providing complete audit trails, tamper detection via cryptographic hashing, and interoperable W3C PROV provenance graphs. We hope this work will contribute to raising the bar for reproducibility in generative AI research.
 
 This manuscript has not been published elsewhere and is not under consideration by any other journal. All authors have approved the manuscript and agree with its submission to JAIR.
 

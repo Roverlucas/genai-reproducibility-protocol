@@ -1,0 +1,45 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "sonnet-4-5_rag_extraction_abs_006_C1_fixed_seed_rep2",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "prompt_card_ref": "prompt_card_rag_extraction_v1_0.json",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "798df7eed2b7330b62f75040c9b1663c2d05e17eb1a44fef54ecc10b2f8fa2da",
+  "interaction_regime": "single-turn-with-context",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Goodfellow et al. (2014) - Generative Adversarial Nets (NeurIPS)",
+    "retrieved_text": "Related work: Variational Autoencoders (Kingma & Welling, 2014) offered an alternative generative approach. Wasserstein GAN (Arjovsky et al., 2017) improved training stability. The minimax game formulation connects to Nash equilibria in game theory.",
+    "n_chunks": 1
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "6fe31fd70f043bf1aba26073b7dd7c7735ff7e38",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T16:35:54.244192+00:00",
+  "timestamp_end": "2026-02-10T16:35:57.992685+00:00",
+  "execution_duration_ms": 3748.49,
+  "output_hash": "adad292a4ea3847ab9fa994514d3cde946e090d54b79d439c881d11bae355c2a",
+  "output_metrics": {},
+  "logging_overhead_ms": 22.19,
+  "storage_kb": 4.92,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

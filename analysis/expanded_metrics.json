@@ -86,6 +86,40 @@
   },
   {
     "model": "claude_sonnet",
+    "task": "multiturn_refinement",
+    "condition": "C1_fixed_seed",
+    "n_abstracts": 10,
+    "n_runs": 50,
+    "emr_mean": 0.04,
+    "emr_std": 0.066332495807108,
+    "ned_mean": 0.18875670116978843,
+    "rouge_l_mean": 0.8335455621168357,
+    "bertscore_f1_mean": 0.9779975724220277,
+    "timing": {
+      "mean_duration_ms": 10143.7574,
+      "mean_overhead_ms": 23.007399999999997,
+      "overhead_pct": 0.2297376524272737
+    }
+  },
+  {
+    "model": "claude_sonnet",
+    "task": "rag_extraction",
+    "condition": "C1_fixed_seed",
+    "n_abstracts": 10,
+    "n_runs": 50,
+    "emr_mean": 0.0,
+    "emr_std": 0.0,
+    "ned_mean": 0.25641694996776304,
+    "rouge_l_mean": 0.7475713008540571,
+    "bertscore_f1_mean": 0.9713510745763779,
+    "timing": {
+      "mean_duration_ms": 4266.683,
+      "mean_overhead_ms": 25.075200000000002,
+      "overhead_pct": 0.5931713641968521
+    }
+  },
+  {
+    "model": "claude_sonnet",
     "task": "summarization",
     "condition": "C1_fixed_seed",
     "n_abstracts": 10,

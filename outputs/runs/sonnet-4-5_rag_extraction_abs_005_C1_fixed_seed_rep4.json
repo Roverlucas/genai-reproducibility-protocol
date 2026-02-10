@@ -1,0 +1,53 @@
+{
+  "run_id": "sonnet-4-5_rag_extraction_abs_005_C1_fixed_seed_rep4",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "interaction_regime": "single-turn-with-context",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "prompt_text": "You are given a scientific abstract and additional context retrieved from related papers. Extract information from the PRIMARY abstract into the JSON format below. Use the retrieved context only to disambiguate or enrich fields, but the abstract is the authoritative source.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string\",\n  \"method\": \"string\",\n  \"key_result\": \"string\",\n  \"model_or_system\": \"string\",\n  \"benchmark\": \"string\"\n}",
+  "input_text": "We explore how generating a chain of thought — a series of intermediate reasoning steps — significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain-of-thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain-of-thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks. The empirical gains can be striking. For instance, prompting a PaLM 540B with just eight chain-of-thought exemplars achieves state-of-the-art accuracy on the GSM8K benchmark of math word problems, surpassing even finetuned GPT-3 with a verifier.",
+  "input_hash": "24d26410863f8392222ad924d599813efc82c437fd5769d5e66b4311e6d32900",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "798df7eed2b7330b62f75040c9b1663c2d05e17eb1a44fef54ecc10b2f8fa2da",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Wei et al. 2022 - Chain-of-Thought Prompting Elicits Reasoning in LLMs (NeurIPS)",
+    "retrieved_text": "Related work: Few-shot prompting (Brown et al., 2020) showed that large models can perform tasks with minimal examples. Self-consistency (Wang et al., 2022) improves reasoning by sampling multiple chains. GSM8K (Cobbe et al., 2021) contains 8.5K grade school math word problems for evaluating reasoning.",
+    "n_chunks": 1
+  },
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-02-10T16:35:42.248497+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "6fe31fd70f043bf1aba26073b7dd7c7735ff7e38",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-02-10T16:35:42.248461+00:00",
+  "timestamp_end": "2026-02-10T16:35:45.717635+00:00",
+  "output_text": "```json\n{\n  \"objective\": \"To improve the ability of large language models to perform complex reasoning by generating a series of intermediate reasoning steps\",\n  \"method\": \"Chain-of-thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting\",\n  \"key_result\": \"Prompting a PaLM 540B with just eight chain-of-thought exemplars achieves state-of-the-art accuracy on the GSM8K benchmark of math word problems, surpassing even finetuned GPT-3 with a verifier\",\n  \"model_or_system\": \"PaLM 540B and two other large language models\",\n  \"benchmark\": \"GSM8K benchmark of math word problems, plus arithmetic, commonsense, and symbolic reasoning tasks\"\n}\n```",
+  "output_metrics": {},
+  "execution_duration_ms": 3469.17,
+  "logging_overhead_ms": 24.36,
+  "system_logs": "{\"inference_duration_ms\": 3444.58, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 425, \"output_tokens\": 189}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_01FNpu1uMZnA6T9WMcmpSUAY\"}",
+  "errors": [],
+  "output_hash": "0750666bbfc2d8d5ba4e9290c408aa63d2f114eb42511bc9c4cac604d5f12ada",
+  "storage_kb": 4.58
+}

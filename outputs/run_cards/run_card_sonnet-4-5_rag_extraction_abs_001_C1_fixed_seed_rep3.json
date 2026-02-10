@@ -1,0 +1,45 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "sonnet-4-5_rag_extraction_abs_001_C1_fixed_seed_rep3",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "prompt_card_ref": "prompt_card_rag_extraction_v1_0.json",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "798df7eed2b7330b62f75040c9b1663c2d05e17eb1a44fef54ecc10b2f8fa2da",
+  "interaction_regime": "single-turn-with-context",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Vaswani et al. 2017 - Attention Is All You Need (NeurIPS)",
+    "retrieved_text": "Related work: The sequence-to-sequence architecture (Sutskever et al., 2014) established the encoder-decoder paradigm for neural machine translation. Bahdanau et al. (2015) introduced attention mechanisms to address the information bottleneck in fixed-length encoding. The WMT benchmark (Workshop on Machine Translation) is the standard evaluation for MT systems.",
+    "n_chunks": 1
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "6fe31fd70f043bf1aba26073b7dd7c7735ff7e38",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T16:34:15.720731+00:00",
+  "timestamp_end": "2026-02-10T16:34:19.995118+00:00",
+  "execution_duration_ms": 4274.39,
+  "output_hash": "cfa5a20a34484c50435c7fc4947449cd92067d2599109b8c369bae1517bec6c9",
+  "output_metrics": {},
+  "logging_overhead_ms": 49.18,
+  "storage_kb": 5.08,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

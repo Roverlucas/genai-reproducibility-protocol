@@ -1,6 +1,6 @@
 \begin{table}[t]
 \centering
-\caption{API-served vs.\ locally deployed models under greedy decoding. Values are averaged across tasks and abstracts. Local models exhibit dramatically higher bitwise reproducibility, confirming that server-side non-determinism---not user-controllable parameters---is the primary source of variability in API-served models.}
+\caption{API-served vs.\ locally deployed models under greedy decoding (single-turn tasks only). Local averages: simple mean across 3 models $\times$ 2 tasks (C1+C2 combined). API averages: simple mean across 2 models $\times$ 2 tasks (GPT-4 C2, Claude C1). Local models exhibit dramatically higher bitwise reproducibility, providing evidence that server-side non-determinism---not user-controllable parameters---is the primary source of variability in API-served models.}
 \label{tab:api_vs_local}
 \small
 \begin{tabular}{lcccc}

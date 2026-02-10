@@ -1,6 +1,6 @@
 \begin{table}[t]
 \centering
-\caption{Exact Match Rate (EMR) under greedy decoding ($t{=}0$) across five models and two tasks. Higher is more reproducible. Local models achieve near-perfect bitwise reproducibility while API-served models exhibit substantial hidden non-determinism.}
+\caption{Exact Match Rate (EMR) under greedy decoding ($t{=}0$) across five models and two single-turn tasks. Values for local models aggregate conditions C1 and C2 (both greedy, $t{=}0$); for GPT-4, values reflect C2 only (C1 has insufficient coverage: 3/30 abstracts for summarization); for Claude, values reflect C1 only (C1 and C2 are effectively identical since Claude's API does not honor the seed parameter). Higher is more reproducible.}
 \label{tab:emr_greedy}
 \small
 \begin{tabular}{llcccc}

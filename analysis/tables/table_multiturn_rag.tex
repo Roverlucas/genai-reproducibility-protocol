@@ -1,6 +1,6 @@
 \begin{table}[t]
 \centering
-\caption{Reproducibility under complex interaction regimes (C1 fixed seed, $t{=}0$). Multi-turn refinement involves three successive prompt--response exchanges. RAG extraction augments the prompt with a retrieved context passage.}
+\caption{Reproducibility under complex interaction regimes (C1 fixed seed, $t{=}0$). Multi-turn refinement involves three successive prompt--response exchanges. RAG extraction augments the prompt with a retrieved context passage. Claude Sonnet 4.5 is included as a representative API-served model; its near-zero EMR across all four scenarios confirms that the local-vs-API reproducibility gap extends to complex interaction regimes.}
 \label{tab:multiturn_rag}
 \small
 \begin{tabular}{llcccc}
@@ -21,6 +21,11 @@
    & Single-turn Summarization & 0.931 & 0.014 & 0.986 & 0.9979 \\
    & Multi-turn Refinement & 0.880 & 0.012 & 0.988 & 0.9986 \\
    & RAG Extraction & 0.960 & 0.012 & 0.985 & 0.9987 \\
+  \midrule
+  Claude Sonnet 4.5 & Single-turn Extraction & \cellcolor{red!20}0.190 & 0.101 & 0.904 & 0.9878 \\
+   & Single-turn Summarization & \cellcolor{red!20}0.020 & 0.242 & 0.764 & 0.9704 \\
+   & Multi-turn Refinement & \cellcolor{red!20}0.040 & 0.189 & 0.834 & 0.9780 \\
+   & RAG Extraction & \cellcolor{red!20}0.000 & 0.256 & 0.748 & 0.9714 \\
 \bottomrule
 \end{tabular}
 \end{table}
