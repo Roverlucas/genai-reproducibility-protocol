@@ -1,6 +1,6 @@
 \begin{table}[t]
 \centering
-\caption{API-served vs.\ locally deployed models under greedy decoding (single-turn tasks only). Local averages: simple mean across 3 models $\times$ 2 tasks (C1+C2 combined). API averages: simple mean across 2 models $\times$ 2 tasks (GPT-4 C2, Claude C1). Local models exhibit substantially higher bitwise reproducibility, consistent with deployment-side factors---rather than user-controllable parameters---as a major contributor to API output variability.}
+\caption{API-served vs.\ locally deployed models under greedy decoding (single-turn tasks only). Local averages: simple mean across 3 models $\times$ 2 tasks (C1+C2 combined). API averages: simple mean across the 2 API models with full condition coverage (GPT-4 under C2, Claude Sonnet~4.5 under C1) $\times$ 2 tasks; DeepSeek, Perplexity, and Gemini are excluded because they lack C2 or single-turn data. Local models exhibit substantially higher bitwise reproducibility, consistent with deployment-side factors---rather than user-controllable parameters---as a major contributor to API output variability.}
 \label{tab:api_vs_local}
 \small
 \begin{tabular}{lcccc}
