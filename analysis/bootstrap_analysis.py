@@ -26,6 +26,7 @@ MODEL_FILE_PREFIX = {
     "gemma2_9b": "gemma2_9b",
     "gpt-4": "gpt4",
     "sonnet-4-5": "claude_sonnet",
+    "gemini-2_5-pro": "gemini_pro",
     "deepseek-chat": "deepseek_chat",
     "sonar": "perplexity_sonar",
 }
@@ -43,8 +44,8 @@ TABLE3_CONDITIONS = {
 
 TABLE3_TASKS = ["extraction", "summarization"]
 
-# Table 5: multiturn and RAG, 4 models (no GPT-4)
-TABLE5_MODELS = ["llama3_8b", "mistral_7b", "gemma2_9b", "claude_sonnet"]
+# Table 5: multiturn and RAG, 5 models (no GPT-4)
+TABLE5_MODELS = ["llama3_8b", "mistral_7b", "gemma2_9b", "claude_sonnet", "gemini_pro"]
 TABLE5_TASKS = ["multiturn_refinement", "rag_extraction"]
 TABLE5_CONDITION = "C1_fixed_seed"
 

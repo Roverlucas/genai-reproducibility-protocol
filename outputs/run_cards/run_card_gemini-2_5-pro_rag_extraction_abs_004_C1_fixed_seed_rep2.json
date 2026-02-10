@@ -1,0 +1,44 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "gemini-2_5-pro_rag_extraction_abs_004_C1_fixed_seed_rep2",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "prompt_card_ref": "prompt_card_rag_extraction_v1_0.json",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "model_name": "gemini-2.5-pro",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "google-ai-studio",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 8192,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "3f5a8b4e2b44a40cb0408bdcdcb6fb68957fbc6096fd2df7a128f731d75f3ef7",
+  "interaction_regime": "single-turn-with-context",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Raffel et al. 2020 - Exploring the Limits of Transfer Learning with T5 (JMLR)",
+    "retrieved_text": "Related work: BERT (Devlin et al., 2019) established masked language modeling for pre-training. UniLM (Dong et al., 2019) unified different pre-training objectives. The Colossal Clean Crawled Corpus (C4) was introduced specifically for studying transfer learning at scale.",
+    "n_chunks": 1
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "b2e9440eb3a230cc3881aa4ba5c42bba0fb31853",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T21:19:26.018341+00:00",
+  "timestamp_end": "2026-02-10T21:19:37.192764+00:00",
+  "execution_duration_ms": 11174.42,
+  "output_hash": "c56922adfe7c123be9a68cd19c99dcf2858c502521f41d10dc610fe0f72c9d7b",
+  "output_metrics": {},
+  "logging_overhead_ms": 26.28,
+  "storage_kb": 4.77,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

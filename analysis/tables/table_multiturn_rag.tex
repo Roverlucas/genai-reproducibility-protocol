@@ -1,6 +1,6 @@
 \begin{table}[t]
 \centering
-\caption{Reproducibility under complex interaction regimes (C1 fixed seed, $t{=}0$), with 95\% bootstrap confidence intervals on EMR. Multi-turn refinement involves three successive prompt--response exchanges. RAG extraction augments the prompt with a retrieved context passage. Claude Sonnet 4.5 is included as a representative API-served model; its near-zero EMR across all four scenarios confirms that the local-vs-API reproducibility gap extends to complex interaction regimes.}
+\caption{Reproducibility under complex interaction regimes (C1 fixed seed, $t{=}0$), with 95\% bootstrap confidence intervals on EMR. Multi-turn refinement involves three successive prompt--response exchanges. RAG extraction augments the prompt with a retrieved context passage. Claude Sonnet 4.5 and Gemini 2.5 Pro are included as representative API-served models from two independent providers; their near-zero EMR confirms that the local-vs-API reproducibility gap extends to complex interaction regimes and is not provider-specific.}
 \label{tab:multiturn_rag}
 \small
 \begin{tabular}{llcccc}
@@ -26,6 +26,9 @@
    & Single-turn Summarization & \cellcolor{red!20}0.020\,[0.00,\,0.05] & 0.242 & 0.764 & 0.9704 \\
    & Multi-turn Refinement & \cellcolor{red!20}0.040\,[0.00,\,0.08] & 0.189 & 0.834 & 0.9780 \\
    & RAG Extraction & \cellcolor{red!20}0.000\,[0.00,\,0.00] & 0.256 & 0.748 & 0.9714 \\
+  \addlinespace
+  Gemini 2.5 Pro & Multi-turn Refinement & \cellcolor{red!20}0.010\,[0.00,\,0.03] & 0.163 & 0.861 & --- \\
+   & RAG Extraction & \cellcolor{red!20}0.070\,[0.02,\,0.13] & 0.196 & 0.813 & --- \\
 \bottomrule
 \end{tabular}
 \end{table}

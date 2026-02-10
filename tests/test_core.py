@@ -210,6 +210,27 @@ class TestParseFilename:
         assert abs_num == 20
         assert rep == 2
 
+    def test_gemini_filename(self):
+        """Gemini 2.5 Pro filename parses correctly."""
+        result = parse_filename("gemini-2_5-pro_multiturn_refinement_abs_005_C1_fixed_seed_rep2.json")
+        assert result is not None
+        model, task, abs_num, condition, rep = result
+        assert model == "gemini_pro"
+        assert task == "multiturn_refinement"
+        assert abs_num == 5
+        assert condition == "C1_fixed_seed"
+        assert rep == 2
+
+    def test_gemini_rag_filename(self):
+        """Gemini 2.5 Pro RAG extraction filename parses correctly."""
+        result = parse_filename("gemini-2_5-pro_rag_extraction_abs_010_C1_fixed_seed_rep4.json")
+        assert result is not None
+        model, task, abs_num, condition, rep = result
+        assert model == "gemini_pro"
+        assert task == "rag_extraction"
+        assert abs_num == 10
+        assert rep == 4
+
     def test_rejects_non_json(self):
         """Non-.json extension returns None."""
         assert parse_filename("llama3_8b_extraction_abs_001_C1_fixed_seed_rep1.txt") is None

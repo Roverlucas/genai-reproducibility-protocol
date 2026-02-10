@@ -1,0 +1,44 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "gemini-2_5-pro_rag_extraction_abs_005_C1_fixed_seed_rep4",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "prompt_card_ref": "prompt_card_rag_extraction_v1_0.json",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "model_name": "gemini-2.5-pro",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "google-ai-studio",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 8192,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "3f5a8b4e2b44a40cb0408bdcdcb6fb68957fbc6096fd2df7a128f731d75f3ef7",
+  "interaction_regime": "single-turn-with-context",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Wei et al. 2022 - Chain-of-Thought Prompting Elicits Reasoning in LLMs (NeurIPS)",
+    "retrieved_text": "Related work: Few-shot prompting (Brown et al., 2020) showed that large models can perform tasks with minimal examples. Self-consistency (Wang et al., 2022) improves reasoning by sampling multiple chains. GSM8K (Cobbe et al., 2021) contains 8.5K grade school math word problems for evaluating reasoning.",
+    "n_chunks": 1
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "b2e9440eb3a230cc3881aa4ba5c42bba0fb31853",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T21:20:20.919027+00:00",
+  "timestamp_end": "2026-02-10T21:20:29.516830+00:00",
+  "execution_duration_ms": 8597.8,
+  "output_hash": "cce19b9a6a659863f50ff89e514d28677fdb9d142b1cbeeff31a6a7337fd96b8",
+  "output_metrics": {},
+  "logging_overhead_ms": 17.04,
+  "storage_kb": 4.53,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

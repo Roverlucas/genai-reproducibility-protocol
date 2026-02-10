@@ -177,6 +177,22 @@
         "n_abstracts": 10,
         "std": 0.0
       }
+    },
+    "gemini_pro": {
+      "multiturn_refinement": {
+        "mean": 0.01,
+        "ci_lower": 0.0,
+        "ci_upper": 0.03,
+        "n_abstracts": 10,
+        "std": 0.0316
+      },
+      "rag_extraction": {
+        "mean": 0.07,
+        "ci_lower": 0.02,
+        "ci_upper": 0.13,
+        "n_abstracts": 10,
+        "std": 0.0949
+      }
     }
   },
   "all_conditions": {
@@ -291,6 +307,26 @@
           "ci_upper": 0.88,
           "n_abstracts": 10,
           "std": 0.2066
+        }
+      }
+    },
+    "gemini_pro": {
+      "multiturn_refinement": {
+        "C1_fixed_seed": {
+          "mean": 0.01,
+          "ci_lower": 0.0,
+          "ci_upper": 0.03,
+          "n_abstracts": 10,
+          "std": 0.0316
+        }
+      },
+      "rag_extraction": {
+        "C1_fixed_seed": {
+          "mean": 0.07,
+          "ci_lower": 0.02,
+          "ci_upper": 0.13,
+          "n_abstracts": 10,
+          "std": 0.0949
         }
       }
     },

@@ -1,0 +1,40 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "gemini-2_5-pro_multiturn_refinement_abs_004_C1_fixed_seed_rep3",
+  "task_id": "multiturn_refinement",
+  "task_category": "iterative_structured_extraction",
+  "prompt_card_ref": "prompt_card_multiturn_refinement_v1_0.json",
+  "prompt_hash": "9eda47b5621ad7e12f0c3858d37302eca2a96b3aec305dd4f17c4f3dc95ed54b",
+  "model_name": "gemini-2.5-pro",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "google-ai-studio",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 8192,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "note": "maxOutputTokens=8192 to accommodate thinking tokens"
+  },
+  "params_hash": "5130e6369ffb08775485176d2172ab6003a2eb97d9fdcf011af9a43f42924ab5",
+  "interaction_regime": "multi-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "b2e9440eb3a230cc3881aa4ba5c42bba0fb31853",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T20:56:06.014129+00:00",
+  "timestamp_end": "2026-02-10T20:56:41.130518+00:00",
+  "execution_duration_ms": 35116.39,
+  "output_hash": "b0cf32d24452299858c646f8437b5cc69887b013e4315bf1b0e836478d3817ea",
+  "output_metrics": {},
+  "logging_overhead_ms": 28.27,
+  "storage_kb": 12.3,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}
