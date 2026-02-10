@@ -52,7 +52,7 @@ BOOTSTRAP_N = 10000
 RANDOM_SEED = 42
 
 
-def parse_filename(fname):
+def parse_filename(fname: str) -> tuple[str, str, int, str, int] | None:
     """Parse a run filename into (canonical_model, task, abs_num, condition, rep)."""
     if not fname.endswith('.json'):
         return None
@@ -85,7 +85,7 @@ def parse_filename(fname):
     return (canonical_model, task, abs_num, condition, rep)
 
 
-def compute_per_abstract_emr(hashes):
+def compute_per_abstract_emr(hashes: list[str]) -> float | None:
     """EMR = fraction of C(n,2) pairs with identical output_hash."""
     n = len(hashes)
     if n < 2:
@@ -95,7 +95,7 @@ def compute_per_abstract_emr(hashes):
     return matching / len(pairs)
 
 
-def bootstrap_ci(per_abstract_emrs, n_boot=BOOTSTRAP_N, seed=RANDOM_SEED):
+def bootstrap_ci(per_abstract_emrs: list[float], n_boot: int = BOOTSTRAP_N, seed: int = RANDOM_SEED) -> dict[str, float | int | None]:
     """Bootstrap 95% CI for the mean of per-abstract EMR values."""
     rng = np.random.RandomState(seed)
     arr = np.array(per_abstract_emrs)

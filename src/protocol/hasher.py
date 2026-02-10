@@ -30,8 +30,12 @@ def hash_dict(d: dict) -> str:
 
 
 def get_environment_hash() -> str:
-    """Generate a hash representing the current execution environment."""
-    env_info = {
+    """Generate a hash representing the current execution environment.
+
+    Returns:
+        SHA-256 hex digest of the environment information dictionary.
+    """
+    env_info: dict[str, str] = {
         "os": platform.system(),
         "os_version": platform.version(),
         "architecture": platform.machine(),

@@ -150,7 +150,7 @@ This reproducibility challenge is not merely theoretical. \citet{baker2016reprod
 
 Existing experiment-tracking tools such as MLflow \cite{zaharia2018accelerating}, Weights \& Biases \cite{biewald2020experiment}, and DVC \cite{kuprieiev2024dvc} were designed primarily for training pipelines and numerical metrics. Although valuable for their intended purposes, these tools lack features critical for generative AI studies: structured prompt versioning, cryptographic output hashing for tamper detection, provenance graphs linking outputs to their full generation context, and environment fingerprinting specific to inference-time conditions.
 
-In this paper, we make three contributions, with the protocol design as the primary and most durable contribution:
+Figure~\ref{fig:visual-abstract} provides an overview of the study design, protocol pipeline, and key findings. In this paper, we make three contributions, with the protocol design as the primary and most durable contribution:
 
 \begin{enumerate}
     \item \textbf{A lightweight, standards-based protocol} for logging, versioning, and provenance tracking of generative AI experiments. The protocol introduces \textit{Prompt Cards} and \textit{Run Cards} as structured documentation artifacts, and adopts the W3C PROV data model \cite{w3cprov2013} for machine-readable provenance graphs. It operationalizes---and extends to generative AI workflows---the reproducibility checklist and badge mechanisms recently adopted by JAIR \cite{gundersen2024improving}, providing machine-readable infrastructure that automates what those mechanisms require researchers to document manually.
@@ -161,6 +161,14 @@ In this paper, we make three contributions, with the protocol design as the prim
 \end{enumerate}
 
 The remainder of this paper is organized as follows. Section~\ref{sec:related-work} reviews related work on reproducibility in AI and experiment tracking. Section~\ref{sec:protocol} formalizes the protocol design. Section~\ref{sec:experimental-setup} describes the experimental methodology. Section~\ref{sec:results} presents the empirical results. Section~\ref{sec:discussion} discusses findings, limitations, and practical implications. Section~\ref{sec:conclusion} concludes with directions for future work.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_visual_abstract.pdf}
+\caption{Visual abstract summarizing the study design and key findings. \textbf{Left:} The provenance protocol pipeline, from Prompt Card creation through Run Card logging and W3C PROV graph generation. \textbf{Center:} Exact Match Rates (EMR) under greedy decoding for all seven models, illustrating the reproducibility gap between local models (green, EMR $\geq$ 0.960) and API-served models (orange/red, EMR $\leq$ 0.800). \textbf{Right:} Key statistics from the study: 3,804 experiments, 7 models, 4 tasks, 4 API providers, with less than 1\% protocol overhead.}
+\Description{A three-panel visual abstract showing the protocol pipeline (left), a bar chart of EMR values for 7 models with a 3x local-vs-API gap annotation (center), and summary statistics (right).}
+\label{fig:visual-abstract}
+\end{figure*}
 
 
 %% ============================================================
@@ -1226,6 +1234,44 @@ To address potential ``apples-to-oranges'' concerns, we document the exact paylo
 \noindent Perplexity Sonar is an online model with real-time search augmentation. No seed parameter or system message. The search-augmented nature introduces an additional source of variability: retrieved web content may differ across requests, contributing to the lowest observed reproducibility (EMR = 0.010--0.100).
 
 \textbf{Key symmetry points.} Across all seven models: (1)~identical prompt text (verified by \texttt{prompt\_hash}); (2)~identical temperature ($t{=}0.0$); (3)~identical max token limit (1,024); (4)~no system messages; (5)~no stop sequences; (6)~no post-processing or text normalization of outputs.
+
+
+\section{JAIR Reproducibility Compliance}
+\label{app:jair-compliance}
+
+This appendix documents compliance with the JAIR reproducibility mechanisms described by \citet{gundersen2024improving}. Each item maps to the four mechanisms: checklists, structured abstracts, badges, and reproducibility reports.
+
+\subsection*{Mechanism 1: Reproducibility Checklist}
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+    \item[\ding{51}] \textbf{Code availability}: Reference implementation publicly available at \url{https://github.com/Roverlucas/genai-reproducibility-protocol} (MIT License).
+    \item[\ding{51}] \textbf{Data availability}: All 3,804 run records, PROV documents, and 30 input abstracts included in the repository.
+    \item[\ding{51}] \textbf{Experimental methodology}: Full description of models, tasks, conditions, and metrics in Section~\ref{sec:experimental-setup}.
+    \item[\ding{51}] \textbf{Hyperparameters}: All inference parameters documented per model (Appendix~\ref{app:api-payloads}); temperature = 0, max\_tokens = 1024 across all models.
+    \item[\ding{51}] \textbf{Statistical tests}: Holm-Bonferroni correction across 68 tests, Fisher's exact tests, bootstrap 95\% CIs (10,000 resamples).
+    \item[\ding{51}] \textbf{Randomness control}: Random seeds documented; bootstrap seed = 42; five experimental conditions (C1--C5) isolate seed and parameter effects.
+    \item[\ding{51}] \textbf{Computing infrastructure}: Hardware and software environment documented (Apple M4, Ollama v0.15.5, Python 3.14).
+    \item[\ding{51}] \textbf{Run time}: Protocol overhead measured at $<$1\% of inference time ($\approx$4~KB per run).
+\end{itemize}
+
+\subsection*{Mechanism 2: Structured Abstract}
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+    \item[\ding{51}] Abstract follows JAIR's structured format: Background, Objectives, Methods, Results, Conclusions.
+\end{itemize}
+
+\subsection*{Mechanism 3: Reproducibility Badge Eligibility}
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+    \item[\ding{51}] \textbf{Code}: Complete reference implementation in Python.
+    \item[\ding{51}] \textbf{Data}: All experimental data (run records, provenance graphs, input texts) publicly available.
+    \item[\ding{51}] \textbf{Experiment}: Full pipeline (data collection, analysis, figure generation) can be re-executed from the repository.
+\end{itemize}
+
+\subsection*{Mechanism 4: Reproducibility Report}
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+    \item[\ding{51}] Sensitivity analysis via balanced 10-abstract subsample confirms findings (Section~5.1).
+    \item[\ding{51}] Chat-format control experiment (200 additional runs) rules out prompt-format confound (Appendix~\ref{app:chat-control}).
+    \item[\ding{51}] Automated test suite (49 tests) validates core analysis functions.
+    \item[\ding{51}] Continuous integration pipeline ensures reproducibility of code and analysis.
+\end{itemize}
 
 
 \end{document}
