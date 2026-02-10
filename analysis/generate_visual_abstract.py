@@ -154,11 +154,11 @@ def draw_visual_abstract():
 
     models = [
         "Gemma 2\n9B", "LLaMA 3\n8B", "Mistral\n7B",
-        "DeepSeek\nR1 8B", "GPT-4", "Claude\nSonnet 4.5", "Perplexity\nSonar"
+        "DeepSeek\nChat", "GPT-4", "Claude\nSonnet 4.5", "Gemini\n2.5 Pro", "Perplexity\nSonar"
     ]
-    emr_values = [1.000, 0.987, 0.960, 0.800, 0.443, 0.190, 0.100]
+    emr_values = [1.000, 0.987, 0.960, 0.800, 0.443, 0.190, 0.070, 0.100]
     colors = [GREEN_DARK, GREEN_MID, GREEN_LIGHT,
-              ORANGE_LIGHT, ORANGE, RED_MID, RED_DARK]
+              ORANGE_LIGHT, ORANGE, RED_MID, "#d73027", RED_DARK]
 
     bars = ax_bar.bar(range(len(models)), emr_values, color=colors,
                       edgecolor=WHITE, linewidth=0.8, width=0.72, zorder=3)
@@ -174,9 +174,13 @@ def draw_visual_abstract():
     ax_bar.set_xticklabels(models, fontsize=9)
     ax_bar.set_ylabel("Exact Match Rate (EMR)", fontsize=12, fontweight="bold")
     ax_bar.set_ylim(0, 1.15)
-    ax_bar.set_xlim(-0.6, len(models) + 0.4)
-    ax_bar.set_title("Greedy-Decoding Reproducibility (Extraction Task)",
+    ax_bar.set_xlim(-0.6, len(models) + 1.2)
+    ax_bar.set_title("Greedy-Decoding Reproducibility (Extraction Task*)",
                      fontsize=13, fontweight="bold", pad=10)
+    # Footnote for Gemini (RAG extraction, not single-turn)
+    fig.text(0.33, 0.17,
+             "*Gemini 2.5 Pro: RAG extraction EMR (not evaluated on single-turn extraction)",
+             fontsize=8, color=GREY_TEXT, style="italic")
     ax_bar.spines["top"].set_visible(False)
     ax_bar.spines["right"].set_visible(False)
     ax_bar.yaxis.grid(True, alpha=0.3, linestyle="--", zorder=0)
@@ -204,22 +208,22 @@ def draw_visual_abstract():
     ax_bar.text(1.0, avg_y, "avg EMR = 0.982", ha="center", va="top",
                 transform=xax, fontsize=9, color=GREEN_DARK, clip_on=False)
 
-    # API bracket (bars 3,4,5,6)
-    ax_bar.plot([2.65, 6.35], [bracket_y, bracket_y],
+    # API bracket (bars 3,4,5,6,7)
+    ax_bar.plot([2.65, 7.35], [bracket_y, bracket_y],
                 color=RED_MID, lw=2.5, transform=xax, clip_on=False)
-    for xp in [2.65, 6.35]:
+    for xp in [2.65, 7.35]:
         ax_bar.plot([xp, xp], [bracket_y, bracket_y + 0.03],
                     color=RED_MID, lw=2.5, transform=xax, clip_on=False)
-    ax_bar.text(4.5, label_y, "API", ha="center", va="top",
+    ax_bar.text(5.0, label_y, "API", ha="center", va="top",
                 transform=xax, fontsize=11, fontweight="bold",
                 color=RED_MID, clip_on=False)
-    ax_bar.text(4.5, avg_y, "avg EMR = 0.383", ha="center", va="top",
+    ax_bar.text(5.0, avg_y, "avg EMR = 0.321", ha="center", va="top",
                 transform=xax, fontsize=9, color=RED_MID, clip_on=False)
 
     # "3x gap" annotation — vertical double arrow to the right of the chart
     mid_local_y = np.mean([1.000, 0.987, 0.960])  # ~0.982
-    mid_api_y   = np.mean([0.800, 0.443, 0.190, 0.100])  # ~0.383
-    gap_x = 7.0  # to the right of the last bar, within extended xlim
+    mid_api_y   = np.mean([0.800, 0.443, 0.190, 0.070, 0.100])  # ~0.321
+    gap_x = 8.0  # to the right of the last bar, within extended xlim
     ax_bar.annotate("",
                     xy=(gap_x, mid_api_y), xytext=(gap_x, mid_local_y),
                     arrowprops=dict(arrowstyle="<->", color=DARK_TEXT,
@@ -245,10 +249,10 @@ def draw_visual_abstract():
                   fontsize=14, fontweight="bold", color=DARK_TEXT)
 
     stats = [
-        ("3,804",  "total runs"),
-        ("7",      "LLM models"),
+        ("3,904",  "total runs"),
+        ("8",      "LLM models"),
         ("4",      "tasks"),
-        ("4",      "API providers"),
+        ("5",      "API providers"),
         ("<1%",    "overhead"),
     ]
 
