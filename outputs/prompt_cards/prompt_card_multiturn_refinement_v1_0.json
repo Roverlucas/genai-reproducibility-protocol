@@ -1,0 +1,36 @@
+{
+  "prompt_card_version": "1.0",
+  "created_at": "2026-02-10T02:15:25.194042+00:00",
+  "prompt_id": "multiturn_refinement",
+  "prompt_hash": "9eda47b5621ad7e12f0c3858d37302eca2a96b3aec305dd4f17c4f3dc95ed54b",
+  "version": "1.0",
+  "prompt_text": "[SYSTEM] You are a structured information extraction assistant. You extract information from scientific abstracts into JSON format.\n[TURN1] Read the following scientific abstract and extract the information into the exact JSON format below. Use only information explicitly stated in the abstract. If a field is not mentioned, use null.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string\",\n  \"method\": \"string\",\n  \"key_result\": \"string\",\n  \"model_or_system\": \"string\",\n  \"benchmark\": \"string\"\n}\n[TURN2] Review your extraction above. Check each field carefully against the original abstract. If any field is incomplete, imprecise, or missing quantitative details that are in the abstract, correct it. Output only the corrected JSON, no explanation.\n[TURN3] Now produce the final verified extraction. Ensure all fields contain the most precise information from the abstract. If quantitative results are mentioned (percentages, scores, metrics), they must appear in key_result. Output only the final JSON.",
+  "system_instructions": "",
+  "few_shot_examples": [],
+  "task_category": "iterative_structured_extraction",
+  "objective": "Extract structured JSON via 3-turn iterative refinement conversation.",
+  "designed_by": "lucas_rover",
+  "assumptions": [
+    "Model can maintain conversation context across turns",
+    "Iterative refinement improves extraction quality",
+    "Output at each turn should be valid JSON"
+  ],
+  "limitations": [
+    "Fixed refinement strategy (no adaptive feedback)",
+    "3 turns may be insufficient for complex abstracts"
+  ],
+  "interaction_regime": "multi-turn",
+  "target_models": [
+    "llama3:8b",
+    "mistral:7b",
+    "gemma2:9b"
+  ],
+  "expected_output_format": "JSON object with 5 string fields",
+  "change_log": [
+    {
+      "version": "1.0",
+      "date": "2026-02-10",
+      "description": "Initial version"
+    }
+  ]
+}

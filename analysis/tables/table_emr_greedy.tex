@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Exact Match Rate (EMR) under greedy decoding ($t{=}0$) across five models and two tasks. Higher is more reproducible. Local models achieve near-perfect bitwise reproducibility while API-served models exhibit substantial hidden non-determinism.}
+\label{tab:emr_greedy}
+\small
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Model} & \textbf{Source} & \textbf{Extraction} & \textbf{Summarization} & \textbf{$N$ Runs} & \textbf{$N$ Abstracts} \\
+\midrule
+  Gemma 2 9B & Local & \cellcolor{green!20}1.000 & \cellcolor{green!20}1.000 & 100 & 10 \\
+  Mistral 7B & Local & \cellcolor{green!20}0.960 & \cellcolor{yellow!20}0.840 & 100 & 10 \\
+  LLaMA 3 8B & Local & \cellcolor{green!20}0.987 & \cellcolor{yellow!20}0.931 & 400 & 30 \\
+  \midrule
+  GPT-4 & API & \cellcolor{orange!20}0.443 & \cellcolor{red!20}0.230 & 300 & 30 \\
+  Claude Sonnet 4.5 & API & \cellcolor{red!20}0.190 & \cellcolor{red!20}0.020 & 99 & 10 \\
+\bottomrule
+\end{tabular}
+\end{table}

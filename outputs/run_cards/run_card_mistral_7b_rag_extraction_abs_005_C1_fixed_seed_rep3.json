@@ -1,0 +1,45 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "mistral_7b_rag_extraction_abs_005_C1_fixed_seed_rep3",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "prompt_card_ref": "prompt_card_rag_extraction_v1_0.json",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d56320643fc4dd41f0fd4168b757a420e7c514e72a9a744f7391d",
+  "interaction_regime": "single-turn-with-context",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Wei et al. 2022 - Chain-of-Thought Prompting Elicits Reasoning in LLMs (NeurIPS)",
+    "retrieved_text": "Related work: Few-shot prompting (Brown et al., 2020) showed that large models can perform tasks with minimal examples. Self-consistency (Wang et al., 2022) improves reasoning by sampling multiple chains. GSM8K (Cobbe et al., 2021) contains 8.5K grade school math word problems for evaluating reasoning.",
+    "n_chunks": 1
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T03:01:10.881499+00:00",
+  "timestamp_end": "2026-02-10T03:01:17.408102+00:00",
+  "execution_duration_ms": 6526.6,
+  "output_hash": "c46171b1429a8a9ed8d5159a2c79c35fe65dfc8377048fcff172ee2664e3bf7f",
+  "output_metrics": {},
+  "logging_overhead_ms": 27.17,
+  "storage_kb": 4.26,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

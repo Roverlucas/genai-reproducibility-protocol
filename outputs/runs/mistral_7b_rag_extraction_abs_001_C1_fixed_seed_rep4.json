@@ -1,0 +1,53 @@
+{
+  "run_id": "mistral_7b_rag_extraction_abs_001_C1_fixed_seed_rep4",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "interaction_regime": "single-turn-with-context",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "prompt_text": "You are given a scientific abstract and additional context retrieved from related papers. Extract information from the PRIMARY abstract into the JSON format below. Use the retrieved context only to disambiguate or enrich fields, but the abstract is the authoritative source.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string\",\n  \"method\": \"string\",\n  \"key_result\": \"string\",\n  \"model_or_system\": \"string\",\n  \"benchmark\": \"string\"\n}",
+  "input_text": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.",
+  "input_hash": "4e873413a989a6feed75ae6b1ac70e01a42acf78ff852b3185b83ee5587f7f88",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d56320643fc4dd41f0fd4168b757a420e7c514e72a9a744f7391d",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Vaswani et al. 2017 - Attention Is All You Need (NeurIPS)",
+    "retrieved_text": "Related work: The sequence-to-sequence architecture (Sutskever et al., 2014) established the encoder-decoder paradigm for neural machine translation. Bahdanau et al. (2015) introduced attention mechanisms to address the information bottleneck in fixed-length encoding. The WMT benchmark (Workshop on Machine Translation) is the standard evaluation for MT systems.",
+    "n_chunks": 1
+  },
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-02-10T02:58:31.628157+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-02-10T02:58:31.628075+00:00",
+  "timestamp_end": "2026-02-10T02:58:40.059966+00:00",
+  "output_text": " {\n  \"objective\": \"Develop a new simple network architecture for machine translation tasks\",\n  \"method\": \"Propose a Transformer model based solely on attention mechanisms, dispensing with recurrence and convolutions entirely\",\n  \"key_result\": \"Achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results by over 2 BLEU. On the WMT 2014 English-to-French translation task, establishes a new single-model state-of-the-art BLEU score of 41.8\",\n  \"model_or_system\": \"Transformer model\",\n  \"benchmark\": \"WMT benchmark (Workshop on Machine Translation)\"\n}",
+  "output_metrics": {},
+  "execution_duration_ms": 8431.89,
+  "logging_overhead_ms": 28.92,
+  "system_logs": "{\"inference_duration_ms\": 8402.93, \"model_reported_duration_ns\": 8401698833, \"eval_count\": 180, \"prompt_eval_count\": 528, \"done\": true}",
+  "errors": [],
+  "output_hash": "e7c8cfcfafe7204eab5c51f49500c633053238ece73f36f0f54982db470e326d",
+  "storage_kb": 4.71
+}

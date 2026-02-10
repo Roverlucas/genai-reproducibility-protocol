@@ -1,0 +1,40 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "mistral_7b_summarization_abs_004_C3_temp0.3_rep0",
+  "task_id": "summarization",
+  "task_category": "scientific_summarization",
+  "prompt_card_ref": "prompt_card_summarization_v1_v1_0.json",
+  "prompt_hash": "c9644358805b358076a2836466429c97a31bfd6ec5fbb42e9e9b32bcf6190b94",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.3,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "sampling",
+    "seed": 42
+  },
+  "params_hash": "e0d3b0c9318db1df802ad212a80f9600918840199dfdcf834e0ce079d80c40a9",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-09T19:52:43.647193+00:00",
+  "timestamp_end": "2026-02-09T19:52:49.258863+00:00",
+  "execution_duration_ms": 5611.67,
+  "output_hash": "30eefad03a1fea255a6ceffd9c77179713bc2bd6998d9fc4549e3ab56e0b83ec",
+  "output_metrics": {},
+  "logging_overhead_ms": 16.39,
+  "storage_kb": 3.95,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

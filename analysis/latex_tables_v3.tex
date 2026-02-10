@@ -1,0 +1,145 @@
+% Auto-generated LaTeX tables for JAIR paper (v3: 5 models, 3504 runs)
+% Requires: \usepackage[table]{xcolor} for cellcolor
+
+% === table_emr_greedy.tex ===
+\begin{table}[t]
+\centering
+\caption{Exact Match Rate (EMR) under greedy decoding ($t{=}0$) across five models and two tasks. Higher is more reproducible. Local models achieve near-perfect bitwise reproducibility while API-served models exhibit substantial hidden non-determinism.}
+\label{tab:emr_greedy}
+\small
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Model} & \textbf{Source} & \textbf{Extraction} & \textbf{Summarization} & \textbf{$N$ Runs} & \textbf{$N$ Abstracts} \\
+\midrule
+  Gemma 2 9B & Local & \cellcolor{green!20}1.000 & \cellcolor{green!20}1.000 & 100 & 10 \\
+  Mistral 7B & Local & \cellcolor{green!20}0.960 & \cellcolor{yellow!20}0.840 & 100 & 10 \\
+  LLaMA 3 8B & Local & \cellcolor{green!20}0.987 & \cellcolor{yellow!20}0.931 & 400 & 30 \\
+  \midrule
+  GPT-4 & API & \cellcolor{orange!20}0.443 & \cellcolor{red!20}0.230 & 300 & 30 \\
+  Claude Sonnet 4.5 & API & \cellcolor{red!20}0.190 & \cellcolor{red!20}0.020 & 99 & 10 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% === table_three_level.tex ===
+\begin{table*}[t]
+\centering
+\caption{Three-level reproducibility assessment under greedy decoding ($t{=}0$). L1: bitwise identity (EMR), L2: surface similarity (NED, ROUGE-L), L3: semantic equivalence (BERTScore F1). Values are means across abstracts.}
+\label{tab:three_level}
+\small
+\begin{tabular}{llcccccc}
+\toprule
+ & & \multicolumn{2}{c}{\textbf{L1: Bitwise}} & \multicolumn{2}{c}{\textbf{L2: Surface}} & \multicolumn{1}{c}{\textbf{L3: Semantic}} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-7}
+\textbf{Model} & \textbf{Task} & \textbf{EMR} & \textbf{$\sigma$} & \textbf{NED}$\downarrow$ & \textbf{ROUGE-L}$\uparrow$ & \textbf{BERTScore F1}$\uparrow$ \\
+\midrule
+  Gemma 2 9B & Extraction & 1.000 & 0.000 & 0.000 & 1.000 & 1.0000 \\
+   & Summarization & 1.000 & 0.000 & 0.000 & 1.000 & 1.0000 \\
+  \addlinespace
+  Mistral 7B & Extraction & 0.960 & 0.120 & 0.001 & 1.000 & 0.9999 \\
+   & Summarization & 0.840 & 0.196 & 0.046 & 0.955 & 0.9935 \\
+  \addlinespace
+  LLaMA 3 8B & Extraction & 0.987 & 0.072 & 0.003 & 0.997 & 0.9997 \\
+   & Summarization & 0.931 & 0.157 & 0.014 & 0.986 & 0.9979 \\
+  \midrule
+  GPT-4 & Extraction & 0.443 & 0.335 & 0.072 & 0.938 & 0.9904 \\
+   & Summarization & 0.230 & 0.193 & 0.137 & 0.870 & 0.9839 \\
+  \addlinespace
+  Claude Sonnet 4.5 & Extraction & 0.190 & 0.291 & 0.101 & 0.904 & 0.9878 \\
+   & Summarization & 0.020 & 0.040 & 0.242 & 0.764 & 0.9704 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+% === table_temp_sweep.tex ===
+\begin{table*}[t]
+\centering
+\caption{Effect of sampling temperature on Exact Match Rate (EMR). Temperature is the dominant user-controllable variability factor across all models. At $t{=}0.7$, all models achieve EMR${=}0$ for summarization.}
+\label{tab:temp_sweep}
+\small
+\begin{tabular}{llccc}
+\toprule
+\textbf{Model} & \textbf{Task} & \textbf{$t{=}0.0$} & \textbf{$t{=}0.3$} & \textbf{$t{=}0.7$} \\
+\midrule
+  Gemma 2 9B & Extraction & \cellcolor{green!20}1.000 & \cellcolor{red!20}0.200 & \cellcolor{red!20}0.033 \\
+   & Summarization & \cellcolor{green!20}1.000 & \cellcolor{red!20}0.000 & \cellcolor{red!20}0.000 \\
+  \addlinespace
+  Mistral 7B & Extraction & \cellcolor{yellow!20}0.933 & \cellcolor{red!20}0.133 & \cellcolor{red!20}0.000 \\
+   & Summarization & \cellcolor{orange!20}0.733 & \cellcolor{red!20}0.000 & \cellcolor{red!20}0.000 \\
+  \addlinespace
+  LLaMA 3 8B & Extraction & \cellcolor{green!20}0.978 & \cellcolor{red!20}0.211 & \cellcolor{red!20}0.000 \\
+   & Summarization & \cellcolor{yellow!20}0.911 & \cellcolor{red!20}0.000 & \cellcolor{red!20}0.000 \\
+  \midrule
+  GPT-4 & Extraction & \cellcolor{red!20}0.381 & \cellcolor{red!20}0.143 & \cellcolor{red!20}0.000 \\
+   & Summarization & \cellcolor{red!20}0.144 & \cellcolor{red!20}0.000 & \cellcolor{red!20}0.000 \\
+  \addlinespace
+  Claude Sonnet 4.5 & Extraction & \cellcolor{red!20}0.067 & \cellcolor{orange!20}0.700 & \cellcolor{red!20}0.133 \\
+   & Summarization & \cellcolor{red!20}0.000 & \cellcolor{red!20}0.233 & \cellcolor{red!20}0.033 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+% === table_multiturn_rag.tex ===
+\begin{table}[t]
+\centering
+\caption{Reproducibility under complex interaction regimes (C1 fixed seed, $t{=}0$). Multi-turn refinement involves three successive prompt--response exchanges. RAG extraction augments the prompt with a retrieved context passage.}
+\label{tab:multiturn_rag}
+\small
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Model} & \textbf{Scenario} & \textbf{EMR} & \textbf{NED}$\downarrow$ & \textbf{ROUGE-L}$\uparrow$ & \textbf{BS-F1}$\uparrow$ \\
+\midrule
+  Gemma 2 9B & Single-turn Extraction & 1.000 & 0.000 & 1.000 & 1.0000 \\
+   & Single-turn Summarization & 1.000 & 0.000 & 1.000 & 1.0000 \\
+   & Multi-turn Refinement & 1.000 & 0.000 & 1.000 & 1.0000 \\
+   & RAG Extraction & 1.000 & 0.000 & 1.000 & 1.0000 \\
+  \addlinespace
+  Mistral 7B & Single-turn Extraction & 0.960 & 0.001 & 1.000 & 0.9999 \\
+   & Single-turn Summarization & 0.840 & 0.046 & 0.955 & 0.9935 \\
+   & Multi-turn Refinement & 1.000 & 0.000 & 1.000 & 1.0000 \\
+   & RAG Extraction & 1.000 & 0.000 & 1.000 & 1.0000 \\
+  \addlinespace
+  LLaMA 3 8B & Single-turn Extraction & 0.987 & 0.003 & 0.997 & 0.9997 \\
+   & Single-turn Summarization & 0.931 & 0.014 & 0.986 & 0.9979 \\
+   & Multi-turn Refinement & 0.880 & 0.012 & 0.988 & 0.9986 \\
+   & RAG Extraction & 0.960 & 0.012 & 0.985 & 0.9987 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% === table_overhead.tex ===
+\begin{table}[t]
+\centering
+\caption{Provenance logging overhead across five models under greedy decoding (C1). The protocol adds negligible overhead (${<}1\%$) to inference latency across all models and deployment modes.}
+\label{tab:overhead}
+\small
+\begin{tabular}{llrrr}
+\toprule
+\textbf{Model} & \textbf{Source} & \textbf{Mean Inference (ms)} & \textbf{Mean Overhead (ms)} & \textbf{Overhead (\%)} \\
+\midrule
+  Gemma 2 9B & Local & 181,579.3 & 30.6 & 0.234 \\
+  Mistral 7B & Local & 13,931.3 & 27.3 & 0.281 \\
+  LLaMA 3 8B & Local & 7,524.8 & 26.7 & 0.456 \\
+  \midrule
+  GPT-4 & API & 4,519.7 & 24.5 & 0.564 \\
+  Claude Sonnet 4.5 & API & 4,359.3 & 26.5 & 0.727 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% === table_api_vs_local.tex ===
+\begin{table}[t]
+\centering
+\caption{API-served vs.\ locally deployed models under greedy decoding. Values are averaged across tasks and abstracts. Local models exhibit dramatically higher bitwise reproducibility, confirming that server-side non-determinism---not user-controllable parameters---is the primary source of variability in API-served models.}
+\label{tab:api_vs_local}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Deployment} & \textbf{EMR}$\uparrow$ & \textbf{NED}$\downarrow$ & \textbf{ROUGE-L}$\uparrow$ & \textbf{BS-F1}$\uparrow$ \\
+\midrule
+  Local (3 models) & 0.960 & 0.008 & 0.992 & 0.9989 \\
+  API (2 models) & 0.158 & 0.148 & 0.858 & 0.9822 \\
+\bottomrule
+\end{tabular}
+\end{table}
+

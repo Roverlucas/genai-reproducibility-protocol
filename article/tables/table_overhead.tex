@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Provenance logging overhead across five models under greedy decoding (C1). The protocol adds negligible overhead (${<}1\%$) to inference latency across all models and deployment modes.}
+\label{tab:overhead}
+\small
+\begin{tabular}{llrrr}
+\toprule
+\textbf{Model} & \textbf{Source} & \textbf{Mean Inference (ms)} & \textbf{Mean Overhead (ms)} & \textbf{Overhead (\%)} \\
+\midrule
+  Gemma 2 9B & Local & 181,579.3 & 30.6 & 0.234 \\
+  Mistral 7B & Local & 13,931.3 & 27.3 & 0.281 \\
+  LLaMA 3 8B & Local & 7,524.8 & 26.7 & 0.456 \\
+  \midrule
+  GPT-4 & API & 4,519.7 & 24.5 & 0.564 \\
+  Claude Sonnet 4.5 & API & 4,359.3 & 26.5 & 0.727 \\
+\bottomrule
+\end{tabular}
+\end{table}

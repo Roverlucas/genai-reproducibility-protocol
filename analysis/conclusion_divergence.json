@@ -1,0 +1,3842 @@
+{
+  "metadata": {
+    "analysis": "WS-3 Conclusion Divergence",
+    "total_runs_analyzed": 2064,
+    "date": "2026-02-09"
+  },
+  "extraction_gpt4_c2": {
+    "total_groups": 30,
+    "groups_with_textual_diff": 24,
+    "groups_with_field_diff": 24,
+    "groups_all_identical": 6,
+    "per_abstract": {
+      "abs_001": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.3,
+        "divergent_fields": [
+          "key_result",
+          "benchmark"
+        ]
+      },
+      "abs_002": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.3,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result"
+        ]
+      },
+      "abs_003": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.6,
+        "divergent_fields": [
+          "method"
+        ]
+      },
+      "abs_004": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.4,
+        "divergent_fields": [
+          "method",
+          "benchmark"
+        ]
+      },
+      "abs_005": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_006": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.6,
+        "divergent_fields": [
+          "method",
+          "key_result"
+        ]
+      },
+      "abs_007": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.1,
+        "divergent_fields": [
+          "objective",
+          "key_result",
+          "benchmark"
+        ]
+      },
+      "abs_008": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.3,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system"
+        ]
+      },
+      "abs_009": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "benchmark"
+        ]
+      },
+      "abs_010": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.3,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result"
+        ]
+      },
+      "abs_011": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.3,
+        "divergent_fields": [
+          "method",
+          "key_result",
+          "model_or_system"
+        ]
+      },
+      "abs_012": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.2,
+        "divergent_fields": [
+          "objective",
+          "key_result",
+          "model_or_system"
+        ]
+      },
+      "abs_013": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.1,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "benchmark"
+        ]
+      },
+      "abs_014": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.3,
+        "divergent_fields": [
+          "method",
+          "key_result"
+        ]
+      },
+      "abs_015": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_016": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.6,
+        "divergent_fields": [
+          "key_result"
+        ]
+      },
+      "abs_017": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_018": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.6,
+        "divergent_fields": [
+          "method",
+          "key_result"
+        ]
+      },
+      "abs_019": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_020": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.6,
+        "divergent_fields": [
+          "method"
+        ]
+      },
+      "abs_021": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_022": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.3,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system",
+          "benchmark"
+        ]
+      },
+      "abs_023": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.1,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "benchmark"
+        ]
+      },
+      "abs_024": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.6,
+        "divergent_fields": [
+          "key_result"
+        ]
+      },
+      "abs_025": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_026": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system",
+          "benchmark"
+        ]
+      },
+      "abs_027": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "method",
+          "key_result",
+          "model_or_system"
+        ]
+      },
+      "abs_028": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "key_result"
+        ]
+      },
+      "abs_029": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.4,
+        "divergent_fields": [
+          "objective",
+          "key_result"
+        ]
+      },
+      "abs_030": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.3,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system"
+        ]
+      }
+    },
+    "per_field_stats": {
+      "objective": {
+        "divergent_groups": 12,
+        "total_groups": 30
+      },
+      "method": {
+        "divergent_groups": 17,
+        "total_groups": 30
+      },
+      "key_result": {
+        "divergent_groups": 20,
+        "total_groups": 30
+      },
+      "model_or_system": {
+        "divergent_groups": 7,
+        "total_groups": 30
+      },
+      "benchmark": {
+        "divergent_groups": 8,
+        "total_groups": 30
+      }
+    },
+    "divergence_examples": [
+      {
+        "abstract": "abs_001",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "field_diffs": {
+          "key_result": [
+            "The model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, the model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs",
+            "The Transformer model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, the model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs"
+          ],
+          "benchmark": [
+            "WMT 2014 English-to-German translation task and WMT 2014 English-to-French translation task",
+            "WMT 2014 English-to-German translation task, WMT 2014 English-to-French translation task"
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.3
+      },
+      {
+        "abstract": "abs_002",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "field_diffs": {
+          "objective": [
+            "To introduce a new language representation model called BERT, designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers.",
+            "To introduce a new language representation model called BERT, designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and can be fine-tuned to create state-of-the-art models for a wide range of tasks without substantial task-specific architecture modifications",
+            "To introduce a new language representation model called BERT, designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and can be fine-tuned to create state-of-the-art models for a wide range of tasks without substantial task-specific architecture modifications."
+          ],
+          "method": [
+            "Pre-training deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and fine-tuning with just one additional output layer.",
+            "Pre-training deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and fine-tuning with just one additional output layer",
+            "Pre-training deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. The pre-trained BERT model can be fine-tuned with just one additional output layer to create models for a wide range of tasks."
+          ],
+          "key_result": [
+            "BERT obtains new state-of-the-art results on eleven natural language processing benchmarks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+            "BERT obtains new state-of-the-art results on eleven natural language processing benchmarks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)"
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.3
+      },
+      {
+        "abstract": "abs_003",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "field_diffs": {
+          "method": [
+            "Training an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and testing its performance in the few-shot setting. For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model.",
+            "Training an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and testing its performance in the few-shot setting. GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model."
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.6
+      },
+      {
+        "abstract": "abs_004",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "field_diffs": {
+          "method": [
+            "Systematic study comparing pre-training objectives, architectures, unlabeled data sets, transfer approaches, and other factors on dozens of language understanding tasks. Also, scaling up models and data as much as computationally feasible",
+            "Systematic study comparing pre-training objectives, architectures, unlabeled data sets, transfer approaches, and other factors on dozens of language understanding tasks. Also, exploring the limits of transfer learning by scaling up models and data as much as computationally feasible"
+          ],
+          "benchmark": [
+            "",
+            "Dozens of language understanding tasks"
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.4
+      },
+      {
+        "abstract": "abs_006",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "field_diffs": {
+          "method": [
+            "Simultaneously training two models: a generative model G that captures the data distribution, and a discriminative model D that estimates the probability that a sample came from the training data rather than G. The training procedure for G is to maximize the probability of D making a mistake.",
+            "Simultaneously training two models: a generative model G that captures the data distribution, and a discriminative model D that estimates the probability that a sample came from the training data rather than G. The training procedure for G is to maximize the probability of D making a mistake. This framework corresponds to a minimax two-player game."
+          ],
+          "key_result": [
+            "In the space of arbitrary functions G and D, a unique solution exists, with G recovering the training data distribution and D equal to 1/2 everywhere. In the case where G and D are defined by multilayer perceptrons, the entire system can be trained with backpropagation.",
+            "A unique solution exists in the space of arbitrary functions G and D, with G recovering the training data distribution and D equal to 1/2 everywhere. In the case where G and D are defined by multilayer perceptrons, the entire system can be trained with backpropagation."
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.6
+      },
+      {
+        "abstract": "abs_007",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "field_diffs": {
+          "objective": [
+            "To ease the training of networks that are substantially deeper than those used previously by presenting a residual learning framework",
+            "To present a residual learning framework to ease the training of networks that are substantially deeper than those used previously"
+          ],
+          "key_result": [
+            "An ensemble of these residual nets achieves 3.57% error on the ImageNet test set. This result won the 1st place on the ILSVRC 2015 classification task. Also, a 28% relative improvement on the COCO object detection dataset was obtained due to extremely deep representations",
+            "An ensemble of these residual nets achieves 3.57% error on the ImageNet test set, winning the 1st place on the ILSVRC 2015 classification task. A 28% relative improvement was obtained on the COCO object detection dataset due to extremely deep representations"
+          ],
+          "benchmark": [
+            "ImageNet dataset, CIFAR-10, COCO object detection dataset",
+            "ImageNet dataset, ILSVRC 2015 classification task, CIFAR-10 with 100 and 1000 layers, COCO object detection dataset",
+            "ImageNet dataset, ILSVRC 2015 classification task, CIFAR-10, COCO object detection dataset"
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.1
+      },
+      {
+        "abstract": "abs_008",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "field_diffs": {
+          "objective": [
+            "To perform efficient inference and learning in directed probabilistic models, in the presence of continuous latent variables with intractable posterior distributions, and large datasets",
+            "To introduce a stochastic variational inference and learning algorithm that scales to large datasets and works in the intractable case under some mild differentiability conditions"
+          ],
+          "method": [
+            "Introduction of a stochastic variational inference and learning algorithm that scales to large datasets and works in the intractable case under some mild differentiability conditions",
+            "Reparameterization of the variational lower bound to yield a lower bound estimator that can be optimized using standard stochastic gradient methods, and fitting an approximate inference model to the intractable posterior using the proposed lower bound estimator"
+          ],
+          "key_result": [
+            "Theoretical advantages are reflected in experimental results",
+            "Theoretical advantages of the proposed method are reflected in experimental results"
+          ],
+          "model_or_system": [
+            "A stochastic variational inference and learning algorithm",
+            "Stochastic variational inference and learning algorithm"
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.3
+      },
+      {
+        "abstract": "abs_009",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "field_diffs": {
+          "objective": [
+            "To address the problem of insufficient, decaying error backflow in recurrent backpropagation over extended time intervals",
+            "To address the problem of insufficient, decaying error backflow in recurrent backpropagation over extended time intervals by introducing a novel, efficient, gradient-based method called long short-term memory (LSTM)",
+            "To address the problem of insufficient, decaying error backflow in recurrent backpropagation over extended time intervals by introducing a novel, efficient, gradient-based method called long short-term memory (LSTM)."
+          ],
+          "method": [
+            "Introduction of a novel, efficient, gradient-based method called long short-term memory (LSTM) that truncates the gradient where this does not do harm",
+            "Introducing a novel, efficient, gradient-based method called long short-term memory (LSTM) that truncates the gradient where this does not do harm and enforces constant error flow through constant error carousels within special units",
+            "The method involves truncating the gradient where this does not do harm, and enforcing constant error flow through constant error carousels within special units. Multiplicative gate units learn to open and close access to the constant error flow. LSTM is local in space and time; its computational complexity per time step and weight is O(1)."
+          ],
+          "key_result": [
+            "In comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking, LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms.",
+            "LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms.",
+            "LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms"
+          ],
+          "benchmark": [
+            "Comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking",
+            "Artificial data involving local, distributed, real-valued, and noisy pattern representations"
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.0
+      },
+      {
+        "abstract": "abs_010",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "field_diffs": {
+          "objective": [
+            "To demonstrate that learning directly from raw text about images is an efficient and scalable way to learn SOTA image representations from scratch and to study the performance of this approach by benchmarking on over 30 different existing computer vision datasets",
+            "To demonstrate that learning directly from raw text about images is a promising alternative to traditional computer vision systems, and to study the performance of this approach by benchmarking on over 30 different existing computer vision datasets"
+          ],
+          "method": [
+            "The pre-training task of predicting which caption goes with which image was used on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts enabling zero-shot transfer of the model to downstream tasks.",
+            "The pre-training task of predicting which caption goes with which image was used to learn image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language was used to reference learned visual concepts enabling zero-shot transfer of the model to downstream tasks."
+          ],
+          "key_result": [
+            "The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, the model matches the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on.",
+            "The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, the model matched the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on."
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.3
+      },
+      {
+        "abstract": "abs_011",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "field_diffs": {
+          "method": [
+            "A two-stage model was proposed: a prior that generates a CLIP image embedding given a text caption, and a decoder that generates an image conditioned on the image embedding. Diffusion models were used for the decoder and both autoregressive and diffusion models were experimented with for the prior.",
+            "Proposing a two-stage model: a prior that generates a CLIP image embedding given a text caption, and a decoder that generates an image conditioned on the image embedding"
+          ],
+          "key_result": [
+            "The proposed model improves image diversity with minimal loss in photorealism and caption similarity, and can produce variations of an image that preserve both its semantics and style, while varying the non-essential details absent from the image representation",
+            "The proposed model improves image diversity with minimal loss in photorealism and caption similarity, and can produce variations of an image that preserve both its semantics and style, while varying the non-essential details absent from the image representation. The joint embedding space of CLIP enables language-guided image manipulations in a zero-shot fashion. Diffusion models for the prior are computationally more efficient and produce higher-quality samples.",
+            "The proposed model improves image diversity with minimal loss in photorealism and caption similarity. The decoders conditioned on image representations can produce variations of an image that preserve both its semantics and style, while varying the non-essential details absent from the image representation. Diffusion models for the prior were found to be computationally more efficient and produce higher-quality samples."
+          ],
+          "model_or_system": [
+            "A two-stage model involving a prior and a decoder",
+            "A two-stage model with a prior and a decoder"
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.3
+      }
+    ],
+    "field_divergence_severity": {
+      "objective": [
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.23548326673326672,
+          "mean_rouge_l": 0.8393549101376536,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.6390977443609023,
+          "mean_rouge_l": 0.7,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.7027027027027027,
+          "mean_rouge_l": 0.2857142857142857,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.33153020297723146,
+          "mean_rouge_l": 0.744875673447102,
+          "n_unique_values": 4
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.22053231939163498,
+          "mean_rouge_l": 0.7692307692307694,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_012",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.13043478260869565,
+          "mean_rouge_l": 0.8965517241379309,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_013",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.16037735849056603,
+          "mean_rouge_l": 0.8518518518518519,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_022",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.437221059972106,
+          "mean_rouge_l": 0.5057397959183673,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_023",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.02318032476148354,
+          "mean_rouge_l": 0.9197911722828666,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_026",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.22073578595317725,
+          "mean_rouge_l": 0.8395061728395062,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_029",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.2360248447204969,
+          "mean_rouge_l": 0.8095238095238096,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_030",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.07983193277310924,
+          "mean_rouge_l": 0.9428571428571428,
+          "n_unique_values": 2
+        }
+      ],
+      "method": [
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.17052218614718614,
+          "mean_rouge_l": 0.8118580765639589,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_003",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.043227665706051875,
+          "mean_rouge_l": 0.9690721649484536,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_004",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.15901060070671377,
+          "mean_rouge_l": 0.898550724637681,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.16285714285714287,
+          "mean_rouge_l": 0.923076923076923,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.6934865900383141,
+          "mean_rouge_l": 0.22580645161290325,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.5305088807734948,
+          "mean_rouge_l": 0.574817661774511,
+          "n_unique_values": 5
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.1329479768786127,
+          "mean_rouge_l": 0.9183673469387755,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.5050167224080268,
+          "mean_rouge_l": 0.6315789473684211,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_013",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.1276595744680851,
+          "mean_rouge_l": 0.9600000000000001,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_014",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.027707808564231738,
+          "mean_rouge_l": 0.9666666666666667,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_018",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.4025974025974026,
+          "mean_rouge_l": 0.6407766990291263,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_020",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.08,
+          "mean_rouge_l": 0.9375,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_022",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.39392987964416537,
+          "mean_rouge_l": 0.6460161050363264,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_023",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.014334912696323594,
+          "mean_rouge_l": 0.9539473684210527,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_026",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.06892664313938407,
+          "mean_rouge_l": 0.922564935064935,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_027",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.2535537003933811,
+          "mean_rouge_l": 0.8275177977536906,
+          "n_unique_values": 5
+        },
+        {
+          "abstract": "abs_030",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.7333333333333333,
+          "mean_rouge_l": 0.3333333333333333,
+          "n_unique_values": 2
+        }
+      ],
+      "key_result": [
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.03508771929824561,
+          "mean_rouge_l": 0.99009900990099,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.002717391304347826,
+          "mean_rouge_l": 0.9807692307692307,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.1925925925925926,
+          "mean_rouge_l": 0.8913043478260869,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.17279411764705882,
+          "mean_rouge_l": 0.8470588235294119,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.27710843373493976,
+          "mean_rouge_l": 0.7777777777777778,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.2577303719120245,
+          "mean_rouge_l": 0.8361224489795918,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.002994011976047904,
+          "mean_rouge_l": 0.981132075471698,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.37247522513708253,
+          "mean_rouge_l": 0.7437108143873264,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_012",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.06984126984126983,
+          "mean_rouge_l": 0.9487179487179488,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_014",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.02808988764044944,
+          "mean_rouge_l": 0.9896907216494846,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_016",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.06206896551724138,
+          "mean_rouge_l": 0.9705882352941176,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_018",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.010666666666666666,
+          "mean_rouge_l": 0.9818181818181818,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_022",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.006802721088435374,
+          "mean_rouge_l": 0.9473684210526315,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_023",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.0072992700729927,
+          "mean_rouge_l": 0.9583333333333334,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_024",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.525,
+          "mean_rouge_l": 0.59375,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_026",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.300537050108493,
+          "mean_rouge_l": 0.7309649353674511,
+          "n_unique_values": 4
+        },
+        {
+          "abstract": "abs_027",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.004166666666666667,
+          "mean_rouge_l": 0.967741935483871,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_028",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.43577417551885783,
+          "mean_rouge_l": 0.6270124026000244,
+          "n_unique_values": 5
+        },
+        {
+          "abstract": "abs_029",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.0029498525073746312,
+          "mean_rouge_l": 0.9803921568627451,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_030",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.005405405405405406,
+          "mean_rouge_l": 0.9629629629629629,
+          "n_unique_values": 2
+        }
+      ],
+      "model_or_system": [
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.05263157894736842,
+          "mean_rouge_l": 0.7692307692307692,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.16326530612244897,
+          "mean_rouge_l": 0.8888888888888888,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_012",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.23333333333333334,
+          "mean_rouge_l": 0.8571428571428571,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_022",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.08823529411764706,
+          "mean_rouge_l": 0.25,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_026",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.6859504132231405,
+          "mean_rouge_l": 0.18749999999999997,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_027",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 1.0,
+          "mean_rouge_l": null,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_030",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.16666666666666666,
+          "mean_rouge_l": 0.6666666666666665,
+          "n_unique_values": 2
+        }
+      ],
+      "benchmark": [
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.04395604395604396,
+          "mean_rouge_l": 0.8571428571428572,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_004",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 1.0,
+          "mean_rouge_l": null,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.32236024844720496,
+          "mean_rouge_l": 0.725327812284334,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.7516778523489933,
+          "mean_rouge_l": 0.07142857142857142,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_013",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 1.0,
+          "mean_rouge_l": null,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_022",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.010638297872340425,
+          "mean_rouge_l": 0.9230769230769231,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_023",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 1.0,
+          "mean_rouge_l": null,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_026",
+          "model": "gpt4",
+          "condition": "C2_same_params",
+          "mean_ned": 0.5638297872340425,
+          "mean_rouge_l": 0.625,
+          "n_unique_values": 2
+        }
+      ]
+    }
+  },
+  "extraction_llama_c2": {
+    "total_groups": 30,
+    "groups_with_textual_diff": 1,
+    "groups_with_field_diff": 1,
+    "groups_all_identical": 29,
+    "per_abstract": {
+      "abs_001": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_002": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_003": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_004": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_005": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_006": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_007": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_008": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_009": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_010": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_011": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_012": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_013": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_014": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_015": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_016": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_017": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_018": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_019": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_020": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_021": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_022": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_023": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_024": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_025": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_026": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_027": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_028": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.6,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "benchmark"
+        ]
+      },
+      "abs_029": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_030": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      }
+    },
+    "per_field_stats": {
+      "objective": {
+        "divergent_groups": 1,
+        "total_groups": 30
+      },
+      "method": {
+        "divergent_groups": 1,
+        "total_groups": 30
+      },
+      "key_result": {
+        "divergent_groups": 1,
+        "total_groups": 30
+      },
+      "model_or_system": {
+        "divergent_groups": 0,
+        "total_groups": 30
+      },
+      "benchmark": {
+        "divergent_groups": 1,
+        "total_groups": 30
+      }
+    },
+    "divergence_examples": [
+      {
+        "abstract": "abs_028",
+        "model": "llama3",
+        "condition": "C2_var_seed",
+        "field_diffs": {
+          "objective": [
+            "to design neural networks using a recurrent network with reinforcement learning",
+            "design neural networks using reinforcement learning"
+          ],
+          "method": [
+            "recurrent network with reinforcement learning",
+            "recurrent network with reinforcement learning to maximize expected accuracy"
+          ],
+          "key_result": [
+            "novel network architecture achieves test error rate of 3.65 on CIFAR-10, outperforms previous state-of-the-art model",
+            "novel network architecture on CIFAR-10 dataset achieves test error rate of 3.65, outperforming previous state-of-the-art model"
+          ],
+          "benchmark": [
+            "CIFAR-10 dataset",
+            "CIFAR-10"
+          ]
+        },
+        "n_outputs": 5,
+        "emr": 0.6
+      }
+    ],
+    "field_divergence_severity": {
+      "objective": [
+        {
+          "abstract": "abs_028",
+          "model": "llama3",
+          "condition": "C2_var_seed",
+          "mean_ned": 0.35443037974683544,
+          "mean_rouge_l": 0.7058823529411764,
+          "n_unique_values": 2
+        }
+      ],
+      "method": [
+        {
+          "abstract": "abs_028",
+          "model": "llama3",
+          "condition": "C2_var_seed",
+          "mean_ned": 0.4,
+          "mean_rouge_l": 0.7142857142857143,
+          "n_unique_values": 2
+        }
+      ],
+      "key_result": [
+        {
+          "abstract": "abs_028",
+          "model": "llama3",
+          "condition": "C2_var_seed",
+          "mean_ned": 0.2777777777777778,
+          "mean_rouge_l": 0.7096774193548386,
+          "n_unique_values": 2
+        }
+      ],
+      "model_or_system": [],
+      "benchmark": [
+        {
+          "abstract": "abs_028",
+          "model": "llama3",
+          "condition": "C2_var_seed",
+          "mean_ned": 0.5,
+          "mean_rouge_l": 0.6666666666666666,
+          "n_unique_values": 2
+        }
+      ]
+    }
+  },
+  "extraction_gpt4_c3": {
+    "total_groups": 45,
+    "groups_with_textual_diff": 40,
+    "groups_with_field_diff": 40,
+    "groups_all_identical": 5,
+    "per_abstract": {
+      "abs_001": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system",
+          "benchmark"
+        ]
+      },
+      "abs_002": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system",
+          "benchmark"
+        ]
+      },
+      "abs_003": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result"
+        ]
+      },
+      "abs_004": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "benchmark"
+        ]
+      },
+      "abs_005": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result"
+        ]
+      },
+      "abs_006": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system"
+        ]
+      },
+      "abs_007": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result"
+        ]
+      },
+      "abs_008": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system"
+        ]
+      },
+      "abs_009": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system",
+          "benchmark"
+        ]
+      },
+      "abs_010": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method"
+        ]
+      },
+      "abs_011": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system"
+        ]
+      },
+      "abs_012": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result"
+        ]
+      },
+      "abs_017": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "benchmark"
+        ]
+      },
+      "abs_018": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "benchmark"
+        ]
+      },
+      "abs_019": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective"
+        ]
+      },
+      "abs_021": {
+        "has_textual_diff": false,
+        "has_field_diff": false,
+        "emr": 1.0,
+        "divergent_fields": []
+      },
+      "abs_024": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method"
+        ]
+      },
+      "abs_025": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "key_result",
+          "benchmark"
+        ]
+      },
+      "abs_026": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system",
+          "benchmark"
+        ]
+      },
+      "abs_027": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "method"
+        ]
+      },
+      "abs_028": {
+        "has_textual_diff": true,
+        "has_field_diff": true,
+        "emr": 0.0,
+        "divergent_fields": [
+          "objective",
+          "method",
+          "key_result",
+          "model_or_system"
+        ]
+      }
+    },
+    "per_field_stats": {
+      "objective": {
+        "divergent_groups": 29,
+        "total_groups": 45
+      },
+      "method": {
+        "divergent_groups": 34,
+        "total_groups": 45
+      },
+      "key_result": {
+        "divergent_groups": 29,
+        "total_groups": 45
+      },
+      "model_or_system": {
+        "divergent_groups": 13,
+        "total_groups": 45
+      },
+      "benchmark": {
+        "divergent_groups": 16,
+        "total_groups": 45
+      }
+    },
+    "divergence_examples": [
+      {
+        "abstract": "abs_001",
+        "model": "gpt4",
+        "condition": "C3_temp0.0",
+        "field_diffs": {
+          "key_result": [
+            "The model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, the model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs",
+            "The Transformer model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, the model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs"
+          ],
+          "benchmark": [
+            "WMT 2014 English-to-German translation task and WMT 2014 English-to-French translation task",
+            "WMT 2014 English-to-German translation task, WMT 2014 English-to-French translation task"
+          ]
+        },
+        "n_outputs": 3,
+        "emr": 0.0
+      },
+      {
+        "abstract": "abs_001",
+        "model": "gpt4",
+        "condition": "C3_temp0.3",
+        "field_diffs": {
+          "objective": [
+            "To propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely",
+            "To propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely."
+          ],
+          "key_result": [
+            "The model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, the model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs",
+            "The model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, the model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs."
+          ]
+        },
+        "n_outputs": 3,
+        "emr": 0.3333333333333333
+      },
+      {
+        "abstract": "abs_001",
+        "model": "gpt4",
+        "condition": "C3_temp0.7",
+        "field_diffs": {
+          "objective": [
+            "To propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely, and to assess its performance on machine translation tasks and English constituency parsing.",
+            "To propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely",
+            "To propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely."
+          ],
+          "method": [
+            "Proposing a new network architecture, the Transformer, based on attention mechanisms and conducting experiments on two machine translation tasks and English constituency parsing.",
+            "Experiments on two machine translation tasks"
+          ],
+          "key_result": [
+            "The Transformer model proved to be superior in quality while being more parallelizable and requiring significantly less time to train. It achieved 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results by over 2 BLEU. On the WMT 2014 English-to-French translation task, it established a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs.",
+            "The Transformer model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, the model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs.",
+            "The model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, the model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs."
+          ],
+          "model_or_system": [
+            "The Transformer",
+            "Transformer"
+          ],
+          "benchmark": [
+            "WMT 2014 English-to-German translation task, WMT 2014 English-to-French translation task, English constituency parsing",
+            "WMT 2014 English-to-German translation task, WMT 2014 English-to-French translation task"
+          ]
+        },
+        "n_outputs": 3,
+        "emr": 0.0
+      },
+      {
+        "abstract": "abs_002",
+        "model": "gpt4",
+        "condition": "C3_temp0.0",
+        "field_diffs": {
+          "objective": [
+            "To introduce a new language representation model called BERT, designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and can be fine-tuned to create state-of-the-art models for a wide range of tasks without substantial task-specific architecture modifications",
+            "To introduce a new language representation model called BERT, designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and can be fine-tuned to create state-of-the-art models for a wide range of tasks without substantial task-specific architecture modifications."
+          ],
+          "method": [
+            "Pre-training deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and fine-tuning with just one additional output layer.",
+            "Pre-training deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and fine-tuning with just one additional output layer"
+          ],
+          "key_result": [
+            "BERT obtains new state-of-the-art results on eleven natural language processing benchmarks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+            "BERT obtains new state-of-the-art results on eleven natural language processing benchmarks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)"
+          ]
+        },
+        "n_outputs": 3,
+        "emr": 0.3333333333333333
+      },
+      {
+        "abstract": "abs_002",
+        "model": "gpt4",
+        "condition": "C3_temp0.3",
+        "field_diffs": {
+          "objective": [
+            "To introduce a new language representation model, BERT, designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, without substantial task-specific architecture modifications",
+            "To introduce a new language representation model called BERT, designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers.",
+            "To introduce a new language representation model called BERT, designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and can be fine-tuned to create state-of-the-art models for a wide range of tasks without substantial task-specific architecture modifications."
+          ],
+          "method": [
+            "Designing and pre-training a deep bidirectional representation model called BERT from unlabeled text by jointly conditioning on both left and right context in all layers, then fine-tuning it with just one additional output layer for various tasks.",
+            "Pre-training deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, and fine-tuning with just one additional output layer",
+            "Pre-training deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. The pre-trained BERT model can be fine-tuned with just one additional output layer to create models for a wide range of tasks."
+          ],
+          "key_result": [
+            "BERT obtains new state-of-the-art results on eleven natural language processing benchmarks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+            "BERT obtains new state-of-the-art results on eleven natural language processing benchmarks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)"
+          ],
+          "benchmark": [
+            "Eleven natural language processing benchmarks including GLUE, MultiNLI, SQuAD v1.1 and SQuAD v2.0",
+            "GLUE, MultiNLI, SQuAD v1.1, SQuAD v2.0"
+          ]
+        },
+        "n_outputs": 3,
+        "emr": 0.0
+      },
+      {
+        "abstract": "abs_002",
+        "model": "gpt4",
+        "condition": "C3_temp0.7",
+        "field_diffs": {
+          "objective": [
+            "To introduce a new language representation model called BERT, designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers.",
+            "Introduce a new language representation model, BERT, designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers",
+            "The main goal of the study is to introduce a new language representation model called BERT, which is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers."
+          ],
+          "method": [
+            "Pre-training deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. The pre-trained BERT model can be fine-tuned with just one additional output layer without substantial task-specific architecture modifications.",
+            "The BERT model is pre-trained by jointly conditioning on both left and right context in all layers and can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks.",
+            "Pre-training deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers, then fine-tuning the BERT model with just one additional output layer."
+          ],
+          "key_result": [
+            "BERT obtains new state-of-the-art results on eleven natural language processing benchmarks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+            "BERT obtains new state-of-the-art results on eleven natural language processing benchmarks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement)"
+          ],
+          "model_or_system": [
+            "BERT (Bidirectional Encoder Representations from Transformers)",
+            "BERT"
+          ],
+          "benchmark": [
+            "Eleven natural language processing benchmarks, including GLUE score, MultiNLI accuracy, SQuAD v1.1 question answering Test F1, and SQuAD v2.0 Test F1",
+            "GLUE, MultiNLI, SQuAD v1.1, SQuAD v2.0"
+          ]
+        },
+        "n_outputs": 3,
+        "emr": 0.0
+      },
+      {
+        "abstract": "abs_003",
+        "model": "gpt4",
+        "condition": "C3_temp0.0",
+        "field_diffs": {
+          "method": [
+            "Training an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and testing its performance in the few-shot setting. GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model.",
+            "Training an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and testing its performance in the few-shot setting. For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model."
+          ]
+        },
+        "n_outputs": 3,
+        "emr": 0.3333333333333333
+      },
+      {
+        "abstract": "abs_003",
+        "model": "gpt4",
+        "condition": "C3_temp0.7",
+        "field_diffs": {
+          "objective": [
+            "To show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art fine-tuning approaches.",
+            "To demonstrate that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art fine-tuning approaches.",
+            "To demonstrate that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art fine-tuning approaches"
+          ],
+          "method": [
+            "Training an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and testing its performance in the few-shot setting",
+            "Training an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and testing its performance in the few-shot setting. GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model."
+          ],
+          "key_result": [
+            "GPT-3 achieves strong performance on many NLP datasets, including translation, question-answering, and cloze tasks, as well as several tasks that require on-the-fly reasoning or domain adaptation, such as unscrambling words, using a novel word in a sentence, or performing 3-digit arithmetic",
+            "GPT-3 achieves strong performance on many NLP datasets, including translation, question-answering, and cloze tasks, as well as several tasks that require on-the-fly reasoning or domain adaptation, such as unscrambling words, using a novel word in a sentence, or performing 3-digit arithmetic."
+          ]
+        },
+        "n_outputs": 3,
+        "emr": 0.0
+      },
+      {
+        "abstract": "abs_004",
+        "model": "gpt4",
+        "condition": "C3_temp0.0",
+        "field_diffs": {
+          "method": [
+            "Systematic study comparing pre-training objectives, architectures, unlabeled data sets, transfer approaches, and other factors on dozens of language understanding tasks. Also, scaling up models and data as much as computationally feasible",
+            "Systematic study comparing pre-training objectives, architectures, unlabeled data sets, transfer approaches, and other factors on dozens of language understanding tasks. Also, exploring the limits of transfer learning by scaling up models and data as much as computationally feasible",
+            "Comparing pre-training objectives, architectures, unlabeled data sets, transfer approaches, and other factors on dozens of language understanding tasks and scaling up models and data as much as computationally feasible"
+          ],
+          "benchmark": [
+            "",
+            "Dozens of language understanding tasks"
+          ]
+        },
+        "n_outputs": 3,
+        "emr": 0.0
+      },
+      {
+        "abstract": "abs_004",
+        "model": "gpt4",
+        "condition": "C3_temp0.3",
+        "field_diffs": {
+          "method": [
+            "Systematic study comparing pre-training objectives, architectures, unlabeled data sets, transfer approaches, and other factors on dozens of language understanding tasks",
+            "Comparing pre-training objectives, architectures, unlabeled data sets, transfer approaches, and other factors on dozens of language understanding tasks and scaling up models and data as much as computationally feasible"
+          ]
+        },
+        "n_outputs": 3,
+        "emr": 0.3333333333333333
+      }
+    ],
+    "field_divergence_severity": {
+      "objective": [
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.006493506493506494,
+          "mean_rouge_l": 0.9500000000000001,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.25452617557880713,
+          "mean_rouge_l": 0.7946540880503145,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.002840909090909091,
+          "mean_rouge_l": 0.9795918367346939,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.34209280303030304,
+          "mean_rouge_l": 0.7502735886046689,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.14068825910931174,
+          "mean_rouge_l": 0.8163057774595289,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_003",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.03829442990110529,
+          "mean_rouge_l": 0.9365079365079364,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_004",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.023121387283236993,
+          "mean_rouge_l": 0.9387755102040817,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_005",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.01866382106166175,
+          "mean_rouge_l": 0.9396103896103897,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.046511627906976744,
+          "mean_rouge_l": 0.8799999999999999,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.046511627906976744,
+          "mean_rouge_l": 0.8799999999999999,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.007633587786259542,
+          "mean_rouge_l": 0.9500000000000001,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.007633587786259542,
+          "mean_rouge_l": 0.9500000000000001,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.7027027027027027,
+          "mean_rouge_l": 0.2857142857142857,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.021621621621621623,
+          "mean_rouge_l": 0.9361702127659574,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.44651162790697674,
+          "mean_rouge_l": 0.6122448979591837,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.4723433664593313,
+          "mean_rouge_l": 0.5783314706462428,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.6420285227756491,
+          "mean_rouge_l": 0.4991238231013692,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.2982018425663509,
+          "mean_rouge_l": 0.6801707271171334,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.5280131398717529,
+          "mean_rouge_l": 0.3816329154612665,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.2398190045248869,
+          "mean_rouge_l": 0.6774193548387096,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.29247123926023005,
+          "mean_rouge_l": 0.7437629111711425,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.1941747572815534,
+          "mean_rouge_l": 0.8275862068965518,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_012",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.46808510638297873,
+          "mean_rouge_l": 0.65,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_017",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.04411764705882353,
+          "mean_rouge_l": 0.9523809523809523,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_018",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.1297709923664122,
+          "mean_rouge_l": 0.9032258064516129,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_019",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.1746987951807229,
+          "mean_rouge_l": 0.8936170212765957,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_024",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.425531914893617,
+          "mean_rouge_l": 0.7142857142857143,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_026",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.290625,
+          "mean_rouge_l": 0.7529411764705883,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_028",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.2543353950285914,
+          "mean_rouge_l": 0.7009294696555495,
+          "n_unique_values": 3
+        }
+      ],
+      "method": [
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.7584269662921348,
+          "mean_rouge_l": 0.3448275862068966,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.005208333333333333,
+          "mean_rouge_l": 0.9629629629629629,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.30959391485707277,
+          "mean_rouge_l": 0.6904223227752638,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.4665468441335536,
+          "mean_rouge_l": 0.5881403791851554,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_003",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.043227665706051875,
+          "mean_rouge_l": 0.9690721649484536,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_003",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.46987951807228917,
+          "mean_rouge_l": 0.6666666666666666,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_004",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.16553335114964715,
+          "mean_rouge_l": 0.8471122647631408,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_004",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.38990825688073394,
+          "mean_rouge_l": 0.6938775510204082,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_004",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.26207087486157254,
+          "mean_rouge_l": 0.7668446478515129,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_005",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.2158273381294964,
+          "mean_rouge_l": 0.8,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_005",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.15378373992535296,
+          "mean_rouge_l": 0.8102133160956692,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.16285714285714287,
+          "mean_rouge_l": 0.923076923076923,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.008571428571428572,
+          "mean_rouge_l": 0.9821428571428571,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.527489837398374,
+          "mean_rouge_l": 0.5003329764414569,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.007407407407407408,
+          "mean_rouge_l": 0.9444444444444444,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.4771443424016635,
+          "mean_rouge_l": 0.5945013838436256,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.47179487179487173,
+          "mean_rouge_l": 0.45376775776413153,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.25613505665319136,
+          "mean_rouge_l": 0.7659166230594803,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.4097756829885659,
+          "mean_rouge_l": 0.6911849040018998,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.4111414210300321,
+          "mean_rouge_l": 0.7464875250470522,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.5747811918063315,
+          "mean_rouge_l": 0.4897629698654722,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.30697923356882895,
+          "mean_rouge_l": 0.6614499605988967,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.3579586184424894,
+          "mean_rouge_l": 0.6279388002234444,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.5973597359735974,
+          "mean_rouge_l": 0.54320987654321,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.397486219497089,
+          "mean_rouge_l": 0.7295030919469833,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.5116279069767442,
+          "mean_rouge_l": 0.6233766233766234,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_012",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.3008130081300813,
+          "mean_rouge_l": 0.7169811320754716,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_017",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.06422018348623854,
+          "mean_rouge_l": 0.9333333333333333,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_018",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.45925925925925926,
+          "mean_rouge_l": 0.5,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_019",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.6917808219178082,
+          "mean_rouge_l": 0.25641025641025644,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_024",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.5170454545454546,
+          "mean_rouge_l": 0.5555555555555556,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_026",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.1198501872659176,
+          "mean_rouge_l": 0.8860759493670887,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_027",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.18352059925093633,
+          "mean_rouge_l": 0.8918918918918918,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_028",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.3587483628898092,
+          "mean_rouge_l": 0.7183051969546508,
+          "n_unique_values": 3
+        }
+      ],
+      "key_result": [
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.03508771929824561,
+          "mean_rouge_l": 0.99009900990099,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.0030211480362537764,
+          "mean_rouge_l": 0.98,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.25197188509955476,
+          "mean_rouge_l": 0.8278716907941899,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.002717391304347826,
+          "mean_rouge_l": 0.9807692307692307,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.002717391304347826,
+          "mean_rouge_l": 0.9807692307692307,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.002717391304347826,
+          "mean_rouge_l": 0.9807692307692307,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_003",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.003424657534246575,
+          "mean_rouge_l": 0.975609756097561,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_004",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.1366906474820144,
+          "mean_rouge_l": 0.923076923076923,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_005",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.005154639175257732,
+          "mean_rouge_l": 0.9629629629629629,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.49157303370786515,
+          "mean_rouge_l": 0.6990291262135923,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.34517963656540435,
+          "mean_rouge_l": 0.7845776827616188,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.4465760724753531,
+          "mean_rouge_l": 0.6672693032015067,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.06474820143884892,
+          "mean_rouge_l": 0.9213483146067416,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.08725971180844827,
+          "mean_rouge_l": 0.9246680286006127,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.09721766400466762,
+          "mean_rouge_l": 0.8842364532019703,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.7676767676767676,
+          "mean_rouge_l": 0.10256410256410255,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.6437479240269348,
+          "mean_rouge_l": 0.28703703703703703,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.28239363028268005,
+          "mean_rouge_l": 0.8054468362687541,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.29342711797874993,
+          "mean_rouge_l": 0.7844096542726678,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.2650843241054124,
+          "mean_rouge_l": 0.7546318415883633,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.021956087824351298,
+          "mean_rouge_l": 0.9556154537286613,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.29484830415062974,
+          "mean_rouge_l": 0.6819467250501733,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.28421052631578947,
+          "mean_rouge_l": 0.6542056074766355,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_012",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.0033003300330033004,
+          "mean_rouge_l": 0.9736842105263158,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_017",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.005405405405405406,
+          "mean_rouge_l": 0.9642857142857143,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_018",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.22788203753351208,
+          "mean_rouge_l": 0.8282828282828283,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_025",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.4787234042553192,
+          "mean_rouge_l": 0.4074074074074074,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_026",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.4928571428571429,
+          "mean_rouge_l": 0.5660377358490566,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_028",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.3253193359068512,
+          "mean_rouge_l": 0.7427369794348886,
+          "n_unique_values": 3
+        }
+      ],
+      "model_or_system": [
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.26666666666666666,
+          "mean_rouge_l": 0.6666666666666666,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.9354838709677419,
+          "mean_rouge_l": 0.2857142857142857,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.72,
+          "mean_rouge_l": 0.0,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_006",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.43407407407407406,
+          "mean_rouge_l": 0.2857142857142857,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.05263157894736842,
+          "mean_rouge_l": 0.7692307692307692,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_008",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.05263157894736842,
+          "mean_rouge_l": 0.7692307692307692,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.10344827586206896,
+          "mean_rouge_l": 0.5,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.10344827586206896,
+          "mean_rouge_l": 0.5,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.10344827586206896,
+          "mean_rouge_l": 0.5,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.4827441077441077,
+          "mean_rouge_l": 0.38763575605680867,
+          "n_unique_values": 3
+        },
+        {
+          "abstract": "abs_011",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.5925925925925926,
+          "mean_rouge_l": 0.6666666666666666,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_026",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 1.0,
+          "mean_rouge_l": null,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_028",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.6553030303030303,
+          "mean_rouge_l": 0.362962962962963,
+          "n_unique_values": 3
+        }
+      ],
+      "benchmark": [
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.04395604395604396,
+          "mean_rouge_l": 0.8571428571428572,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_001",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.2542372881355932,
+          "mean_rouge_l": 0.7826086956521738,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.6185567010309279,
+          "mean_rouge_l": 0.5263157894736842,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_002",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.7449664429530202,
+          "mean_rouge_l": 0.22222222222222224,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_004",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 1.0,
+          "mean_rouge_l": null,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_004",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 1.0,
+          "mean_rouge_l": null,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 0.36666666666666664,
+          "mean_rouge_l": 0.7777777777777778,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_007",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.36666666666666664,
+          "mean_rouge_l": 0.7777777777777778,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.0",
+          "mean_ned": 1.0,
+          "mean_rouge_l": null,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.006666666666666667,
+          "mean_rouge_l": 0.9444444444444444,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_009",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.03260869565217391,
+          "mean_rouge_l": 0.9,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_010",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.005494505494505495,
+          "mean_rouge_l": 0.9583333333333334,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_017",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.2,
+          "mean_rouge_l": 0.5714285714285715,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_018",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.9105691056910569,
+          "mean_rouge_l": 0.13333333333333336,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_025",
+          "model": "gpt4",
+          "condition": "C3_temp0.7",
+          "mean_ned": 0.010752688172043012,
+          "mean_rouge_l": 0.9333333333333333,
+          "n_unique_values": 2
+        },
+        {
+          "abstract": "abs_026",
+          "model": "gpt4",
+          "condition": "C3_temp0.3",
+          "mean_ned": 0.5638297872340425,
+          "mean_rouge_l": 0.625,
+          "n_unique_values": 2
+        }
+      ]
+    }
+  },
+  "summarization_gpt4_c2": {
+    "total_groups": 30,
+    "groups_with_textual_diff": 30,
+    "groups_all_identical": 0,
+    "pairwise_similarity_when_different": [
+      {
+        "abstract": "abs_001",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.02903225806451613,
+        "mean_rouge_l": 0.978021978021978,
+        "emr": 0.4,
+        "category": "cosmetic"
+      },
+      {
+        "abstract": "abs_002",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.1658594317163818,
+        "mean_rouge_l": 0.8779249910765468,
+        "emr": 0.1,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_003",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.05832918433567393,
+        "mean_rouge_l": 0.9154695441598429,
+        "emr": 0.3,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_004",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.10476363844214676,
+        "mean_rouge_l": 0.873763490478729,
+        "emr": 0.1,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_005",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.06336259339078036,
+        "mean_rouge_l": 0.936987115685413,
+        "emr": 0.1,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_006",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.11619686702902664,
+        "mean_rouge_l": 0.8627220480668757,
+        "emr": 0.1,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_007",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.27877397672845855,
+        "mean_rouge_l": 0.7425494240597342,
+        "emr": 0.1,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_008",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.27903343332545905,
+        "mean_rouge_l": 0.7206185036472699,
+        "emr": 0.0,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_009",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.05550441877460821,
+        "mean_rouge_l": 0.9493497097636749,
+        "emr": 0.1,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_010",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.342047087432298,
+        "mean_rouge_l": 0.634972383046435,
+        "emr": 0.3,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_011",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.18012261499453147,
+        "mean_rouge_l": 0.8324784237094935,
+        "emr": 0.1,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_012",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.26754032730293087,
+        "mean_rouge_l": 0.703607580213186,
+        "emr": 0.2,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_013",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.17090069284064666,
+        "mean_rouge_l": 0.8225806451612903,
+        "emr": 0.6,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_014",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.4345718901453958,
+        "mean_rouge_l": 0.5197740112994349,
+        "emr": 0.6,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_015",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.4346596706163197,
+        "mean_rouge_l": 0.6320528649411276,
+        "emr": 0.0,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_016",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.3301059907834101,
+        "mean_rouge_l": 0.6891087151711002,
+        "emr": 0.3,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_017",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.061973604698777905,
+        "mean_rouge_l": 0.950892289817185,
+        "emr": 0.3,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_018",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.04514870867198315,
+        "mean_rouge_l": 0.9758916650772458,
+        "emr": 0.3,
+        "category": "cosmetic"
+      },
+      {
+        "abstract": "abs_019",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.5325732899022801,
+        "mean_rouge_l": 0.55,
+        "emr": 0.6,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_020",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.1370656370656371,
+        "mean_rouge_l": 0.9078947368421053,
+        "emr": 0.4,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_021",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.020654044750430294,
+        "mean_rouge_l": 0.975609756097561,
+        "emr": 0.6,
+        "category": "cosmetic"
+      },
+      {
+        "abstract": "abs_022",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.04716267058483048,
+        "mean_rouge_l": 0.9399818633066056,
+        "emr": 0.1,
+        "category": "cosmetic"
+      },
+      {
+        "abstract": "abs_023",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.053820709870443496,
+        "mean_rouge_l": 0.9516804883235142,
+        "emr": 0.1,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_024",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.030106328445383378,
+        "mean_rouge_l": 0.9685448380347738,
+        "emr": 0.2,
+        "category": "cosmetic"
+      },
+      {
+        "abstract": "abs_025",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.12941176470588237,
+        "mean_rouge_l": 0.8452380952380952,
+        "emr": 0.4,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_026",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.13487275913024027,
+        "mean_rouge_l": 0.8739815339142275,
+        "emr": 0.1,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_027",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.05218743198303157,
+        "mean_rouge_l": 0.9360808946208818,
+        "emr": 0.0,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_028",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.3801670998644199,
+        "mean_rouge_l": 0.6551246870065028,
+        "emr": 0.0,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_029",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.34576757532281205,
+        "mean_rouge_l": 0.6875,
+        "emr": 0.4,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_030",
+        "model": "gpt4",
+        "condition": "C2_same_params",
+        "mean_ned": 0.19616117978083442,
+        "mean_rouge_l": 0.8318972725610511,
+        "emr": 0.0,
+        "category": "substantive"
+      }
+    ],
+    "per_abstract": {
+      "abs_001": {
+        "emr": 0.4,
+        "category": "cosmetic",
+        "mean_rouge_l": 0.978021978021978,
+        "mean_ned": 0.02903225806451613
+      },
+      "abs_002": {
+        "emr": 0.1,
+        "category": "substantive",
+        "mean_rouge_l": 0.8779249910765468,
+        "mean_ned": 0.1658594317163818
+      },
+      "abs_003": {
+        "emr": 0.3,
+        "category": "minor",
+        "mean_rouge_l": 0.9154695441598429,
+        "mean_ned": 0.05832918433567393
+      },
+      "abs_004": {
+        "emr": 0.1,
+        "category": "minor",
+        "mean_rouge_l": 0.873763490478729,
+        "mean_ned": 0.10476363844214676
+      },
+      "abs_005": {
+        "emr": 0.1,
+        "category": "minor",
+        "mean_rouge_l": 0.936987115685413,
+        "mean_ned": 0.06336259339078036
+      },
+      "abs_006": {
+        "emr": 0.1,
+        "category": "minor",
+        "mean_rouge_l": 0.8627220480668757,
+        "mean_ned": 0.11619686702902664
+      },
+      "abs_007": {
+        "emr": 0.1,
+        "category": "substantive",
+        "mean_rouge_l": 0.7425494240597342,
+        "mean_ned": 0.27877397672845855
+      },
+      "abs_008": {
+        "emr": 0.0,
+        "category": "substantive",
+        "mean_rouge_l": 0.7206185036472699,
+        "mean_ned": 0.27903343332545905
+      },
+      "abs_009": {
+        "emr": 0.1,
+        "category": "minor",
+        "mean_rouge_l": 0.9493497097636749,
+        "mean_ned": 0.05550441877460821
+      },
+      "abs_010": {
+        "emr": 0.3,
+        "category": "substantive",
+        "mean_rouge_l": 0.634972383046435,
+        "mean_ned": 0.342047087432298
+      },
+      "abs_011": {
+        "emr": 0.1,
+        "category": "substantive",
+        "mean_rouge_l": 0.8324784237094935,
+        "mean_ned": 0.18012261499453147
+      },
+      "abs_012": {
+        "emr": 0.2,
+        "category": "substantive",
+        "mean_rouge_l": 0.703607580213186,
+        "mean_ned": 0.26754032730293087
+      },
+      "abs_013": {
+        "emr": 0.6,
+        "category": "substantive",
+        "mean_rouge_l": 0.8225806451612903,
+        "mean_ned": 0.17090069284064666
+      },
+      "abs_014": {
+        "emr": 0.6,
+        "category": "substantive",
+        "mean_rouge_l": 0.5197740112994349,
+        "mean_ned": 0.4345718901453958
+      },
+      "abs_015": {
+        "emr": 0.0,
+        "category": "substantive",
+        "mean_rouge_l": 0.6320528649411276,
+        "mean_ned": 0.4346596706163197
+      },
+      "abs_016": {
+        "emr": 0.3,
+        "category": "substantive",
+        "mean_rouge_l": 0.6891087151711002,
+        "mean_ned": 0.3301059907834101
+      },
+      "abs_017": {
+        "emr": 0.3,
+        "category": "minor",
+        "mean_rouge_l": 0.950892289817185,
+        "mean_ned": 0.061973604698777905
+      },
+      "abs_018": {
+        "emr": 0.3,
+        "category": "cosmetic",
+        "mean_rouge_l": 0.9758916650772458,
+        "mean_ned": 0.04514870867198315
+      },
+      "abs_019": {
+        "emr": 0.6,
+        "category": "substantive",
+        "mean_rouge_l": 0.55,
+        "mean_ned": 0.5325732899022801
+      },
+      "abs_020": {
+        "emr": 0.4,
+        "category": "minor",
+        "mean_rouge_l": 0.9078947368421053,
+        "mean_ned": 0.1370656370656371
+      },
+      "abs_021": {
+        "emr": 0.6,
+        "category": "cosmetic",
+        "mean_rouge_l": 0.975609756097561,
+        "mean_ned": 0.020654044750430294
+      },
+      "abs_022": {
+        "emr": 0.1,
+        "category": "cosmetic",
+        "mean_rouge_l": 0.9399818633066056,
+        "mean_ned": 0.04716267058483048
+      },
+      "abs_023": {
+        "emr": 0.1,
+        "category": "minor",
+        "mean_rouge_l": 0.9516804883235142,
+        "mean_ned": 0.053820709870443496
+      },
+      "abs_024": {
+        "emr": 0.2,
+        "category": "cosmetic",
+        "mean_rouge_l": 0.9685448380347738,
+        "mean_ned": 0.030106328445383378
+      },
+      "abs_025": {
+        "emr": 0.4,
+        "category": "minor",
+        "mean_rouge_l": 0.8452380952380952,
+        "mean_ned": 0.12941176470588237
+      },
+      "abs_026": {
+        "emr": 0.1,
+        "category": "minor",
+        "mean_rouge_l": 0.8739815339142275,
+        "mean_ned": 0.13487275913024027
+      },
+      "abs_027": {
+        "emr": 0.0,
+        "category": "minor",
+        "mean_rouge_l": 0.9360808946208818,
+        "mean_ned": 0.05218743198303157
+      },
+      "abs_028": {
+        "emr": 0.0,
+        "category": "substantive",
+        "mean_rouge_l": 0.6551246870065028,
+        "mean_ned": 0.3801670998644199
+      },
+      "abs_029": {
+        "emr": 0.4,
+        "category": "substantive",
+        "mean_rouge_l": 0.6875,
+        "mean_ned": 0.34576757532281205
+      },
+      "abs_030": {
+        "emr": 0.0,
+        "category": "substantive",
+        "mean_rouge_l": 0.8318972725610511,
+        "mean_ned": 0.19616117978083442
+      }
+    },
+    "severity_distribution": {
+      "cosmetic": 5,
+      "minor": 11,
+      "substantive": 14
+    }
+  },
+  "summarization_llama_c2": {
+    "total_groups": 30,
+    "groups_with_textual_diff": 5,
+    "groups_all_identical": 25,
+    "pairwise_similarity_when_different": [
+      {
+        "abstract": "abs_001",
+        "model": "llama3",
+        "condition": "C2_var_seed",
+        "mean_ned": 0.08037383177570094,
+        "mean_rouge_l": 0.894736842105263,
+        "emr": 0.6444444444444445,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_003",
+        "model": "llama3",
+        "condition": "C2_var_seed",
+        "mean_ned": 0.10466988727858294,
+        "mean_rouge_l": 0.8846153846153846,
+        "emr": 0.6444444444444445,
+        "category": "minor"
+      },
+      {
+        "abstract": "abs_009",
+        "model": "llama3",
+        "condition": "C2_var_seed",
+        "mean_ned": 0.4828711256117455,
+        "mean_rouge_l": 0.5411764705882353,
+        "emr": 0.4444444444444444,
+        "category": "substantive"
+      },
+      {
+        "abstract": "abs_027",
+        "model": "llama3",
+        "condition": "C2_var_seed",
+        "mean_ned": 0.02304964539007092,
+        "mean_rouge_l": 0.9659863945578231,
+        "emr": 0.6,
+        "category": "cosmetic"
+      },
+      {
+        "abstract": "abs_030",
+        "model": "llama3",
+        "condition": "C2_var_seed",
+        "mean_ned": 0.16348195329087048,
+        "mean_rouge_l": 0.84375,
+        "emr": 0.6,
+        "category": "substantive"
+      }
+    ],
+    "per_abstract": {
+      "abs_001": {
+        "emr": 0.6444444444444445,
+        "category": "minor",
+        "mean_rouge_l": 0.894736842105263,
+        "mean_ned": 0.08037383177570094
+      },
+      "abs_002": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_003": {
+        "emr": 0.6444444444444445,
+        "category": "minor",
+        "mean_rouge_l": 0.8846153846153846,
+        "mean_ned": 0.10466988727858294
+      },
+      "abs_004": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_005": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_006": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_007": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_008": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_009": {
+        "emr": 0.4444444444444444,
+        "category": "substantive",
+        "mean_rouge_l": 0.5411764705882353,
+        "mean_ned": 0.4828711256117455
+      },
+      "abs_010": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_011": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_012": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_013": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_014": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_015": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_016": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_017": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_018": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_019": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_020": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_021": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_022": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_023": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_024": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_025": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_026": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_027": {
+        "emr": 0.6,
+        "category": "cosmetic",
+        "mean_rouge_l": 0.9659863945578231,
+        "mean_ned": 0.02304964539007092
+      },
+      "abs_028": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_029": {
+        "emr": 1.0,
+        "category": "identical",
+        "mean_rouge_l": 1.0,
+        "mean_ned": 0.0
+      },
+      "abs_030": {
+        "emr": 0.6,
+        "category": "substantive",
+        "mean_rouge_l": 0.84375,
+        "mean_ned": 0.16348195329087048
+      }
+    },
+    "severity_distribution": {
+      "cosmetic": 1,
+      "minor": 2,
+      "substantive": 2
+    }
+  },
+  "three_level_framework": {
+    "gpt4_extraction_C2_same_params": {
+      "model": "gpt4",
+      "task": "extraction",
+      "condition": "C2_same_params",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.44333333333333336,
+        "emr_std": 0.3353439362140839,
+        "pct_perfectly_reproducible": 20.0
+      },
+      "level_2_surface": {
+        "ned_mean": 0.07239510953877812,
+        "rouge_l_mean": 0.9384089361679283,
+        "pct_near_reproducible": 63.66666666666667
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 77.0
+      }
+    },
+    "gpt4_extraction_C3_temp0.0": {
+      "model": "gpt4",
+      "task": "extraction",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 21,
+      "level_1_bitwise": {
+        "emr_mean": 0.38095238095238093,
+        "emr_std": 0.41513323271815933,
+        "pct_perfectly_reproducible": 28.57142857142857
+      },
+      "level_2_surface": {
+        "ned_mean": 0.0797710127270349,
+        "rouge_l_mean": 0.9317406064368297,
+        "pct_near_reproducible": 61.76470588235294
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 73.52941176470588
+      }
+    },
+    "gpt4_extraction_C3_temp0.3": {
+      "model": "gpt4",
+      "task": "extraction",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 20,
+      "level_1_bitwise": {
+        "emr_mean": 0.14285714285714285,
+        "emr_std": 0.2735506022160966,
+        "pct_perfectly_reproducible": 7.142857142857142
+      },
+      "level_2_surface": {
+        "ned_mean": 0.1442741294176077,
+        "rouge_l_mean": 0.8697326176869706,
+        "pct_near_reproducible": 36.84210526315789
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 50.0
+      }
+    },
+    "gpt4_extraction_C3_temp0.7": {
+      "model": "gpt4",
+      "task": "extraction",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 28,
+      "level_1_bitwise": {
+        "emr_mean": 0.0,
+        "emr_std": 0.0,
+        "pct_perfectly_reproducible": 0.0
+      },
+      "level_2_surface": {
+        "ned_mean": 0.22542650420372304,
+        "rouge_l_mean": 0.7874796110607699,
+        "pct_near_reproducible": 13.513513513513514
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 16.216216216216218
+      }
+    },
+    "gpt4_summarization_C1_fixed_seed": {
+      "model": "gpt4",
+      "task": "summarization",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 3,
+      "level_1_bitwise": {
+        "emr_mean": 0.1111111111111111,
+        "emr_std": 0.15713484026367722,
+        "pct_perfectly_reproducible": 0.0
+      },
+      "level_2_surface": {
+        "ned_mean": 0.09350978501615496,
+        "rouge_l_mean": 0.8932967644507991,
+        "pct_near_reproducible": 14.285714285714285
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 57.14285714285714
+      }
+    },
+    "gpt4_summarization_C2_same_params": {
+      "model": "gpt4",
+      "task": "summarization",
+      "condition": "C2_same_params",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.23,
+        "emr_std": 0.19347695814575266,
+        "pct_perfectly_reproducible": 0.0
+      },
+      "level_2_surface": {
+        "ned_mean": 0.1365097121353443,
+        "rouge_l_mean": 0.8695195402032141,
+        "pct_near_reproducible": 45.666666666666664
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 60.333333333333336
+      }
+    },
+    "gpt4_summarization_C3_temp0.0": {
+      "model": "gpt4",
+      "task": "summarization",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.14444444444444443,
+        "emr_std": 0.3065136494251938,
+        "pct_perfectly_reproducible": 10.0
+      },
+      "level_2_surface": {
+        "ned_mean": 0.16234488195964258,
+        "rouge_l_mean": 0.8478557003473349,
+        "pct_near_reproducible": 36.666666666666664
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 47.77777777777778
+      }
+    },
+    "gpt4_summarization_C3_temp0.3": {
+      "model": "gpt4",
+      "task": "summarization",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.0,
+        "emr_std": 0.0,
+        "pct_perfectly_reproducible": 0.0
+      },
+      "level_2_surface": {
+        "ned_mean": 0.2832116950188949,
+        "rouge_l_mean": 0.7237729746100133,
+        "pct_near_reproducible": 0.0
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 14.444444444444443
+      }
+    },
+    "gpt4_summarization_C3_temp0.7": {
+      "model": "gpt4",
+      "task": "summarization",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.0,
+        "emr_std": 0.0,
+        "pct_perfectly_reproducible": 0.0
+      },
+      "level_2_surface": {
+        "ned_mean": 0.43656394223074735,
+        "rouge_l_mean": 0.5553605884015086,
+        "pct_near_reproducible": 0.0
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 0.0
+      }
+    },
+    "llama3_extraction_C1_fixed_seed": {
+      "model": "llama3",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.9866666666666667,
+        "emr_std": 0.07180219742846006,
+        "pct_perfectly_reproducible": 96.66666666666667
+      },
+      "level_2_surface": {
+        "ned_mean": 0.0014387464387464388,
+        "rouge_l_mean": 0.9984139571768438,
+        "pct_near_reproducible": 99.38461538461539
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 99.38461538461539
+      }
+    },
+    "llama3_extraction_C2_var_seed": {
+      "model": "llama3",
+      "task": "extraction",
+      "condition": "C2_var_seed",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.9866666666666667,
+        "emr_std": 0.07180219742846006,
+        "pct_perfectly_reproducible": 96.66666666666667
+      },
+      "level_2_surface": {
+        "ned_mean": 0.0014387464387464388,
+        "rouge_l_mean": 0.9984139571768438,
+        "pct_near_reproducible": 99.38461538461539
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 99.38461538461539
+      }
+    },
+    "llama3_summarization_C1_fixed_seed": {
+      "model": "llama3",
+      "task": "summarization",
+      "condition": "C1_fixed_seed",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.9311111111111112,
+        "emr_std": 0.1569618967680916,
+        "pct_perfectly_reproducible": 83.33333333333334
+      },
+      "level_2_surface": {
+        "ned_mean": 0.024274775445978378,
+        "rouge_l_mean": 0.9757507584161039,
+        "pct_near_reproducible": 90.61538461538461
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 90.61538461538461
+      }
+    },
+    "llama3_summarization_C2_var_seed": {
+      "model": "llama3",
+      "task": "summarization",
+      "condition": "C2_var_seed",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.9311111111111112,
+        "emr_std": 0.1569618967680916,
+        "pct_perfectly_reproducible": 83.33333333333334
+      },
+      "level_2_surface": {
+        "ned_mean": 0.024274775445978378,
+        "rouge_l_mean": 0.9757507584161039,
+        "pct_near_reproducible": 90.61538461538461
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 90.61538461538461
+      }
+    },
+    "llama3_extraction_C3_temp0.0": {
+      "model": "llama3",
+      "task": "extraction",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.9777777777777777,
+        "emr_std": 0.11967032904743342,
+        "pct_perfectly_reproducible": 96.66666666666667
+      },
+      "level_2_surface": {
+        "ned_mean": 0.005195473251028807,
+        "rouge_l_mean": 0.9942726231386024,
+        "pct_near_reproducible": 97.77777777777777
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 97.77777777777777
+      }
+    },
+    "llama3_extraction_C3_temp0.3": {
+      "model": "llama3",
+      "task": "extraction",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.21111111111111108,
+        "emr_std": 0.3386611256472927,
+        "pct_perfectly_reproducible": 13.333333333333334
+      },
+      "level_2_surface": {
+        "ned_mean": 0.122376482155657,
+        "rouge_l_mean": 0.8837834272468813,
+        "pct_near_reproducible": 44.44444444444444
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 61.111111111111114
+      }
+    },
+    "llama3_extraction_C3_temp0.7": {
+      "model": "llama3",
+      "task": "extraction",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.0,
+        "emr_std": 0.0,
+        "pct_perfectly_reproducible": 0.0
+      },
+      "level_2_surface": {
+        "ned_mean": 0.2530494749735601,
+        "rouge_l_mean": 0.7719033067617752,
+        "pct_near_reproducible": 4.444444444444445
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 12.222222222222221
+      }
+    },
+    "llama3_summarization_C3_temp0.0": {
+      "model": "llama3",
+      "task": "summarization",
+      "condition": "C3_temp0.0",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.911111111111111,
+        "emr_std": 0.22662308949301269,
+        "pct_perfectly_reproducible": 86.66666666666667
+      },
+      "level_2_surface": {
+        "ned_mean": 0.008257229283005006,
+        "rouge_l_mean": 0.9908686360284106,
+        "pct_near_reproducible": 93.33333333333333
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 93.33333333333333
+      }
+    },
+    "llama3_summarization_C3_temp0.3": {
+      "model": "llama3",
+      "task": "summarization",
+      "condition": "C3_temp0.3",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.0,
+        "emr_std": 0.0,
+        "pct_perfectly_reproducible": 0.0
+      },
+      "level_2_surface": {
+        "ned_mean": 0.2789857177505913,
+        "rouge_l_mean": 0.7441137624683871,
+        "pct_near_reproducible": 4.444444444444445
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 20.0
+      }
+    },
+    "llama3_summarization_C3_temp0.7": {
+      "model": "llama3",
+      "task": "summarization",
+      "condition": "C3_temp0.7",
+      "n_abstracts": 30,
+      "level_1_bitwise": {
+        "emr_mean": 0.0,
+        "emr_std": 0.0,
+        "pct_perfectly_reproducible": 0.0
+      },
+      "level_2_surface": {
+        "ned_mean": 0.4437631685173161,
+        "rouge_l_mean": 0.5589163198797281,
+        "pct_near_reproducible": 0.0
+      },
+      "level_3_semantic": {
+        "note": "BERTScore requires model loading - use existing results from full_analysis.json",
+        "rouge_l_gt_090": 0.0
+      }
+    }
+  }
+}

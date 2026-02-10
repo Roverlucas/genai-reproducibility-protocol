@@ -1,0 +1,53 @@
+{
+  "run_id": "llama3_8b_rag_extraction_abs_007_C1_fixed_seed_rep0",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "interaction_regime": "single-turn-with-context",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "prompt_text": "You are given a scientific abstract and additional context retrieved from related papers. Extract information from the PRIMARY abstract into the JSON format below. Use the retrieved context only to disambiguate or enrich fields, but the abstract is the authoritative source.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string\",\n  \"method\": \"string\",\n  \"key_result\": \"string\",\n  \"model_or_system\": \"string\",\n  \"benchmark\": \"string\"\n}",
+  "input_text": "Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. We provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers---8x deeper than VGG nets but still having lower complexity. An ensemble of these residual nets achieves 3.57% error on the ImageNet test set. This result won the 1st place on the ILSVRC 2015 classification task. We also present analysis on CIFAR-10 with 100 and 1000 layers. The depth of representations is of central importance for many visual recognition tasks. Solely due to our extremely deep representations, we obtain a 28% relative improvement on the COCO object detection dataset. Deep residual nets are foundations of our submissions to ILSVRC & COCO 2015 competitions, where we also won the 1st places on the tasks of ImageNet detection, ImageNet localization, COCO detection, and COCO segmentation.",
+  "input_hash": "37cc294d52ef0292a0955214d189cb62b98a5073ae213897a00dcf94c132cbfc",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d56320643fc4dd41f0fd4168b757a420e7c514e72a9a744f7391d",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "He et al. (2016) - Deep Residual Learning for Image Recognition (CVPR)",
+    "retrieved_text": "Related work: VGGNet (Simonyan & Zisserman, 2015) showed benefits of increased depth up to 19 layers. GoogLeNet (Szegedy et al., 2015) used inception modules. The ImageNet Large Scale Visual Recognition Challenge (ILSVRC) has been the primary benchmark for image classification since 2010.",
+    "n_chunks": 1
+  },
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-02-10T02:30:18.031410+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-02-10T02:30:18.031321+00:00",
+  "timestamp_end": "2026-02-10T02:30:23.396755+00:00",
+  "output_text": "{\n  \"objective\": \"ease the training of networks that are substantially deeper than those used previously\",\n  \"method\": \"residual learning framework\",\n  \"key_result\": \"residual nets with a depth of up to 152 layers achieve 3.57% error on the ImageNet test set\",\n  \"model_or_system\": \"residual networks\",\n  \"benchmark\": \"ImageNet\"\n}",
+  "output_metrics": {},
+  "execution_duration_ms": 5365.43,
+  "logging_overhead_ms": 25.85,
+  "system_logs": "{\"inference_duration_ms\": 5339.57, \"model_reported_duration_ns\": 5338487083, \"eval_count\": 83, \"prompt_eval_count\": 493, \"done\": true}",
+  "errors": [],
+  "output_hash": "5222b169e23f56c0e7246df193dc7964b0509abe5ae4be22a6b623420af1bf34",
+  "storage_kb": 4.53
+}

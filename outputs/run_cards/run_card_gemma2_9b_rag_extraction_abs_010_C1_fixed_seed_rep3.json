@@ -1,0 +1,45 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "gemma2_9b_rag_extraction_abs_010_C1_fixed_seed_rep3",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "prompt_card_ref": "prompt_card_rag_extraction_v1_0.json",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "model_name": "gemma2:9b",
+  "model_version": "9.2B",
+  "weights_hash": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d56320643fc4dd41f0fd4168b757a420e7c514e72a9a744f7391d",
+  "interaction_regime": "single-turn-with-context",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Radford et al. (2021) - Learning Transferable Visual Models From Natural Language Supervision (ICML)",
+    "retrieved_text": "Related work: Attention mechanisms (Bahdanau et al., 2015) allow models to focus on relevant input parts. Multi-head attention (Vaswani et al., 2017) enables attending to different representation subspaces. Self-attention has become fundamental in modern NLP architectures.",
+    "n_chunks": 1
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T12:54:28.479612+00:00",
+  "timestamp_end": "2026-02-10T12:54:44.615789+00:00",
+  "execution_duration_ms": 16136.18,
+  "output_hash": "627a0f5cf563591f1740a01d9e96d6c112e694c5e949d3623dd08c91628dbd30",
+  "output_metrics": {},
+  "logging_overhead_ms": 31.93,
+  "storage_kb": 5.2,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

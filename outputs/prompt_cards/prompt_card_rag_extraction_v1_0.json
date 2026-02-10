@@ -1,0 +1,37 @@
+{
+  "prompt_card_version": "1.0",
+  "created_at": "2026-02-10T02:15:25.194222+00:00",
+  "prompt_id": "rag_extraction",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "version": "1.0",
+  "prompt_text": "You are given a scientific abstract and additional context retrieved from related papers. Extract information from the PRIMARY abstract into the JSON format below. Use the retrieved context only to disambiguate or enrich fields, but the abstract is the authoritative source.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string\",\n  \"method\": \"string\",\n  \"key_result\": \"string\",\n  \"model_or_system\": \"string\",\n  \"benchmark\": \"string\"\n}",
+  "system_instructions": "",
+  "few_shot_examples": [],
+  "task_category": "rag_structured_extraction",
+  "objective": "Extract structured JSON using both abstract and retrieved context.",
+  "designed_by": "lucas_rover",
+  "assumptions": [
+    "Retrieved context provides useful enrichment",
+    "Model can distinguish primary source from context",
+    "Abstract is authoritative; context is supplementary"
+  ],
+  "limitations": [
+    "Simulated retrieval (not live search)",
+    "Single chunk per abstract",
+    "Context quality varies by abstract"
+  ],
+  "interaction_regime": "single-turn-with-context",
+  "target_models": [
+    "llama3:8b",
+    "mistral:7b",
+    "gemma2:9b"
+  ],
+  "expected_output_format": "JSON object with 5 string fields",
+  "change_log": [
+    {
+      "version": "1.0",
+      "date": "2026-02-10",
+      "description": "Initial version"
+    }
+  ]
+}

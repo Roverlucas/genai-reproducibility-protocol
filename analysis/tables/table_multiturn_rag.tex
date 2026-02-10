@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering
+\caption{Reproducibility under complex interaction regimes (C1 fixed seed, $t{=}0$). Multi-turn refinement involves three successive prompt--response exchanges. RAG extraction augments the prompt with a retrieved context passage.}
+\label{tab:multiturn_rag}
+\small
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Model} & \textbf{Scenario} & \textbf{EMR} & \textbf{NED}$\downarrow$ & \textbf{ROUGE-L}$\uparrow$ & \textbf{BS-F1}$\uparrow$ \\
+\midrule
+  Gemma 2 9B & Single-turn Extraction & 1.000 & 0.000 & 1.000 & 1.0000 \\
+   & Single-turn Summarization & 1.000 & 0.000 & 1.000 & 1.0000 \\
+   & Multi-turn Refinement & 1.000 & 0.000 & 1.000 & 1.0000 \\
+   & RAG Extraction & 1.000 & 0.000 & 1.000 & 1.0000 \\
+  \addlinespace
+  Mistral 7B & Single-turn Extraction & 0.960 & 0.001 & 1.000 & 0.9999 \\
+   & Single-turn Summarization & 0.840 & 0.046 & 0.955 & 0.9935 \\
+   & Multi-turn Refinement & 1.000 & 0.000 & 1.000 & 1.0000 \\
+   & RAG Extraction & 1.000 & 0.000 & 1.000 & 1.0000 \\
+  \addlinespace
+  LLaMA 3 8B & Single-turn Extraction & 0.987 & 0.003 & 0.997 & 0.9997 \\
+   & Single-turn Summarization & 0.931 & 0.014 & 0.986 & 0.9979 \\
+   & Multi-turn Refinement & 0.880 & 0.012 & 0.988 & 0.9986 \\
+   & RAG Extraction & 0.960 & 0.012 & 0.985 & 0.9987 \\
+\bottomrule
+\end{tabular}
+\end{table}

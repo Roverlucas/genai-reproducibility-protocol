@@ -1,0 +1,53 @@
+{
+  "run_id": "mistral_7b_rag_extraction_abs_010_C1_fixed_seed_rep3",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "interaction_regime": "single-turn-with-context",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "prompt_text": "You are given a scientific abstract and additional context retrieved from related papers. Extract information from the PRIMARY abstract into the JSON format below. Use the retrieved context only to disambiguate or enrich fields, but the abstract is the authoritative source.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string\",\n  \"method\": \"string\",\n  \"key_result\": \"string\",\n  \"model_or_system\": \"string\",\n  \"benchmark\": \"string\"\n}",
+  "input_text": "State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn SOTA image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on.",
+  "input_hash": "c1c8b99213b983c4aa38975890c7d546a05accf6e7c3fda22df2f34fbe6ba107",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d56320643fc4dd41f0fd4168b757a420e7c514e72a9a744f7391d",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Radford et al. (2021) - Learning Transferable Visual Models From Natural Language Supervision (ICML)",
+    "retrieved_text": "Related work: Attention mechanisms (Bahdanau et al., 2015) allow models to focus on relevant input parts. Multi-head attention (Vaswani et al., 2017) enables attending to different representation subspaces. Self-attention has become fundamental in modern NLP architectures.",
+    "n_chunks": 1
+  },
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-02-10T03:04:31.843776+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-02-10T03:04:31.843726+00:00",
+  "timestamp_end": "2026-02-10T03:04:41.193463+00:00",
+  "output_text": " {\n  \"objective\": \"Learning SOTA image representations from scratch using a dataset of 400 million (image, text) pairs collected from the internet\",\n  \"method\": \"Pre-training task of predicting which caption goes with which image, followed by zero-shot transfer to downstream tasks using natural language\",\n  \"key_result\": \"Matching the accuracy of the original ResNet-50 on ImageNet zero-shot without needing to use any of the 1.28 million training examples it was trained on\",\n  \"model_or_system\": \"Not explicitly mentioned in the abstract, but can be inferred as a combination of image and text processing models with attention mechanisms\",\n  \"benchmark\": \"Over 30 different computer vision datasets spanning various tasks such as OCR, action recognition in videos, geo-localization, and fine-grained object classification\"\n}",
+  "output_metrics": {},
+  "execution_duration_ms": 9349.74,
+  "logging_overhead_ms": 29.61,
+  "system_logs": "{\"inference_duration_ms\": 9320.09, \"model_reported_duration_ns\": 9318996666, \"eval_count\": 200, \"prompt_eval_count\": 540, \"done\": true}",
+  "errors": [],
+  "output_hash": "b06e4a10d67b4d6cee137cc882221c4b235b306a75dd2a4086b17a115566bfe4",
+  "storage_kb": 5.13
+}

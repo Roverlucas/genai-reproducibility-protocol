@@ -42,18 +42,31 @@ def get_ollama_version() -> str:
         return "unknown"
 
 
+def _get_model_digest(model: str) -> str:
+    """Get model digest from Ollama /api/tags (list) endpoint."""
+    try:
+        result = _ollama_get("/api/tags")
+        for m in result.get("models", []):
+            if m.get("name", "") == model or m.get("model", "") == model:
+                return m.get("digest", "")
+    except Exception:
+        pass
+    return ""
+
+
 def get_model_info(model: str = "llama3:8b") -> dict:
     """Get model metadata from Ollama, including digest and server version."""
     try:
         result = _ollama_api("/api/show", {"name": model})
         ollama_ver = get_ollama_version()
+        digest = result.get("digest", "") or _get_model_digest(model)
         return {
             "model_name": model,
             "model_version": result.get("details", {}).get("parameter_size", ""),
             "family": result.get("details", {}).get("family", ""),
             "format": result.get("details", {}).get("format", ""),
             "quantization": result.get("details", {}).get("quantization_level", ""),
-            "weights_hash": result.get("digest", ""),
+            "weights_hash": digest,
             "model_source": "ollama-local",
             "ollama_version": ollama_ver,
         }

@@ -1,0 +1,53 @@
+{
+  "run_id": "llama3_8b_rag_extraction_abs_009_C1_fixed_seed_rep0",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "interaction_regime": "single-turn-with-context",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "prompt_text": "You are given a scientific abstract and additional context retrieved from related papers. Extract information from the PRIMARY abstract into the JSON format below. Use the retrieved context only to disambiguate or enrich fields, but the abstract is the authoritative source.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string\",\n  \"method\": \"string\",\n  \"key_result\": \"string\",\n  \"model_or_system\": \"string\",\n  \"benchmark\": \"string\"\n}",
+  "input_text": "Learning to store information over extended time intervals by recurrent backpropagation takes a very long time, mostly because of insufficient, decaying error backflow. We briefly review Hochreiter's (1991) analysis of this problem, then address it by introducing a novel, efficient, gradient-based method called long short-term memory (LSTM). Truncating the gradient where this does not do harm, LSTM can learn to bridge minimal time lags in excess of 1000 discrete-time steps by enforcing constant error flow through constant error carousels within special units. Multiplicative gate units learn to open and close access to the constant error flow. LSTM is local in space and time; its computational complexity per time step and weight is O(1). Our experiments with artificial data involve local, distributed, real-valued, and noisy pattern representations. In comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking, LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms.",
+  "input_hash": "0bc6841671c0a4c4c0a0976d694e49adff4b70f43cbe149b9586c9d68e16d283",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d56320643fc4dd41f0fd4168b757a420e7c514e72a9a744f7391d",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Hochreiter & Schmidhuber (1997) - Long Short-Term Memory (Neural Computation)",
+    "retrieved_text": "Related work: Word2Vec (Mikolov et al., 2013) showed that word embeddings capture semantic relationships. Skip-gram and CBOW architectures provided efficient training on large corpora. GloVe (Pennington et al., 2014) combined count-based and prediction-based methods.",
+    "n_chunks": 1
+  },
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-02-10T02:30:58.553114+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-02-10T02:30:58.553061+00:00",
+  "timestamp_end": "2026-02-10T02:31:05.332500+00:00",
+  "output_text": "{\n  \"objective\": \"Learning to store information over extended time intervals\",\n  \"method\": \"Recurrent backpropagation with a novel, efficient, gradient-based method called long short-term memory (LSTM)\",\n  \"key_result\": \"Bridging minimal time lags in excess of 1000 discrete-time steps\",\n  \"model_or_system\": \"Long Short-Term Memory (LSTM) units\",\n  \"benchmark\": \"Comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking\"\n}",
+  "output_metrics": {},
+  "execution_duration_ms": 6779.44,
+  "logging_overhead_ms": 13.67,
+  "system_logs": "{\"inference_duration_ms\": 6765.75, \"model_reported_duration_ns\": 6764603417, \"eval_count\": 118, \"prompt_eval_count\": 451, \"done\": true}",
+  "errors": [],
+  "output_hash": "4e194d9acd83c9479f3ae28e3a2f9db093a870a03d9025147a16307899f053d3",
+  "storage_kb": 4.62
+}

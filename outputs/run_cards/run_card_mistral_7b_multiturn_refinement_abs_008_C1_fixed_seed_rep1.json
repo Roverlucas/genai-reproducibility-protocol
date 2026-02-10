@@ -1,0 +1,40 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "mistral_7b_multiturn_refinement_abs_008_C1_fixed_seed_rep1",
+  "task_id": "multiturn_refinement",
+  "task_category": "iterative_structured_extraction",
+  "prompt_card_ref": "prompt_card_multiturn_refinement_v1_0.json",
+  "prompt_hash": "9eda47b5621ad7e12f0c3858d37302eca2a96b3aec305dd4f17c4f3dc95ed54b",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d56320643fc4dd41f0fd4168b757a420e7c514e72a9a744f7391d",
+  "interaction_regime": "multi-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-10T02:50:24.921072+00:00",
+  "timestamp_end": "2026-02-10T02:50:54.479061+00:00",
+  "execution_duration_ms": 29557.99,
+  "output_hash": "b310b76c00f4103eab9c9f38f69018a218203371052c64baef5ca169f878bba1",
+  "output_metrics": {},
+  "logging_overhead_ms": 29.56,
+  "storage_kb": 11.99,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

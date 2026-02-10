@@ -1,0 +1,26 @@
+\begin{table*}[t]
+\centering
+\caption{Effect of sampling temperature on Exact Match Rate (EMR). Temperature is the dominant user-controllable variability factor across all models. At $t{=}0.7$, all models achieve EMR${=}0$ for summarization.}
+\label{tab:temp_sweep}
+\small
+\begin{tabular}{llccc}
+\toprule
+\textbf{Model} & \textbf{Task} & \textbf{$t{=}0.0$} & \textbf{$t{=}0.3$} & \textbf{$t{=}0.7$} \\
+\midrule
+  Gemma 2 9B & Extraction & \cellcolor{green!20}1.000 & \cellcolor{red!20}0.200 & \cellcolor{red!20}0.033 \\
+   & Summarization & \cellcolor{green!20}1.000 & \cellcolor{red!20}0.000 & \cellcolor{red!20}0.000 \\
+  \addlinespace
+  Mistral 7B & Extraction & \cellcolor{yellow!20}0.933 & \cellcolor{red!20}0.133 & \cellcolor{red!20}0.000 \\
+   & Summarization & \cellcolor{orange!20}0.733 & \cellcolor{red!20}0.000 & \cellcolor{red!20}0.000 \\
+  \addlinespace
+  LLaMA 3 8B & Extraction & \cellcolor{green!20}0.978 & \cellcolor{red!20}0.211 & \cellcolor{red!20}0.000 \\
+   & Summarization & \cellcolor{yellow!20}0.911 & \cellcolor{red!20}0.000 & \cellcolor{red!20}0.000 \\
+  \midrule
+  GPT-4 & Extraction & \cellcolor{red!20}0.381 & \cellcolor{red!20}0.143 & \cellcolor{red!20}0.000 \\
+   & Summarization & \cellcolor{red!20}0.144 & \cellcolor{red!20}0.000 & \cellcolor{red!20}0.000 \\
+  \addlinespace
+  Claude Sonnet 4.5 & Extraction & \cellcolor{red!20}0.067 & \cellcolor{orange!20}0.700 & \cellcolor{red!20}0.133 \\
+   & Summarization & \cellcolor{red!20}0.000 & \cellcolor{red!20}0.233 & \cellcolor{red!20}0.033 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,53 @@
+{
+  "run_id": "mistral_7b_rag_extraction_abs_005_C1_fixed_seed_rep2",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "interaction_regime": "single-turn-with-context",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "prompt_text": "You are given a scientific abstract and additional context retrieved from related papers. Extract information from the PRIMARY abstract into the JSON format below. Use the retrieved context only to disambiguate or enrich fields, but the abstract is the authoritative source.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string\",\n  \"method\": \"string\",\n  \"key_result\": \"string\",\n  \"model_or_system\": \"string\",\n  \"benchmark\": \"string\"\n}",
+  "input_text": "We explore how generating a chain of thought — a series of intermediate reasoning steps — significantly improves the ability of large language models to perform complex reasoning. In particular, we show how such reasoning abilities emerge naturally in sufficiently large language models via a simple method called chain-of-thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting. Experiments on three large language models show that chain-of-thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks. The empirical gains can be striking. For instance, prompting a PaLM 540B with just eight chain-of-thought exemplars achieves state-of-the-art accuracy on the GSM8K benchmark of math word problems, surpassing even finetuned GPT-3 with a verifier.",
+  "input_hash": "24d26410863f8392222ad924d599813efc82c437fd5769d5e66b4311e6d32900",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d56320643fc4dd41f0fd4168b757a420e7c514e72a9a744f7391d",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Wei et al. 2022 - Chain-of-Thought Prompting Elicits Reasoning in LLMs (NeurIPS)",
+    "retrieved_text": "Related work: Few-shot prompting (Brown et al., 2020) showed that large models can perform tasks with minimal examples. Self-consistency (Wang et al., 2022) improves reasoning by sampling multiple chains. GSM8K (Cobbe et al., 2021) contains 8.5K grade school math word problems for evaluating reasoning.",
+    "n_chunks": 1
+  },
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-02-10T03:01:04.330354+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-02-10T03:01:04.330306+00:00",
+  "timestamp_end": "2026-02-10T03:01:10.863437+00:00",
+  "output_text": " {\n  \"objective\": \"To explore and improve the ability of large language models to perform complex reasoning\",\n  \"method\": \"Chain-of-thought prompting, where a few chain of thought demonstrations are provided as exemplars in prompting\",\n  \"key_result\": \"Improved performance on arithmetic, commonsense, and symbolic reasoning tasks. Achieving state-of-the-art accuracy on the GSM8K benchmark of math word problems\",\n  \"model_or_system\": \"PaLM 540B\",\n  \"benchmark\": \"GSM8K\"\n}",
+  "output_metrics": {},
+  "execution_duration_ms": 6533.13,
+  "logging_overhead_ms": 26.29,
+  "system_logs": "{\"inference_duration_ms\": 6506.82, \"model_reported_duration_ns\": 6505597666, \"eval_count\": 140, \"prompt_eval_count\": 462, \"done\": true}",
+  "errors": [],
+  "output_hash": "c46171b1429a8a9ed8d5159a2c79c35fe65dfc8377048fcff172ee2664e3bf7f",
+  "storage_kb": 4.26
+}

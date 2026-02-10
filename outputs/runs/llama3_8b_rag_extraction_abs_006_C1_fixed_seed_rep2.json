@@ -1,0 +1,53 @@
+{
+  "run_id": "llama3_8b_rag_extraction_abs_006_C1_fixed_seed_rep2",
+  "task_id": "rag_extraction",
+  "task_category": "rag_structured_extraction",
+  "interaction_regime": "single-turn-with-context",
+  "prompt_hash": "8954dea2db116d744a5abe2a65fef86fdf3a6f65e3087c482230edf777788243",
+  "prompt_text": "You are given a scientific abstract and additional context retrieved from related papers. Extract information from the PRIMARY abstract into the JSON format below. Use the retrieved context only to disambiguate or enrich fields, but the abstract is the authoritative source.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string\",\n  \"method\": \"string\",\n  \"key_result\": \"string\",\n  \"model_or_system\": \"string\",\n  \"benchmark\": \"string\"\n}",
+  "input_text": "We propose a new framework for estimating generative models via an adversarial process, in which we simultaneously train two models: a generative model G that captures the data distribution, and a discriminative model D that estimates the probability that a sample came from the training data rather than G. The training procedure for G is to maximize the probability of D making a mistake. This framework corresponds to a minimax two-player game. In the space of arbitrary functions G and D, a unique solution exists, with G recovering the training data distribution and D equal to 1/2 everywhere. In the case where G and D are defined by multilayer perceptrons, the entire system can be trained with backpropagation. There is no need for any Markov chains or unrolled approximate inference networks during either training or generation of samples. Experiments demonstrate the potential of the framework through qualitative and quantitative evaluation of the generated samples.",
+  "input_hash": "c5ed9fa42739e3e843db525500b5db2eb219b164b625c500fe89125b988aea88",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d56320643fc4dd41f0fd4168b757a420e7c514e72a9a744f7391d",
+  "retrieval_context": {
+    "source": "simulated_retrieval",
+    "query": "Goodfellow et al. (2014) - Generative Adversarial Nets (NeurIPS)",
+    "retrieved_text": "Related work: Variational Autoencoders (Kingma & Welling, 2014) offered an alternative generative approach. Wasserstein GAN (Arjovsky et al., 2017) improved training stability. The minimax game formulation connects to Nash equilibria in game theory.",
+    "n_chunks": 1
+  },
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-02-10T02:30:05.395833+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-02-10T02:30:05.395787+00:00",
+  "timestamp_end": "2026-02-10T02:30:09.536677+00:00",
+  "output_text": "{\n  \"objective\": \"estimating generative models\",\n  \"method\": \"adversarial process with simultaneous training of two models: G and D\",\n  \"key_result\": \"unique solution exists, with G recovering the training data distribution and D equal to 1/2 everywhere\",\n  \"model_or_system\": \"minimax two-player game framework\",\n  \"benchmark\": \"qualitative and quantitative evaluation of generated samples\"\n}",
+  "output_metrics": {},
+  "execution_duration_ms": 4140.89,
+  "logging_overhead_ms": 25.12,
+  "system_logs": "{\"inference_duration_ms\": 4115.75, \"model_reported_duration_ns\": 4114556167, \"eval_count\": 89, \"prompt_eval_count\": 403, \"done\": true}",
+  "errors": [],
+  "output_hash": "c16c35e3fdf6938d13b53525fd8508c9f4d6b35f3ab094b93edb32e41fb2c48c",
+  "storage_kb": 4.24
+}

@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering
+\caption{API-served vs.\ locally deployed models under greedy decoding. Values are averaged across tasks and abstracts. Local models exhibit dramatically higher bitwise reproducibility, confirming that server-side non-determinism---not user-controllable parameters---is the primary source of variability in API-served models.}
+\label{tab:api_vs_local}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Deployment} & \textbf{EMR}$\uparrow$ & \textbf{NED}$\downarrow$ & \textbf{ROUGE-L}$\uparrow$ & \textbf{BS-F1}$\uparrow$ \\
+\midrule
+  Local (3 models) & 0.960 & 0.008 & 0.992 & 0.9989 \\
+  API (2 models) & 0.158 & 0.148 & 0.858 & 0.9822 \\
+\bottomrule
+\end{tabular}
+\end{table}

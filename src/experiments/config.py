@@ -7,6 +7,15 @@ AFFILIATION = "UTFPR - Universidade Tecnologica Federal do Parana"
 # Model configurations
 LLAMA_MODEL = "llama3:8b"
 GPT4_MODEL = "gpt-4"
+MISTRAL_MODEL = "mistral:7b"
+GEMMA2_MODEL = "gemma2:9b"
+CLAUDE_MODEL = "claude-sonnet-4-5-20250929"
+
+# All local models (served via Ollama)
+LOCAL_MODELS = [LLAMA_MODEL, MISTRAL_MODEL, GEMMA2_MODEL]
+
+# API models
+API_MODELS = [GPT4_MODEL, CLAUDE_MODEL]
 
 # Number of repetitions per condition
 N_REPS = 5

@@ -1,0 +1,40 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "gemma2_9b_extraction_abs_008_C1_fixed_seed_rep2",
+  "task_id": "extraction",
+  "task_category": "structured_extraction",
+  "prompt_card_ref": "prompt_card_extraction_v1_v1_0.json",
+  "prompt_hash": "ddc1746ca23ddafc9f63790dbd2d86930c1248713bf7c854b4e119ba9f0063c1",
+  "model_name": "gemma2:9b",
+  "model_version": "9.2B",
+  "weights_hash": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d56320643fc4dd41f0fd4168b757a420e7c514e72a9a744f7391d",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e57ae1950438395fa23acd727b18e0be41834a65",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-09T21:26:24.754002+00:00",
+  "timestamp_end": "2026-02-09T21:26:30.039543+00:00",
+  "execution_duration_ms": 5285.54,
+  "output_hash": "0d99507a7f36cbceec58da77480d6c7b1ad50af3bd55d8ad96e4e77f87b92b68",
+  "output_metrics": {},
+  "logging_overhead_ms": 20.67,
+  "storage_kb": 4.01,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

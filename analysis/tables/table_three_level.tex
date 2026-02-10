@@ -1,0 +1,28 @@
+\begin{table*}[t]
+\centering
+\caption{Three-level reproducibility assessment under greedy decoding ($t{=}0$). L1: bitwise identity (EMR), L2: surface similarity (NED, ROUGE-L), L3: semantic equivalence (BERTScore F1). Values are means across abstracts.}
+\label{tab:three_level}
+\small
+\begin{tabular}{llcccccc}
+\toprule
+ & & \multicolumn{2}{c}{\textbf{L1: Bitwise}} & \multicolumn{2}{c}{\textbf{L2: Surface}} & \multicolumn{1}{c}{\textbf{L3: Semantic}} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-7}
+\textbf{Model} & \textbf{Task} & \textbf{EMR} & \textbf{$\sigma$} & \textbf{NED}$\downarrow$ & \textbf{ROUGE-L}$\uparrow$ & \textbf{BERTScore F1}$\uparrow$ \\
+\midrule
+  Gemma 2 9B & Extraction & 1.000 & 0.000 & 0.000 & 1.000 & 1.0000 \\
+   & Summarization & 1.000 & 0.000 & 0.000 & 1.000 & 1.0000 \\
+  \addlinespace
+  Mistral 7B & Extraction & 0.960 & 0.120 & 0.001 & 1.000 & 0.9999 \\
+   & Summarization & 0.840 & 0.196 & 0.046 & 0.955 & 0.9935 \\
+  \addlinespace
+  LLaMA 3 8B & Extraction & 0.987 & 0.072 & 0.003 & 0.997 & 0.9997 \\
+   & Summarization & 0.931 & 0.157 & 0.014 & 0.986 & 0.9979 \\
+  \midrule
+  GPT-4 & Extraction & 0.443 & 0.335 & 0.072 & 0.938 & 0.9904 \\
+   & Summarization & 0.230 & 0.193 & 0.137 & 0.870 & 0.9839 \\
+  \addlinespace
+  Claude Sonnet 4.5 & Extraction & 0.190 & 0.291 & 0.101 & 0.904 & 0.9878 \\
+   & Summarization & 0.020 & 0.040 & 0.242 & 0.764 & 0.9704 \\
+\bottomrule
+\end{tabular}
+\end{table*}
