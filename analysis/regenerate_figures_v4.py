@@ -108,7 +108,16 @@ def lookup(metrics, model, task, condition):
 
 
 def lookup_greedy(metrics, model, task):
-    for cond in ["C1_fixed_seed", "C2_var_seed", "C2_same_params"]:
+    """Return the primary greedy-decoding entry for a model.
+
+    GPT-4: use C2_same_params (C1 has only 3 abstracts).
+    All others: prefer C1_fixed_seed, fall back to C2.
+    """
+    if model == "gpt4":
+        preferred = ["C2_same_params", "C1_fixed_seed"]
+    else:
+        preferred = ["C1_fixed_seed", "C2_var_seed", "C2_same_params"]
+    for cond in preferred:
         m = lookup(metrics, model, task, cond)
         if m is not None:
             return m
