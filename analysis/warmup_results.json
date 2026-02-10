@@ -1,0 +1,171 @@
+{
+  "llama3_8b_chat_extraction": {
+    "model": "LLaMA 3 8B",
+    "task": "extraction",
+    "total_groups": 10,
+    "unanimous_groups": 10,
+    "non_unanimous_groups": 0,
+    "outlier_rep_counts": {},
+    "details": []
+  },
+  "llama3_8b_chat_summarization": {
+    "model": "LLaMA 3 8B",
+    "task": "summarization",
+    "total_groups": 10,
+    "unanimous_groups": 8,
+    "non_unanimous_groups": 2,
+    "outlier_rep_counts": {
+      "rep0": 2
+    },
+    "details": [
+      {
+        "abs_num": 1,
+        "num_reps": 5,
+        "num_unique_hashes": 2,
+        "modal_hash_short": "ff3b837ebb3d",
+        "modal_count": 4,
+        "outlier_reps": [
+          0
+        ],
+        "all_hashes_short": {
+          "0": "590d08359e7d",
+          "1": "ff3b837ebb3d",
+          "2": "ff3b837ebb3d",
+          "3": "ff3b837ebb3d",
+          "4": "ff3b837ebb3d"
+        }
+      },
+      {
+        "abs_num": 3,
+        "num_reps": 5,
+        "num_unique_hashes": 2,
+        "modal_hash_short": "b04d6760b146",
+        "modal_count": 4,
+        "outlier_reps": [
+          0
+        ],
+        "all_hashes_short": {
+          "0": "97ac49325ead",
+          "1": "b04d6760b146",
+          "2": "b04d6760b146",
+          "3": "b04d6760b146",
+          "4": "b04d6760b146"
+        }
+      }
+    ]
+  },
+  "mistral_7b_extraction": {
+    "model": "Mistral 7B",
+    "task": "extraction",
+    "total_groups": 10,
+    "unanimous_groups": 9,
+    "non_unanimous_groups": 1,
+    "outlier_rep_counts": {
+      "rep0": 1
+    },
+    "details": [
+      {
+        "abs_num": 8,
+        "num_reps": 5,
+        "num_unique_hashes": 2,
+        "modal_hash_short": "e7c671b7e541",
+        "modal_count": 4,
+        "outlier_reps": [
+          0
+        ],
+        "all_hashes_short": {
+          "0": "1c1231210d17",
+          "1": "e7c671b7e541",
+          "2": "e7c671b7e541",
+          "3": "e7c671b7e541",
+          "4": "e7c671b7e541"
+        }
+      }
+    ]
+  },
+  "mistral_7b_summarization": {
+    "model": "Mistral 7B",
+    "task": "summarization",
+    "total_groups": 10,
+    "unanimous_groups": 6,
+    "non_unanimous_groups": 4,
+    "outlier_rep_counts": {
+      "rep0": 4
+    },
+    "details": [
+      {
+        "abs_num": 4,
+        "num_reps": 5,
+        "num_unique_hashes": 2,
+        "modal_hash_short": "9f37d5446cae",
+        "modal_count": 4,
+        "outlier_reps": [
+          0
+        ],
+        "all_hashes_short": {
+          "0": "c7fbefc65d2e",
+          "1": "9f37d5446cae",
+          "2": "9f37d5446cae",
+          "3": "9f37d5446cae",
+          "4": "9f37d5446cae"
+        }
+      },
+      {
+        "abs_num": 7,
+        "num_reps": 5,
+        "num_unique_hashes": 2,
+        "modal_hash_short": "69d43da53212",
+        "modal_count": 4,
+        "outlier_reps": [
+          0
+        ],
+        "all_hashes_short": {
+          "0": "91d2ce9cb634",
+          "1": "69d43da53212",
+          "2": "69d43da53212",
+          "3": "69d43da53212",
+          "4": "69d43da53212"
+        }
+      },
+      {
+        "abs_num": 8,
+        "num_reps": 5,
+        "num_unique_hashes": 2,
+        "modal_hash_short": "b6dd1ea968aa",
+        "modal_count": 4,
+        "outlier_reps": [
+          0
+        ],
+        "all_hashes_short": {
+          "0": "8dd44355097a",
+          "1": "b6dd1ea968aa",
+          "2": "b6dd1ea968aa",
+          "3": "b6dd1ea968aa",
+          "4": "b6dd1ea968aa"
+        }
+      },
+      {
+        "abs_num": 9,
+        "num_reps": 5,
+        "num_unique_hashes": 2,
+        "modal_hash_short": "ca74bc5ad829",
+        "modal_count": 4,
+        "outlier_reps": [
+          0
+        ],
+        "all_hashes_short": {
+          "0": "324576f972cb",
+          "1": "ca74bc5ad829",
+          "2": "ca74bc5ad829",
+          "3": "ca74bc5ad829",
+          "4": "ca74bc5ad829"
+        }
+      }
+    ]
+  },
+  "summary": {
+    "total_non_unanimous_groups": 7,
+    "total_rep0_outlier": 7,
+    "rep0_outlier_fraction": 1.0
+  }
+}
