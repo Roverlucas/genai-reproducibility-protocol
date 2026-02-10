@@ -1,18 +1,18 @@
 \begin{table}[t]
 \centering
-\caption{Exact Match Rate (EMR) under greedy decoding ($t{=}0$) across five models and two single-turn tasks. Values for local models aggregate conditions C1 and C2 (both greedy, $t{=}0$); for GPT-4, values reflect C2 only (C1 has insufficient coverage: 3/30 abstracts for summarization); for Claude, values reflect C1 only (Claude's API does not support the seed parameter; C1 and C2 differ slightly due to sampling variability, with C2 extraction EMR = 0.080 vs.\ C1 = 0.190). Higher is more reproducible.}
+\caption{Exact Match Rate (EMR) under greedy decoding ($t{=}0$) across five models and two single-turn tasks, with 95\% bootstrap confidence intervals ($n_{\text{boot}}{=}10{,}000$). For local models, values reflect condition C1 (fixed seed); for GPT-4, C2 (variable-seed greedy, as C1 has insufficient coverage); for Claude, C1 (Claude's API does not support a seed parameter). Higher is more reproducible.}
 \label{tab:emr_greedy}
 \small
-\begin{tabular}{llcccc}
+\begin{tabular}{llcc}
 \toprule
-\textbf{Model} & \textbf{Source} & \textbf{Extraction} & \textbf{Summarization} & \textbf{$N$ Runs} & \textbf{$N$ Abstracts} \\
+\textbf{Model} & \textbf{Source} & \textbf{Extraction EMR} & \textbf{Summarization EMR} \\
 \midrule
-  Gemma 2 9B & Local & \cellcolor{green!20}1.000 & \cellcolor{green!20}1.000 & 100 & 10 \\
-  Mistral 7B & Local & \cellcolor{green!20}0.960 & \cellcolor{yellow!20}0.840 & 100 & 10 \\
-  LLaMA 3 8B & Local & \cellcolor{green!20}0.987 & \cellcolor{yellow!20}0.931 & 400 & 30 \\
+  Gemma 2 9B & Local & \cellcolor{green!20}1.000\,[1.00,\,1.00] & \cellcolor{green!20}1.000\,[1.00,\,1.00] \\
+  LLaMA 3 8B & Local & \cellcolor{green!20}0.987\,[0.96,\,1.00] & \cellcolor{green!20}0.947\,[0.89,\,0.99] \\
+  Mistral 7B & Local & \cellcolor{green!20}0.960\,[0.88,\,1.00] & \cellcolor{yellow!20}0.840\,[0.72,\,0.96] \\
   \midrule
-  GPT-4 & API & \cellcolor{orange!20}0.443 & \cellcolor{red!20}0.230 & 300 & 30 \\
-  Claude Sonnet 4.5 & API & \cellcolor{red!20}0.190 & \cellcolor{red!20}0.020 & 99 & 10 \\
+  GPT-4 & API & \cellcolor{orange!20}0.443\,[0.32,\,0.57] & \cellcolor{red!20}0.230\,[0.16,\,0.30] \\
+  Claude Sonnet 4.5 & API & \cellcolor{red!20}0.190\,[0.05,\,0.40] & \cellcolor{red!20}0.020\,[0.00,\,0.05] \\
 \bottomrule
 \end{tabular}
 \end{table}

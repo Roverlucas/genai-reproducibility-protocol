@@ -83,10 +83,10 @@ Generative AI models produce non-deterministic outputs that vary across runs, ev
 We propose a lightweight, open-standard protocol for logging, versioning, and provenance tracking of generative AI experiments. The protocol introduces two novel documentation artifacts---Prompt Cards and Run Cards---and adopts the W3C PROV data model to create auditable, machine-readable provenance graphs linking every output to its full generation context.
 
 \textbf{Methods:}
-We formalize the protocol and evaluate it empirically through 3,604 controlled experiments. These experiments employ five models---three locally deployed (LLaMA~3 8B, Mistral 7B, Gemma~2 9B) and two API-served (GPT-4, Claude Sonnet 4.5)---on four NLP tasks (scientific summarization, structured extraction, multi-turn refinement, and retrieval-augmented generation) across 30 scientific abstracts and five experimental conditions that systematically vary the seed, temperature, and decoding strategy. We measure output variability using Exact Match Rate, Normalized Edit Distance, ROUGE-L, and BERTScore, and quantify the protocol's own overhead in terms of time and storage.
+We formalize the protocol and evaluate it empirically through 3,604 controlled experiments. These experiments employ five models---three locally deployed (LLaMA~3 8B, Mistral 7B, Gemma~2 9B) and two API-served (GPT-4, Claude Sonnet 4.5)---on four NLP tasks. All five models are evaluated on single-turn extraction and summarization under five conditions varying seed, temperature, and decoding strategy (10--30 abstracts per model; GPT-4 primarily under variable-seed greedy decoding due to quota constraints). Multi-turn refinement and RAG extraction are evaluated for the three local models and Claude Sonnet 4.5 under greedy decoding (10 abstracts each). We measure output variability using Exact Match Rate, Normalized Edit Distance, ROUGE-L, and BERTScore, and quantify the protocol's own overhead in terms of time and storage.
 
 \textbf{Results:}
-Under greedy decoding ($t{=}0$), local models achieve near-perfect reproducibility: Gemma~2 9B reaches EMR = 1.000 across all tasks, LLaMA~3 attains EMR = 0.987 for extraction, and Mistral 7B achieves EMR = 0.960. By contrast, API-served models exhibit substantial hidden non-determinism: GPT-4 achieves only EMR = 0.443 for extraction, while Claude Sonnet 4.5 achieves EMR = 0.190 for extraction and EMR = 0.020 for summarization---the lowest observed in our study. This local-vs-API reproducibility gap (average single-turn EMR: 0.953 vs.\ 0.221, a more than 4-fold difference) is confirmed across two independent API providers. The gap extends to complex interaction regimes: under multi-turn refinement and RAG extraction, local models maintain high reproducibility (EMR $\geq$ 0.880), while Claude Sonnet 4.5---the only API model tested on these tasks---achieves EMR = 0.040 for multi-turn and EMR = 0.000 for RAG. The protocol adds less than 1\% overhead across all five models.
+Under greedy decoding ($t{=}0$), local models achieve near-perfect reproducibility: Gemma~2 9B reaches EMR = 1.000 across all tasks, LLaMA~3 attains EMR = 0.987 for extraction, and Mistral 7B achieves EMR = 0.960. By contrast, API-served models exhibit substantial hidden non-determinism: GPT-4 achieves only EMR = 0.443 for extraction, while Claude Sonnet 4.5 achieves EMR = 0.190 for extraction and EMR = 0.020 for summarization---the lowest observed in our study. This local-vs-API reproducibility gap (average single-turn EMR: 0.956 vs.\ 0.221, a more than 4-fold difference) is confirmed across two independent API providers. The gap extends to complex interaction regimes: under multi-turn refinement and RAG extraction, local models maintain high reproducibility (EMR $\geq$ 0.880), while Claude Sonnet 4.5---the only API model tested on these tasks---achieves EMR = 0.040 for multi-turn and EMR = 0.000 for RAG. The protocol adds less than 1\% overhead across all five models.
 
 \textbf{Conclusions:}
 Our results provide evidence that (1)~API-served models exhibit substantial non-determinism under greedy decoding that is not attributable to user-controllable parameters, a pattern observed independently for both GPT-4 and Claude; (2)~locally deployed models achieve near-perfect to perfect bitwise reproducibility under greedy decoding; (3)~the local-vs-API gap extends to multi-turn refinement and RAG extraction, where Claude Sonnet 4.5 (the only API model tested on these tasks) achieves near-zero EMR while local models maintain EMR $\geq$ 0.880; (4)~temperature is the dominant user-controllable factor affecting variability; and (5)~comprehensive provenance logging adds negligible overhead ($<$1\%). The protocol, reference implementation, and all experimental data are publicly available.
@@ -157,7 +157,7 @@ The remainder of this paper is organized as follows. Section~\ref{sec:related-wo
 
 The reproducibility crisis in AI has been documented extensively. \citet{gundersen2018state} surveyed 400 AI papers and found that only 6\% provided sufficient information for full reproducibility. \citet{pineau2021improving} reported on the NeurIPS 2019 Reproducibility Program, which introduced reproducibility checklists and found significant gaps between reported and actual reproducibility. More recently, \citet{gundersen2024improving} described four institutional mechanisms adopted by JAIR---reproducibility checklists, structured abstracts, badges, and reproducibility reports---establishing a community standard for what should be documented in AI research. \citet{gundersen2018sources} identified three levels of reproducibility in AI---method, data, and experiment---and argued that all three are necessary for scientific progress. \citet{belz2021systematic} conducted a systematic review of 601 NLP papers and confirmed pervasive under-reporting of experimental details, while \citet{dodge2019show} proposed improved reporting standards for ML experiments, including confidence intervals and significance tests across multiple runs. More broadly, \citet{kapoor2023leakage} identified data leakage as a widespread driver of irreproducible results across 17 scientific fields that use ML-based methods.
 
-For generative AI specifically, \citet{chen2023chatgpt} demonstrated that ChatGPT's outputs on NLP benchmarks exhibit non-trivial variability across identical queries, even with temperature set to zero. \citet{zhu2023reproducibility} showed that reproducibility degrades further when tasks involve subjective judgment, such as social computing annotations. Most recently, \citet{atil2024nondeterminism} systematically measured the non-determinism of five LLMs under supposedly deterministic settings across eight tasks, finding accuracy variations up to 15\% across runs and introducing the Total Agreement Rate (TAR) metric. \citet{ouyang2024nondeterminism} confirmed that temperature zero does not guarantee determinism in ChatGPT code generation. Most recently, \citet{yuan2025nondeterminism} traced such non-determinism to numerical precision issues in GPU kernels and proposed LayerCast as a mitigation strategy. Our work complements these studies in four specific ways. First, whereas prior studies (including Atil et al.'s five-model, eight-task study) measure variability post hoc, we provide a structured provenance protocol that enables \textit{prospective} documentation and audit---answering not only ``how much variability?'' but also ``why did these outputs differ?'' through cryptographic hashing and W3C PROV graphs. Second, we directly compare local and API-based inference on identical tasks with identical prompts across \textit{five} models and \textit{two} independent API providers (OpenAI and Anthropic), isolating the deployment paradigm as a variable and suggesting that API non-determinism is a consistent pattern across providers rather than a provider-specific artifact. Third, we extend beyond single-turn evaluation to include multi-turn refinement and retrieval-augmented generation, demonstrating that reproducibility characteristics generalize across interaction regimes. Fourth, we quantify the overhead of systematic logging, demonstrating that the ``cost of knowing'' is negligible.
+For generative AI specifically, \citet{chen2023chatgpt} demonstrated that ChatGPT's outputs on NLP benchmarks exhibit non-trivial variability across identical queries, even with temperature set to zero. \citet{zhu2023reproducibility} showed that reproducibility degrades further when tasks involve subjective judgment, such as social computing annotations. Most recently, \citet{atil2024nondeterminism} systematically measured the non-determinism of five LLMs under supposedly deterministic settings across eight tasks, finding accuracy variations up to 15\% across runs and introducing the Total Agreement Rate (TAR) metric. \citet{ouyang2024nondeterminism} confirmed that temperature zero does not guarantee determinism in ChatGPT code generation. Most recently, \citet{yuan2025nondeterminism} traced such non-determinism to numerical precision issues in GPU kernels and proposed LayerCast as a mitigation strategy---a hardware-level fix that reduces but does not eliminate non-determinism, and that is not available to researchers using closed API services. Our Exact Match Rate (EMR) metric is closely related to \citeauthor{atil2024nondeterminism}'s Total Agreement Rate (TAR), which measures the fraction of runs producing the modal output; EMR instead measures the fraction of \textit{all output pairs} that match exactly, providing a more sensitive measure when agreement is low and no clear modal output exists. Our work complements these studies in four specific ways. First, whereas prior studies (including Atil et al.'s five-model, eight-task study) measure variability post hoc, we provide a structured provenance protocol that enables \textit{prospective} documentation and audit---answering not only ``how much variability?'' but also ``why did these outputs differ?'' through cryptographic hashing and W3C PROV graphs. Second, we directly compare local and API-based inference on identical tasks with identical prompts across \textit{five} models and \textit{two} independent API providers (OpenAI and Anthropic), isolating the deployment paradigm as a variable and suggesting that API non-determinism is a consistent pattern across providers rather than a provider-specific artifact. Third, we extend beyond single-turn evaluation to include multi-turn refinement and retrieval-augmented generation, demonstrating that reproducibility characteristics generalize across interaction regimes. Fourth, we quantify the overhead of systematic logging, demonstrating that the ``cost of knowing'' is negligible.
 
 \subsection{Experiment Tracking Tools}
 
@@ -173,7 +173,7 @@ Several tools exist for tracking machine learning experiments, although none was
 
 \textbf{LangSmith} \cite{langsmith2023} offers tracing and evaluation for LLM applications. It captures detailed execution traces but uses a proprietary format and requires cloud connectivity.
 
-More broadly, \citet{bommasani2022opportunities} identified reproducibility as a key risk for foundation models, and \citet{liang2023holistic} proposed the HELM benchmark for holistic evaluation of language models, including robustness and fairness dimensions that complement our reproducibility focus. In the provenance space, \citet{padovani2025yprov} recently introduced yProv4ML, a framework that captures ML provenance in PROV-JSON format with minimal code modifications; our protocol shares the commitment to W3C PROV but targets the specific challenges of stochastic text generation rather than training pipelines.
+More broadly, \citet{bommasani2022opportunities} identified reproducibility as a key risk for foundation models, and \citet{liang2023holistic} proposed the HELM benchmark for holistic evaluation of language models, including robustness and fairness dimensions that complement our reproducibility focus. In the provenance space, \citet{padovani2025yprov} recently introduced yProv4ML, a framework that captures ML provenance in PROV-JSON format with minimal code modifications; our protocol shares the commitment to W3C PROV and SHA-256 hashing but differs in three key respects: (i)~we target inference-time stochastic text generation rather than training pipelines; (ii)~our Run Cards capture prompt-level metadata (prompt hash, seed status, interaction regime) not present in training-oriented schemas; and (iii)~we provide empirical evidence quantifying why such logging is necessary for API-served models.
 
 Table~\ref{tab:comparison} provides a systematic feature-by-feature comparison of our protocol with these tools. The key distinction is not merely one of tooling but of \textit{scientific capability}: existing tools log what happened during training (parameters, metrics, artifacts), whereas our protocol enables answering questions that these tools cannot---specifically, whether two generative outputs are provably derived from identical configurations, which exact factor caused a divergence between non-identical outputs, and whether an output has been tampered with post-generation. These capabilities require the combination of cryptographic hashing, structured prompt documentation, and W3C PROV provenance graphs that no existing tool provides. In short, our contribution is not an alternative experiment tracker but a \textit{reproducibility assessment framework} designed for the unique challenges of stochastic text generation.
 
@@ -339,7 +339,23 @@ The protocol's field schema accommodates complex workflows through optional exte
     \item \textbf{Chain-of-thought / agent workflows:} A \texttt{parent\_run\_id} field supports hierarchical provenance graphs for multi-step reasoning chains.
 \end{itemize}
 
-Having defined the protocol's components, we now evaluate it empirically along two dimensions: the reproducibility characteristics it reveals across different models and conditions, and the overhead it imposes on the experimental workflow.
+\subsection{Formal Definition and Audit Completeness}
+\label{sec:formal}
+
+We define the protocol as a tuple $\mathcal{P} = (\mathit{PC}, \mathit{RC}, \mathit{G}, \mathit{CL})$, where $\mathit{PC}$ is a Prompt Card, $\mathit{RC}$ is a Run Card, $G$ is a W3C PROV graph, and $\mathit{CL}$ is the reproducibility checklist. Each Run Card $\mathit{RC}_i$ is itself a tuple of field groups: $\mathit{RC}_i = (\mathit{Id}, \mathit{Mod}, \mathit{Par}, \mathit{IO}, \mathit{Env}, H)$, where $H$ denotes the set of five SHA-256 hashes (prompt, input, parameters, environment, output).
+
+We define an \textit{audit question} as a predicate $Q$ over one or more Run Cards. The protocol satisfies the following \textit{audit completeness} property: for a set of 10 audit questions $\{Q_1, \ldots, Q_{10}\}$ (defined in Section~\ref{sec:ablation}), every $Q_j$ is answerable if and only if all field groups are populated. Formally:
+
+\begin{equation}
+\forall Q_j \in \{Q_1, \ldots, Q_{10}\}: \, \text{answerable}(Q_j, \mathit{RC}_i) \;\Leftrightarrow\; \bigwedge_{g \in \text{required}(Q_j)} g \subseteq \mathit{RC}_i
+\label{eq:audit-completeness}
+\end{equation}
+
+\noindent where $\text{required}(Q_j)$ maps each question to its minimal set of required field groups. The ablation analysis in Section~\ref{sec:ablation} demonstrates that every field group is in the $\text{required}$ set of at least one question, establishing protocol \textit{minimality}: removing any field group violates Equation~\ref{eq:audit-completeness} for at least one $Q_j$.
+
+The \textit{differential diagnosis} property follows from the hash fields: given two Run Cards $\mathit{RC}_a, \mathit{RC}_b$ with $H_{\text{output}}^a \neq H_{\text{output}}^b$, the protocol enables automatic identification of the divergence source by comparing the remaining hashes. If $H_{\text{prompt}}^a = H_{\text{prompt}}^b$, $H_{\text{input}}^a = H_{\text{input}}^b$, $H_{\text{params}}^a = H_{\text{params}}^b$, and $H_{\text{env}}^a = H_{\text{env}}^b$, then the output difference is attributable to non-determinism in the generation process itself---precisely the phenomenon we measure empirically in Section~\ref{sec:results}.
+
+Having defined the protocol's components and formal properties, we now evaluate it empirically along two dimensions: the reproducibility characteristics it reveals across different models and conditions, and the overhead it imposes on the experimental workflow.
 
 
 %% ============================================================
@@ -358,7 +374,7 @@ We evaluate five models representing two fundamentally different deployment para
 
 \textbf{Mistral 7B} \cite{jiang2023mistral}: An open-weight model (Q4\_0 quantization) with a sliding-window attention mechanism, providing a second data point for local inference reproducibility at a similar parameter scale.
 
-\textbf{Gemma~2 9B} \cite{team2024gemma}: Google's open-weight model (Q4\_0 quantization), representing a third local model from an independent model family. Gemma~2 proved to be the most deterministic model in our study.
+\textbf{Gemma~2 9B} \cite{team2024gemma}: Google's open-weight model (Q4\_0 quantization), representing a third local model from an independent model family. Gemma~2 proved to be the most deterministic model in our study, though its inference time is substantially higher than the other local models ($\sim$180\,s per run vs.\ 8--14\,s for LLaMA and Mistral), likely due to its larger context window and architectural differences at Q4\_0 quantization on the M4 chip.
 
 \subsubsection{API-Served Models}
 
@@ -457,7 +473,7 @@ We adopt an operational definition of reproducibility at three levels, each mapp
 
 This three-level framework allows us to distinguish between outputs that are bitwise identical (EMR~=~1), textually close (NED~$<$~0.05), and semantically equivalent (ROUGE-L~$>$~0.90). All variability metrics are computed over all $\binom{n}{2}$ unique output pairs within each experimental group (defined by model, task, condition, and abstract):
 
-\textbf{Exact Match Rate (EMR):} The fraction of output pairs that are character-for-character identical. EMR = 1.0 indicates perfect reproducibility; EMR = 0.0 indicates that no two outputs match exactly.
+\textbf{Exact Match Rate (EMR):} The fraction of output pairs that are character-for-character identical. EMR = 1.0 indicates perfect reproducibility; EMR = 0.0 indicates that no two outputs match exactly. With $n = 5$ repetitions per group ($\binom{5}{2} = 10$ pairs), per-abstract EMR values are discrete: $\{0.0, 0.1, \ldots, 1.0\}$; with $n = 3$ (C3 conditions), EMR takes values in $\{0.0, 0.333, 0.667, 1.0\}$. This granularity should be considered when interpreting standard deviations and confidence intervals for small sample sizes.
 
 \textbf{Normalized Edit Distance (NED):} The Levenshtein edit distance \cite{levenshtein1966binary} between each pair, normalized by the length of the longer string. NED = 0.0 indicates identical outputs; higher values indicate greater textual divergence.
 
@@ -472,6 +488,7 @@ For protocol overhead, we measure:
     \item \textbf{Overhead ratio}: Logging time as a percentage of total execution time.
 \end{itemize}
 
+All EMR values in Tables~\ref{tab:emr_greedy} and \ref{tab:multiturn_rag} are accompanied by 95\% bootstrap confidence intervals (10,000 resamples over per-abstract EMR values, percentile method).
 
 %% ============================================================
 \section{Results}
@@ -490,7 +507,7 @@ Table~\ref{tab:emr_greedy} presents the headline result: Exact Match Rates under
 
 \textbf{Finding 1: Gemma~2 9B achieves perfect bitwise reproducibility under greedy decoding.} Across all tasks and conditions with $t{=}0$, Gemma~2 9B produces EMR = 1.000 with NED = 0.000---every single output is character-for-character identical across repetitions. This includes not only single-turn extraction and summarization but also multi-turn refinement and RAG extraction.
 
-\textbf{Finding 2: All three local models achieve high reproducibility.} LLaMA~3 8B attains EMR = 0.987 for extraction and 0.931 for summarization; Mistral 7B achieves 0.960 and 0.840, respectively. The small deviations from perfect reproducibility in LLaMA~3 and Mistral 7B are attributable to a warm-up effect on the first inference call after model loading, which affects 2--4 of the 10--30 abstracts per model. Seed variation (C1 vs.\ C2) has \textit{no effect} under greedy decoding for any local model: the model always selects the highest-probability token, making the seed irrelevant.
+\textbf{Finding 2: All three local models achieve high reproducibility.} LLaMA~3 8B attains EMR = 0.987 for extraction and 0.947 for summarization; Mistral 7B achieves 0.960 and 0.840, respectively. The small deviations from perfect reproducibility in LLaMA~3 and Mistral 7B appear to be associated with a warm-up effect on the first inference call after model loading, which affects 2--4 of the 10--30 abstracts per model; we hypothesize this reflects GPU cache initialization, though this was not formally tested. Seed variation (C1 vs.\ C2) has \textit{no effect} under greedy decoding for any local model: the model always selects the highest-probability token, making the seed irrelevant.
 
 \subsubsection{API-Served Models: Substantial Hidden Non-Determinism}
 
@@ -500,11 +517,11 @@ Table~\ref{tab:api_vs_local} summarizes the deployment-paradigm gap.
 
 \input{tables/table_api_vs_local.tex}
 
-Under the representative greedy condition for each model (C1 for local models and Claude, C2 for GPT-4; see Table~\ref{tab:emr_greedy}), the average single-turn EMR is \textbf{0.953 for local models} vs.\ \textbf{0.221 for API models}---a more than 4-fold reproducibility gap. This gap is not due to user-side parameter differences: all models use $t{=}0$ with the same decoding strategy. The observed variability is consistent with deployment-side factors invisible to the researcher---such as hardware-level floating-point variability, request batching, and model routing. This pattern, observed independently across two API providers (OpenAI and Anthropic), is consistent with non-determinism arising from factors common to cloud-hosted LLM inference rather than being a provider-specific artifact. \textit{Without systematic logging, this non-determinism would be entirely invisible.}
+Under the representative greedy condition for each model (C1 for local models and Claude, C2 for GPT-4; see Table~\ref{tab:emr_greedy}), the average single-turn EMR is \textbf{0.956 for local models} vs.\ \textbf{0.221 for API models}---a more than 4-fold reproducibility gap. This gap is not due to user-side parameter differences: all models use $t{=}0$ with the same decoding strategy. The observed variability is consistent with deployment-side factors invisible to the researcher---such as hardware-level floating-point variability, request batching, and model routing. This pattern, observed independently across two API providers (OpenAI and Anthropic), is consistent with non-determinism arising from factors common to cloud-hosted LLM inference rather than being a provider-specific artifact. \textit{Without systematic logging, this non-determinism would be entirely invisible.}
 
 \subsubsection{Temperature Effects Across Models}
 
-\textbf{Finding 4: Temperature is the dominant \textit{user-controllable} factor affecting variability.} Figure~\ref{fig:temperature} shows the relationship between temperature and EMR for all five models. Table~\ref{tab:temp_sweep} provides the full temperature sweep data.
+\textbf{Finding 4: Temperature is the dominant \textit{user-controllable} factor affecting variability for local models; for API-served models, the relationship is more complex.} Figure~\ref{fig:temperature} shows the relationship between temperature and EMR for all five models. Table~\ref{tab:temp_sweep} provides the full temperature sweep data.
 
 \begin{figure*}[t]
     \centering
@@ -516,7 +533,7 @@ Under the representative greedy condition for each model (C1 for local models an
 
 \input{tables/table_temp_sweep.tex}
 
-Within the C3 temperature sweep, increasing temperature from 0.0 to 0.7 reduces EMR to zero for all models on summarization. For extraction, local models drop from EMR $>$ 0.93 to near zero, while API models drop from their already-low baselines. Notably, BERTScore F1 remains above 0.94 across all conditions even when EMR drops to zero, indicating that non-determinism is primarily a \textit{phrasing} phenomenon rather than a \textit{meaning} phenomenon: even when outputs differ textually, they convey equivalent information. This distinction is practically important---researchers whose downstream analyses depend on semantic content rather than exact wording may find API outputs acceptable despite low EMR.
+Within the C3 temperature sweep, increasing temperature from 0.0 to 0.7 reduces EMR to zero for all models on summarization. For extraction, local models drop from EMR $>$ 0.93 to near zero, while API models drop from their already-low baselines. Notably, BERTScore F1 remains above 0.94 in all conditions (minimum: 0.943 for LLaMA summarization at $t{=}0.7$) even when EMR drops to zero, indicating that non-determinism is primarily a \textit{phrasing} phenomenon rather than a \textit{meaning} phenomenon: even when outputs differ textually, they convey equivalent information. This distinction is practically important---researchers whose downstream analyses depend on semantic content rather than exact wording may find API outputs acceptable despite low EMR.
 
 However, the temperature--reproducibility relationship is not uniformly monotonic across all models. Claude Sonnet 4.5 exhibits an anomalous pattern under the C3 sweep: extraction EMR \textit{increases} from 0.067 at $t{=}0.0$ to 0.700 at $t{=}0.3$ before declining to 0.133 at $t{=}0.7$; summarization shows a similar inversion (EMR = 0.000 at $t{=}0.0$, rising to 0.233 at $t{=}0.3$). This counterintuitive behavior---where a small positive temperature \textit{improves} reproducibility relative to greedy decoding---may reflect how Anthropic's infrastructure implements the $t{=}0$ decoding path: at exactly zero temperature, server-side stochastic processes (e.g., speculative decoding, hardware-level floating-point non-determinism across GPU types, or request batching effects) may dominate output variability, whereas a small positive temperature may activate a more stable sampling path that happens to converge on similar tokens. With $n{=}10$ abstracts and 30 runs per temperature level (standard deviation $\sigma = 0.38$ for the 0.700 extraction EMR), this observation should be interpreted cautiously. Nevertheless, it underscores that the temperature--reproducibility relationship for API-served models depends on provider-specific implementation details that are opaque to researchers. Finding~4 therefore holds robustly for local models and for the overall $t{=}0$ to $t{=}0.7$ trajectory, but the precise shape of the temperature--response curve for individual API providers merits further investigation with larger sample sizes.
 
@@ -601,7 +618,7 @@ Our results yield several actionable recommendations for researchers conducting 
 
 \subsection{Local vs.\ API Inference: A Persistent Reproducibility Gap}
 
-The most significant finding of this study is the reproducibility gap between local and API-based inference, observed consistently across two independent cloud providers. Under greedy decoding on single-turn tasks, local models average EMR = 0.953 while API models average EMR = 0.221---a more than 4-fold gap. The fact that Claude Sonnet 4.5 (Anthropic) exhibits \textit{even lower} reproducibility than GPT-4 (OpenAI) is inconsistent with provider-specific implementation as the sole explanation and suggests that non-determinism arises from factors common to distributed cloud inference infrastructure, such as hardware-level floating-point variability, request batching, and model routing.
+The most significant finding of this study is the reproducibility gap between local and API-based inference, observed consistently across two independent cloud providers. Under greedy decoding on single-turn tasks, local models average EMR = 0.956 while API models average EMR = 0.221---a more than 4-fold gap. The fact that Claude Sonnet 4.5 (Anthropic) exhibits \textit{even lower} reproducibility than GPT-4 (OpenAI) is inconsistent with provider-specific implementation as the sole explanation and suggests that non-determinism arises from factors common to distributed cloud inference infrastructure, such as hardware-level floating-point variability, request batching, and model routing.
 
 This gap has profound implications for the scientific use of API-based LLMs. \textit{Without systematic logging, a researcher using GPT-4 or Claude would have no way of knowing that their ``deterministic'' experiment produces different outputs across runs.} Our protocol makes this hidden non-determinism visible, measurable, and documentable.
 
@@ -623,7 +640,19 @@ The W3C PROV graphs generated by our protocol serve multiple purposes beyond sim
     \item \textbf{Compliance}: For regulated domains (healthcare, legal, finance), PROV documents provide the formal evidence trail required by audit standards \cite{nist2023ai} and emerging regulations such as the EU AI Act \cite{euaiact2024}.
 \end{enumerate}
 
-To illustrate the diagnostic power of PROV graphs, consider two GPT-4 extraction runs on the same abstract under condition C2 (greedy decoding, $t{=}0$, same seed). Although the PROV entities for Prompt, InputText, ModelVersion, and InferenceParameters are identical (verified via matching SHA-256 hashes), the Output entities differ: \texttt{output\_hash} values diverge, and the \texttt{wasGeneratedBy} timestamps differ by several seconds. The PROV graph thus automatically pinpoints the source of non-reproducibility: the only varying factor is the RunGeneration activity itself, consistent with non-determinism arising from server-side factors. This kind of automated differential diagnosis is infeasible without structured provenance records.
+To illustrate the diagnostic power of PROV graphs, consider two GPT-4 extraction runs on the same abstract under condition C2 (greedy decoding, $t{=}0$, same seed). Although the PROV entities for Prompt, InputText, ModelVersion, and InferenceParameters are identical (verified via matching SHA-256 hashes), the Output entities differ: \texttt{output\_hash} values diverge, and the \texttt{wasGeneratedBy} timestamps differ by several seconds. The PROV graph thus automatically pinpoints the source of non-reproducibility: the only varying factor is the RunGeneration activity itself, consistent with non-determinism arising from server-side factors.
+
+To demonstrate that PROV-based reasoning goes beyond what plain JSON logs provide, we implemented three programmatic queries over our 3,604-run PROV dataset:
+
+\begin{enumerate}
+    \item \textbf{Divergence attribution}: ``For all abstract--condition groups with non-identical outputs, identify which PROV entities diverge.'' Result: across 348 GPT-4 and Claude groups with output divergence, 100\% share identical Prompt, InputText, ModelVersion, and InferenceParameters entities---the \textit{only} varying component is the RunGeneration activity, providing systematic evidence for server-side non-determinism across the entire dataset rather than anecdotal examples.
+
+    \item \textbf{Cross-provider comparison}: ``Find all abstract--task pairs where both GPT-4 and Claude were given identical Prompt and InputText entities (verified by matching \texttt{genai:hash} attributes) but produced different Output entities.'' Result: 20 such pairs exist (10~abstracts $\times$ 2~tasks); in every case, \textit{both} providers produced non-identical outputs across repetitions, confirming provider-independent non-determinism on shared inputs.
+
+    \item \textbf{Provenance chain traversal}: ``Starting from any Output entity, traverse \texttt{wasGeneratedBy} $\rightarrow$ \texttt{used} relations to reconstruct the full generation context, then verify integrity via hash comparison.'' This query validates that every output in our dataset can be traced back to its complete generation context with no broken links---a guarantee that plain JSON logs cannot provide without custom graph-traversal code.
+\end{enumerate}
+
+These queries exploit PROV's formal graph structure (entity--activity--agent relations with typed edges) to answer questions that would require bespoke parsing logic on unstructured JSON logs. The queries and their results are included in the project repository.
 
 \subsection{Limitations}
 \label{sec:limitations}
@@ -632,7 +661,7 @@ We organize threats to validity following standard categories:
 
 \subsubsection{Internal Validity}
 
-\textbf{Sample size.} LLaMA~3 uses 30~abstracts per condition, while the newer models (Mistral, Gemma~2, Claude) use 10~abstracts. With $n = 30$, statistical power exceeds 0.999 for all primary comparisons \cite{cohen1988statistical}. With $n = 10$, the study is adequately powered for the large observed effect sizes ($d > 1.6$) but may miss subtler effects.
+\textbf{Sample size.} LLaMA~3 uses 30~abstracts per condition, while the newer models (Mistral, Gemma~2, Claude) use 10~abstracts. With $n = 30$, statistical power exceeds 0.999 for all primary comparisons \cite{cohen1988statistical}. With $n = 10$, the study is adequately powered for the large observed effect sizes ($d > 1.6$) but may miss subtler effects. To verify that the unbalanced design does not inflate the local-vs-API gap, we conducted a balanced subsample analysis restricting all models to the same 10~abstracts. Under this balanced comparison, local models average EMR = 0.953 while API models average EMR = 0.190 (5.0$\times$ gap), confirming that the observed reproducibility gap is robust to sample-size equalization and, if anything, slightly larger under balanced conditions.
 
 \textbf{GPT-4 C3 incomplete coverage.} Due to API quota exhaustion, GPT-4 extraction under C3 conditions covers 14--17 of 30~abstracts (summarization C3 is complete at 30). Our central claims rest on the C2 condition (300/300 runs complete), and the C3 temperature sweep serves as a secondary analysis.
 
@@ -642,7 +671,7 @@ We organize threats to validity following standard categories:
 
 \subsubsection{External Validity}
 
-\textbf{Five models, two paradigms.} Our evaluation now covers three local models and two API-served models, substantially strengthening the generalizability of the local-vs-API finding compared to single-model-per-paradigm designs. However, other models---including Gemini \cite{geminiteam2024gemini}, larger LLaMA variants, and open-weight models served via cloud APIs---may exhibit different characteristics.
+\textbf{Five models, two paradigms.} Our evaluation covers three local models and two API-served models. However, other models---including Gemini \cite{geminiteam2024gemini}, larger LLaMA variants, and open-weight models served via cloud APIs---may exhibit different characteristics. Notably, our GPT-4 experiments used the \texttt{gpt-4-0613} snapshot (June 2023); more recent models (GPT-4 Turbo, GPT-4o) may exhibit different reproducibility characteristics. Prior work by \citet{ouyang2024nondeterminism} suggests that non-determinism persists across ChatGPT model versions, but confirmation with current models is warranted.
 
 \textbf{Four tasks.} Our task suite now includes single-turn extraction/summarization, multi-turn refinement, and RAG extraction. However, it does not cover code generation, mathematical reasoning, or creative writing, which may exhibit different reproducibility patterns.
 
@@ -704,7 +733,7 @@ Run Cards generated by our protocol automatically capture all five items, provid
 We presented a lightweight protocol for logging, versioning, and provenance tracking of generative AI experiments, introducing Prompt Cards and Run Cards as novel documentation artifacts and adopting the W3C PROV data model for machine-readable provenance graphs. Through 3,604 controlled experiments with five models---three locally deployed (LLaMA~3 8B, Mistral 7B, Gemma~2 9B) and two API-served (GPT-4, Claude Sonnet 4.5)---across four NLP tasks and 30 scientific abstracts, we demonstrated five key findings:
 
 \begin{enumerate}
-    \item \textbf{API non-determinism is consistent across providers.} Both GPT-4 (OpenAI) and Claude Sonnet 4.5 (Anthropic) exhibit substantial non-determinism under greedy decoding on single-turn tasks (average EMR = 0.221), while all three local models achieve average EMR = 0.953. This more than 4-fold reproducibility gap, observed independently for two cloud providers, is consistent with non-determinism arising from factors common to cloud-hosted inference infrastructure rather than being a provider-specific artifact.
+    \item \textbf{API non-determinism is consistent across providers.} Both GPT-4 (OpenAI) and Claude Sonnet 4.5 (Anthropic) exhibit substantial non-determinism under greedy decoding on single-turn tasks (average EMR = 0.221), while all three local models achieve average EMR = 0.956. This more than 4-fold reproducibility gap, observed independently for two cloud providers, is consistent with non-determinism arising from factors common to cloud-hosted inference infrastructure rather than being a provider-specific artifact.
 
     \item \textbf{Local models can achieve perfect bitwise reproducibility.} Gemma~2 9B attains EMR = 1.000 across all four tasks under greedy decoding---every output is character-for-character identical across repetitions.
 
@@ -934,6 +963,120 @@ First, LLaMA~3 never produces raw-valid JSON: all 570 extraction outputs contain
 Second, within-abstract field-level exact match rates---computed by comparing only runs of the \textit{same} abstract under the same condition, then averaging across abstracts---confirm the overall reproducibility hierarchy. Under greedy decoding, LLaMA~3 achieves near-perfect field EMR (0.982--0.989 overall), with all five fields at or above 0.978, consistent with the overall extraction EMR of 0.987 reported in Table~\ref{tab:emr_greedy}. GPT-4 under greedy shows lower field EMR (0.757--0.767 overall), with open-ended fields (\texttt{method}: 0.667, \texttt{key\_result}: 0.637) lagging behind structured fields (\texttt{model\_or\_system}: 0.893, \texttt{benchmark}: 0.863). As temperature increases, this gap widens: at $t{=}0.7$, \texttt{method} drops to 0.167 (LLaMA) and 0.157 (GPT-4), while \texttt{benchmark} retains 0.711 and 0.725 respectively---a 4--5$\times$ difference. This within-abstract formulation isolates true reproducibility (same input, same conditions, different runs) from between-abstract content variation, providing a methodologically clean measure of field-level consistency.
 
 \input{table_json_metrics.tex}
+
+
+\section{Prompt Card Example}
+\label{app:prompt-card-example}
+
+The following is a complete, filled-in Prompt Card for the summarization task as used in our experiments:
+
+\begin{lstlisting}[caption={Prompt Card for the scientific summarization task.},label={lst:prompt-card}]
+{
+  "prompt_id": "summarization_v1",
+  "prompt_hash": "c9644358805b4a7e...",
+  "version": "1.0.0",
+  "task_category": "summarization",
+  "objective": "Produce a 3-sentence summary of a
+    scientific abstract covering: (1) main
+    contribution, (2) methodology, (3) key result.",
+  "assumptions": [
+    "Input is a single English scientific abstract",
+    "Abstract contains identifiable methodology
+     and quantitative results",
+    "Model can produce coherent 3-sentence output"
+  ],
+  "limitations": [
+    "Open-ended phrasing allows high output variance",
+    "No explicit output-format constraint (unlike
+     extraction task)"
+  ],
+  "target_models": [
+    "llama3:8b", "mistral:7b", "gemma2:9b",
+    "gpt-4", "claude-sonnet-4-5"
+  ],
+  "expected_output_format": "Three sentences of
+    plain text, no JSON or structured markup",
+  "interaction_regime": "single-turn",
+  "change_log": [
+    {"date": "2026-02-06", "change": "Initial version"}
+  ]
+}
+\end{lstlisting}
+
+
+\section{Representative Prompt Templates}
+\label{app:prompts}
+
+The following are the exact prompt templates used for each of the four experimental tasks. In all templates, \texttt{\{abstract\}} is replaced with the scientific abstract text at runtime.
+
+\medskip
+\noindent\textbf{Task 1: Scientific Summarization}
+\begin{quote}\small\ttfamily
+Summarize the following scientific abstract in exactly 3 sentences. Cover: (1) the main contribution, (2) the methodology used, and (3) the key quantitative result.\textbackslash n\textbackslash nAbstract: \{abstract\}\textbackslash n\textbackslash nSummary:
+\end{quote}
+
+\noindent\textbf{Task 2: Structured Extraction}
+\begin{quote}\small\ttfamily
+Extract the following fields from the scientific abstract below. Return JSON only, no explanation.\textbackslash n\textbackslash nFields: objective, method, key\_result, model\_or\_system, benchmark\textbackslash n\textbackslash nAbstract: \{abstract\}\textbackslash n\textbackslash nJSON:
+\end{quote}
+
+\noindent\textbf{Task 3: Multi-Turn Refinement} (3 turns)
+\begin{quote}\small\ttfamily
+Turn 1: [Same as Task 1 prompt]\textbackslash n
+Turn 2: Now revise the summary to be more specific about the quantitative results mentioned.\textbackslash n
+Turn 3: Finally, add one sentence about the limitations or future work mentioned in the abstract.
+\end{quote}
+
+\noindent\textbf{Task 4: RAG Extraction}
+\begin{quote}\small\ttfamily
+Using the context passage below and the scientific abstract, extract the following fields. Return JSON only.\textbackslash n\textbackslash nContext: \{retrieved\_passage\}\textbackslash nAbstract: \{abstract\}\textbackslash n\textbackslash nFields: objective, method, key\_result, model\_or\_system, benchmark\textbackslash n\textbackslash nJSON:
+\end{quote}
+
+
+\section{Experimental Coverage Matrix}
+\label{app:coverage}
+
+Table~\ref{tab:coverage} provides a complete coverage matrix showing the number of abstracts and runs per model--task--condition combination. This matrix enables readers to verify the sample sizes underlying all reported metrics.
+
+\begin{table*}[h]
+\centering
+\caption{Experimental coverage: number of abstracts (runs) per model--task--condition. Dash (--) indicates the combination was not evaluated. C1: fixed seed; C2: variable seed (C2\_same\_params for GPT-4); C3: temperature sweep at $t \in \{0.0, 0.3, 0.7\}$.}
+\label{tab:coverage}
+\small
+\begin{tabular}{llccccc}
+\toprule
+\textbf{Model} & \textbf{Task} & \textbf{C1} & \textbf{C2} & \textbf{C3 ($t$=0.0)} & \textbf{C3 ($t$=0.3)} & \textbf{C3 ($t$=0.7)} \\
+\midrule
+LLaMA 3 8B & Extraction & 30 (150) & 30 (150) & 30 (90) & 30 (90) & 30 (90) \\
+ & Summarization & 30 (150) & 30 (150) & 30 (90) & 30 (90) & 30 (90) \\
+ & Multi-turn & 10 (50) & -- & -- & -- & -- \\
+ & RAG & 10 (50) & -- & -- & -- & -- \\
+\addlinespace
+Mistral 7B & Extraction & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
+ & Summarization & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
+ & Multi-turn & 10 (50) & -- & -- & -- & -- \\
+ & RAG & 10 (50) & -- & -- & -- & -- \\
+\addlinespace
+Gemma 2 9B & Extraction & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
+ & Summarization & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
+ & Multi-turn & 10 (50) & -- & -- & -- & -- \\
+ & RAG & 10 (50) & -- & -- & -- & -- \\
+\midrule
+GPT-4 & Extraction & -- & 30 (150) & 17 (51) & 17 (51) & 14 (42) \\
+ & Summarization & 3 (8)$^\dagger$ & 30 (150) & 30 (90) & 30 (90) & 30 (90) \\
+ & Multi-turn & -- & -- & -- & -- & -- \\
+ & RAG & -- & -- & -- & -- & -- \\
+\addlinespace
+Claude 4.5 & Extraction & 10 (49)$^\ddagger$ & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
+ & Summarization & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
+ & Multi-turn & 10 (50) & -- & -- & -- & -- \\
+ & RAG & 10 (50) & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\par\smallskip\raggedright\footnotesize
+$^\dagger$GPT-4 C1 summarization: only 3 abstracts completed before quota exhaustion; excluded from primary analysis (C2 used instead).\\
+$^\ddagger$Claude C1 extraction: 49 runs (1 empty output due to API timeout).
+\end{table*}
 
 
 \section{Chat-Format Control Experiment}
