@@ -250,9 +250,9 @@ def draw_visual_abstract():
 
     stats = [
         ("4,104",  "total runs"),
-        ("9",      "model deployments"),
+        ("9",      "deployments"),
+        ("7",      "execution environments"),
         ("4",      "tasks"),
-        ("7",      "providers"),
         ("<1%",    "overhead"),
     ]
 

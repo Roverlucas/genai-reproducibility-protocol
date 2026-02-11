@@ -396,8 +396,8 @@ def find_per_abstract(per_abstract_data, model, task, condition_variants):
 
 def generate_emr_heatmap(metrics):
     """Heatmap of EMR under greedy decoding for 5 models x 2 tasks.
-    Green=high, red=low, white line separating local/API.
-    Add +/- sigma in smaller text below each value.
+    Split into two sub-panels: (a) Local deployments, (b) API deployments.
+    Green=high, red=low. Add +/- sigma in smaller text below each value.
 
     Uses authoritative C1-only values from bootstrap_cis.json to ensure
     consistency with the paper's Table 3 (avoids contamination from
@@ -412,61 +412,57 @@ def generate_emr_heatmap(metrics):
         ("summarization", "Summarization\n(greedy)"),
     ]
 
-    data = np.full((len(MODEL_ORDER), len(tasks_conds)), np.nan)
-    stds = np.full((len(MODEL_ORDER), len(tasks_conds)), np.nan)
+    local_order = ["gemma2_9b", "mistral_7b", "llama3_8b"]
+    api_order = ["gpt4", "claude_sonnet"]
 
-    # Use bootstrap_cis.json table3 values (C1-only for local/Claude, C2 for GPT-4)
     ci_data = bootstrap.get("table3_emr_greedy", {})
-    for i, model in enumerate(MODEL_ORDER):
-        model_ci = ci_data.get(model, {})
-        for j, (task, _) in enumerate(tasks_conds):
-            task_ci = model_ci.get(task, {})
-            if task_ci:
-                data[i, j] = task_ci["mean"]
-                stds[i, j] = task_ci.get("std", 0) or 0
 
-    fig, ax = plt.subplots(figsize=(6, 5.5))
-
+    fig, (ax_local, ax_api) = plt.subplots(2, 1, figsize=(5.5, 5),
+                                            gridspec_kw={"height_ratios": [3, 2],
+                                                         "hspace": 0.35})
     cmap = plt.cm.RdYlGn
-    im = ax.imshow(data, cmap=cmap, vmin=0, vmax=1, aspect="auto")
 
-    ax.set_xticks(range(len(tasks_conds)))
-    ax.set_xticklabels([label for _, label in tasks_conds], fontsize=10)
-    ax.set_yticks(range(len(MODEL_ORDER)))
-    ax.set_yticklabels([MODEL_NAMES[m] for m in MODEL_ORDER], fontsize=10)
+    for ax, model_list, panel_label, panel_color in [
+        (ax_local, local_order, "(a) Local Deployments", LOCAL_COLOR),
+        (ax_api, api_order, "(b) API Deployments", API_COLOR),
+    ]:
+        data = np.full((len(model_list), len(tasks_conds)), np.nan)
+        stds = np.full((len(model_list), len(tasks_conds)), np.nan)
 
-    # Annotate cells with value and +/- sigma
-    for i in range(len(MODEL_ORDER)):
-        for j in range(len(tasks_conds)):
-            val = data[i, j]
-            std = stds[i, j]
-            if not np.isnan(val):
-                color = "white" if val < 0.5 else "black"
-                # Main EMR value
-                ax.text(j, i - 0.12, f"{val:.3f}", ha="center", va="center",
-                        fontsize=13, fontweight="bold", color=color)
-                # Sigma below
-                if not np.isnan(std):
-                    ax.text(j, i + 0.22, f"\u00b1{std:.3f}", ha="center", va="center",
-                            fontsize=8, color=color, alpha=0.8)
+        for i, model in enumerate(model_list):
+            model_ci = ci_data.get(model, {})
+            for j, (task, _) in enumerate(tasks_conds):
+                task_ci = model_ci.get(task, {})
+                if task_ci:
+                    data[i, j] = task_ci["mean"]
+                    stds[i, j] = task_ci.get("std", 0) or 0
 
-    # White line separating local (rows 0-2) from API (rows 3-4)
-    ax.axhline(y=2.5, color="white", linewidth=3)
+        im = ax.imshow(data, cmap=cmap, vmin=0, vmax=1, aspect="auto")
 
-    # Add local / API labels
-    ax.text(-0.8, 1.0, "Local", ha="center", va="center", fontsize=10,
-            fontweight="bold", color=LOCAL_COLOR, rotation=90,
-            transform=ax.transData)
-    ax.text(-0.8, 3.5, "API", ha="center", va="center", fontsize=10,
-            fontweight="bold", color=API_COLOR, rotation=90,
-            transform=ax.transData)
+        ax.set_xticks(range(len(tasks_conds)))
+        ax.set_xticklabels([label for _, label in tasks_conds], fontsize=9)
+        ax.set_yticks(range(len(model_list)))
+        ax.set_yticklabels([MODEL_NAMES[m] for m in model_list], fontsize=9)
 
-    cbar = plt.colorbar(im, ax=ax, shrink=0.8)
-    cbar.set_label("Exact Match Rate (EMR)", fontsize=10)
+        for i in range(len(model_list)):
+            for j in range(len(tasks_conds)):
+                val = data[i, j]
+                std = stds[i, j]
+                if not np.isnan(val):
+                    color = "white" if val < 0.5 else "black"
+                    ax.text(j, i - 0.12, f"{val:.3f}", ha="center", va="center",
+                            fontsize=12, fontweight="bold", color=color)
+                    if not np.isnan(std):
+                        ax.text(j, i + 0.22, f"\u00b1{std:.3f}", ha="center", va="center",
+                                fontsize=7.5, color=color, alpha=0.8)
 
-    ax.set_title("Bitwise Reproducibility Under Greedy Decoding", fontsize=12, pad=12)
-    fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "fig_emr_heatmap.pdf", bbox_inches="tight", dpi=300)
+        ax.set_title(panel_label, fontsize=11, pad=8, color=panel_color, fontweight="bold")
+
+    cbar = plt.colorbar(im, ax=[ax_local, ax_api], shrink=0.75, pad=0.04)
+    cbar.set_label("Exact Match Rate (EMR)", fontsize=9)
+
+    fig.suptitle("Bitwise Reproducibility Under Greedy Decoding", fontsize=12, y=1.0)
+    fig.savefig(FIGURES_DIR / "fig_emr_heatmap.pdf", bbox_inches="tight", dpi=600)
     plt.close(fig)
     print("  [1/6] Generated: fig_emr_heatmap.pdf")
 
@@ -559,7 +555,7 @@ def generate_temp_effect(metrics, per_abstract_emr):
     fig.suptitle("Effect of Sampling Temperature on Reproducibility",
                  fontsize=13, y=1.02)
     fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "fig_temp_effect.pdf", bbox_inches="tight", dpi=300)
+    fig.savefig(FIGURES_DIR / "fig_temp_effect.pdf", bbox_inches="tight", dpi=600)
     plt.close(fig)
     print("  [2/6] Generated: fig_temp_effect.pdf")
 
@@ -634,7 +630,7 @@ def generate_multiturn_comparison(metrics, per_abstract_emr):
     ax.set_axisbelow(True)
 
     fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "fig_multiturn_comparison.pdf", bbox_inches="tight", dpi=300)
+    fig.savefig(FIGURES_DIR / "fig_multiturn_comparison.pdf", bbox_inches="tight", dpi=600)
     plt.close(fig)
     print("  [3/6] Generated: fig_multiturn_comparison.pdf")
 
@@ -747,7 +743,7 @@ def generate_api_vs_local(metrics, per_abstract_emr):
     ax.spines["right"].set_visible(False)
 
     fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "fig_api_vs_local.pdf", bbox_inches="tight", dpi=300)
+    fig.savefig(FIGURES_DIR / "fig_api_vs_local.pdf", bbox_inches="tight", dpi=600)
     plt.close(fig)
     print("  [4/6] Generated: fig_api_vs_local.pdf")
 
@@ -757,7 +753,9 @@ def generate_api_vs_local(metrics, per_abstract_emr):
 # ──────────────────────────────────────────────────────────────────────────────
 
 def generate_ned_comparison(metrics, per_abstract_ned):
-    """Grouped bar chart of NED for 5 models x 2 tasks with bootstrap CI error bars."""
+    """Grouped bar chart of NED for 5 models x 2 tasks with bootstrap CI error bars.
+    Fixes Y-axis cutoff by adding 15% padding above max value.
+    """
     fig, ax = plt.subplots(figsize=(8, 5))
 
     tasks = ["extraction", "summarization"]
@@ -765,6 +763,8 @@ def generate_ned_comparison(metrics, per_abstract_ned):
     width = 0.35
 
     task_colors = {"extraction": "#1976D2", "summarization": "#FF8F00"}
+
+    all_max_vals = []
 
     for i, task in enumerate(tasks):
         neds = []
@@ -798,6 +798,10 @@ def generate_ned_comparison(metrics, per_abstract_ned):
                 err_lo.append(0)
                 err_hi.append(0)
 
+        # Track max values for Y-axis scaling
+        for ned_val, ehi in zip(neds, err_hi):
+            all_max_vals.append(ned_val + ehi)
+
         color = task_colors[task]
         bars = ax.bar(x + (i - 0.5) * width, neds, width,
                       yerr=[err_lo, err_hi],
@@ -811,6 +815,10 @@ def generate_ned_comparison(metrics, per_abstract_ned):
                         bar.get_height() + 0.008,
                         f"{val:.3f}", ha="center", va="bottom", fontsize=8)
 
+    # Set Y-axis limit with 15% padding above max value to prevent label cutoff
+    max_val = max(all_max_vals) if all_max_vals else 0.3
+    ax.set_ylim(0, max_val * 1.20)
+
     ax.set_ylabel("Normalized Edit Distance (NED)", fontsize=11)
     ax.set_title("Surface-Level Variability Under Greedy Decoding", fontsize=12)
     ax.set_xticks(x)
@@ -822,7 +830,7 @@ def generate_ned_comparison(metrics, per_abstract_ned):
     ax.set_axisbelow(True)
 
     fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "fig_ned_comparison.pdf", bbox_inches="tight", dpi=300)
+    fig.savefig(FIGURES_DIR / "fig_ned_comparison.pdf", bbox_inches="tight", dpi=600)
     plt.close(fig)
     print("  [5/6] Generated: fig_ned_comparison.pdf")
 
@@ -846,7 +854,7 @@ def generate_radar_chart(metrics):
     angles = np.linspace(0, 2 * np.pi, N, endpoint=False).tolist()
     angles += angles[:1]
 
-    fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
+    fig, ax = plt.subplots(figsize=(7, 7), subplot_kw=dict(polar=True))
 
     for model in MODEL_ORDER:
         values = []
@@ -879,16 +887,16 @@ def generate_radar_chart(metrics):
         ax.fill(angles, values, alpha=0.06, color=MODEL_COLORS[model])
 
     ax.set_xticks(angles[:-1])
-    ax.set_xticklabels(categories, fontsize=9)
+    ax.set_xticklabels(categories, fontsize=8.5)
     ax.set_ylim(0, 1.05)
     ax.set_yticks([0.2, 0.4, 0.6, 0.8, 1.0])
-    ax.set_yticklabels(["0.2", "0.4", "0.6", "0.8", "1.0"], fontsize=8)
-    ax.legend(loc="upper right", bbox_to_anchor=(1.35, 1.1), fontsize=9)
+    ax.set_yticklabels(["0.2", "0.4", "0.6", "0.8", "1.0"], fontsize=7.5)
+    ax.legend(loc="upper right", bbox_to_anchor=(1.30, 1.08), fontsize=8.5)
     ax.set_title("Three-Level Reproducibility Profile\n(Greedy Decoding)",
-                 fontsize=12, pad=20)
+                 fontsize=11, pad=18)
 
     fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "fig_three_level_radar.pdf", bbox_inches="tight", dpi=300)
+    fig.savefig(FIGURES_DIR / "fig_three_level_radar.pdf", bbox_inches="tight", dpi=600)
     plt.close(fig)
     print("  [6/6] Generated: fig_three_level_radar.pdf")
 
