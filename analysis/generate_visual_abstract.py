@@ -249,10 +249,10 @@ def draw_visual_abstract():
                   fontsize=14, fontweight="bold", color=DARK_TEXT)
 
     stats = [
-        ("3,904",  "total runs"),
-        ("8",      "LLM models"),
+        ("4,104",  "total runs"),
+        ("9",      "model deployments"),
         ("4",      "tasks"),
-        ("5",      "API providers"),
+        ("7",      "providers"),
         ("<1%",    "overhead"),
     ]
 
