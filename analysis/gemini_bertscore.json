@@ -1,0 +1,180 @@
+{
+  "per_group": {
+    "iterative_structured_extraction_abs_001": {
+      "bertscore_f1_mean": 0.974623304605484,
+      "bertscore_f1_std": 0.011758593134137338,
+      "bertscore_f1_min": 0.9577120542526245,
+      "bertscore_f1_max": 0.9907622933387756,
+      "bertscore_precision_mean": 0.9724042475223541,
+      "bertscore_recall_mean": 0.9768691956996918
+    },
+    "iterative_structured_extraction_abs_002": {
+      "bertscore_f1_mean": 0.9895590841770172,
+      "bertscore_f1_std": 0.004582758107125645,
+      "bertscore_f1_min": 0.9834401607513428,
+      "bertscore_f1_max": 0.9972116351127625,
+      "bertscore_precision_mean": 0.9896782219409943,
+      "bertscore_recall_mean": 0.9894463539123535
+    },
+    "iterative_structured_extraction_abs_003": {
+      "bertscore_f1_mean": 0.9838324546813965,
+      "bertscore_f1_std": 0.010317593504932686,
+      "bertscore_f1_min": 0.9675460457801819,
+      "bertscore_f1_max": 0.9994941353797913,
+      "bertscore_precision_mean": 0.9864326059818268,
+      "bertscore_recall_mean": 0.9812593579292297
+    },
+    "iterative_structured_extraction_abs_004": {
+      "bertscore_f1_mean": 0.9894466280937195,
+      "bertscore_f1_std": 0.005273936608487852,
+      "bertscore_f1_min": 0.9832476377487183,
+      "bertscore_f1_max": 0.9989579916000366,
+      "bertscore_precision_mean": 0.9883991301059722,
+      "bertscore_recall_mean": 0.9905111372470856
+    },
+    "iterative_structured_extraction_abs_005": {
+      "bertscore_f1_mean": 0.9802944839000702,
+      "bertscore_f1_std": 0.00767883763673275,
+      "bertscore_f1_min": 0.9691727757453918,
+      "bertscore_f1_max": 0.9960169196128845,
+      "bertscore_precision_mean": 0.9800536870956421,
+      "bertscore_recall_mean": 0.9805380403995514
+    },
+    "iterative_structured_extraction_abs_006": {
+      "bertscore_f1_mean": 0.9837035000324249,
+      "bertscore_f1_std": 0.00956688155918085,
+      "bertscore_f1_min": 0.9715721607208252,
+      "bertscore_f1_max": 0.9967703223228455,
+      "bertscore_precision_mean": 0.9855048656463623,
+      "bertscore_recall_mean": 0.9819823920726776
+    },
+    "iterative_structured_extraction_abs_007": {
+      "bertscore_f1_mean": 0.9775004386901855,
+      "bertscore_f1_std": 0.00790600329648186,
+      "bertscore_f1_min": 0.9689367413520813,
+      "bertscore_f1_max": 0.9975900053977966,
+      "bertscore_precision_mean": 0.9770644545555115,
+      "bertscore_recall_mean": 0.9779409348964692
+    },
+    "iterative_structured_extraction_abs_008": {
+      "bertscore_f1_mean": 0.9739456117153168,
+      "bertscore_f1_std": 0.011037995628903497,
+      "bertscore_f1_min": 0.9571104645729065,
+      "bertscore_f1_max": 0.9869576692581177,
+      "bertscore_precision_mean": 0.9731661438941955,
+      "bertscore_recall_mean": 0.9747523903846741
+    },
+    "iterative_structured_extraction_abs_009": {
+      "bertscore_f1_mean": 0.9733868598937988,
+      "bertscore_f1_std": 0.006432768108646621,
+      "bertscore_f1_min": 0.9622814059257507,
+      "bertscore_f1_max": 0.9822487831115723,
+      "bertscore_precision_mean": 0.9721565544605255,
+      "bertscore_recall_mean": 0.9746287286281585
+    },
+    "iterative_structured_extraction_abs_010": {
+      "bertscore_f1_mean": 0.9821404278278351,
+      "bertscore_f1_std": 0.01042274186625751,
+      "bertscore_f1_min": 0.9697266221046448,
+      "bertscore_f1_max": 1.0,
+      "bertscore_precision_mean": 0.9834194421768189,
+      "bertscore_recall_mean": 0.9808728992938995
+    },
+    "rag_structured_extraction_abs_001": {
+      "bertscore_f1_mean": 0.9652368903160096,
+      "bertscore_f1_std": 0.00744522548046719,
+      "bertscore_f1_min": 0.9527312517166138,
+      "bertscore_f1_max": 0.9760807752609253,
+      "bertscore_precision_mean": 0.9666757583618164,
+      "bertscore_recall_mean": 0.9638477623462677
+    },
+    "rag_structured_extraction_abs_002": {
+      "bertscore_f1_mean": 0.9860358893871307,
+      "bertscore_f1_std": 0.010016876575950927,
+      "bertscore_f1_min": 0.9736096858978271,
+      "bertscore_f1_max": 1.0,
+      "bertscore_precision_mean": 0.9904847025871277,
+      "bertscore_recall_mean": 0.9816932916641236
+    },
+    "rag_structured_extraction_abs_003": {
+      "bertscore_f1_mean": 0.9660005688667297,
+      "bertscore_f1_std": 0.011169075727979337,
+      "bertscore_f1_min": 0.9555011987686157,
+      "bertscore_f1_max": 0.9849559664726257,
+      "bertscore_precision_mean": 0.9650709569454193,
+      "bertscore_recall_mean": 0.966968446969986
+    },
+    "rag_structured_extraction_abs_004": {
+      "bertscore_f1_mean": 0.9782156467437744,
+      "bertscore_f1_std": 0.003246604261912169,
+      "bertscore_f1_min": 0.9730034470558167,
+      "bertscore_f1_max": 0.9835373163223267,
+      "bertscore_precision_mean": 0.9784834623336792,
+      "bertscore_recall_mean": 0.9779559671878815
+    },
+    "rag_structured_extraction_abs_005": {
+      "bertscore_f1_mean": 0.9884167790412903,
+      "bertscore_f1_std": 0.011028844227717943,
+      "bertscore_f1_min": 0.9744290113449097,
+      "bertscore_f1_max": 0.9999998807907104,
+      "bertscore_precision_mean": 0.98603595495224,
+      "bertscore_recall_mean": 0.9908214330673217
+    },
+    "rag_structured_extraction_abs_006": {
+      "bertscore_f1_mean": 0.9872142255306244,
+      "bertscore_f1_std": 0.007208195061405477,
+      "bertscore_f1_min": 0.9774858951568604,
+      "bertscore_f1_max": 0.9999998807907104,
+      "bertscore_precision_mean": 0.9871638357639313,
+      "bertscore_recall_mean": 0.9872667133808136
+    },
+    "rag_structured_extraction_abs_007": {
+      "bertscore_f1_mean": 0.980859762430191,
+      "bertscore_f1_std": 0.00698074578372173,
+      "bertscore_f1_min": 0.9748551845550537,
+      "bertscore_f1_max": 1.0,
+      "bertscore_precision_mean": 0.9812737107276917,
+      "bertscore_recall_mean": 0.980455356836319
+    },
+    "rag_structured_extraction_abs_008": {
+      "bertscore_f1_mean": 0.9767851889133453,
+      "bertscore_f1_std": 0.015979930797308108,
+      "bertscore_f1_min": 0.9606521129608154,
+      "bertscore_f1_max": 1.0,
+      "bertscore_precision_mean": 0.9747355699539184,
+      "bertscore_recall_mean": 0.9788653790950775
+    },
+    "rag_structured_extraction_abs_009": {
+      "bertscore_f1_mean": 0.9827388823032379,
+      "bertscore_f1_std": 0.00798805266842857,
+      "bertscore_f1_min": 0.9688622355461121,
+      "bertscore_f1_max": 0.9959900975227356,
+      "bertscore_precision_mean": 0.9817080855369568,
+      "bertscore_recall_mean": 0.983793193101883
+    },
+    "rag_structured_extraction_abs_010": {
+      "bertscore_f1_mean": 0.9686104536056519,
+      "bertscore_f1_std": 0.006309464504319468,
+      "bertscore_f1_min": 0.9607137441635132,
+      "bertscore_f1_max": 0.9835638403892517,
+      "bertscore_precision_mean": 0.9687671899795532,
+      "bertscore_recall_mean": 0.9684599161148071
+    }
+  },
+  "summary": {
+    "iterative_structured_extraction": {
+      "mean": 0.9808432793617248,
+      "std": 0.005675573494606767,
+      "min": 0.9733868598937988,
+      "max": 0.9895590841770172,
+      "n": 10
+    },
+    "rag_structured_extraction": {
+      "mean": 0.9780114287137985,
+      "std": 0.008277619608113202,
+      "min": 0.9652368903160096,
+      "max": 0.9884167790412903,
+      "n": 10
+    }
+  }
+}
