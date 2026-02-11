@@ -111,6 +111,22 @@
         "n_abstracts": 10,
         "std": 0.0316
       }
+    },
+    "together_llama3_8b": {
+      "extraction": {
+        "mean": 1.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "n_abstracts": 10,
+        "std": 0.0
+      },
+      "summarization": {
+        "mean": 0.88,
+        "ci_lower": 0.7,
+        "ci_upper": 1.0,
+        "n_abstracts": 10,
+        "std": 0.253
+      }
     }
   },
   "table5_multiturn_rag": {
@@ -698,6 +714,40 @@
           "ci_upper": 0.03,
           "n_abstracts": 10,
           "std": 0.0316
+        }
+      }
+    },
+    "together_llama3_8b": {
+      "extraction": {
+        "C1_fixed_seed": {
+          "mean": 1.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_abstracts": 10,
+          "std": 0.0
+        },
+        "C2_variable_seeds": {
+          "mean": 1.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_abstracts": 10,
+          "std": 0.0
+        }
+      },
+      "summarization": {
+        "C1_fixed_seed": {
+          "mean": 0.88,
+          "ci_lower": 0.7,
+          "ci_upper": 1.0,
+          "n_abstracts": 10,
+          "std": 0.253
+        },
+        "C2_variable_seeds": {
+          "mean": 0.96,
+          "ci_lower": 0.88,
+          "ci_upper": 1.0,
+          "n_abstracts": 10,
+          "std": 0.1265
         }
       }
     }

@@ -13,12 +13,16 @@ CLAUDE_MODEL = "claude-sonnet-4-5-20250929"
 GEMINI_MODEL = "gemini-2.5-pro"
 DEEPSEEK_MODEL = "deepseek-chat"
 PERPLEXITY_MODEL = "sonar"
+TOGETHER_LLAMA_MODEL = "meta-llama/Meta-Llama-3-8B-Instruct-Lite"
 
 # All local models (served via Ollama)
 LOCAL_MODELS = [LLAMA_MODEL, MISTRAL_MODEL, GEMMA2_MODEL]
 
 # API models
 API_MODELS = [GPT4_MODEL, CLAUDE_MODEL, GEMINI_MODEL, DEEPSEEK_MODEL, PERPLEXITY_MODEL]
+
+# Cloud-served open-weight models (for architecture vs infrastructure isolation)
+CLOUD_OPEN_WEIGHT_MODELS = [TOGETHER_LLAMA_MODEL]
 
 # Number of repetitions per condition
 N_REPS = 5

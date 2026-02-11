@@ -1,0 +1,39 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "together_llama3_8b_extraction_abs_005_C1_fixed_seed_rep0",
+  "task_id": "extraction",
+  "task_category": "structured_extraction",
+  "prompt_card_ref": "prompt_card_extraction_v1_0.json",
+  "prompt_hash": "ddc1746ca23ddafc9f63790dbd2d86930c1248713bf7c854b4e119ba9f0063c1",
+  "model_name": "meta-llama/Meta-Llama-3-8B-Instruct-Lite",
+  "model_version": "api-managed",
+  "weights_hash": "open-weight-cloud-served",
+  "model_source": "together-ai",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "6628f30e46b911436a45434a2f92dbd944051bd490447151adbaad88fc4d3d3e",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "df2b07e1152fcf8da81516b1475d98313abb127d",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-02-11T01:13:51.264288+00:00",
+  "timestamp_end": "2026-02-11T01:13:53.543619+00:00",
+  "execution_duration_ms": 2279.33,
+  "output_hash": "065bc49ed5fe633b234ed005ac16c3a441b4cd29a3ce9f20fc9bf9189391ee47",
+  "output_metrics": {},
+  "logging_overhead_ms": 28.82,
+  "storage_kb": 4.1,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

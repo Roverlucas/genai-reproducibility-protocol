@@ -251,14 +251,50 @@
         },
         "delta": 0.0
       }
+    },
+    "together_llama3_8b": {
+      "extraction": {
+        "subsample_10": {
+          "mean": 1.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_abstracts": 10,
+          "std": 0.0
+        },
+        "full": {
+          "mean": 1.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_abstracts": 10,
+          "std": 0.0
+        },
+        "delta": 0.0
+      },
+      "summarization": {
+        "subsample_10": {
+          "mean": 0.88,
+          "ci_lower": 0.7,
+          "ci_upper": 1.0,
+          "n_abstracts": 10,
+          "std": 0.253
+        },
+        "full": {
+          "mean": 0.88,
+          "ci_lower": 0.7,
+          "ci_upper": 1.0,
+          "n_abstracts": 10,
+          "std": 0.253
+        },
+        "delta": 0.0
+      }
     }
   },
   "local_avg_emr_sub10": 0.9533,
   "local_avg_emr_full": 0.96,
-  "api_avg_emr_sub10": 0.3038,
-  "api_avg_emr_full": 0.325,
-  "local_api_gap_ratio_sub10": 3.1,
-  "local_api_gap_ratio_full": 3.0,
+  "api_avg_emr_sub10": 0.431,
+  "api_avg_emr_full": 0.4129,
+  "local_api_gap_ratio_sub10": 2.2,
+  "local_api_gap_ratio_full": 2.3,
   "llama3_10_vs_30": {
     "extraction": {
       "sub10": {
@@ -290,6 +326,40 @@
         "ci_upper": 0.9867,
         "n_abstracts": 30,
         "std": 0.1383
+      }
+    }
+  },
+  "llama3_local_vs_cloud": {
+    "extraction": {
+      "local": {
+        "mean": 1.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "n_abstracts": 10,
+        "std": 0.0
+      },
+      "cloud": {
+        "mean": 1.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "n_abstracts": 10,
+        "std": 0.0
+      }
+    },
+    "summarization": {
+      "local": {
+        "mean": 0.92,
+        "ci_lower": 0.8,
+        "ci_upper": 1.0,
+        "n_abstracts": 10,
+        "std": 0.1687
+      },
+      "cloud": {
+        "mean": 0.88,
+        "ci_lower": 0.7,
+        "ci_upper": 1.0,
+        "n_abstracts": 10,
+        "std": 0.253
       }
     }
   }

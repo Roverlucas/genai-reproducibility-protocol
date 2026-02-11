@@ -29,17 +29,19 @@ MODEL_FILE_PREFIX = {
     "gemini-2_5-pro": "gemini_pro",
     "deepseek-chat": "deepseek_chat",
     "sonar": "perplexity_sonar",
+    "together_llama3_8b": "together_llama3_8b",
 }
 
 # For Table 3 (greedy decoding EMR): which condition to use per model
 TABLE3_CONDITIONS = {
-    "llama3_8b":         "C1_fixed_seed",
-    "mistral_7b":        "C1_fixed_seed",
-    "gemma2_9b":         "C1_fixed_seed",
-    "gpt4":              "C2_same_params",
-    "claude_sonnet":     "C1_fixed_seed",
-    "deepseek_chat":     "C1_fixed_seed",
-    "perplexity_sonar":  "C1_fixed_seed",
+    "llama3_8b":           "C1_fixed_seed",
+    "mistral_7b":          "C1_fixed_seed",
+    "gemma2_9b":           "C1_fixed_seed",
+    "gpt4":                "C2_same_params",
+    "claude_sonnet":       "C1_fixed_seed",
+    "deepseek_chat":       "C1_fixed_seed",
+    "perplexity_sonar":    "C1_fixed_seed",
+    "together_llama3_8b":  "C1_fixed_seed",
 }
 
 TABLE3_TASKS = ["extraction", "summarization"]
@@ -172,9 +174,9 @@ def main():
     bootstrap_results = {}
 
     # Table 3
-    print("\n  --- Table 3: EMR Greedy (7 models x extraction, summarization) ---")
+    print("\n  --- Table 3: EMR Greedy (8 models x extraction, summarization) ---")
     table3 = {}
-    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar"]:
+    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar", "together_llama3_8b"]:
         cond = TABLE3_CONDITIONS[model]
         table3[model] = {}
         for task in TABLE3_TASKS:
@@ -230,7 +232,7 @@ def main():
 
     print("\n  --- Balanced Table 3 (first 10 abstracts) ---")
     balanced_table3 = {}
-    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar"]:
+    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar", "together_llama3_8b"]:
         cond = TABLE3_CONDITIONS[model]
         balanced_table3[model] = {}
         for task in TABLE3_TASKS:
@@ -253,7 +255,7 @@ def main():
 
     print("\n  --- Local vs API averages (10-abstract subsample) ---")
     local_models = ["llama3_8b", "mistral_7b", "gemma2_9b"]
-    api_models = ["gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar"]
+    api_models = ["gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar", "together_llama3_8b"]
     for label, model_list in [("Local", local_models), ("API", api_models)]:
         all_emrs_sub = []
         all_emrs_full = []
@@ -312,7 +314,7 @@ def main():
     print("\nTable 3 -- EMR under Greedy Decoding (with 95% Bootstrap CIs):")
     print(f"  {'Model':<20s} | {'Extraction':>30s} | {'Summarization':>30s}")
     print("  " + "-" * 85)
-    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar"]:
+    for model in ["llama3_8b", "mistral_7b", "gemma2_9b", "gpt4", "claude_sonnet", "deepseek_chat", "perplexity_sonar", "together_llama3_8b"]:
         ext = table3[model]["extraction"]
         summ = table3[model]["summarization"]
         def fmt(ci):
@@ -338,6 +340,28 @@ def main():
     print(f"  Local avg EMR (full):  {balanced_results.get('local_avg_emr_full', 'N/A')}")
     print(f"  API   avg EMR (full):  {balanced_results.get('api_avg_emr_full', 'N/A')}")
     print(f"  Local/API gap (full):  {balanced_results.get('local_api_gap_ratio_full', 'N/A')}x")
+    # Local vs Cloud LLaMA 3 comparison (causal isolation)
+    if "together_llama3_8b" in per_abstract_emrs:
+        print("\n  --- LLaMA 3 8B: Local (Ollama) vs Cloud (Together AI) ---")
+        causal = {}
+        for task in TABLE3_TASKS:
+            local_emr = per_abstract_emrs.get("llama3_8b", {}).get(task, {}).get("C1_fixed_seed", {})
+            cloud_emr = per_abstract_emrs.get("together_llama3_8b", {}).get(task, {}).get("C1_fixed_seed", {})
+            local_vals = [v for k, v in local_emr.items() if k in SUBSAMPLE_ABSTRACTS]
+            cloud_vals = list(cloud_emr.values())
+            ci_local = bootstrap_ci(local_vals)
+            ci_cloud = bootstrap_ci(cloud_vals)
+            causal[task] = {"local": ci_local, "cloud": ci_cloud}
+            local_str = f"{ci_local['mean']:.3f} [{ci_local['ci_lower']:.3f}, {ci_local['ci_upper']:.3f}]" if ci_local['mean'] is not None else "N/A"
+            cloud_str = f"{ci_cloud['mean']:.3f} [{ci_cloud['ci_lower']:.3f}, {ci_cloud['ci_upper']:.3f}]" if ci_cloud['mean'] is not None else "N/A"
+            print(f"    {task:15s} | Local: {local_str} | Cloud: {cloud_str}")
+        balanced_results["llama3_local_vs_cloud"] = causal
+
+        # Re-save with causal comparison
+        with open(out_path2, "w") as f:
+            json.dump(balanced_results, f, indent=2)
+        print(f"  Updated {out_path2} with local vs cloud comparison")
+
     print("\nDone.")
 
 
