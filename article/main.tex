@@ -34,6 +34,7 @@
 \usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{enumitem}
+\usepackage{float} % for [H] table placement in appendices
 \usepackage{microtype} % improved typography: character protrusion and font expansion
 
 %% PDF metadata
@@ -140,27 +141,25 @@ Our results provide evidence that (1)~all five API providers exhibit non-determi
 \section{Introduction}
 \label{sec:introduction}
 
-When a researcher queries a cloud-hosted LLM with the same prompt and $t{=}0$ (greedy decoding), one would reasonably expect identical outputs. Our experiments show otherwise: across five controlled seeds under greedy decoding, GPT-4 produces the same extraction result only 44\% of the time, and Claude Sonnet 4.5 achieves only 19\%. Meanwhile, locally deployed models such as Gemma~2 9B produce \emph{perfectly identical} outputs every time. This hidden, provider-dependent non-determinism exemplifies a fundamental challenge introduced by the rapid adoption of large language models (LLMs) in scientific research: how to ensure that studies relying on generative AI outputs are reproducible, auditable, and scientifically rigorous. Unlike traditional computational experiments, in which deterministic algorithms produce identical results given identical inputs, LLMs exhibit inherent variability in their outputs due to stochastic sampling, floating-point non-determinism, and opaque model-versioning practices \cite{chen2023chatgpt, zhu2023reproducibility}.
+Large language models (LLMs) are rapidly transforming how science is conducted, communicated, and applied. In medicine, LLMs now encode clinical knowledge at expert level \cite{singhal2023large} and are being integrated into diagnostic workflows \cite{thirunavukarasu2023large}. In scientific research more broadly, generative AI is reshaping literature review, data extraction, hypothesis generation, and writing \cite{birhane2023science}, with experimental evidence showing substantial productivity gains in professional tasks \cite{noy2023experimental}. This expanding adoption extends across disciplines---from legal analysis and education to systematic reviews and meta-analyses---making LLM outputs an increasingly common component of the scientific evidence chain.
 
-Importantly, ``non-reproducible'' does not necessarily mean ``unreliable'': our experiments also show that semantic similarity (measured by BERTScore F1) remains above 0.94 across all conditions, even when exact textual match drops to zero. In other words, API outputs typically convey the same \textit{meaning} despite differing in \textit{phrasing}---but this distinction is invisible without systematic measurement, and many downstream analyses (meta-analyses, comparative studies, regulatory audits) require exact reproducibility.
+Yet this rapid integration rests on an often-unexamined assumption: that LLM outputs are reproducible. Reproducibility---the ability to obtain consistent results when an experiment is repeated under identical conditions---is a cornerstone of the scientific method. The broader reproducibility crisis is well documented: \citet{baker2016reproducibility} reported in \textit{Nature} that over 70\% of researchers have failed to reproduce another scientist's experiment. In artificial intelligence, this crisis is particularly acute. \citet{hutson2018artificial} warned in \textit{Science} that AI faces its own reproducibility crisis, \citet{gundersen2018state} found that only 6\% of AI papers provided sufficient information for full reproducibility, and \citet{ball2023ai} recently asked in \textit{Nature} whether AI is actively worsening the problem. \citet{stodden2016enhancing} emphasized in \textit{Science} that computational methods demand their own reproducibility standards, a call echoed by the data leakage analysis of \citet{kapoor2023leakage} across 17 ML-dependent scientific fields.
 
-A related subtlety concerns the \texttt{seed} parameter offered by some APIs. For API-served models, the seed parameter is advisory, not a guarantee of determinism: OpenAI explicitly documents that ``determinism is not guaranteed'' even when a seed is specified \cite{openai2024seed}, and Anthropic's Claude API does not support a seed parameter at all. Our experimental design accounts for this by treating seed variation as a control condition and measuring actual output reproducibility directly, rather than relying on API-side determinism guarantees.
+Generative AI introduces a qualitatively new dimension to this challenge. Unlike traditional computational experiments, in which deterministic algorithms produce identical results given identical inputs, LLMs exhibit inherent variability in their outputs due to stochastic sampling, floating-point non-determinism in distributed GPU inference, and opaque model-versioning practices \cite{chen2023chatgpt, zhu2023reproducibility}. The problem is compounded by several factors unique to text-generation workflows: (1)~the same prompt can yield semantically similar yet textually distinct outputs across runs; (2)~API-based models may undergo silent updates that alter behavior without notice to the user; (3)~temperature and sampling parameters create a high-dimensional space of possible outputs; and (4)~the \texttt{seed} parameter offered by some APIs is advisory rather than a guarantee---OpenAI explicitly documents that ``determinism is not guaranteed'' even when a seed is specified \cite{openai2024seed}, and Anthropic's Claude API does not support a seed parameter at all. Recent empirical studies have confirmed these concerns: \citet{atil2024nondeterminism} found accuracy variations up to 15\% across runs under supposedly deterministic settings, and \citet{ouyang2024nondeterminism} demonstrated that greedy decoding does not guarantee determinism in ChatGPT code generation.
 
-This reproducibility challenge is not merely theoretical. \citet{baker2016reproducibility} reported that over 70\% of researchers have failed to reproduce another scientist's experiment, a crisis that extends to AI research \cite{hutson2018artificial, gundersen2018state, stodden2016enhancing, kapoor2023leakage, mukherjee2025llmreproducibility}. For generative AI specifically, the problem is compounded by several factors unique to text-generation workflows: (1)~the same prompt can yield semantically similar yet textually distinct outputs across runs; (2)~API-based models may undergo silent updates that alter behavior; (3)~temperature and sampling parameters create a high-dimensional space of possible outputs; and (4)~no established standard exists for documenting the full context needed to understand, audit, or reproduce a generative output.
+The demand for AI transparency is not only scientific but also regulatory. The EU AI Act \cite{euaiact2024} classifies high-risk AI systems---including those used in healthcare and scientific research---as requiring documented traceability and auditability, and the NIST AI Risk Management Framework \cite{nist2023ai} emphasizes transparency and accountability as core principles. The FAIR data principles \cite{wilkinson2016fair} provide a foundation for data stewardship, yet no established standard exists for documenting the full context needed to understand, audit, or reproduce a generative AI output. Existing experiment-tracking tools such as MLflow \cite{zaharia2018accelerating}, Weights \& Biases \cite{biewald2020experiment}, and DVC \cite{kuprieiev2024dvc} were designed primarily for training pipelines and numerical metrics. Although valuable for their intended purposes, these tools lack features critical for generative AI studies: structured prompt versioning, cryptographic output hashing for tamper detection, provenance graphs linking outputs to their full generation context, and environment fingerprinting specific to inference-time conditions.
 
-Existing experiment-tracking tools such as MLflow \cite{zaharia2018accelerating}, Weights \& Biases \cite{biewald2020experiment}, and DVC \cite{kuprieiev2024dvc} were designed primarily for training pipelines and numerical metrics. Although valuable for their intended purposes, these tools lack features critical for generative AI studies: structured prompt versioning, cryptographic output hashing for tamper detection, provenance graphs linking outputs to their full generation context, and environment fingerprinting specific to inference-time conditions.
-
-Figure~\ref{fig:visual-abstract} provides an overview of the study design, protocol pipeline, and key findings. In this paper, we make three contributions, with the protocol design as the primary and most durable contribution:
+In this paper, we address this gap with three contributions, with the protocol design as the primary and most durable contribution (Figure~\ref{fig:visual-abstract}):
 
 \begin{enumerate}
     \item \textbf{A lightweight, standards-based protocol} for logging, versioning, and provenance tracking of generative AI experiments. The protocol introduces \textit{Prompt Cards} and \textit{Run Cards} as structured documentation artifacts, and adopts the W3C PROV data model \cite{w3cprov2013} for machine-readable provenance graphs. It operationalizes---and extends to generative AI workflows---the reproducibility checklist and badge mechanisms recently adopted by JAIR \cite{gundersen2024improving}, providing machine-readable infrastructure that automates what those mechanisms require researchers to document manually.
 
-    \item \textbf{A large-scale empirical case study} demonstrating both the protocol's effectiveness and the reproducibility characteristics of LLM outputs in the models and snapshots evaluated. Through 4,104 controlled experiments with nine model deployments (3~local, 5~closed-source API, 1~cloud-served open-weight for quasi-isolation probe) across four NLP tasks, 30 abstracts, seven execution environments (one local plus six cloud API providers), and five conditions (Section~\ref{sec:experimental-setup}), we document a reproducibility gap between local and API-based inference that is invisible without systematic logging.
+    \item \textbf{A large-scale empirical case study} demonstrating both the protocol's effectiveness and the scope of hidden non-determinism in current LLM APIs. Through 4,104 controlled experiments with nine model deployments across four NLP tasks, seven execution environments, and five conditions (Section~\ref{sec:experimental-setup}), we document a substantial and previously invisible reproducibility gap between local and API-based inference---a gap that persists across five independent cloud providers and extends to multi-turn and retrieval-augmented generation regimes.
 
-    \item \textbf{A reference implementation} in Python that demonstrates the protocol's practical applicability, together with all experimental data, to facilitate adoption and independent verification.
+    \item \textbf{A reference implementation} in Python, together with all experimental data and provenance records, publicly available to facilitate adoption and independent verification.
 \end{enumerate}
 
-The remainder of this paper is organized as follows. Section~\ref{sec:related-work} reviews related work on reproducibility in AI and experiment tracking. Section~\ref{sec:protocol} formalizes the protocol design. Section~\ref{sec:experimental-setup} describes the experimental methodology. Section~\ref{sec:results} presents the empirical results. Section~\ref{sec:discussion} discusses findings, limitations, and practical implications. Section~\ref{sec:conclusion} concludes with directions for future work.
+The remainder of this paper is organized as follows. Section~\ref{sec:related-work} reviews related work on reproducibility in AI and experiment tracking. Section~\ref{sec:protocol} formalizes the protocol design. Section~\ref{sec:experimental-setup} describes the experimental methodology. Section~\ref{sec:results} presents the empirical results, revealing a multi-fold reproducibility gap between local and API-served models that is invisible without systematic logging. Section~\ref{sec:discussion} discusses findings, limitations, and practical implications. Section~\ref{sec:conclusion} concludes with directions for future work.
 
 \begin{figure*}[t]
 \centering
@@ -763,6 +762,8 @@ We organize threats to validity following standard categories:
 
 \textbf{Prompt format confound.} Single-turn experiments use Ollama's \texttt{/api/generate} endpoint for local models, whereas API models use their respective chat APIs. A supplementary control experiment (200 additional runs using Ollama's \texttt{/api/chat} endpoint; see Appendix~\ref{app:chat-control}) shows that this format difference does not explain the reproducibility gap: LLaMA~3 produces \emph{identical} variability metrics (summarization EMR = 0.929, extraction EMR = 1.000) under both completion and chat formats.
 
+\textbf{Code versioning gap.} The protocol specifies a \texttt{code\_commit} field to record the git commit hash of the experiment code. The initial 330 runs (LLaMA~3 8B and GPT-4, February~7, 2026) were executed before the git repository was initialized; these run records contain \texttt{code\_commit: "no-git-repo"}. The remaining 3,774 runs (92\% of the total) include valid git commit hashes. To mitigate this gap for the affected subset, we verified post-hoc that (1)~the SHA-256 hashes of the prompt templates in the repository match the \texttt{prompt\_hash} values recorded in all 330 affected run cards, confirming that the prompts were not modified between execution and commit; (2)~the code committed in the initial release (\texttt{ff025ef}, February~7) is the same code that produced these runs, as the runner modules and protocol logic had no intermediate modifications; and (3)~the environment metadata (OS, Python version, architecture, Ollama version) is recorded independently of git status in every run record. The complete environment fingerprint for all runs is documented in Appendix~\ref{app:environment}. Researchers adopting this protocol should initialize their repository \textit{before} running experiments to avoid this gap.
+
 \subsubsection{External Validity}
 
 \textbf{Nine deployments, seven execution environments.} Our evaluation covers three local models, five closed-source API-served models from independent providers (OpenAI, Anthropic, Google, DeepSeek, Perplexity), and one cloud-served open-weight model (LLaMA~3 8B via Together AI) for quasi-isolation probe. DeepSeek Chat achieves substantially higher reproducibility than other API models (EMR = 0.800 vs.\ 0.100--0.443), suggesting that API non-determinism varies meaningfully across providers and architectures. Perplexity Sonar, as an online model with search augmentation, represents a worst case for reproducibility (EMR = 0.010--0.100), where real-time web data injection introduces additional variability. However, other models---including larger LLaMA variants and open-weight models served via cloud APIs---may exhibit different characteristics. Our GPT-4 experiments used the \texttt{gpt-4-0613} snapshot (June 2023); more recent models (GPT-4 Turbo, GPT-4o) may exhibit different reproducibility characteristics.
@@ -1329,6 +1330,120 @@ This appendix documents compliance with the JAIR reproducibility mechanisms desc
     \item[\ding{51}] Automated test suite (51 tests) validates core analysis functions.
     \item[\ding{51}] Continuous integration pipeline ensures reproducibility of code and analysis.
 \end{itemize}
+
+
+\section{Environment and Provenance Transparency}
+\label{app:environment}
+
+This appendix documents the complete execution environment and addresses the code-versioning gap identified in Section~\ref{sec:limitations}.
+
+\subsection*{Execution Environment}
+
+All local experiments were conducted on a single machine with the following configuration:
+
+\begin{table}[H]
+\centering
+\caption{Execution environment for local model inference.}
+\label{tab:environment}
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Component} & \textbf{Value} \\
+\midrule
+CPU & Apple M4 (10-core) \\
+Unified memory & 24\,GB \\
+Operating system & macOS 14.6 (Darwin 24.6.0) \\
+Architecture & arm64 \\
+Python & 3.14.3 (Clang 17.0.0) \\
+Ollama & v0.15.5 \\
+Quantization & Q4\_0 (GGML) for all local models \\
+Inference mode & Single-request (no concurrent batching) \\
+Network & Residential broadband (API calls only) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Each of the 4,104 run records captures the following environment fields, regardless of git status: \texttt{os}, \texttt{os\_version}, \texttt{os\_release}, \texttt{architecture}, \texttt{processor}, \texttt{python\_version}, \texttt{hostname}, and \texttt{timestamp}. These fields are hashed into an \texttt{environment\_hash} (SHA-256) that serves as an immutable fingerprint. All local runs share the same environment hash (\texttt{cd45d428...}), confirming that no system changes occurred during the experiment window.
+
+\subsection*{Code Versioning Timeline}
+
+Table~\ref{tab:code-versioning} documents the relationship between experiment execution and repository commits.
+
+\begin{table}[H]
+\centering
+\caption{Code versioning timeline: experiment phases and git status.}
+\label{tab:code-versioning}
+\small
+\begin{tabular}{@{}lllr@{}}
+\toprule
+\textbf{Date} & \textbf{Phase} & \textbf{\texttt{code\_commit}} & \textbf{Runs} \\
+\midrule
+Feb 7, 2026 & Initial experiments & \texttt{no-git-repo} & 330 \\
+Feb 7, 2026 & Repository initialized & \texttt{ff025ef} & --- \\
+Feb 8--9, 2026 & Expanded experiments & \texttt{957a604}--\texttt{0cba4f1} & 1,874 \\
+Feb 9, 2026 & Claude experiments & \texttt{e57ae19}--\texttt{df2b07e} & 1,500 \\
+Feb 10, 2026 & Gemini experiments & \texttt{b2e9440} & 200 \\
+Feb 9, 2026 & Chat-format control & \texttt{0cba4f1} & 200 \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Total with valid \texttt{code\_commit}}} & 3,774 (92\%) \\
+\multicolumn{3}{@{}l}{\textit{Total without \texttt{code\_commit} (pre-git)}} & 330 (8\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Post-Hoc Integrity Verification for Pre-Git Runs}
+
+For the 330 runs executed before repository initialization, we verified provenance integrity through three independent checks:
+
+\begin{enumerate}
+    \item \textbf{Prompt hash consistency.} The \texttt{prompt\_hash} values in all 330 affected run records match the SHA-256 hashes of the prompt templates committed in the initial release (\texttt{ff025ef}). This confirms that the prompts used during experiments are identical to those in the repository.
+
+    \item \textbf{Output hash reproducibility.} The analysis scripts (\texttt{compute\_metrics.py}, \texttt{merge\_all\_runs.py}) successfully process all 330 run records, producing consistent metrics. The output hashes in these records remain valid SHA-256 digests of the stored \texttt{output\_text} fields.
+
+    \item \textbf{Environment hash stability.} All 330 pre-git runs share the same \texttt{environment\_hash} as the subsequent 1,874 runs on the same machine, confirming no system-level changes between the pre-git and post-git experiment phases.
+\end{enumerate}
+
+\subsection*{Representative Run Record}
+
+Listing~\ref{lst:run-record} shows an abbreviated run record for a single LLaMA~3 8B extraction run. The complete set of 4,104 run records is available in the repository at \texttt{outputs/runs/}.
+
+\begin{lstlisting}[caption={Abbreviated run record (LLaMA~3 8B, extraction, C1, rep\,0). Output text truncated for space.},label={lst:run-record}]
+{
+  "run_id": "llama3_8b_extraction_abs_001_C1_...",
+  "task_id": "extraction",
+  "task_category": "structured_extraction",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "ddc1746ca23ddafc...",
+  "input_hash": "4e873413a989a6fe...",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "<SHA-256 from Ollama API>",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "max_tokens": 1024,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "5f7d7b01f15d5632...",
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3",
+    "hostname": "<anonymized>"
+  },
+  "environment_hash": "cd45d42899c58da3...",
+  "code_commit": "no-git-repo",
+  "output_hash": "d89180f3e1a11858...",
+  "execution_duration_ms": 7816.7,
+  "logging_overhead_ms": 34.2,
+  "storage_kb": 4.23
+}
+\end{lstlisting}
 
 
 \end{document}
