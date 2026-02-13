@@ -36,6 +36,8 @@
 \usepackage{enumitem}
 \usepackage{float} % for [H] table placement in appendices
 \usepackage{microtype} % improved typography: character protrusion and font expansion
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, fit}
 
 %% PDF metadata
 \hypersetup{
@@ -346,14 +348,58 @@ PROV relations capture the causal structure:
     \item \texttt{wasDerivedFrom}: Output wasDerivedFrom InputText
 \end{itemize}
 
-This standardized representation enables automated reasoning about experiment provenance, including detecting when two runs share identical configurations and identifying the specific factors that differ between non-identical outputs. The choice of W3C PROV over plain JSON logs is deliberate: PROV's formal semantics allow automated tools to traverse the provenance graph and answer queries such as ``what changed between these two runs?'' without custom parsing logic. An abbreviated example document is given in Appendix~\ref{app:prov-example}; to illustrate the structure concisely, the core provenance chain is:
+This standardized representation enables automated reasoning about experiment provenance, including detecting when two runs share identical configurations and identifying the specific factors that differ between non-identical outputs. The choice of W3C PROV over plain JSON logs is deliberate: PROV's formal semantics allow automated tools to traverse the provenance graph and answer queries such as ``what changed between these two runs?'' without custom parsing logic. An abbreviated example document is given in Supplementary Material~S5. Figure~\ref{fig:prov-graph} illustrates the provenance graph structure for a single experimental run.
 
-\smallskip
-\noindent
-\texttt{Prompt} $\longrightarrow$\textsuperscript{\scriptsize used} \textbf{RunGeneration} $\longrightarrow$\textsuperscript{\scriptsize generated} \texttt{Output} \\
-\texttt{InputText} $\longrightarrow$\textsuperscript{\scriptsize used} \textbf{RunGeneration} $\longrightarrow$\textsuperscript{\scriptsize assoc.} \texttt{Researcher} \\
-\texttt{ModelVersion} $\longrightarrow$\textsuperscript{\scriptsize used} \textbf{RunGeneration}; \quad \texttt{Output} $\longrightarrow$\textsuperscript{\scriptsize derived} \texttt{InputText}
-\smallskip
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  entity/.style={rectangle, draw=blue!60, fill=blue!8, minimum width=2.1cm, minimum height=0.7cm, font=\scriptsize\sffamily, rounded corners=2pt},
+  activity/.style={rectangle, draw=orange!70, fill=orange!10, minimum width=2.4cm, minimum height=0.8cm, font=\scriptsize\sffamily\bfseries, rounded corners=2pt},
+  agent/.style={diamond, draw=green!60!black, fill=green!8, minimum width=1.2cm, minimum height=0.7cm, font=\scriptsize\sffamily, inner sep=2pt, aspect=1.5},
+  edge/.style={-{Stealth[length=5pt]}, thick, font=\tiny\itshape},
+  node distance=0.8cm and 1.2cm
+]
+  % Entities (left)
+  \node[entity] (prompt) {Prompt};
+  \node[entity, below=0.5cm of prompt] (input) {InputText};
+  \node[entity, below=0.5cm of input] (model) {ModelVersion};
+  \node[entity, below=0.5cm of model] (params) {InfParams};
+
+  % Activity (center)
+  \node[activity, right=1.8cm of input, yshift=-0.3cm] (run) {RunGeneration};
+
+  % Output (right)
+  \node[entity, right=1.8cm of run] (output) {Output};
+
+  % Agents (below)
+  \node[agent, below=0.8cm of run, xshift=-0.8cm] (researcher) {Researcher};
+  \node[agent, below=0.8cm of run, xshift=0.8cm] (system) {System};
+
+  % Edges: used
+  \draw[edge, blue!60] (run) -- node[above, sloped] {used} (prompt);
+  \draw[edge, blue!60] (run) -- node[above, sloped] {used} (input);
+  \draw[edge, blue!60] (run) -- node[above, sloped] {used} (model);
+  \draw[edge, blue!60] (run) -- node[below, sloped] {used} (params);
+
+  % Edge: wasGeneratedBy
+  \draw[edge, orange!70] (output) -- node[above] {wasGeneratedBy} (run);
+
+  % Edge: wasDerivedFrom
+  \draw[edge, purple!60, dashed] (output.south) -- ++(0,-0.3) -| node[near start, below, font=\tiny\itshape] {wasDerivedFrom} (input.east);
+
+  % Edges: wasAssociatedWith
+  \draw[edge, green!60!black] (run) -- node[left, font=\tiny\itshape] {assocWith} (researcher);
+  \draw[edge, green!60!black] (run) -- node[right, font=\tiny\itshape] {assocWith} (system);
+
+  % Hash annotations
+  \node[font=\tiny\ttfamily, gray, right=0.05cm of prompt.east, anchor=west] {SHA-256};
+  \node[font=\tiny\ttfamily, gray, right=0.05cm of output.south east, anchor=north west] {SHA-256};
+
+\end{tikzpicture}
+\caption{W3C PROV graph for a single generative AI run. Blue rectangles: entities (data artifacts with SHA-256 hashes). Orange rectangle: activity (the inference execution). Green diamonds: agents. Solid arrows: \texttt{used} and \texttt{wasGeneratedBy} relations. Dashed arrow: \texttt{wasDerivedFrom}. Comparing two such graphs automatically identifies the divergence source when outputs differ.}
+\Description{A directed graph showing PROV entities (Prompt, InputText, ModelVersion, InferenceParameters), the RunGeneration activity, Output entity, and Researcher/System agents, connected by typed PROV relations.}
+\label{fig:prov-graph}
+\end{figure}
 
 \subsection{Reproducibility Checklist}
 \label{sec:checklist}
@@ -465,6 +511,8 @@ C3$_{t{=}0.7}$ & High temperature & 0.7 & per-rep & 3 & High variability \\
 \textit{Note:} Tasks~1--2 are evaluated under all five conditions (C1, C2, C3) for the five models evaluated under all three condition types (LLaMA~3, Mistral~7B, Gemma~2 9B, GPT-4, and Claude Sonnet~4.5); GPT-4 C1 coverage is partial due to quota exhaustion---C2 is used as GPT-4's primary greedy condition (see Section~\ref{sec:limitations}), and under C1~only for DeepSeek Chat and Perplexity Sonar. Tasks~3--4 (multi-turn, RAG) are evaluated under C1 only for the three local models, Claude Sonnet 4.5, and Gemini 2.5 Pro. Total: 4,104 logged runs across 9~model deployments (including 200 chat-format control runs for LLaMA~3). For API-served models, C2 uses the same fixed seed as C1; the seed parameter is advisory and does not guarantee determinism.
 \end{table}
 
+\textbf{Rationale for unbalanced sample design.} LLaMA~3 8B uses 30 abstracts (the original pilot dataset) while later models use 10 abstracts each. This reflects the iterative expansion of the study: the initial experiments established the protocol with LLaMA~3 and GPT-4, and subsequent models were added to test generalizability. A balanced 10-abstract subsample analysis (Section~\ref{sec:limitations}) confirms that the observed reproducibility gap is robust to this design choice: under the balanced comparison, local models average EMR = 0.953 vs.\ API models' 0.304 (3.1$\times$ gap), consistent with the full-sample results.
+
 \textbf{Design principle for API models.} For cloud-hosted APIs whose \texttt{seed} parameter is advisory rather than deterministic (as documented by OpenAI for GPT-4 \cite{openai2024seed}) or entirely absent (as with Claude), the fixed-vs.-variable seed distinction has no guaranteed effect server-side. We therefore treat C2 as the primary test of determinism under greedy decoding for such models.
 
 \textbf{C1 (Fixed seed, greedy decoding):} Temperature = 0, seed = 42 for all 5 repetitions. This represents the maximum-control condition and should yield deterministic outputs.
@@ -526,7 +574,7 @@ This three-level framework allows us to distinguish between outputs that are bit
 
 \textbf{ROUGE-L F1:} The F1 score based on the longest common subsequence at the word level \cite{lin2004rouge}. This captures semantic similarity even when surface forms differ. ROUGE-L = 1.0 indicates identical word sequences.
 
-Our primary metrics (EMR, NED, ROUGE-L) focus on exact and near reproducibility, which are the most direct measures for our research question. To complement these surface-level metrics, we also compute \textbf{BERTScore F1} \cite{zhang2020bertscore}---an embedding-based semantic similarity metric---for all conditions. BERTScore captures meaning-level equivalence that surface metrics may miss (e.g., paraphrases), providing a fourth perspective on reproducibility. For the structured extraction task, we additionally report \textbf{JSON validity rate}, \textbf{schema compliance rate}, and \textbf{field-level accuracy}, which measure whether outputs are syntactically valid JSON, contain all expected fields, and agree on individual field values across runs, respectively (see Appendix~\ref{app:json-quality} for detailed results).
+Our primary metrics (EMR, NED, ROUGE-L) focus on exact and near reproducibility, which are the most direct measures for our research question. To complement these surface-level metrics, we also compute \textbf{BERTScore F1} \cite{zhang2020bertscore}---an embedding-based semantic similarity metric---for all conditions. BERTScore captures meaning-level equivalence that surface metrics may miss (e.g., paraphrases), providing a fourth perspective on reproducibility. For the structured extraction task, we additionally report \textbf{JSON validity rate}, \textbf{schema compliance rate}, and \textbf{field-level accuracy}, which measure whether outputs are syntactically valid JSON, contain all expected fields, and agree on individual field values across runs, respectively (see Supplementary Material~S6 for detailed results).
 
 For protocol overhead, we measure:
 \begin{itemize}
@@ -687,17 +735,7 @@ The W3C PROV graphs generated by our protocol serve multiple purposes beyond sim
 
 To illustrate the diagnostic power of PROV graphs, consider two GPT-4 extraction runs on the same abstract under condition C2 (greedy decoding, $t{=}0$, same seed). Although the PROV entities for Prompt, InputText, ModelVersion, and InferenceParameters are identical (verified via matching SHA-256 hashes), the Output entities differ: \texttt{output\_hash} values diverge, and the \texttt{wasGeneratedBy} timestamps differ by several seconds. The PROV graph thus automatically pinpoints the source of non-reproducibility: the only varying factor is the RunGeneration activity itself, consistent with non-determinism arising from server-side factors.
 
-To demonstrate that PROV-based reasoning goes beyond what plain JSON logs provide, we implemented three programmatic queries over our 4,104-run PROV dataset:
-
-\begin{enumerate}
-    \item \textbf{Divergence attribution}: ``For all abstract--condition groups with non-identical outputs, identify which PROV entities diverge.'' Result: across divergent groups for all five API models (GPT-4, Claude, Gemini, DeepSeek, Perplexity), 100\% share identical Prompt, InputText, ModelVersion, and InferenceParameters entities---the \textit{only} varying component is the RunGeneration activity, providing systematic evidence for server-side non-determinism across the entire dataset rather than anecdotal examples.
-
-    \item \textbf{Cross-provider comparison}: ``Find all abstract--task pairs where multiple API models were given identical Prompt and InputText entities (verified by matching \texttt{genai:hash} attributes) but produced different Output entities.'' Result: across 10~abstracts $\times$ 2~tasks, all five API providers produced non-identical outputs across repetitions on shared inputs, consistent with provider-independent non-determinism---though with varying severity (DeepSeek Chat showing the least variability).
-
-    \item \textbf{Provenance chain traversal}: ``Starting from any Output entity, traverse \texttt{wasGeneratedBy} $\rightarrow$ \texttt{used} relations to reconstruct the full generation context, then verify integrity via hash comparison.'' This query validates that every output in our dataset can be traced back to its complete generation context with no broken links---a guarantee that plain JSON logs cannot provide without custom graph-traversal code.
-\end{enumerate}
-
-These queries exploit PROV's formal graph structure (entity--activity--agent relations with typed edges) to answer questions that would require bespoke parsing logic on unstructured JSON logs. The queries and their results are included in the project repository.
+To demonstrate that PROV-based reasoning goes beyond what plain JSON logs provide, we implemented three programmatic queries over our 4,104-run PROV dataset: (1)~divergence attribution, confirming that 100\% of non-identical output groups across all five API models share identical input entities---only the RunGeneration activity varies; (2)~cross-provider comparison, verifying provider-independent non-determinism on shared inputs; and (3)~provenance chain traversal, validating that every output traces back to its complete generation context with no broken links. The full query specifications and results are provided in Supplementary Material~S4.
 
 \subsection{Pipeline Threat Model}
 \label{sec:threat-model}
@@ -717,35 +755,7 @@ A natural objection is whether the observed output variability in API-served mod
 \subsection{Sources of Non-Determinism in Distributed Inference}
 \label{sec:nondeterminism-sources}
 
-\begin{quote}\small
-\textbf{Note on plausible mechanisms.} The mechanisms discussed below are not directly observed within proprietary serving stacks. They are theoretically grounded factors consistent with known properties of distributed inference systems. We present them to motivate future investigation, not as confirmed explanations.
-\end{quote}
-
-Our experiments establish \textit{that} API-served models exhibit non-determinism under greedy decoding, while local single-GPU models do not. Here we discuss the technical mechanisms that plausibly explain \textit{why}, drawing on the systems and numerical-analysis literature. While we cannot observe the internal architecture of closed API services, six well-documented mechanisms in distributed GPU inference can independently produce non-deterministic outputs even under greedy decoding---and all six are standard components of cloud LLM serving stacks.
-
-\textbf{(1) Non-associative floating-point arithmetic.}
-The fundamental root cause is that floating-point addition is non-associative: $(a + b) + c \neq a + (b + c)$ in finite precision \cite{higham2002accuracy}. Every mechanism below ultimately reduces to this property---different execution orders produce different numerical results, which can flip the argmax at the decoding step and cascade through the entire generation.
-
-\textbf{(2) Mixed-precision accumulation.}
-Modern LLM inference uses reduced-precision formats (FP16 or BF16) with only 10 or 7 bits of mantissa, respectively \cite{micikevicius2018mixed}. \citet{yuan2025nondeterminism} demonstrated that BF16 is ``the primary culprit'' for inference non-determinism: under greedy decoding with BF16, a 7B-parameter model showed up to 9\% accuracy variation and 9,000-token output-length differences across different GPU configurations. Their LayerCast mitigation---storing weights in BF16 but upcasting to FP32 for matrix multiplications---substantially reduces but does not eliminate non-determinism, and is unavailable to API consumers.
-
-\textbf{(3) Tensor parallelism and all-reduce non-determinism.}
-Cloud-served LLMs are typically distributed across multiple GPUs via tensor parallelism \cite{shoeybi2019megatron}, which splits matrix multiplications across devices and combines partial results via all-reduce collective operations. Because all-reduce aggregates partial sums from multiple GPUs, the order of accumulation depends on network timing and GPU synchronization---and given non-associative floating-point arithmetic, different accumulation orders produce different results. A single-GPU local deployment eliminates this source entirely: all operations execute on one device in a fixed order.
-
-\textbf{(4) Attention kernel non-determinism.}
-FlashAttention \cite{dao2022flashattention}, now the standard attention implementation in production LLM serving, introduces non-determinism through its parallelization strategy. \citet{golden2024flashstable} showed that FlashAttention produces roughly an order of magnitude more numerical deviation than baseline attention at BF16 precision, because its tiling strategy accumulates partial softmax results across thread blocks in implementation-dependent order. While the forward pass can be made deterministic with careful implementation, the non-deterministic numerical noise from attention computation compounds across layers.
-
-\textbf{(5) Dynamic batching and request scheduling.}
-Production LLM serving systems use continuous batching \cite{yu2022orca, kwon2023vllm}, where new requests are inserted into running batches at each decoding step. Different batch compositions lead to different memory access patterns, different padding configurations, and---importantly---different floating-point accumulation patterns in batched matrix multiplications. Since batch composition depends on concurrent request arrivals (which vary across runs), two identical requests processed at different times will be batched with different neighbors, potentially producing different outputs.
-
-\textbf{(6) Speculative decoding.}
-Many production LLM deployments use speculative decoding \cite{leviathan2023speculative} to reduce latency, in which a smaller draft model proposes multiple tokens that the target model then verifies in parallel. The acceptance/rejection sampling step introduces an additional stochastic component: if the draft model's confidence varies (e.g., due to batching effects on the draft model itself), the set of accepted tokens can differ across runs even with the same seed.
-
-\textbf{Why local models escape these mechanisms.}
-Our local deployment (single Apple M4 GPU, Ollama server, one request at a time) eliminates mechanisms (3)--(6) entirely: there is no tensor parallelism, no dynamic batching, no speculative decoding, and the attention kernel executes on a single device with deterministic thread scheduling. Mechanism (2) is mitigated by the specific quantization format used by Ollama (GGML Q4), which uses integer arithmetic for the core computation. The near-perfect reproducibility of our local models (average EMR = 0.960) is thus a \textit{predicted consequence} of the absence of these distributed-systems mechanisms, not merely an empirical observation.
-
-\textbf{Quasi-isolation probe: empirical evidence.}
-These six mechanisms share a critical property: they are all \textit{infrastructure-level} factors invisible to the API consumer. Our quasi-isolation probe experiment provides direct evidence for this claim: LLaMA~3 8B served via Together AI's cloud endpoint achieves EMR = 1.000 for extraction and 0.880 for summarization---nearly identical to the locally deployed version (1.000 and 0.920)---while major closed-source API models exhibit EMR $\leq$ 0.443 on the same tasks. While we lack visibility into Together AI's exact infrastructure, the Lite endpoint's INT4 quantization and competitive latency suggest a simpler serving stack than the multi-GPU clusters used for GPT-4, Claude, and Gemini. This result is consistent with mechanisms (3)--(6) being the primary drivers of non-determinism in production API services, though we cannot rule out alternative explanations without full infrastructure transparency. A researcher specifying \texttt{temperature=0} and \texttt{seed=42} has no control over the GPU cluster's tensor-parallelism strategy, the serving system's batching policy, or the precision format used for matrix multiplications. This asymmetry between user-visible parameters and infrastructure-level factors explains why greedy decoding does not guarantee determinism for API-served models, and motivates our protocol's emphasis on logging infrastructure metadata alongside generation parameters.
+Our experiments establish \textit{that} API-served models exhibit non-determinism under greedy decoding, while local single-GPU models do not. Six well-documented mechanisms in distributed GPU inference can independently produce non-deterministic outputs even under greedy decoding: (1)~non-associative floating-point arithmetic \cite{higham2002accuracy}; (2)~mixed-precision accumulation in BF16/FP16, identified by \citet{yuan2025nondeterminism} as ``the primary culprit''; (3)~tensor parallelism and all-reduce non-determinism \cite{shoeybi2019megatron}; (4)~FlashAttention kernel non-determinism \cite{dao2022flashattention, golden2024flashstable}; (5)~dynamic batching and continuous request scheduling \cite{yu2022orca, kwon2023vllm}; and (6)~speculative decoding \cite{leviathan2023speculative}. Our single-GPU local deployment eliminates mechanisms (3)--(6) entirely, and the GGML Q4 integer arithmetic mitigates (2)---explaining the near-perfect local reproducibility as a \textit{predicted consequence}. All six mechanisms are infrastructure-level factors invisible to the API consumer, consistent with our quasi-isolation probe results (Together AI LLaMA~3 achieving near-local EMR despite cloud deployment). A detailed analysis of each mechanism is provided in Supplementary Material~S2.
 
 \subsection{Limitations}
 \label{sec:limitations}
@@ -762,7 +772,9 @@ We organize threats to validity following standard categories:
 
 \textbf{Prompt format confound.} Single-turn experiments use Ollama's \texttt{/api/generate} endpoint for local models, whereas API models use their respective chat APIs. A supplementary control experiment (200 additional runs using Ollama's \texttt{/api/chat} endpoint; see Appendix~\ref{app:chat-control}) shows that this format difference does not explain the reproducibility gap: LLaMA~3 produces \emph{identical} variability metrics (summarization EMR = 0.929, extraction EMR = 1.000) under both completion and chat formats.
 
-\textbf{Code versioning gap.} The protocol specifies a \texttt{code\_commit} field to record the git commit hash of the experiment code. The initial 330 runs (LLaMA~3 8B and GPT-4, February~7, 2026) were executed before the git repository was initialized; these run records contain \texttt{code\_commit: "no-git-repo"}. The remaining 3,774 runs (92\% of the total) include valid git commit hashes. To mitigate this gap for the affected subset, we verified post-hoc that (1)~the SHA-256 hashes of the prompt templates in the repository match the \texttt{prompt\_hash} values recorded in all 330 affected run cards, confirming that the prompts were not modified between execution and commit; (2)~the code committed in the initial release (\texttt{ff025ef}, February~7) is the same code that produced these runs, as the runner modules and protocol logic had no intermediate modifications; and (3)~the environment metadata (OS, Python version, architecture, Ollama version) is recorded independently of git status in every run record. The complete environment fingerprint for all runs is documented in Appendix~\ref{app:environment}. Researchers adopting this protocol should initialize their repository \textit{before} running experiments to avoid this gap.
+\textbf{Weights hash gap.} Of the 4,104 run records, 1,720 (42\%, all from LLaMA~3 8B and Mistral 7B single-turn experiments) have an empty \texttt{weights\_hash} field because the Ollama \texttt{/api/tags} endpoint for querying weights hashes was integrated into the protocol \textit{after} the initial batch of single-turn experiments. All 480 Gemma~2 9B runs, all 500 multi-turn/RAG local-model runs, and all 1,504 API-model runs have properly populated \texttt{weights\_hash} fields (actual SHA-256 digests for local models; ``proprietary-not-available'' sentinel for API models). Post-hoc verification confirms that the Ollama model versions remained unchanged between the early and late experiment phases (identical model names and file sizes in \texttt{ollama list} output), but without recorded hashes, cryptographic proof of model identity is unavailable for these 1,720 runs.
+
+\textbf{Code versioning gap.} The protocol specifies a \texttt{code\_commit} field to record the git commit hash of the experiment code. The initial 330 runs (LLaMA~3 8B and GPT-4, February~7, 2026) were executed before the git repository was initialized; these run records contain \texttt{code\_commit: "no-git-repo"}. The remaining 3,774 runs (92\% of the total) include valid git commit hashes. To mitigate this gap for the affected subset, we verified post-hoc that (1)~the SHA-256 hashes of the prompt templates in the repository match the \texttt{prompt\_hash} values recorded in all 330 affected run cards, confirming that the prompts were not modified between execution and commit; (2)~the code committed in the initial release (\texttt{ff025ef}, February~7) is the same code that produced these runs, as the runner modules and protocol logic had no intermediate modifications; and (3)~the environment metadata (OS, Python version, architecture, Ollama version) is recorded independently of git status in every run record. The complete environment fingerprint for all runs is documented in Supplementary Material~S10. Researchers adopting this protocol should initialize their repository \textit{before} running experiments to avoid this gap.
 
 \subsubsection{External Validity}
 
@@ -787,24 +799,11 @@ We organize threats to validity following standard categories:
 \subsection{Protocol Minimality: An Ablation Analysis}
 \label{sec:ablation}
 
-To substantiate our claim that the protocol captures a \textit{minimal} set of metadata, we conducted an ablation analysis in which we systematically removed each field group from the protocol schema and assessed which audit questions became unanswerable. We defined 10 audit questions that a reproducibility-oriented researcher might ask (e.g., ``Can we verify the exact prompt used?'', ``Can we detect output tampering?'', ``Can we trace full provenance?'') and mapped each to the protocol fields required to answer it. For this analysis, we decomposed the Run Card's five sections into eight finer-grained field groups by separating cross-cutting concerns: Identification, Model Context, Parameters, Input Content, Output Content, Hashing (all SHA-256 digests), Environment, and Overhead (timing and storage metadata).
-
-The results show that removing \textit{any} of these eight field groups renders at least one audit question unanswerable, demonstrating that no group is redundant. The Hashing group (SHA-256 hashes for prompts, inputs, outputs, parameters, and environment) has the highest information density: its removal affects 6 of 10 questions despite contributing only 410\,bytes per run. Conversely, the Overhead group (logging time metadata) is the least connected but remains necessary for overhead assessment. The complete ablation results are available in the project repository.
-
-This analysis demonstrates that the protocol is \textit{minimal} in the sense that every field group is necessary for at least one audit capability, while the total overhead remains at approximately 4,052 bytes per run.
+To substantiate our claim of minimality, we systematically removed each of eight field groups from the Run Card schema and assessed which of 10 audit questions became unanswerable (e.g., ``Can we detect output tampering?'', ``Can we trace full provenance?''). Removing \textit{any} group renders at least one question unanswerable, demonstrating that no group is redundant. The Hashing group has the highest information density (affects 6/10 questions, costs only 410\,bytes). The complete ablation matrix is provided in Supplementary Material~S3.
 
 \subsection{Practical Costs and Adoption}
 
-One concern with any new protocol is whether the adoption burden is justified. We address this concretely:
-
-\begin{itemize}
-    \item \textbf{Implementation effort}: Our reference implementation adds approximately 600 lines of Python (the protocol core) to an existing workflow. Integration requires 3--5 function calls per run.
-    \item \textbf{Runtime cost}: $<$30\,ms per run across all models tested (Table~\ref{tab:overhead}), negligible compared to inference times of seconds to minutes for typical LLM calls.
-    \item \textbf{Storage cost}: $\sim$4\,KB per run. Our 4,104 runs total approximately 16\,MB---less than a single model checkpoint.
-    \item \textbf{Learning curve}: The protocol uses standard JSON and W3C PROV, requiring no specialized knowledge beyond basic Python.
-\end{itemize}
-
-Against these modest costs, the protocol provides complete audit trails, automated provenance graphs, tamper-detectable outputs via cryptographic hashing, and structured metadata that enable systematic reproducibility analysis.
+The adoption burden is minimal: ${\sim}$600 lines of Python (3--5 function calls per run), $<$30\,ms logging time, and ${\sim}$4\,KB storage per run (16\,MB total for 4,104 runs). The protocol uses standard JSON and W3C PROV, requiring no specialized knowledge. Against these modest costs, it provides complete audit trails, automated provenance graphs, and tamper-detectable outputs via cryptographic hashing.
 
 \subsection{Minimum Reporting Checklist for Generative AI Studies}
 
@@ -990,205 +989,8 @@ The complete Run Card schema, with data types and descriptions:
 \end{lstlisting}
 
 
-\section{Example PROV-JSON Document}
-\label{app:prov-example}
-
-An abbreviated example of a PROV-JSON document generated for a single summarization run:
-
-\begin{lstlisting}[caption={Abbreviated PROV-JSON for a summarization run.},label={lst:prov}]
-{
-  "prefix": {
-    "genai": "https://genai-prov.org/ns#",
-    "prov": "http://www.w3.org/ns/prov#"
-  },
-  "entity": {
-    "genai:prompt_c9644358": {
-      "prov:type": "genai:Prompt",
-      "genai:hash": "c9644358805b...",
-      "genai:task_category": "summarization"
-    },
-    "genai:model_llama3_8b": {
-      "prov:type": "genai:ModelVersion",
-      "genai:name": "llama3:8b",
-      "genai:source": "ollama-local"
-    },
-    "genai:output_590d0835": {
-      "prov:type": "genai:Output",
-      "genai:hash": "590d08359e7d..."
-    }
-  },
-  "activity": {
-    "genai:run_llama3_8b_sum_001_C1_rep0": {
-      "prov:type": "genai:RunGeneration",
-      "prov:startTime": "2026-02-07T21:54:34Z",
-      "prov:endTime": "2026-02-07T21:54:40Z"
-    }
-  },
-  "wasGeneratedBy": {
-    "_:wGB1": {
-      "prov:entity": "genai:output_590d0835",
-      "prov:activity": "genai:run_llama3_8b_..."
-    }
-  },
-  "used": {
-    "_:u1": {
-      "prov:activity": "genai:run_llama3_...",
-      "prov:entity": "genai:prompt_c9644358"
-    }
-  },
-  "agent": {
-    "genai:researcher_lucas_rover": {
-      "prov:type": "prov:Person",
-      "genai:affiliation": "UTFPR"
-    }
-  },
-  "wasAssociatedWith": {
-    "_:wAW1": {
-      "prov:activity": "genai:run_llama3_...",
-      "prov:agent": "genai:researcher_..."
-    }
-  }
-}
-\end{lstlisting}
-
-
-\section{JSON Extraction Quality}
-\label{app:json-quality}
-
-Table~\ref{tab:json-metrics} presents JSON-specific quality metrics for the structured extraction task. Two notable patterns emerge.
-
-First, LLaMA~3 never produces raw-valid JSON: all 570 extraction outputs contain preamble text (e.g., ``Here is the extracted information in JSON format:'') before the JSON object, despite the prompt explicitly requesting ``JSON only, no explanation.'' After extracting the embedded JSON via regex, validity rates reach 100\% under greedy decoding, degrading slightly at higher temperatures (92.2\% at $t{=}0.7$). GPT-4, by contrast, always produces raw-valid JSON with 100\% schema compliance across all conditions. This instruction-following gap is consistent with the different prompt interfaces: the chat completion API's structured message format may better signal the expected output format.
-
-Second, within-abstract field-level exact match rates---computed by comparing only runs of the \textit{same} abstract under the same condition, then averaging across abstracts---confirm the overall reproducibility hierarchy. Under greedy decoding, LLaMA~3 achieves near-perfect field EMR (0.982--0.989 overall), with all five fields at or above 0.978, consistent with the overall extraction EMR of 0.987 reported in Table~\ref{tab:emr_greedy}. GPT-4 under greedy shows lower field EMR (0.757--0.767 overall), with open-ended fields (\texttt{method}: 0.667, \texttt{key\_result}: 0.637) lagging behind structured fields (\texttt{model\_or\_system}: 0.893, \texttt{benchmark}: 0.863). As temperature increases, this gap widens: at $t{=}0.7$, \texttt{method} drops to 0.167 (LLaMA) and 0.157 (GPT-4), while \texttt{benchmark} retains 0.711 and 0.725 respectively---a 4--5$\times$ difference. This within-abstract formulation isolates true reproducibility (same input, same conditions, different runs) from between-abstract content variation, providing a methodologically clean measure of field-level consistency.
-
-\input{table_json_metrics.tex}
-
-
-\section{Prompt Card Example}
-\label{app:prompt-card-example}
-
-The following is a complete, filled-in Prompt Card for the summarization task as used in our experiments:
-
-\begin{lstlisting}[caption={Prompt Card for the scientific summarization task.},label={lst:prompt-card}]
-{
-  "prompt_id": "summarization_v1",
-  "prompt_hash": "c9644358805b4a7e...",
-  "version": "1.0.0",
-  "task_category": "summarization",
-  "objective": "Produce a 3-sentence summary of a
-    scientific abstract covering: (1) main
-    contribution, (2) methodology, (3) key result.",
-  "assumptions": [
-    "Input is a single English scientific abstract",
-    "Abstract contains identifiable methodology
-     and quantitative results",
-    "Model can produce coherent 3-sentence output"
-  ],
-  "limitations": [
-    "Open-ended phrasing allows high output variance",
-    "No explicit output-format constraint (unlike
-     extraction task)"
-  ],
-  "target_models": [
-    "llama3:8b", "mistral:7b", "gemma2:9b",
-    "gpt-4", "claude-sonnet-4-5"
-  ],
-  "expected_output_format": "Three sentences of
-    plain text, no JSON or structured markup",
-  "interaction_regime": "single-turn",
-  "change_log": [
-    {"date": "2026-02-06", "change": "Initial version"}
-  ]
-}
-\end{lstlisting}
-
-
-\section{Representative Prompt Templates}
-\label{app:prompts}
-
-The following are the exact prompt templates used for each of the four experimental tasks. In all templates, \texttt{\{abstract\}} is replaced with the scientific abstract text at runtime.
-
-\medskip
-\noindent\textbf{Task 1: Scientific Summarization}
-\begin{quote}\small\ttfamily
-Summarize the following scientific abstract in exactly 3 sentences. Cover: (1) the main contribution, (2) the methodology used, and (3) the key quantitative result.\textbackslash n\textbackslash nAbstract: \{abstract\}\textbackslash n\textbackslash nSummary:
-\end{quote}
-
-\noindent\textbf{Task 2: Structured Extraction}
-\begin{quote}\small\ttfamily
-Extract the following fields from the scientific abstract below. Return JSON only, no explanation.\textbackslash n\textbackslash nFields: objective, method, key\_result, model\_or\_system, benchmark\textbackslash n\textbackslash nAbstract: \{abstract\}\textbackslash n\textbackslash nJSON:
-\end{quote}
-
-\noindent\textbf{Task 3: Multi-Turn Refinement} (3 turns)
-\begin{quote}\small\ttfamily
-Turn 1: [Same as Task 1 prompt]\textbackslash n
-Turn 2: Now revise the summary to be more specific about the quantitative results mentioned.\textbackslash n
-Turn 3: Finally, add one sentence about the limitations or future work mentioned in the abstract.
-\end{quote}
-
-\noindent\textbf{Task 4: RAG Extraction}
-\begin{quote}\small\ttfamily
-Using the context passage below and the scientific abstract, extract the following fields. Return JSON only.\textbackslash n\textbackslash nContext: \{retrieved\_passage\}\textbackslash nAbstract: \{abstract\}\textbackslash n\textbackslash nFields: objective, method, key\_result, model\_or\_system, benchmark\textbackslash n\textbackslash nJSON:
-\end{quote}
-
-
-\section{Experimental Coverage Matrix}
-\label{app:coverage}
-
-Table~\ref{tab:coverage} provides a complete coverage matrix showing the number of abstracts and runs per model--task--condition combination. This matrix enables readers to verify the sample sizes underlying all reported metrics.
-
-\begin{table*}[ht]
-\centering
-\caption{Experimental coverage: number of abstracts (runs) per model--task--condition. Dash (--) indicates the combination was not evaluated. C1: fixed seed; C2: variable seed (C2\_same\_params for GPT-4); C3: temperature sweep at $t \in \{0.0, 0.3, 0.7\}$.}
-\label{tab:coverage}
-\small
-\begin{tabular}{llccccc}
-\toprule
-\textbf{Model} & \textbf{Task} & \textbf{C1} & \textbf{C2} & \textbf{C3 ($t$=0.0)} & \textbf{C3 ($t$=0.3)} & \textbf{C3 ($t$=0.7)} \\
-\midrule
-LLaMA 3 8B & Extraction & 30 (150) & 30 (150) & 30 (90) & 30 (90) & 30 (90) \\
- & Summarization & 30 (150) & 30 (150) & 30 (90) & 30 (90) & 30 (90) \\
- & Multi-turn & 10 (50) & -- & -- & -- & -- \\
- & RAG & 10 (50) & -- & -- & -- & -- \\
-\addlinespace
-Mistral 7B & Extraction & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
- & Summarization & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
- & Multi-turn & 10 (50) & -- & -- & -- & -- \\
- & RAG & 10 (50) & -- & -- & -- & -- \\
-\addlinespace
-Gemma 2 9B & Extraction & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
- & Summarization & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
- & Multi-turn & 10 (50) & -- & -- & -- & -- \\
- & RAG & 10 (50) & -- & -- & -- & -- \\
-\midrule
-GPT-4 & Extraction & -- & 30 (150) & 17 (51) & 17 (51) & 14 (42) \\
- & Summarization & 3 (8)$^\dagger$ & 30 (150) & 30 (90) & 30 (90) & 30 (90) \\
- & Multi-turn & -- & -- & -- & -- & -- \\
- & RAG & -- & -- & -- & -- & -- \\
-\addlinespace
-Claude Sonnet 4.5 & Extraction & 10 (49)$^\ddagger$ & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
- & Summarization & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
- & Multi-turn & 10 (50) & -- & -- & -- & -- \\
- & RAG & 10 (50) & -- & -- & -- & -- \\
-\addlinespace
-Gemini 2.5 Pro & Multi-turn & 10 (50) & -- & -- & -- & -- \\
- & RAG & 10 (50) & -- & -- & -- & -- \\
-\addlinespace
-DeepSeek Chat & Extraction & 10 (50) & -- & -- & -- & -- \\
- & Summarization & 10 (50) & -- & -- & -- & -- \\
-\addlinespace
-Perplexity Sonar & Extraction & 10 (50) & -- & -- & -- & -- \\
- & Summarization & 10 (50) & -- & -- & -- & -- \\
-\addlinespace
-Together AI LLaMA 3 8B & Extraction & 10 (50) & 10 (50) & -- & -- & -- \\
- & Summarization & 10 (50) & 10 (50) & -- & -- & -- \\
-\bottomrule
-\end{tabular}
-\par\smallskip\raggedright\footnotesize
-$^\dagger$GPT-4 C1 summarization: only 3 abstracts completed before quota exhaustion; excluded from primary analysis (C2 used instead).\\
-$^\ddagger$Claude C1 extraction: 49 runs (1 empty output due to API timeout).\\
-$^\S$An additional 200 runs (LLaMA~3 8B, chat-format control; Appendix~\ref{app:chat-control}) are not shown in this table.
-\end{table*}
+%% Appendices C--G moved to Supplementary Material (S5--S9)
+%% PROV-JSON Example → S5; JSON Quality → S6; Prompt Card → S7; Prompts → S8; Coverage Matrix → S9
 
 
 \section{Chat-Format Control Experiment}
@@ -1332,118 +1134,7 @@ This appendix documents compliance with the JAIR reproducibility mechanisms desc
 \end{itemize}
 
 
-\section{Environment and Provenance Transparency}
-\label{app:environment}
-
-This appendix documents the complete execution environment and addresses the code-versioning gap identified in Section~\ref{sec:limitations}.
-
-\subsection*{Execution Environment}
-
-All local experiments were conducted on a single machine with the following configuration:
-
-\begin{table}[H]
-\centering
-\caption{Execution environment for local model inference.}
-\label{tab:environment}
-\small
-\begin{tabular}{@{}ll@{}}
-\toprule
-\textbf{Component} & \textbf{Value} \\
-\midrule
-CPU & Apple M4 (10-core) \\
-Unified memory & 24\,GB \\
-Operating system & macOS 14.6 (Darwin 24.6.0) \\
-Architecture & arm64 \\
-Python & 3.14.3 (Clang 17.0.0) \\
-Ollama & v0.15.5 \\
-Quantization & Q4\_0 (GGML) for all local models \\
-Inference mode & Single-request (no concurrent batching) \\
-Network & Residential broadband (API calls only) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Each of the 4,104 run records captures the following environment fields, regardless of git status: \texttt{os}, \texttt{os\_version}, \texttt{os\_release}, \texttt{architecture}, \texttt{processor}, \texttt{python\_version}, \texttt{hostname}, and \texttt{timestamp}. These fields are hashed into an \texttt{environment\_hash} (SHA-256) that serves as an immutable fingerprint. All local runs share the same environment hash (\texttt{cd45d428...}), confirming that no system changes occurred during the experiment window.
-
-\subsection*{Code Versioning Timeline}
-
-Table~\ref{tab:code-versioning} documents the relationship between experiment execution and repository commits.
-
-\begin{table}[H]
-\centering
-\caption{Code versioning timeline: experiment phases and git status.}
-\label{tab:code-versioning}
-\small
-\begin{tabular}{@{}lllr@{}}
-\toprule
-\textbf{Date} & \textbf{Phase} & \textbf{\texttt{code\_commit}} & \textbf{Runs} \\
-\midrule
-Feb 7, 2026 & Initial experiments & \texttt{no-git-repo} & 330 \\
-Feb 7, 2026 & Repository initialized & \texttt{ff025ef} & --- \\
-Feb 8--9, 2026 & Expanded experiments & \texttt{957a604}--\texttt{0cba4f1} & 1,874 \\
-Feb 9, 2026 & Claude experiments & \texttt{e57ae19}--\texttt{df2b07e} & 1,500 \\
-Feb 10, 2026 & Gemini experiments & \texttt{b2e9440} & 200 \\
-Feb 9, 2026 & Chat-format control & \texttt{0cba4f1} & 200 \\
-\midrule
-\multicolumn{3}{@{}l}{\textit{Total with valid \texttt{code\_commit}}} & 3,774 (92\%) \\
-\multicolumn{3}{@{}l}{\textit{Total without \texttt{code\_commit} (pre-git)}} & 330 (8\%) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection*{Post-Hoc Integrity Verification for Pre-Git Runs}
-
-For the 330 runs executed before repository initialization, we verified provenance integrity through three independent checks:
-
-\begin{enumerate}
-    \item \textbf{Prompt hash consistency.} The \texttt{prompt\_hash} values in all 330 affected run records match the SHA-256 hashes of the prompt templates committed in the initial release (\texttt{ff025ef}). This confirms that the prompts used during experiments are identical to those in the repository.
-
-    \item \textbf{Output hash reproducibility.} The analysis scripts (\texttt{compute\_metrics.py}, \texttt{merge\_all\_runs.py}) successfully process all 330 run records, producing consistent metrics. The output hashes in these records remain valid SHA-256 digests of the stored \texttt{output\_text} fields.
-
-    \item \textbf{Environment hash stability.} All 330 pre-git runs share the same \texttt{environment\_hash} as the subsequent 1,874 runs on the same machine, confirming no system-level changes between the pre-git and post-git experiment phases.
-\end{enumerate}
-
-\subsection*{Representative Run Record}
-
-Listing~\ref{lst:run-record} shows an abbreviated run record for a single LLaMA~3 8B extraction run. The complete set of 4,104 run records is available in the repository at \texttt{outputs/runs/}.
-
-\begin{lstlisting}[caption={Abbreviated run record (LLaMA~3 8B, extraction, C1, rep\,0). Output text truncated for space.},label={lst:run-record}]
-{
-  "run_id": "llama3_8b_extraction_abs_001_C1_...",
-  "task_id": "extraction",
-  "task_category": "structured_extraction",
-  "interaction_regime": "single-turn",
-  "prompt_hash": "ddc1746ca23ddafc...",
-  "input_hash": "4e873413a989a6fe...",
-  "model_name": "llama3:8b",
-  "model_version": "8.0B",
-  "weights_hash": "<SHA-256 from Ollama API>",
-  "model_source": "ollama-local",
-  "inference_params": {
-    "temperature": 0.0,
-    "top_p": 1.0,
-    "top_k": 0,
-    "max_tokens": 1024,
-    "decoding_strategy": "greedy",
-    "seed": 42
-  },
-  "params_hash": "5f7d7b01f15d5632...",
-  "environment": {
-    "os": "Darwin",
-    "os_version": "Darwin Kernel Version 24.6.0",
-    "architecture": "arm64",
-    "processor": "arm",
-    "python_version": "3.14.3",
-    "hostname": "<anonymized>"
-  },
-  "environment_hash": "cd45d42899c58da3...",
-  "code_commit": "no-git-repo",
-  "output_hash": "d89180f3e1a11858...",
-  "execution_duration_ms": 7816.7,
-  "logging_overhead_ms": 34.2,
-  "storage_kb": 4.23
-}
-\end{lstlisting}
+%% Appendix I (Environment and Provenance Transparency) moved to Supplementary Material S10
 
 
 \end{document}

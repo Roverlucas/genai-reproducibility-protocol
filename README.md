@@ -1,6 +1,6 @@
 # GenAI Reproducibility Protocol
 
-**Hidden Non-Determinism in Large Language Model APIs: A Lightweight Provenance Protocol for Reproducible Generative AI Research**
+**Same Prompt, Different Answer: Exposing the Reproducibility Illusion in Large Language Model APIs**
 
 Submitted to the *Journal of Artificial Intelligence Research* (JAIR), February 2026.
 
@@ -43,7 +43,7 @@ paper-experiment/
 ├── data/
 │   └── inputs/
 │       └── abstracts.json   # 30 scientific abstracts (input data)
-├── outputs/                  # Experimental outputs (3,904 runs)
+├── outputs/                  # Experimental outputs (4,104 runs)
 │   ├── runs/                # Individual run JSON files
 │   ├── run_cards/           # Run Card documents
 │   ├── prov/                # W3C PROV-JSON provenance documents
@@ -141,7 +141,7 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
-## Key Results (3,904 Runs across 8 Models, 5 Providers, 4 Tasks, 30 Abstracts)
+## Key Results (4,104 Runs across 8 Models, 5 Providers, 4 Tasks, 30 Abstracts)
 
 | Model | Source | Task | EMR [95% CI] |
 |-------|--------|------|---------------|
