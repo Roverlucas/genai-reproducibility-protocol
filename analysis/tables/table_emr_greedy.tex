@@ -1,6 +1,6 @@
 \begin{table}[t]
 \centering
-\caption{Exact Match Rate (EMR) under greedy decoding ($t{=}0$) across five models and two single-turn tasks, with 95\% bootstrap confidence intervals ($n_{\text{boot}}{=}10{,}000$). For local models, values reflect condition C1 (fixed seed); for GPT-4, C2 (variable-seed greedy, as C1 has insufficient coverage); for Claude, C1 (Claude's API does not support a seed parameter). Higher is more reproducible.}
+\caption{Exact Match Rate (EMR) under greedy decoding ($t{=}0$) across five models and two single-turn tasks, with 95\% bootstrap confidence intervals ($n_{\text{boot}}{=}10{,}000$, percentile method). For local models, values reflect condition C1 (fixed seed); for GPT-4, C2 (variable-seed greedy, as C1 has insufficient coverage); for Claude, C1 (Claude's API does not support a seed parameter). As a sensitivity analysis, bias-corrected and accelerated (BCa) bootstrap CIs were also computed; differences from the percentile method are modest ($\leq 0.06$ on individual bounds) and do not change any qualitative conclusions. Higher is more reproducible.}
 \label{tab:emr_greedy}
 \small
 \begin{tabular}{llcc}

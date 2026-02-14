@@ -1,6 +1,6 @@
 \begin{table}[t]
 \centering
-\caption{API-served vs.\ locally deployed models under greedy decoding (single-turn tasks only). Local averages: simple mean across 3 models $\times$ 2 tasks (C1+C2 combined). API averages: simple mean across 2 models $\times$ 2 tasks (GPT-4 C2, Claude C1). Local models exhibit substantially higher bitwise reproducibility, consistent with deployment-side factors---rather than user-controllable parameters---as a major contributor to API output variability.}
+\caption{API-served vs.\ locally deployed models under greedy decoding (single-turn tasks only). Local averages: simple mean across 3 models $\times$ 2 tasks (C1+C2 combined); API averages: simple mean across 2 models $\times$ 2 tasks (GPT-4 C2, Claude C1). The resulting gap ratio (0.956\,/\,0.221\,$\approx$\,4.3$\times$) reflects this two-model API subset. The text reports a separate aggregate over all four single-turn API models (GPT-4, Claude, DeepSeek, Perplexity; mean EMR\,=\,0.325, gap\,$\approx$\,3$\times$). Both calculations are consistent; the difference arises from the model set included. Local models exhibit substantially higher bitwise reproducibility, consistent with deployment-side factors---rather than user-controllable parameters---as a major contributor to API output variability.}
 \label{tab:api_vs_local}
 \small
 \begin{tabular}{lcccc}
