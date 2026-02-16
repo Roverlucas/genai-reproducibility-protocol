@@ -417,10 +417,10 @@ def generate_emr_heatmap(metrics):
 
     ci_data = bootstrap.get("table3_emr_greedy", {})
 
-    fig, (ax_local, ax_api) = plt.subplots(2, 1, figsize=(5.5, 5),
+    fig, (ax_local, ax_api) = plt.subplots(2, 1, figsize=(6.5, 5.5),
                                             gridspec_kw={"height_ratios": [3, 2],
-                                                         "hspace": 0.35})
-    cmap = plt.cm.RdYlGn
+                                                         "hspace": 0.8})
+    cmap = plt.cm.RdBu
 
     for ax, model_list, panel_label, panel_color in [
         (ax_local, local_order, "(a) Local Deployments", LOCAL_COLOR),
@@ -440,29 +440,35 @@ def generate_emr_heatmap(metrics):
         im = ax.imshow(data, cmap=cmap, vmin=0, vmax=1, aspect="auto")
 
         ax.set_xticks(range(len(tasks_conds)))
-        ax.set_xticklabels([label for _, label in tasks_conds], fontsize=9)
+        ax.set_xticklabels([label for _, label in tasks_conds], fontsize=11)
         ax.set_yticks(range(len(model_list)))
-        ax.set_yticklabels([MODEL_NAMES[m] for m in model_list], fontsize=9)
+        ax.set_yticklabels([MODEL_NAMES[m] for m in model_list], fontsize=11)
 
         for i in range(len(model_list)):
             for j in range(len(tasks_conds)):
                 val = data[i, j]
                 std = stds[i, j]
                 if not np.isnan(val):
-                    color = "white" if val < 0.5 else "black"
+                    # White text on dark cells (very low or very high EMR),
+                    # black text on lighter mid-range cells
+                    if val < 0.3 or val > 0.8:
+                        color = "white"
+                    else:
+                        color = "black"
                     ax.text(j, i - 0.12, f"{val:.3f}", ha="center", va="center",
-                            fontsize=12, fontweight="bold", color=color)
+                            fontsize=15, fontweight="bold", color=color)
                     if not np.isnan(std):
                         ax.text(j, i + 0.22, f"\u00b1{std:.3f}", ha="center", va="center",
-                                fontsize=7.5, color=color, alpha=0.8)
+                                fontsize=9, color=color, alpha=0.85)
 
-        ax.set_title(panel_label, fontsize=11, pad=8, color=panel_color, fontweight="bold")
+        ax.set_title(panel_label, fontsize=13, pad=12, color=panel_color, fontweight="bold")
 
-    cbar = plt.colorbar(im, ax=[ax_local, ax_api], shrink=0.75, pad=0.04)
-    cbar.set_label("Exact Match Rate (EMR)", fontsize=9)
+    cbar = plt.colorbar(im, ax=[ax_local, ax_api], shrink=0.75, pad=0.05)
+    cbar.set_label("Exact Match Rate (EMR)", fontsize=11)
 
-    fig.suptitle("Bitwise Reproducibility Under Greedy Decoding", fontsize=12, y=1.0)
-    fig.savefig(FIGURES_DIR / "fig_emr_heatmap.pdf", bbox_inches="tight", dpi=600)
+    fig.suptitle("Bitwise Reproducibility Under Greedy Decoding", fontsize=14, y=1.0)
+    fig.savefig(FIGURES_DIR / "fig_emr_heatmap.pdf", bbox_inches="tight",
+                dpi=600, pad_inches=0.15)
     plt.close(fig)
     print("  [1/6] Generated: fig_emr_heatmap.pdf")
 
@@ -566,9 +572,9 @@ def generate_temp_effect(metrics, per_abstract_emr):
 
 def generate_multiturn_comparison(metrics, per_abstract_emr):
     """Grouped bar chart: EMR for 3 local models across 4 scenarios.
-    Bootstrap CI error bars.
+    Bootstrap CI error bars. Labels placed ABOVE the error bar tops.
     """
-    fig, ax = plt.subplots(figsize=(10, 5))
+    fig, ax = plt.subplots(figsize=(6.5, 4.5))
 
     local_models = ["gemma2_9b", "mistral_7b", "llama3_8b"]
     scenarios = [
@@ -609,28 +615,34 @@ def generate_multiturn_comparison(metrics, per_abstract_emr):
         bars = ax.bar(x + offsets[i], emrs, width,
                       yerr=[err_lo, err_hi],
                       label=MODEL_NAMES_SHORT[model], color=MODEL_COLORS[model],
-                      alpha=0.85, edgecolor="white", capsize=3,
-                      error_kw={"linewidth": 1.2, "capthick": 1.2})
+                      alpha=0.85, edgecolor="white", capsize=4,
+                      error_kw={"linewidth": 1.5, "capthick": 1.5})
 
-        for bar, val in zip(bars, emrs):
+        # Place labels above error bars using pixel offsets (immune to scaling)
+        for bar, val, ehi in zip(bars, emrs, err_hi):
             if val > 0:
-                ax.text(bar.get_x() + bar.get_width() / 2,
-                        bar.get_height() + 0.04,
-                        f"{val:.2f}", ha="center", va="bottom", fontsize=8)
+                top = val + ehi  # top of error bar
+                ax.annotate(f"{val:.2f}",
+                            xy=(bar.get_x() + bar.get_width() / 2, top),
+                            xytext=(0, 4), textcoords="offset points",
+                            ha="center", va="bottom",
+                            fontsize=7, fontweight="bold")
 
-    ax.set_ylabel("Exact Match Rate (EMR)", fontsize=11)
-    ax.set_title("Reproducibility Across Interaction Regimes (C1, t=0)", fontsize=12)
+    ax.set_ylim(0, 1.25)
+
+    ax.set_ylabel("Exact Match Rate (EMR)", fontsize=12)
+    ax.set_title("Reproducibility Across Interaction Regimes (C1, t=0)", fontsize=13)
     ax.set_xticks(x)
-    ax.set_xticklabels([label for _, _, label in scenarios], fontsize=10)
-    ax.set_ylim(0, 1.2)
-    ax.legend(fontsize=9, loc="lower right")
+    ax.set_xticklabels([label for _, _, label in scenarios], fontsize=11)
+    ax.legend(fontsize=10, loc="lower right")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.grid(axis="y", alpha=0.3, linestyle="--")
     ax.set_axisbelow(True)
 
     fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "fig_multiturn_comparison.pdf", bbox_inches="tight", dpi=600)
+    fig.savefig(FIGURES_DIR / "fig_multiturn_comparison.pdf", bbox_inches="tight",
+                dpi=600, pad_inches=0.12)
     plt.close(fig)
     print("  [3/6] Generated: fig_multiturn_comparison.pdf")
 
@@ -754,9 +766,9 @@ def generate_api_vs_local(metrics, per_abstract_emr):
 
 def generate_ned_comparison(metrics, per_abstract_ned):
     """Grouped bar chart of NED for 5 models x 2 tasks with bootstrap CI error bars.
-    Fixes Y-axis cutoff by adding 15% padding above max value.
+    Fixes Y-axis cutoff by adding 25% padding above max value.
     """
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(6.5, 4.5))
 
     tasks = ["extraction", "summarization"]
     x = np.arange(len(MODEL_ORDER))
@@ -809,28 +821,32 @@ def generate_ned_comparison(metrics, per_abstract_ned):
                       color=color, alpha=0.85, edgecolor="white",
                       capsize=3, error_kw={"linewidth": 1.2, "capthick": 1.2})
 
-        for bar, val in zip(bars, neds):
+        for bar, val, ehi in zip(bars, neds, err_hi):
             if val > 0.005:
-                ax.text(bar.get_x() + bar.get_width() / 2,
-                        bar.get_height() + 0.008,
-                        f"{val:.3f}", ha="center", va="bottom", fontsize=8)
+                top = val + ehi  # top of error bar
+                ax.annotate(f"{val:.3f}",
+                            xy=(bar.get_x() + bar.get_width() / 2, top),
+                            xytext=(0, 5), textcoords="offset points",
+                            ha="center", va="bottom",
+                            fontsize=8, fontweight="bold")
 
-    # Set Y-axis limit with 15% padding above max value to prevent label cutoff
+    # Set Y-axis limit with 30% padding above max value to prevent label cutoff
     max_val = max(all_max_vals) if all_max_vals else 0.3
-    ax.set_ylim(0, max_val * 1.20)
+    ax.set_ylim(0, max_val * 1.45)
 
-    ax.set_ylabel("Normalized Edit Distance (NED)", fontsize=11)
-    ax.set_title("Surface-Level Variability Under Greedy Decoding", fontsize=12)
+    ax.set_ylabel("Normalized Edit Distance (NED)", fontsize=13)
+    ax.set_title("Surface-Level Variability Under Greedy Decoding", fontsize=14)
     ax.set_xticks(x)
-    ax.set_xticklabels([MODEL_NAMES_SHORT[m] for m in MODEL_ORDER], fontsize=9)
-    ax.legend(fontsize=10)
+    ax.set_xticklabels([MODEL_NAMES_SHORT[m] for m in MODEL_ORDER], fontsize=12)
+    ax.legend(fontsize=11)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.grid(axis="y", alpha=0.3, linestyle="--")
     ax.set_axisbelow(True)
 
-    fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "fig_ned_comparison.pdf", bbox_inches="tight", dpi=600)
+    fig.subplots_adjust(bottom=0.15)
+    fig.savefig(FIGURES_DIR / "fig_ned_comparison.pdf", bbox_inches="tight",
+                dpi=600, pad_inches=0.15)
     plt.close(fig)
     print("  [5/6] Generated: fig_ned_comparison.pdf")
 
@@ -842,19 +858,21 @@ def generate_ned_comparison(metrics, per_abstract_ned):
 def generate_radar_chart(metrics):
     """Radar chart with 5 axes: EMR ext, EMR sum, 1-NED, ROUGE-L, BERTScore.
     Solid lines for local, dashed for API.
+    Labels placed well outside the radar circle via manual positioning.
+    Designed for figure* (0.65\\textwidth ~ 4.5in effective).
     """
     categories = [
-        "EMR\n(Extraction)",
-        "EMR\n(Summarization)",
-        "1-NED\n(Extraction)",
-        "ROUGE-L\n(Extraction)",
-        "BERTScore\n(Extraction)",
+        "EMR (Ext.)",
+        "EMR (Summ.)",
+        "1-NED (Ext.)",
+        "ROUGE-L (Ext.)",
+        "BERTScore (Ext.)",
     ]
     N = len(categories)
     angles = np.linspace(0, 2 * np.pi, N, endpoint=False).tolist()
     angles += angles[:1]
 
-    fig, ax = plt.subplots(figsize=(7, 7), subplot_kw=dict(polar=True))
+    fig, ax = plt.subplots(figsize=(6.5, 6.5), subplot_kw=dict(polar=True))
 
     for model in MODEL_ORDER:
         values = []
@@ -881,22 +899,29 @@ def generate_radar_chart(metrics):
 
         is_local = model in LOCAL_MODELS
         linestyle = "-" if is_local else "--"
-        linewidth = 2.2 if is_local else 2.0
+        linewidth = 2.5 if is_local else 2.2
         ax.plot(angles, values, linewidth=linewidth, linestyle=linestyle,
                 color=MODEL_COLORS[model], label=MODEL_NAMES_SHORT[model])
         ax.fill(angles, values, alpha=0.06, color=MODEL_COLORS[model])
 
+    # Use tick_params with pixel-based padding to place labels outside the circle
+    # This avoids bbox_inches="tight" cropping issues with data-coordinate labels
     ax.set_xticks(angles[:-1])
-    ax.set_xticklabels(categories, fontsize=8.5)
+    ax.set_xticklabels(categories, fontsize=10, fontweight="bold")
+    ax.tick_params(axis="x", pad=45)
+
     ax.set_ylim(0, 1.05)
     ax.set_yticks([0.2, 0.4, 0.6, 0.8, 1.0])
-    ax.set_yticklabels(["0.2", "0.4", "0.6", "0.8", "1.0"], fontsize=7.5)
-    ax.legend(loc="upper right", bbox_to_anchor=(1.30, 1.08), fontsize=8.5)
-    ax.set_title("Three-Level Reproducibility Profile\n(Greedy Decoding)",
-                 fontsize=11, pad=18)
+    ax.set_yticklabels(["0.2", "0.4", "0.6", "0.8", "1.0"], fontsize=8)
+    ax.set_rgrids([0.2, 0.4, 0.6, 0.8, 1.0], labels=["0.2", "0.4", "0.6", "0.8", "1.0"],
+                  fontsize=8)
 
-    fig.tight_layout()
-    fig.savefig(FIGURES_DIR / "fig_three_level_radar.pdf", bbox_inches="tight", dpi=600)
+    ax.legend(loc="upper right", bbox_to_anchor=(1.35, 1.12), fontsize=9)
+    ax.set_title("Three-Level Reproducibility Profile\n(Greedy Decoding)",
+                 fontsize=11, pad=25)
+
+    fig.savefig(FIGURES_DIR / "fig_three_level_radar.pdf", bbox_inches="tight",
+                dpi=600, pad_inches=0.3)
     plt.close(fig)
     print("  [6/6] Generated: fig_three_level_radar.pdf")
 
