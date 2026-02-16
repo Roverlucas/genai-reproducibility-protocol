@@ -499,7 +499,7 @@ We define five conditions (Table~\ref{tab:experimental-design}) that systematica
 \toprule
 \textbf{Cond.} & \textbf{Description} & \textbf{Temp.} & \textbf{Seed} & \textbf{Reps} & \textbf{Expected Outcome} \\
 \midrule
-C1 & Fixed seed, greedy & 0.0 & 42 (fixed) & 5 & Deterministic output \\
+C1 & Fixed seed, greedy & 0.0 & 42 (fixed) & 5 & Deterministic (if honored) \\
 C2 & Variable seeds, greedy & 0.0 & 5 different & 5 & Near-deterministic \\
 C3$_{t{=}0.0}$ & Temp.\ baseline & 0.0 & per-rep & 3 & Deterministic \\
 C3$_{t{=}0.3}$ & Low temperature & 0.3 & per-rep & 3 & Low variability \\
@@ -562,19 +562,19 @@ We adopt an operational definition of reproducibility at three levels, each mapp
 
 \begin{itemize}
     \item \textbf{Exact reproducibility} (string-level): Two outputs are identical character-by-character. Measured by \textit{Exact Match Rate (EMR)}.
-    \item \textbf{Near reproducibility} (edit-level): Two outputs differ only in minor surface variations (punctuation, whitespace, synonym substitution). Measured by \textit{Normalized Edit Distance (NED)}.
-    \item \textbf{Semantic reproducibility} (meaning-level): Two outputs convey the same information despite different phrasing. Measured by \textit{ROUGE-L F1} and \textit{BERTScore F1}.
+    \item \textbf{Near reproducibility} (surface-level): Two outputs differ only in minor surface variations (punctuation, whitespace, synonym substitution). Measured by \textit{Normalized Edit Distance (NED)} and \textit{ROUGE-L F1}.
+    \item \textbf{Semantic reproducibility} (meaning-level): Two outputs convey the same information despite different phrasing. Measured by \textit{BERTScore F1}.
 \end{itemize}
 
-This three-level framework allows us to distinguish between outputs that are bitwise identical (EMR~=~1), textually close (NED~$<$~0.05), and semantically equivalent (ROUGE-L~$>$~0.90). All variability metrics are computed over all $\binom{n}{2}$ unique output pairs within each experimental group (defined by model, task, condition, and abstract):
+This three-level framework allows us to distinguish between outputs that are bitwise identical (EMR~=~1), textually close (NED~$<$~0.05, ROUGE-L~$>$~0.90), and semantically equivalent (BERTScore~$>$~0.95). All variability metrics are computed over all $\binom{n}{2}$ unique output pairs within each experimental group (defined by model, task, condition, and abstract):
 
-\textbf{Exact Match Rate (EMR):} The fraction of output pairs that are character-for-character identical. EMR = 1.0 indicates perfect reproducibility; EMR = 0.0 indicates that no two outputs match exactly. With $n = 5$ repetitions per group ($\binom{5}{2} = 10$ pairs), per-abstract EMR values are discrete: $\{0.0, 0.1, \ldots, 1.0\}$; with $n = 3$ (C3 conditions), EMR takes values in $\{0.0, 0.333, 0.667, 1.0\}$. This granularity should be considered when interpreting standard deviations and confidence intervals for small sample sizes.
+\textbf{Exact Match Rate (EMR):} The fraction of output pairs that are character-for-character identical. EMR = 1.0 indicates perfect reproducibility; EMR = 0.0 indicates that no two outputs match exactly. With $n = 5$ repetitions per group ($\binom{5}{2} = 10$ pairs), per-abstract EMR values are discrete: $\{0.0, 0.1, \ldots, 1.0\}$; with $n = 3$ (C3 conditions), EMR takes values in $\{0.0, 0.333, 0.667, 1.0\}$. This granularity should be considered when interpreting standard deviations and confidence intervals for small sample sizes. Bootstrap inference on discrete statistics is well-established \cite{efron1993introduction}; with 10--30 abstracts per group, the percentile method provides valid coverage for bounded, discrete per-abstract EMR values.
 
 \textbf{Normalized Edit Distance (NED):} The Levenshtein edit distance \cite{levenshtein1966binary} between each pair, normalized by the length of the longer string. NED = 0.0 indicates identical outputs; higher values indicate greater textual divergence.
 
-\textbf{ROUGE-L F1:} The F1 score based on the longest common subsequence at the word level \cite{lin2004rouge}. This captures semantic similarity even when surface forms differ. ROUGE-L = 1.0 indicates identical word sequences.
+\textbf{ROUGE-L F1:} The F1 score based on the longest common subsequence at the word level \cite{lin2004rouge}. This captures lexical overlap even when word order or minor phrasing differs. ROUGE-L = 1.0 indicates identical word sequences.
 
-Our primary metrics (EMR, NED, ROUGE-L) focus on exact and near reproducibility, which are the most direct measures for our research question. To complement these surface-level metrics, we also compute \textbf{BERTScore F1} \cite{zhang2020bertscore}---an embedding-based semantic similarity metric---for all conditions except the Gemini 2.5 Pro runs, for which ROUGE-L and BERTScore are not reported (Table~\ref{tab:multiturn_rag}). BERTScore captures meaning-level equivalence that surface metrics may miss (e.g., paraphrases), providing a fourth perspective on reproducibility. For the structured extraction task, we additionally report \textbf{JSON validity rate}, \textbf{schema compliance rate}, and \textbf{field-level accuracy}, which measure whether outputs are syntactically valid JSON, contain all expected fields, and agree on individual field values across runs, respectively (see Supplementary Material~S6 for detailed results).
+Our primary metrics (EMR, NED, ROUGE-L) focus on exact and near reproducibility, which are the most direct measures for our research question. To complement these surface-level metrics, we also compute \textbf{BERTScore F1} \cite{zhang2020bertscore}---an embedding-based semantic similarity metric---for all conditions except the Gemini 2.5 Pro runs, for which BERTScore is not reported due to embedding model unavailability during that experiment phase (Table~\ref{tab:multiturn_rag}). BERTScore captures meaning-level equivalence that surface metrics may miss (e.g., paraphrases), providing a fourth perspective on reproducibility. For the structured extraction task, we additionally report \textbf{JSON validity rate}, \textbf{schema compliance rate}, and \textbf{field-level accuracy}, which measure whether outputs are syntactically valid JSON, contain all expected fields, and agree on individual field values across runs, respectively (see Supplementary Material~S6 for detailed results).
 
 For protocol overhead, we measure:
 \begin{itemize}
@@ -648,7 +648,7 @@ However, the temperature--reproducibility relationship is not uniformly monotoni
     \label{fig:multiturn}
 \end{figure}
 
-Gemma~2 9B and Mistral 7B achieve perfect EMR = 1.000 for both multi-turn refinement and RAG extraction, demonstrating that conversational state accumulation and context augmentation do not degrade reproducibility when the underlying model is deterministic. LLaMA~3 8B shows EMR = 0.880 for multi-turn and 0.960 for RAG---slightly lower than its single-turn extraction performance (0.987), consistent with error accumulation across dialogue turns.
+Gemma~2 9B and Mistral 7B achieve perfect EMR = 1.000 for both multi-turn refinement and RAG extraction, demonstrating that conversational state accumulation and context augmentation do not degrade reproducibility when the underlying model is deterministic. LLaMA~3 8B shows EMR = 0.880 for multi-turn and 0.960 for RAG---slightly lower than its single-turn extraction performance (0.987), consistent with error accumulation across dialogue turns, where divergence at an earlier turn propagates into subsequent prompt--response exchanges.
 
 Both API-served models exhibit near-zero reproducibility on these tasks. Claude Sonnet 4.5 achieves EMR = 0.040 for multi-turn refinement and EMR = 0.000 for RAG extraction. Gemini 2.5 Pro---despite supporting a \texttt{seed} parameter---achieves EMR = 0.010 for multi-turn and EMR = 0.070 for RAG (NED = 0.163 and 0.196, respectively). The Claude RAG result illustrates the extreme case: across 50~runs (10~abstracts $\times$ 5~repetitions), not a single pair of outputs was character-for-character identical (NED = 0.256). The fact that two independent API providers (Anthropic and Google) both exhibit near-zero EMR under complex interaction regimes---even when one supports seed-based reproducibility---supports the hypothesis that API non-determinism is not limited to single-turn tasks and is not provider-specific, but rather a general characteristic of cloud-served LLM APIs where longer outputs and additional context amplify server-side variability.
 
