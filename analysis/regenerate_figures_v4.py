@@ -461,12 +461,12 @@ def generate_emr_heatmap(metrics):
                         ax.text(j, i + 0.22, f"\u00b1{std:.3f}", ha="center", va="center",
                                 fontsize=9, color=color, alpha=0.85)
 
-        ax.set_title(panel_label, fontsize=13, pad=12, color=panel_color, fontweight="bold")
+        ax.set_title(panel_label, fontsize=10, pad=10, color=panel_color, fontweight="bold")
 
     cbar = plt.colorbar(im, ax=[ax_local, ax_api], shrink=0.75, pad=0.05)
     cbar.set_label("Exact Match Rate (EMR)", fontsize=11)
 
-    fig.suptitle("Bitwise Reproducibility Under Greedy Decoding", fontsize=14, y=1.0)
+    fig.suptitle("Bitwise Reproducibility Under Greedy Decoding", fontsize=10, y=1.0)
     fig.savefig(FIGURES_DIR / "fig_emr_heatmap.pdf", bbox_inches="tight",
                 dpi=600, pad_inches=0.15)
     plt.close(fig)
@@ -546,7 +546,7 @@ def generate_temp_effect(metrics, per_abstract_emr):
 
         ax.set_xlabel("Temperature", fontsize=11)
         title = "Extraction" if task == "extraction" else "Summarization"
-        ax.set_title(f"({'a' if idx == 0 else 'b'}) {title}", fontsize=12)
+        ax.set_title(f"({'a' if idx == 0 else 'b'}) {title}", fontsize=10)
         ax.set_xticks(x)
         ax.set_xlim(-0.05, 0.75)
         ax.set_ylim(-0.05, 1.12)
@@ -559,7 +559,7 @@ def generate_temp_effect(metrics, per_abstract_emr):
     axes[1].legend(fontsize=9, loc="upper right", framealpha=0.9)
 
     fig.suptitle("Effect of Sampling Temperature on Reproducibility",
-                 fontsize=13, y=1.02)
+                 fontsize=10, y=1.02)
     fig.tight_layout()
     fig.savefig(FIGURES_DIR / "fig_temp_effect.pdf", bbox_inches="tight", dpi=600)
     plt.close(fig)
@@ -630,11 +630,11 @@ def generate_multiturn_comparison(metrics, per_abstract_emr):
 
     ax.set_ylim(0, 1.25)
 
-    ax.set_ylabel("Exact Match Rate (EMR)", fontsize=12)
-    ax.set_title("Reproducibility Across Interaction Regimes (C1, t=0)", fontsize=13)
+    ax.set_ylabel("Exact Match Rate (EMR)", fontsize=10)
+    ax.set_title("Reproducibility Across Interaction Regimes (C1, t=0)", fontsize=10)
     ax.set_xticks(x)
-    ax.set_xticklabels([label for _, _, label in scenarios], fontsize=11)
-    ax.legend(fontsize=10, loc="lower right")
+    ax.set_xticklabels([label for _, _, label in scenarios], fontsize=9)
+    ax.legend(fontsize=9, loc="lower right")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.grid(axis="y", alpha=0.3, linestyle="--")
@@ -746,7 +746,7 @@ def generate_api_vs_local(metrics, per_abstract_emr):
 
     ax.set_ylabel("Score (higher = more reproducible)", fontsize=11)
     ax.set_title("API vs Local Models: Reproducibility Under Greedy Decoding",
-                 fontsize=12)
+                 fontsize=10)
     ax.set_xticks(x)
     ax.set_xticklabels(metric_labels, fontsize=11)
     ax.set_ylim(0, 1.18)
@@ -834,11 +834,11 @@ def generate_ned_comparison(metrics, per_abstract_ned):
     max_val = max(all_max_vals) if all_max_vals else 0.3
     ax.set_ylim(0, max_val * 1.45)
 
-    ax.set_ylabel("Normalized Edit Distance (NED)", fontsize=13)
-    ax.set_title("Surface-Level Variability Under Greedy Decoding", fontsize=14)
+    ax.set_ylabel("Normalized Edit Distance (NED)", fontsize=10)
+    ax.set_title("Surface-Level Variability Under Greedy Decoding", fontsize=10)
     ax.set_xticks(x)
-    ax.set_xticklabels([MODEL_NAMES_SHORT[m] for m in MODEL_ORDER], fontsize=12)
-    ax.legend(fontsize=11)
+    ax.set_xticklabels([MODEL_NAMES_SHORT[m] for m in MODEL_ORDER], fontsize=8, rotation=15, ha="right")
+    ax.legend(fontsize=9)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.grid(axis="y", alpha=0.3, linestyle="--")
@@ -918,7 +918,7 @@ def generate_radar_chart(metrics):
 
     ax.legend(loc="upper right", bbox_to_anchor=(1.35, 1.12), fontsize=9)
     ax.set_title("Three-Level Reproducibility Profile\n(Greedy Decoding)",
-                 fontsize=11, pad=25)
+                 fontsize=10, pad=25)
 
     fig.savefig(FIGURES_DIR / "fig_three_level_radar.pdf", bbox_inches="tight",
                 dpi=600, pad_inches=0.3)
