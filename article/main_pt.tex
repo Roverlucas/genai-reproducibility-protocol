@@ -1,0 +1,525 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{pifont}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{titlesec}
+
+\onehalfspacing
+
+\hypersetup{
+  pdfauthor={Lucas Rover, Yara de Souza Tadano},
+  pdftitle={Não-Determinismo Oculto em APIs de Modelos de Linguagem de Grande Escala},
+  colorlinks=true,
+  linkcolor=blue!70!black,
+  citecolor=blue!70!black,
+  urlcolor=blue!70!black,
+}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  numbersep=5pt,
+  xleftmargin=15pt,
+}
+
+\title{\textbf{Não-Determinismo Oculto em APIs de Modelos de Linguagem de Grande Escala: Um Protocolo Leve de Proveniência para Pesquisa Reprodutível em IA Generativa}}
+
+\author{
+  Lucas Rover\thanks{Autor correspondente. ORCID: 0000-0001-6641-9224. E-mail: lucasrover@utfpr.edu.br} \\
+  \small Programa de Pós-Graduação em Engenharia Mecânica \\
+  \small UTFPR -- Universidade Tecnológica Federal do Paraná \\
+  \small Ponta Grossa, Paraná, Brasil
+  \and
+  Yara de Souza Tadano\thanks{ORCID: 0000-0002-3975-3419. E-mail: yaratadano@utfpr.edu.br} \\
+  \small Programa de Pós-Graduação em Engenharia Mecânica \\
+  \small UTFPR -- Universidade Tecnológica Federal do Paraná \\
+  \small Ponta Grossa, Paraná, Brasil
+}
+
+\date{Fevereiro de 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent\textbf{Contexto:}
+Modelos de IA generativa produzem saídas não-determinísticas que variam entre execuções, mesmo sob configurações nominalmente idênticas. Essa variabilidade ameaça a reprodutibilidade de estudos que dependem de saídas de modelos de linguagem de grande escala (LLMs), porém a maioria das ferramentas existentes de rastreamento de experimentos não foi projetada para os desafios específicos de fluxos de trabalho de geração de texto.
+
+\noindent\textbf{Objetivos:}
+Propomos um protocolo leve, baseado em padrões abertos, para registro, versionamento e rastreamento de proveniência de experimentos com IA generativa. O protocolo introduz dois novos artefatos de documentação---\textit{Prompt Cards} e \textit{Run Cards}---e adota o modelo de dados W3C PROV para criar grafos de proveniência auditáveis e legíveis por máquina, vinculando cada saída ao seu contexto completo de geração.
+
+\noindent\textbf{Métodos:}
+Formalizamos o protocolo e o avaliamos empiricamente por meio de 4.104 experimentos controlados. Esses experimentos empregam nove implantações de modelos---três locais (LLaMA~3 8B, Mistral 7B, Gemma~2 9B), cinco APIs de código fechado (GPT-4, Claude Sonnet 4.5, Gemini 2.5 Pro, DeepSeek Chat, Perplexity Sonar) e um modelo de pesos abertos servido via nuvem (LLaMA~3 8B via Together AI, como sonda de quase-isolamento de efeitos de infraestrutura)---em quatro tarefas de PLN, sete ambientes de execução (um local mais seis provedores de API na nuvem). Todos os modelos são avaliados em extração e sumarização de turno único sob decodificação gulosa (10--30 resumos por modelo). Refinamento multi-turno e extração RAG são avaliados para os três modelos locais, Claude Sonnet 4.5 e Gemini 2.5 Pro sob decodificação gulosa (10 resumos cada). A robustez estatística é garantida por correção de Holm-Bonferroni em 68 testes de hipóteses, testes exatos de Fisher para reprodutibilidade binária, intervalos de confiança bootstrap corrigidos por viés e análise de sensibilidade. Medimos a variabilidade das saídas usando Taxa de Correspondência Exata (EMR), Distância de Edição Normalizada (NED), ROUGE-L e BERTScore, e quantificamos a sobrecarga do próprio protocolo em termos de tempo e armazenamento.
+
+\noindent\textbf{Resultados:}
+Sob decodificação gulosa ($t{=}0$), modelos locais alcançam reprodutibilidade quase perfeita (EMR médio de turno único = 0,960; Gemma~2 9B: 1,000 perfeito em todas as tarefas). Modelos de API de código fechado exibem não-determinismo oculto substancial abrangendo uma ampla faixa (EMR 0,010--0,800), produzindo uma lacuna de 3 vezes entre local e API observada em cinco provedores e sobrevivendo à correção de Holm-Bonferroni (51/68 testes significativos). A mesma arquitetura LLaMA~3 8B servida pelo endpoint na nuvem da Together AI alcança reprodutibilidade próxima à local (EMR = 1,000/0,880), fornecendo evidência de que a implantação em nuvem per se não impede o determinismo. Sob refinamento multi-turno e extração RAG, modelos locais mantêm EMR $\geq$ 0,880, enquanto modelos de API exibem reprodutibilidade próxima de zero (EMR $\leq$ 0,070). O protocolo adiciona menos de 1\% de sobrecarga.
+
+\noindent\textbf{Conclusões:}
+Nossos resultados fornecem evidência de que (1)~todos os cinco provedores de API exibem não-determinismo sob decodificação gulosa, enquanto modelos locais alcançam reprodutibilidade bitwise quase perfeita; (2)~a reprodutibilidade de API abrange uma ampla faixa (EMR 0,010--0,800); (3)~a lacuna se estende a regimes multi-turno e RAG; (4)~a implantação em nuvem per se não impede a reprodutibilidade (sonda de quase-isolamento via Together AI); (5)~a temperatura é o fator dominante controlável pelo usuário; e (6)~o registro de proveniência adiciona $<$1\% de sobrecarga. Todas as comparações primárias sobrevivem à correção de Holm-Bonferroni (51/68 significativas). O protocolo, a implementação e todos os dados são publicamente disponíveis.
+
+\bigskip
+\noindent\textbf{Palavras-chave:} reprodutibilidade, modelos de linguagem de grande escala, não-determinismo, proveniência, IA generativa, rastreamento de experimentos, W3C PROV, metodologia científica
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+%% ============================================================
+\section{Introdução}
+\label{sec:introduction}
+
+Modelos de linguagem de grande escala (LLMs) estão transformando rapidamente a forma como a ciência é conduzida, comunicada e aplicada. Na medicina, LLMs agora codificam conhecimento clínico em nível de especialista \citep{singhal2023large} e estão sendo integrados a fluxos de trabalho diagnósticos \citep{thirunavukarasu2023large}. Na pesquisa científica de forma mais ampla, a IA generativa está remodelando a revisão de literatura, extração de dados, geração de hipóteses e escrita \citep{birhane2023science}, com evidências experimentais mostrando ganhos substanciais de produtividade em tarefas profissionais \citep{noy2023experimental}. Essa adoção crescente se estende por disciplinas---da análise jurídica e educação a revisões sistemáticas e meta-análises---tornando as saídas de LLMs um componente cada vez mais comum da cadeia de evidências científicas.
+
+No entanto, essa integração rápida repousa sobre uma suposição frequentemente não examinada: que as saídas dos LLMs são reprodutíveis. Reprodutibilidade---a capacidade de obter resultados consistentes quando um experimento é repetido sob condições idênticas---é uma pedra angular do método científico. A crise de reprodutibilidade mais ampla é bem documentada: \citet{baker2016reproducibility} relatou na \textit{Nature} que mais de 70\% dos pesquisadores falharam em reproduzir o experimento de outro cientista. Na inteligência artificial, essa crise é particularmente aguda. \citet{hutson2018artificial} alertou na \textit{Science} que a IA enfrenta sua própria crise de reprodutibilidade, \citet{gundersen2018state} descobriu que apenas 6\% dos artigos de IA forneciam informação suficiente para reprodutibilidade completa, e \citet{ball2023ai} perguntou recentemente na \textit{Nature} se a IA está ativamente piorando o problema. \citet{stodden2016enhancing} enfatizou na \textit{Science} que métodos computacionais demandam seus próprios padrões de reprodutibilidade, um chamado ecoado pela análise de vazamento de dados de \citet{kapoor2023leakage} em 17 campos científicos dependentes de ML.
+
+A IA generativa introduz uma dimensão qualitativamente nova a esse desafio. Diferentemente de experimentos computacionais tradicionais, nos quais algoritmos determinísticos produzem resultados idênticos dados entradas idênticas, LLMs exibem variabilidade inerente em suas saídas devido à amostragem estocástica, não-determinismo de ponto flutuante na inferência distribuída em GPU e práticas opacas de versionamento de modelos \citep{chen2023chatgpt, zhu2023reproducibility}. O problema é agravado por vários fatores únicos dos fluxos de trabalho de geração de texto: (1)~o mesmo prompt pode gerar saídas semanticamente similares, porém textualmente distintas entre execuções; (2)~modelos baseados em API podem sofrer atualizações silenciosas que alteram o comportamento sem aviso ao usuário; (3)~parâmetros de temperatura e amostragem criam um espaço de alta dimensão de saídas possíveis; e (4)~o parâmetro \texttt{seed} oferecido por algumas APIs é consultivo e não uma garantia---a OpenAI documenta explicitamente que ``determinismo não é garantido'' mesmo quando um seed é especificado \citep{openai2024seed}, e a API do Claude da Anthropic não suporta um parâmetro seed.\ Estudos empíricos recentes confirmaram essas preocupações: \citet{atil2024nondeterminism} encontrou variações de acurácia de até 15\% entre execuções sob configurações supostamente determinísticas, e \citet{ouyang2024nondeterminism} demonstrou que a decodificação gulosa não garante determinismo na geração de código do ChatGPT.
+
+A demanda por transparência em IA não é apenas científica, mas também regulatória. O AI Act da UE \citep{euaiact2024} classifica sistemas de IA de alto risco---incluindo aqueles usados em saúde e pesquisa científica---como requerendo rastreabilidade e auditabilidade documentadas, e o Framework de Gestão de Riscos de IA do NIST \citep{nist2023ai} enfatiza transparência e responsabilidade como princípios centrais. Os princípios FAIR de dados \citep{wilkinson2016fair} fornecem uma base para governança de dados, porém nenhum padrão estabelecido existe para documentar o contexto completo necessário para entender, auditar ou reproduzir uma saída de IA generativa. Ferramentas existentes de rastreamento de experimentos como MLflow \citep{zaharia2018accelerating}, Weights \& Biases \citep{biewald2020experiment} e DVC \citep{kuprieiev2024dvc} foram projetadas primariamente para pipelines de treinamento e métricas numéricas. Embora valiosas para seus propósitos pretendidos, essas ferramentas carecem de recursos críticos para estudos de IA generativa: versionamento estruturado de prompts, hashing criptográfico de saídas para detecção de adulteração, grafos de proveniência vinculando saídas ao seu contexto completo de geração e fingerprinting de ambiente específico para condições de inferência.
+
+Neste artigo, abordamos essa lacuna com três contribuições, com o design do protocolo como a contribuição primária e mais duradoura (Figura~\ref{fig:visual-abstract}):
+
+\begin{enumerate}
+    \item \textbf{Um protocolo leve, baseado em padrões} para registro, versionamento e rastreamento de proveniência de experimentos com IA generativa. O protocolo introduz \textit{Prompt Cards} e \textit{Run Cards} como artefatos de documentação estruturada, e adota o modelo de dados W3C PROV \citep{w3cprov2013} para grafos de proveniência legíveis por máquina. Ele operacionaliza---e estende para fluxos de trabalho de IA generativa---a lista de verificação e mecanismos de badge de reprodutibilidade recentemente adotados pelo JAIR \citep{gundersen2024improving}, fornecendo infraestrutura legível por máquina que automatiza o que esses mecanismos exigem que pesquisadores documentem manualmente.
+
+    \item \textbf{Um estudo de caso empírico em larga escala} demonstrando tanto a eficácia do protocolo quanto o escopo do não-determinismo oculto nas APIs de LLM atuais. Através de 4.104 experimentos controlados com nove implantações de modelos em quatro tarefas de PLN, sete ambientes de execução e cinco condições (Seção~\ref{sec:experimental-setup}), documentamos uma lacuna substancial e previamente invisível de reprodutibilidade entre inferência local e baseada em API---uma lacuna que persiste em cinco provedores independentes de nuvem e se estende a regimes de geração multi-turno e com aumento por recuperação.
+
+    \item \textbf{Uma implementação de referência} em Python, juntamente com todos os dados experimentais e registros de proveniência, publicamente disponíveis para facilitar a adoção e verificação independente.
+\end{enumerate}
+
+O restante deste artigo está organizado da seguinte forma. A Seção~\ref{sec:related-work} revisa trabalhos relacionados sobre reprodutibilidade em IA e rastreamento de experimentos. A Seção~\ref{sec:protocol} formaliza o design do protocolo. A Seção~\ref{sec:experimental-setup} descreve a metodologia experimental. A Seção~\ref{sec:results} apresenta os resultados empíricos, revelando uma lacuna de reprodutibilidade de múltiplas vezes entre modelos locais e servidos por API que é invisível sem registro sistemático. A Seção~\ref{sec:discussion} discute achados, limitações e implicações práticas. A Seção~\ref{sec:conclusion} conclui com direções para trabalhos futuros.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_visual_abstract.pdf}
+\caption{Resumo visual do design do estudo e principais achados. \textbf{Esquerda:} O pipeline do protocolo de proveniência, desde a criação do Prompt Card até o registro do Run Card e geração do grafo W3C PROV. \textbf{Centro:} Taxas de Correspondência Exata (EMR) sob decodificação gulosa para oito das nove implantações de modelos, ilustrando a lacuna de reprodutibilidade entre modelos locais (verde, EMR $\geq$ 0,960) e modelos servidos por API (laranja/vermelho, EMR $\leq$ 0,800). \textbf{Direita:} Estatísticas-chave: 4.104 experimentos, 9 implantações em 7 ambientes de execução, 4 tarefas, $<$1\% de sobrecarga do protocolo.}
+\label{fig:visual-abstract}
+\end{figure}
+
+
+%% ============================================================
+\section{Trabalhos Relacionados}
+\label{sec:related-work}
+
+\subsection{Reprodutibilidade na Pesquisa em IA}
+
+A crise de reprodutibilidade em IA tem sido documentada extensivamente. \citet{gundersen2018state} pesquisou 400 artigos de IA e descobriu que apenas 6\% forneciam informação suficiente para reprodutibilidade completa. \citet{pineau2021improving} relatou sobre o Programa de Reprodutibilidade do NeurIPS 2019, que introduziu listas de verificação de reprodutibilidade e encontrou lacunas significativas entre reprodutibilidade relatada e real. Mais recentemente, \citet{gundersen2024improving} descreveu quatro mecanismos institucionais adotados pelo JAIR---listas de verificação de reprodutibilidade, resumos estruturados, badges e relatórios de reprodutibilidade---estabelecendo um padrão comunitário para o que deve ser documentado em pesquisa de IA. \citet{gundersen2018sources} identificou três níveis de reprodutibilidade em IA---método, dados e experimento---e argumentou que todos os três são necessários para o progresso científico. \citet{belz2021systematic} conduziu uma revisão sistemática de 601 artigos de PLN e confirmou sub-relato generalizado de detalhes experimentais; \citet{belz2022quantified} mostrou ainda que informações faltantes tornam praticamente impossível avaliar a reprodutibilidade de avaliações humanas em PLN. \citet{rogers2021changing} propôs estruturas de incentivo para melhorar normas de reprodutibilidade em linguística computacional. \citet{dodge2019show} propôs padrões aprimorados de relato para experimentos de ML, incluindo intervalos de confiança e testes de significância em múltiplas execuções, e \citet{gundersen2022sources} forneceu uma taxonomia abrangente de fontes de irreproducibilidade em aprendizado de máquina. De forma mais ampla, \citet{kapoor2023leakage} identificou vazamento de dados como um impulsionador generalizado de resultados irreproducíveis em 17 campos científicos que usam métodos baseados em ML.
+
+Para IA generativa especificamente, \citet{chen2023chatgpt} demonstrou que as saídas do ChatGPT em benchmarks de PLN exibem variabilidade não trivial entre consultas idênticas, mesmo com temperatura definida como zero. \citet{zhu2023reproducibility} mostrou que a reprodutibilidade se degrada ainda mais quando as tarefas envolvem julgamento subjetivo, como anotações de computação social. Mais recentemente, \citet{atil2024nondeterminism} mediu sistematicamente o não-determinismo de cinco LLMs sob configurações supostamente determinísticas em oito tarefas, encontrando variações de acurácia de até 15\% entre execuções e introduzindo a métrica Taxa de Acordo Total (TAR). \citet{ouyang2024nondeterminism} confirmou que $t{=}0$ (decodificação gulosa) não garante determinismo na geração de código do ChatGPT. Concorrentemente, \citet{yuan2025nondeterminism} rastreou tal não-determinismo a questões de precisão numérica em kernels de GPU e propôs LayerCast como estratégia de mitigação---uma correção de nível de hardware que reduz mas não elimina o não-determinismo, e que não está disponível para pesquisadores usando serviços de API fechados. A documentação do PyTorch \citep{pytorch2024deterministic} cataloga ainda fontes de não-determinismo em operações de GPU, fornecendo o flag \texttt{torch.use\_deterministic\_algorithms()} como mitigação parcial para treinamento; no entanto, esse flag não está disponível para inferência servida por API.
+
+Nossa métrica Taxa de Correspondência Exata (EMR) é intimamente relacionada à Taxa de Acordo Total (TAR) de \citet{atil2024nondeterminism}, que mede a fração de execuções produzindo a saída modal; EMR mede a fração de \textit{todos os pares de saídas} que coincidem exatamente, fornecendo uma medida mais sensível quando o acordo é baixo e nenhuma saída modal clara existe. Nosso trabalho complementa esses estudos de quatro maneiras específicas. Primeiro, enquanto estudos anteriores medem variabilidade post hoc, fornecemos um protocolo de proveniência estruturado que permite documentação e auditoria \textit{prospectivas}. Segundo, comparamos diretamente inferência local e baseada em API em tarefas idênticas com prompts idênticos em nove implantações de modelos e seis provedores independentes de nuvem. Terceiro, estendemos além da avaliação de turno único para incluir refinamento multi-turno e geração aumentada por recuperação. Quarto, quantificamos a sobrecarga do registro sistemático, demonstrando que o ``custo de saber'' é negligenciável.
+
+\subsection{Ferramentas de Rastreamento de Experimentos}
+
+Diversas ferramentas existem para rastreamento de experimentos de aprendizado de máquina, embora nenhuma tenha sido projetada especificamente para fluxos de trabalho de saídas textuais de IA generativa:
+
+\textbf{MLflow} \citep{zaharia2018accelerating} fornece rastreamento de experimentos, empacotamento de modelos e implantação. Registra parâmetros, métricas e artefatos, mas foca em pipelines de treinamento e resultados numéricos em vez de proveniência de geração de texto.
+
+\textbf{Weights \& Biases} \citep{biewald2020experiment} oferece rastreamento de experimentos com dashboards de visualização. Suporta registro de prompts mas carece de versionamento estruturado de prompts, hashing criptográfico de saídas e geração de grafos de proveniência.
+
+\textbf{DVC} \citep{kuprieiev2024dvc} fornece versionamento de dados através de operações semelhantes ao git. Embora efetivo para gestão de conjuntos de dados, não aborda proveniência no nível de execução ou documentação de prompts.
+
+\textbf{OpenAI Evals} \citep{openai2023evals} é um framework para avaliar saídas de LLM contra benchmarks. Fornece avaliação estruturada mas é fortemente acoplado ao ecossistema da OpenAI e não gera registros de proveniência interoperáveis.
+
+\textbf{LangSmith} \citep{langsmith2023} oferece rastreamento e avaliação para aplicações de LLM. Captura rastreamentos detalhados de execução mas usa um formato proprietário e requer conectividade na nuvem.
+
+De forma mais ampla, \citet{bommasani2022opportunities} identificou reprodutibilidade como um risco chave para modelos de base, e \citet{liang2023holistic} propôs o benchmark HELM para avaliação holística de modelos de linguagem. No espaço de proveniência, \citet{padovani2025yprov} introduziu recentemente o yProv4ML, um framework que captura proveniência de ML em formato PROV-JSON com modificações mínimas de código; nosso protocolo compartilha o compromisso com W3C PROV e hashing SHA-256 mas difere em três aspectos-chave: (i)~alvo na geração estocástica de texto em tempo de inferência em vez de pipelines de treinamento; (ii)~nossos Run Cards capturam metadados no nível de prompt não presentes em esquemas orientados a treinamento; e (iii)~fornecemos evidência empírica quantificando por que tal registro é necessário para modelos servidos por API.
+
+A Tabela~\ref{tab:comparison} fornece uma comparação sistemática recurso por recurso de nosso protocolo com essas ferramentas.
+
+\begin{table}[ht]
+\centering
+\caption{Comparação do nosso protocolo com ferramentas existentes de reprodutibilidade para experimentos de IA generativa. Marcas de verificação (\ding{51}) indicam suporte completo; til ($\sim$) indica suporte parcial; traços (--) indicam sem suporte.}
+\label{tab:comparison}
+\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\textbf{Recurso} & \textbf{Nosso} & \textbf{MLflow} & \textbf{W\&B} & \textbf{DVC} & \textbf{OAI Evals} & \textbf{LangSmith} \\
+\midrule
+Versionam.\ prompt (Prompt Card) & \ding{51} & -- & $\sim$ & -- & $\sim$ & $\sim$ \\
+Proveniência (W3C PROV) & \ding{51} & -- & -- & -- & -- & -- \\
+Hash criptográfico de saída & \ding{51} & -- & -- & \ding{51} & -- & -- \\
+Registro de seed e parâmetros & \ding{51} & \ding{51} & \ding{51} & -- & \ding{51} & \ding{51} \\
+Fingerprint de ambiente & \ding{51} & $\sim$ & $\sim$ & $\sim$ & -- & -- \\
+Hash de pesos do modelo & \ding{51} & -- & $\sim$ & \ding{51} & -- & -- \\
+Sobrecarga $<$1\% da inferência & \ding{51} & $\sim$ & $\sim$ & N/A & N/A & $\sim$ \\
+Projetado para saída textual GenAI & \ding{51} & -- & -- & -- & \ding{51} & \ding{51} \\
+Padrão aberto (PROV-JSON) & \ding{51} & -- & -- & -- & -- & -- \\
+Local-first (sem dep.\ nuvem) & \ding{51} & \ding{51} & -- & \ding{51} & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Proveniência na Computação Científica}
+
+Proveniência de dados---a linhagem de dados através de transformações---tem uma rica história em sistemas de banco de dados e fluxos de trabalho científicos \citep{herschel2017survey}. A família de especificações W3C PROV \citep{w3cprov2013} fornece um modelo de dados padronizado para representar proveniência como grafos acíclicos direcionados de \textit{entidades}, \textit{atividades} e \textit{agentes}. \citet{samuel2022computational} aplicou rastreamento de proveniência a fluxos de trabalho de biologia computacional, demonstrando seu valor para reprodutibilidade. No entanto, até onde sabemos, nenhum trabalho anterior aplicou W3C PROV especificamente a fluxos de trabalho de experimentos de IA generativa, nos quais o desafio envolve não apenas rastrear a linhagem de dados, mas também capturar o contexto de geração estocástica que determina a variabilidade da saída.
+
+Em conjunto, essas lacunas apontam para uma necessidade clara: um protocolo leve, baseado em padrões, que faça a ponte entre a inferência de IA generativa e a infraestrutura de proveniência já estabelecida na computação científica. A próxima seção apresenta nosso design para tal protocolo.
+
+
+%% ============================================================
+\section{Design do Protocolo}
+\label{sec:protocol}
+
+Nosso protocolo aborda a questão: \textit{Qual é o conjunto mínimo de metadados que deve ser capturado para cada execução de IA generativa para permitir auditoria, avaliação de reprodutibilidade e rastreamento de proveniência?} Abordamos essa questão através de quatro componentes complementares.
+
+\subsection{Escopo e Princípios de Design}
+
+O protocolo é projetado em torno de três princípios:
+
+\begin{enumerate}
+    \item \textbf{Completude}: Todo fator que pode influenciar uma saída generativa deve ser capturado---texto do prompt, identidade e versão do modelo, parâmetros de inferência, estado do ambiente e timestamps.
+    \item \textbf{Sobrecarga negligenciável}: O processo de registro não deve afetar materialmente o experimento. Visamos $<$1\% de sobrecarga relativa ao tempo de inferência.
+    \item \textbf{Interoperabilidade}: Todos os artefatos são armazenados em formatos abertos e legíveis por máquina (JSON, PROV-JSON), alinhados com os princípios FAIR \citep{wilkinson2016fair}, para permitir integração de ferramentas e preservação de longo prazo.
+\end{enumerate}
+
+\subsection{Prompt Cards}
+\label{sec:prompt-cards}
+
+Um \textit{Prompt Card} é um artefato de documentação versionado que captura a lógica de design e metadados para um modelo de prompt usado em experimentos. Cada Prompt Card contém:
+
+\begin{itemize}
+    \item \texttt{prompt\_id}: Identificador único
+    \item \texttt{prompt\_hash}: Hash SHA-256 do texto do prompt, permitindo detecção de adulteração
+    \item \texttt{version}: Número de versão semântica
+    \item \texttt{task\_category}: Classificação da tarefa (ex.: sumarização, extração)
+    \item \texttt{objective}: Descrição em linguagem natural do que o prompt foi projetado para alcançar
+    \item \texttt{assumptions}: Suposições explícitas sobre entradas e comportamento esperado
+    \item \texttt{limitations}: Limitações conhecidas ou modos de falha
+    \item \texttt{target\_models}: Modelos para os quais o prompt foi projetado e testado
+    \item \texttt{expected\_output\_format}: Descrição da estrutura de saída esperada
+    \item \texttt{interaction\_regime}: Turno único, multi-turno ou cadeia de pensamento
+    \item \texttt{change\_log}: Histórico de modificações
+\end{itemize}
+
+Prompt Cards servem dois propósitos: documentam a intenção de design (apoiando a compreensão humana) e fornecem uma referência citável e hashável para rastreamento automatizado de proveniência. O conceito se inspira em Model Cards \citep{mitchell2019model}, Datasheets for Datasets \citep{gebru2021datasheets} e fichas de informação de modelo para avaliação de reprodutibilidade \citep{kapoor2023leakage}.
+
+\subsection{Run Cards}
+\label{sec:run-cards}
+
+Um \textit{Run Card} captura o contexto completo de execução de uma única execução de IA generativa. Cada Run Card registra 24 campos centrais organizados em cinco grupos:
+
+\begin{enumerate}
+    \item \textbf{Identificação}: \texttt{run\_id}, \texttt{task\_id}, \texttt{task\_category}, \texttt{prompt\_hash}, \texttt{prompt\_text}
+    \item \textbf{Contexto do modelo}: \texttt{model\_name}, \texttt{model\_version}, \texttt{weights\_hash}, \texttt{model\_source}
+    \item \textbf{Parâmetros}: \texttt{inference\_params} (temperatura, top\_p, top\_k, max\_tokens, seed, estratégia de decodificação), \texttt{params\_hash}
+    \item \textbf{Entrada/Saída}: \texttt{input\_text}, \texttt{input\_hash}, \texttt{output\_text}, \texttt{output\_hash}, \texttt{output\_metrics}
+    \item \textbf{Metadados de execução}: \texttt{environment}, \texttt{environment\_hash}, \texttt{code\_commit}, timestamps, \texttt{execution\_duration\_ms}, \texttt{logging\_overhead\_ms}, \texttt{storage\_kb}
+\end{enumerate}
+
+Para modelos servidos por API, campos de extensão opcionais capturam metadados específicos do provedor: \texttt{api\_request\_id}, \texttt{api\_response\_headers}, \texttt{api\_model\_version\_returned}, \texttt{api\_region} e um campo \texttt{seed\_status} que distingue entre seeds que foram ``enviados'' para a API, ``apenas-registrados'' (registrados para paridade de protocolo mas não enviados, como no Claude), ou ``não-suportados'' pelo provedor.
+
+\subsection{Integração W3C PROV}
+\label{sec:prov}
+
+Cada grupo experimental é automaticamente traduzido em um documento W3C PROV-JSON \citep{w3cprov2013} que expressa a proveniência de geração como um grafo direcionado. O mapeamento define:
+
+\begin{itemize}
+    \item \textbf{Entidades}: Prompt, TextoEntrada, VersãoModelo, ParâmetrosInferência, Saída, MetadadosExecução
+    \item \textbf{Atividades}: GeraçãoExecução (a execução de inferência)
+    \item \textbf{Agentes}: Pesquisador, ExecutorSistema (o ambiente de execução)
+\end{itemize}
+
+Relações PROV capturam a estrutura causal:
+\begin{itemize}
+    \item \texttt{used}: GeraçãoExecução usou Prompt, TextoEntrada, VersãoModelo, ParâmetrosInferência
+    \item \texttt{wasGeneratedBy}: Saída foi gerada por GeraçãoExecução
+    \item \texttt{wasAssociatedWith}: GeraçãoExecução foi associada com Pesquisador, ExecutorSistema
+    \item \texttt{wasAttributedTo}: Saída foi atribuída a Pesquisador
+    \item \texttt{wasDerivedFrom}: Saída foi derivada de TextoEntrada
+\end{itemize}
+
+\subsection{Lista de Verificação de Reprodutibilidade}
+\label{sec:checklist}
+
+Fornecemos uma lista de verificação de 15 itens organizada em quatro categorias---Documentação de Prompt, Modelo e Ambiente, Execução e Saída, e Proveniência---que pesquisadores podem usar para autoavaliar a reprodutibilidade de seus estudos de IA generativa.
+
+\subsection{Definição Formal e Completude de Auditoria}
+\label{sec:formal}
+
+Definimos o protocolo como uma tupla $\mathcal{P} = (\mathit{PC}, \mathit{RC}, \mathit{G}, \mathit{CL})$, onde $\mathit{PC}$ é um Prompt Card, $\mathit{RC}$ é um Run Card, $G$ é um grafo W3C PROV e $\mathit{CL}$ é a lista de verificação de reprodutibilidade. Cada Run Card $\mathit{RC}_i$ é uma tupla de grupos de campos: $\mathit{RC}_i = (\mathit{Id}, \mathit{Mod}, \mathit{Par}, \mathit{IO}, \mathit{Env}, H)$, onde $H$ denota o conjunto de cinco hashes SHA-256.
+
+O protocolo satisfaz a seguinte propriedade de \textit{completude de auditoria}: para um conjunto de 10 perguntas de auditoria $\{Q_1, \ldots, Q_{10}\}$, cada $Q_j$ é respondível se e somente se todos os grupos de campos estão preenchidos:
+
+\begin{equation}
+\forall Q_j \in \{Q_1, \ldots, Q_{10}\}: \, \text{respondível}(Q_j, \mathit{RC}_i) \;\Leftrightarrow\; \bigwedge_{g \in \text{requerido}(Q_j)} g \subseteq \mathit{RC}_i
+\label{eq:audit-completeness}
+\end{equation}
+
+A propriedade de \textit{diagnóstico diferencial} segue dos campos de hash: dados dois Run Cards $\mathit{RC}_a, \mathit{RC}_b$ com $H_{\text{saída}}^a \neq H_{\text{saída}}^b$, o protocolo permite identificação automática da fonte de divergência comparando os hashes restantes.
+
+
+%% ============================================================
+\section{Configuração Experimental}
+\label{sec:experimental-setup}
+
+Projetamos um experimento controlado para avaliar simultaneamente (a)~as características de reprodutibilidade de saídas de LLM sob condições variáveis e (b)~a sobrecarga imposta pelo nosso protocolo de registro.
+
+\subsection{Modelos e Infraestrutura}
+
+Avaliamos nove implantações de modelos representando três paradigmas de implantação: três modelos locais de pesos abertos, cinco modelos proprietários servidos por API na nuvem e um modelo de pesos abertos servido via API na nuvem (para sonda de quase-isolamento). Todos os modelos locais foram servidos através do Ollama v0.15.5 \citep{ollama2024} em um sistema Apple M4 com 24\,GB de memória unificada rodando macOS~14.6 com Python~3.14.3.
+
+\subsubsection{Modelos Locais}
+
+\textbf{LLaMA~3 8B} \citep{grattafiori2024llama3}: Um modelo de pesos abertos em quantização Q4\_0. A implantação local fornece controle completo sobre o ambiente de execução, eliminando fatores confundidores como latência de rede, batching do lado do servidor e atualizações silenciosas do modelo.
+
+\textbf{Mistral 7B} \citep{jiang2023mistral}: Um modelo de pesos abertos (quantização Q4\_0) com mecanismo de atenção de janela deslizante, fornecendo um segundo ponto de dados para reprodutibilidade de inferência local em escala de parâmetros similar.
+
+\textbf{Gemma~2 9B} \citep{team2024gemma}: O modelo de pesos abertos do Google (quantização Q4\_0), representando um terceiro modelo local de uma família de modelos independente.
+
+\subsubsection{Modelos Servidos por API}
+
+\textbf{GPT-4} (OpenAI, \texttt{gpt-4-0613}) \citep{achiam2023gpt4}: Acessado via API da OpenAI com parâmetros de seed controlados.
+
+\textbf{Claude Sonnet 4.5} (Anthropic, \texttt{claude-sonnet-4-5-20250514}) \citep{anthropic2024claude}: Acessado via API da Anthropic usando um runner leve baseado em \texttt{urllib}. A API do Claude não suporta parâmetro \texttt{seed}; definimos \texttt{temperature=0} para decodificação gulosa.
+
+\textbf{Gemini 2.5 Pro} (Google, \texttt{gemini-2.5-pro-preview-05-06}) \citep{reid2024gemini15}: Acessado via API REST do Google AI Studio. A API do Gemini suporta parâmetro \texttt{seed}; definimos \texttt{seed=42} e \texttt{temperature=0}.
+
+\textbf{DeepSeek Chat} (DeepSeek, \texttt{deepseek-chat}): Acessado via API compatível com OpenAI. Representa um quarto provedor de API independente.
+
+\textbf{Perplexity Sonar} (Perplexity, \texttt{sonar}): Um modelo de linguagem online aumentado por busca. Diferentemente dos outros modelos, Sonar incorpora resultados de busca web em tempo real em seu contexto de geração.
+
+\textbf{LLaMA~3 8B via Together AI}: A mesma arquitetura LLaMA~3 8B do nosso modelo implantado localmente, mas servida pelo endpoint de inferência na nuvem da Together AI (variante ``Lite'' com quantização INT4). Essa implantação fornece uma sonda de quase-isolamento.
+
+\subsection{Tarefas}
+
+Avaliamos quatro tarefas que abrangem o espectro de estrutura de saída e complexidade de interação:
+
+\textbf{Tarefa 1: Sumarização Científica.} Dado um resumo científico, produzir um sumário conciso em exatamente três sentenças cobrindo a contribuição principal, metodologia e resultado quantitativo chave.
+
+\textbf{Tarefa 2: Extração Estruturada.} Dado um resumo científico, extrair cinco campos (objetivo, método, resultado\_chave, modelo\_ou\_sistema, benchmark) em um objeto JSON.
+
+\textbf{Tarefa 3: Refinamento Multi-turno.} Um diálogo de três turnos no qual o modelo primeiro extrai informação estruturada, depois recebe feedback solicitando mais detalhes, e finalmente produz uma extração refinada.
+
+\textbf{Tarefa 4: Extração RAG.} A mesma tarefa de extração estruturada da Tarefa~2, mas com uma passagem de contexto recuperada adicional preposta à entrada.
+
+\subsection{Dados de Entrada}
+
+Utilizamos 30 resumos científicos amplamente citados de artigos seminais de IA/ML, incluindo \citet{vaswani2017attention} (Transformer), \citet{devlin2019bert} (BERT), \citet{brown2020language} (GPT-3), \citet{raffel2020exploring} (T5), \citet{wei2022chain} (Cadeia de Pensamento), bem como trabalhos seminais sobre GANs, ResNets, VAEs, LSTMs, CLIP, DALL-E~2, Stable Diffusion, LLaMA, InstructGPT, PaLM e outros.
+
+\subsection{Condições Experimentais}
+
+Definimos cinco condições que variam sistematicamente os fatores hipotetizados para afetar a reprodutibilidade:
+
+\textbf{C1 (Seed fixo, decodificação gulosa):} Temperatura = 0, seed = 42 para todas as 5 repetições.
+
+\textbf{C2 (Seeds variáveis, decodificação gulosa):} Temperatura = 0, seeds = \{42, 123, 456, 789, 1024\}.
+
+\textbf{C3 (Varredura de temperatura):} Três subcondições em $t \in \{0,0; 0,3; 0,7\}$ com 3 repetições cada.
+
+\textbf{Total geral: 4.104 execuções válidas.}
+
+\subsection{Métricas}
+\label{sec:metrics}
+
+Definimos \textbf{não-determinismo no nível do provedor} operacionalmente como EMR~$<$~1,0 em chamadas de API idênticas com seed fixo, temperatura$\,{=}\,$0 e prompt.
+
+Adotamos uma definição operacional de reprodutibilidade em três níveis:
+
+\begin{itemize}
+    \item \textbf{Reprodutibilidade exata} (nível de string): Duas saídas são idênticas caractere por caractere. Medida pela \textit{Taxa de Correspondência Exata (EMR)}.
+    \item \textbf{Quase reprodutibilidade} (nível de edição): Duas saídas diferem apenas em variações superficiais menores. Medida pela \textit{Distância de Edição Normalizada (NED)}.
+    \item \textbf{Reprodutibilidade semântica} (nível de significado): Duas saídas transmitem a mesma informação apesar de fraseamento diferente. Medida por \textit{ROUGE-L F1} e \textit{BERTScore F1}.
+\end{itemize}
+
+
+%% ============================================================
+\section{Resultados}
+\label{sec:results}
+
+\subsection{Reprodutibilidade Sob Decodificação Gulosa}
+
+\input{tables/table_emr_greedy.tex}
+\input{tables/table_three_level.tex}
+
+\subsubsection{Modelos Locais: Reprodutibilidade Quase Perfeita a Perfeita}
+
+\textbf{Achado 1: Gemma~2 9B alcança reprodutibilidade bitwise perfeita sob decodificação gulosa.} Em todas as tarefas e condições com $t{=}0$, Gemma~2 9B produz EMR = 1,000 com NED = 0,000---cada saída é idêntica caractere por caractere entre repetições.
+
+\textbf{Achado 2: Todos os três modelos locais alcançam alta reprodutibilidade.} LLaMA~3 8B atinge EMR = 0,987 para extração e 0,947 para sumarização; Mistral 7B alcança 0,960 e 0,840, respectivamente. Os pequenos desvios da reprodutibilidade perfeita em LLaMA~3 e Mistral 7B são \textit{inteiramente atribuíveis} a um efeito de inicialização a frio na primeira chamada de inferência após o carregamento do modelo.
+
+\subsubsection{Modelos Servidos por API: Não-Determinismo Oculto Substancial}
+
+\textbf{Achado 3: Todos os cinco modelos servidos por API exibem não-determinismo sob decodificação gulosa, observado independentemente em cinco provedores.} Sob $t{=}0$, DeepSeek Chat alcança a reprodutibilidade mais alta entre APIs (EMR = 0,800 para extração), seguido por GPT-4 (0,443/0,230), Claude Sonnet 4.5 (0,190/0,020), Perplexity Sonar (0,100/0,010) e Gemini 2.5 Pro (0,010 multi-turno, 0,070 RAG).
+
+\input{tables/table_api_vs_local.tex}
+
+\textbf{Achado 3b: Um modelo de pesos abertos servido por nuvem alcança reprodutibilidade próxima à local.} A mesma arquitetura LLaMA~3 8B servida pelo endpoint da Together AI alcança EMR = 1,000 para extração e EMR = 0,880 para sumarização---quase idêntico à versão implantada localmente. Este resultado fornece evidência de que a implantação em nuvem \textit{per se} não causa não-determinismo.
+
+Sob a condição gulosa representativa para cada modelo, o EMR médio de turno único é \textbf{0,960 para modelos locais} vs.\ \textbf{0,325 para modelos de API de código fechado}---uma lacuna de reprodutibilidade de 3 vezes. \textit{Sem registro sistemático, esse não-determinismo seria inteiramente invisível.}
+
+\subsubsection{Efeitos da Temperatura Através dos Modelos}
+
+\textbf{Achado 4: Temperatura é o fator dominante \textit{controlável pelo usuário} que afeta a variabilidade para modelos locais; para modelos servidos por API, a relação é mais complexa.}
+
+\input{tables/table_temp_sweep.tex}
+
+Aumentar a temperatura de 0,0 para 0,7 reduz EMR a zero para todos os modelos em sumarização. BERTScore F1 permanece acima de 0,94 em todas as condições, indicando que o não-determinismo é primariamente um fenômeno de \textit{fraseamento} e não de \textit{significado}.
+
+\subsection{Reprodutibilidade Multi-Turno e RAG}
+
+\textbf{Achado 5: A lacuna de reprodutibilidade local-vs-API se estende a regimes de interação complexos.}
+
+\input{tables/table_multiturn_rag.tex}
+
+Gemma~2 9B e Mistral 7B alcançam EMR = 1,000 perfeito para refinamento multi-turno e extração RAG. Ambos os modelos servidos por API exibem reprodutibilidade próxima de zero nessas tarefas. Claude Sonnet 4.5 alcança EMR = 0,040 para multi-turno e EMR = 0,000 para RAG. Gemini 2.5 Pro alcança EMR = 0,010 para multi-turno e EMR = 0,070 para RAG.
+
+\subsection{Comparação Entre Modelos}
+
+A lacuna de reprodutibilidade entre inferência local e baseada em API é estatisticamente significativa. Todos os valores $p$ sobrevivem à correção de Bonferroni para as quatro comparações primárias. Ambos os tamanhos de efeito são muito grandes ($d > 1,6$).
+
+\subsection{Sobrecarga do Protocolo}
+
+\input{tables/table_overhead.tex}
+
+O protocolo adiciona menos de 1\% de sobrecarga para todos os cinco modelos avaliados, com tempo médio de registro variando de 21--30\,ms dependendo do modelo e tarefa. A sobrecarga de armazenamento permanece modesta em aproximadamente 4\,KB por registro de execução.
+
+
+%% ============================================================
+\section{Discussão}
+\label{sec:discussion}
+
+Os resultados precedentes pintam um quadro claro e consistente: modelos implantados localmente sob decodificação gulosa alcançam reprodutibilidade bitwise quase perfeita a perfeita em todas as quatro tarefas, enquanto modelos servidos por API---de cinco provedores independentes---exibem variabilidade oculta substancial que pesquisadores não podem controlar.
+
+\subsection{Implicações para a Prática de Reprodutibilidade}
+
+Nossos resultados geram várias recomendações acionáveis:
+
+\textbf{Use decodificação gulosa com modelos locais para máxima reprodutibilidade.} Gemma~2 9B alcançou EMR = 1,000 \textit{perfeito} em todas as tarefas sob decodificação gulosa.
+
+\textbf{Não-determinismo de API é observado em todos os cinco provedores.} Pesquisadores usando \textit{qualquer} modelo servido por API nunca devem assumir reprodutibilidade sem verificação.
+
+\textbf{Prefira formatos de saída estruturados quando possível.} A reprodutibilidade consistentemente mais alta da tarefa de extração em todas as nove implantações demonstra que restrições de formato de saída melhoram diretamente a reprodutibilidade.
+
+\textbf{Inclua execuções de aquecimento para modelos locais.} Adicionar uma única chamada de aquecimento descartada antes da coleta de dados elimina o efeito de inicialização a frio.
+
+\textbf{Registre de forma abrangente; o custo é negligenciável.} A menos de 1\% de sobrecarga e aproximadamente 4\,KB por execução, não há razão prática para não aplicar registro abrangente.
+
+\subsection{A Lacuna de Reprodutibilidade: Do Turno Único aos Regimes Complexos}
+
+A lacuna de reprodutibilidade de 3 vezes entre modelos locais (EMR = 0,960) e modelos de API de código fechado (EMR = 0,325) persiste em todos os cinco provedores e quatro tarefas.
+
+\subsection{O Papel da Proveniência}
+
+Os grafos W3C PROV gerados pelo nosso protocolo servem múltiplos propósitos:
+
+\begin{enumerate}
+    \item \textbf{Comparação automatizada}: Comparando grafos PROV de duas execuções, pode-se automaticamente identificar quais fatores diferiram.
+    \item \textbf{Rastreamento de linhagem}: Quando saídas são usadas como entradas para processos posteriores, a cadeia de proveniência pode ser estendida para rastrear qualquer resultado final até seu contexto completo de geração.
+    \item \textbf{Conformidade}: Para domínios regulados (saúde, jurídico, finanças), documentos PROV fornecem a trilha de evidências formais exigida por padrões de auditoria \citep{nist2023ai} e regulações emergentes como o AI Act da UE \citep{euaiact2024}.
+\end{enumerate}
+
+\subsection{Fontes de Não-Determinismo na Inferência Distribuída}
+\label{sec:nondeterminism-sources}
+
+Nossos experimentos estabelecem \textit{que} modelos servidos por API exibem não-determinismo sob decodificação gulosa, enquanto modelos locais de GPU única não. Seis mecanismos bem documentados na inferência distribuída de GPU podem independentemente produzir saídas não-determinísticas mesmo sob decodificação gulosa:
+
+\begin{enumerate}
+    \item \textbf{Aritmética de ponto flutuante não-associativa} \citep{higham2002accuracy}: A causa raiz fundamental.
+    \item \textbf{Acumulação em precisão mista} \citep{micikevicius2018mixed}: Formatos de precisão reduzida (FP16 ou BF16).
+    \item \textbf{Paralelismo tensorial e não-determinismo de all-reduce} \citep{shoeybi2019megatron}: Distribuição entre múltiplas GPUs.
+    \item \textbf{Não-determinismo de kernel de atenção}: FlashAttention \citep{dao2022flashattention} introduz não-determinismo através de sua estratégia de paralelização \citep{golden2024flashstable}.
+    \item \textbf{Batching dinâmico e escalonamento de requisições} \citep{yu2022orca, kwon2023vllm}: Composições de batch diferentes levam a padrões diferentes de acesso à memória.
+    \item \textbf{Decodificação especulativa} \citep{leviathan2023speculative}: Um componente estocástico adicional na amostragem de aceitação/rejeição.
+\end{enumerate}
+
+\textbf{Por que modelos locais escapam desses mecanismos.} Nossa implantação local (GPU única Apple M4, servidor Ollama, uma requisição por vez) elimina os mecanismos (3)--(6) inteiramente. A reprodutibilidade quase perfeita dos nossos modelos locais (EMR médio = 0,960) é, portanto, uma \textit{consequência prevista} da ausência desses mecanismos de sistemas distribuídos.
+
+\subsection{Limitações}
+\label{sec:limitations}
+
+\subsubsection{Validade Interna}
+
+\textbf{Tamanho amostral.} LLaMA~3 usa 30~resumos por condição, enquanto os modelos mais novos usam 10~resumos. Com $n = 30$, o poder estatístico excede 0,999 para todas as comparações primárias. Uma análise de subamostra balanceada confirmou que a lacuna observada é robusta à equalização do tamanho amostral.
+
+\textbf{Lacuna de versionamento de código.} As 330 execuções iniciais (LLaMA~3 8B e GPT-4, 7 de fevereiro de 2026) foram executadas antes da inicialização do repositório git; esses registros contêm \texttt{code\_commit: ``no-git-repo''}. As 3.774 execuções restantes (92\% do total) incluem hashes de commit git válidos.
+
+\subsubsection{Validade Externa}
+
+\textbf{Nove implantações, sete ambientes de execução.} Nossa avaliação cobre três modelos locais, cinco modelos de API de código fechado de provedores independentes e um modelo de pesos abertos servido por nuvem. No entanto, outros modelos podem exibir características diferentes.
+
+\textbf{Quatro tarefas.} Nossa suíte de tarefas não cobre geração de código, raciocínio matemático ou escrita criativa.
+
+\textbf{Apenas inglês, domínio único.} Nossos dados de entrada consistem em 30 resumos científicos em inglês de artigos de IA/ML.
+
+\subsubsection{Validade de Construto}
+
+\textbf{Métricas no nível de superfície.} Nossas métricas capturam similaridade textual em vez de semântica. Para preencher essa lacuna, reportamos BERTScore F1 ao lado de EMR: BERTScore permanece acima de 0,97 sob decodificação gulosa em todos os modelos, confirmando que saídas de API transmitem significado equivalente apesar da divergência lexical.
+
+
+%% ============================================================
+\section{Conclusão}
+\label{sec:conclusion}
+
+Apresentamos um protocolo leve para registro, versionamento e rastreamento de proveniência de experimentos com IA generativa, introduzindo Prompt Cards e Run Cards como novos artefatos de documentação fundamentados no modelo de dados W3C PROV. Através de 4.104 experimentos controlados com nove implantações de modelos em quatro tarefas de PLN, 30 resumos e sete ambientes de execução, demonstramos sete achados-chave:
+
+\begin{enumerate}
+    \item \textbf{Não-determinismo de API é consistente em todos os cinco provedores avaliados.} Todos os cinco modelos de API exibem não-determinismo sob decodificação gulosa ($t{=}0$), enquanto todos os três modelos locais alcançam EMR médio = 0,960.
+
+    \item \textbf{Reprodutibilidade de API varia substancialmente entre provedores.} Dentro da categoria API, EMR varia de 0,800 (DeepSeek Chat) a 0,010 (Perplexity Sonar para sumarização).
+
+    \item \textbf{Modelos locais podem alcançar reprodutibilidade bitwise perfeita.} Gemma~2 9B atinge EMR = 1,000 em todas as quatro tarefas sob decodificação gulosa.
+
+    \item \textbf{A lacuna local-vs-API se estende a regimes de interação complexos.} Modelos locais alcançam EMR $\geq$ 0,880 para refinamento multi-turno e extração RAG, enquanto ambos os modelos de API testados nessas tarefas exibem EMR quase zero ($\leq$ 0,070).
+
+    \item \textbf{Temperatura é o fator dominante controlável pelo usuário para modelos locais.} Aumentar de $t{=}0,0$ para $t{=}0,7$ reduz EMR a zero para todos os cinco modelos avaliados em sumarização.
+
+    \item \textbf{Registro abrangente de proveniência adiciona sobrecarga negligenciável}: menos de 1\% do tempo de inferência e aproximadamente 4\,KB por execução.
+
+    \item \textbf{Implantação em nuvem é compatível com inferência quase determinística.} A mesma arquitetura LLaMA~3 8B servida pela Together AI alcança reprodutibilidade próxima à local (EMR = 1,000 para extração, 0,880 para sumarização).
+\end{enumerate}
+
+Esses achados carregam uma implicação mais ampla: uma porção substancial da pesquisa publicada que depende de LLMs baseados em API de código fechado pode conter resultados não reprodutíveis sem o conhecimento dos autores. O protocolo fornece a infraestrutura para detectar, medir e documentar tal variabilidade---tornando o não-determinismo oculto visível onde quer que ele ocorra.
+
+Olhando adiante, planejamos (i)~estender a sonda de quase-isolamento a provedores de nuvem adicionais e tamanhos de modelos maiores; (ii)~estender a cobertura de tarefas para geração de código, raciocínio matemático e fluxos de trabalho agênticos; e (iii)~desenvolver pontuação automatizada de reprodutibilidade baseada em análise de grafos de proveniência.
+
+A implementação de referência, todos os 4.104 registros de execução, documentos de proveniência e scripts de análise estão publicamente disponíveis para apoiar a adoção e verificação independente.
+
+
+%% ============================================================
+\section*{Declaração de Disponibilidade de Dados}
+A implementação de referência, todos os 4.104 registros de execução (JSON), documentos de proveniência PROV-JSON, Run Cards, Prompt Cards, dados de entrada, scripts de análise e figuras geradas estão publicamente disponíveis em:
+\begin{center}
+\url{https://github.com/Roverlucas/genai-reproducibility-protocol}
+\end{center}
+
+\section*{Contribuições dos Autores}
+Seguindo o framework CRediT:
+\textbf{Lucas Rover}: Conceitualização, Metodologia, Software, Validação, Análise Formal, Investigação, Curadoria de Dados, Escrita -- Rascunho Original, Escrita -- Revisão e Edição, Visualização, Administração do Projeto.
+\textbf{Yara de Souza Tadano}: Supervisão, Conceitualização, Metodologia, Escrita -- Revisão e Edição, Administração do Projeto.
+
+\section*{Conflito de Interesses}
+Os autores declaram ausência de conflitos de interesse. Esta pesquisa foi conduzida independentemente na UTFPR sem financiamento externo de provedores comerciais de IA.
+
+\section*{Uso de Ferramentas Assistidas por IA}
+Os autores utilizaram ferramentas assistidas por IA (Claude, Anthropic) durante a preparação deste manuscrito para edição de linguagem, suporte ao desenvolvimento de código e scripts de análise de dados. Todo conteúdo gerado por IA foi criticamente revisado, validado e revisado pelos autores, que assumem total responsabilidade pela precisão e integridade do manuscrito final.
+
+
+%% ============================================================
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
