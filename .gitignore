@@ -19,6 +19,9 @@ build/
 *.run.xml
 *.synctex.gz
 *.toc
+*.cut
+missfont.log
+texput.log
 
 # OS
 .DS_Store
