@@ -31,45 +31,17 @@ Ponta Grossa, Paran\'a, Brazil}
 
 \opening{Dear Editors,}
 
-We are pleased to submit our manuscript entitled \textbf{``Same Prompt, Different Answer: Exposing the Reproducibility Illusion in Large Language Model APIs''} for consideration as an Article in \textit{Nature Machine Intelligence}.
+We submit \textbf{``Same Prompt, Different Answer: Exposing the Reproducibility Illusion in Large Language Model APIs''} for consideration as an Article in \textit{Nature Machine Intelligence}.
 
-\textbf{Summary.}
-Large language models are increasingly used as research instruments across the sciences, yet a fundamental assumption, that identical API configurations yield identical outputs, has never been systematically tested.
-We report 4,104 controlled experiments across eight models from five major API providers (OpenAI, Anthropic, Google, DeepSeek, Perplexity) demonstrating that this assumption is false.
-Under temperature-zero greedy decoding, which documentation presents as deterministic, API-served models reproduce their own outputs only 22\% of the time, while locally deployed models achieve 96\%, a gap exceeding four-fold.
-This non-determinism is invisible to users: outputs are semantically equivalent (BERTScore F1~$>$~0.97) but textually different.
+More than 1.5 billion people now interact weekly with large language models through commercial APIs. ChatGPT alone serves over 800 million weekly users, Gemini surpasses 750 million monthly, and Claude reaches 19 million with 190\% annual growth. Every major API provider offers a temperature parameter that, when set to zero, is documented as producing deterministic outputs. Researchers across medicine, engineering, environmental science, and data analysis depend on this guarantee whenever they report LLM-generated results. Our manuscript shows that the guarantee does not hold.
 
-\textbf{Key novelty.}
-Three findings distinguish this work.
-First, we show that the non-determinism is universal across providers rather than a quirk of any single API, persisting in multi-turn and retrieval-augmented generation workflows where Claude Sonnet~4.5 produces zero exact matches across 50 RAG runs.
-Second, by running the same open-weight model (LLaMA~3 8B) both locally and via a cloud API (Together AI), we isolate the cause: production infrastructure complexity (tensor parallelism, speculative decoding, dynamic batching) rather than cloud deployment itself.
-Third, we provide a lightweight provenance protocol grounded in W3C PROV that adds less than 1\% overhead and makes this invisible variation detectable, auditable, and attributable.
+We conducted 4,104 controlled experiments across eight models and five API providers. Under temperature-zero greedy decoding with fixed random seeds, locally deployed models reproduced their own outputs 96\% of the time, yet API-served models achieved only 22\%. The gap exceeds four-fold, and it is invisible to users: outputs remain semantically equivalent (BERTScore F1~$>$~0.97) while differing textually, so a researcher reading two responses side by side would not notice the variation. A quasi-isolation experiment in which the same model weights were served through a cloud provider with minimal infrastructure overhead recovered near-local reproducibility, attributing the variation to production infrastructure complexity (tensor parallelism, dynamic batching, speculative decoding) rather than cloud deployment itself. We complement this diagnosis with a lightweight provenance protocol that adds less than 1\% computational overhead and makes the hidden variation detectable.
 
-\textbf{Timeliness and relevance to \textit{Nature Machine Intelligence}.}
-The reliability of large language models is a topic of growing concern in your journal.
-Kumar et al.\ recently examined when LLMs can be trusted as judges of empathic communication (\textit{Nat.\ Mach.\ Intell.}\ \textbf{8}, 173--185, 2026), and Ciriello highlighted the troubling consequences of generative AI suspicion in academic publishing (\textit{Nat.\ Mach.\ Intell.}, 2026, \href{https://doi.org/10.1038/s42256-026-01178-z}{doi:10.1038/s42256-026-01178-z}).
-Earlier editorials in \textit{Nature Machine Intelligence} called for transparency in LLM-based frameworks (2024) and multi-agent AI systems (2026).
-Our manuscript contributes directly to this line of inquiry by quantifying, for the first time, the extent to which the deterministic settings documented by API providers fail to deliver determinism in practice.
+Prior work addressed this problem only partially. Atil et al.\ (2024) tested ChatGPT in isolation; Yuan et al.\ (NeurIPS 2025) focused on numerical precision in a single provider. Our study is the first to span five providers and three local deployments, extend the analysis to multi-turn and retrieval-augmented generation workflows, and deliver both causal attribution and a ready-to-use mitigation tool, all validated with 10,000-resample bootstrap confidence intervals and Holm--Bonferroni correction across 68 tests. Several of our references are preprints, reflecting a field where foundational studies on LLM inference behavior are only now emerging; our contribution grounds these observations with the statistical rigor that reliable AI research demands.
 
-The scope of this problem is substantial.
-ChatGPT now serves over 800 million weekly active users, Gemini surpasses 750 million monthly active users, and Claude serves approximately 19 million users with 190\% year-over-year growth.
-Collectively, more than 1.5 billion people interact with these models, the vast majority through APIs that our study shows do not guarantee reproducible outputs.
-This creates a reliability gap that extends well beyond academic research into clinical decision support, environmental monitoring, engineering design, and automated data analysis, domains where users rely on model outputs without understanding the non-deterministic mechanisms behind them.
+We believe this work aligns closely with \textit{Nature Machine Intelligence}'s ongoing engagement with LLM reliability. Kumar et al.\ recently examined when LLMs can be trusted as evaluators (\textit{Nat.\ Mach.\ Intell.}\ \textbf{8}, 173--185, 2026), and Ciriello drew attention to the troubling rise of generative AI suspicion in scholarly publishing (\textit{Nat.\ Mach.\ Intell.}, 2026, \href{https://doi.org/10.1038/s42256-026-01178-z}{doi:10.1038/s42256-026-01178-z}). Your editorials have called for transparency in LLM frameworks (2024) and multi-agent systems (2026). Our findings speak directly to these concerns: if the outputs of the models most widely used in research cannot be reproduced, the credibility of every downstream study is at stake.
 
-\textbf{Positioning relative to existing work.}
-Two recent studies have examined aspects of LLM non-determinism: Atil et al.\ (2024) demonstrated that ``deterministic'' API settings do not guarantee determinism for ChatGPT, and Yuan et al.\ (NeurIPS 2025) investigated the numerical sources of non-determinism in LLM inference.
-Our work is broader in scope and more immediately applicable.
-We systematically compare five API providers and three local deployments, extend the analysis to multi-turn and RAG workflows, provide a causal attribution framework through a quasi-isolation experiment, and deliver a ready-to-use provenance protocol.
-The statistical rigor of our study (10,000-resample bootstrap confidence intervals, Holm--Bonferroni correction across 68 tests, Cliff's delta effect sizes) establishes the findings on solid ground, which we consider essential given the urgency and contemporaneity of the topic.
-We note that several of our references are preprints; this reflects the rapid pace of the field, where foundational studies on LLM inference behavior are only now being reported.
-
-\textbf{Citation potential and data sharing.}
-Given that the manuscript addresses a problem affecting every researcher who uses API-based language models, we believe it has strong citation potential across disciplines.
-Upon acceptance, we intend to submit the full provenance protocol, reference implementation, and all 4,104 experimental records to Protocol Exchange, making the methodology independently accessible and amplifying its dissemination.
-The GitHub repository (\url{https://github.com/Roverlucas/genai-reproducibility-protocol}), currently private to preserve the review process, will be made fully public upon publication under open licenses (MIT for code, CC-BY 4.0 for data).
-
-We confirm that this manuscript has not been published elsewhere and is not under consideration by any other journal.
-All authors have approved the manuscript and agree to its submission.
+Upon acceptance, we will deposit the full protocol and all 4,104 experimental records in Protocol Exchange and release the GitHub repository (\url{https://github.com/Roverlucas/genai-reproducibility-protocol}) under open licenses (MIT for code, CC-BY 4.0 for data). This manuscript has not been published elsewhere and is not under consideration by any other journal. All authors have approved the submission.
 
 \closing{Yours sincerely,}
 
