@@ -238,7 +238,7 @@ $n$~$=$~number of abstracts per group.}\label{tab:main}
 \footnotesize
 \begin{tabular}{@{}llccc@{}}
 \toprule
-\textbf{Model} & \textbf{Deployment} & \textbf{$n$} & \textbf{Extraction EMR} & \textbf{Summarisation EMR} \\
+\textbf{Model} & \textbf{Deployment} & \textbf{$n$} & \textbf{Extraction EMR} & \textbf{Summarization EMR} \\
 \midrule
 Gemma 2 9B      & Local & 10 & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
 LLaMA 3 8B      & Local & 30 & 0.987\,[0.96,\,1.00] & 0.947\,[0.89,\,0.99] \\
@@ -289,7 +289,7 @@ Perplexity Sonar & API  & 10 & 0.100 & 0.010 \\
   \includegraphics[width=0.88\textwidth]{figures/fig_temp_effect.pdf}
   \caption{\textbf{Temperature paradox: greedy decoding is not greedy for API models.}
   EMR versus temperature for five models (three local, two API).
-  \textbf{a,}~Extraction. \textbf{b,}~Summarisation.
+  \textbf{a,}~Extraction. \textbf{b,}~Summarization.
   Local models (solid lines) show the expected monotonic decline from near-perfect EMR at $t$~$=$~0.
   API models (dashed lines) start from an already-low baseline.
   Claude Sonnet~4.5 (red dashed) exhibits a non-monotonic anomaly:
@@ -450,7 +450,7 @@ For API models, the seed parameter is advisory (OpenAI\cite{openai2024seed}), ab
 \subsection{Metrics}\label{subsec:metrics}
 
 \textbf{Exact Match Rate (EMR):} fraction of all $\binom{n}{2}$ output pairs within a group that are character-identical.
-\textbf{Normalised Edit Distance (NED):} Levenshtein distance\cite{levenshtein1966binary} normalized by the longer string.
+\textbf{Normalized Edit Distance (NED):} Levenshtein distance\cite{levenshtein1966binary} normalized by the longer string.
 \textbf{ROUGE-L F1:} longest common subsequence overlap\cite{lin2004rouge}.
 \textbf{BERTScore F1:} embedding-based semantic similarity\cite{zhang2020bertscore}.
 For structured extraction, we additionally compute JSON validity rate, schema compliance, and field-level accuracy.
@@ -574,7 +574,7 @@ Protocol overhead and ablation matrix (protocol minimality verification).
 Conclusion divergence analysis: GPT-4 field-level differences.
 
 \medskip\noindent\textbf{Extended Data Fig.~1.}
-Normalised Edit Distance comparison across all models and tasks.
+Normalized Edit Distance comparison across all models and tasks.
 
 \medskip\noindent\textbf{Extended Data Fig.~2.}
 Run Card schema and W3C PROV graph example for a single experimental group.

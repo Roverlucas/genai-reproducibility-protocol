@@ -484,7 +484,7 @@ To assess whether the prompt-format difference between completion-style and chat
 \begin{itemize}[noitemsep]
     \item \textbf{Completion format}: \texttt{POST /api/generate} (raw prompt string)
     \item \textbf{Chat format}: \texttt{POST /api/chat} (structured messages with \texttt{role: "user"})
-    \item \textbf{Scale}: 10 abstracts $\times$ 2 tasks (summarisation, extraction) $\times$ 2 conditions (C1 fixed seed, C2 variable seed) $\times$ 5 repetitions = 200 runs per format, 400 runs total
+    \item \textbf{Scale}: 10 abstracts $\times$ 2 tasks (summarization, extraction) $\times$ 2 conditions (C1 fixed seed, C2 variable seed) $\times$ 5 repetitions = 200 runs per format, 400 runs total
     \item \textbf{Decoding}: Greedy ($t = 0$, seed = 42 for C1)
 \end{itemize}
 
@@ -501,18 +501,18 @@ Table~\ref{tab:chat-control} presents the per-format metrics. The two formats pr
 \toprule
 \textbf{Task} & \textbf{Format} & \textbf{EMR} & \textbf{NED} & \textbf{ROUGE-L} \\
 \midrule
-Summarisation & Completion & 0.929 & 0.007 & 0.992 \\
-Summarisation & Chat       & 0.929 & 0.007 & 0.992 \\
+Summarization & Completion & 0.929 & 0.007 & 0.992 \\
+Summarization & Chat       & 0.929 & 0.007 & 0.992 \\
 \addlinespace
 Extraction    & Completion & 1.000 & 0.000 & 1.000 \\
 Extraction    & Chat       & 1.000 & 0.000 & 1.000 \\
 \bottomrule
 \end{tabular}
 \par\smallskip\raggedright\footnotesize
-EMR = Exact Match Rate (fraction of abstract groups where all 5 repetitions are identical); NED = Normalised Edit Distance; ROUGE-L = longest common subsequence F-measure.
+EMR = Exact Match Rate (fraction of abstract groups where all 5 repetitions are identical); NED = Normalized Edit Distance; ROUGE-L = longest common subsequence F-measure.
 \end{table}
 
-\noindent Per-abstract EMR values are also identical across formats for all 10 abstracts in both tasks. For summarisation, abstracts 1 and 3 show EMR = 0.644 in both formats (indicating some within-group variation attributable to the warm-up effect on the first repetition), while all other abstracts achieve EMR = 1.000 in both formats. For extraction, all 10 abstracts achieve EMR = 1.000 in both formats.
+\noindent Per-abstract EMR values are also identical across formats for all 10 abstracts in both tasks. For summarization, abstracts 1 and 3 show EMR = 0.644 in both formats (indicating some within-group variation attributable to the warm-up effect on the first repetition), while all other abstracts achieve EMR = 1.000 in both formats. For extraction, all 10 abstracts achieve EMR = 1.000 in both formats.
 
 \subsection{Interpretation}
 
@@ -640,7 +640,7 @@ MW = Mann--Whitney $U$ test. All $p$-values are two-sided. The complete set of 6
 
 \subsection{Effect Sizes}
 
-Cohen's $h$ effect sizes for all pairwise Fisher comparisons ranged from 0.40 (Mistral vs.\ DeepSeek, summarisation -- medium effect) to 3.14 (Gemma vs.\ Claude/Perplexity, summarisation -- very large effect). All comparisons involving Gemma~2 9B vs.\ any API model yielded very large effect sizes ($h > 1.5$), reflecting Gemma's perfect reproducibility (EMR = 1.000) against API models' substantially lower rates.
+Cohen's $h$ effect sizes for all pairwise Fisher comparisons ranged from 0.40 (Mistral vs.\ DeepSeek, summarization -- medium effect) to 3.14 (Gemma vs.\ Claude/Perplexity, summarization -- very large effect). All comparisons involving Gemma~2 9B vs.\ any API model yielded very large effect sizes ($h > 1.5$), reflecting Gemma's perfect reproducibility (EMR = 1.000) against API models' substantially lower rates.
 
 
 %% ============================================================
@@ -690,7 +690,7 @@ Together AI LLaMA & Extr./Summ. & 10 (100) & 10 (100) & -- & -- & -- \\
 \bottomrule
 \end{tabular}
 \par\smallskip\raggedright\footnotesize
-$^*$GPT-4 C1 summarisation: only 3 abstracts (8 runs) before API quota exhaustion.
+$^*$GPT-4 C1 summarization: only 3 abstracts (8 runs) before API quota exhaustion.
 $^\dag$Claude C1 extraction: 49 runs (1 API timeout returned empty output).
 An additional 200 chat-format control runs (LLaMA~3 via \texttt{/api/chat}) are documented in Section~\ref{sec:s7} but not shown here.
 \end{table}
