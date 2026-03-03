@@ -73,6 +73,7 @@ This repository contains the reference implementation, experimental data, analys
 | DeepSeek Chat | API | 0.800 | 0.760 |
 | GPT-4 | API | 0.443 [0.32, 0.57] | 0.230 [0.16, 0.30] |
 | Claude Sonnet 4.5 | API | 0.190 [0.05, 0.40] | 0.020 [0.00, 0.05] |
+| Gemini 2.5 Pro | API | Multi-turn: 0.010 [0.00, 0.03] | RAG: 0.070 [0.02, 0.13] |
 | Perplexity Sonar | API | 0.100 | 0.010 |
 
 All comparisons survive Holm-Bonferroni correction (51/68 tests significant). Cliff's delta: 0.784-0.896.
