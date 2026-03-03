@@ -31,13 +31,15 @@
 %% Authors
 %%=============================================================%%
 
-\author*[1]{\fnm{Lucas} \sur{Rover}}\email{lucasrover@utfpr.edu.br}
+\author*[1]{\fnm{Lucas} \sur{Rover}}\email{lucasrover@alunos.utfpr.edu.br}
 \equalcont{Corresponding author.}
 %% ORCID: 0000-0001-6641-9224 (entered via Editorial Manager at submission)
 
 \author[2]{\fnm{Eduardo Tadeu} \sur{Bacalhau}}
 
 \author[3]{\fnm{Anibal Tavares} \spfx{de} \sur{Azevedo}}
+
+\author[1]{\fnm{Hugo Valadares} \sur{Siqueira}}
 
 \author[1]{\fnm{Yara} \spfx{de Souza} \sur{Tadano}}
 
@@ -61,7 +63,8 @@
 Here we report 4,104 controlled experiments across eight models and five API providers showing that, under temperature-zero greedy decoding with fixed seeds, API-served models reproduce their own outputs only 22.1\% of the time (exact match rate), while locally deployed models achieve 95.6\%, a gap exceeding four-fold.
 The non-determinism persists in multi-turn and retrieval-augmented generation workflows, where one model produces zero exact matches across 50 runs, yet remains hidden because outputs are semantically equivalent (BERTScore F1~$>$~0.97).
 A quasi-isolation experiment identifies production infrastructure complexity, rather than cloud deployment itself, as the driver.
-We provide a lightweight provenance protocol ($<$1\% overhead) that makes this variation detectable, raising a reliability concern for the growing use of LLMs in medicine, physical sciences, and automated data analysis.}
+We provide a lightweight provenance protocol ($<$1\% overhead) that makes this variation detectable, raising a reliability concern for LLMs in medicine, physical sciences, and automated data analysis.}
+
 
 \keywords{Reproducibility, Large language models, Non-determinism, Provenance, API inference}
 
@@ -74,11 +77,11 @@ We provide a lightweight provenance protocol ($<$1\% overhead) that makes this v
 %%=============================================================%%
 
 Large language models (LLMs) are rapidly becoming standard research instruments.
-They encode clinical knowledge\cite{singhal2023large}, assist diagnostic workflows\cite{thirunavukarasu2023large}, accelerate literature review and data extraction\cite{birhane2023science}, and are increasingly integrated into peer review at scale\cite{thakkar2026llm}.
+They encode clinical knowledge\cite{singhal2023large}, assist diagnostic workflows\cite{thirunavukarasu2023large}, accelerate literature review and data extraction\cite{noy2023experimental}, and are increasingly integrated into peer review at scale\cite{thakkar2026llm}.
 A growing body of work deploys LLMs as evaluators of human communication\cite{kumar2026reliable}, as psychometric assessment tools\cite{serapiogarcía2025psychometric}, and as components of multi-agent scientific pipelines\cite{xin2025agentic}.
 When researchers use API-based models, they trust that identical configurations will yield identical outputs.
 API documentation reinforces this trust by offering a temperature parameter set to zero for ``deterministic'' behavior, a setting that should collapse the output probability distribution to a single token at each step.
-But this is an illusion.
+Our experiments show that this guarantee does not hold in practice.
 
 The broader reproducibility crisis in science is well documented: over 70\% of researchers have failed to reproduce another scientist's experiment\cite{baker2016reproducibility}, and the problem is acute in AI, where only 6\% of papers provide sufficient information for reproduction\cite{gundersen2018state}.
 The field faces its own ``reproducibility crisis''\cite{hutson2018artificial}, with growing concerns that AI may worsen the problem across disciplines\cite{ball2023ai}.
@@ -221,11 +224,12 @@ The temperature--reproducibility relationship for API models depends on provider
   \centering
   \includegraphics[width=0.65\columnwidth]{figures/fig_emr_heatmap.pdf}
   \caption{\textbf{Exact match rates under greedy decoding reveal a four-fold local--API gap.}
-  Heatmap of EMR for eight model deployments across extraction and summarization tasks
+  Heatmap of EMR for model deployments across extraction and summarization tasks
   under temperature~$=$~0.
   Local models (top; blue) achieve EMR~$\geq$~0.840, with Gemma~2 9B at a perfect 1.000.
   API-served models (bottom; red) range from 0.800 (DeepSeek) to 0.010 (Perplexity).
   All values are computed under each model's representative greedy condition (C1 for local models and Claude; C2 for GPT-4; see Methods).
+  Full results for all eight models appear in Table~\ref{tab:main}.
   }\label{fig:heatmap}
 \end{figure}
 
@@ -349,13 +353,7 @@ GPT-4 experiments used the \texttt{gpt-4-0613} snapshot; newer versions may diff
 Multi-turn and RAG experiments include only two API providers; extending to others would strengthen generality.
 Sample sizes (10--30 abstracts per model) are well-powered for the large observed effects ($d$~$>$~1.6) but may miss subtler phenomena.
 
-
-%%=============================================================%%
-%% CONCLUSIONS
-%%=============================================================%%
-\section{Conclusions}\label{sec:conclusions}
-
-We have shown that the ``deterministic'' settings offered by major LLM API providers do not deliver determinism in practice, creating a hidden reproducibility gap that affects any study relying on API-served models.
+In summary, we have shown that the ``deterministic'' settings offered by major LLM API providers do not deliver determinism in practice, creating a hidden reproducibility gap that affects any study relying on API-served models.
 The gap spans five independent providers, persists across multi-turn and retrieval-augmented generation workflows, and remains invisible to users because semantic equivalence masks textual divergence.
 By running the same open-weight model locally and via a cloud API, we isolate the cause: production infrastructure complexity, not cloud deployment itself, drives the non-determinism.
 Our lightweight provenance protocol, grounded in W3C PROV and requiring less than 1\% overhead, offers a practical mechanism for making this variation visible, auditable, and attributable.
@@ -532,13 +530,14 @@ This research received no specific grant from any funding agency in the public, 
 L.R.\ conceived the study, designed the protocol, developed the software, conducted all experiments and analyses, and wrote the manuscript.
 E.T.B.\ contributed to experimental design and data analysis.
 A.T.d.A.\ contributed to methodology design and statistical analysis.
+H.V.S.\ contributed to research design and manuscript review.
 Y.d.S.T.\ supervised the research, contributed to methodology design, and reviewed the manuscript.
 
 \item \textbf{Competing interests:}
 The authors declare no competing interests.
 
 \item \textbf{Correspondence:}
-Correspondence and requests for materials should be addressed to Lucas Rover (lucasrover@utfpr.edu.br).
+Correspondence and requests for materials should be addressed to Lucas Rover (lucasrover@alunos.utfpr.edu.br).
 \end{itemize}
 
 
@@ -709,10 +708,10 @@ Kapoor, S. \& Narayanan, A.
 Leakage and the reproducibility crisis in machine-learning-based science.
 \emph{Patterns} \textbf{4}, 100804 (2023).
 
-\bibitem{birhane2023science}
-Birhane, A. \emph{et al.}
-Science in the age of large language models.
-\emph{Nat. Rev. Phys.} \textbf{5}, 277--280 (2023).
+\bibitem{noy2023experimental}
+Noy, S. \& Zhang, W.
+Experimental evidence on the productivity effects of generative artificial intelligence.
+\emph{Science} \textbf{381}, 187--192 (2023).
 
 \bibitem{chen2023chatgpt}
 Chen, Y. \emph{et al.}

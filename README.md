@@ -2,7 +2,7 @@
 
 **Exposing the Reproducibility Illusion in Large Language Model APIs**
 
-Lucas Rover, Eduardo Tadeu Bacalhau, Anibal Tavares de Azevedo & Yara de Souza Tadano
+Lucas Rover, Eduardo Tadeu Bacalhau, Anibal Tavares de Azevedo, Hugo Valadares Siqueira & Yara de Souza Tadano
 
 Submitted to *Nature Machine Intelligence*, February 2026.
 
@@ -133,7 +133,7 @@ python -m pytest tests/ -v   # 51 tests passing
 
 If you use this protocol or dataset, please cite:
 
-> Rover, L., Bacalhau, E. T., de Azevedo, A. T. & Tadano, Y. S. Same Prompt, Different Answer: Exposing the Reproducibility Illusion in Large Language Model APIs. *Nature Machine Intelligence* (2026, submitted).
+> Rover, L., Bacalhau, E. T., de Azevedo, A. T., Siqueira, H. V. & Tadano, Y. S. Same Prompt, Different Answer: Exposing the Reproducibility Illusion in Large Language Model APIs. *Nature Machine Intelligence* (2026, submitted).
 
 ## License
 

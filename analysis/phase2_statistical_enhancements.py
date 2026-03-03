@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Phase 2 Statistical Enhancements for JAIR Manuscript.
+"""Phase 2 Statistical Enhancements for Nature Machine Intelligence Manuscript.
 
 Computes directly from raw run files in outputs/runs/:
 1. Cliff's delta for all local-vs-API model pairs
