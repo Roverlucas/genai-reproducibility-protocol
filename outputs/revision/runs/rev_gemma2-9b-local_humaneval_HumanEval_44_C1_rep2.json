@@ -1,0 +1,56 @@
+{
+  "run_id": "rev_gemma2-9b-local_humaneval_HumanEval_44_C1_rep2",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "6c3987abb35a3e0bf61eb7bd7e709b0abecef72c47dcb61a6ba84b0d46d760a0",
+  "prompt_text": "\n\ndef change_base(x: int, base: int):\n    \"\"\"Change numerical base of input number x to base.\n    return string representation after the conversion.\n    base numbers are less than 10.\n    >>> change_base(8, 3)\n    '22'\n    >>> change_base(8, 2)\n    '1000'\n    >>> change_base(7, 2)\n    '111'\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "gemma2:9b",
+  "model_version": "9.2B",
+  "weights_hash": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:10:56.149859+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:10:56.149808+00:00",
+  "timestamp_end": "2026-05-08T21:11:00.122087+00:00",
+  "output_text": "```python\n    if x == 0:\n        return '0'\n    digits = ''\n    while x > 0:\n        digit = x % base\n        digits = str(digit) + digits\n        x //= base\n    return digits \n```",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": true,
+      "stdout": "__OK__\n",
+      "stderr": "",
+      "return_code": 0,
+      "duration_ms": 43.77,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 3972.28,
+  "logging_overhead_ms": 27.39,
+  "system_logs": "{\"inference_duration_ms\": 3900.86, \"model_reported_duration_ns\": 3897131834, \"eval_count\": 60, \"prompt_eval_count\": 152, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "2fa57eb7f06774bd63dbce2ae0d67317a81580c7138edf5eec24a1f5710eb311",
+  "storage_kb": 2.6
+}

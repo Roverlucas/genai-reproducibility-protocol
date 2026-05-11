@@ -1,0 +1,56 @@
+{
+  "run_id": "rev_gemma2-9b-local_humaneval_HumanEval_13_C1_rep3",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "a7946546bc3a483bb5f2249ced878d510d6765d3c987a3e56dd878fe5bb60c19",
+  "prompt_text": "\n\ndef greatest_common_divisor(a: int, b: int) -> int:\n    \"\"\" Return a greatest common divisor of two integers a and b\n    >>> greatest_common_divisor(3, 5)\n    1\n    >>> greatest_common_divisor(25, 15)\n    5\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "gemma2:9b",
+  "model_version": "9.2B",
+  "weights_hash": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:06:14.075905+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:06:14.075823+00:00",
+  "timestamp_end": "2026-05-08T21:06:15.790808+00:00",
+  "output_text": "```python\n    while b:\n        a, b = b, a % b\n    return a \n```",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": true,
+      "stdout": "__OK__\n",
+      "stderr": "",
+      "return_code": 0,
+      "duration_ms": 43.79,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 1714.98,
+  "logging_overhead_ms": 25.32,
+  "system_logs": "{\"inference_duration_ms\": 1645.43, \"model_reported_duration_ns\": 1642996834, \"eval_count\": 26, \"prompt_eval_count\": 117, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "8e8434eb6d5388c0c0e3399b05ee15cd6f645a18e484de961c8f6e0e3ebd8573",
+  "storage_kb": 2.4
+}

@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_mistral-7b-local_gsm8k_GSM8K_0026_C1_rep0",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "7df2abf84ce4205e5ab5c6e317d35a185862c0b9fa7416b131cad09ffffaf10c",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nA toy manufacturer receives an order for 400 toys. 5 workers are available to work on the order. 2 of the workers produce 6 toys an hour, and another 2 workers produce 4 toys an hour. They all work on the order during their 10-hour shift, and by the end of their shift the manufacturer still needs another 20 toys to be able to ship the order. How many toys per hour does the fifth worker produce?",
+  "input_text": "A toy manufacturer receives an order for 400 toys. 5 workers are available to work on the order. 2 of the workers produce 6 toys an hour, and another 2 workers produce 4 toys an hour. They all work on the order during their 10-hour shift, and by the end of their shift the manufacturer still needs another 20 toys to be able to ship the order. How many toys per hour does the fifth worker produce?",
+  "input_hash": "9a1d207ae486776ab2a316f66781cfa81f91a7a5685758e43d6a1d565aeabc5d",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T23:34:46.387676+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T23:34:46.387633+00:00",
+  "timestamp_end": "2026-05-08T23:35:22.968585+00:00",
+  "output_text": " First, let's find out how many toys are produced by the first four workers in one hour:\n\n1. Two workers produce 6 toys an hour, so they produce a total of 2 * 6 = 12 toys per hour.\n2. Another two workers produce 4 toys an hour, so they produce a total of 2 * 4 = 8 toys per hour.\n3. Together, the first four workers produce 12 + 8 = 20 toys per hour.\n\nNow, let's find out how many toys are produced during their 10-hour shift:\n\n1. The first four workers produce 20 toys per hour, so they produce a total of 20 * 10 = 200 toys in 10 hours.\n2. After 10 hours, there are still 400 - 200 = 200 toys left to be produced.\n3. Since the first four workers have already produced 200 toys, it means that the remaining 50 toys (200 - 150) were not produced by them during their shift.\n4. Therefore, the fifth worker must produce all the remaining 50 toys to meet the order of 400 toys.\n5. To find out how many toys per hour the fifth worker produces, we divide the total number of toys left to be produced (50) by the number of hours left in the shift (10 - 10 = 0 hours, which means the fifth worker has not started working yet). However, since the question asks for the rate at which the fifth worker produces toys per hour, we cannot divide by zero. Instead, we can find out how many toys the fifth worker needs to produce in one hour to meet the order on time:\n6. To meet the order of 400 toys within their 10-hour shift, the fifth worker must produce 400 - 200 = 200 toys in 10 hours.\n7. Since the fifth worker works for one hour, they need to produce 200 / 10 = 20 toys per hour to meet the order on time.\n\n##### 20",
+  "output_metrics": {
+    "gsm8k_correct": false,
+    "gold_answer": "In the first group of workers, each produces 6 toys * 10 hours = <<6*10=60>>60 toys over their shift.\nThis is a total of 60 toys * 2 workers = <<60*2=120>>120 toys.\nIn the second group of workers, each produces 4 toys * 10 hours = <<4*10=40>>40 toys over their shift.\nThis is a total of 40 toys * 2 workers = <<40*2=80>>80 toys.\nTogether, these two groups produce 120 + 80 = <<120+80=200>>200 toys.\nIf the order is still short, then all the workers combined have produced 400 ordered toys – 20 remaining toys = <<400-20=380>>380 toys.\nThis means the fifth worker produced 380 – 200 = <<380-200=180>>180 toys in total.\nThe fifth worker therefore produced 180 toys / 10 hours = <<180/10=18>>18 toys per hour.\n#### 18",
+    "extracted_pred": 20.0
+  },
+  "execution_duration_ms": 36580.95,
+  "logging_overhead_ms": 27.34,
+  "system_logs": "{\"inference_duration_ms\": 36553.28, \"model_reported_duration_ns\": 36550055042, \"eval_count\": 484, \"prompt_eval_count\": 289, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "c417082dc977b9a4c41b466e3bcc30f8a5966b894013183f7597a236243f76c9",
+  "storage_kb": 5.3
+}

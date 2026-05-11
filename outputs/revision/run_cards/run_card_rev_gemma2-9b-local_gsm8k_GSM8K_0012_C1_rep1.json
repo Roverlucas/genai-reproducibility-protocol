@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_gemma2-9b-local_gsm8k_GSM8K_0012_C1_rep1",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "2e731bf8e39e393ddbdb2d24c6c40f97b5cfc2337302e223265d5d51de5bf42a",
+  "model_name": "gemma2:9b",
+  "model_version": "9.2B",
+  "weights_hash": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T23:47:41.284845+00:00",
+  "timestamp_end": "2026-05-08T23:47:49.017993+00:00",
+  "execution_duration_ms": 7733.15,
+  "output_hash": "516efd22184552148da9c0d74b388cb2616d0157b5c6971b1b2fb1952c2f1e95",
+  "output_metrics": {
+    "gsm8k_correct": false,
+    "gold_answer": "Christina had 30 - 12 - 8 = <<30-12-8=10>>10 neutral days in the month.\nAfter the first three 8-day periods, she had 30 - 8 * 3 = 30 - 24 = <<30-8*3=6>>6 days of moods left.\nOf those days, 12 - 8 = <<12-8=4>>4 days were good.\nAfter the next 3 days with 2 good days, Christina had 4 - 2 = <<4-2=2>>2 good days left.\n#### 2",
+    "extracted_pred": 15.0
+  },
+  "logging_overhead_ms": 30.58,
+  "storage_kb": 3.66,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

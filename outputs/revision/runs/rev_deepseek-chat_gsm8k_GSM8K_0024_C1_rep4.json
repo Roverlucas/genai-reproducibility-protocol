@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_deepseek-chat_gsm8k_GSM8K_0024_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "40c89f67e90b8cb13f029a04139c0159090539ee933022d63c494c4c12942349",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nTom decides to give his wife an anniversary getaway.  The plane tickets cost $5000 each.  The hotel is 20% more expensive than normal because it is a busy weekend.  The normal price is $1500 per day.  If they are there for 3 days how much did the trip cost?",
+  "input_text": "Tom decides to give his wife an anniversary getaway.  The plane tickets cost $5000 each.  The hotel is 20% more expensive than normal because it is a busy weekend.  The normal price is $1500 per day.  If they are there for 3 days how much did the trip cost?",
+  "input_hash": "051ae2b51a5de4945aeebd41c1161a35c24f5d72fb2731488a4c2c86dc7f22ac",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:33:32.138829+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:33:32.138783+00:00",
+  "timestamp_end": "2026-05-09T00:33:35.207811+00:00",
+  "output_text": "Let’s break it down step by step.\n\n1. **Plane tickets**:  \n   There are two tickets (Tom and his wife), each costing $5000.  \n   Total for tickets = \\( 2 \\times 5000 = 10000 \\) dollars.\n\n2. **Hotel cost per day**:  \n   Normal price = $1500 per day.  \n   Busy weekend surcharge = 20% more.  \n   Extra cost = \\( 20\\% \\times 1500 = 0.2 \\times 1500 = 300 \\) dollars.  \n   So price per day = \\( 1500 + 300 = 1800 \\) dollars.\n\n3. **Total hotel cost for 3 days**:  \n   \\( 3 \\times 1800 = 5400 \\) dollars.\n\n4. **Total trip cost**:  \n   Tickets + Hotel = \\( 10000 + 5400 = 15400 \\) dollars.\n\n#### 15400",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The hotel room is 1500*.2=$<<1500*.2=300>>300 more expensive per night than normal\nSo they paid 1500+300=$<<1500+300=1800>>1800 per night\nThat means she paid 1800*3=$<<1800*3=5400>>5400\nThe plane tickets cost 5000*2=$<<5000*2=10000>>10,000\nSo the total cost is 10,000+5400=$<<10000+5400=15400>>15,400\n#### 15400",
+    "extracted_pred": 15400.0
+  },
+  "execution_duration_ms": 3069.03,
+  "logging_overhead_ms": 28.35,
+  "system_logs": "{\"inference_duration_ms\": 3040.43, \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 207, \"completion_tokens\": 199, \"total_tokens\": 406}, \"model_id_returned\": \"deepseek-v4-flash\", \"response_id\": \"74d7a05c-347b-403c-9f53-eb75c91ef299\"}",
+  "errors": [],
+  "output_hash": "f2ebc7bb6832888ac0f52e84e2f44a07fc4a741f612e64d0f0a359f49b834191",
+  "storage_kb": 3.7
+}

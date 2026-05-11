@@ -1,0 +1,48 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_mistral-7b-local_humaneval_HumanEval_1_C1_rep1",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "prompt_card_ref": "prompt_card_humaneval_v1_0.json",
+  "prompt_hash": "ba4d0641a184fb3cdd632060a25d6408a7e91fe9d79b5c341407e74b80536327",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T21:04:21.600108+00:00",
+  "timestamp_end": "2026-05-08T21:04:28.954309+00:00",
+  "execution_duration_ms": 7354.2,
+  "output_hash": "9fe62ed7cc4c5f82357c833526ae41f2666aa075dace8dd909f2773e4b6588a3",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 54, in <module>\n    check(separate_paren_groups)\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<string>\", line 43, in check\n    assert candidate('(()()) ((())) () ((())()())') == [\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        '(()())', '((()))', '()', '((())()())'\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ]\n    ^\nAssertionError\n",
+      "return_code": 1,
+      "duration_ms": 55.6,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "logging_overhead_ms": 14.63,
+  "storage_kb": 3.59,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

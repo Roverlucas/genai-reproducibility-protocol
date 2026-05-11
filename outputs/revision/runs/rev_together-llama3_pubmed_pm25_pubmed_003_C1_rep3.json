@@ -1,0 +1,49 @@
+{
+  "run_id": "rev_together-llama3_pubmed_pm25_pubmed_003_C1_rep3",
+  "task_id": "pubmed_pm25",
+  "task_category": "structured_extraction_health",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "ddc1746ca23ddafc9f63790dbd2d86930c1248713bf7c854b4e119ba9f0063c1",
+  "prompt_text": "You are a structured information extraction assistant. Read the following scientific abstract and extract the information into the exact JSON format below. Use only information explicitly stated in the abstract. If a field is not mentioned, use null.\n\nOutput format (JSON only, no explanation):\n{\n  \"objective\": \"string — main goal of the study\",\n  \"method\": \"string — methodology or approach used\",\n  \"key_result\": \"string — most important quantitative or qualitative result\",\n  \"model_or_system\": \"string — name of the model/system proposed (if any)\",\n  \"benchmark\": \"string — evaluation benchmark or dataset used (if any)\"\n}",
+  "input_text": "High levels of air pollutants in Vietnam, especially particulate matters including PM2.5, can be important risk factors for respiratory diseases among children of the country. However, few studies on the effects of ambient air pollution on human health have been conducted in Vietnam so far. The aim of this study is to examine the association between PM2.5 and hospital admission due to acute lower respiratory infection (ALRI) among children aged < 5 years old in Ho Chi Minh city, the largest city of Vietnam. Data relating PM2.5 and hospital admission were collected from February 2016-December 2017 and a time series regression analysis was performed to examine the relationship between PM2.5 and hospital admission including the delayed effect up to three days prior to the admission. We found that each 10 μg/m3 increase in PM2.5 was associated with an increase of 3.51 (95%CI: 0.96-6.12) risk of ALRI admission among children. According to the analysis, male children are more sensitive to exposure to PM2.5 than females, while children exposed to PM2.5 are more likely to be infected with acute bronchiolitis than with pneumonia. The study demonstrated that young children in HCMC are at increased risk of ALRI admissions due to the high level of PM2.5 concentration in the city's ambient air.",
+  "input_hash": "c024985ea129ab46888cea649a9f7890ed688fe2f5d02aab6e80822030ee8ee0",
+  "model_name": "meta-llama/Meta-Llama-3-8B-Instruct-Lite",
+  "model_version": "api-managed",
+  "weights_hash": "open-weight-cloud-served",
+  "model_source": "together-ai",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T20:27:51.115900+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T20:27:51.115878+00:00",
+  "timestamp_end": "2026-05-08T20:27:51.126042+00:00",
+  "output_text": "",
+  "output_metrics": {},
+  "execution_duration_ms": 10.16,
+  "logging_overhead_ms": 9.72,
+  "system_logs": "",
+  "errors": [
+    "ValueError: TOGETHER_API_KEY environment variable not set",
+    "Traceback (most recent call last):\n  File \"/Users/lucasrover/paper-experiment/run_revision_experiments.py\", line 692, in execute_run\n    result = _execute_single_turn(runner_module, stack_cfg, item)\n  File \"/Users/lucasrover/paper-experiment/run_revision_experiments.py\", line 472, in _execute_single_turn\n    return _call_runner_inference(\n        runner_module, stack_cfg,\n    ...<3 lines>...\n        max_tokens=item.max_tokens, system_prompt=item.system,\n    )\n  File \"/Users/lucasrover/paper-experiment/run_revision_experiments.py\", line 324, in _call_runner_inference\n    return fn(**call_kwargs)\nValueError: TOGETHER_API_KEY environment variable not set\n"
+  ],
+  "output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "storage_kb": 4.48
+}

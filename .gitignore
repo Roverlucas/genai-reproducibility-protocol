@@ -35,3 +35,9 @@ Thumbs.db
 
 # Environment
 .env
+
+# Figshare staging directory (mirrors outputs/, uploaded to figshare separately)
+figshare_upload/
+
+# Continuation log noise
+/tmp/_*.log

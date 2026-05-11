@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_llama3-8b-local_gsm8k_GSM8K_0005_C1_rep3",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "946b74e5ff81d1cb6c33c0bf1571b27e5cafac934d8ffd38ba32551c9d80a8a8",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nThe school auditorium has 4 rows of seats. There are 18 seats in each row. One-fourth of the seats were occupied by the administrators. One-third of the remaining seats were occupied by the parents and the rest were occupied by the students. How many students were there in the school auditorium?",
+  "input_text": "The school auditorium has 4 rows of seats. There are 18 seats in each row. One-fourth of the seats were occupied by the administrators. One-third of the remaining seats were occupied by the parents and the rest were occupied by the students. How many students were there in the school auditorium?",
+  "input_hash": "1cd8fbe40f4cda3035e0cd9bcd8ac80461448b63d4c9ee45662514169c822f2d",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:46:07.105133+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:46:07.105030+00:00",
+  "timestamp_end": "2026-05-08T21:46:20.268751+00:00",
+  "output_text": "Let's break it down step by step!\n\n1. The number of seats in each row is 18, and there are 4 rows. To find the total number of seats, multiply the number of seats per row by the number of rows:\n\nTotal seats = 18 seats/row × 4 rows = 72 seats\n\n2. One-fourth of the seats were occupied by administrators. To find one-fourth of the total seats, divide the total number of seats by 4:\n\nOne-fourth of seats = 72 seats ÷ 4 = 18 seats\n\n3. The remaining seats are those not occupied by administrators. Subtract the number of administrator-occupied seats from the total number of seats:\n\nRemaining seats = Total seats - One-fourth of seats\n= 72 seats - 18 seats\n= 54 seats\n\n4. One-third of the remaining seats were occupied by parents. To find one-third of the remaining seats, divide the remaining seats by 3:\n\nOne-third of remaining seats = 54 seats ÷ 3 = 18 seats\n\n5. The rest of the remaining seats (after subtracting the parent-occupied seats) are occupied by students. Subtract the number of parent-occupied seats from the remaining seats:\n\nStudent-occupied seats = Remaining seats - One-third of remaining seats\n= 54 seats - 18 seats\n= 36 seats\n\n#### 36",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "There are 4 x 18 = <<4*18=72>>72 seats in the school auditorium.\n72 x1/4 = <<72*1/4=18>>18 seats were occupied by the administrators.\nThere were 72 - 18 = <<72-18=54>>54 seats not occupied by the administrators.\n54 x 1/3 = <<54*1/3=18>>18 seats were occupied by the parents.\nSo, 54 - 18 = <<54-18=36>>36 seats were occupied by the students.\n#### 36",
+    "extracted_pred": 36.0
+  },
+  "execution_duration_ms": 13163.72,
+  "logging_overhead_ms": 28.99,
+  "system_logs": "{\"inference_duration_ms\": 13134.51, \"model_reported_duration_ns\": 13132651125, \"eval_count\": 287, \"prompt_eval_count\": 215, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "a949a716bb00a724660d094c6960f7a9792ec562aec2572405a82ef494b328d8",
+  "storage_kb": 4.3
+}

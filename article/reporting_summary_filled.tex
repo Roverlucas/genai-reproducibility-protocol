@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{setspace}
+\onehalfspacing
+
+\hypersetup{colorlinks=true,linkcolor=blue!70!black,urlcolor=blue!70!black}
+
+\newcommand{\confirmed}{\textbf{Confirmed}}
+\newcommand{\notapplicable}{\textbf{n/a}}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{flushright}
+{\large\bfseries\color{black!70} nature\\portfolio}
+\end{flushright}
+
+\noindent Corresponding author(s): Lucas Rover\\
+Last updated by author(s): 11-03-2026
+
+\begin{center}
+{\LARGE Reporting Summary}
+\end{center}
+
+\noindent Nature Portfolio wishes to improve the reproducibility of the work that we publish. This form provides structure for consistency and transparency in reporting. For further information on Nature Portfolio policies, see our Editorial Policies and the Editorial Policy Checklist.
+
+\bigskip
+\hrule
+\bigskip
+
+%%=============================================================
+\section*{Statistics}
+
+\noindent For all statistical analyses, confirm that the following items are present in the figure legend, table legend, main text, or Methods section.
+
+\medskip
+
+\begin{longtable}{@{}p{0.05\textwidth}p{0.55\textwidth}p{0.12\textwidth}p{0.22\textwidth}@{}}
+\toprule
+\textbf{\#} & \textbf{Item} & \textbf{Status} & \textbf{Location} \\
+\midrule
+\endhead
+1 & The exact sample size ($n$) for each experimental group/condition, given as a discrete number and unit of measurement & \confirmed & Table 1; Supp.\ Table S8 (full coverage matrix in \S S10) \\[6pt]
+2 & A statement on whether measurements were taken from distinct samples or whether the same sample was measured repeatedly & \confirmed & Methods \S Experimental conditions: 5 repetitions per abstract (repeated measures) \\[6pt]
+3 & The statistical test(s) used AND whether they are one- or two-sided & \confirmed & Methods \S Statistical analysis: Fisher's exact (two-sided), Mann--Whitney $U$ (two-sided), Wilcoxon signed-rank (two-sided), bootstrap CIs. Holm--Bonferroni across 68 tests. \\[6pt]
+4 & A description of all covariates tested & \confirmed & Methods \S Experimental conditions: temperature, seed, deployment mode, task type, prompt format. ``Deployment mode'' refers to whether a model is served locally (single-GPU Ollama on Apple M4) or via a remote cloud API (OpenAI, Anthropic, Google, DeepSeek, Perplexity, Together AI). Deployment mode is a stack-level covariate fixed for the lifetime of each experimental group, not a per-run varying parameter. \\[6pt]
+5 & A description of any assumptions or corrections, such as tests of normality and adjustment for multiple comparisons & \confirmed & Methods \S Statistical analysis: Holm--Bonferroni for 68 comparisons. Non-parametric tests (no normality assumption). Bootstrap percentile CIs. Supp.\ Section S9. \\[6pt]
+6 & A full description of the statistical parameters including central tendency or other basic estimates AND variation or associated estimates of uncertainty & \confirmed & All EMR values with 95\% bootstrap CIs (e.g., 0.443 [0.32, 0.57]). Table 1, Extended Data Tables 1--5. \\[6pt]
+7 & For null hypothesis testing, the test statistic with confidence intervals, effect sizes, degrees of freedom and $P$ value noted & \confirmed & Cohen's $d > 1.6$, Cliff's $\delta$ 0.784--0.896, Cohen's $h$ 0.40--3.14. Exact $P$ values in Supp.\ Table S7 (\S S9, Holm--Bonferroni results). \\[6pt]
+8 & For Bayesian analysis, information on the choice of priors and MCMC settings & \notapplicable & No Bayesian analysis performed \\[6pt]
+9 & For hierarchical and complex designs, identification of the appropriate level for tests and full reporting of outcomes & \notapplicable & No hierarchical models \\[6pt]
+10 & Estimates of effect sizes, indicating how they were calculated & \confirmed & Cliff's $\delta$ (non-parametric), Cohen's $d$ (paired $t$-test), Cohen's $h$ (Fisher). Reported in Results and Supp.\ Section S9. \\
+\bottomrule
+\end{longtable}
+
+%%=============================================================
+\section*{Software and code}
+
+\noindent\textbf{Data collection:}
+
+All experiments conducted using custom Python scripts (Python 3.14.3). Local models: Ollama v0.15.5 serving LLaMA 3 8B, Mistral 7B, Gemma 2 9B. API models: OpenAI Python SDK v1.59.9 (GPT-4); \texttt{urllib}-based runners for Anthropic (Claude Sonnet 4.5), Google (Gemini 2.5 Pro), DeepSeek Chat, Perplexity Sonar, Together AI. All API payloads documented in Supplementary Section S4. Data collection scripts available in the project repository.
+
+\medskip
+\noindent\textbf{Data analysis:}
+
+Python 3.14.3 with: \texttt{scipy} (statistical tests), \texttt{scikit-learn} (metrics), \texttt{rouge-score} (ROUGE-L), \texttt{bert-score} (BERTScore), \texttt{matplotlib} and \texttt{seaborn} (figures), \texttt{json} and \texttt{hashlib} (provenance hashing). Bootstrap CIs computed with custom script (10,000 resamples). All analysis scripts available at: \url{https://github.com/Roverlucas/genai-reproducibility-protocol}
+
+%%=============================================================
+\section*{Data}
+
+\noindent\textbf{Data availability statement:}
+
+All 4,104 experimental records, provenance metadata (Run Cards in JSON format), PROV-JSON provenance graphs, and input abstracts are available to reviewers during peer review via the project repository at \url{https://github.com/Roverlucas/genai-reproducibility-protocol}. Upon publication, an archived snapshot with a persistent DOI will be deposited in Zenodo under a CC-BY 4.0 licence. Source data for all figures and tables are included in the repository. No restrictions on data availability apply.
+
+%%=============================================================
+\section*{Research involving human participants, their data, or biological material}
+
+\begin{description}[leftmargin=2em,style=nextline]
+\item[Reporting on sex and gender] N/A --- This study does not involve human participants. It evaluates the reproducibility of LLM API outputs using published scientific abstracts as input data.
+\item[Reporting on race, ethnicity, or other socially relevant groupings] N/A --- No human participants.
+\item[Population characteristics] N/A --- No human participants.
+\item[Recruitment] N/A --- No human participants.
+\item[Ethics oversight] No ethics approval was required. The study uses only publicly available scientific abstracts and commercial/open-source LLM APIs. No human subjects, personal data, or sensitive information were involved.
+\end{description}
+
+%%=============================================================
+\section*{Field-specific reporting}
+
+\noindent This study is a computational experiment evaluating the reproducibility of LLM inference outputs. It does not involve life sciences experiments, behavioural/social sciences with human subjects, or ecological/environmental fieldwork.
+
+\medskip
+\noindent For completeness, we provide the following information following the \textbf{Life sciences study design} template:
+
+\begin{description}[leftmargin=2em,style=nextline]
+\item[Sample size] 30 scientific abstracts $\times$ 8 models $\times$ 4 tasks $\times$ up to 5 conditions $\times$ 5 repetitions = 4,104 total runs (3,904 unique + 200 chat-format controls). Sample size was determined by the need to achieve sufficient statistical power for detecting large effects (Cohen's $d > 1.6$). The balanced subsample analysis (Extended Data Table 4) confirms that a 10-abstract subset preserves the main findings (local EMR = 0.953 vs.\ API EMR = 0.304).
+
+\item[Data exclusions] One Claude API run excluded due to API timeout returning empty output (49 of 50 runs retained for that condition). GPT-4 C1 summarization limited to 3 abstracts (8 runs) due to API quota exhaustion. All exclusions are documented in Supplementary Table S8 and noted in figure/table legends. No post-hoc exclusions of completed runs were performed.
+
+\item[Replication] Every experimental condition was replicated 5 times per abstract (or 3 times for temperature sweep conditions C3). Replication is the core subject of the study --- the entire experimental design measures the rate at which outputs replicate across identical configurations. All 4,104 run records are available in the repository for independent verification. Bootstrap CIs (10,000 resamples) quantify sampling uncertainty.
+
+\item[Randomization] Not applicable in the traditional sense. All models received identical inputs in identical order. Seed values for the variable-seed condition (C2): \{42, 123, 456, 789, 1024\}. No randomization of input order was needed as each abstract is processed independently with no carry-over effects.
+
+\item[Blinding] Not applicable. The study compares computational outputs across known model identities. Blinding is not meaningful in this context, as the analysis is fully automated (metric computation via scripts with no subjective assessment by human evaluators).
+\end{description}
+
+%%=============================================================
+\section*{Reporting for specific materials, systems and methods}
+
+\noindent None of the following materials, experimental systems, or methods were involved in this study. All items are marked \textbf{n/a}.
+
+\medskip
+\noindent\textbf{Materials \& experimental systems:}
+
+\begin{itemize}[noitemsep,leftmargin=2em]
+\item[$\square$] Antibodies --- \textbf{n/a}
+\item[$\square$] Eukaryotic cell lines --- \textbf{n/a}
+\item[$\square$] Palaeontology and archaeology --- \textbf{n/a}
+\item[$\square$] Animals and other organisms --- \textbf{n/a}
+\item[$\square$] Clinical data --- \textbf{n/a}
+\item[$\square$] Dual use research of concern --- \textbf{n/a}
+\item[$\square$] Plants --- \textbf{n/a}
+\end{itemize}
+
+\medskip
+\noindent\textbf{Methods:}
+
+\begin{itemize}[noitemsep,leftmargin=2em]
+\item[$\square$] ChIP-seq --- \textbf{n/a}
+\item[$\square$] Flow cytometry --- \textbf{n/a}
+\item[$\square$] MRI-based neuroimaging --- \textbf{n/a}
+\end{itemize}
+
+\end{document}

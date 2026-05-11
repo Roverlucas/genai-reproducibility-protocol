@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_gemini-2-5-pro_gsm8k_GSM8K_0022_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "41d1bf5b3630c09a6670eb64c6aa525f0a8efdc9940cc05a8dd2d8237baa3784",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nA merchant wants to make a choice of purchase between 2 purchase plans: jewelry worth $5,000 or electronic gadgets worth $8,000. His financial advisor speculates that the jewelry market will go up 2.5% while the electronic gadgets market will rise 1.2% within the same month. If the merchant is looking to maximize profit at the end of this month by making a choice, how much profit would this be?",
+  "input_text": "A merchant wants to make a choice of purchase between 2 purchase plans: jewelry worth $5,000 or electronic gadgets worth $8,000. His financial advisor speculates that the jewelry market will go up 2.5% while the electronic gadgets market will rise 1.2% within the same month. If the merchant is looking to maximize profit at the end of this month by making a choice, how much profit would this be?",
+  "input_hash": "149e6bcf771ff89fc0cf3387830bf7add1d859fec98d9f07a9d284e3c8b5cfd4",
+  "model_name": "gemini-2.5-pro",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "google-ai-studio",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:26:13.066980+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:26:13.066890+00:00",
+  "timestamp_end": "2026-05-09T00:26:17.568173+00:00",
+  "output_text": "",
+  "output_metrics": {
+    "gsm8k_correct": false,
+    "gold_answer": "If he purchases jewelry, he will make a profit of 2.5% which is $5000*(2.5/100) = $<<5000*(2.5/100)=125>>125\nIf he purchases electronic gadgets, he will make a profit of 1.2% which is $8000*(1.2/100) = $<<8000*(1.2/100)=96>>96\nIf he wants to maximize profit, since $125 > $96, he will choose to purchase jewelry, thereby making a profit of $<<125=125>>125\n#### 125",
+    "extracted_pred": null
+  },
+  "execution_duration_ms": 4501.28,
+  "logging_overhead_ms": 29.32,
+  "system_logs": "{\"inference_duration_ms\": 4471.83, \"finish_reason\": \"MAX_TOKENS\", \"usage\": {\"input_tokens\": 267, \"output_tokens\": 0, \"thoughts_tokens\": 509}, \"model_id_returned\": \"gemini-2.5-pro\", \"response_id\": \"KX_-abyOK4asz7IP_sTRsAQ\"}",
+  "errors": [],
+  "output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "storage_kb": 3.4
+}

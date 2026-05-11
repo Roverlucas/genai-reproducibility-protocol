@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_mistral-7b-local_gsm8k_GSM8K_0002_C1_rep3",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "74b42876f0446679e23000e56b60b28d5390bb6b0e7317579e54e9f29c44e667",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T22:04:27.194999+00:00",
+  "timestamp_end": "2026-05-08T22:04:40.470815+00:00",
+  "execution_duration_ms": 13275.82,
+  "output_hash": "55662d01067dfe516f06277f42b7704d09833ee9c7c3214267366fd3dce6dc27",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The boxes can weigh up to 5000 pounds - 3755 pounds = <<5000-3755=1245>>1245 pounds in total.\nThere can be 1245 / 15 = <<1245/15=83>>83 boxes loaded onto the truck without exceeding the bridge's weight limit.\n#### 83",
+    "extracted_pred": 83.0
+  },
+  "logging_overhead_ms": 29.13,
+  "storage_kb": 4.17,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

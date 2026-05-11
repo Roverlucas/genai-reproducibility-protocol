@@ -1,0 +1,307 @@
+{
+  "n_cases": 10,
+  "seed": 42,
+  "source": "/Users/lucasrover/llm-evidence-synthesis-reproducibility/analysis/blindage/extraction_long.json",
+  "cases": [
+    {
+      "case_id": "claude-sonnet-4-5__ABS-0010__est11__r4-vs-r8",
+      "model": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0010",
+      "estimate_idx": 11,
+      "disagreement_kind": "direction",
+      "run_a": {
+        "run_id": 4,
+        "effect_measure": "OR",
+        "effect_estimate": 0.99,
+        "ci_lower": 0.94,
+        "ci_upper": 1.05,
+        "lag": "average weekly",
+        "outcome_specific": "bronchiolitis",
+        "exposure_increment": "per IQR",
+        "output_hash": "8218fbf843cd451412c2c7c23dad41b84723ebde59f64f268d11b0de3a41997d"
+      },
+      "run_b": {
+        "run_id": 8,
+        "effect_measure": "OR",
+        "effect_estimate": 1.01,
+        "ci_lower": 0.97,
+        "ci_upper": 1.04,
+        "lag": "average weekly",
+        "outcome_specific": "bronchiolitis",
+        "exposure_increment": "per IQR",
+        "output_hash": "e5efb5effa5d0f869dec05204afbaa5594d5a6809b81576047f49853709e3025"
+      },
+      "abstract_text": "(abstract text for ABS-0010 not found in corpus directory)"
+    },
+    {
+      "case_id": "claude-sonnet-4-5__ABS-0045__est0__r2-vs-r3",
+      "model": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0045",
+      "estimate_idx": 0,
+      "disagreement_kind": "mixed",
+      "run_a": {
+        "run_id": 2,
+        "effect_measure": "other",
+        "effect_estimate": 0.21,
+        "ci_lower": 0.15,
+        "ci_upper": 0.27,
+        "lag": "lag0",
+        "outcome_specific": "digestive_diseases",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "c332b99e0cf9c7394846cfee6228444028703ea4e6b2999a72952ce85c016628"
+      },
+      "run_b": {
+        "run_id": 3,
+        "effect_measure": "IRR",
+        "effect_estimate": 1.0021,
+        "ci_lower": 1.0015,
+        "ci_upper": 1.0027,
+        "lag": "lag0",
+        "outcome_specific": "digestive_diseases",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "e48fb47a4eaa8c29767812895cfa50d77be8dc91d7c873df865989c81dcd0181"
+      },
+      "abstract_text": "(abstract text for ABS-0045 not found in corpus directory)"
+    },
+    {
+      "case_id": "gpt-4.1__ABS-0081__est4__r2-vs-r9",
+      "model": "gpt-4.1",
+      "corpus_id": "ABS-0081",
+      "estimate_idx": 4,
+      "disagreement_kind": "ci",
+      "run_a": {
+        "run_id": 2,
+        "effect_measure": "RR",
+        "effect_estimate": 1.015,
+        "ci_lower": 1.003,
+        "ci_upper": 1.028,
+        "lag": "other",
+        "outcome_specific": "asthma",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "14ac31bf7e7c78100d7f6bac6de8e9805733852bb5cd7ad02fbb3d20db07c519"
+      },
+      "run_b": {
+        "run_id": 9,
+        "effect_measure": "RR",
+        "effect_estimate": 1.13,
+        "ci_lower": 1.041,
+        "ci_upper": 1.227,
+        "lag": "other",
+        "outcome_specific": "asthma",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "d7730c9f33eeea2068d1dc8f64549a2ea700c6ee5a8e89ca7c4866a6962a97b6"
+      },
+      "abstract_text": "(abstract text for ABS-0081 not found in corpus directory)"
+    },
+    {
+      "case_id": "claude-sonnet-4-5__ABS-0052__est0__r2-vs-r7",
+      "model": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0052",
+      "estimate_idx": 0,
+      "disagreement_kind": "magnitude",
+      "run_a": {
+        "run_id": 2,
+        "effect_measure": "other",
+        "effect_estimate": 2.83,
+        "ci_lower": 0.96,
+        "ci_upper": 4.73,
+        "lag": null,
+        "outcome_specific": "diseases of the eye and adnexa",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "3ebd866aebee6eda2d96cabaf5de69df002b16286f47f45b7bf51a93bd2fb808"
+      },
+      "run_b": {
+        "run_id": 7,
+        "effect_measure": "other",
+        "effect_estimate": 1.0283,
+        "ci_lower": 1.0096,
+        "ci_upper": 1.0473,
+        "lag": null,
+        "outcome_specific": "eye and adnexa diseases",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "95b9420b83ada46f1dda0f1adb6f89de4740d79e53c208f0d20770acc5338445"
+      },
+      "abstract_text": "(abstract text for ABS-0052 not found in corpus directory)"
+    },
+    {
+      "case_id": "gpt-4.1__ABS-0080__est0__r1-vs-r7",
+      "model": "gpt-4.1",
+      "corpus_id": "ABS-0080",
+      "estimate_idx": 0,
+      "disagreement_kind": "mixed",
+      "run_a": {
+        "run_id": 1,
+        "effect_measure": "other",
+        "effect_estimate": 3.3,
+        "ci_lower": 2.0,
+        "ci_upper": 4.6,
+        "lag": "lag2",
+        "outcome_specific": "asthma",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "f37d152c942dd1a5984443b09a8518d29ce755c43496b60e283c8e6b8c4874fa"
+      },
+      "run_b": {
+        "run_id": 7,
+        "effect_measure": "other",
+        "effect_estimate": 1.033,
+        "ci_lower": 1.02,
+        "ci_upper": 1.046,
+        "lag": "lag2",
+        "outcome_specific": "asthma",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "3b1296ccf33692376b3635acd62a768175d632c45280fe357c4b944c4e2d95a2"
+      },
+      "abstract_text": "(abstract text for ABS-0080 not found in corpus directory)"
+    },
+    {
+      "case_id": "claude-sonnet-4-5__ABS-0077__est2__r2-vs-r3",
+      "model": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0077",
+      "estimate_idx": 2,
+      "disagreement_kind": "ci",
+      "run_a": {
+        "run_id": 2,
+        "effect_measure": "OR",
+        "effect_estimate": 1.0012,
+        "ci_lower": 1.0011,
+        "ci_upper": 1.0013,
+        "lag": "lag0",
+        "outcome_specific": "all_respiratory",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "fe18bdbbb2c87e4eb58296fea9f90d41b54bd4fcdf9807fa6ece7ec01aeeb26e"
+      },
+      "run_b": {
+        "run_id": 3,
+        "effect_measure": "OR",
+        "effect_estimate": 1.0026,
+        "ci_lower": 1.0022,
+        "ci_upper": 1.0031,
+        "lag": "lag0",
+        "outcome_specific": "all_respiratory",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "2367c22257506a6717309f4599a344fe0fe76c95feea7ecb35a445baf60c1609"
+      },
+      "abstract_text": "(abstract text for ABS-0077 not found in corpus directory)"
+    },
+    {
+      "case_id": "gpt-4.1__ABS-0032__est0__r1-vs-r3",
+      "model": "gpt-4.1",
+      "corpus_id": "ABS-0032",
+      "estimate_idx": 0,
+      "disagreement_kind": "magnitude",
+      "run_a": {
+        "run_id": 1,
+        "effect_measure": "other",
+        "effect_estimate": 1.61,
+        "ci_lower": 0.87,
+        "ci_upper": 2.35,
+        "lag": "lag0-4",
+        "outcome_specific": "all_respiratory",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "f4dacdd1b8211dbf02a3009c396fb1251bca6f64b07462ab15c43db40903a863"
+      },
+      "run_b": {
+        "run_id": 3,
+        "effect_measure": "other",
+        "effect_estimate": 1.0161,
+        "ci_lower": 1.0087,
+        "ci_upper": 1.0235,
+        "lag": "lag0-4",
+        "outcome_specific": "all_respiratory",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "9f77a80a486b6cecd1f9e5ca0b6afb92008905a1e04b6cd5c97929e0cca4643b"
+      },
+      "abstract_text": "(abstract text for ABS-0032 not found in corpus directory)"
+    },
+    {
+      "case_id": "claude-sonnet-4-5__ABS-0010__est10__r4-vs-r7",
+      "model": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0010",
+      "estimate_idx": 10,
+      "disagreement_kind": "direction",
+      "run_a": {
+        "run_id": 4,
+        "effect_measure": "OR",
+        "effect_estimate": 1.06,
+        "ci_lower": 1.03,
+        "ci_upper": 1.09,
+        "lag": "average weekly",
+        "outcome_specific": "bronchiolitis",
+        "exposure_increment": "per IQR",
+        "output_hash": "8218fbf843cd451412c2c7c23dad41b84723ebde59f64f268d11b0de3a41997d"
+      },
+      "run_b": {
+        "run_id": 7,
+        "effect_measure": "OR",
+        "effect_estimate": 0.99,
+        "ci_lower": 0.94,
+        "ci_upper": 1.05,
+        "lag": "average weekly",
+        "outcome_specific": "bronchiolitis, females, PM10",
+        "exposure_increment": "per IQR",
+        "output_hash": "72eda5aacc08ce85b9c104849a62aa4491a783f6a3e52ba0084d4b8eeaaad1ef"
+      },
+      "abstract_text": "(abstract text for ABS-0010 not found in corpus directory)"
+    },
+    {
+      "case_id": "claude-sonnet-4-5__ABS-0045__est0__r1-vs-r9",
+      "model": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0045",
+      "estimate_idx": 0,
+      "disagreement_kind": "mixed",
+      "run_a": {
+        "run_id": 1,
+        "effect_measure": "IRR",
+        "effect_estimate": 1.0021,
+        "ci_lower": 1.0015,
+        "ci_upper": 1.0027,
+        "lag": "lag0",
+        "outcome_specific": "digestive_diseases",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "16ba8e54eb6b9a22f86b82a67a40fba75cfa9e5bb9dad0e1ab142511c24b2507"
+      },
+      "run_b": {
+        "run_id": 9,
+        "effect_measure": "other",
+        "effect_estimate": 0.21,
+        "ci_lower": 0.15,
+        "ci_upper": 0.27,
+        "lag": "lag0",
+        "outcome_specific": "digestive diseases",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "828fc96301ce27968b1bc0912597e3d235119023376e4f288f53f93961f6b4d5"
+      },
+      "abstract_text": "(abstract text for ABS-0045 not found in corpus directory)"
+    },
+    {
+      "case_id": "gpt-4.1__ABS-0081__est4__r8-vs-r9",
+      "model": "gpt-4.1",
+      "corpus_id": "ABS-0081",
+      "estimate_idx": 4,
+      "disagreement_kind": "ci",
+      "run_a": {
+        "run_id": 8,
+        "effect_measure": "RR",
+        "effect_estimate": 1.015,
+        "ci_lower": 1.003,
+        "ci_upper": 1.028,
+        "lag": "other",
+        "outcome_specific": "asthma",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "14ac31bf7e7c78100d7f6bac6de8e9805733852bb5cd7ad02fbb3d20db07c519"
+      },
+      "run_b": {
+        "run_id": 9,
+        "effect_measure": "RR",
+        "effect_estimate": 1.13,
+        "ci_lower": 1.041,
+        "ci_upper": 1.227,
+        "lag": "other",
+        "outcome_specific": "asthma",
+        "exposure_increment": "per 10 \u00b5g/m\u00b3",
+        "output_hash": "d7730c9f33eeea2068d1dc8f64549a2ea700c6ee5a8e89ca7c4866a6962a97b6"
+      },
+      "abstract_text": "(abstract text for ABS-0081 not found in corpus directory)"
+    }
+  ]
+}

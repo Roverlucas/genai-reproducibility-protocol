@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0045__est0__r1-vs-r9",
+  "verdict": "ambiguous",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "ambiguous",
+  "criterion_c_ci_overlap": "disjoint",
+  "rationale": "Extraction X reports a percent change (0.21%, CI 0.15-0.27%) while Extraction Y reports an IRR of 1.0021 (CI 1.0015-1.0027); these are likely the same underlying estimate expressed on different scales (both positive, same precision), but without the abstract to confirm the scale, magnitude comparability and CI overlap cannot be definitively established.",
+  "randomization_seed": 2913446864,
+  "presented_x_run_id": 9,
+  "presented_y_run_id": 1,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"ambiguous\",\n  \"criterion_c_ci_overlap\": \"disjoint\",\n  \"verdict\": \"ambiguous\",\n  \"rationale\": \"Extraction X reports a percent change (0.21%, CI 0.15-0.27%) while Extraction Y reports an IRR of 1.0021 (CI 1.0015-1.0027); these are likely the same underlying estimate expressed on different scales (both positive, same precision), but without the abstract to confirm the scale, magnitude comparability and CI overlap cannot be definitively established.\"\n}",
+  "input_tokens": 939,
+  "output_tokens": 214,
+  "cost_usd": 0.030135,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778287673.998972
+}

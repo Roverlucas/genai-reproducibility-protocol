@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_gpt-4o_gsm8k_GSM8K_0013_C1_rep0",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "ef80501610285b317295b61a8932b4927e25f547cf17c3fab27c5caf8c72f1b7",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nValerie earns $5000 per month, 1/2 of what her brother earns. If their mother earns twice their combined salary, what's the total amount of money they all have together?",
+  "input_text": "Valerie earns $5000 per month, 1/2 of what her brother earns. If their mother earns twice their combined salary, what's the total amount of money they all have together?",
+  "input_hash": "b0dc7171ec99375c40721a2348c7e845ed47474a2aacb6ddaebd9892a3337fff",
+  "model_name": "gpt-4o-2024-11-20",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "openai-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:14:25.005750+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:14:25.005687+00:00",
+  "timestamp_end": "2026-05-09T00:14:26.332423+00:00",
+  "output_text": "Let's solve the problem step by step:\n\n1. **Valerie's salary**: Valerie earns $5000 per month.\n\n2. **Brother's salary**: Valerie earns half of what her brother earns. Therefore, her brother earns:\n   \\[\n   5000 \\times 2 = 10000\n   \\]\n\n3. **Combined salary of Valerie and her brother**: Adding their salaries together:\n   \\[\n   5000 + 10000 = 15000\n   \\]\n\n4. **Mother's salary**: The mother earns twice their combined salary. Therefore, her salary is:\n   \\[\n   15000 \\times 2 = 30000\n   \\]\n\n5. **Total amount of money they all have together**: Adding Valerie's, her brother's, and their mother's salaries:\n   \\[\n   5000 + 10000 + 30000 = 45000\n   \\]\n\n#### 45000",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Valerie's brother earns 2 * $5000 = $<<2*5000=10000>>10000\nTheir combined salary is $5000+$10000 = $<<5000+10000=15000>>15000\nTheir mother earn twice their combined earnings, which is 2*$15000 = $<<2*15000=30000>>30000\nThe total amount of money they all have is $15000+$30000 = $<<15000+30000=45000>>45000\n#### 45000",
+    "extracted_pred": 45000.0
+  },
+  "execution_duration_ms": 1326.74,
+  "logging_overhead_ms": 27.43,
+  "system_logs": "{\"inference_duration_ms\": 1293.65, \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 162, \"completion_tokens\": 197, \"total_tokens\": 359}, \"model_id_returned\": \"gpt-4o-2024-11-20\", \"system_fingerprint\": \"fp_3e21d7d914\", \"response_id\": \"chatcmpl-DdPcnG2jucvbX9x0sPIimQ7FYgAUK\"}",
+  "errors": [],
+  "output_hash": "2fdcc4b5125bb1bfcc68b379a809be849592ebbd396ac0b8d569023415bf363e",
+  "storage_kb": 3.64
+}

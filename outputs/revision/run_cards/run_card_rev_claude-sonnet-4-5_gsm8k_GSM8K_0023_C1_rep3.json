@@ -1,0 +1,43 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0023_C1_rep3",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "1d70dd49a8d90866897bfdd5cf56afe9bab3c40e61e75d5e35ec578d145d561d",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:09:18.319204+00:00",
+  "timestamp_end": "2026-05-09T00:09:22.207109+00:00",
+  "execution_duration_ms": 3887.9,
+  "output_hash": "e58905258a4129201469631608c5fb988cb927c387a30796ab6ffbd5c7a0f897",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Each school has sent 1 girls’ basketball team + 1 boys’ basketball team = <<1+1=2>>2 teams.\nSo each school has sent 2 teams * 5 players per team = <<2*5=10>>10 players.\nThey have also each sent 2 teams * 1 coach per team = <<2*1=2>>2 coaches.\nIn total, each school has sent 10 players + 2 coaches = <<10+2=12>>12 people.\nTherefore, the schools have sent a total of 12 people per school * 4 schools = <<12*4=48>>48 people.\n#### 48",
+    "extracted_pred": 48.0
+  },
+  "logging_overhead_ms": 24.69,
+  "storage_kb": 3.87,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

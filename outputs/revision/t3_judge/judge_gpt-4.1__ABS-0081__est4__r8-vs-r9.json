@@ -1,0 +1,17 @@
+{
+  "case_id": "gpt-4.1__ABS-0081__est4__r8-vs-r9",
+  "verdict": "truly_contradictory",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "different",
+  "criterion_c_ci_overlap": "disjoint",
+  "rationale": "Both extractions indicate a positive association (RR>1), but the point estimates (1.015 vs 1.13) differ by ~11% in absolute terms which is far more than 20% relative to the excess risk, and their 95% CIs (1.003\u20131.028 vs 1.041\u20131.227) do not overlap.",
+  "randomization_seed": 2104013449,
+  "presented_x_run_id": 8,
+  "presented_y_run_id": 9,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"different\",\n  \"criterion_c_ci_overlap\": \"disjoint\",\n  \"verdict\": \"truly_contradictory\",\n  \"rationale\": \"Both extractions indicate a positive association (RR>1), but the point estimates (1.015 vs 1.13) differ by ~11% in absolute terms which is far more than 20% relative to the excess risk, and their 95% CIs (1.003\u20131.028 vs 1.041\u20131.227) do not overlap.\"\n}",
+  "input_tokens": 925,
+  "output_tokens": 185,
+  "cost_usd": 0.02775,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778287678.388408
+}

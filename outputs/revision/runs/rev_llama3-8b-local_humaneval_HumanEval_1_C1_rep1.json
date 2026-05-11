@@ -1,0 +1,56 @@
+{
+  "run_id": "rev_llama3-8b-local_humaneval_HumanEval_1_C1_rep1",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "ba4d0641a184fb3cdd632060a25d6408a7e91fe9d79b5c341407e74b80536327",
+  "prompt_text": "from typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T20:48:05.973845+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T20:48:05.973815+00:00",
+  "timestamp_end": "2026-05-08T20:48:09.980241+00:00",
+  "output_text": "def separate_paren_groups(paren_string: str) -> List[str]:\n    stack = []\n    groups = []\n    current_group = ''\n    \n    for char in paren_string:\n        if char == '(':\n            stack.append(char)\n            current_group += char\n        elif char == ')':\n            stack.pop()\n            current_group += char\n            if not stack:\n                groups.append(current_group)\n                current_group = ''",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 59, in <module>\n    check(separate_paren_groups)\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<string>\", line 48, in check\n    assert candidate('(()()) ((())) () ((())()())') == [\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        '(()())', '((()))', '()', '((())()())'\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    ]\n    ^\nAssertionError\n",
+      "return_code": 1,
+      "duration_ms": 55.27,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 4006.43,
+  "logging_overhead_ms": 19.44,
+  "system_logs": "{\"inference_duration_ms\": 3931.44, \"model_reported_duration_ns\": 3929893458, \"eval_count\": 85, \"prompt_eval_count\": 158, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "29ae30422c815c8484d6464d1df55ffb3a4d615b2aa89c54302014dd1d24857f",
+  "storage_kb": 3.45
+}

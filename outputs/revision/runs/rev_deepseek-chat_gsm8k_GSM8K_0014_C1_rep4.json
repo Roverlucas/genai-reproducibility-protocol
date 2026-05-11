@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_deepseek-chat_gsm8k_GSM8K_0014_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "635021e0925ae3caad11b917a4072418c128b6ac49dcb4a1265dc20200e02fcf",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nAshley's pizza delivery costs $15. What is the total amount that Ashley should give the delivery man if she wants to give a tip that is equal to 1/5 of the amount she ordered?",
+  "input_text": "Ashley's pizza delivery costs $15. What is the total amount that Ashley should give the delivery man if she wants to give a tip that is equal to 1/5 of the amount she ordered?",
+  "input_hash": "5ee6b042514f5d82347168899cf1ca00bd69a34af5693d8bf98c39393b869f44",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:31:36.841519+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:31:36.841474+00:00",
+  "timestamp_end": "2026-05-09T00:31:38.477315+00:00",
+  "output_text": "The delivery cost is $15.  \nThe tip is 1/5 of the amount she ordered, which is the delivery cost.  \nSo tip = 1/5 × $15 = $3.  \nTotal amount = delivery cost + tip = $15 + $3 = $18.  \n\n#### 18",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The tip that Ashley wants to give amounts to $15 x 1/5 = $<<15*1/5=3>>3.\nHence, she will give a total of $15 + $3 = $<<15+3=18>>18 to the delivery man.\n#### 18",
+    "extracted_pred": 18.0
+  },
+  "execution_duration_ms": 1635.84,
+  "logging_overhead_ms": 27.91,
+  "system_logs": "{\"inference_duration_ms\": 1607.64, \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 161, \"completion_tokens\": 64, \"total_tokens\": 225}, \"model_id_returned\": \"deepseek-v4-flash\", \"response_id\": \"c1dc4557-0418-4d21-a238-6f0b78734410\"}",
+  "errors": [],
+  "output_hash": "34233ef328477b6cd995cd3d7e7e264783c4d61fac79d4b6a7366a76c3030da6",
+  "storage_kb": 2.97
+}

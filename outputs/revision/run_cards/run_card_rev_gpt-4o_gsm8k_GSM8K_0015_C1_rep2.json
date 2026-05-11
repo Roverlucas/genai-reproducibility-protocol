@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_gpt-4o_gsm8k_GSM8K_0015_C1_rep2",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "8bc735ec4f33f7feae5088129b3deb35077a682c61369d414de10b86ca063156",
+  "model_name": "gpt-4o-2024-11-20",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "openai-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:14:39.848134+00:00",
+  "timestamp_end": "2026-05-09T00:14:41.031921+00:00",
+  "execution_duration_ms": 1183.79,
+  "output_hash": "3d7400a56b9c20c4c9a288799c1713168b1822932ec0b94b2ccd802632459ba2",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "First find the number of petunias Andy plants: 90 flowers - 40 = <<90-40=50>>50 flowers\nThen add the number of each kind of flower he plants to find the total number: 50 flowers + 90 flowers = <<50+90=140>>140 flowers\n#### 140",
+    "extracted_pred": 140.0
+  },
+  "logging_overhead_ms": 30.91,
+  "storage_kb": 3.13,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

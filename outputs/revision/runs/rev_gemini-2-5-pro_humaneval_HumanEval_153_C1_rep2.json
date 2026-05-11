@@ -1,0 +1,56 @@
+{
+  "run_id": "rev_gemini-2-5-pro_humaneval_HumanEval_153_C1_rep2",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "c0ecd987e3c84c2b50926b5a4061c8386ec1e6b0704e3ce8630d46ca5a3144ca",
+  "prompt_text": "\ndef Strongest_Extension(class_name, extensions):\n    \"\"\"You will be given the name of a class (a string) and a list of extensions.\n    The extensions are to be used to load additional classes to the class. The\n    strength of the extension is as follows: Let CAP be the number of the uppercase\n    letters in the extension's name, and let SM be the number of lowercase letters \n    in the extension's name, the strength is given by the fraction CAP - SM. \n    You should find the strongest extension and return a string in this \n    format: ClassName.StrongestExtensionName.\n    If there are two or more extensions with the same strength, you should\n    choose the one that comes first in the list.\n    For example, if you are given \"Slices\" as the class and a list of the\n    extensions: ['SErviNGSliCes', 'Cheese', 'StuFfed'] then you should\n    return 'Slices.SErviNGSliCes' since 'SErviNGSliCes' is the strongest extension \n    (its strength is -1).\n    Example:\n    for Strongest_Extension('my_class', ['AA', 'Be', 'CC']) == 'my_class.AA'\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "gemini-2.5-pro",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "google-ai-studio",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:36:13.013853+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:36:13.013828+00:00",
+  "timestamp_end": "2026-05-08T21:36:17.473022+00:00",
+  "output_text": "",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 57, in <module>\n    check(Strongest_Extension)\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"<string>\", line 44, in check\n    assert candidate('Watashi', ['tEN', 'niNE', 'eIGHt8OKe']) == 'Watashi.eIGHt8OKe'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+      "return_code": 1,
+      "duration_ms": 54.56,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 4459.19,
+  "logging_overhead_ms": 12.18,
+  "system_logs": "{\"inference_duration_ms\": 4391.94, \"finish_reason\": \"MAX_TOKENS\", \"usage\": {\"input_tokens\": 322, \"output_tokens\": 0, \"thoughts_tokens\": 509}, \"model_id_returned\": \"gemini-2.5-pro\", \"response_id\": \"UVf-aejeC6qsz7IPi9CswQk\"}",
+  "errors": [],
+  "output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "storage_kb": 3.56
+}

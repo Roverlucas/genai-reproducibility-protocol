@@ -1,0 +1,43 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0013_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "ef80501610285b317295b61a8932b4927e25f547cf17c3fab27c5caf8c72f1b7",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:06:00.647976+00:00",
+  "timestamp_end": "2026-05-09T00:06:05.228577+00:00",
+  "execution_duration_ms": 4580.6,
+  "output_hash": "1e74cfff906587ad2a53f3ac51b6bbe311fe8bf955cb8dab3697dea52d3ecd2d",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Valerie's brother earns 2 * $5000 = $<<2*5000=10000>>10000\nTheir combined salary is $5000+$10000 = $<<5000+10000=15000>>15000\nTheir mother earn twice their combined earnings, which is 2*$15000 = $<<2*15000=30000>>30000\nThe total amount of money they all have is $15000+$30000 = $<<15000+30000=45000>>45000\n#### 45000",
+    "extracted_pred": 45000.0
+  },
+  "logging_overhead_ms": 28.56,
+  "storage_kb": 3.8,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

@@ -1,0 +1,51 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0017_C1_rep2",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "9f074c84a758ad7f649564baf1f0da2a669d6a24df816a05bbdbdcdb9737228e",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nMary is two years younger than Joan, who is five years older than Jessa. If Jessa is 20 years old, what is the sum of the ages of the three girls?",
+  "input_text": "Mary is two years younger than Joan, who is five years older than Jessa. If Jessa is 20 years old, what is the sum of the ages of the three girls?",
+  "input_hash": "664927c9965ff5ad2b75b556ae51e0ddc812e7b7e372d06952005656f6ca4683",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:07:15.476698+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:07:15.476665+00:00",
+  "timestamp_end": "2026-05-09T00:07:18.821473+00:00",
+  "output_text": "I need to find the ages of Mary, Joan, and Jessa, then add them up.\n\n**Given information:**\n- Jessa is 20 years old\n- Joan is five years older than Jessa\n- Mary is two years younger than Joan\n\n**Step 1: Find Joan's age**\nJoan is five years older than Jessa\nJoan = Jessa + 5\nJoan = 20 + 5\nJoan = 25 years old\n\n**Step 2: Find Mary's age**\nMary is two years younger than Joan\nMary = Joan - 2\nMary = 25 - 2\nMary = 23 years old\n\n**Step 3: Find the sum of all three ages**\nSum = Jessa + Joan + Mary\nSum = 20 + 25 + 23\nSum = 68\n\n#### 68",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Joan is 20 + 5 = <<20+5=25>>25 years old.\nMary is 25 – 2 = <<25-2=23>>23 years old.\nTherefore, the sum of their ages is 20 + 25 + 23 = <<20+25+23=68>>68.\n#### 68",
+    "extracted_pred": 68.0
+  },
+  "execution_duration_ms": 3344.81,
+  "logging_overhead_ms": 23.51,
+  "system_logs": "{\"inference_duration_ms\": 3321.11, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 172, \"output_tokens\": 196}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_014PFHdupcspzKutucXdFueY\"}",
+  "errors": [],
+  "output_hash": "4ffcbaf4990b576d55b309d9f0ecaece8c148df2b0acbff551219badb77fc098",
+  "storage_kb": 3.31
+}

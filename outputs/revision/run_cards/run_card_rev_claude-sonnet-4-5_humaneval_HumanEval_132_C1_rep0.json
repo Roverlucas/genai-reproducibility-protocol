@@ -1,0 +1,49 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_claude-sonnet-4-5_humaneval_HumanEval_132_C1_rep0",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "prompt_card_ref": "prompt_card_humaneval_v1_0.json",
+  "prompt_hash": "ceeef7227e3911edf98ea8a7c714116780f3468053e4cccc66bbb2dfa185c334",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T21:17:35.552496+00:00",
+  "timestamp_end": "2026-05-08T21:17:47.243775+00:00",
+  "execution_duration_ms": 11691.28,
+  "output_hash": "a7c181b0c61ec1e7b6bc6dbb397e045581995db68b1461ef439598ad88044ca4",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "  File \"<string>\", line 21\n    Looking at this problem, I need to find if there's a valid subsequence of brackets where at least one bracket is nested.\n                                                    ^\nSyntaxError: unterminated string literal (detected at line 21)\n",
+      "return_code": 1,
+      "duration_ms": 59.17,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "logging_overhead_ms": 13.06,
+  "storage_kb": 4.81,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

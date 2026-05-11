@@ -1,0 +1,51 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0024_C1_rep3",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "40c89f67e90b8cb13f029a04139c0159090539ee933022d63c494c4c12942349",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nTom decides to give his wife an anniversary getaway.  The plane tickets cost $5000 each.  The hotel is 20% more expensive than normal because it is a busy weekend.  The normal price is $1500 per day.  If they are there for 3 days how much did the trip cost?",
+  "input_text": "Tom decides to give his wife an anniversary getaway.  The plane tickets cost $5000 each.  The hotel is 20% more expensive than normal because it is a busy weekend.  The normal price is $1500 per day.  If they are there for 3 days how much did the trip cost?",
+  "input_hash": "051ae2b51a5de4945aeebd41c1161a35c24f5d72fb2731488a4c2c86dc7f22ac",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:09:40.951922+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:09:40.951829+00:00",
+  "timestamp_end": "2026-05-09T00:09:45.658230+00:00",
+  "output_text": "I need to calculate the total cost of Tom's anniversary trip, which includes plane tickets and hotel costs.\n\n**Step 1: Calculate the cost of plane tickets**\n- Cost per ticket: $5000\n- Number of people: 2 (Tom and his wife)\n- Total plane ticket cost: $5000 × 2 = $10,000\n\n**Step 2: Calculate the hotel cost per day**\n- Normal price per day: $1500\n- The hotel is 20% more expensive than normal\n- Additional cost: 20% of $1500 = 0.20 × $1500 = $300\n- Actual price per day: $1500 + $300 = $1800\n\n**Step 3: Calculate total hotel cost**\n- Price per day: $1800\n- Number of days: 3\n- Total hotel cost: $1800 × 3 = $5400\n\n**Step 4: Calculate total trip cost**\n- Plane tickets: $10,000\n- Hotel: $5400\n- Total cost: $10,000 + $5400 = $15,400\n\n#### 15400",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The hotel room is 1500*.2=$<<1500*.2=300>>300 more expensive per night than normal\nSo they paid 1500+300=$<<1500+300=1800>>1800 per night\nThat means she paid 1800*3=$<<1800*3=5400>>5400\nThe plane tickets cost 5000*2=$<<5000*2=10000>>10,000\nSo the total cost is 10,000+5400=$<<10000+5400=15400>>15,400\n#### 15400",
+    "extracted_pred": 15400.0
+  },
+  "execution_duration_ms": 4706.4,
+  "logging_overhead_ms": 28.8,
+  "system_logs": "{\"inference_duration_ms\": 4677.44, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 228, \"output_tokens\": 262}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_01HhkYC2hd5FeUuxzpKzSJye\"}",
+  "errors": [],
+  "output_hash": "7caf40308c552e9d5a7d8b22c27faa5d37befefc5e199bf9571ff0a21190ba1a",
+  "storage_kb": 3.88
+}

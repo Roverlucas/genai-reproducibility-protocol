@@ -1,0 +1,56 @@
+{
+  "run_id": "rev_llama3-8b-local_humaneval_HumanEval_84_C1_rep1",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "5b69b9b354c92bcb61d5e63ec962c1df7cc559708ce12f54b705344d47dc5b28",
+  "prompt_text": "\ndef solve(N):\n    \"\"\"Given a positive integer N, return the total sum of its digits in binary.\n    \n    Example\n        For N = 1000, the sum of digits will be 1 the output should be \"1\".\n        For N = 150, the sum of digits will be 6 the output should be \"110\".\n        For N = 147, the sum of digits will be 12 the output should be \"1100\".\n    \n    Variables:\n        @N integer\n             Constraints: 0 ≤ N ≤ 10000.\n    Output:\n         a string of binary number\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T20:42:49.365382+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T20:42:49.365350+00:00",
+  "timestamp_end": "2026-05-08T20:42:50.505348+00:00",
+  "output_text": "def solve(N):\n    return bin(sum(int(i) for i in str(bin(N)[2:])))",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 38, in <module>\n    check(solve)\n    ~~~~~^^^^^^^\n  File \"<string>\", line 28, in check\n    assert candidate(1000) == \"1\", \"Error\"\n           ^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Error\n",
+      "return_code": 1,
+      "duration_ms": 53.26,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 1140.0,
+  "logging_overhead_ms": 19.15,
+  "system_logs": "{\"inference_duration_ms\": 1067.28, \"model_reported_duration_ns\": 1065782292, \"eval_count\": 22, \"prompt_eval_count\": 176, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "1faddf2017d8269a0d17651e1d7f62dc1ea7a16a69a08c6246a23e99994d27bc",
+  "storage_kb": 2.91
+}

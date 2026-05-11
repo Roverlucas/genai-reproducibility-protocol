@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_deepseek-chat_gsm8k_GSM8K_0018_C1_rep3",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "72a824d06212ce4c696468d7489ba83f63616c469c95ace20841b7492a00e9be",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:32:20.051770+00:00",
+  "timestamp_end": "2026-05-09T00:32:21.894828+00:00",
+  "execution_duration_ms": 1843.06,
+  "output_hash": "65541a96cc1186d6123656ac293f30a4a748d2f5c5406e241996046286407f48",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "He chews 4 pieces of gum a day so over 30 days he will chew 4*30 = <<4*30=120>>120 pieces of gum\nEach pack of gum holds 15 pieces and he needs 120 pieces for the month so he will need 120/15 = <<120/15=8>>8 packs of gum\n#### 8",
+    "extracted_pred": 8.0
+  },
+  "logging_overhead_ms": 28.25,
+  "storage_kb": 3.03,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

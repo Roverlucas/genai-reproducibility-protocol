@@ -1,0 +1,48 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_deepseek-chat_humaneval_HumanEval_62_C1_rep3",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "prompt_card_ref": "prompt_card_humaneval_v1_0.json",
+  "prompt_hash": "2ed91ee79d7a7ff2cac9f9699c62f64df5f2e38d86c9bcac80d028bb32933331",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T21:40:28.244387+00:00",
+  "timestamp_end": "2026-05-08T21:40:29.470940+00:00",
+  "execution_duration_ms": 1226.55,
+  "output_hash": "8d18d3697507eb661bfd022b5adcffc4ab34a3055044e7ed68820dd508382e7d",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": true,
+      "stdout": "__OK__\n",
+      "stderr": "",
+      "return_code": 0,
+      "duration_ms": 43.07,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "logging_overhead_ms": 14.9,
+  "storage_kb": 2.53,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

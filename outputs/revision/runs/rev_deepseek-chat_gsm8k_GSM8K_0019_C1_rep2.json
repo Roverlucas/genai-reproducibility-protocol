@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_deepseek-chat_gsm8k_GSM8K_0019_C1_rep2",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "e4765b749193c77a8a54246062d8c5d7553dfe0a9e2da6f175a2ebe38d5fa875",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nJean has 30 lollipops. Jean eats 2 of the lollipops. With the remaining lollipops, Jean wants to package 2 lollipops in one bag. How many bags can Jean fill?",
+  "input_text": "Jean has 30 lollipops. Jean eats 2 of the lollipops. With the remaining lollipops, Jean wants to package 2 lollipops in one bag. How many bags can Jean fill?",
+  "input_hash": "07836807c799f44f985d68c5ac193129be1a909f70dd66f3ca725237c70d21d0",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:32:27.117073+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:32:27.117016+00:00",
+  "timestamp_end": "2026-05-09T00:32:28.752870+00:00",
+  "output_text": "Jean starts with 30 lollipops.  \nAfter eating 2, she has 30 - 2 = 28 lollipops left.  \nShe puts 2 lollipops in each bag, so the number of bags is 28 ÷ 2 = 14.  \n\n#### 14",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Jean has 30 - 2 = <<30-2=28>>28 lollipops\nJean can fill up 28 / 2 = <<28/2=14>>14 bags with lollipops\n#### 14",
+    "extracted_pred": 14.0
+  },
+  "execution_duration_ms": 1635.85,
+  "logging_overhead_ms": 27.95,
+  "system_logs": "{\"inference_duration_ms\": 1607.63, \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 175, \"completion_tokens\": 64, \"total_tokens\": 239}, \"model_id_returned\": \"deepseek-v4-flash\", \"response_id\": \"99b343f2-b9b6-4263-bd52-bfd60b16be41\"}",
+  "errors": [],
+  "output_hash": "0f64d89073aea99886f3da8b8035310cc91a53cc3463d2b60e1a9f5db9c09b90",
+  "storage_kb": 2.86
+}

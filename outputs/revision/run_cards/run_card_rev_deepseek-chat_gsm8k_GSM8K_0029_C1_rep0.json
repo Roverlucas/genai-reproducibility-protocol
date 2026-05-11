@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_deepseek-chat_gsm8k_GSM8K_0029_C1_rep0",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "b802ffb237dadc21fec30378ae91b846948dfefb6ac1475914b4c67bd0f73ca3",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:34:23.482868+00:00",
+  "timestamp_end": "2026-05-09T00:34:26.098707+00:00",
+  "execution_duration_ms": 2615.84,
+  "output_hash": "96e16808028ce5f6c841f14d22057a646a8294127bcb8228faadf3726b86254f",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The monthly interest is $100 x 2/100 = $<<100*2/100=2>>2.\nAfter 3 months, the total interest amount to $2 x 3 = $<<2*3=6>>6.\nTherefore, Mandy should give Benedict a total of $100 + $6 = $<<100+6=106>>106.\n#### 106",
+    "extracted_pred": 106.0
+  },
+  "logging_overhead_ms": 27.16,
+  "storage_kb": 3.25,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

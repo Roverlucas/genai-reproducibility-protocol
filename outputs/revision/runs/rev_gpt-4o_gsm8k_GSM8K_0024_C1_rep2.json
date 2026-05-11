@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_gpt-4o_gsm8k_GSM8K_0024_C1_rep2",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "40c89f67e90b8cb13f029a04139c0159090539ee933022d63c494c4c12942349",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nTom decides to give his wife an anniversary getaway.  The plane tickets cost $5000 each.  The hotel is 20% more expensive than normal because it is a busy weekend.  The normal price is $1500 per day.  If they are there for 3 days how much did the trip cost?",
+  "input_text": "Tom decides to give his wife an anniversary getaway.  The plane tickets cost $5000 each.  The hotel is 20% more expensive than normal because it is a busy weekend.  The normal price is $1500 per day.  If they are there for 3 days how much did the trip cost?",
+  "input_hash": "051ae2b51a5de4945aeebd41c1161a35c24f5d72fb2731488a4c2c86dc7f22ac",
+  "model_name": "gpt-4o-2024-11-20",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "openai-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:16:03.197063+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:16:03.197013+00:00",
+  "timestamp_end": "2026-05-09T00:16:04.726237+00:00",
+  "output_text": "Let's solve this step by step:\n\n1. **Cost of plane tickets**:  \n   Tom and his wife each need a plane ticket. Each ticket costs $5000.  \n   Total cost for plane tickets = $5000 × 2 = $10000.\n\n2. **Hotel cost per day**:  \n   The normal price of the hotel is $1500 per day. However, because it is a busy weekend, the price is 20% more expensive.  \n   To calculate the increased price:  \n   20% of $1500 = 0.2 × $1500 = $300.  \n   New price per day = $1500 + $300 = $1800.\n\n3. **Total hotel cost for 3 days**:  \n   The new price per day is $1800, and they are staying for 3 days.  \n   Total hotel cost = $1800 × 3 = $5400.\n\n4. **Total trip cost**:  \n   Add the cost of the plane tickets and the hotel.  \n   Total trip cost = $10000 + $5400 = $15400.\n\n#### 15400",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The hotel room is 1500*.2=$<<1500*.2=300>>300 more expensive per night than normal\nSo they paid 1500+300=$<<1500+300=1800>>1800 per night\nThat means she paid 1800*3=$<<1800*3=5400>>5400\nThe plane tickets cost 5000*2=$<<5000*2=10000>>10,000\nSo the total cost is 10,000+5400=$<<10000+5400=15400>>15,400\n#### 15400",
+    "extracted_pred": 15400.0
+  },
+  "execution_duration_ms": 1529.22,
+  "logging_overhead_ms": 31.91,
+  "system_logs": "{\"inference_duration_ms\": 1491.86, \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 214, \"completion_tokens\": 237, \"total_tokens\": 451}, \"model_id_returned\": \"gpt-4o-2024-11-20\", \"system_fingerprint\": \"fp_283548b9da\", \"response_id\": \"chatcmpl-DdPeNyTMDEHDWe4pPEye80aVmGL0A\"}",
+  "errors": [],
+  "output_hash": "b015e8dc141c9ea8593c07956bb591b76ca06901853ab53697fcbfd42233d24a",
+  "storage_kb": 3.89
+}

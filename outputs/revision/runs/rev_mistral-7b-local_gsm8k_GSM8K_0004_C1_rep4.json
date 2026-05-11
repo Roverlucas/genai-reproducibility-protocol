@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_mistral-7b-local_gsm8k_GSM8K_0004_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "5fea7cadbf7522aa0cdf6a1bb3feb3f7d4b0b711dedc4ed61a93abb5263c5652",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nDominick went to his team's changing room and saw half as many robots as helmets and half as many helmets as footballs kept there. If there were 20 helmets, calculate the total number of items Dominick saw.",
+  "input_text": "Dominick went to his team's changing room and saw half as many robots as helmets and half as many helmets as footballs kept there. If there were 20 helmets, calculate the total number of items Dominick saw.",
+  "input_hash": "8b33d0a0eefe84b0781cef7bdbc30c84e8fc45caef2099cdc17c21b70b2dbb60",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T22:06:19.709904+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T22:06:19.709864+00:00",
+  "timestamp_end": "2026-05-08T22:06:27.119444+00:00",
+  "output_text": " Let's break this down:\n\n1. We know that Dominick saw half as many robots as helmets. Since there are 20 helmets, the number of robots is twice the number of helmets, which is 40 robots.\n\n2. Then we learn that he also saw half as many helmets as footballs. So, if there are 20 helmets, the number of footballs must be four times the number of helmets, which is 80 footballs.\n\n3. Now, to find the total number of items Dominick saw, we add up the robots and the footballs: 40 + 80 = 120\n\n##### 120",
+  "output_metrics": {
+    "gsm8k_correct": false,
+    "gold_answer": "If the number of helmets was 20, there were 2 footballs/helmet * 20 helmets = <<20*2=40>>40 footballs\nThere were half as many robots as helmets, so in total, there were 1 robot/2 helmets * 20 helmets = <<1/2*20=10>>10 robots.\nThe total number of items in the changing room is 10 robots + 40 footballs + 20 helmets = <<10+40+20=70>>70 items\n#### 70",
+    "extracted_pred": 120.0
+  },
+  "execution_duration_ms": 7409.58,
+  "logging_overhead_ms": 27.03,
+  "system_logs": "{\"inference_duration_ms\": 7382.37, \"model_reported_duration_ns\": 7380309250, \"eval_count\": 165, \"prompt_eval_count\": 203, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "fb44fe2eed2740d13db1b0d2bdfe15a1b1a5e470c43fb3f878fb0e5f45fb8beb",
+  "storage_kb": 3.46
+}

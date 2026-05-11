@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_mistral-7b-local_gsm8k_GSM8K_0024_C1_rep0",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "40c89f67e90b8cb13f029a04139c0159090539ee933022d63c494c4c12942349",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nTom decides to give his wife an anniversary getaway.  The plane tickets cost $5000 each.  The hotel is 20% more expensive than normal because it is a busy weekend.  The normal price is $1500 per day.  If they are there for 3 days how much did the trip cost?",
+  "input_text": "Tom decides to give his wife an anniversary getaway.  The plane tickets cost $5000 each.  The hotel is 20% more expensive than normal because it is a busy weekend.  The normal price is $1500 per day.  If they are there for 3 days how much did the trip cost?",
+  "input_hash": "051ae2b51a5de4945aeebd41c1161a35c24f5d72fb2731488a4c2c86dc7f22ac",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T22:30:36.944881+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T22:30:36.944786+00:00",
+  "timestamp_end": "2026-05-08T22:30:54.706387+00:00",
+  "output_text": " Let's break down the problem step by step:\n\n1. The plane tickets cost $5000 each, so for two people, the total cost of the plane tickets would be $5000 * 2 = $10000.\n\n2. The hotel costs $1500 per day, and they are there for 3 days, so the total cost of the hotel would be $1500 * 3 = $4500.\n\n3. Since it's a busy weekend, the hotel is 20% more expensive, which means we need to add 20% of the normal price ($4500) to the total cost of the hotel: $4500 * 1.2 = $5400.\n\n4. Now, let's add the cost of the plane tickets and the expensive hotel cost together: $10000 + $5400 = $15400.\n\n##### <answer> 15400",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The hotel room is 1500*.2=$<<1500*.2=300>>300 more expensive per night than normal\nSo they paid 1500+300=$<<1500+300=1800>>1800 per night\nThat means she paid 1800*3=$<<1800*3=5400>>5400\nThe plane tickets cost 5000*2=$<<5000*2=10000>>10,000\nSo the total cost is 10,000+5400=$<<10000+5400=15400>>15,400\n#### 15400",
+    "extracted_pred": 15400.0
+  },
+  "execution_duration_ms": 17761.6,
+  "logging_overhead_ms": 28.24,
+  "system_logs": "{\"inference_duration_ms\": 17733.04, \"model_reported_duration_ns\": 17730325458, \"eval_count\": 228, \"prompt_eval_count\": 235, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "13489d10cc03eca2eb965577064c5e81e53fc4677222dfe30c833be30f6af29d",
+  "storage_kb": 3.64
+}

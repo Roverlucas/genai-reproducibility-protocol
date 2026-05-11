@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0045__est0__r2-vs-r3",
+  "verdict": "semantically_equivalent",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "same",
+  "criterion_c_ci_overlap": "ambiguous",
+  "rationale": "Extraction X reports a percent increase (0.21% with CI 0.15-0.27%) while Extraction Y reports the equivalent IRR (1.0021, CI 1.0015-1.0027). These are mathematically identical representations of the same positive association per 10 \u00b5g/m\u00b3 increment, so direction and magnitude agree; CI overlap is trivially satisfied since the values are the same on different scales.",
+  "randomization_seed": 2230528369,
+  "presented_x_run_id": 2,
+  "presented_y_run_id": 3,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"same\",\n  \"criterion_c_ci_overlap\": \"ambiguous\",\n  \"verdict\": \"semantically_equivalent\",\n  \"rationale\": \"Extraction X reports a percent increase (0.21% with CI 0.15-0.27%) while Extraction Y reports the equivalent IRR (1.0021, CI 1.0015-1.0027). These are mathematically identical representations of the same positive association per 10 \u00b5g/m\u00b3 increment, so direction and magnitude agree; CI overlap is trivially satisfied since the values are the same on different scales.\"\n}",
+  "input_tokens": 940,
+  "output_tokens": 217,
+  "cost_usd": 0.030375,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778287641.134943
+}

@@ -1,0 +1,57 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_humaneval_HumanEval_65_C1_rep1",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "2751ca433b3ea9f4f348dd18f65c357482e140739e26ec98b1e056e55b491dc0",
+  "prompt_text": "\ndef circular_shift(x, shift):\n    \"\"\"Circular shift the digits of the integer x, shift the digits right by shift\n    and return the result as a string.\n    If shift > number of digits, return digits reversed.\n    >>> circular_shift(12, 1)\n    \"21\"\n    >>> circular_shift(12, 2)\n    \"12\"\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:21:34.387824+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:21:34.387789+00:00",
+  "timestamp_end": "2026-05-08T21:21:36.231908+00:00",
+  "output_text": "def circular_shift(x, shift):\n    s = str(x)\n    n = len(s)\n    \n    if shift > n:\n        return s[::-1]\n    \n    shift = shift % n\n    if shift == 0:\n        return s\n    \n    return s[-shift:] + s[:-shift]",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": true,
+      "stdout": "__OK__\n",
+      "stderr": "",
+      "return_code": 0,
+      "duration_ms": 43.17,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 1844.12,
+  "logging_overhead_ms": 15.44,
+  "system_logs": "{\"inference_duration_ms\": 1784.89, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 134, \"output_tokens\": 82}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_01PosYx7t4FribzA7fHKyX7H\"}",
+  "errors": [],
+  "output_hash": "0f9b5d273f0a2df737703a8758257f007bf7ee29a68ab06205e37a6ed0c4fcd5",
+  "storage_kb": 2.72
+}

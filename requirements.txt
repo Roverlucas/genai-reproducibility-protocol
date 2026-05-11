@@ -7,3 +7,10 @@ tabulate==0.9.0
 matplotlib==3.10.8
 scipy==1.17.0
 bert-score==0.3.13
+# Revision pipeline (T1, T4, T14) — optional but recommended
+# datasets is used by src/tasks/{humaneval,gsm8k}_loader.py when present;
+# without it, loaders fall back to direct GitHub mirror downloads.
+# datasets==2.21.0
+# tiktoken speeds up cost estimation; the estimator gracefully falls back
+# to a chars/4 heuristic when missing.
+# tiktoken==0.7.0

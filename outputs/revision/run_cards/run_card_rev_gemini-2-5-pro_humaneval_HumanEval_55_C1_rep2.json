@@ -1,0 +1,48 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_gemini-2-5-pro_humaneval_HumanEval_55_C1_rep2",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "prompt_card_ref": "prompt_card_humaneval_v1_0.json",
+  "prompt_hash": "b99ee738edd1466c976259cf4271917d52d9a0df5220d566646b476a4400a336",
+  "model_name": "gemini-2.5-pro",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "google-ai-studio",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T21:32:12.837889+00:00",
+  "timestamp_end": "2026-05-08T21:32:17.341975+00:00",
+  "execution_duration_ms": 4504.09,
+  "output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 47, in <module>\n    check(fib)\n    ~~~~~^^^^^\n  File \"<string>\", line 40, in check\n    assert candidate(10) == 55\n           ^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+      "return_code": 1,
+      "duration_ms": 53.23,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "logging_overhead_ms": 11.65,
+  "storage_kb": 2.51,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_deepseek-chat_gsm8k_GSM8K_0001_C1_rep0",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "bfce246d17404f2cc417b4470ea549d3a1ba504df359c05f22b1184ca4611eb3",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nJordan has 2 children who wear diapers.  Each child requires 5 diaper changes per day.  Jordan's wife changes half of the diapers.  How many diapers does Jordan change per day?",
+  "input_text": "Jordan has 2 children who wear diapers.  Each child requires 5 diaper changes per day.  Jordan's wife changes half of the diapers.  How many diapers does Jordan change per day?",
+  "input_hash": "f8718355d40182caf7fb9abc1600b2943d192050fa353c0f767028670f6fc88a",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:29:15.481058+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:29:15.480997+00:00",
+  "timestamp_end": "2026-05-09T00:29:17.375022+00:00",
+  "output_text": "First, find the total number of diaper changes per day for both children.  \nEach child needs 5 changes, so for 2 children:  \n2 × 5 = 10 diaper changes per day.\n\nJordan's wife changes half of these diapers. Half of 10 is:  \n10 ÷ 2 = 5 diapers changed by the wife.\n\nThe remaining diapers are changed by Jordan:  \n10 − 5 = 5 diapers.\n\n#### 5",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Jordan has 2 children, each requiring 5 diaper changes per day, for a total of 5*2=<<2*5=10>>10 diaper changes per day.\nJordan's wife changes half of the diapers, leaving Jordan to change the other half, for a total of 10/2=<<10/2=5>>5 diaper changes per day that Jordan is responsible for.\n#### 5",
+    "extracted_pred": 5.0
+  },
+  "execution_duration_ms": 1894.03,
+  "logging_overhead_ms": 25.03,
+  "system_logs": "{\"inference_duration_ms\": 1868.7, \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 163, \"completion_tokens\": 96, \"total_tokens\": 259}, \"model_id_returned\": \"deepseek-v4-flash\", \"response_id\": \"8b32ec48-0552-4d34-b0f0-de2980d5f1c8\"}",
+  "errors": [],
+  "output_hash": "25becc01a712ba81acf519ef94b6e4ea71f9d4c414acf06de525ee004a8e6b6f",
+  "storage_kb": 3.25
+}

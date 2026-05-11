@@ -1,0 +1,51 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0016_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "d58b6d284ae23cd04c8f22b082b7dcd154317edf7f3b013c911c21cad1fed27e",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nJames loves to go swimming and has to swim across a 20-mile lake.  He can swim at a pace of 2 miles per hour.  He swims 60% of the distance.  After that, he stops on an island and rests for half as long as the swimming time.  He then finishes the remaining distance while going half the speed.  How long did it take him to get across the lake?",
+  "input_text": "James loves to go swimming and has to swim across a 20-mile lake.  He can swim at a pace of 2 miles per hour.  He swims 60% of the distance.  After that, he stops on an island and rests for half as long as the swimming time.  He then finishes the remaining distance while going half the speed.  How long did it take him to get across the lake?",
+  "input_hash": "fb9167f06dd28b3091afa25209e78f28cfefabe1d9f0d4e96996fdd7e194f691",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:07:02.809751+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:07:02.809663+00:00",
+  "timestamp_end": "2026-05-09T00:07:07.901586+00:00",
+  "output_text": "I need to find the total time James took to cross the lake, including swimming and resting.\n\n**Step 1: Calculate the first swimming segment**\n- Total distance: 20 miles\n- First segment: 60% of 20 miles = 0.60 × 20 = 12 miles\n- Swimming speed: 2 miles per hour\n- Time for first segment: 12 miles ÷ 2 mph = 6 hours\n\n**Step 2: Calculate resting time**\n- He rests for half as long as the swimming time\n- First swimming time: 6 hours\n- Resting time: 6 ÷ 2 = 3 hours\n\n**Step 3: Calculate the second swimming segment**\n- Remaining distance: 20 - 12 = 8 miles\n- Swimming speed for second segment: half of original speed = 2 ÷ 2 = 1 mph\n- Time for second segment: 8 miles ÷ 1 mph = 8 hours\n\n**Step 4: Calculate total time**\n- First swimming: 6 hours\n- Resting: 3 hours\n- Second swimming: 8 hours\n- Total time: 6 + 3 + 8 = 17 hours\n\n#### 17",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "He swam 20*.6=<<20*.6=12>>12 miles.\nThat took him 12/2=<<12/2=6>>6 hours.\nSo he rested 6/2=<<6/2=3>>3 hours.\nHe then swam the remaining 20-12=<<20-12=8>>8 miles.\nHis pace was 2/2=<<2/2=1>>1 mph.\nSo it took him 8/1=<<8/1=8>>8 hours.\nSo in total, he took 6+3+8=<<6+3+8=17>>17 hours.\n#### 17",
+    "extracted_pred": 17.0
+  },
+  "execution_duration_ms": 5091.92,
+  "logging_overhead_ms": 28.77,
+  "system_logs": "{\"inference_duration_ms\": 5063.09, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 272, \"output_tokens\": 308}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_01QtMQUmMrFa3xT5jzU4wc6U\"}",
+  "errors": [],
+  "output_hash": "4dc2d5464d4afa60a759dc1210502fbc030478e22bbe5f77dde4e6ae1745924b",
+  "storage_kb": 4.12
+}

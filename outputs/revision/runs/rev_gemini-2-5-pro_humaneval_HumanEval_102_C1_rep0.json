@@ -1,0 +1,56 @@
+{
+  "run_id": "rev_gemini-2-5-pro_humaneval_HumanEval_102_C1_rep0",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "3b2e226ef819e4547fbd11a4ee933844a256dcd27e6d79fc1da3d380ff755d18",
+  "prompt_text": "\ndef choose_num(x, y):\n    \"\"\"This function takes two positive numbers x and y and returns the\n    biggest even integer number that is in the range [x, y] inclusive. If \n    there's no such number, then the function should return -1.\n\n    For example:\n    choose_num(12, 15) = 14\n    choose_num(13, 12) = -1\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "gemini-2.5-pro",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "google-ai-studio",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:30:02.685459+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:30:02.685436+00:00",
+  "timestamp_end": "2026-05-08T21:30:07.113828+00:00",
+  "output_text": "",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 48, in <module>\n    check(choose_num)\n    ~~~~~^^^^^^^^^^^^\n  File \"<string>\", line 36, in check\n    assert candidate(12, 15) == 14\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+      "return_code": 1,
+      "duration_ms": 53.19,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 4428.39,
+  "logging_overhead_ms": 11.31,
+  "system_logs": "{\"inference_duration_ms\": 4363.3, \"finish_reason\": \"MAX_TOKENS\", \"usage\": {\"input_tokens\": 139, \"output_tokens\": 0, \"thoughts_tokens\": 509}, \"model_id_returned\": \"gemini-2.5-pro\", \"response_id\": \"3lX-abvZOfDQz7IPxdCtiAc\"}",
+  "errors": [],
+  "output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "storage_kb": 2.71
+}

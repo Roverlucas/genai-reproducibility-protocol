@@ -1,0 +1,41 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_together-llama3_gsm8k_GSM8K_0029_C1_rep1",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "b802ffb237dadc21fec30378ae91b846948dfefb6ac1475914b4c67bd0f73ca3",
+  "model_name": "meta-llama/Meta-Llama-3-8B-Instruct-Lite",
+  "model_version": "api-managed",
+  "weights_hash": "open-weight-cloud-served",
+  "model_source": "together-ai",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:01:07.116662+00:00",
+  "timestamp_end": "2026-05-09T00:01:07.125809+00:00",
+  "execution_duration_ms": 9.15,
+  "output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "output_metrics": {},
+  "logging_overhead_ms": 8.77,
+  "storage_kb": 3.0,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": [
+    "ValueError: TOGETHER_API_KEY environment variable not set",
+    "Traceback (most recent call last):\n  File \"/Users/lucasrover/paper-experiment/run_revision_experiments.py\", line 692, in execute_run\n    result = _execute_single_turn(runner_module, stack_cfg, item)\n  File \"/Users/lucasrover/paper-experiment/run_revision_experiments.py\", line 472, in _execute_single_turn\n    return _call_runner_inference(\n        runner_module, stack_cfg,\n    ...<3 lines>...\n        max_tokens=item.max_tokens, system_prompt=item.system,\n    )\n  File \"/Users/lucasrover/paper-experiment/run_revision_experiments.py\", line 324, in _call_runner_inference\n    return fn(**call_kwargs)\nValueError: TOGETHER_API_KEY environment variable not set\n"
+  ]
+}

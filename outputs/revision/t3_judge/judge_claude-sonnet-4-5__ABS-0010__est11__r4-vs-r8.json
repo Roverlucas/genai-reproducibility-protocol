@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0010__est11__r4-vs-r8",
+  "verdict": "semantically_equivalent",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "same",
+  "criterion_c_ci_overlap": "overlap",
+  "rationale": "Both extractions report null associations near 1.0 (1.01 vs 0.99) with CIs that overlap and span 1.0; estimates are within 20% of their average.",
+  "randomization_seed": 2995497702,
+  "presented_x_run_id": 8,
+  "presented_y_run_id": 4,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"same\",\n  \"criterion_c_ci_overlap\": \"overlap\",\n  \"verdict\": \"semantically_equivalent\",\n  \"rationale\": \"Both extractions report null associations near 1.0 (1.01 vs 0.99) with CIs that overlap and span 1.0; estimates are within 20% of their average.\"\n}",
+  "input_tokens": 929,
+  "output_tokens": 139,
+  "cost_usd": 0.02436,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778287636.12863
+}

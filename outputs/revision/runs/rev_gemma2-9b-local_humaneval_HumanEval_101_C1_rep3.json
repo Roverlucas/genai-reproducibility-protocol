@@ -1,0 +1,56 @@
+{
+  "run_id": "rev_gemma2-9b-local_humaneval_HumanEval_101_C1_rep3",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "96a270267ea64b34c5d4364f00c969284296ae45017b988c20a1c1c306dfc486",
+  "prompt_text": "\ndef words_string(s):\n    \"\"\"\n    You will be given a string of words separated by commas or spaces. Your task is\n    to split the string into words and return an array of the words.\n    \n    For example:\n    words_string(\"Hi, my name is John\") == [\"Hi\", \"my\", \"name\", \"is\", \"John\"]\n    words_string(\"One, two, three, four, five, six\") == [\"One\", \"two\", \"three\", \"four\", \"five\", \"six\"]\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "gemma2:9b",
+  "model_version": "9.2B",
+  "weights_hash": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:10:23.214606+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:10:23.214526+00:00",
+  "timestamp_end": "2026-05-08T21:10:24.194612+00:00",
+  "output_text": "```python\n    return s.split(\", \") \n```",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 48, in <module>\n    check(words_string)\n    ~~~~~^^^^^^^^^^^^^^\n  File \"<string>\", line 37, in check\n    assert candidate(\"Hi, my name is John\") == [\"Hi\", \"my\", \"name\", \"is\", \"John\"]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+      "return_code": 1,
+      "duration_ms": 53.2,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 980.09,
+  "logging_overhead_ms": 21.63,
+  "system_logs": "{\"inference_duration_ms\": 904.83, \"model_reported_duration_ns\": 902614834, \"eval_count\": 14, \"prompt_eval_count\": 167, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "618ef0774719142dd8437db0a81c9673baa061fed72f8ed427852d83890ef99c",
+  "storage_kb": 2.92
+}

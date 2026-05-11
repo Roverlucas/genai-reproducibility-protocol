@@ -81,6 +81,8 @@ COLORS = {
     "gpt4":          "#D55E00",  # vermillion/red-orange
     "claude_sonnet": "#CC79A7",  # reddish purple
     "gemini":        "#E69F00",  # amber/orange
+    "gpt4o":         "#882255",  # wine (revision: distinct from gpt-4 0613)
+    "deepseek_chat": "#117733",  # dark teal (revision)
 }
 
 LOCAL_COLOR = "#0072B2"   # blue
@@ -104,6 +106,16 @@ MODEL_LABELS = {
     "gpt4": "GPT-4",
     "claude_sonnet": "Claude Sonnet 4.5",
     "gemini": "Gemini 2.5 Pro",
+    "gpt4o": "gpt-4o",
+    "deepseek_chat": "DeepSeek Chat",
+}
+
+# Hardcoded revision-batch multi-turn EMRs (R3.3 extension, source:
+# analysis/revision/emr_per_stack_per_task.json). Used only by the
+# multi-turn comparison figure to add the two new API stacks.
+REVISION_MULTITURN_EMR = {
+    "gpt4o": {"mean": 0.090, "ci_low": 0.02, "ci_high": 0.16},
+    "deepseek_chat": {"mean": 0.350, "ci_low": 0.13, "ci_high": 0.60},
 }
 
 # Nature MI figure dimensions (in inches)
@@ -391,13 +403,17 @@ def generate_multiturn_comparison(metrics, per_abstract_emr):
 
     fig, ax = plt.subplots(figsize=(FULL_WIDTH, 2.4))
 
-    all_models = ["gemma2_9b", "mistral_7b", "llama3_8b", "claude_sonnet", "gemini"]
+    all_models = ["gemma2_9b", "mistral_7b", "llama3_8b",
+                  "claude_sonnet", "gemini", "gpt4o", "deepseek_chat"]
     scenarios = [
         ("extraction", "C1_fixed_seed", "Single-turn\nextraction"),
         ("summarization", "C1_fixed_seed", "Single-turn\nsummarisation"),
         ("multiturn_refinement", "C1_fixed_seed", "Multi-turn\nrefinement"),
         ("rag_extraction", "C1_fixed_seed", "RAG\nextraction"),
     ]
+
+    # API-only models that only have multi-turn data in the figure (skip single-turn bars)
+    multiturn_only_models = {"gemini", "gpt4o", "deepseek_chat"}
 
     # Load Gemini multiturn/RAG from bootstrap_cis.json
     with open(ANALYSIS_DIR / "bootstrap_cis.json") as f:
@@ -406,7 +422,7 @@ def generate_multiturn_comparison(metrics, per_abstract_emr):
 
     x = np.arange(len(scenarios))
     n_models = len(all_models)
-    width = 0.15
+    width = 0.12  # narrower bars to fit 7 series
     offsets = [(i - (n_models - 1) / 2) * width for i in range(n_models)]
 
     for i, model in enumerate(all_models):
@@ -416,7 +432,6 @@ def generate_multiturn_comparison(metrics, per_abstract_emr):
 
         for task_id, cond, _ in scenarios:
             if model == "gemini":
-                # Gemini only has multi-turn and RAG
                 if task_id == "multiturn_refinement":
                     gd = gemini_mt.get("multiturn_refinement", {})
                     emrs.append(gd.get("mean", 0))
@@ -441,6 +456,22 @@ def generate_multiturn_comparison(metrics, per_abstract_emr):
                     err_hi.append(0)
                     continue
 
+            if model in ("gpt4o", "deepseek_chat"):
+                # Revision-batch multi-turn only (R3.3)
+                if task_id == "multiturn_refinement":
+                    gd = REVISION_MULTITURN_EMR.get(model, {})
+                    mean_val = gd.get("mean", 0)
+                    lo = gd.get("ci_low", mean_val)
+                    hi = gd.get("ci_high", mean_val)
+                    emrs.append(mean_val)
+                    err_lo.append(mean_val - lo)
+                    err_hi.append(hi - mean_val)
+                else:
+                    emrs.append(0)
+                    err_lo.append(0)
+                    err_hi.append(0)
+                continue
+
             m = lookup(metrics, model, task_id, cond)
             mean_val = m["emr_mean"] if m and m["emr_mean"] is not None else 0.0
 
@@ -458,13 +489,16 @@ def generate_multiturn_comparison(metrics, per_abstract_emr):
         color = COLORS.get(model, "#999999")
         label = MODEL_LABELS.get(model, model)
 
-        # Don't plot zero-height bars for Gemini single-turn
+        # Don't plot zero-height bars for multi-turn-only models on single-turn scenarios
+        # Also skip RAG for gpt-4o/deepseek (we did not run RAG extension for them)
         plot_emrs = []
         plot_err_lo = []
         plot_err_hi = []
         plot_x = []
-        for j in range(len(scenarios)):
-            if model == "gemini" and j < 2:
+        for j, (task_id, _, _) in enumerate(scenarios):
+            if model in multiturn_only_models and task_id in ("extraction", "summarization"):
+                continue
+            if model in ("gpt4o", "deepseek_chat") and task_id == "rag_extraction":
                 continue
             plot_emrs.append(emrs[j])
             plot_err_lo.append(err_lo[j])

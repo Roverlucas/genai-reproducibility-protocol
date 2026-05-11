@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_mistral-7b-local_gsm8k_GSM8K_0014_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "635021e0925ae3caad11b917a4072418c128b6ac49dcb4a1265dc20200e02fcf",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nAshley's pizza delivery costs $15. What is the total amount that Ashley should give the delivery man if she wants to give a tip that is equal to 1/5 of the amount she ordered?",
+  "input_text": "Ashley's pizza delivery costs $15. What is the total amount that Ashley should give the delivery man if she wants to give a tip that is equal to 1/5 of the amount she ordered?",
+  "input_hash": "5ee6b042514f5d82347168899cf1ca00bd69a34af5693d8bf98c39393b869f44",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T22:17:47.624960+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T22:17:47.624866+00:00",
+  "timestamp_end": "2026-05-08T22:17:58.391840+00:00",
+  "output_text": " To find the total amount Ashley should give the delivery man, we first need to determine the tip amount which is 1/5 of the cost of the pizza.\n\n1. Calculate 1/5 of $15:\n   Tip Amount = (1/5) * $15\n   Tip Amount = ($15 / 5)\n   Tip Amount = $3\n\n2. Add the tip amount to the cost of the pizza to get the total amount Ashley should give the delivery man:\n   Total Amount = Cost + Tip\n   Total Amount = $15 + $3\n   Total Amount = $18\n\n#### 18",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The tip that Ashley wants to give amounts to $15 x 1/5 = $<<15*1/5=3>>3.\nHence, she will give a total of $15 + $3 = $<<15+3=18>>18 to the delivery man.\n#### 18",
+    "extracted_pred": 18.0
+  },
+  "execution_duration_ms": 10766.97,
+  "logging_overhead_ms": 30.41,
+  "system_logs": "{\"inference_duration_ms\": 10736.35, \"model_reported_duration_ns\": 10734052875, \"eval_count\": 149, \"prompt_eval_count\": 185, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "fcfaa7498d06ef7318026001825dc00739b0e8a8fbcf87926b81db1d9e3156d0",
+  "storage_kb": 3.17
+}

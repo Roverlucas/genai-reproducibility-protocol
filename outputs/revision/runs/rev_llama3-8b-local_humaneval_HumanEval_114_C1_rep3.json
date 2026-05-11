@@ -1,0 +1,56 @@
+{
+  "run_id": "rev_llama3-8b-local_humaneval_HumanEval_114_C1_rep3",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "4bdb0afd53bc0e28529bafba0538d6b3a566ad5f476fb7f1016cfabe823f1c3f",
+  "prompt_text": "\ndef minSubArraySum(nums):\n    \"\"\"\n    Given an array of integers nums, find the minimum sum of any non-empty sub-array\n    of nums.\n    Example\n    minSubArraySum([2, 3, 4, 1, 2, 4]) == 1\n    minSubArraySum([-1, -2, -3]) == -6\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T20:46:32.292401+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T20:46:32.292366+00:00",
+  "timestamp_end": "2026-05-08T20:46:36.894806+00:00",
+  "output_text": "def minSubArraySum(nums):\n    if not nums:\n        return 0\n    \n    min_sum = float('inf')\n    left = 0\n    current_sum = 0\n    \n    for right in range(len(nums)):\n        current_sum += nums[right]\n        \n        while current_sum > min_sum and left <= right:\n            current_sum -= nums[left]\n            left += 1\n        \n        if current_sum < min_sum:\n            min_sum = current_sum\n    \n    return min_sum",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 59, in <module>\n    check(minSubArraySum)\n    ~~~~~^^^^^^^^^^^^^^^^\n  File \"<string>\", line 44, in check\n    assert candidate([2, 3, 4, 1, 2, 4]) == 1, \"This prints if this assert fails 1 (good for debugging!)\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: This prints if this assert fails 1 (good for debugging!)\n",
+      "return_code": 1,
+      "duration_ms": 53.98,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 4602.44,
+  "logging_overhead_ms": 20.71,
+  "system_logs": "{\"inference_duration_ms\": 4527.4, \"model_reported_duration_ns\": 4525645500, \"eval_count\": 99, \"prompt_eval_count\": 131, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "f86b978769cb2061b150a12da770a276b63fe5288af26a9a4b1029830c4088a9",
+  "storage_kb": 3.17
+}

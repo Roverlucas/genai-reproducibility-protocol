@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_llama3-8b-local_gsm8k_GSM8K_0021_C1_rep2",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "c7b2f383129a12c5ae91bdd631dceae4581ee516a3d93abcc2cd3c9555e51f95",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nIn a race with 240 Asians, 80 were Japanese, and the rest were Chinese. If the number of boys on the Chinese team was 60, how many girls were on the Chinese team?",
+  "input_text": "In a race with 240 Asians, 80 were Japanese, and the rest were Chinese. If the number of boys on the Chinese team was 60, how many girls were on the Chinese team?",
+  "input_hash": "e8aa751873f681ba49d9116ae9a8bf525ac1a162b75bf041e891e6c841774c26",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:56:39.923957+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:56:39.923890+00:00",
+  "timestamp_end": "2026-05-08T21:56:50.745653+00:00",
+  "output_text": "Let's break it down step by step!\n\n1. The problem states that there are 240 Asians in total.\n2. It also says that 80 of these Asians are Japanese.\n3. This means that the number of Chinese Asians is equal to the total number of Asians minus the number of Japanese: 240 - 80 = 160\n4. Since all the non-Chinese Asians are Japanese, and there are 80 Japanese, we can conclude that the remaining Chinese Asians are 160.\n5. The problem also tells us that the number of boys on the Chinese team is 60.\n6. To find the total number of people on the Chinese team (both boys and girls), we add the number of boys to the unknown number of girls: 60 + x = ?\n7. Since there are a total of 160 Chinese Asians, the sum of boys and girls must equal this number: 60 + x = 160\n8. To solve for x (the number of girls), we subtract 60 from both sides: x = 160 - 60\n9. Simplifying, we get: x = 100\n\n#### 100",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "If there were 80 Japanese, the number of Chinese was 240-80=<<240-80=160>>160.\nSince there were 60 boys in the Chinese team, there were 160-60 = 100 girls in the Chinese team.\n#### 100",
+    "extracted_pred": 100.0
+  },
+  "execution_duration_ms": 10821.76,
+  "logging_overhead_ms": 29.43,
+  "system_logs": "{\"inference_duration_ms\": 10792.17, \"model_reported_duration_ns\": 10790319125, \"eval_count\": 236, \"prompt_eval_count\": 171, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "9225fe9d9f7d439b9bad88ce073b893e52338ff7a21816d3412c2c60bc3ae0f3",
+  "storage_kb": 3.6
+}

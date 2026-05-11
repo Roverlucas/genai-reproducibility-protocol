@@ -1,0 +1,51 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0023_C1_rep1",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "1d70dd49a8d90866897bfdd5cf56afe9bab3c40e61e75d5e35ec578d145d561d",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nThere are four schools competing at a basketball tournament. Each school has sent a girls’ basketball team and a boys’ basketball team and each team has 5 players each. Each school has also sent a coach for each team. In total, how many people have all of the schools sent?",
+  "input_text": "There are four schools competing at a basketball tournament. Each school has sent a girls’ basketball team and a boys’ basketball team and each team has 5 players each. Each school has also sent a coach for each team. In total, how many people have all of the schools sent?",
+  "input_hash": "60b3bdde0ef3178112ad091b3d5ce77be3cb7df9256a3027ce12479e80b43d80",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:09:10.026827+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:09:10.026771+00:00",
+  "timestamp_end": "2026-05-09T00:09:14.324459+00:00",
+  "output_text": "I need to find the total number of people sent by all four schools.\n\nLet me break this down step by step:\n\n**For each school:**\n- 1 girls' basketball team with 5 players\n- 1 boys' basketball team with 5 players\n- 1 coach for the girls' team\n- 1 coach for the boys' team\n\n**Calculating people per school:**\n- Players: 5 (girls) + 5 (boys) = 10 players\n- Coaches: 1 (girls' coach) + 1 (boys' coach) = 2 coaches\n- Total per school: 10 + 2 = 12 people\n\n**Calculating total for all schools:**\n- Number of schools: 4\n- People per school: 12\n- Total people: 4 × 12 = 48\n\n#### 48",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Each school has sent 1 girls’ basketball team + 1 boys’ basketball team = <<1+1=2>>2 teams.\nSo each school has sent 2 teams * 5 players per team = <<2*5=10>>10 players.\nThey have also each sent 2 teams * 1 coach per team = <<2*1=2>>2 coaches.\nIn total, each school has sent 10 players + 2 coaches = <<10+2=12>>12 people.\nTherefore, the schools have sent a total of 12 people per school * 4 schools = <<12*4=48>>48 people.\n#### 48",
+    "extracted_pred": 48.0
+  },
+  "execution_duration_ms": 4297.69,
+  "logging_overhead_ms": 28.78,
+  "system_logs": "{\"inference_duration_ms\": 4268.74, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 208, \"output_tokens\": 203}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_019geVXvUKujmyuBuVjZi2JY\"}",
+  "errors": [],
+  "output_hash": "69fb5fb8d2d6075f8ef9c42bb77bbe7610535d060d7e224b87fde4638d4c0f1a",
+  "storage_kb": 3.87
+}

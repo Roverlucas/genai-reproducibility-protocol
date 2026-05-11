@@ -1,0 +1,51 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0013_C1_rep2",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "ef80501610285b317295b61a8932b4927e25f547cf17c3fab27c5caf8c72f1b7",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nValerie earns $5000 per month, 1/2 of what her brother earns. If their mother earns twice their combined salary, what's the total amount of money they all have together?",
+  "input_text": "Valerie earns $5000 per month, 1/2 of what her brother earns. If their mother earns twice their combined salary, what's the total amount of money they all have together?",
+  "input_hash": "b0dc7171ec99375c40721a2348c7e845ed47474a2aacb6ddaebd9892a3337fff",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:05:51.146145+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:05:51.146055+00:00",
+  "timestamp_end": "2026-05-09T00:05:55.668383+00:00",
+  "output_text": "I need to find the total amount of money Valerie, her brother, and their mother earn together.\n\n**Step 1: Find Valerie's earnings**\nValerie earns $5000 per month.\n\n**Step 2: Find her brother's earnings**\nValerie earns 1/2 of what her brother earns.\nIf Valerie earns $5000 and this is 1/2 of her brother's earnings, then:\nBrother's earnings = $5000 × 2 = $10,000\n\n**Step 3: Find their combined salary**\nCombined salary of Valerie and her brother = $5000 + $10,000 = $15,000\n\n**Step 4: Find their mother's earnings**\nTheir mother earns twice their combined salary.\nMother's earnings = 2 × $15,000 = $30,000\n\n**Step 5: Find the total amount they all have together**\nTotal = Valerie's earnings + Brother's earnings + Mother's earnings\nTotal = $5000 + $10,000 + $30,000 = $45,000\n\n#### 45000",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Valerie's brother earns 2 * $5000 = $<<2*5000=10000>>10000\nTheir combined salary is $5000+$10000 = $<<5000+10000=15000>>15000\nTheir mother earn twice their combined earnings, which is 2*$15000 = $<<2*15000=30000>>30000\nThe total amount of money they all have is $15000+$30000 = $<<15000+30000=45000>>45000\n#### 45000",
+    "extracted_pred": 45000.0
+  },
+  "execution_duration_ms": 4522.33,
+  "logging_overhead_ms": 28.9,
+  "system_logs": "{\"inference_duration_ms\": 4493.28, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 182, \"output_tokens\": 264}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_013Fyh7RSNwbmJTVyLEkFfKQ\"}",
+  "errors": [],
+  "output_hash": "d6fdae76e35655ef863aa45d8965655ece71b2e93d9605e2ebbe509576a808cf",
+  "storage_kb": 3.75
+}

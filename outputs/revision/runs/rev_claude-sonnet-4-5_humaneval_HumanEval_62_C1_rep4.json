@@ -1,0 +1,57 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_humaneval_HumanEval_62_C1_rep4",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "2ed91ee79d7a7ff2cac9f9699c62f64df5f2e38d86c9bcac80d028bb32933331",
+  "prompt_text": "\n\ndef derivative(xs: list):\n    \"\"\" xs represent coefficients of a polynomial.\n    xs[0] + xs[1] * x + xs[2] * x^2 + ....\n     Return derivative of this polynomial in the same form.\n    >>> derivative([3, 1, 2, 4, 5])\n    [1, 4, 12, 20]\n    >>> derivative([1, 2, 3])\n    [2, 6]\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:20:38.442478+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:20:38.442444+00:00",
+  "timestamp_end": "2026-05-08T21:20:41.124879+00:00",
+  "output_text": "def derivative(xs: list):\n    if len(xs) <= 1:\n        return []\n    return [i * xs[i] for i in range(1, len(xs))]",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": true,
+      "stdout": "__OK__\n",
+      "stderr": "",
+      "return_code": 0,
+      "duration_ms": 43.23,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 2682.43,
+  "logging_overhead_ms": 15.59,
+  "system_logs": "{\"inference_duration_ms\": 2623.2, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 159, \"output_tokens\": 47}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_01FBQDhAJzKaDvCkJs7vkA6a\"}",
+  "errors": [],
+  "output_hash": "7b94a48fb20644f0b318bb7ff205ec28d384fc166e1161469f6d164537980882",
+  "storage_kb": 2.61
+}

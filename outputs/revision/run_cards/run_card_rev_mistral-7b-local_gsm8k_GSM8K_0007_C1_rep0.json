@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_mistral-7b-local_gsm8k_GSM8K_0007_C1_rep0",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "d4e2a3c039efdf6ded2b8f9dd0b45fa1da75eabe17eae7400fed4e2cb71cdd95",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T22:08:47.659154+00:00",
+  "timestamp_end": "2026-05-08T22:08:58.683634+00:00",
+  "execution_duration_ms": 11024.48,
+  "output_hash": "b735b8b22b0e35638f7d4afb6d49918df07d9b18b644039d526fa8a82f3d42c3",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "At half the speed, the car in the slow lane travels at a speed of 1/2*60 = <<1/2*60=30>>30 miles per hour.\nTo travel 480 miles, the car in the slow lane traveling at 30 miles per hour will take 480/30 = <<480/30=16>>16 hours\n#### 16",
+    "extracted_pred": 16.0
+  },
+  "logging_overhead_ms": 27.82,
+  "storage_kb": 3.4,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

@@ -1,0 +1,56 @@
+{
+  "run_id": "rev_deepseek-chat_humaneval_HumanEval_55_C1_rep3",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "b99ee738edd1466c976259cf4271917d52d9a0df5220d566646b476a4400a336",
+  "prompt_text": "\n\ndef fib(n: int):\n    \"\"\"Return n-th Fibonacci number.\n    >>> fib(10)\n    55\n    >>> fib(1)\n    1\n    >>> fib(8)\n    21\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:40:01.017932+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:40:01.017903+00:00",
+  "timestamp_end": "2026-05-08T21:40:03.357519+00:00",
+  "output_text": "def fib(n: int):\n    \"\"\"Return n-th Fibonacci number.\n    >>> fib(10)\n    55\n    >>> fib(1)\n    1\n    >>> fib(8)\n    21\n    \"\"\"\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        a, b = 0, 1\n        for _ in range(2, n + 1):\n            a, b = b, a + b\n        return b",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": true,
+      "stdout": "__OK__\n",
+      "stderr": "",
+      "return_code": 0,
+      "duration_ms": 41.88,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 2339.62,
+  "logging_overhead_ms": 14.85,
+  "system_logs": "{\"inference_duration_ms\": 2282.46, \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 84, \"completion_tokens\": 108, \"total_tokens\": 192}, \"model_id_returned\": \"deepseek-v4-flash\", \"response_id\": \"be61d757-46b1-4702-8d92-8299819fea63\"}",
+  "errors": [],
+  "output_hash": "a88b8a807f111fed9355c46945a78356627847e6d969b061b820f74ba7770af3",
+  "storage_kb": 2.62
+}

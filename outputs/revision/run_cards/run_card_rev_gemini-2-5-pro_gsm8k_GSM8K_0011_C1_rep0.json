@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_gemini-2-5-pro_gsm8k_GSM8K_0011_C1_rep0",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "150a9693671ea3b50b8a7179bb25d5a56ce19d5549b3dc6cdb99d495804f0e24",
+  "model_name": "gemini-2.5-pro",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "google-ai-studio",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:21:27.899781+00:00",
+  "timestamp_end": "2026-05-09T00:21:33.419071+00:00",
+  "execution_duration_ms": 5519.29,
+  "output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "output_metrics": {
+    "gsm8k_correct": false,
+    "gold_answer": "It was 3 inches tall after the first week.\nAfter the second week, it was 2 * 3 inches = <<2*3=6>>6 inches tall.\nAfter the third week, it was 6 inches + 4 inches = <<6+4=10>>10 inches tall.\n#### 10",
+    "extracted_pred": null
+  },
+  "logging_overhead_ms": 27.77,
+  "storage_kb": 2.87,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

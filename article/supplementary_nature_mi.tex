@@ -37,7 +37,7 @@
 
 \title{\textbf{Supplementary Information}\\[6pt]
 Same Prompt, Different Answer: Exposing the Reproducibility Illusion\\in Large Language Model APIs}
-\author{Lucas Rover, Eduardo Tadeu Bacalhau, Anibal Tavares de Azevedo, Hugo Valadares Siqueira \& Yara de Souza Tadano\\
+\author{Lucas Rover, Hugo Valadares Siqueira, Eduardo Tadeu Bacalhau, Anibal Tavares de Azevedo \& Yara de Souza Tadano\\
 \small UTFPR -- Universidade Tecnol\'ogica Federal do Paran\'a}
 \date{}
 
@@ -200,7 +200,29 @@ The key finding for RAG tasks is that context augmentation does not substantiall
 \section{API Payload Documentation}
 \label{sec:s4}
 
-To address potential ``apples-to-oranges'' concerns regarding differences in API request structures across providers, we document the exact JSON payload structures sent to each of the seven inference endpoints. All payloads were constructed deterministically and logged as part of the Run Card.
+To address potential ``apples-to-oranges'' concerns regarding differences in API request structures across providers, we document the exact JSON payload structures sent to each of the seven inference endpoints. All payloads were constructed deterministically and logged as part of the Run Card. Hyperlinks to the official API references for each provider are listed in Table~\ref{tab:apidocs}.
+
+\begin{table}[H]
+\centering
+\caption{Official API documentation for each provider used in this study (accessed 2026).}
+\label{tab:apidocs}
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Provider / endpoint} & \textbf{Reference URL} \\
+\midrule
+OpenAI Chat Completions       & \url{https://platform.openai.com/docs/api-reference/chat} \\
+Anthropic Messages            & \url{https://docs.anthropic.com/en/api/messages} \\
+Google Gemini (AI Studio REST)& \url{https://ai.google.dev/api/rest} \\
+DeepSeek Chat                 & \url{https://api-docs.deepseek.com} \\
+Perplexity Sonar              & \url{https://docs.perplexity.ai} \\
+Together AI Chat Completions  & \url{https://docs.together.ai/reference/chat-completions} \\
+Ollama (local)                & \url{https://github.com/ollama/ollama/blob/main/docs/api.md} \\
+\bottomrule
+\end{tabular}
+\par\smallskip\raggedright\footnotesize
+The ``Key difference'' callouts in the per-provider subsections that follow refer to provider-specific deviations from the canonical OpenAI Chat Completions request schema.
+\end{table}
 
 \subsection{Ollama (Local Models)}
 
@@ -676,7 +698,7 @@ Gemma 2 9B & Extr. & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
 GPT-4 & Extr. & -- & 30 (150) & 17 (51) & 17 (51) & 14 (42) \\
  & Summ. & 3 (8)$^*$ & 30 (150) & 30 (90) & 30 (90) & 30 (90) \\
 \addlinespace
-Claude Sonnet 4.5 & Extr. & 10 (49)$^\dag$ & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
+Claude 4.5 & Extr. & 10 (49)$^\dag$ & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
  & Summ. & 10 (50) & 10 (50) & 10 (30) & 10 (30) & 10 (30) \\
  & Multi & 10 (50) & -- & -- & -- & -- \\
  & RAG & 10 (50) & -- & -- & -- & -- \\
@@ -727,6 +749,114 @@ Cloud-served open-weight (Together AI) & 200 \\
 \par\smallskip\raggedright\footnotesize
 Excludes 200 chat-format control runs (see Section~\ref{sec:s7}). Including controls, the total is 4,104 runs.
 \end{table}
+
+
+%%=============================================================%%
+%% S11 — Revision-batch task details (R1.8, R3.1, R3.3, R3.4)
+%%=============================================================%%
+\section{Revision-Batch Tasks and Experimental Coverage}\label{sec:s11}
+
+This section documents the new experiments added during the major revision, addressing the editor's request and Reviewers 1 and 3.
+
+\subsection{Task families added in revision}
+
+Three new task families and one targeted extension were added under the same C1 condition ($t{=}0$, fixed seed = 42, 5 repetitions per problem):
+
+\begin{description}[leftmargin=*]
+  \item[\textbf{HumanEval (code generation)}.] We sampled 30 problems stratified by docstring length (proxy for difficulty) from the canonical 164-problem benchmark of Chen et al.\ (2021). Each problem provides a Python function signature with a docstring; the model must emit a syntactically valid function body. Repetitions are SHA-256 hashed and compared at the source-code level (EMR), along with NED, ROUGE-L, and BERTScore F1. The 30-problem subset is fixed and cached at \texttt{data/inputs/revision/humaneval.jsonl}.
+  \item[\textbf{GSM8K (math reasoning)}.] We sampled 30 problems uniformly at random (seed = 42) from the 1{,}319-problem test split of Cobbe et al.\ (2021). Each problem provides a grade-school math word problem with a chain-of-thought solution terminated by \texttt{\#\#\#\#\ <integer>}. We hash and compare the full output (chain-of-thought plus answer). Cached at \texttt{data/inputs/revision/gsm8k\_test.jsonl}.
+  \item[\textbf{PubMed PM\textsubscript{2.5}/respiratory health (out-of-AI/ML structured extraction)}.] Ten abstracts on fine particulate matter and respiratory outcomes were drawn from the companion-paper corpus (Rover \& Tadano, 2026, submitted). They are independent of the 30 AI/ML abstracts used in the original analysis. The extraction prompt is identical in form to Task 2 but applied to a different scientific domain to test cross-domain transfer of the reproducibility gap. Cached at \texttt{data/inputs/revision/pubmed\_pm25\_t14.json}.
+  \item[\textbf{Multi-turn extension to gpt-4o and DeepSeek Chat}.] The three-turn refinement protocol from Task 3 was applied to the gpt-4o and DeepSeek Chat stacks (10 abstracts $\times$ 5 reps each, 50 runs per stack) to test universality of the near-zero multi-turn EMR previously reported only for Claude and Gemini.
+\end{description}
+
+\subsection{Revision run totals}
+
+\begin{table}[H]
+\centering
+\caption{Revision-batch run counts. All runs are under C1 ($t = 0$, seed = 42, 5 reps).}
+\label{tab:revision-runs}
+\small
+\begin{tabular}{@{}lcr@{}}
+\toprule
+\textbf{Task} & \textbf{Stacks} & \textbf{Runs} \\
+\midrule
+HumanEval (30 problems)       & 8 & 1{,}200 \\
+GSM8K (30 problems)           & 8 & 1{,}200 \\
+PubMed PM\textsubscript{2.5} (10 abstracts) & 8 & 400 \\
+Multi-turn extension (10 abstracts) & 2 (gpt-4o, deepseek-chat) & 100 \\
+\midrule
+\textbf{Revision total}       &   & \textbf{2{,}900} \\
+\midrule
+Combined (original 4{,}104 + revision 2{,}900) & & \textbf{7{,}004} \\
+\bottomrule
+\end{tabular}
+\par\smallskip\raggedright\footnotesize
+All 2{,}900 revision runs use the Run Card protocol (Methods §Protocol design); per-run JSONs are deposited in \texttt{outputs/revision/runs/}.
+\end{table}
+
+\subsection{Reproducibility infrastructure}
+
+The unified revision runner is \texttt{run\_revision\_experiments.py}, with the resumable orchestrator \texttt{run\_revision\_full.sh}. The pipeline shares the existing Run Card + PROV instrumentation (Methods §Protocol design) and supports checkpoint-based resume across sessions. Code-generation outputs are evaluated in a sandboxed subprocess (5-second wall clock, POSIX resource limits) for pass@1; the sandbox is documented at \texttt{src/tasks/pass\_at\_1.py}.
+
+\subsection{Snapshot governance}
+
+The OpenAI stack in the revision batch resolves to \texttt{gpt-4o-2024-11-20} (most recent snapshot at the time of measurement). The original analysis used \texttt{gpt-4-0613}; both are reported and the snapshot identifier is logged per run for point-in-time auditability (R3.6).
+
+
+%%=============================================================%%
+%% S12 — LLM-as-judge protocol for PM2.5 triangulation (R3.6)
+%%=============================================================%%
+\section{LLM-as-Judge Triangulation Protocol}\label{sec:s12}
+
+This section documents the in-paper triangulation of the applied PM\textsubscript{2.5} divergence claim. The validation is layered with the companion paper (Rover \& Tadano, 2026, submitted) to preserve that paper's contributions while providing self-contained evidence within the present manuscript.
+
+\subsection{Sampling design}
+
+We sampled 10 disagreement cases from the companion-paper extraction corpus (\texttt{extraction\_long.json}, 21{,}799 extractions), distinct from the 23 study-level effect estimates analysed in the companion paper. Cases were drawn from the three cloud stacks where disagreement is highest (Claude Sonnet 4.5, Gemini 2.5 Pro, GPT-4.1; per the companion paper's pairwise-disagreement analysis). Stratification was applied to balance across stack and across kind of disagreement (direction, magnitude, CI overlap, mixed). Random seed = 42.
+
+A disagreement case is a pair of runs (within the same stack, the same input abstract, and the same estimate index) whose effect estimate, CI bounds, or sign differs beyond pre-registered thresholds. Final composition: 6 Claude cases and 4 GPT-4.1 cases (Gemini had insufficient strictly disagreeing pairs under our thresholds), spread across 2 direction, 3 mixed, 3 CI, and 2 magnitude.
+
+\subsection{Judge and prompt}
+
+The judge is Claude Opus 4.7 (model identifier \texttt{claude-opus-4-7}) accessed via the Anthropic Messages API, with system prompt instructing pre-registered evaluation along three criteria:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Direction.} Do both extractions report the same direction of effect? (positive, null, negative)
+    \item \textbf{Magnitude.} Do the effect estimates agree within $\pm 20\%$ relative to their average?
+    \item \textbf{CI overlap.} If both 95\% CIs are reported, do they share any range?
+\end{enumerate}
+
+The judge issues one verdict per case from \{\texttt{truly\_contradictory}, \texttt{semantically\_equivalent}, \texttt{ambiguous}\} plus a brief rationale. The two extractions are presented as ``Extraction X'' and ``Extraction Y'' in deterministically randomised order (per-case seed derived from SHA-256 hash of the case identifier) to prevent positional bias. The judge is blind to which stack produced which extraction.
+
+\subsection{Cost and provenance}
+
+Total cost: \$0.28 USD across 10 cases (mean 929 input tokens + 137 output tokens per case at Opus 4.7 pricing of \$15/MTok input, \$75/MTok output). Per-case judge records (input prompt SHA-256, model identifier, randomisation seed, response, parsed verdict) are deposited as PROV-style JSON at \texttt{outputs/revision/t3\_judge/}. The aggregate is at \texttt{outputs/revision/t3\_judge/t3\_judge\_results.json}.
+
+\subsection{Verdict distribution}
+
+\begin{table}[H]
+\centering
+\caption{LLM-as-judge verdicts on 10 PM\textsubscript{2.5} disagreement cases.}
+\label{tab:t3-verdicts}
+\small
+\begin{tabular}{@{}lc@{}}
+\toprule
+\textbf{Verdict} & \textbf{Count} \\
+\midrule
+truly\_contradictory     & 5 \\
+semantically\_equivalent & 3 \\
+ambiguous                & 2 \\
+\midrule
+\textbf{Total cases}     & \textbf{10} \\
+\bottomrule
+\end{tabular}
+\par\smallskip\raggedright\footnotesize
+Half of the divergences are substantive contradictions despite BERTScore F1 $>$ 0.97 on the same outputs. Consistent with the per-field analysis (Section~\ref{sec:s10}), this confirms that aggregate semantic-similarity metrics are structurally unable to detect substantive payload divergence.
+\end{table}
+
+\subsection{What is \emph{not} reproduced here from the companion paper}
+
+To preserve the contributions of the companion paper currently submitted, the present supplementary section does \emph{not} reproduce: (i) the 6-model $\times$ 10-run pairwise disagreement matrix; (ii) the silver-standard cross-validation against DeepSeek-R1 reasoning; (iii) the random-effects per-run pooled risk-ratio table; (iv) the small-literature meta-analytic simulation; (v) the 35 individual blindage analyses; (vi) the work-saved analysis. Readers seeking these are referred to Rover \& Tadano (2026, submitted to \emph{Research Synthesis Methods}).
 
 
 \end{document}

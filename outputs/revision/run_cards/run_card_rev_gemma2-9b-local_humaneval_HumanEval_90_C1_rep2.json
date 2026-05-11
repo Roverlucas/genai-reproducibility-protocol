@@ -1,0 +1,48 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_gemma2-9b-local_humaneval_HumanEval_90_C1_rep2",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "prompt_card_ref": "prompt_card_humaneval_v1_0.json",
+  "prompt_hash": "c411484e97c83ae8e5869ae414e5687f429deda4f5fb49e367e60c85635fed1e",
+  "model_name": "gemma2:9b",
+  "model_version": "9.2B",
+  "weights_hash": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T21:06:00.605042+00:00",
+  "timestamp_end": "2026-05-08T21:06:03.088556+00:00",
+  "execution_duration_ms": 2483.51,
+  "output_hash": "45f55825bcb028e5a4fc6370b06c65cd8769b343df804ab1e1574e61e9e39969",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 53, in <module>\n    check(next_smallest)\n    ~~~~~^^^^^^^^^^^^^^^\n  File \"<string>\", line 44, in check\n    assert candidate([1, 1]) == None\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+      "return_code": 1,
+      "duration_ms": 59.57,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "logging_overhead_ms": 21.57,
+  "storage_kb": 2.83,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

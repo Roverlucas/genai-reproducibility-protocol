@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_gpt-4o_gsm8k_GSM8K_0004_C1_rep1",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "5fea7cadbf7522aa0cdf6a1bb3feb3f7d4b0b711dedc4ed61a93abb5263c5652",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nDominick went to his team's changing room and saw half as many robots as helmets and half as many helmets as footballs kept there. If there were 20 helmets, calculate the total number of items Dominick saw.",
+  "input_text": "Dominick went to his team's changing room and saw half as many robots as helmets and half as many helmets as footballs kept there. If there were 20 helmets, calculate the total number of items Dominick saw.",
+  "input_hash": "8b33d0a0eefe84b0781cef7bdbc30c84e8fc45caef2099cdc17c21b70b2dbb60",
+  "model_name": "gpt-4o-2024-11-20",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "openai-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:12:51.431577+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:12:51.431522+00:00",
+  "timestamp_end": "2026-05-09T00:12:53.189139+00:00",
+  "output_text": "We are tasked with calculating the total number of items Dominick saw in the changing room. Let's solve this step by step.\n\n1. **Number of helmets**: We are told there are 20 helmets.  \n   So, the number of helmets = 20.\n\n2. **Number of footballs**: We are told there are twice as many footballs as helmets.  \n   Number of footballs = 2 × 20 = 40.\n\n3. **Number of robots**: We are told there are half as many robots as helmets.  \n   Number of robots = 20 ÷ 2 = 10.\n\n4. **Total number of items**: To find the total number of items, we add the number of helmets, footballs, and robots.  \n   Total items = Number of helmets + Number of footballs + Number of robots  \n   Total items = 20 + 40 + 10 = 70.\n\n#### 70",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "If the number of helmets was 20, there were 2 footballs/helmet * 20 helmets = <<20*2=40>>40 footballs\nThere were half as many robots as helmets, so in total, there were 1 robot/2 helmets * 20 helmets = <<1/2*20=10>>10 robots.\nThe total number of items in the changing room is 10 robots + 40 footballs + 20 helmets = <<10+40+20=70>>70 items\n#### 70",
+    "extracted_pred": 70.0
+  },
+  "execution_duration_ms": 1757.62,
+  "logging_overhead_ms": 28.62,
+  "system_logs": "{\"inference_duration_ms\": 1723.25, \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 172, \"completion_tokens\": 195, \"total_tokens\": 367}, \"model_id_returned\": \"gpt-4o-2024-11-20\", \"system_fingerprint\": \"fp_4c5a703326\", \"response_id\": \"chatcmpl-DdPbH7tapP55axQ2T7PCre6HFSYrd\"}",
+  "errors": [],
+  "output_hash": "cae083f804fe5355f65387fd1864f97e988b0054262a2850b3a2d122958a0bb3",
+  "storage_kb": 3.77
+}

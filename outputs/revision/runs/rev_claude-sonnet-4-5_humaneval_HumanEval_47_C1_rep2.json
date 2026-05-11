@@ -1,0 +1,57 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_humaneval_HumanEval_47_C1_rep2",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "12794c9b475e4c41b878cf4d466feb8fa24d9d3dd6311f9845760f64b4748fd4",
+  "prompt_text": "\n\ndef median(l: list):\n    \"\"\"Return median of elements in the list l.\n    >>> median([3, 1, 2, 4, 5])\n    3\n    >>> median([-10, 4, 6, 1000, 10, 20])\n    15.0\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:20:18.576292+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:20:18.576258+00:00",
+  "timestamp_end": "2026-05-08T21:20:21.333441+00:00",
+  "output_text": "```python\ndef median(l: list):\n    sorted_l = sorted(l)\n    n = len(sorted_l)\n    \n    if n % 2 == 1:\n        return sorted_l[n // 2]\n    else:\n        return (sorted_l[n // 2 - 1] + sorted_l[n // 2]) / 2\n```",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": true,
+      "stdout": "__OK__\n",
+      "stderr": "",
+      "return_code": 0,
+      "duration_ms": 35.87,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 2757.18,
+  "logging_overhead_ms": 15.08,
+  "system_logs": "{\"inference_duration_ms\": 2705.81, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 119, \"output_tokens\": 95}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_01RMD8gqTffxoPX5LAvDDfbw\"}",
+  "errors": [],
+  "output_hash": "10bd69ca311269905de4e4e31185f71f69c45169bf8051549646d3db393e894e",
+  "storage_kb": 2.59
+}

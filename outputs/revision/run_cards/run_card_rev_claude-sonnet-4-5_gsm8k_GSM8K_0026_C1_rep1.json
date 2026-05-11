@@ -1,0 +1,43 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0026_C1_rep1",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "7df2abf84ce4205e5ab5c6e317d35a185862c0b9fa7416b131cad09ffffaf10c",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:10:15.971392+00:00",
+  "timestamp_end": "2026-05-09T00:10:24.471191+00:00",
+  "execution_duration_ms": 8499.8,
+  "output_hash": "2342ded24a6d49afcf90916d53c120eb24e665ca0e0014509b5d5232d1b1e770",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "In the first group of workers, each produces 6 toys * 10 hours = <<6*10=60>>60 toys over their shift.\nThis is a total of 60 toys * 2 workers = <<60*2=120>>120 toys.\nIn the second group of workers, each produces 4 toys * 10 hours = <<4*10=40>>40 toys over their shift.\nThis is a total of 40 toys * 2 workers = <<40*2=80>>80 toys.\nTogether, these two groups produce 120 + 80 = <<120+80=200>>200 toys.\nIf the order is still short, then all the workers combined have produced 400 ordered toys – 20 remaining toys = <<400-20=380>>380 toys.\nThis means the fifth worker produced 380 – 200 = <<380-200=180>>180 toys in total.\nThe fifth worker therefore produced 180 toys / 10 hours = <<180/10=18>>18 toys per hour.\n#### 18",
+    "extracted_pred": 18.0
+  },
+  "logging_overhead_ms": 28.36,
+  "storage_kb": 4.95,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

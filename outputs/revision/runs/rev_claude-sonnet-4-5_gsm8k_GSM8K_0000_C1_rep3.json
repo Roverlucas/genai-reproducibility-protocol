@@ -1,0 +1,51 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0000_C1_rep3",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "bc9e7667becb4b70c5921043fe5eca9e59e52f49c2b95d4eb3a20c6b451d82fb",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nJared is trying to increase his typing speed. He starts with 47 words per minute (WPM). After some lessons the next time he tests his typing speed it has increased to 52 WPM. If he continues to increase his typing speed once more by 5 words, what will be the average of the three measurements?",
+  "input_text": "Jared is trying to increase his typing speed. He starts with 47 words per minute (WPM). After some lessons the next time he tests his typing speed it has increased to 52 WPM. If he continues to increase his typing speed once more by 5 words, what will be the average of the three measurements?",
+  "input_hash": "4ec5e5a37705b3e0477e8c8c1c2840a263952f7132e88a4dd6176b8afb0b452d",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:01:18.504477+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:01:18.504393+00:00",
+  "timestamp_end": "2026-05-09T00:01:21.661564+00:00",
+  "output_text": "I need to find the average of Jared's three typing speed measurements.\n\nLet me identify the three measurements:\n- First measurement: 47 WPM\n- Second measurement: 52 WPM\n- Third measurement: 52 + 5 = 57 WPM\n\nTo find the average, I add all three measurements and divide by 3:\n\nAverage = (47 + 52 + 57) ÷ 3\n\nLet me add the measurements:\n47 + 52 = 99\n99 + 57 = 156\n\nNow divide by 3:\n156 ÷ 3 = 52\n\n#### 52",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Jared types at 52 WPM and increases it by 5 WPM, 52 + 5 = <<52+5=57>>57 WPM.\nHis average over all his measured words-per-minute is 47 + 52 + 57 = <<47+52+57=156>>156.\nHis total is 156 / 3 typing speeds = <<156/3=52>>52 WPM as Jared's average typing speed.\n#### 52",
+    "extracted_pred": 52.0
+  },
+  "execution_duration_ms": 3157.17,
+  "logging_overhead_ms": 29.21,
+  "system_logs": "{\"inference_duration_ms\": 3127.6, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 236, \"output_tokens\": 156}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_0156uYoehMhRJBk2P1LWEFbf\"}",
+  "errors": [],
+  "output_hash": "9aa31b3bf03447338a846c81b1f14cfcd84f3bf4db29230b8a81bff9d51e5ed1",
+  "storage_kb": 3.56
+}

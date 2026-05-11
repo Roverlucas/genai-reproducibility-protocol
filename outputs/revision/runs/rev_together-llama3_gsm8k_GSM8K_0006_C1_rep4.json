@@ -1,0 +1,49 @@
+{
+  "run_id": "rev_together-llama3_gsm8k_GSM8K_0006_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "eca75e5557f473721914fa427dade17a1089dd9b757d273c1f9f2dac286ed804",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nA pet store currently has 5 dogs, 2 cats, and 10 birds. How many legs in total do the pets in the store have?",
+  "input_text": "A pet store currently has 5 dogs, 2 cats, and 10 birds. How many legs in total do the pets in the store have?",
+  "input_hash": "325b453f8fba8cc3c2bad7c0010eb2bd092363b909c88e68a619cad3e055e115",
+  "model_name": "meta-llama/Meta-Llama-3-8B-Instruct-Lite",
+  "model_version": "api-managed",
+  "weights_hash": "open-weight-cloud-served",
+  "model_source": "together-ai",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:01:05.972226+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:01:05.972213+00:00",
+  "timestamp_end": "2026-05-09T00:01:05.981332+00:00",
+  "output_text": "",
+  "output_metrics": {},
+  "execution_duration_ms": 9.12,
+  "logging_overhead_ms": 8.77,
+  "system_logs": "",
+  "errors": [
+    "ValueError: TOGETHER_API_KEY environment variable not set",
+    "Traceback (most recent call last):\n  File \"/Users/lucasrover/paper-experiment/run_revision_experiments.py\", line 692, in execute_run\n    result = _execute_single_turn(runner_module, stack_cfg, item)\n  File \"/Users/lucasrover/paper-experiment/run_revision_experiments.py\", line 472, in _execute_single_turn\n    return _call_runner_inference(\n        runner_module, stack_cfg,\n    ...<3 lines>...\n        max_tokens=item.max_tokens, system_prompt=item.system,\n    )\n  File \"/Users/lucasrover/paper-experiment/run_revision_experiments.py\", line 324, in _call_runner_inference\n    return fn(**call_kwargs)\nValueError: TOGETHER_API_KEY environment variable not set\n"
+  ],
+  "output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "storage_kb": 2.92
+}

@@ -1,0 +1,57 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_humaneval_HumanEval_1_C1_rep2",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "ba4d0641a184fb3cdd632060a25d6408a7e91fe9d79b5c341407e74b80536327",
+  "prompt_text": "from typing import List\n\n\ndef separate_paren_groups(paren_string: str) -> List[str]:\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    separate those group into separate strings and return the list of those.\n    Separate groups are balanced (each open brace is properly closed) and not nested within each other\n    Ignore any spaces in the input string.\n    >>> separate_paren_groups('( ) (( )) (( )( ))')\n    ['()', '(())', '(()())']\n    \"\"\"\n",
+  "input_text": "",
+  "input_hash": "",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:22:58.296174+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:22:58.296141+00:00",
+  "timestamp_end": "2026-05-08T21:23:01.305130+00:00",
+  "output_text": "def separate_paren_groups(paren_string: str) -> List[str]:\n    result = []\n    current_group = []\n    depth = 0\n    \n    for char in paren_string:\n        if char == ' ':\n            continue\n        \n        if char == '(':\n            current_group.append(char)\n            depth += 1\n        elif char == ')':\n            current_group.append(char)\n            depth -= 1\n            \n            if depth == 0:\n                result.append(''.join(current_group))\n                current_group = []\n    \n    return result",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": true,
+      "stdout": "__OK__\n",
+      "stderr": "",
+      "return_code": 0,
+      "duration_ms": 53.54,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "execution_duration_ms": 3008.99,
+  "logging_overhead_ms": 15.21,
+  "system_logs": "{\"inference_duration_ms\": 2939.77, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 179, \"output_tokens\": 147}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_01JoDbDvKm3THPSHQVDdaQv4\"}",
+  "errors": [],
+  "output_hash": "2ebdccf05dbd12c3102c3a65d0931a5866f8c343be4752a303b211ddd1049fd6",
+  "storage_kb": 3.24
+}

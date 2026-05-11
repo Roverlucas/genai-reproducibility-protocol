@@ -1,0 +1,43 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0027_C1_rep2",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "615a34d48c3b6482b9ba8b43d70bc544d291cd416dce0f05fee47335620f3e2c",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:10:55.904901+00:00",
+  "timestamp_end": "2026-05-09T00:11:00.202497+00:00",
+  "execution_duration_ms": 4297.6,
+  "output_hash": "7c504a93b99e444bfc47495788ec562651ea628ee6ffb6c7649e3ecb20a643ef",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The number of female porcupines in the park is 3/5*50 = <<3/5*50=30>>30.\nIn a month, the 30 female porcupines give birth to 30*4 = <<30*4=120>>120 new babies.\nAfter a year, with 12 months, the total number of new porcupines in the park is 120*12 = <<120*12=1440>>1440\nThe total population of porcupines in the park after a year is 50+1440 = <<50+1440=1490>>1490\n#### 1490",
+    "extracted_pred": 1490.0
+  },
+  "logging_overhead_ms": 26.81,
+  "storage_kb": 3.74,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

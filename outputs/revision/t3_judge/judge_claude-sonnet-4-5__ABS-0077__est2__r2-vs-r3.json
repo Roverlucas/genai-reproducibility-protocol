@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0077__est2__r2-vs-r3",
+  "verdict": "truly_contradictory",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "same",
+  "criterion_c_ci_overlap": "disjoint",
+  "rationale": "Both extractions report ORs >1 in the same direction and the point estimates differ by far less than 20% relative to their average, but the 95% CIs (1.0022\u20131.0031 vs 1.0011\u20131.0013) do not overlap, materially failing criterion (c).",
+  "randomization_seed": 3048448313,
+  "presented_x_run_id": 3,
+  "presented_y_run_id": 2,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"same\",\n  \"criterion_c_ci_overlap\": \"disjoint\",\n  \"verdict\": \"truly_contradictory\",\n  \"rationale\": \"Both extractions report ORs >1 in the same direction and the point estimates differ by far less than 20% relative to their average, but the 95% CIs (1.0022\u20131.0031 vs 1.0011\u20131.0013) do not overlap, materially failing criterion (c).\"\n}",
+  "input_tokens": 941,
+  "output_tokens": 172,
+  "cost_usd": 0.027015,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778287658.953461
+}

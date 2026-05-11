@@ -1,0 +1,17 @@
+{
+  "case_id": "gpt-4.1__ABS-0080__est0__r1-vs-r7",
+  "verdict": "ambiguous",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "different",
+  "criterion_c_ci_overlap": "disjoint",
+  "rationale": "The two extractions likely express the same underlying estimate on different scales (RR of 1.033 with CI 1.02-1.046 vs. percent increase of 3.3% with CI 2.0-4.6%). On their face values they differ by orders of magnitude and have disjoint CIs, but they are plausibly equivalent representations, so the verdict is ambiguous.",
+  "randomization_seed": 1414388037,
+  "presented_x_run_id": 7,
+  "presented_y_run_id": 1,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"different\",\n  \"criterion_c_ci_overlap\": \"disjoint\",\n  \"verdict\": \"ambiguous\",\n  \"rationale\": \"The two extractions likely express the same underlying estimate on different scales (RR of 1.033 with CI 1.02-1.046 vs. percent increase of 3.3% with CI 2.0-4.6%). On their face values they differ by orders of magnitude and have disjoint CIs, but they are plausibly equivalent representations, so the verdict is ambiguous.\"\n}",
+  "input_tokens": 927,
+  "output_tokens": 201,
+  "cost_usd": 0.02898,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778287654.898999
+}

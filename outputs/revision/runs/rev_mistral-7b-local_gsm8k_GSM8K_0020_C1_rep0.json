@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_mistral-7b-local_gsm8k_GSM8K_0020_C1_rep0",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "1349fcdef1c1fe3281e0c682a74a0fba362b555cb517cc87cb9408d2b4f0d8f7",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nTatiana is deciding how much of her weekend she wants to spend playing soccer. She has 7 hours on Saturday and 5 hours on Sunday. She is dividing her time between soccer, video games, and reading. If she reads for 3 hours and plays video games for 1/3 of the remaining time, what percentage of her weekend does she spend playing soccer?",
+  "input_text": "Tatiana is deciding how much of her weekend she wants to spend playing soccer. She has 7 hours on Saturday and 5 hours on Sunday. She is dividing her time between soccer, video games, and reading. If she reads for 3 hours and plays video games for 1/3 of the remaining time, what percentage of her weekend does she spend playing soccer?",
+  "input_hash": "41150db1bb8cae0d0f93b7c1cd0e472773ca32021f3a8e6f3f60cccca2ca4e20",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T22:24:04.191791+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T22:24:04.191748+00:00",
+  "timestamp_end": "2026-05-08T22:24:29.846519+00:00",
+  "output_text": " Let's break down the problem step by step:\n\n1. First, let's find out how much total time Tatiana has for the entire weekend. She has 7 hours on Saturday and 5 hours on Sunday, so her total time is 7 + 5 = 12 hours.\n\n2. Next, we need to find out how many hours Tatiana spends reading. She reads for 3 hours, so we subtract that from the total time: 12 - 3 = 9 hours.\n\n3. Now, we know that Tatiana plays video games for 1/3 of the remaining time after reading. So, we find out how many hours are left after reading: 9 hours (remaining time) / 3 = 3 hours (time spent on video games).\n\n4. Since Tatiana spends 3 hours on video games and has a total of 12 hours for the weekend, we can find out how much time she spends playing soccer by subtracting the time spent on reading and video games from the total time: 12 - 3 (video games) - 3 (reading) = 6 hours.\n\n5. To find the percentage of her weekend spent playing soccer, we divide the number of hours spent playing soccer by the total number of hours in the weekend and multiply by 100%: (6 / 12) * 100% = 50%.\n\nSo, Tatiana spends 50% of her weekend playing soccer.\n\n#### 50",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "She has 12 hours for her activities because 7 + 5 = <<7+5=12>>12\nAfter reading, she has 9 hours left because 12 - 3 = <<12-3=9>>9\nShe spends 3 hours playing video games because 9 x (1/3) = <<9*(1/3)=3>>3\nAfter video games she has 6 hours left for soccer because 9 - 3 = <<6=6>>6\nThe proportion of time spend on soccer is .5 because 6 / 12 = <<6/12=.5>>.5\nThe percentage of time spent on soccer is 50 because .5 x 100 = <<50=50>>50\n#### 50",
+    "extracted_pred": 50.0
+  },
+  "execution_duration_ms": 25654.77,
+  "logging_overhead_ms": 28.85,
+  "system_logs": "{\"inference_duration_ms\": 25625.75, \"model_reported_duration_ns\": 25622964917, \"eval_count\": 338, \"prompt_eval_count\": 249, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "4eeba69fd8c47c3007a5832637f235c73e6124dfd1879461946943e65391bd48",
+  "storage_kb": 4.43
+}

@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_gpt-4o_gsm8k_GSM8K_0012_C1_rep1",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "2e731bf8e39e393ddbdb2d24c6c40f97b5cfc2337302e223265d5d51de5bf42a",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nChristina records her mood every day on a calendar. Over the past thirty days of moods, she had twelve good days and eight bad days and the rest were neutral. Her first eight days were good, her second eight days were bad, and her third eight days were neutral. If the next three days were good, neutral, and good, how many good days were left in the month?",
+  "input_text": "Christina records her mood every day on a calendar. Over the past thirty days of moods, she had twelve good days and eight bad days and the rest were neutral. Her first eight days were good, her second eight days were bad, and her third eight days were neutral. If the next three days were good, neutral, and good, how many good days were left in the month?",
+  "input_hash": "db22fa8e24434d81ecb2059824dc4e9303a7a50882cb2c3bc4de7588be493e7b",
+  "model_name": "gpt-4o-2024-11-20",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "openai-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:14:11.173691+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:14:11.173639+00:00",
+  "timestamp_end": "2026-05-09T00:14:13.937699+00:00",
+  "output_text": "We are tasked with determining how many good days Christina had left in the month after the next three days.\n\n### Step 1: Understand the problem\n- Christina records her mood for 30 days.\n- She had **12 good days**, **8 bad days**, and the rest were neutral.\n- The first 8 days were good, the second 8 days were bad, and the third 8 days were neutral.\n- The next 3 days (days 25, 26, and 27) were **good**, **neutral**, and **good**.\n\n### Step 2: Calculate the number of neutral days\nThe total number of days is 30. Christina had:\n- 12 good days,\n- 8 bad days,\n- The rest were neutral.\n\nThe number of neutral days is:\n\\[\n30 - (12 + 8) = 30 - 20 = 10\n\\]\n\n### Step 3: Analyze the distribution of moods\n- Days 1–8: Good (8 days).\n- Days 9–16: Bad (8 days).\n- Days 17–24: Neutral (8 days).\n- Days 25–27: Good, Neutral, Good.\n\n### Step 4: Count the good days so far\n- Christina had 8 good days in the first 8 days.\n- In the next 3 days (days 25–27), there were 2 more good days (day 25 and day 27).\n\nThus, the total number of good days so far is:\n\\[\n8 + 2 = 10\n\\]\n\n### Step 5: Determine how many good days are left\nChristina had a total of 12 good days in the month. She has already recorded 10 good days. Therefore, the number of good days left is:\n\\[\n12 - 10 = 2\n\\]\n\n### Final Answer:\n#### 2",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Christina had 30 - 12 - 8 = <<30-12-8=10>>10 neutral days in the month.\nAfter the first three 8-day periods, she had 30 - 8 * 3 = 30 - 24 = <<30-8*3=6>>6 days of moods left.\nOf those days, 12 - 8 = <<12-8=4>>4 days were good.\nAfter the next 3 days with 2 good days, Christina had 4 - 2 = <<4-2=2>>2 good days left.\n#### 2",
+    "extracted_pred": 2.0
+  },
+  "execution_duration_ms": 2764.06,
+  "logging_overhead_ms": 29.64,
+  "system_logs": "{\"inference_duration_ms\": 2728.62, \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 242, \"completion_tokens\": 391, \"total_tokens\": 633}, \"model_id_returned\": \"gpt-4o-2024-11-20\", \"system_fingerprint\": \"fp_11e951dab0\", \"response_id\": \"chatcmpl-DdPcZx3GjQRKYex3RH32yxs9SAKVD\"}",
+  "errors": [],
+  "output_hash": "40f80391791cd3331fd881f208f3d6cc2ad27ba97e4883ec1d2a405e0e95182e",
+  "storage_kb": 4.64
+}

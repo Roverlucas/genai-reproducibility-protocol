@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_gemma2-9b-local_gsm8k_GSM8K_0006_C1_rep2",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "eca75e5557f473721914fa427dade17a1089dd9b757d273c1f9f2dac286ed804",
+  "model_name": "gemma2:9b",
+  "model_version": "9.2B",
+  "weights_hash": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T23:44:10.867345+00:00",
+  "timestamp_end": "2026-05-08T23:44:19.416629+00:00",
+  "execution_duration_ms": 8549.28,
+  "output_hash": "5ce4036b29ce03357192c01b916dfb57f4790a93f2c03862842af4e0966d1b14",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The dogs have 5 dogs * 4 legs/dog = <<5*4=20>>20 legs.\nThe cats have 2 cats * 4 legs/cat = <<2*4=8>>8 legs.\nThe birds have 10 birds * 2 legs/bird = <<10*2=20>>20 legs.\nThe pets have 20 legs + 8 legs + 20 legs = <<20+8+20=48>>48 legs.\n#### 48",
+    "extracted_pred": 48.0
+  },
+  "logging_overhead_ms": 22.34,
+  "storage_kb": 3.04,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

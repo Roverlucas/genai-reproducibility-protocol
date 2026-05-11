@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_gemma2-9b-local_gsm8k_GSM8K_0001_C1_rep2",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "bfce246d17404f2cc417b4470ea549d3a1ba504df359c05f22b1184ca4611eb3",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nJordan has 2 children who wear diapers.  Each child requires 5 diaper changes per day.  Jordan's wife changes half of the diapers.  How many diapers does Jordan change per day?",
+  "input_text": "Jordan has 2 children who wear diapers.  Each child requires 5 diaper changes per day.  Jordan's wife changes half of the diapers.  How many diapers does Jordan change per day?",
+  "input_hash": "f8718355d40182caf7fb9abc1600b2943d192050fa353c0f767028670f6fc88a",
+  "model_name": "gemma2:9b",
+  "model_version": "9.2B",
+  "weights_hash": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T23:40:47.717225+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T23:40:47.717095+00:00",
+  "timestamp_end": "2026-05-08T23:40:53.984364+00:00",
+  "output_text": "Here's how to solve the problem step-by-step:\n\n1. **Calculate total diaper changes:** 2 children * 5 diaper changes/child = 10 diaper changes per day.\n\n2. **Calculate diapers changed by Jordan's wife:** 10 diaper changes / 2 = 5 diaper changes per day.\n\n3. **Calculate diapers changed by Jordan:** 10 diaper changes - 5 diaper changes = 5 diaper changes per day.\n\n\n#### 5 \n",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Jordan has 2 children, each requiring 5 diaper changes per day, for a total of 5*2=<<2*5=10>>10 diaper changes per day.\nJordan's wife changes half of the diapers, leaving Jordan to change the other half, for a total of 10/2=<<10/2=5>>5 diaper changes per day that Jordan is responsible for.\n#### 5",
+    "extracted_pred": 5.0
+  },
+  "execution_duration_ms": 6267.27,
+  "logging_overhead_ms": 29.72,
+  "system_logs": "{\"inference_duration_ms\": 6237.3, \"model_reported_duration_ns\": 6234753542, \"eval_count\": 106, \"prompt_eval_count\": 169, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "c837ea471b53fe35686459317ba9deaf7c716415564a3931648a2b7b0915c92a",
+  "storage_kb": 3.23
+}

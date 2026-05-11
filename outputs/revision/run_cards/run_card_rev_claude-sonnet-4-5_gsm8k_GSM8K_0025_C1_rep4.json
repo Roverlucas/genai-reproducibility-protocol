@@ -1,0 +1,43 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0025_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "5e4c4e77292e23b5e51275eec5627b9fba2d62a5e6cef06d7323dfd95152ef86",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:10:04.095540+00:00",
+  "timestamp_end": "2026-05-09T00:10:07.634150+00:00",
+  "execution_duration_ms": 3538.61,
+  "output_hash": "074cba35c9ebe1284be3573ff7e89f580a9811595b35da9b526c42c1e2a48b75",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "He rents his car 10*3=<<10*3=30>>30 hour a month\nSo he makes 25*30=$<<25*30=750>>750 a month\nThat means he has a profit of 750-500=$<<750-500=250>>250 a month\n#### 250",
+    "extracted_pred": 250.0
+  },
+  "logging_overhead_ms": 29.38,
+  "storage_kb": 3.3,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

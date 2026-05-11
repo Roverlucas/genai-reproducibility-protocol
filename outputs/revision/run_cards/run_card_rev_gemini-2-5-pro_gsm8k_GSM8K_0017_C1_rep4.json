@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_gemini-2-5-pro_gsm8k_GSM8K_0017_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "9f074c84a758ad7f649564baf1f0da2a669d6a24df816a05bbdbdcdb9737228e",
+  "model_name": "gemini-2.5-pro",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "google-ai-studio",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:24:11.010591+00:00",
+  "timestamp_end": "2026-05-09T00:24:15.409589+00:00",
+  "execution_duration_ms": 4399.0,
+  "output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "output_metrics": {
+    "gsm8k_correct": false,
+    "gold_answer": "Joan is 20 + 5 = <<20+5=25>>25 years old.\nMary is 25 – 2 = <<25-2=23>>23 years old.\nTherefore, the sum of their ages is 20 + 25 + 23 = <<20+25+23=68>>68.\n#### 68",
+    "extracted_pred": null
+  },
+  "logging_overhead_ms": 28.13,
+  "storage_kb": 2.72,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

@@ -1,0 +1,48 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_llama3-8b-local_humaneval_HumanEval_47_C1_rep4",
+  "task_id": "humaneval",
+  "task_category": "code_generation",
+  "prompt_card_ref": "prompt_card_humaneval_v1_0.json",
+  "prompt_hash": "12794c9b475e4c41b878cf4d466feb8fa24d9d3dd6311f9845760f64b4748fd4",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T20:45:09.911305+00:00",
+  "timestamp_end": "2026-05-08T20:45:13.198743+00:00",
+  "execution_duration_ms": 3287.44,
+  "output_hash": "a25da0ae8f221c4a779515200bcbe1118a4c0b7ef4cb6b95d64e864a3498e909",
+  "output_metrics": {
+    "pass_at_1": {
+      "passed": false,
+      "stdout": "",
+      "stderr": "  File \"<string>\", line 33\n    return sorted_l[n // 2]\n    ^^^^^^\nIndentationError: expected an indented block after 'if' statement on line 32\n",
+      "return_code": 1,
+      "duration_ms": 52.97,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "logging_overhead_ms": 18.8,
+  "storage_kb": 2.6,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

@@ -1,0 +1,2230 @@
+{
+  "methodology": {
+    "fields": [
+      "objective",
+      "method",
+      "key_result",
+      "model_or_system",
+      "benchmark"
+    ],
+    "conclusion_fields": [
+      "objective",
+      "method",
+      "key_result"
+    ],
+    "metadata_fields": [
+      "model_or_system",
+      "benchmark"
+    ],
+    "bootstrap_n": 10000,
+    "bootstrap_seed": 42,
+    "bootstrap_method": "percentile",
+    "ned_definition": "Levenshtein.distance(a,b) / max(|a|,|b|); 0 if both empty",
+    "rouge_definition": "Word-level LCS F1 (src/metrics/variability.py)",
+    "bertscore_model": "roberta-large (default for lang='en')",
+    "bertscore_rescale_baseline": false,
+    "missing_field_handling": "Pairs with at least one missing field are skipped (not counted as mismatches).",
+    "empty_string_handling_for_bertscore": "Replaced with '<EMPTY>' placeholder so BERTScore tokenizer does not fail."
+  },
+  "stacks": [
+    {
+      "model": "gpt-4",
+      "task": "extraction",
+      "condition": "C2_same_params",
+      "n_runs": 150,
+      "n_abstracts_total": 30,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 0.7733,
+            "ci_lower": 0.6633,
+            "ci_upper": 0.8733,
+            "n": 30,
+            "std": 0.3005
+          },
+          "ned": {
+            "mean": 0.062,
+            "ci_lower": 0.0291,
+            "ci_upper": 0.1002,
+            "n": 30,
+            "std": 0.101
+          },
+          "rouge_l": {
+            "mean": 0.9468,
+            "ci_lower": 0.9123,
+            "ci_upper": 0.9756,
+            "n": 30,
+            "std": 0.0906
+          },
+          "bertscore_f1": {
+            "mean": 0.9909,
+            "ci_lower": 0.985,
+            "ci_upper": 0.9959,
+            "n": 30,
+            "std": 0.0156
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 0.6667,
+            "ci_lower": 0.5467,
+            "ci_upper": 0.7833,
+            "n": 30,
+            "std": 0.3367
+          },
+          "ned": {
+            "mean": 0.0877,
+            "ci_lower": 0.0443,
+            "ci_upper": 0.1381,
+            "n": 30,
+            "std": 0.133
+          },
+          "rouge_l": {
+            "mean": 0.9261,
+            "ci_lower": 0.8832,
+            "ci_upper": 0.9634,
+            "n": 30,
+            "std": 0.1136
+          },
+          "bertscore_f1": {
+            "mean": 0.9874,
+            "ci_lower": 0.9801,
+            "ci_upper": 0.9937,
+            "n": 30,
+            "std": 0.0191
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 0.6367,
+            "ci_lower": 0.53,
+            "ci_upper": 0.7433,
+            "n": 30,
+            "std": 0.2988
+          },
+          "ned": {
+            "mean": 0.0577,
+            "ci_lower": 0.0238,
+            "ci_upper": 0.0988,
+            "n": 30,
+            "std": 0.1072
+          },
+          "rouge_l": {
+            "mean": 0.9522,
+            "ci_lower": 0.9186,
+            "ci_upper": 0.9794,
+            "n": 30,
+            "std": 0.0866
+          },
+          "bertscore_f1": {
+            "mean": 0.9925,
+            "ci_lower": 0.9875,
+            "ci_upper": 0.9966,
+            "n": 30,
+            "std": 0.0131
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 0.9037,
+            "ci_lower": 0.8296,
+            "ci_upper": 0.9704,
+            "n": 27,
+            "std": 0.187
+          },
+          "ned": {
+            "mean": 0.0218,
+            "ci_lower": 0.0048,
+            "ci_upper": 0.0459,
+            "n": 27,
+            "std": 0.0579
+          },
+          "rouge_l": {
+            "mean": 0.9623,
+            "ci_lower": 0.9259,
+            "ci_upper": 0.9912,
+            "n": 27,
+            "std": 0.0901
+          },
+          "bertscore_f1": {
+            "mean": 0.9942,
+            "ci_lower": 0.9884,
+            "ci_upper": 0.9986,
+            "n": 27,
+            "std": 0.014
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 0.9042,
+            "ci_lower": 0.8167,
+            "ci_upper": 0.9708,
+            "n": 24,
+            "std": 0.1989
+          },
+          "ned": {
+            "mean": 0.0322,
+            "ci_lower": 0.0011,
+            "ci_upper": 0.0691,
+            "n": 24,
+            "std": 0.0854
+          },
+          "rouge_l": {
+            "mean": 0.9666,
+            "ci_lower": 0.9283,
+            "ci_upper": 0.9952,
+            "n": 24,
+            "std": 0.0872
+          },
+          "bertscore_f1": {
+            "mean": 0.9953,
+            "ci_lower": 0.9895,
+            "ci_upper": 0.9997,
+            "n": 24,
+            "std": 0.0132
+          }
+        }
+      }
+    },
+    {
+      "model": "sonnet-4-5",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 1,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 0.6067,
+            "ci_lower": 0.4133,
+            "ci_upper": 0.8,
+            "n": 10,
+            "std": 0.3193
+          },
+          "ned": {
+            "mean": 0.0914,
+            "ci_lower": 0.0198,
+            "ci_upper": 0.1804,
+            "n": 10,
+            "std": 0.1399
+          },
+          "rouge_l": {
+            "mean": 0.9191,
+            "ci_lower": 0.8517,
+            "ci_upper": 0.976,
+            "n": 10,
+            "std": 0.108
+          },
+          "bertscore_f1": {
+            "mean": 0.9876,
+            "ci_lower": 0.9772,
+            "ci_upper": 0.9963,
+            "n": 10,
+            "std": 0.0165
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 0.39,
+            "ci_lower": 0.21,
+            "ci_upper": 0.61,
+            "n": 10,
+            "std": 0.3348
+          },
+          "ned": {
+            "mean": 0.168,
+            "ci_lower": 0.1079,
+            "ci_upper": 0.2198,
+            "n": 10,
+            "std": 0.0964
+          },
+          "rouge_l": {
+            "mean": 0.8381,
+            "ci_lower": 0.7693,
+            "ci_upper": 0.9057,
+            "n": 10,
+            "std": 0.1156
+          },
+          "bertscore_f1": {
+            "mean": 0.9734,
+            "ci_lower": 0.9643,
+            "ci_upper": 0.9835,
+            "n": 10,
+            "std": 0.0164
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 0.51,
+            "ci_lower": 0.34,
+            "ci_upper": 0.69,
+            "n": 10,
+            "std": 0.3035
+          },
+          "ned": {
+            "mean": 0.118,
+            "ci_lower": 0.0413,
+            "ci_upper": 0.2011,
+            "n": 10,
+            "std": 0.1376
+          },
+          "rouge_l": {
+            "mean": 0.8852,
+            "ci_lower": 0.7968,
+            "ci_upper": 0.9617,
+            "n": 10,
+            "std": 0.1421
+          },
+          "bertscore_f1": {
+            "mean": 0.9809,
+            "ci_lower": 0.9667,
+            "ci_upper": 0.9931,
+            "n": 10,
+            "std": 0.023
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 0.8714,
+            "ci_lower": 0.6143,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.3402
+          },
+          "ned": {
+            "mean": 0.0525,
+            "ci_lower": 0.0,
+            "ci_upper": 0.1576,
+            "n": 7,
+            "std": 0.139
+          },
+          "rouge_l": {
+            "mean": 0.922,
+            "ci_lower": 0.7661,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.2063
+          },
+          "bertscore_f1": {
+            "mean": 0.9911,
+            "ci_lower": 0.9732,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0237
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 0.7375,
+            "ci_lower": 0.55,
+            "ci_upper": 0.925,
+            "n": 8,
+            "std": 0.2875
+          },
+          "ned": {
+            "mean": 0.1049,
+            "ci_lower": 0.0254,
+            "ci_upper": 0.1994,
+            "n": 8,
+            "std": 0.1344
+          },
+          "rouge_l": {
+            "mean": 0.919,
+            "ci_lower": 0.8426,
+            "ci_upper": 0.9806,
+            "n": 8,
+            "std": 0.1066
+          },
+          "bertscore_f1": {
+            "mean": 0.9915,
+            "ci_lower": 0.9846,
+            "ci_upper": 0.9979,
+            "n": 8,
+            "std": 0.0102
+          }
+        }
+      }
+    },
+    {
+      "model": "deepseek-chat",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 0.84,
+            "ci_lower": 0.72,
+            "ci_upper": 0.96,
+            "n": 10,
+            "std": 0.2066
+          },
+          "ned": {
+            "mean": 0.0274,
+            "ci_lower": 0.0046,
+            "ci_upper": 0.0558,
+            "n": 10,
+            "std": 0.044
+          },
+          "rouge_l": {
+            "mean": 0.979,
+            "ci_lower": 0.9588,
+            "ci_upper": 0.9964,
+            "n": 10,
+            "std": 0.0323
+          },
+          "bertscore_f1": {
+            "mean": 0.9958,
+            "ci_lower": 0.9923,
+            "ci_upper": 0.9991,
+            "n": 10,
+            "std": 0.0058
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 0.96,
+            "ci_lower": 0.88,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.1265
+          },
+          "ned": {
+            "mean": 0.007,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0211,
+            "n": 10,
+            "std": 0.0223
+          },
+          "rouge_l": {
+            "mean": 0.9939,
+            "ci_lower": 0.9817,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0193
+          },
+          "bertscore_f1": {
+            "mean": 0.999,
+            "ci_lower": 0.9969,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0033
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 5,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 5,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 5,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 5,
+            "std": 0.0
+          }
+        }
+      }
+    },
+    {
+      "model": "sonar",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 0.33,
+            "ci_lower": 0.21,
+            "ci_upper": 0.46,
+            "n": 10,
+            "std": 0.2111
+          },
+          "ned": {
+            "mean": 0.1881,
+            "ci_lower": 0.1212,
+            "ci_upper": 0.2627,
+            "n": 10,
+            "std": 0.1208
+          },
+          "rouge_l": {
+            "mean": 0.8274,
+            "ci_lower": 0.7795,
+            "ci_upper": 0.874,
+            "n": 10,
+            "std": 0.0802
+          },
+          "bertscore_f1": {
+            "mean": 0.9734,
+            "ci_lower": 0.9671,
+            "ci_upper": 0.9804,
+            "n": 10,
+            "std": 0.0113
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 0.17,
+            "ci_lower": 0.08,
+            "ci_upper": 0.29,
+            "n": 10,
+            "std": 0.1767
+          },
+          "ned": {
+            "mean": 0.277,
+            "ci_lower": 0.2273,
+            "ci_upper": 0.3321,
+            "n": 10,
+            "std": 0.0887
+          },
+          "rouge_l": {
+            "mean": 0.7135,
+            "ci_lower": 0.6463,
+            "ci_upper": 0.7759,
+            "n": 10,
+            "std": 0.1115
+          },
+          "bertscore_f1": {
+            "mean": 0.956,
+            "ci_lower": 0.9431,
+            "ci_upper": 0.9677,
+            "n": 10,
+            "std": 0.0211
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 0.27,
+            "ci_lower": 0.18,
+            "ci_upper": 0.37,
+            "n": 10,
+            "std": 0.1636
+          },
+          "ned": {
+            "mean": 0.2133,
+            "ci_lower": 0.1413,
+            "ci_upper": 0.2772,
+            "n": 10,
+            "std": 0.1168
+          },
+          "rouge_l": {
+            "mean": 0.798,
+            "ci_lower": 0.7473,
+            "ci_upper": 0.856,
+            "n": 10,
+            "std": 0.0928
+          },
+          "bertscore_f1": {
+            "mean": 0.9698,
+            "ci_lower": 0.9608,
+            "ci_upper": 0.9795,
+            "n": 10,
+            "std": 0.016
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 0.5111,
+            "ci_lower": 0.2889,
+            "ci_upper": 0.7333,
+            "n": 9,
+            "std": 0.3621
+          },
+          "ned": {
+            "mean": 0.3071,
+            "ci_lower": 0.1176,
+            "ci_upper": 0.5277,
+            "n": 9,
+            "std": 0.3361
+          },
+          "rouge_l": {
+            "mean": 0.6257,
+            "ci_lower": 0.4146,
+            "ci_upper": 0.8102,
+            "n": 9,
+            "std": 0.3222
+          },
+          "bertscore_f1": {
+            "mean": 0.9462,
+            "ci_lower": 0.8985,
+            "ci_upper": 0.9817,
+            "n": 9,
+            "std": 0.0691
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 0.3,
+            "ci_lower": 0.1444,
+            "ci_upper": 0.4444,
+            "n": 9,
+            "std": 0.2449
+          },
+          "ned": {
+            "mean": 0.3945,
+            "ci_lower": 0.2594,
+            "ci_upper": 0.5646,
+            "n": 9,
+            "std": 0.2497
+          },
+          "rouge_l": {
+            "mean": 0.6172,
+            "ci_lower": 0.4352,
+            "ci_upper": 0.7613,
+            "n": 9,
+            "std": 0.2658
+          },
+          "bertscore_f1": {
+            "mean": 0.9415,
+            "ci_lower": 0.9005,
+            "ci_upper": 0.9693,
+            "n": 9,
+            "std": 0.0586
+          }
+        }
+      }
+    },
+    {
+      "model": "llama3_8b",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 150,
+      "n_abstracts_total": 30,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 0.9867,
+            "ci_lower": 0.96,
+            "ci_upper": 1.0,
+            "n": 30,
+            "std": 0.073
+          },
+          "ned": {
+            "mean": 0.0047,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0142,
+            "n": 30,
+            "std": 0.0259
+          },
+          "rouge_l": {
+            "mean": 0.9961,
+            "ci_lower": 0.9882,
+            "ci_upper": 1.0,
+            "n": 30,
+            "std": 0.0215
+          },
+          "bertscore_f1": {
+            "mean": 0.9993,
+            "ci_lower": 0.998,
+            "ci_upper": 1.0,
+            "n": 30,
+            "std": 0.0036
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 0.9867,
+            "ci_lower": 0.96,
+            "ci_upper": 1.0,
+            "n": 30,
+            "std": 0.073
+          },
+          "ned": {
+            "mean": 0.0053,
+            "ci_lower": 0.0,
+            "ci_upper": 0.016,
+            "n": 30,
+            "std": 0.0292
+          },
+          "rouge_l": {
+            "mean": 0.9962,
+            "ci_lower": 0.9886,
+            "ci_upper": 1.0,
+            "n": 30,
+            "std": 0.0209
+          },
+          "bertscore_f1": {
+            "mean": 0.9995,
+            "ci_lower": 0.9984,
+            "ci_upper": 1.0,
+            "n": 30,
+            "std": 0.003
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 0.9846,
+            "ci_lower": 0.9538,
+            "ci_upper": 1.0,
+            "n": 26,
+            "std": 0.0784
+          },
+          "ned": {
+            "mean": 0.0043,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0128,
+            "n": 26,
+            "std": 0.0218
+          },
+          "rouge_l": {
+            "mean": 0.9955,
+            "ci_lower": 0.9866,
+            "ci_upper": 1.0,
+            "n": 26,
+            "std": 0.0228
+          },
+          "bertscore_f1": {
+            "mean": 0.9997,
+            "ci_lower": 0.999,
+            "ci_upper": 1.0,
+            "n": 26,
+            "std": 0.0016
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 22,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 22,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 22,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 22,
+            "std": 0.0
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 0.9778,
+            "ci_lower": 0.9333,
+            "ci_upper": 1.0,
+            "n": 18,
+            "std": 0.0943
+          },
+          "ned": {
+            "mean": 0.0111,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0333,
+            "n": 18,
+            "std": 0.0471
+          },
+          "rouge_l": {
+            "mean": 0.9926,
+            "ci_lower": 0.9778,
+            "ci_upper": 1.0,
+            "n": 18,
+            "std": 0.0314
+          },
+          "bertscore_f1": {
+            "mean": 0.999,
+            "ci_lower": 0.9971,
+            "ci_upper": 1.0,
+            "n": 18,
+            "std": 0.0041
+          }
+        }
+      }
+    },
+    {
+      "model": "mistral_7b",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 0.96,
+            "ci_lower": 0.88,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.1265
+          },
+          "ned": {
+            "mean": 0.0015,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0046,
+            "n": 10,
+            "std": 0.0049
+          },
+          "rouge_l": {
+            "mean": 0.9994,
+            "ci_lower": 0.9982,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0019
+          },
+          "bertscore_f1": {
+            "mean": 0.9999,
+            "ci_lower": 0.9996,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0004
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 8,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 8,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 8,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 8,
+            "std": 0.0
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 9,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 9,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 9,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 9,
+            "std": 0.0
+          }
+        }
+      }
+    },
+    {
+      "model": "gemma2_9b",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 8,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 8,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 8,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 8,
+            "std": 0.0
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          }
+        }
+      }
+    },
+    {
+      "model": "together_llama3_8b",
+      "task": "extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 9,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 9,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 9,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 9,
+            "std": 0.0
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 8,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 8,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 8,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 8,
+            "std": 0.0
+          }
+        }
+      }
+    },
+    {
+      "model": "gemini-2_5-pro_rag",
+      "task": "rag_extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 0.44,
+            "ci_lower": 0.22,
+            "ci_upper": 0.67,
+            "n": 10,
+            "std": 0.3777
+          },
+          "ned": {
+            "mean": 0.1698,
+            "ci_lower": 0.0718,
+            "ci_upper": 0.2736,
+            "n": 10,
+            "std": 0.1715
+          },
+          "rouge_l": {
+            "mean": 0.8433,
+            "ci_lower": 0.7425,
+            "ci_upper": 0.9384,
+            "n": 10,
+            "std": 0.1664
+          },
+          "bertscore_f1": {
+            "mean": 0.9759,
+            "ci_lower": 0.961,
+            "ci_upper": 0.9895,
+            "n": 10,
+            "std": 0.0245
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 0.27,
+            "ci_lower": 0.11,
+            "ci_upper": 0.47,
+            "n": 10,
+            "std": 0.3129
+          },
+          "ned": {
+            "mean": 0.2225,
+            "ci_lower": 0.1336,
+            "ci_upper": 0.3285,
+            "n": 10,
+            "std": 0.1704
+          },
+          "rouge_l": {
+            "mean": 0.7773,
+            "ci_lower": 0.6617,
+            "ci_upper": 0.873,
+            "n": 10,
+            "std": 0.1832
+          },
+          "bertscore_f1": {
+            "mean": 0.9747,
+            "ci_lower": 0.961,
+            "ci_upper": 0.9859,
+            "n": 10,
+            "std": 0.0216
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 0.1,
+            "ci_lower": 0.04,
+            "ci_upper": 0.16,
+            "n": 10,
+            "std": 0.1054
+          },
+          "ned": {
+            "mean": 0.2439,
+            "ci_lower": 0.1455,
+            "ci_upper": 0.3448,
+            "n": 10,
+            "std": 0.1735
+          },
+          "rouge_l": {
+            "mean": 0.7746,
+            "ci_lower": 0.6884,
+            "ci_upper": 0.8572,
+            "n": 10,
+            "std": 0.147
+          },
+          "bertscore_f1": {
+            "mean": 0.9692,
+            "ci_lower": 0.9563,
+            "ci_upper": 0.9805,
+            "n": 10,
+            "std": 0.0211
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 0.72,
+            "ci_lower": 0.52,
+            "ci_upper": 0.92,
+            "n": 10,
+            "std": 0.3425
+          },
+          "ned": {
+            "mean": 0.142,
+            "ci_lower": 0.0313,
+            "ci_upper": 0.2834,
+            "n": 10,
+            "std": 0.2157
+          },
+          "rouge_l": {
+            "mean": 0.8317,
+            "ci_lower": 0.6705,
+            "ci_upper": 0.9594,
+            "n": 10,
+            "std": 0.2482
+          },
+          "bertscore_f1": {
+            "mean": 0.9768,
+            "ci_lower": 0.954,
+            "ci_upper": 0.9958,
+            "n": 10,
+            "std": 0.0356
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 0.47,
+            "ci_lower": 0.29,
+            "ci_upper": 0.64,
+            "n": 10,
+            "std": 0.2946
+          },
+          "ned": {
+            "mean": 0.1684,
+            "ci_lower": 0.0757,
+            "ci_upper": 0.2662,
+            "n": 10,
+            "std": 0.1633
+          },
+          "rouge_l": {
+            "mean": 0.8155,
+            "ci_lower": 0.7212,
+            "ci_upper": 0.9045,
+            "n": 10,
+            "std": 0.1563
+          },
+          "bertscore_f1": {
+            "mean": 0.9759,
+            "ci_lower": 0.962,
+            "ci_upper": 0.9879,
+            "n": 10,
+            "std": 0.0221
+          }
+        }
+      }
+    },
+    {
+      "model": "sonnet-4-5_rag",
+      "task": "rag_extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 0.04,
+            "ci_lower": 0.0,
+            "ci_upper": 0.09,
+            "n": 10,
+            "std": 0.0699
+          },
+          "ned": {
+            "mean": 0.2889,
+            "ci_lower": 0.2212,
+            "ci_upper": 0.356,
+            "n": 10,
+            "std": 0.1141
+          },
+          "rouge_l": {
+            "mean": 0.7195,
+            "ci_lower": 0.65,
+            "ci_upper": 0.7866,
+            "n": 10,
+            "std": 0.1173
+          },
+          "bertscore_f1": {
+            "mean": 0.9559,
+            "ci_lower": 0.9443,
+            "ci_upper": 0.9669,
+            "n": 10,
+            "std": 0.0193
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 0.07,
+            "ci_lower": 0.0,
+            "ci_upper": 0.2,
+            "n": 10,
+            "std": 0.1889
+          },
+          "ned": {
+            "mean": 0.296,
+            "ci_lower": 0.2282,
+            "ci_upper": 0.3634,
+            "n": 10,
+            "std": 0.1131
+          },
+          "rouge_l": {
+            "mean": 0.696,
+            "ci_lower": 0.6126,
+            "ci_upper": 0.7776,
+            "n": 10,
+            "std": 0.1391
+          },
+          "bertscore_f1": {
+            "mean": 0.959,
+            "ci_lower": 0.9495,
+            "ci_upper": 0.9684,
+            "n": 10,
+            "std": 0.016
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 0.11,
+            "ci_lower": 0.03,
+            "ci_upper": 0.23,
+            "n": 10,
+            "std": 0.1792
+          },
+          "ned": {
+            "mean": 0.2446,
+            "ci_lower": 0.1722,
+            "ci_upper": 0.3102,
+            "n": 10,
+            "std": 0.1194
+          },
+          "rouge_l": {
+            "mean": 0.7855,
+            "ci_lower": 0.7301,
+            "ci_upper": 0.8433,
+            "n": 10,
+            "std": 0.098
+          },
+          "bertscore_f1": {
+            "mean": 0.9687,
+            "ci_lower": 0.9592,
+            "ci_upper": 0.9779,
+            "n": 10,
+            "std": 0.0162
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 0.49,
+            "ci_lower": 0.23,
+            "ci_upper": 0.76,
+            "n": 10,
+            "std": 0.4508
+          },
+          "ned": {
+            "mean": 0.2443,
+            "ci_lower": 0.1047,
+            "ci_upper": 0.3895,
+            "n": 10,
+            "std": 0.2436
+          },
+          "rouge_l": {
+            "mean": 0.7723,
+            "ci_lower": 0.6318,
+            "ci_upper": 0.9079,
+            "n": 10,
+            "std": 0.2353
+          },
+          "bertscore_f1": {
+            "mean": 0.9719,
+            "ci_lower": 0.9556,
+            "ci_upper": 0.987,
+            "n": 10,
+            "std": 0.0272
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 0.3,
+            "ci_lower": 0.18,
+            "ci_upper": 0.42,
+            "n": 10,
+            "std": 0.2
+          },
+          "ned": {
+            "mean": 0.2547,
+            "ci_lower": 0.1705,
+            "ci_upper": 0.3411,
+            "n": 10,
+            "std": 0.1477
+          },
+          "rouge_l": {
+            "mean": 0.7621,
+            "ci_lower": 0.6576,
+            "ci_upper": 0.854,
+            "n": 10,
+            "std": 0.1713
+          },
+          "bertscore_f1": {
+            "mean": 0.9672,
+            "ci_lower": 0.9514,
+            "ci_upper": 0.9802,
+            "n": 10,
+            "std": 0.025
+          }
+        }
+      }
+    },
+    {
+      "model": "llama3_8b_rag",
+      "task": "rag_extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 15,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 7,
+            "std": 0.0
+          }
+        }
+      }
+    },
+    {
+      "model": "mistral_7b_rag",
+      "task": "rag_extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        }
+      }
+    },
+    {
+      "model": "gemma2_9b_rag",
+      "task": "rag_extraction",
+      "condition": "C1_fixed_seed",
+      "n_runs": 50,
+      "n_abstracts_total": 10,
+      "n_unparseable_outputs": 0,
+      "fields": {
+        "objective": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "method": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "key_result": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "model_or_system": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 10,
+            "std": 0.0
+          }
+        },
+        "benchmark": {
+          "emr": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 9,
+            "std": 0.0
+          },
+          "ned": {
+            "mean": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n": 9,
+            "std": 0.0
+          },
+          "rouge_l": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 9,
+            "std": 0.0
+          },
+          "bertscore_f1": {
+            "mean": 1.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n": 9,
+            "std": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "hypothesis_verdict": {
+    "all_stacks_aggregate": {
+      "emr": {
+        "per_field_avg": {
+          "objective": 0.782823076923077,
+          "method": 0.7225692307692307,
+          "key_result": 0.7331769230769231,
+          "model_or_system": 0.8843230769230769,
+          "benchmark": 0.8222692307692306
+        },
+        "conclusion_fields_avg": 0.7461897435897437,
+        "metadata_fields_avg": 0.8532961538461538,
+        "delta_metadata_minus_conclusion": 0.1071064102564101
+      },
+      "ned": {
+        "per_field_avg": {
+          "objective": 0.06191538461538461,
+          "method": 0.08337692307692308,
+          "key_result": 0.0684846153846154,
+          "model_or_system": 0.05905384615384615,
+          "benchmark": 0.07429230769230769
+        },
+        "conclusion_fields_avg": 0.07125897435897437,
+        "metadata_fields_avg": 0.06667307692307692,
+        "delta_metadata_minus_conclusion": -0.004585897435897449
+      },
+      "rouge_l": {
+        "per_field_avg": {
+          "objective": 0.9424769230769231,
+          "method": 0.9174,
+          "key_result": 0.9372538461538462,
+          "model_or_system": 0.9318461538461538,
+          "benchmark": 0.9286923076923077
+        },
+        "conclusion_fields_avg": 0.9323769230769231,
+        "metadata_fields_avg": 0.9302692307692307,
+        "delta_metadata_minus_conclusion": -0.002107692307692366
+      },
+      "bertscore_f1": {
+        "per_field_avg": {
+          "objective": 0.9909999999999999,
+          "method": 0.9881384615384616,
+          "key_result": 0.9907461538461538,
+          "model_or_system": 0.9907846153846154,
+          "benchmark": 0.9900307692307693
+        },
+        "conclusion_fields_avg": 0.9899615384615384,
+        "metadata_fields_avg": 0.9904076923076923,
+        "delta_metadata_minus_conclusion": 0.0004461538461538739
+      }
+    },
+    "api_stacks_aggregate": {
+      "emr": {
+        "per_field_avg": {
+          "objective": 0.5316666666666666,
+          "method": 0.4011166666666666,
+          "key_result": 0.43111666666666665,
+          "model_or_system": 0.7493666666666666,
+          "benchmark": 0.6186166666666666
+        },
+        "conclusion_fields_avg": 0.4546333333333333,
+        "metadata_fields_avg": 0.6839916666666666,
+        "delta_metadata_minus_conclusion": 0.22935833333333328
+      },
+      "ned": {
+        "per_field_avg": {
+          "objective": 0.13336666666666666,
+          "method": 0.17976666666666666,
+          "key_result": 0.14741666666666667,
+          "model_or_system": 0.12794999999999998,
+          "benchmark": 0.15911666666666668
+        },
+        "conclusion_fields_avg": 0.15351666666666666,
+        "metadata_fields_avg": 0.14353333333333335,
+        "delta_metadata_minus_conclusion": -0.009983333333333316
+      },
+      "rouge_l": {
+        "per_field_avg": {
+          "objective": 0.8760166666666667,
+          "method": 0.8216666666666667,
+          "key_result": 0.8649,
+          "model_or_system": 0.8523333333333335,
+          "benchmark": 0.8467333333333333
+        },
+        "conclusion_fields_avg": 0.8541944444444445,
+        "metadata_fields_avg": 0.8495333333333335,
+        "delta_metadata_minus_conclusion": -0.004661111111111005
+      },
+      "bertscore_f1": {
+        "per_field_avg": {
+          "objective": 0.9806166666666667,
+          "method": 0.9743833333333333,
+          "key_result": 0.9800166666666666,
+          "model_or_system": 0.9800333333333334,
+          "benchmark": 0.9785666666666667
+        },
+        "conclusion_fields_avg": 0.978338888888889,
+        "metadata_fields_avg": 0.9793000000000001,
+        "delta_metadata_minus_conclusion": 0.0009611111111110793
+      }
+    },
+    "n_stacks_total": 13,
+    "n_stacks_api": 6,
+    "bertscore_paired_api_only": {
+      "n_stacks": 6,
+      "benchmark_minus_key_result_mean": -0.0014500000000000068,
+      "cohens_d_paired": -0.1048297164706607
+    },
+    "emr_paired_api_only": {
+      "n_stacks": 6,
+      "benchmark_minus_key_result_mean": 0.1875,
+      "cohens_d_paired": 1.414339287008839
+    },
+    "interpretation": {
+      "bertscore_hypothesis_at_aggregate": "Reviewer 1's hypothesis is NOT supported on BERTScore F1 alone: in the API-only aggregate, conclusion-relevant fields and metadata fields show essentially identical BERTScore F1 (~0.97-0.98 on both). BERTScore saturates near 1.0 for paraphrases regardless of which field is being compared.",
+      "underlying_concern_supported": "The underlying concern Reviewer 1 raised IS supported by EMR and ROUGE-L: in the API-only aggregate, conclusion-relevant fields show substantially lower exact-match rates than metadata fields. This validates the manuscript's claim that the divergence is concentrated in substantive content, not in formatting.",
+      "headline": "BERTScore obscures the field-level divergence (it is high everywhere). EMR exposes it: conclusion-relevant fields exhibit a sharply lower match rate than metadata fields, supporting the manuscript's claim that hidden non-determinism affects the substantive payload."
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_llama3-8b-local_gsm8k_GSM8K_0008_C1_rep3",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "3a22a6ae3aebcb6b8aaafa5094d5868e2cb7aae263ed7423517d33d98f15b778",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nJoe has $50 to buy an outfit for his new field trip. There is a 30% off sale at the clothing store. The shirt he picks out has a price of $25. He also picks out a pair of shorts for $35. Assuming that sales tax is included, how much money will Joe have left after the purchase?",
+  "input_text": "Joe has $50 to buy an outfit for his new field trip. There is a 30% off sale at the clothing store. The shirt he picks out has a price of $25. He also picks out a pair of shorts for $35. Assuming that sales tax is included, how much money will Joe have left after the purchase?",
+  "input_hash": "6315aebb3eed1425a381432fa1274602ee14cda0429aa6105b00a52297800a53",
+  "model_name": "llama3:8b",
+  "model_version": "8.0B",
+  "weights_hash": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T21:48:37.523058+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T21:48:37.522944+00:00",
+  "timestamp_end": "2026-05-08T21:48:47.706940+00:00",
+  "output_text": "Let's break it down step by step!\n\n1. First, we need to find the discount amount on the shirt. Since there's a 30% off sale, we can calculate the discount as:\n\nDiscount = Price of shirt x Percentage off\n= $25 x 0.3\n= $7.50\n\n2. Now, let's apply the discount to the price of the shirt:\n\nPrice of shirt after discount = Original price - Discount\n= $25 - $7.50\n= $17.50\n\n3. Next, we need to find the total cost of the outfit (shirt and shorts). Since sales tax is included, we can add the prices together:\n\nTotal cost = Price of shirt + Price of shorts\n= $17.50 + $35\n= $52.50\n\n4. Finally, let's calculate how much money Joe will have left after the purchase:\n\nMoney left = Initial amount - Total cost\n= $50 - $52.50\n= -$2.50 (Oh no! Joe doesn't have enough money!)\n\n#### 2",
+  "output_metrics": {
+    "gsm8k_correct": false,
+    "gold_answer": "The price of the two clothing items totals 35 + 25 = <<35+25=60>>60 dollars before discount.\nThe total sale discount comes to 60 * 0.3 = <<60*0.3=18>>18 dollars.\nThe final sale price comes to 60 - 18 = <<60-18=42>>42 dollars.\nJoe ends up with 50 - 42 = <<50-42=8>>8 dollars change.\n#### 8",
+    "extracted_pred": 2.0
+  },
+  "execution_duration_ms": 10184.0,
+  "logging_overhead_ms": 31.31,
+  "system_logs": "{\"inference_duration_ms\": 10152.44, \"model_reported_duration_ns\": 10150441625, \"eval_count\": 221, \"prompt_eval_count\": 227, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "98779cda362e68c99af8bd71e4f37303243f5147d6374586117cf3ffe487a6d0",
+  "storage_kb": 3.83
+}

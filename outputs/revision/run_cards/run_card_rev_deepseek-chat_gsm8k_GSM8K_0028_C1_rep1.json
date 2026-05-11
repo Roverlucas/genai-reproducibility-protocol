@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_deepseek-chat_gsm8k_GSM8K_0028_C1_rep1",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "ac49c18507d49c667b8952c3d4fac88881383a2c7ab1cc178b4dd45917acc11b",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-09T00:34:15.247570+00:00",
+  "timestamp_end": "2026-05-09T00:34:17.291248+00:00",
+  "execution_duration_ms": 2043.68,
+  "output_hash": "1117fb9a5dfbfeb6e9ec3bc54c0a3d1237737ac81f3040228445626fa7270cf5",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Jasper has 4/2= <<4/2=2>>2 tubes of blue paint\nJasper has 3*3=<<3*3=9>>9 tubes of yellow paint\nJasper has a total of 2+9 =<<2+9=11>>11 tubes of paint\n#### 11",
+    "extracted_pred": 11.0
+  },
+  "logging_overhead_ms": 28.89,
+  "storage_kb": 3.17,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}

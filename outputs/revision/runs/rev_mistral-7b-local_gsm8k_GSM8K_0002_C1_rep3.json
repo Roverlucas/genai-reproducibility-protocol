@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_mistral-7b-local_gsm8k_GSM8K_0002_C1_rep3",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "74b42876f0446679e23000e56b60b28d5390bb6b0e7317579e54e9f29c44e667",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nA wooden bridge can carry no more than 5000 pounds. A delivery truck filled with identical boxes, each weighing 15 pounds, will pass over the bridge. The combined weight of the driver and the empty truck is 3755 pounds. What is the maximum number of boxes which can be loaded onto the truck while not exceeding the bridge's weight limit?",
+  "input_text": "A wooden bridge can carry no more than 5000 pounds. A delivery truck filled with identical boxes, each weighing 15 pounds, will pass over the bridge. The combined weight of the driver and the empty truck is 3755 pounds. What is the maximum number of boxes which can be loaded onto the truck while not exceeding the bridge's weight limit?",
+  "input_hash": "08b78a955d65a516d71029ff129278b6417030e46ee9ee427c64050e4588e306",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T22:04:27.195036+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T22:04:27.194999+00:00",
+  "timestamp_end": "2026-05-08T22:04:40.470815+00:00",
+  "output_text": " Let's break this problem down step by step:\n\n1. The weight of an empty truck plus the driver is 3755 pounds.\n2. Each box weighs 15 pounds.\n3. We want to find out how many boxes can be loaded onto the truck without exceeding the bridge's weight limit of 5000 pounds.\n4. First, subtract the combined weight of the driver and empty truck from the weight limit: 5000 - 3755 = 1245 pounds (this is the remaining weight the truck can carry).\n5. Then, divide the remaining weight by the weight of each box to find out how many boxes can be loaded: 1245 / 15 = 83 (rounded down since we cannot have a fraction of a box).\n\nHowever, there is an additional factor to consider: the weight of the truck itself. Since we don't know the exact weight of the empty truck, it's impossible to determine the exact number of boxes that can be loaded without exceeding the bridge's weight limit.\n\nSo, while we can find a theoretical maximum number of boxes (83), in reality, this number might be lower due to the weight of the empty truck.\n\n#### <answer> 83 (theoretical maximum, actual number may be lower)",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "The boxes can weigh up to 5000 pounds - 3755 pounds = <<5000-3755=1245>>1245 pounds in total.\nThere can be 1245 / 15 = <<1245/15=83>>83 boxes loaded onto the truck without exceeding the bridge's weight limit.\n#### 83",
+    "extracted_pred": 83.0
+  },
+  "execution_duration_ms": 13275.82,
+  "logging_overhead_ms": 29.13,
+  "system_logs": "{\"inference_duration_ms\": 13246.34, \"model_reported_duration_ns\": 13243870792, \"eval_count\": 295, \"prompt_eval_count\": 253, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "55662d01067dfe516f06277f42b7704d09833ee9c7c3214267366fd3dce6dc27",
+  "storage_kb": 4.17
+}

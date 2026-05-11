@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0052__est0__r2-vs-r7",
+  "verdict": "semantically_equivalent",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "same",
+  "criterion_c_ci_overlap": "overlap",
+  "rationale": "Extraction X appears to report percent change (2.83%, 95% CI 0.96%-4.73%) while Extraction Y reports the same as a ratio (1.0283, 95% CI 1.0096-1.0473). Both indicate the same positive direction, identical magnitude, and fully overlapping CIs.",
+  "randomization_seed": 3093519917,
+  "presented_x_run_id": 2,
+  "presented_y_run_id": 7,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"same\",\n  \"criterion_c_ci_overlap\": \"overlap\",\n  \"verdict\": \"semantically_equivalent\",\n  \"rationale\": \"Extraction X appears to report percent change (2.83%, 95% CI 0.96%-4.73%) while Extraction Y reports the same as a ratio (1.0283, 95% CI 1.0096-1.0473). Both indicate the same positive direction, identical magnitude, and fully overlapping CIs.\"\n}",
+  "input_tokens": 932,
+  "output_tokens": 187,
+  "cost_usd": 0.028005,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778287649.735958
+}

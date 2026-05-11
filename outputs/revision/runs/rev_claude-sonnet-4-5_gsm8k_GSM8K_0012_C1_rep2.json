@@ -1,0 +1,51 @@
+{
+  "run_id": "rev_claude-sonnet-4-5_gsm8k_GSM8K_0012_C1_rep2",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "2e731bf8e39e393ddbdb2d24c6c40f97b5cfc2337302e223265d5d51de5bf42a",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nChristina records her mood every day on a calendar. Over the past thirty days of moods, she had twelve good days and eight bad days and the rest were neutral. Her first eight days were good, her second eight days were bad, and her third eight days were neutral. If the next three days were good, neutral, and good, how many good days were left in the month?",
+  "input_text": "Christina records her mood every day on a calendar. Over the past thirty days of moods, she had twelve good days and eight bad days and the rest were neutral. Her first eight days were good, her second eight days were bad, and her third eight days were neutral. If the next three days were good, neutral, and good, how many good days were left in the month?",
+  "input_hash": "db22fa8e24434d81ecb2059824dc4e9303a7a50882cb2c3bc4de7588be493e7b",
+  "model_name": "claude-sonnet-4-5-20250929",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "anthropic-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42,
+    "seed_note": "logged-only-not-sent-to-api"
+  },
+  "params_hash": "77b037ed1a3eb7390f38610232c8a301c3acc8e274c0f0f24dc43549fcde3bb3",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:05:23.419139+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:05:23.419081+00:00",
+  "timestamp_end": "2026-05-09T00:05:29.183546+00:00",
+  "output_text": "I need to work through this step-by-step.\n\n**Given information:**\n- Total days in the month: 30 days\n- Total good days: 12\n- Total bad days: 8\n- Total neutral days: 30 - 12 - 8 = 10 days\n\n**Days accounted for so far:**\n- First 8 days: good\n- Second 8 days: bad\n- Third 8 days: neutral\n- Next 3 days: good, neutral, good\n\nLet me count what we have so far:\n- Days 1-8: good (8 good days)\n- Days 9-16: bad (8 bad days)\n- Days 17-24: neutral (8 neutral days)\n- Day 25: good (1 good day)\n- Day 26: neutral (1 neutral day)\n- Day 27: good (1 good day)\n\n**Total days accounted for:** 8 + 8 + 8 + 3 = 27 days\n\n**Days remaining in the month:** 30 - 27 = 3 days\n\n**Good days used so far:** 8 (first eight) + 1 (day 25) + 1 (day 27) = 10 good days\n\n**Total good days in the month:** 12\n\n**Good days remaining:** 12 - 10 = 2 good days\n\n####2",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Christina had 30 - 12 - 8 = <<30-12-8=10>>10 neutral days in the month.\nAfter the first three 8-day periods, she had 30 - 8 * 3 = 30 - 24 = <<30-8*3=6>>6 days of moods left.\nOf those days, 12 - 8 = <<12-8=4>>4 days were good.\nAfter the next 3 days with 2 good days, Christina had 4 - 2 = <<4-2=2>>2 good days left.\n#### 2",
+    "extracted_pred": 2.0
+  },
+  "execution_duration_ms": 5764.47,
+  "logging_overhead_ms": 27.92,
+  "system_logs": "{\"inference_duration_ms\": 5736.45, \"finish_reason\": \"end_turn\", \"usage\": {\"input_tokens\": 248, \"output_tokens\": 333}, \"model_id_returned\": \"claude-sonnet-4-5-20250929\", \"response_id\": \"msg_01D2biW8oDC2hgim6kh3rHnc\"}",
+  "errors": [],
+  "output_hash": "895e62a8ce95e66016a9aa520cc1f56e2bd9aa3305b604f40f1551458ffe1298",
+  "storage_kb": 4.17
+}

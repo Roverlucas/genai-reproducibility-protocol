@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_deepseek-chat_gsm8k_GSM8K_0023_C1_rep4",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "1d70dd49a8d90866897bfdd5cf56afe9bab3c40e61e75d5e35ec578d145d561d",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nThere are four schools competing at a basketball tournament. Each school has sent a girls’ basketball team and a boys’ basketball team and each team has 5 players each. Each school has also sent a coach for each team. In total, how many people have all of the schools sent?",
+  "input_text": "There are four schools competing at a basketball tournament. Each school has sent a girls’ basketball team and a boys’ basketball team and each team has 5 players each. Each school has also sent a coach for each team. In total, how many people have all of the schools sent?",
+  "input_hash": "60b3bdde0ef3178112ad091b3d5ce77be3cb7df9256a3027ce12479e80b43d80",
+  "model_name": "deepseek-chat",
+  "model_version": "api-managed",
+  "weights_hash": "proprietary-not-available",
+  "model_source": "deepseek-api",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-09T00:33:17.086296+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-09T00:33:17.086252+00:00",
+  "timestamp_end": "2026-05-09T00:33:19.553216+00:00",
+  "output_text": "First, find the number of teams per school:  \n- Each school has a girls’ team and a boys’ team → 2 teams per school.  \n\nEach team has 5 players, so per school:  \n- Players: 2 teams × 5 players = 10 players.  \n\nEach team also has a coach, so per school:  \n- Coaches: 2 teams × 1 coach = 2 coaches.  \n\nTotal people per school:  \n- 10 players + 2 coaches = 12 people.  \n\nThere are 4 schools, so total people:  \n- 4 × 12 = 48 people.  \n\n#### 48",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "Each school has sent 1 girls’ basketball team + 1 boys’ basketball team = <<1+1=2>>2 teams.\nSo each school has sent 2 teams * 5 players per team = <<2*5=10>>10 players.\nThey have also each sent 2 teams * 1 coach per team = <<2*1=2>>2 coaches.\nIn total, each school has sent 10 players + 2 coaches = <<10+2=12>>12 people.\nTherefore, the schools have sent a total of 12 people per school * 4 schools = <<12*4=48>>48 people.\n#### 48",
+    "extracted_pred": 48.0
+  },
+  "execution_duration_ms": 2466.96,
+  "logging_overhead_ms": 28.03,
+  "system_logs": "{\"inference_duration_ms\": 2438.69, \"finish_reason\": \"stop\", \"usage\": {\"prompt_tokens\": 193, \"completion_tokens\": 135, \"total_tokens\": 328}, \"model_id_returned\": \"deepseek-v4-flash\", \"response_id\": \"0156422a-4c21-4a7d-a02d-d80390cf215c\"}",
+  "errors": [],
+  "output_hash": "a23c659e5cebc870e4e0c8177a05c331e48b2309012c66aa0b7464bd8e69d110",
+  "storage_kb": 3.7
+}

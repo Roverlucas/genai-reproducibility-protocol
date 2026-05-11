@@ -1,0 +1,50 @@
+{
+  "run_id": "rev_mistral-7b-local_gsm8k_GSM8K_0019_C1_rep3",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "interaction_regime": "single-turn",
+  "prompt_hash": "e4765b749193c77a8a54246062d8c5d7553dfe0a9e2da6f175a2ebe38d5fa875",
+  "prompt_text": "Solve the following grade-school math problem. Reason step by step, then on the final line write '#### <answer>' where <answer> is a single integer (no units, no commas).\n\nProblem:\nJean has 30 lollipops. Jean eats 2 of the lollipops. With the remaining lollipops, Jean wants to package 2 lollipops in one bag. How many bags can Jean fill?",
+  "input_text": "Jean has 30 lollipops. Jean eats 2 of the lollipops. With the remaining lollipops, Jean wants to package 2 lollipops in one bag. How many bags can Jean fill?",
+  "input_hash": "07836807c799f44f985d68c5ac193129be1a909f70dd66f3ca725237c70d21d0",
+  "model_name": "mistral:7b",
+  "model_version": "7.2B",
+  "weights_hash": "6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "retrieval_context": null,
+  "environment": {
+    "os": "Darwin",
+    "os_version": "Darwin Kernel Version 24.6.0: Wed Nov  5 21:34:00 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8132",
+    "os_release": "24.6.0",
+    "architecture": "arm64",
+    "processor": "arm",
+    "python_version": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+    "hostname": "MacBook-Pro-de-Lucas.local",
+    "timestamp": "2026-05-08T22:23:37.554748+00:00"
+  },
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "timestamp_start": "2026-05-08T22:23:37.554695+00:00",
+  "timestamp_end": "2026-05-08T22:23:50.845240+00:00",
+  "output_text": " First, let's find out how many lollipops are left after Jean eats 2:\n30 - 2 = 28 lollipops remain.\n\nNow, we need to determine how many full bags of 2 lollipops Jean can make with the remaining lollipops:\nNumber of bags = Total lollipops / Lollipops per bag\n= 28 / 2\n= 14 bags\n\nHowever, since one lollipop is left over after dividing the total lollipops by the number in a bag, we cannot fill 14 full bags. Instead, Jean can fill 13 full bags and have 1 lollipop left over.\n\nSo, Jean can fill 13 bags with 2 lollipops each.\n#### 13",
+  "output_metrics": {
+    "gsm8k_correct": false,
+    "gold_answer": "Jean has 30 - 2 = <<30-2=28>>28 lollipops\nJean can fill up 28 / 2 = <<28/2=14>>14 bags with lollipops\n#### 14",
+    "extracted_pred": 13.0
+  },
+  "execution_duration_ms": 13290.55,
+  "logging_overhead_ms": 29.67,
+  "system_logs": "{\"inference_duration_ms\": 13260.68, \"model_reported_duration_ns\": 13258231125, \"eval_count\": 184, \"prompt_eval_count\": 197, \"done\": true, \"done_reason\": \"stop\"}",
+  "errors": [],
+  "output_hash": "23cb82b50cf6d56d0da57e6176a0025d42991d6d2c4cb69db8d3da9b6ed2f72d",
+  "storage_kb": 3.17
+}

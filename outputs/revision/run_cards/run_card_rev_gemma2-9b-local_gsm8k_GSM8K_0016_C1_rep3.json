@@ -1,0 +1,42 @@
+{
+  "run_card_version": "1.0",
+  "run_id": "rev_gemma2-9b-local_gsm8k_GSM8K_0016_C1_rep3",
+  "task_id": "gsm8k",
+  "task_category": "math_reasoning",
+  "prompt_card_ref": "prompt_card_gsm8k_v1_0.json",
+  "prompt_hash": "d58b6d284ae23cd04c8f22b082b7dcd154317edf7f3b013c911c21cad1fed27e",
+  "model_name": "gemma2:9b",
+  "model_version": "9.2B",
+  "weights_hash": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+  "model_source": "ollama-local",
+  "inference_params": {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "decoding_strategy": "greedy",
+    "seed": 42
+  },
+  "params_hash": "0f9a576302bc86976090c5626143b81d15b661d881b3c60d8d9fa73853e97ff8",
+  "interaction_regime": "single-turn",
+  "retrieval_context": null,
+  "environment_hash": "cd45d42899c58da3d18196ae6b15aa5d337dd0cc98fea1587207f261f93df6a1",
+  "code_commit": "e700cc75f47fc546826157974c9f73dd0ecfdfbb",
+  "environment_details": {
+    "os": "Darwin",
+    "python_version": "3.14.3",
+    "architecture": "arm64"
+  },
+  "timestamp_start": "2026-05-08T23:50:41.618706+00:00",
+  "timestamp_end": "2026-05-08T23:50:53.717721+00:00",
+  "execution_duration_ms": 12099.01,
+  "output_hash": "6b3d1a33f99e68c4a19b62e49434fe6fbd168f325189c081a746b8666a7b79b0",
+  "output_metrics": {
+    "gsm8k_correct": true,
+    "gold_answer": "He swam 20*.6=<<20*.6=12>>12 miles.\nThat took him 12/2=<<12/2=6>>6 hours.\nSo he rested 6/2=<<6/2=3>>3 hours.\nHe then swam the remaining 20-12=<<20-12=8>>8 miles.\nHis pace was 2/2=<<2/2=1>>1 mph.\nSo it took him 8/1=<<8/1=8>>8 hours.\nSo in total, he took 6+3+8=<<6+3+8=17>>17 hours.\n#### 17",
+    "extracted_pred": 17.0
+  },
+  "logging_overhead_ms": 21.26,
+  "storage_kb": 3.81,
+  "researcher_id": "lucas_rover",
+  "affiliation": "UTFPR - Universidade Tecnologica Federal do Parana",
+  "errors": []
+}
