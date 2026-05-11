@@ -851,12 +851,46 @@ ambiguous                & 2 \\
 \bottomrule
 \end{tabular}
 \par\smallskip\raggedright\footnotesize
-Half of the divergences are substantive contradictions despite BERTScore F1 $>$ 0.97 on the same outputs. Consistent with the per-field analysis (Section~\ref{sec:s10}), this confirms that aggregate semantic-similarity metrics are structurally unable to detect substantive payload divergence.
+Half of the divergences are substantive contradictions despite BERTScore F1 $>$ 0.97 on the same outputs. Consistent with the per-field analysis (Section~\ref{sec:s10b}), this confirms that aggregate semantic-similarity metrics are structurally unable to detect substantive payload divergence.
 \end{table}
 
 \subsection{What is \emph{not} reproduced here from the companion paper}
 
 To preserve the contributions of the companion paper currently submitted, the present supplementary section does \emph{not} reproduce: (i) the 6-model $\times$ 10-run pairwise disagreement matrix; (ii) the silver-standard cross-validation against DeepSeek-R1 reasoning; (iii) the random-effects per-run pooled risk-ratio table; (iv) the small-literature meta-analytic simulation; (v) the 35 individual blindage analyses; (vi) the work-saved analysis. Readers seeking these are referred to Rover \& Tadano (2026, submitted to \emph{Research Synthesis Methods}).
+
+
+%%=============================================================%%
+%% S10b — Per-field reproducibility analysis (R1.5)
+%%=============================================================%%
+\section{Per-field reproducibility on structured extraction}\label{sec:s10b}
+
+This section quantifies how the local--API reproducibility gap distributes across the five fields returned by the structured-extraction task (Task~2): \emph{objective}, \emph{method}, and \emph{key\_result} (conclusion-relevant payload) versus \emph{model\_or\_system} and \emph{benchmark} (metadata identifiers). It addresses Reviewer~1's request (R1.5) to resolve the apparent tension between high aggregate BERTScore and the assertion that divergences affect substantive content.
+
+\subsection{Protocol}
+
+For every (stack, abstract) group with at least two valid extractions, we computed pairwise within-group metrics on each field separately---Exact Match Rate (EMR), Normalised Edit Distance (NED), ROUGE-L F1, and BERTScore F1 (\texttt{roberta-large}, no baseline rescaling). Pairs in which at least one repetition omitted the field were skipped (rather than penalised), so the metric isolates the question ``when both repetitions emit the field, how similar are they?''. Per-stack point estimates are mean-of-pair-means; 95\% percentile bootstrap CIs use 10{,}000 resamples (seed${=}$42), matching the methodology of Section~\ref{sec:s9}.
+
+\subsection{Aggregate result}
+
+Across the six API stacks where outputs actually diverge (i.e., excluding the three local stacks with EMR${=}$1.000 on most fields), the gap between conclusion-relevant fields and metadata fields is large on EMR but absent on BERTScore. The API-only aggregate from \texttt{analysis/bertscore\_per\_field\_results.json}:
+
+\begin{itemize}[leftmargin=*]
+  \item Conclusion-relevant fields ($\overline{\text{EMR}}{=}0.455$) versus metadata fields ($\overline{\text{EMR}}{=}0.684$). Paired Cohen's $d{=}+1.41$ (very large effect).
+  \item BERTScore F1: $\overline{\text{conclusion}}{=}0.978$ vs $\overline{\text{metadata}}{=}0.979$. Paired Cohen's $d{=}-0.10$ (effectively null).
+  \item NED and ROUGE-L F1 show small effects ($|d|{<}0.5$) in the same direction as EMR.
+\end{itemize}
+
+\noindent The single most striking single-stack illustration is \textbf{Gemini~2.5 Pro on RAG extraction, \texttt{key\_result} field}: EMR${=}$0.10 (the field changes content in 90\% of pairs) while BERTScore~F1 remains 0.969 on the same pairs.
+
+\subsection{Per-stack per-field table}
+
+Extended Data Table~\ref{tab:per_field_metrics} (auto-generated from the same JSON file) reports per-stack per-field EMR, NED, ROUGE-L F1, and BERTScore F1 with 95\% bootstrap CIs across 13 stacks and 5 fields. The pattern from the aggregate above is visible at the stack level: API stacks where outputs diverge show conclusion-field EMR drops of 0.15--0.25 relative to metadata fields, while BERTScore is flat to within $\pm 0.02$ across field types for every stack.
+
+\subsection{Interpretation}
+
+These results resolve the apparent contradiction Reviewer~1 identified between ``textual not semantic'' (BERTScore F1${>}$0.97 across the board) and ``affects substantive content'' (the 67\% \texttt{key\_result} divergence rate originally reported in Extended Data Table~7). The resolution is that \emph{BERTScore is structurally unable to discriminate the substantive payload divergence concentrated in conclusion-relevant fields from the cosmetic textual variation distributed across all fields} when one operates on extracted-JSON fields of moderate length. EMR can; NED partly can. The three-level reproducibility framework (bitwise $\rightarrow$ structural $\rightarrow$ semantic) that the manuscript proposes is therefore not redundant: any single metric, including a state-of-the-art semantic-similarity metric, would mislead on this corpus and at this granularity.
+
+\input{../analysis/tables/table_per_field_metrics.tex}
 
 
 \end{document}

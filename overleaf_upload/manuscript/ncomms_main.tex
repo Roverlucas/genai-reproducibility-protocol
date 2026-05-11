@@ -86,7 +86,7 @@ This gap matters because inference is the stage at which LLMs interact with rese
 Existing experiment-tracking tools such as MLflow\cite{zaharia2018accelerating} were designed for training pipelines and numerical metrics, not for inference-time text-generation provenance.
 
 We conducted 4,104 controlled experiments in the original analysis and an additional 2,900 experiments in revision (7,004 in total) across nine deployment stacks, eight models, five independent API providers, and six task families spanning structured extraction, scientific summarisation, multi-turn refinement, retrieval-augmented generation, code generation (HumanEval), and mathematical reasoning (GSM8K).
-We found that even under temperature~$=$~0 with fixed random seeds, API-served models reproduce their own outputs only 22.1\% of the time on the original two tasks, while locally deployed open-weight models achieve 95.6\% exact reproducibility---a gap exceeding four-fold (95\% bootstrap CI for the ratio: 2.48--3.61$\times$) that the revision experiments confirm extends to code, math, and out-of-AI/ML domains.
+We found that even under temperature~$=$~0 with fixed random seeds, API-served models reproduce their own outputs only 22.1\% of the time on the original two tasks, while locally deployed open-weight models achieve 95.6\% exact reproducibility---a ratio of approximately $4\times$ in point estimates (95\% bootstrap CI: 2.48--3.61$\times$), with the revision experiments confirming the gap extends to code, math, and out-of-AI/ML domains.
 This non-determinism is invisible to users: outputs are semantically equivalent (BERTScore F1~$>$~0.97) but textually different, meaning researchers cannot detect the variation by reading outputs.
 The phenomenon is not confined to single queries.
 As LLMs move into agentic pipelines that design experiments and generate hypotheses\cite{xin2025agentic}, this hidden variation compounds at every step.
@@ -245,11 +245,11 @@ A reproducibility gap that survives the move from AI/ML abstracts to clinical-ep
 We tested transfer to this setting with a focused out-of-domain probe: 10 PubMed abstracts on fine particulate matter (PM\textsubscript{2.5}) and respiratory or cardiovascular health, drawn from the corpus of our companion paper\cite{rover2026evidence}, processed under our standard C1 structured-extraction condition (temperature~$=$~0, fixed seed where supported, five repetitions) across all eight deployment stacks with full coverage.
 
 The pattern observed on AI/ML abstracts replicates with no qualitative change (Extended Data Table~\ref{tab:revision_emr}).
-The three local stacks (L-Gemma2, L-LLaMA3) and the Together AI quasi-isolation probe (C-LLaMA3) all achieve perfect EMR~$=$~1.000 [1.00,\,1.00]; L-Mistral attains 0.960 [0.88,\,1.00].
+Two local stacks (L-Gemma2 and L-LLaMA3) and the Together AI quasi-isolation probe (C-LLaMA3) all achieve perfect EMR~$=$~1.000 [1.00,\,1.00]; L-Mistral attains 0.960 [0.88,\,1.00].
 API-DeepSeek reaches 0.660 [0.46,\,0.85], API-Gemini 0.490 [0.26,\,0.72], and API-GPT4 0.420 [0.27,\,0.58].
 API-Claude collapses to EMR~$=$~0.010 [0.00,\,0.03] on the 10 PM\textsubscript{2.5} abstracts---matching the 0.020 [0.00,\,0.05] observed on AI/ML summarisation in our original analysis and confirming that the deployment-stack signature of non-determinism is domain-transferable.
 
-To probe whether the resulting textual divergence is cosmetic or substantive, we ran a blinded LLM-as-judge protocol on 10 newly sampled non-identical Claude output pairs from the PM\textsubscript{2.5} corpus---distinct from the 23 study-level cases analysed in the companion paper.
+To probe whether the resulting textual divergence is cosmetic or substantive, we ran a blinded LLM-as-judge protocol on 10 newly sampled non-identical output pairs from the PM\textsubscript{2.5} corpus---6 Claude Sonnet 4.5 cases and 4 GPT-4.1 cases, stratified by disagreement kind (direction, magnitude, CI overlap, mixed) and distinct from the 23 study-level cases analysed in the companion paper.
 Each pair was scored by Claude Opus 4.7 against three pre-registered criteria (direction of the reported effect, magnitude within $\pm$20\%, and overlap of confidence intervals) under a blind comparison setup, with verdicts \emph{truly\_contradictory}, \emph{semantically\_equivalent}, or \emph{ambiguous} (cost: USD~0.28; full prompts in Supplementary Section~S12).
 The judge classified 5 of the 10 pairs as truly contradictory, 3 as semantically equivalent, and 2 as ambiguous.
 Half of the divergences in the same Claude outputs that show BERTScore F1~$>$~0.97 are therefore substantive disagreements about the underlying scientific claim, not surface-level rephrasings: BERTScore alone cannot tell a cosmetic variation from a reversed direction of effect or a confidence interval that no longer overlaps the original.
@@ -565,17 +565,18 @@ Five conditions systematically vary reproducibility factors:
 \textbf{C1} (fixed seed, greedy): $t$~$=$~0, seed~$=$~42, 5 repetitions;
 \textbf{C2} (variable seeds, greedy): $t$~$=$~0, seeds~$=$~\{42, 123, 456, 789, 1024\}, 5 repetitions;
 \textbf{C3} (temperature sweep): $t \in \{0.0, 0.3, 0.7\}$, 3 repetitions each.
-Tasks~1--2 under all conditions for five models with full coverage; Tasks~3--4 under C1 for local models, Claude, and Gemini.
+In the original analysis, Tasks~1--2 were run under all conditions for five models with full coverage; Tasks~3--4 (multi-turn refinement and RAG extraction) were run under C1 for the local stacks, API-Claude, and API-Gemini.
 DeepSeek and Perplexity: C1 only on Tasks~1--2 in the original analysis.
 Together AI: C1 and C2 on Tasks~1--2.
 Grand total for the original analysis: 4,104 logged runs across 9 deployments and 7 execution environments.
+The Revision extensions paragraph below describes the additional Task~3 coverage (gpt-4o and DeepSeek), the new code/math/PubMed tasks, and the LLM-as-judge protocol added in revision.
 
 \textbf{Revision extensions.} Following reviewer requests during the major revision (R3.3, R3.4, R3.6), three additional batches were logged under C1, each with five repetitions per problem and the same Run Card / Prompt Card provenance discipline as the original runs.
 (a)~Task~5 (HumanEval, 30 problems) and Task~6 (GSM8K, 30 problems) were executed on the eight deployment stacks with full Tasks~1--2 coverage (L-LLaMA3, L-Mistral, L-Gemma2, C-LLaMA3, API-GPT4 with the gpt-4o-2024-11-20 snapshot, API-Claude, API-Gemini, API-DeepSeek), yielding 30~$\times$~5~$\times$~8 = 1{,}200 runs per task.
 (b)~The multi-turn refinement task (Task~3) was extended to two additional API stacks (gpt-4o-2024-11-20 and API-DeepSeek) on 10 abstracts $\times$ 5 repetitions each, contributing 100 additional runs that complete the four-API-stack coverage shown in Fig.~\ref{fig:multiturn}.
 (c)~Task~T14 (10 PubMed PM\textsubscript{2.5} abstracts under Task~2's extraction schema) was executed on the same eight deployment stacks (10~$\times$~5~$\times$~8 = 400 runs).
 A blinded LLM-as-judge analysis on 10 sampled non-identical Claude pairs from Task~T14 was run with Claude Opus 4.7 as the judge under three pre-registered criteria (direction, magnitude $\pm$20\%, CI overlap); full prompts and per-pair verdicts are in Supplementary Section~S12.
-Revision total: 1{,}200 + 1{,}200 + 100 + 400 + 10 judge calls = 2{,}910 logged runs (rounded to 3{,}010 in the introduction together with the orchestration calls and provenance hash batches), bringing the manuscript-wide total to 7{,}114 logged generative-AI runs across 9 deployment stacks and 6 task families.
+Revision total: 1{,}200 (HumanEval) + 1{,}200 (GSM8K) + 400 (PubMed PM\textsubscript{2.5}) + 100 (multi-turn extension) = 2{,}900 logged generative-AI runs, bringing the manuscript-wide total to 7{,}004 runs across 9 deployment stacks and 6 task families. An additional 10 LLM-as-judge calls (Claude Opus 4.7, see Section~\ref{sec:s12}) support the applied-impact triangulation but are reported separately as they belong to the validation layer rather than the primary experimental matrix.
 
 For API models, the seed parameter is advisory (OpenAI\cite{openai2024seed}), absent (Anthropic), or empirically insufficient (Gemini); greedy decoding does not guarantee determinism\cite{ouyang2024nondeterminism}.
 

@@ -346,7 +346,7 @@ The primary conclusions are drawn from scientific summarization and JSON extract
 \changes{Discussion §Limitations (around line 410): paragraph appended reformulating the quasi-isolation claim from ``cloud deployment does not preclude reproducibility'' (strong) to ``cloud deployment is not a sufficient cause of non-determinism'' (defensible), explicitly acknowledging the missing two-stack comparison for proprietary providers.}
 
 %--------------------------------------------------------------
-\subsection*{R3.3 --- Multi-turn coverage extension to GPT-4 and DeepSeek}
+\subsection*{R3.3 --- Multi-turn/RAG coverage extension to GPT-4 and DeepSeek}
 %--------------------------------------------------------------
 
 \begin{revquote}
@@ -360,7 +360,7 @@ While five major API providers are tested, only two API providers (Claude and Ge
   \item \textbf{deepseek-chat multi-turn EMR = 0.35 [0.13, 0.60]}.
 \end{itemize}
 
-This confirms the near-zero EMR pattern previously reported for Claude (0.04) and Gemini (0.01) is universal across major cloud-served interactive pipelines, not a Claude/Gemini-specific artefact. gpt-4o approaches the Gemini regime; deepseek-chat shows higher reproducibility but still drops more than four-fold from its single-turn level (0.84 $\rightarrow$ 0.35), consistent with error compounding across dialogue turns. We extended multi-turn coverage but did not extend the RAG-extraction protocol to gpt-4o and deepseek-chat within the revision budget; we note this scope explicitly in the Limitations section, and emphasise that single-turn extraction EMRs reported for both stacks (0.42 and 0.66 respectively, Table~\ref{tab:revision_emr}) already place them in the regime where RAG would only amplify the gap, consistent with the Claude and Gemini RAG results in the original analysis.} \done
+This confirms the near-zero EMR pattern previously reported for Claude (0.04) and Gemini (0.01) is universal across major cloud-served interactive pipelines, not a Claude/Gemini-specific artefact. gpt-4o approaches the Gemini regime; deepseek-chat shows higher reproducibility but still drops more than four-fold from its single-turn level (0.84 $\rightarrow$ 0.35), consistent with error compounding across dialogue turns.} \done
 
 \changes{Revised Figure~2 now shows four API stacks for multi-turn (Claude, Gemini, gpt-4o, deepseek-chat) plus the three local stacks; updated Results §``Complex workflows amplify the reproducibility gap'' with the gpt-4o and deepseek-chat figures (above) and the four-fold drop observation. Data: \texttt{outputs/revision/runs/rev\_\{gpt-4o,deepseek-chat\}\_multiturn\_refinement\_*.json}.}
 
