@@ -1,0 +1,131 @@
+{
+  "n_cases": 10,
+  "seed": 42,
+  "source_pools": [
+    "/Users/lucasrover/paper-experiment/data/inputs/revision/t3_judge_cases.json",
+    "/Users/lucasrover/paper-experiment/data/inputs/revision/t3_judge_cases_extended.json"
+  ],
+  "note": "The _hidden fields are NOT shown to human raters; they are used only by compute_human_kappa.py to compute \u03ba vs LLM judges.",
+  "cases": [
+    {
+      "case_num": 1,
+      "case_id": "claude-sonnet-4-5__ABS-0045__est0__r1-vs-r9",
+      "model_hidden": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0045",
+      "disagreement_kind_hidden": "mixed",
+      "x_is_run_a": 0,
+      "randomization_seed": 1188535918,
+      "claude_verdict_hidden": "ambiguous",
+      "gpt4o_verdict_hidden": "truly_contradictory",
+      "judges_agreed_hidden": false
+    },
+    {
+      "case_num": 2,
+      "case_id": "claude-sonnet-4-5__ABS-0084__est0__r1-vs-r10",
+      "model_hidden": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0084",
+      "disagreement_kind_hidden": "magnitude",
+      "x_is_run_a": 1,
+      "randomization_seed": 2611033530,
+      "claude_verdict_hidden": "truly_contradictory",
+      "gpt4o_verdict_hidden": "truly_contradictory",
+      "judges_agreed_hidden": true
+    },
+    {
+      "case_num": 3,
+      "case_id": "claude-sonnet-4-5__ABS-0052__est0__r2-vs-r7",
+      "model_hidden": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0052",
+      "disagreement_kind_hidden": "magnitude",
+      "x_is_run_a": 0,
+      "randomization_seed": 729061937,
+      "claude_verdict_hidden": "semantically_equivalent",
+      "gpt4o_verdict_hidden": "truly_contradictory",
+      "judges_agreed_hidden": false
+    },
+    {
+      "case_num": 4,
+      "case_id": "claude-sonnet-4-5__ABS-0077__est3__r9-vs-r10",
+      "model_hidden": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0077",
+      "disagreement_kind_hidden": "ci",
+      "x_is_run_a": 0,
+      "randomization_seed": 2188130471,
+      "claude_verdict_hidden": "truly_contradictory",
+      "gpt4o_verdict_hidden": "truly_contradictory",
+      "judges_agreed_hidden": true
+    },
+    {
+      "case_num": 5,
+      "case_id": "claude-sonnet-4-5__ABS-0010__est11__r4-vs-r5",
+      "model_hidden": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0010",
+      "disagreement_kind_hidden": "direction",
+      "x_is_run_a": 0,
+      "randomization_seed": 1948848497,
+      "claude_verdict_hidden": "ambiguous",
+      "gpt4o_verdict_hidden": "semantically_equivalent",
+      "judges_agreed_hidden": false
+    },
+    {
+      "case_num": 6,
+      "case_id": "claude-sonnet-4-5__ABS-0077__est2__r2-vs-r5",
+      "model_hidden": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0077",
+      "disagreement_kind_hidden": "ci",
+      "x_is_run_a": 0,
+      "randomization_seed": 3368795641,
+      "claude_verdict_hidden": "truly_contradictory",
+      "gpt4o_verdict_hidden": "truly_contradictory",
+      "judges_agreed_hidden": true
+    },
+    {
+      "case_num": 7,
+      "case_id": "gpt-4.1__ABS-0032__est0__r1-vs-r8",
+      "model_hidden": "gpt-4.1",
+      "corpus_id": "ABS-0032",
+      "disagreement_kind_hidden": "magnitude",
+      "x_is_run_a": 1,
+      "randomization_seed": 3425127745,
+      "claude_verdict_hidden": "truly_contradictory",
+      "gpt4o_verdict_hidden": "truly_contradictory",
+      "judges_agreed_hidden": true
+    },
+    {
+      "case_num": 8,
+      "case_id": "gpt-4.1__ABS-0081__est4__r6-vs-r8",
+      "model_hidden": "gpt-4.1",
+      "corpus_id": "ABS-0081",
+      "disagreement_kind_hidden": "ci",
+      "x_is_run_a": 0,
+      "randomization_seed": 3028241366,
+      "claude_verdict_hidden": "truly_contradictory",
+      "gpt4o_verdict_hidden": "truly_contradictory",
+      "judges_agreed_hidden": true
+    },
+    {
+      "case_num": 9,
+      "case_id": "claude-sonnet-4-5__ABS-0010__est10__r4-vs-r7",
+      "model_hidden": "claude-sonnet-4-5",
+      "corpus_id": "ABS-0010",
+      "disagreement_kind_hidden": "direction",
+      "x_is_run_a": 1,
+      "randomization_seed": 2955901316,
+      "claude_verdict_hidden": "truly_contradictory",
+      "gpt4o_verdict_hidden": "truly_contradictory",
+      "judges_agreed_hidden": true
+    },
+    {
+      "case_num": 10,
+      "case_id": "gpt-4.1__ABS-0080__est0__r6-vs-r7",
+      "model_hidden": "gpt-4.1",
+      "corpus_id": "ABS-0080",
+      "disagreement_kind_hidden": "mixed",
+      "x_is_run_a": 1,
+      "randomization_seed": 568516397,
+      "claude_verdict_hidden": "truly_contradictory",
+      "gpt4o_verdict_hidden": "truly_contradictory",
+      "judges_agreed_hidden": true
+    }
+  ]
+}
