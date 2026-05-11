@@ -2,9 +2,10 @@
 ## "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility"
 
 > Reference policy: Nature code & software submission policy (https://www.nature.com/documents/nr-software-policy.pdf).
-> Corresponding author: Lucas Rover
+> Corresponding author: Lucas Rover (ORCID: 0000-0001-6641-9224)
+> Coauthors: Hugo Valadares Siqueira (0000-0002-1278-4602); Eduardo Tadeu Bacalhau (0000-0002-3936-0375); Anibal Tavares de Azevedo (0000-0003-1678-7795); Yara de Souza Tadano (0000-0002-3975-3419)
 > Manuscript ID: NCOMMS-2026-XXXXX (Major Revision, Nature Communications)
-> Revision date: 2026-05-08
+> Revision date: 2026-05-11
 
 ---
 
@@ -21,7 +22,7 @@
 | Reviewer data archive (private) | Figshare reviewer link — see Data Availability for the URL provided to the editorial office (excluded from the published version) |
 | License (code) | MIT (LICENSE file at repository root) |
 | License (data and manuscript artefacts) | CC-BY 4.0 |
-| Authors / contributors | Lucas Rover (lead developer); Eduardo Tadeu Bacalhau, Anibal Tavares de Azevedo, Hugo Valadares Siqueira, Yara de Souza Tadano (manuscript authors) |
+| Authors / contributors | Lucas Rover — ORCID [0000-0001-6641-9224](https://orcid.org/0000-0001-6641-9224) (lead developer, corresponding author); Hugo Valadares Siqueira — ORCID [0000-0002-1278-4602](https://orcid.org/0000-0002-1278-4602); Eduardo Tadeu Bacalhau — ORCID [0000-0002-3936-0375](https://orcid.org/0000-0002-3936-0375); Anibal Tavares de Azevedo — ORCID [0000-0003-1678-7795](https://orcid.org/0000-0003-1678-7795); Yara de Souza Tadano — ORCID [0000-0002-3975-3419](https://orcid.org/0000-0002-3975-3419) (manuscript authors) |
 | Contact | lucasrover@alunos.utfpr.edu.br |
 
 ---

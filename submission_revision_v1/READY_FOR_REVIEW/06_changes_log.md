@@ -302,10 +302,11 @@ Margin:                                                $41.62 USD ✅
 - [x] No GHOST numbers (3,010 or 7,114) remaining
 - [x] Stack naming uniformly lowercase (gpt-4o, deepseek-chat, claude-sonnet-4-5)
 - [x] T3 verdicts 5/3/2 in manuscript + supplementary + response
-- [x] Abstract 150 words (NatComms limit)
+- [x] Abstract 148 words (NatComms limit ≤150)
 - [x] All editorial checklists (Code, ML, Reporting) updated
+- [x] ORCIDs populated in manuscript title page, cover letter, and all checklists (LR 0000-0001-6641-9224; HVS 0000-0002-1278-4602; ETB 0000-0002-3936-0375; ATA 0000-0003-1678-7795; YST 0000-0002-3975-3419)
 - [ ] **All 5 coauthors signed off** (HUMAN — Lucas + HVS + ETB + ATA + YST)
-- [ ] **ORCID linked on MTS for all corresponding authors** (HUMAN)
+- [ ] **ORCID linked on MTS account** (HUMAN — at MTS upload, just attach the IDs already in manuscript)
 - [ ] **Zenodo release tag v1.1-natcomms-revision1 created** (HUMAN — at upload time)
 - [ ] **Cover letter date filled in** (HUMAN — at upload time)
 
@@ -315,7 +316,7 @@ Margin:                                                $41.62 USD ✅
 
 | Section | Words | NatComms guidance |
 |---------|-------|-------------------|
-| Abstract | 150 | ≤150 ✅ |
+| Abstract | 148 | ≤150 ✅ |
 | Main text (Intro + Results + Discussion) | 4,868 | ~5,000 recommended ✅ |
 | Methods | 3,138 | ~3,000 recommended (slight over, acceptable) |
 | Total | 8,156 | — |

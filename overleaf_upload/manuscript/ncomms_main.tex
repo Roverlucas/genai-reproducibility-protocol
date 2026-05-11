@@ -20,6 +20,9 @@
 \usepackage{colortbl}
 \usepackage{lineno}
 
+% ORCID inline link helper (orcidlink package not available in some TeX distributions)
+\providecommand{\orcidlink}[1]{\href{https://orcid.org/#1}{\textsuperscript{\textsf{\scriptsize ORCID}}}}
+
 \raggedbottom
 \unnumbered% Nature Communications uses unnumbered section heads
 
@@ -31,17 +34,16 @@
 %% Authors
 %%=============================================================%%
 
-\author*[1]{\fnm{Lucas} \sur{Rover}}\email{lucasrover@alunos.utfpr.edu.br}
+\author*[1]{\fnm{Lucas} \sur{Rover}~\orcidlink{0000-0001-6641-9224}}\email{lucasrover@alunos.utfpr.edu.br}
 \equalcont{Corresponding author.}
-%% ORCID: 0000-0001-6641-9224 (entered via Editorial Manager at submission)
 
-\author[1]{\fnm{Hugo Valadares} \sur{Siqueira}}
+\author[1]{\fnm{Hugo Valadares} \sur{Siqueira}~\orcidlink{0000-0002-1278-4602}}
 
-\author[2]{\fnm{Eduardo Tadeu} \sur{Bacalhau}}
+\author[2]{\fnm{Eduardo Tadeu} \sur{Bacalhau}~\orcidlink{0000-0002-3936-0375}}
 
-\author[3]{\fnm{Anibal Tavares} \spfx{de} \sur{Azevedo}}
+\author[3]{\fnm{Anibal Tavares} \spfx{de} \sur{Azevedo}~\orcidlink{0000-0003-1678-7795}}
 
-\author[1]{\fnm{Yara} \spfx{de Souza} \sur{Tadano}}
+\author[1]{\fnm{Yara} \spfx{de Souza} \sur{Tadano}~\orcidlink{0000-0002-3975-3419}}
 
 \affil*[1]{\orgname{Federal University of Technology --- Paran\'a (UTFPR)},
 \orgaddress{\city{Ponta Grossa}, \state{Paran\'a}, \country{Brazil}}}

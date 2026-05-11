@@ -2,8 +2,9 @@
 ## "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility"
 
 > Use this guide to fill in the official Nature PDF form (open in Adobe Acrobat Reader).
-> Corresponding author: Lucas Rover
-> Date: 11-03-2026
+> Corresponding author: Lucas Rover (ORCID: 0000-0001-6641-9224)
+> Coauthors: Hugo Valadares Siqueira (0000-0002-1278-4602); Eduardo Tadeu Bacalhau (0000-0002-3936-0375); Anibal Tavares de Azevedo (0000-0003-1678-7795); Yara de Souza Tadano (0000-0002-3975-3419)
+> Date: 11-05-2026
 
 ---
 

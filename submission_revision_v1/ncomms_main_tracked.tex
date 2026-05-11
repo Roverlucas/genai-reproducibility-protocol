@@ -1,7 +1,7 @@
 % Nature Communications — Article
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL submission_revision_v1/ncomms_main_post_T5.tex   Sun May 10 22:14:27 2026
-%DIF ADD article/ncomms_main.tex                          Mon May 11 18:12:48 2026
+%DIF ADD article/ncomms_main.tex                          Mon May 11 18:18:32 2026
 % "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs
 %  Undermines Scientific Reproducibility"
 %
@@ -23,6 +23,11 @@
 \usepackage{colortbl}
 \usepackage{lineno}
 
+%DIF 23a23-25
+% ORCID inline link helper (orcidlink package not available in some TeX distributions) %DIF > 
+\providecommand{\orcidlink}[1]{\href{https://orcid.org/#1}{\textsuperscript{\textsf{\scriptsize ORCID}}}} %DIF > 
+ %DIF > 
+%DIF -------
 \raggedbottom
 \unnumbered% Nature Communications uses unnumbered section heads
 %DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
@@ -119,17 +124,18 @@
 %% Authors
 %%=============================================================%%
 
-\author*[1]{\fnm{Lucas} \sur{Rover}}\email{lucasrover@alunos.utfpr.edu.br}
+\DIFdelbegin %DIFDELCMD < \author*[1]{\fnm{Lucas} \sur{Rover}}%%%
+\DIFdelend \DIFaddbegin \author*[1]{\fnm{Lucas} \sur{Rover}~\orcidlink{0000-0001-6641-9224}}\DIFaddend \email{lucasrover@alunos.utfpr.edu.br}
 \equalcont{Corresponding author.}
-%% ORCID: 0000-0001-6641-9224 (entered via Editorial Manager at submission)
+%DIF < % ORCID: 0000-0001-6641-9224 (entered via Editorial Manager at submission)
 
-\author[1]{\fnm{Hugo Valadares} \sur{Siqueira}}
+\author[1]{\fnm{Hugo Valadares} \sur{Siqueira}\DIFaddbegin \DIFadd{~\orcidlink{0000-0002-1278-4602}}\DIFaddend }
 
-\author[2]{\fnm{Eduardo Tadeu} \sur{Bacalhau}}
+\author[2]{\fnm{Eduardo Tadeu} \sur{Bacalhau}\DIFaddbegin \DIFadd{~\orcidlink{0000-0002-3936-0375}}\DIFaddend }
 
-\author[3]{\fnm{Anibal Tavares} \spfx{de} \sur{Azevedo}}
+\author[3]{\fnm{Anibal Tavares} \spfx{de} \sur{Azevedo}\DIFaddbegin \DIFadd{~\orcidlink{0000-0003-1678-7795}}\DIFaddend }
 
-\author[1]{\fnm{Yara} \spfx{de Souza} \sur{Tadano}}
+\author[1]{\fnm{Yara} \spfx{de Souza} \sur{Tadano}\DIFaddbegin \DIFadd{~\orcidlink{0000-0002-3975-3419}}\DIFaddend }
 
 \DIFdelbegin %DIFDELCMD < \affil*[1]{\orgdiv{Graduate Program in Mechanical Engineering},
 %DIFDELCMD < \orgname{Federal University of Technology --- Paran\'a (UTFPR)},
