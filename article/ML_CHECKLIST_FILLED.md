@@ -1,5 +1,5 @@
 # Machine Learning Checklist V 1.1 — FILLED GUIDE
-## "Same Prompt, Different Answer: Exposing the Reproducibility Illusion in Large Language Model APIs"
+## "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility"
 
 > Use this guide to fill in the official Nature PDF form.
 > Corresponding author: Lucas Rover

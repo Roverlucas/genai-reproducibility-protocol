@@ -1,5 +1,5 @@
 # Nature Portfolio Reporting Summary — FILLED GUIDE
-## "Same Prompt, Different Answer: Exposing the Reproducibility Illusion in Large Language Model APIs"
+## "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility"
 
 > Use this guide to fill in the official Nature PDF form (open in Adobe Acrobat Reader).
 > Corresponding author: Lucas Rover

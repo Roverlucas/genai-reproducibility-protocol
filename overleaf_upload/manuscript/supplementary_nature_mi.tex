@@ -36,7 +36,7 @@
 \renewcommand{\thefigure}{S\arabic{figure}}
 
 \title{\textbf{Supplementary Information}\\[6pt]
-Same Prompt, Different Answer: Exposing the Reproducibility Illusion\\in Large Language Model APIs}
+Same Prompt, Different Answer:\\Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility}
 \author{Lucas Rover, Hugo Valadares Siqueira, Eduardo Tadeu Bacalhau, Anibal Tavares de Azevedo \& Yara de Souza Tadano\\
 \small UTFPR -- Universidade Tecnol\'ogica Federal do Paran\'a}
 \date{}
@@ -201,6 +201,9 @@ The key finding for RAG tasks is that context augmentation does not substantiall
 \label{sec:s4}
 
 To address potential ``apples-to-oranges'' concerns regarding differences in API request structures across providers, we document the exact JSON payload structures sent to each of the seven inference endpoints. All payloads were constructed deterministically and logged as part of the Run Card. Hyperlinks to the official API references for each provider are listed in Table~\ref{tab:apidocs}.
+
+\paragraph{Comparability across providers.}
+Providers expose overlapping but not identical parameter surfaces (Reviewer 1, item 2). What is comparable across stacks is therefore not parameter \emph{equality} but the operational claim that we used the \emph{maximum determinism configuration each provider documents}: temperature zero is universally exposed; the seed parameter is supported by OpenAI (advisory) and Gemini, absent from the Anthropic Messages API surface, and not exposed by DeepSeek's OpenAI-compatible Chat Completions interface or by Perplexity Sonar. Our \texttt{seed\_status} Run Card field records this asymmetry per stack as \texttt{sent}, \texttt{logged-only-not-sent}, or \texttt{not-supported}. The precise per-stack parameter set for every payload is in the listings below.
 
 \begin{table}[H]
 \centering
@@ -818,13 +821,13 @@ This section documents the in-paper triangulation of the applied PM\textsubscrip
 
 \subsection{Sampling design}
 
-We sampled 10 disagreement cases from the companion-paper extraction corpus (\texttt{extraction\_long.json}, 21{,}799 extractions), distinct from the 23 study-level effect estimates analysed in the companion paper. Cases were drawn from the three cloud stacks where disagreement is highest (Claude Sonnet 4.5, Gemini 2.5 Pro, GPT-4.1; per the companion paper's pairwise-disagreement analysis). Stratification was applied to balance across stack and across kind of disagreement (direction, magnitude, CI overlap, mixed). Random seed = 42.
+We sampled 30 disagreement cases from the companion-paper extraction corpus (\texttt{extraction\_long.json}, 21{,}799 extractions), distinct from the 23 study-level effect estimates analysed in the companion paper. Cases were drawn in two waves: an initial 10 cases (seed = 42) followed by 20 additional cases (seed = 4242) to extend the sample for inter-judge analysis. Cases were drawn from the three cloud stacks where disagreement is highest (Claude Sonnet 4.5, Gemini 2.5 Pro, GPT-4.1; per the companion paper's pairwise-disagreement analysis). Stratification was applied across both waves to balance across stack and across kind of disagreement (direction, magnitude, CI overlap, mixed).
 
-A disagreement case is a pair of runs (within the same stack, the same input abstract, and the same estimate index) whose effect estimate, CI bounds, or sign differs beyond pre-registered thresholds. Final composition: 6 Claude cases and 4 GPT-4.1 cases (Gemini had insufficient strictly disagreeing pairs under our thresholds), spread across 2 direction, 3 mixed, 3 CI, and 2 magnitude.
+A disagreement case is a pair of runs (within the same stack, the same input abstract, and the same estimate index) whose effect estimate, CI bounds, or sign differs beyond pre-registered thresholds. Final composition: 18 Claude Sonnet 4.5 cases and 12 GPT-4.1 cases (Gemini had insufficient strictly disagreeing pairs under our thresholds in either wave), distributed across direction, magnitude, CI overlap, and mixed strata.
 
-\subsection{Judge and prompt}
+\subsection{Judges and prompt}
 
-The judge is Claude Opus 4.7 (model identifier \texttt{claude-opus-4-7}) accessed via the Anthropic Messages API, with system prompt instructing pre-registered evaluation along three criteria:
+Two independent LLM judges from distinct provider families were used: Claude Opus 4.7 (model identifier \texttt{claude-opus-4-7}, Anthropic Messages API) and gpt-4o (\texttt{gpt-4o-2024-11-20}, OpenAI Chat Completions API). Each judge received the same system prompt instructing pre-registered evaluation along three criteria:
 
 \begin{enumerate}[leftmargin=*]
     \item \textbf{Direction.} Do both extractions report the same direction of effect? (positive, null, negative)
@@ -832,17 +835,17 @@ The judge is Claude Opus 4.7 (model identifier \texttt{claude-opus-4-7}) accesse
     \item \textbf{CI overlap.} If both 95\% CIs are reported, do they share any range?
 \end{enumerate}
 
-The judge issues one verdict per case from \{\texttt{truly\_contradictory}, \texttt{semantically\_equivalent}, \texttt{ambiguous}\} plus a brief rationale. The two extractions are presented as ``Extraction X'' and ``Extraction Y'' in deterministically randomised order (per-case seed derived from SHA-256 hash of the case identifier) to prevent positional bias. The judge is blind to which stack produced which extraction.
+Each judge issues one verdict per case from \{\texttt{truly\_contradictory}, \texttt{semantically\_equivalent}, \texttt{ambiguous}\} plus a brief rationale. The two extractions are presented as ``Extraction X'' and ``Extraction Y'' in deterministically randomised order (per-case seed derived from SHA-256 hash of the case identifier) to prevent positional bias. Each judge is blind to which stack produced which extraction and to the other judge's verdict.
 
 \subsection{Cost and provenance}
 
-Total cost: \$0.28 USD across 10 cases (mean 929 input tokens + 137 output tokens per case at Opus 4.7 pricing of \$15/MTok input, \$75/MTok output). Per-case judge records (input prompt SHA-256, model identifier, randomisation seed, response, parsed verdict) are deposited as PROV-style JSON at \texttt{outputs/revision/t3\_judge/}. The aggregate is at \texttt{outputs/revision/t3\_judge/t3\_judge\_results.json}.
+Total cost across 30 cases $\times$ 2 judges = 60 LLM-as-judge calls: USD~0.28 (Claude Opus 4.7 on Anthropic API; mean 929 input + 137 output tokens per case at \$15/MTok input, \$75/MTok output) + USD~1.02 (gpt-4o on OpenAI API; mean 1{,}100 input + 145 output tokens per case at \$2.50/MTok input, \$10/MTok output) = USD~1.30. Per-case judge records (input prompt SHA-256, model identifier, randomisation seed, raw response, parsed verdict, token counts, cost) are deposited as PROV-style JSON at \texttt{outputs/revision/t3\_judge/} (subdirectories \texttt{extended\_claude/}, \texttt{gpt4o\_original10/}, \texttt{gpt4o\_extended20/}). The two-judge aggregate with Cohen's $\kappa$ is at \texttt{outputs/revision/t3\_judge/t3\_extended\_kappa.json}.
 
 \subsection{Verdict distribution}
 
 \begin{table}[H]
 \centering
-\caption{LLM-as-judge verdicts on 10 PM\textsubscript{2.5} disagreement cases.}
+\caption{LLM-as-judge verdicts on 30 PM\textsubscript{2.5} disagreement cases, scored independently by two judges (Claude Opus 4.7, Anthropic; gpt-4o, OpenAI).}
 \label{tab:t3-verdicts}
 \small
 \begin{tabular}{@{}lcccc@{}}
@@ -861,7 +864,7 @@ ambiguous                &  5 & [0.07, 0.34] &  0 & ---           \\
 \par\smallskip\raggedright\footnotesize
 Inter-judge agreement: 23/30 cases (76.7\%); Cohen's $\kappa$~=~0.29 (fair agreement on the Landis--Koch scale). The seven disagreements are concentrated where Claude returns \emph{ambiguous} and gpt-4o returns \emph{truly\_contradictory}, indicating direction agreement (both judges classify the majority as substantive disagreement) with Claude more conservative on borderline cases. The 30-case sample comprises 18 Claude Sonnet 4.5 and 12 GPT-4.1 cases, stratified across direction, magnitude, CI overlap, and mixed disagreement kinds; the first 10 cases (seed=42) and the additional 20 (seed=4242) are independently sampled from the companion-paper corpus and exclude the 23 study-level cases of the companion paper. Total cost: USD~0.28 (Claude Opus on 30 cases) + USD~1.02 (gpt-4o on 30 cases) = USD~1.30.
 \par\smallskip\raggedright\footnotesize
-Half of the divergences are substantive contradictions despite BERTScore F1 $>$ 0.97 on the same outputs. Consistent with the per-field analysis (Section~\ref{sec:s10b}), this confirms that aggregate semantic-similarity metrics are structurally unable to detect substantive payload divergence.
+The majority of divergences are substantive contradictions despite BERTScore F1 $>$ 0.97 on the same outputs (Claude 73\%, gpt-4o 90\%). Consistent with the per-field analysis (Section~\ref{sec:s10b}), this confirms that aggregate semantic-similarity metrics are structurally unable to detect substantive payload divergence.
 \end{table}
 
 \subsection{What is \emph{not} reproduced here from the companion paper}
