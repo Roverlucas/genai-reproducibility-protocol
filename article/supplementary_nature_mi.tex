@@ -615,6 +615,12 @@ We applied the Holm--Bonferroni sequential rejection procedure to control the fa
 
 The Holm--Bonferroni method orders all $m = 68$ $p$-values from smallest to largest and rejects hypothesis $H_{(k)}$ if $p_{(k)} \leq \alpha / (m - k + 1)$ for all $k' \leq k$. This provides strong control of the family-wise error rate without assuming independence among tests.
 
+\paragraph{Scope of the FWER family.}\label{par:fwer-scope}
+The 68-test family corresponds to the pre-specified comparisons on Tasks~1--2 (extraction and summarisation) in the original analysis. The revision-batch results (HumanEval, GSM8K, PubMed PM\textsubscript{2.5}, and the multi-turn extension to gpt-4o and DeepSeek) are reported descriptively with 95\% bootstrap confidence intervals; they are not included in the Holm--Bonferroni family because the qualitative comparisons of interest (local-vs.-API gap, Claude-as-outlier pattern) are confirmatory rather than exploratory under the framework established by the original analysis, and adding them post hoc would inflate the family-wise error rate of the pre-specified tests. Readers wishing to apply a unified correction across the full design can use the per-stack per-task EMR with 95\% CIs reported in Extended Data Table~\ref{tab:revision_emr}.
+
+\paragraph{Bootstrap behaviour at the EMR boundary.}\label{par:bootstrap-boundary}
+The percentile bootstrap was selected for consistency across the original and revision analyses, but it is known to produce degenerate intervals when the empirical estimate sits at the boundary of the EMR support (0 or 1). For groups with EMR${=}$1.000 the percentile CI collapses to [1.00,\,1.00]; for groups with EMR${=}$0.000 it collapses to [0.00,\,0.00]. These ``zero-width'' intervals understate uncertainty by design and are reported as such in the tables. Bias-corrected and accelerated (BCa) intervals would marginally widen the boundary CIs but do not change any of the qualitative conclusions in this paper.
+
 \subsection{Summary Results}
 
 Of the 68 tests, \textbf{51 were rejected} (significant) and 17 were not rejected after correction:
@@ -839,15 +845,15 @@ Total cost: \$0.28 USD across 10 cases (mean 929 input tokens + 137 output token
 \caption{LLM-as-judge verdicts on 10 PM\textsubscript{2.5} disagreement cases.}
 \label{tab:t3-verdicts}
 \small
-\begin{tabular}{@{}lc@{}}
+\begin{tabular}{@{}lcc@{}}
 \toprule
-\textbf{Verdict} & \textbf{Count} \\
+\textbf{Verdict} & \textbf{Count} & \textbf{Proportion (Wilson 95\% CI)} \\
 \midrule
-truly\_contradictory     & 5 \\
-semantically\_equivalent & 3 \\
-ambiguous                & 2 \\
+truly\_contradictory     & 5 & 0.50 [0.24, 0.76] \\
+semantically\_equivalent & 3 & 0.30 [0.11, 0.60] \\
+ambiguous                & 2 & 0.20 [0.06, 0.51] \\
 \midrule
-\textbf{Total cases}     & \textbf{10} \\
+\textbf{Total cases}     & \textbf{10} & --- \\
 \bottomrule
 \end{tabular}
 \par\smallskip\raggedright\footnotesize

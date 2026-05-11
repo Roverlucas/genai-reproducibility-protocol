@@ -1,7 +1,7 @@
 % Nature Communications — Article
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL submission_revision_v1/ncomms_main_post_T5.tex   Sun May 10 22:14:27 2026
-%DIF ADD article/ncomms_main.tex                          Sun May 10 22:54:07 2026
+%DIF ADD article/ncomms_main.tex                          Mon May 11 09:32:24 2026
 % "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs
 %  Undermines Scientific Reproducibility"
 %
@@ -136,7 +136,7 @@
 %DIFDELCMD < A quasi-isolation experiment in which the same LLaMA~3 8B weights are served by two different stacks attributes the cause to production infrastructure complexity rather than cloud deployment itself, showing the problem is solvable.
 %DIFDELCMD < We provide a lightweight provenance protocol ($<$1\% overhead) grounded in W3C PROV that makes this hidden variation detectable and auditable, offering practical infrastructure for reproducible LLM-based research.}
 %DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \abstract{Large language model APIs serve research in medicine, climate science, and engineering under settings documented as deterministic. We show this guarantee fails in practice. Across 7{,}004 controlled experiments on nine \emph{deployment stacks}---tuples of (weights, provider, infrastructure, API)---and six task families (extraction, summarisation, multi-turn refinement, RAG, code, math), API-served stacks reproduce their own outputs as little as 1\% of the time under temperature-zero greedy decoding with fixed seeds, while local stacks reach 92--100\%. The variation is invisible: outputs remain semantically equivalent (BERTScore F1~$>$~0.97) while differing textually. The gap widens in high-stakes regimes---multi-turn dialogue, RAG, code, and math---where small differences alter functionality. A quasi-isolation experiment with identical LLaMA~3~8B weights served by two stacks attributes the cause to production infrastructure complexity rather than cloud deployment itself. We provide a W3C PROV-based provenance protocol ($<$1\% overhead) that makes this hidden variation detectable and auditable.}
+\DIFdelend \DIFaddbegin \abstract{Large language model APIs serve research in medicine, climate science, and engineering under settings documented as deterministic. We show this guarantee fails in practice. Across 7{,}004 experiments on nine \emph{deployment stacks} (weights, provider, infrastructure, API) and six task families (extraction, summarisation, multi-turn refinement, RAG, code, math), API-served stacks reproduce their own outputs as little as 1\% under temperature-zero greedy decoding with fixed seeds, while local stacks reach 92--100\%. The variation is invisible: outputs appear semantically equivalent (BERTScore F1~$>$~0.97) while differing textually, yet a blinded LLM-as-judge classifies half of the divergences as truly contradictory. The gap widens in high-stakes regimes (multi-turn, RAG, code, math). A quasi-isolation experiment with identical LLaMA~3~8B weights served by two stacks implicates production infrastructure rather than cloud deployment. We provide a W3C PROV-based provenance protocol ($<$1\% overhead) that makes this hidden variation detectable and auditable.}
 \DIFaddend 
 
 \keywords{Reproducibility, Large language models, Non-determinism, Provenance, API inference}
@@ -153,7 +153,7 @@ Large language models (LLMs) are rapidly becoming standard research instruments.
 They encode clinical knowledge\cite{singhal2023large}, assist diagnostic workflows\cite{thirunavukarasu2023large}, accelerate literature review and data extraction\cite{birhane2023science}, and are increasingly integrated into peer review at scale\cite{thakkar2026llm}.
 A growing body of work deploys LLMs as evaluators of human communication\cite{kumar2026reliable}, as psychometric assessment tools\cite{serapiogarcía2025psychometric}, and as components of multi-agent scientific pipelines\cite{xin2025agentic}.
 When researchers use API-based models, they trust that identical configurations will yield identical outputs.
-API documentation reinforces this trust by offering a temperature parameter set to zero for ``deterministic'' behavior, a setting that should collapse the output probability distribution to a single token at each step.
+API documentation reinforces this trust by offering a temperature parameter set to zero for ``deterministic'' behavio\DIFaddbegin \DIFadd{u}\DIFaddend r , a setting that should collapse the output probability distribution to a single token at each step.
 Our experiments show that this guarantee does not hold.
 
 The broader reproducibility crisis in science is well documented: over 70\% of researchers have failed to reproduce another scientist's experiment\cite{baker2016reproducibility}, and the problem is acute in AI, where only 6\% of papers provide sufficient information for reproduction\cite{gundersen2018state}.
@@ -174,11 +174,12 @@ A central conceptual point underlies our analysis: when a researcher queries an 
 The same weights served by two different stacks can yield two different reproducibility profiles, because each component of the tuple can independently introduce variation through tensor parallelism, mixed-precision accumulation, dynamic batching, or post-processing.
 We therefore frame results per stack rather than per model: identifiers such as ``GPT-4'' refer throughout to the full deployment stack served by the provider at the time of measurement, not to a model abstraction independent of how it is served.
 
-Here, we make four contributions.
+Here, we make \DIFdelbegin \DIFdel{four }\DIFdelend \DIFaddbegin \DIFadd{five }\DIFaddend contributions.
 First, we reveal and quantify hidden non-determinism across all five major API providers tested (OpenAI, Anthropic, Google, DeepSeek, Perplexity), showing that it is a general property of cloud-served LLM APIs rather than a provider-specific anomaly.
 Second, we show that this non-determinism persists and amplifies in multi-turn and retrieval-augmented generation (RAG) workflows, where Claude Sonnet~4.5 produces zero exact matches across 50 RAG runs.
 Third, we demonstrate that cloud deployment \emph{per se} does not cause non-determinism: the same LLaMA~3 8B weights served via two stacks (local Ollama versus Together AI's cloud endpoint) achieve near-identical exact match rates, implicating production-infrastructure complexity (tensor parallelism, speculative decoding, dynamic batching) rather than the cloud medium and confirming that the deployment stack, not the model in isolation, is the carrier of variation.
-Fourth, we provide a lightweight provenance protocol grounded in \DIFaddbegin \DIFadd{the }\DIFaddend W3C \DIFdelbegin \DIFdel{PROV\mbox{%DIFAUXCMD
+Fourth, we \DIFaddbegin \DIFadd{extend these findings to three new task families (HumanEval code generation, GSM8K math reasoning, and a 10-abstract PubMed PM\textsubscript{2.5} probe) and to two additional API stacks for multi-turn refinement (gpt-4o and DeepSeek), confirming that the local--API reproducibility gap persists in high-stakes regimes where small textual differences alter functionality or numerical correctness.
+Fifth, we }\DIFaddend provide a lightweight provenance protocol grounded in \DIFaddbegin \DIFadd{the }\DIFaddend W3C \DIFdelbegin \DIFdel{PROV\mbox{%DIFAUXCMD
 \cite{w3cprov2013}}\hskip0pt%DIFAUXCMD
 , }\DIFdelend \DIFaddbegin \DIFadd{Provenance (PROV) Data Model\mbox{%DIFAUXCMD
 \cite{w3cprov2013}}\hskip0pt%DIFAUXCMD
@@ -192,19 +193,19 @@ Fourth, we provide a lightweight provenance protocol grounded in \DIFaddbegin \D
 
 \subsection{API-served deployment stacks fail to reproduce outputs under deterministic settings}\label{subsec:greedy}
 
-We evaluated nine deployment stacks (Methods~\ref{subsec:models}) across two core tasks, structured extraction (JSON output) and scientific summarization (free text), under greedy decoding (temperature~$=$~0) with fixed random seeds, the configuration that API documentation presents as deterministic.
+We evaluated nine deployment stacks (Methods~\ref{subsec:models}) across two core tasks, structured extraction (JSON output) and scientific \DIFdelbegin \DIFdel{summarization }\DIFdelend \DIFaddbegin \DIFadd{summarisation }\DIFaddend (free text), under greedy decoding (temperature~$=$~0) with fixed random seeds, the configuration that API documentation presents as deterministic.
 The results reveal a stark divide (Table~\ref{tab:main}, Fig.~\ref{fig:heatmap}).
 
 Locally deployed models achieve near-perfect to perfect bitwise reproducibility.
 Gemma~2 9B produces exact match rate (EMR)~$=$~1.000 [1.00,\,1.00] across all tasks and conditions: every output is character-for-character identical across five repetitions, confirmed by SHA-256 hash comparison.
-LLaMA~3 8B attains EMR~$=$~0.987 [0.96,\,1.00] for structured extraction and 0.947 [0.89,\,0.99] for summarization; Mistral 7B achieves 0.960 [0.88,\,1.00] and 0.840 [0.72,\,0.96], respectively.
+LLaMA~3 8B attains EMR~$=$~0.987 [0.96,\,1.00] for structured extraction and 0.947 [0.89,\,0.99] for \DIFdelbegin \DIFdel{summarization}\DIFdelend \DIFaddbegin \DIFadd{summarisation}\DIFaddend ; Mistral 7B achieves 0.960 [0.88,\,1.00] and 0.840 [0.72,\,0.96], respectively.
 The minor deviations in LLaMA~3 and Mistral are attributable to a cold-start effect: post-hoc analysis reveals that in all seven non-unanimous abstract groups, the first repetition was the sole outlier, likely due to GPU cache state initialization on the first forward pass.
 Discarding a single warm-up inference yields EMR~$=$~1.000 for both models (Extended Data Table~5).
 
 API-served models tell a starkly different story.
-Under the same greedy decoding with fixed seeds, GPT-4 achieves EMR~$=$~0.443 [0.32,\,0.57] for extraction and 0.230 [0.16,\,0.30] for summarization.
-Claude Sonnet~4.5 achieves 0.190 [0.05,\,0.40] and 0.020 [0.00,\,0.05], respectively; across 50 pairwise comparisons, effectively no two summarization outputs were character-identical.
-Perplexity Sonar falls further to EMR~$=$~0.100 for extraction and 0.010 for summarization.
+Under the same greedy decoding with fixed seeds, GPT-4 achieves EMR~$=$~0.443 [0.32,\,0.57] for extraction and 0.230 [0.16,\,0.30] for \DIFdelbegin \DIFdel{summarization}\DIFdelend \DIFaddbegin \DIFadd{summarisation}\DIFaddend .
+Claude Sonnet~4.5 achieves 0.190 [0.05,\,0.40] and 0.020 [0.00,\,0.05], respectively; across 50 pairwise comparisons, effectively no two \DIFdelbegin \DIFdel{summarization }\DIFdelend \DIFaddbegin \DIFadd{summarisation }\DIFaddend outputs were character-identical.
+Perplexity Sonar falls further to EMR~$=$~0.100 for extraction and 0.010 for \DIFdelbegin \DIFdel{summarization}\DIFdelend \DIFaddbegin \DIFadd{summarisation}\DIFaddend .
 The overall local average EMR is 0.956 versus 0.221 for API models, meaning that fewer than one in four API output pairs are identical under conditions documented as deterministic.
 This gap survives Holm--Bonferroni correction across 68 hypothesis tests (51 significant at $\alpha$~$=$~0.05; Supplementary Section~S9) and is confirmed by large Cliff's delta effect sizes ($\delta$~$=$~0.784--0.896), paired $t$-test (Cohen's $d$~$>$~1.6), and a balanced 10-abstract subsample analysis that controls for sample-size differences between models (local EMR~$=$~0.953 vs.\ API EMR~$=$~0.304, 3.1$\times$ gap; Extended Data Table~4).
 A chat-format control experiment (200 runs) confirmed that the prompt format (completion versus chat API) does not contribute to the observed variation (Supplementary Section~S7).
@@ -213,13 +214,13 @@ A chat-format control experiment (200 runs) confirmed that the prompt format (co
 \subsection{Non-determinism varies substantially across providers}\label{subsec:providers}
 
 The five API providers span a wide reproducibility range, with an 80-fold difference between the most and least reproducible (Fig.~\ref{fig:heatmap}).
-DeepSeek Chat achieves the highest API reproducibility (EMR~$=$~0.800 for extraction, 0.760 for summarization), approaching local-model performance.
-GPT-4 occupies an intermediate position (EMR~$=$~0.443 for extraction, 0.230 for summarization), with the extraction--summarization gap suggesting that task output structure mediates reproducibility, as JSON-constrained outputs leave less room for lexical variation than free-text summaries.
+DeepSeek Chat achieves the highest API reproducibility (EMR~$=$~0.800 for extraction, 0.760 for \DIFdelbegin \DIFdel{summarization}\DIFdelend \DIFaddbegin \DIFadd{summarisation}\DIFaddend ), approaching local-model performance.
+GPT-4 occupies an intermediate position (EMR~$=$~0.443 for extraction, 0.230 for \DIFdelbegin \DIFdel{summarization}\DIFdelend \DIFaddbegin \DIFadd{summarisation}\DIFaddend ), with the \DIFdelbegin \DIFdel{extraction--summarization }\DIFdelend \DIFaddbegin \DIFadd{extraction--summarisation }\DIFaddend gap suggesting that task output structure mediates reproducibility, as JSON-constrained outputs leave less room for lexical variation than free-text summaries.
 Claude Sonnet~4.5 (0.190/0.020) and Perplexity Sonar (0.100/0.010) occupy the low end, while Gemini~2.5 Pro (evaluated on multi-turn and RAG tasks only) achieves EMR~$=$~0.010--0.070.
 
 This variation is notable because all providers expose the same user-facing ``deterministic'' parameters (temperature zero, fixed seed where supported).
 The differences therefore reflect production serving infrastructure invisible to users, consistent with editorial calls for explicit model version tracking and prompt disclosure\cite{editorial2024framework}.
-Structured JSON extraction constrains the output space more tightly than free-text summarization, leaving fewer viable token sequences and less opportunity for divergence.
+Structured JSON extraction constrains the output space more tightly than free-text \DIFdelbegin \DIFdel{summarization}\DIFdelend \DIFaddbegin \DIFadd{summarisation}\DIFaddend , leaving fewer viable token sequences and less opportunity for divergence.
 This task-dependence suggests that open-ended generation tasks (creative writing, hypothesis formulation) will likely exhibit even larger variation.
 
 Perplexity Sonar's particularly low reproducibility \DIFdelbegin \DIFdel{reflects its }\DIFdelend \DIFaddbegin \DIFadd{is consistent with its publicly documented }\DIFaddend search-augmented architecture\DIFdelbegin \DIFdel{, where }\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
@@ -242,7 +243,7 @@ To test this, we designed a quasi-isolation probe: we evaluated the same LLaMA~3
 If cloud hosting were the driver, this deployment should exhibit API-like non-determinism.
 
 It does not.
-The cloud-served LLaMA~3 achieves EMR~$=$~1.000 [1.00,\,1.00] for extraction and 0.880 [0.70,\,1.00] for summarization, nearly identical to the local deployment on the same 10-abstract subset (EMR~$=$~1.000 and 0.920, respectively; 95\% bootstrap confidence intervals overlap).
+The cloud-served LLaMA~3 achieves EMR~$=$~1.000 [1.00,\,1.00] for extraction and 0.880 [0.70,\,1.00] for \DIFdelbegin \DIFdel{summarization}\DIFdelend \DIFaddbegin \DIFadd{summarisation}\DIFaddend , nearly identical to the local deployment on the same 10-abstract subset (EMR~$=$~1.000 and 0.920, respectively; 95\% bootstrap confidence intervals overlap).
 This provides evidence that cloud deployment \emph{per se} does not cause non-determinism. The variability observed in GPT-4, Claude, and Gemini is instead consistent with the complexity of their production serving infrastructure.
 
 Six well-documented mechanisms in distributed GPU inference can independently produce non-deterministic outputs even under greedy decoding (see Methods): non-associative floating-point arithmetic\cite{higham2002accuracy}, mixed-precision accumulation in BF16/FP16\cite{yuan2025nondeterminism}, multi-GPU tensor parallelism\cite{shoeybi2019megatron}, FlashAttention kernel non-determinism\cite{dao2022flashattention}, dynamic batching with continuous request scheduling\cite{kwon2023vllm}, and speculative decoding\cite{leviathan2023speculative}.
@@ -262,7 +263,7 @@ Gemma~2 9B and Mistral 7B achieve perfect EMR~$=$~1.000 for both multi-turn and 
 LLaMA~3 8B shows EMR~$=$~0.880 [0.76,\,1.00] for multi-turn and 0.960 [0.88,\,1.00] for RAG, slightly lower than single-turn, consistent with error propagation across dialogue turns where each response conditions the next.
 
 Both API models exhibit near-zero reproducibility.
-Claude Sonnet~4.5 achieves EMR~$=$~0.040 [0.00,\,0.08] for multi-turn and 0.000 [0.00,\,0.00] for RAG. Across 50 runs, not a single pair of RAG outputs was character-identical, with a mean normalized edit distance (NED) of 0.256.
+Claude Sonnet~4.5 achieves EMR~$=$~0.040 [0.00,\,0.08] for multi-turn and 0.000 [0.00,\,0.00] for RAG. Across 50 runs, not a single pair of RAG outputs was character-identical, with a mean \DIFdelbegin \DIFdel{normalized }\DIFdelend \DIFaddbegin \DIFadd{normalised }\DIFaddend edit distance (NED) of 0.256.
 Gemini~2.5 Pro, despite supporting a seed parameter, achieves EMR~$=$~0.010 [0.00,\,0.03] for multi-turn and 0.070 [0.02,\,0.13] for RAG.
 The convergence of two independent API providers, using different model architectures and serving stacks, on near-zero multi-turn reproducibility indicates that this is a general property of cloud-served inference for complex interaction regimes.
 This is concerning for agentic AI workflows, where LLMs are chained across multiple steps.
@@ -300,7 +301,7 @@ These results confirm that the deployment stack, not the task category, governs 
 
 \DIFaddend \subsection{Outputs diverge textually but not semantically}\label{subsec:semantic}
 
-If API outputs varied randomly, producing nonsensical or contradictory results, the problem would be easy to detect.
+\DIFaddbegin \DIFadd{The same dissociation between bitwise reproducibility and semantic content documented above for code and math also governs free-text and structured generation. }\DIFaddend If API outputs varied randomly, producing nonsensical or contradictory results, the problem would be easy to detect.
 Instead, our multi-level metric analysis reveals a subtler pattern (Fig.~\ref{fig:radar}).
 Across all models and conditions, BERTScore F1 remains above 0.97 even when EMR approaches zero.
 ROUGE-L scores similarly remain high ($>$0.85 for all models), confirming substantial token-level overlap.
@@ -314,7 +315,7 @@ The \texttt{key\_result} field diverges in 67\% of groups, and \texttt{method} i
 }\DIFaddend For automated evidence synthesis pipelines, where outputs are parsed programmatically rather than read by humans, even minor lexical differences can propagate to different extracted values, different aggregated statistics, and ultimately different conclusions.
 
 The implications extend beyond individual studies.
-Recent work has shown that LLMs used as evaluators of empathic communication are sensitive to subtle input variations\cite{kumar2026reliable}, and psychometric assessments of LLM behavior reveal consistency patterns that depend on model architecture and fine-tuning approach\cite{serapiogarcía2025psychometric}.
+Recent work has shown that LLMs used as evaluators of empathic communication are sensitive to subtle input variations\cite{kumar2026reliable}, and psychometric assessments of LLM behavio\DIFaddbegin \DIFadd{u}\DIFaddend r reveal consistency patterns that depend on model architecture and fine-tuning approach\cite{serapiogarcía2025psychometric}.
 Non-determinism is therefore not a technical curiosity but a property that interacts with how LLMs are deployed as measurement instruments, one that current evaluation frameworks do not account for.
 For the growing body of work that uses LLMs as annotators, evaluators, or data extractors, our results indicate that the ``instrument'' itself introduces measurement noise that is uncharacterized and unreported in standard methodology sections.
 
@@ -353,7 +354,7 @@ API-Claude collapses to EMR~$=$~0.010 }[\DIFadd{0.00,\,0.03}] \DIFadd{on the 10 
 
 \DIFadd{To probe whether the resulting textual divergence is cosmetic or substantive, we ran a blinded LLM-as-judge protocol on 10 newly sampled non-identical output pairs from the PM\textsubscript{2.5} corpus---6 Claude Sonnet 4.5 cases and 4 GPT-4.1 cases, stratified by disagreement kind (direction, magnitude, CI overlap, mixed) and distinct from the 23 study-level cases analysed in the companion paper.
 Each pair was scored by Claude Opus 4.7 against three pre-registered criteria (direction of the reported effect, magnitude within $\pm$20\%, and overlap of confidence intervals) under a blind comparison setup, with verdicts }\emph{\DIFadd{truly\_contradictory}}\DIFadd{, }\emph{\DIFadd{semantically\_equivalent}}\DIFadd{, or }\emph{\DIFadd{ambiguous}} \DIFadd{(cost: USD~0.28; full prompts in Supplementary Section~S12).
-The judge classified 5 of the 10 pairs as truly contradictory, 3 as semantically equivalent, and 2 as ambiguous.
+The judge classified 5 of the 10 pairs as truly contradictory (Wilson 95\% CI 24--76\%), 3 as semantically equivalent (11--60\%), and 2 as ambiguous (6--51\%); the sample is small (n=10), so the proportion estimates carry wide intervals, but the lower bound on the truly-contradictory share excludes a pure-cosmetic interpretation. Representative side-by-side examples of substantive (versus cosmetic) divergence for this and the structured-extraction task appear in Box~1.
 Half of the divergences in the same Claude outputs that show BERTScore F1~$>$~0.97 are therefore substantive disagreements about the underlying scientific claim, not surface-level rephrasings: BERTScore alone cannot tell a cosmetic variation from a reversed direction of effect or a confidence interval that no longer overlaps the original.
 }
 
@@ -374,7 +375,7 @@ For regulators and guideline panels that increasingly accept LLM-assisted eviden
   \centering
   \includegraphics[width=0.65\columnwidth]{figures/fig_emr_heatmap.pdf}
   \caption{\textbf{Exact match rates per deployment stack under greedy decoding reveal a four-fold local--API gap.}
-  Heatmap of EMR \DIFdelbeginFL \DIFdelFL{for eight deployment stacks }\DIFdelendFL across extraction and summarization tasks under temperature~$=$~\DIFdelbeginFL \DIFdelFL{0.
+  Heatmap of EMR \DIFdelbeginFL \DIFdelFL{for eight deployment stacks }\DIFdelendFL across extraction and \DIFdelbeginFL \DIFdelFL{summarization }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{summarisation }\DIFaddendFL tasks under temperature~$=$~\DIFdelbeginFL \DIFdelFL{0.
   Local }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{0
   for the eight deployment }\DIFaddendFL stacks \DIFaddbeginFL \DIFaddFL{measured on Tasks~1--2 with full coverage:
   three local stacks }\DIFaddendFL (\DIFdelbeginFL \DIFdelFL{top}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{L-LLaMA3, L-Mistral, L-Gemma2}\DIFaddendFL ; blue)\DIFaddbeginFL \DIFaddFL{, the Together AI quasi-isolation probe (C-LLaMA3),
@@ -420,7 +421,7 @@ Perplexity Sonar & API  & 10 & 0.100 & 0.010 \\
   \includegraphics[width=0.78\textwidth]{figures/fig_multiturn_comparison.pdf}
   \caption{\textbf{Complex interaction regimes amplify the local--API reproducibility gap across deployment stacks.}
   EMR under greedy decoding (C1, $t$~$=$~0) for \DIFdelbeginFL \DIFdelFL{five deployment }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{the local }\DIFaddendFL stacks \DIFaddbeginFL \DIFaddFL{(Gemma~2, Mistral, LLaMA~3) and four API stacks (Claude Sonnet~4.5, Gemini~2.5 Pro, gpt-4o, and DeepSeek Chat) }\DIFaddendFL across four scenarios:
-  single-turn extraction, single-turn summarization, multi-turn refinement, and RAG extraction.
+  single-turn extraction, single-turn \DIFdelbeginFL \DIFdelFL{summarization}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{summarisation}\DIFaddendFL , multi-turn refinement, and RAG extraction.
   Local stacks \DIFdelbeginFL \DIFdelFL{(Gemma~2, Mistral, LLaMA~3) }\DIFdelendFL maintain EMR~$\geq$~0.880 across all scenarios.
   \DIFdelbeginFL \DIFdelFL{Both }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{All four }\DIFaddendFL API stacks \DIFaddbeginFL \DIFaddFL{exhibit low EMR on multi-turn refinement
   }\DIFaddendFL (Claude \DIFdelbeginFL \DIFdelFL{Sonnet}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{EMR}\DIFaddendFL ~\DIFdelbeginFL \DIFdelFL{4.5 and }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$=$~0.040, }\DIFaddendFL Gemini~\DIFdelbeginFL \DIFdelFL{2.5 Pro}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$=$~0.010, gpt-4o~$=$~0.090 }[\DIFaddFL{0.02,\,0.16}]\DIFaddFL{, DeepSeek~$=$~0.350 }[\DIFaddFL{0.13,\,0.60}]\DIFaddendFL )\DIFdelbeginFL \DIFdelFL{exhibit near-zero EMR}\DIFdelendFL ,
@@ -439,7 +440,7 @@ Perplexity Sonar & API  & 10 & 0.100 & 0.010 \\
   Local models (solid lines) occupy the outer region across all metrics.
   API models (dashed lines) show pronounced deficits in EMR and NED
   while maintaining BERTScore F1~$>$~0.97 (hidden non-determinism).
-  Axes: EMR (extraction), EMR (summarization), 1$-$NED, ROUGE-L, BERTScore F1.
+  Axes: EMR (extraction), EMR (\DIFdelbeginFL \DIFdelFL{summarization}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{summarisation}\DIFaddendFL ), 1$-$NED, ROUGE-L, BERTScore F1.
   }\label{fig:radar}
 \end{figure}
 
@@ -537,7 +538,7 @@ This reframes the methodological recommendation: research and regulatory documen
 Without that specification, ``using GPT-4'' or ``using Claude'' is under-specified for reproducibility purposes, because the same nominal model served through different stacks can produce materially different outputs and stability profiles.
 
 These findings also have regulatory implications.
-The EU AI Act\cite{euaiact2024} requires traceability for high-risk AI systems, and the NIST AI RMF\cite{nist2023ai} emphasizes transparency; hidden non-determinism directly undermines both.
+The EU AI Act\cite{euaiact2024} requires traceability for high-risk AI systems, and the NIST AI RMF\cite{nist2023ai} \DIFdelbegin \DIFdel{emphasizes }\DIFdelend \DIFaddbegin \DIFadd{emphasises }\DIFaddend transparency; hidden non-determinism directly undermines both.
 Ethical guidelines for LLM use in academic writing\cite{porsdam2024ethics} similarly assume that documented configurations produce predictable outputs, an assumption our results show to be unwarranted.
 
 Although the semantic preservation we observe (BERTScore F1~$>$~0.97) suggests that output quality is not corrupted, our field-level analysis shows that even ``semantically equivalent'' outputs differ in conclusion-relevant fields; the 78\% non-match rate under ``deterministic'' settings represents a serious obstacle for regulatory submissions, systematic reviews, and automated pipelines.
@@ -557,19 +558,19 @@ Multi-turn and RAG experiments include only two API providers; extending to othe
 The multi-turn refinement task now covers four API stacks (Claude, Gemini, gpt-4o, DeepSeek), but RAG coverage remains restricted to Claude and Gemini and extending the RAG regime to additional providers would further }\DIFaddend strengthen generality.
 Sample sizes (10--30 \DIFdelbegin \DIFdel{abstracts per model }\DIFdelend \DIFaddbegin \DIFadd{problems per model per revision task}\DIFaddend ) are well-powered for the large observed effects ($d$~$>$~1.6) but may miss subtler phenomena.
 
-\DIFaddbegin \DIFadd{The Together AI quasi-isolation result also has scope limits that we wish to make explicit.
+\DIFdelbegin \DIFdel{Indeed, preliminary evidence }\DIFdelend \DIFaddbegin \DIFadd{The Together AI quasi-isolation result also has scope limits that we wish to make explicit.
 The probe demonstrates that cloud deployment is }\emph{\DIFadd{not a sufficient cause}} \DIFadd{of LLM non-determinism: an open-weight model served by a cloud endpoint can recover near-local reproducibility.
 We do }\emph{\DIFadd{not}} \DIFadd{claim, and the result does not warrant claiming, that the proprietary stacks behind GPT-4, Claude, and Gemini could achieve the same level of reproducibility under their current production-infrastructure design constraints; their stacks are closed and we cannot run the symmetric ``same-weights, two-stacks'' comparison against them.
 It remains possible that throughput, multi-tenancy, and latency requirements at the scale of these providers make near-local reproducibility infeasible without architectural changes.
 The Together AI result is therefore offered as evidence for the }\emph{\DIFadd{weaker}} \DIFadd{claim---that the cause of API non-determinism is production serving infrastructure complexity rather than the cloud medium itself---and as a partial existence proof that closed-source providers retain the option to publish reproducibility-prioritised execution modes.
 }
 
-\DIFaddend Indeed, preliminary evidence from an applied domain suggests that the effects reported here have direct consequences for scientific conclusions.
-In a companion study applying six LLMs to a 500-abstract corpus of epidemiological studies on fine particulate matter (PM$_{2.5}$) and respiratory health\cite{rover2026evidence}, we find that extraction EMR under identical deterministic settings drops to 0.050 (Claude), 0.150 (GPT-4.1), and 0.200 (Gemini~2.5 Pro)---consistent with, and in some cases worse than, the values reported here.
+\DIFadd{Evidence }\DIFaddend from an applied domain \DIFdelbegin \DIFdel{suggests }\DIFdelend \DIFaddbegin \DIFadd{confirms }\DIFaddend that the effects reported here have direct consequences for scientific conclusions.
+In a companion study applying six LLMs to a 500-abstract corpus of epidemiological studies on fine particulate matter (PM\DIFdelbegin \DIFdel{$_{2.5}$}\DIFdelend \DIFaddbegin \DIFadd{\textsubscript{2.5}}\DIFaddend ) and respiratory health\cite{rover2026evidence}, we find that extraction EMR under identical deterministic settings drops to 0.050 (Claude), 0.150 (GPT-4.1), and 0.200 (Gemini~2.5 Pro) \DIFdelbegin \DIFdel{---consistent }\DIFdelend \DIFaddbegin \DIFadd{on the full 500-abstract corpus---consistent }\DIFaddend with, and in some cases worse than, the values reported here \DIFaddbegin \DIFadd{on the 10-abstract probe (where Claude EMR collapses further to 0.010 because the smaller corpus concentrates the within-abstract variance; the two values therefore quantify the same phenomenon at different sampling scales)}\DIFaddend .
 Critically, a meta-analytic propagation analysis reveals that up to 23 study-level effect estimates---each representing a distinct epidemiological finding on air pollution and respiratory outcomes---appear or disappear from the evidence base depending solely on which run of the LLM is used.
 This confirms that the hidden non-determinism documented in the present study is not confined to AI/ML benchmarks but propagates into applied health research where it can alter the composition of evidence available for clinical guidelines and regulatory decisions.
 
-In summary, the ``deterministic'' settings offered by major LLM API providers do not deliver determinism in practice, creating a hidden reproducibility gap that spans five providers, persists across multi-turn and RAG workflows, and remains invisible because semantic equivalence masks textual divergence.
+\DIFdelbegin \DIFdel{In summary, the }\DIFdelend \DIFaddbegin \DIFadd{The }\DIFaddend ``deterministic'' settings offered by major LLM API providers do not deliver determinism in practice, creating a hidden reproducibility gap that spans five providers, persists across multi-turn and RAG workflows, and remains invisible because semantic equivalence \DIFdelbegin \DIFdel{masks textual divergence}\DIFdelend \DIFaddbegin \DIFadd{under aggregate metrics masks textual---and sometimes substantive---divergence}\DIFaddend .
 Our quasi-isolation experiment attributes the cause to production infrastructure complexity rather than cloud deployment itself.
 The lightweight provenance protocol we provide, grounded in W3C PROV and requiring less than 1\% overhead, makes this variation visible, auditable, and attributable, offering an actionable path toward reproducible LLM-based research.
 As large language models become embedded in clinical decision support, environmental monitoring, engineering design, and automated data analysis, the inability to reproduce a model's output is not merely an academic inconvenience but a threat to the trustworthiness of systems that depend on it.
@@ -602,7 +603,7 @@ It }\DIFaddend comprises four components.
 \textbf{Prompt Cards} are versioned documentation artifacts capturing design rationale and metadata for prompt templates, including SHA-256 hash, version, task category, assumptions, limitations, and target models.
 The concept extends Model Cards\cite{mitchell2019model} and Datasheets for Datasets\cite{gebru2021datasheets} to the prompt layer.
 
-\textbf{Run Cards} capture the complete execution context of a single generative AI run through 24 core fields organized into five groups: identification (run ID, prompt hash, prompt text), model context (name, version, weights hash), parameters (temperature, seed, decoding strategy, parameters hash), input/output (text and SHA-256 hashes), and execution metadata (environment fingerprint, timestamps, duration, logging overhead).
+\textbf{Run Cards} capture the complete execution context of a single generative AI run through 24 core fields \DIFdelbegin \DIFdel{organized }\DIFdelend \DIFaddbegin \DIFadd{organised }\DIFaddend into five groups: identification (run ID, prompt hash, prompt text), model context (name, version, weights hash), parameters (temperature, seed, decoding strategy, parameters hash), input/output (text and SHA-256 hashes), and execution metadata (environment fingerprint, timestamps, duration, logging overhead).
 For API models, optional extension fields capture provider-specific metadata: API request ID, response headers, resolved model version, and a \texttt{seed\_status} field distinguishing between seeds that were ``sent'', ``logged-only'' (recorded for protocol parity but not transmitted, as with Claude), or ``not-supported''.
 
 \textbf{W3C PROV integration.}
@@ -610,7 +611,7 @@ Each experimental group is translated into a PROV-JSON document\cite{w3cprov2013
 The formal semantics of PROV enable automated traversal and comparison, identifying the exact factor that differs between non-identical outputs without custom parsing.
 
 \textbf{Reproducibility checklist.}
-A 15-item checklist organized into four categories (Prompt Documentation, Model and Environment, Execution and Output, Provenance) enables self-assessment.
+A 15-item checklist \DIFdelbegin \DIFdel{organized }\DIFdelend \DIFaddbegin \DIFadd{organised }\DIFaddend into four categories (Prompt Documentation, Model and Environment, Execution and Output, Provenance) enables self-assessment.
 
 We formally define the protocol as a tuple $\mathcal{P} = (\mathit{PC}, \mathit{RC}, G, \mathit{CL})$ and prove an \emph{audit completeness} property: for 10 defined audit questions, every question is answerable if and only if all field groups are populated.
 An ablation analysis confirms \emph{minimality}: removing any field group renders at least one question unanswerable (Extended Data Table~6).
@@ -650,9 +651,10 @@ Weights hashes recorded via the Ollama API.
 
 \subsection{Tasks}\label{subsec:tasks}
 
-\DIFdelbegin \DIFdel{Four tasks }\DIFdelend \DIFaddbegin \DIFadd{Six task families }\DIFaddend spanning the output-structure spectrum\DIFaddbegin \DIFadd{.
-The first four were evaluated in the original analysis}\DIFaddend :
-\textbf{Task~1, Scientific summarization:} produce a three-sentence summary of a scientific abstract.
+\DIFdelbegin \DIFdel{Four tasks }\DIFdelend \DIFaddbegin \DIFadd{Six task families }\DIFaddend spanning the output-structure spectrum\DIFdelbegin \DIFdel{:
+}\DIFdelend \DIFaddbegin \DIFadd{.
+The first four were evaluated in the original analysis:
+}\DIFaddend \textbf{Task~1, Scientific \DIFdelbegin \DIFdel{summarization}\DIFdelend \DIFaddbegin \DIFadd{summarisation}\DIFaddend :} produce a three-sentence summary of a scientific abstract.
 \textbf{Task~2, Structured extraction:} extract five fields (objective, method, key\_result, model\_or\_system, benchmark) as JSON.
 \textbf{Task~3, Multi-turn refinement:} three-turn dialogue (extract, receive feedback, refine).
 \textbf{Task~4, RAG extraction:} structured extraction with a prepended retrieved context passage.
@@ -713,7 +715,7 @@ The non-determinism we observe for the Claude stack is therefore attributable to
 \DIFaddend \subsection{Metrics}\label{subsec:metrics}
 
 \textbf{Exact Match Rate (EMR):} fraction of all $\binom{n}{2}$ output pairs within a group that are character-identical.
-\textbf{Normalized Edit Distance (NED):} Levenshtein distance\cite{levenshtein1966binary} normalized by the longer string.
+\textbf{Normalized Edit Distance (NED):} Levenshtein distance\cite{levenshtein1966binary} \DIFdelbegin \DIFdel{normalized }\DIFdelend \DIFaddbegin \DIFadd{normalised }\DIFaddend by the longer string.
 \textbf{ROUGE-L F1:} longest common subsequence overlap\cite{lin2004rouge}.
 \textbf{BERTScore F1:} embedding-based semantic similarity\cite{zhang2020bertscore}.
 For structured extraction, we additionally compute JSON validity rate, schema compliance, and field-level accuracy.
@@ -794,7 +796,7 @@ Further information on research design is available in the Nature Portfolio Repo
 
 \bmhead{Data availability}
 
-All \DIFdelbegin \DIFdel{4,104 }\DIFdelend run records (JSON), PROV-JSON provenance documents, Run Cards, Prompt Cards, input data (30 \DIFaddbegin \DIFadd{ML/AI }\DIFaddend abstracts with DOIs\DIFaddbegin \DIFadd{, 10 PubMed PM2.5 abstracts, HumanEval and GSM8K problem identifiers}\DIFaddend ), and \DIFdelbegin \DIFdel{generated figures }\DIFdelend \DIFaddbegin \DIFadd{source data underlying every figure and table }\DIFaddend are publicly available at \url{https://github.com/Roverlucas/genai-reproducibility-protocol} under \DIFaddbegin \DIFadd{a }\DIFaddend CC-BY\DIFaddbegin \DIFadd{~}\DIFaddend 4.0 \DIFdelbegin \DIFdel{license. }\DIFdelend \DIFaddbegin \DIFadd{licence. An archived snapshot of the release tag }\texttt{\DIFadd{v1.1-natcomms-revision1}} \DIFadd{will be deposited in Zenodo on acceptance and a persistent DOI will be inserted at proof stage. }\DIFaddend Source data are provided with this paper.
+All \DIFdelbegin \DIFdel{4,104 }\DIFdelend run records (JSON), PROV-JSON provenance documents, Run Cards, Prompt Cards, input data (30 \DIFaddbegin \DIFadd{ML/AI }\DIFaddend abstracts with DOIs\DIFaddbegin \DIFadd{, 10 PubMed PM\textsubscript{2.5} abstracts, HumanEval and GSM8K problem identifiers}\DIFaddend ), and \DIFdelbegin \DIFdel{generated figures }\DIFdelend \DIFaddbegin \DIFadd{source data underlying every figure and table }\DIFaddend are publicly available at \url{https://github.com/Roverlucas/genai-reproducibility-protocol} under \DIFaddbegin \DIFadd{a }\DIFaddend CC-BY\DIFaddbegin \DIFadd{~}\DIFaddend 4.0 \DIFdelbegin \DIFdel{license. }\DIFdelend \DIFaddbegin \DIFadd{licence. An archived snapshot of the release tag }\texttt{\DIFadd{v1.1-natcomms-revision1}} \DIFadd{will be deposited in Zenodo on acceptance and a persistent DOI will be inserted at proof stage. }\DIFaddend Source data are provided with this paper.
 
 \bmhead{Code availability}
 
