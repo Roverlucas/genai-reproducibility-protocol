@@ -1,7 +1,7 @@
 % Nature Communications — Article
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL submission_revision_v1/ncomms_main_post_T5.tex   Sun May 10 22:14:27 2026
-%DIF ADD article/ncomms_main.tex                          Mon May 11 09:50:25 2026
+%DIF ADD article/ncomms_main.tex                          Mon May 11 17:30:13 2026
 % "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs
 %  Undermines Scientific Reproducibility"
 %
@@ -357,7 +357,7 @@ Each pair was scored by two independent judges---Claude Opus 4.7 and gpt-4o---ag
 Claude Opus 4.7 classified 22 of the 30 pairs as truly contradictory (Wilson 95\% CI 56--86\%), 3 as semantically equivalent (3--26\%), and 5 as ambiguous (7--34\%). gpt-4o classified 27 as truly contradictory (74--97\%) and 3 as semantically equivalent (3--26\%), using none of the ambiguous category.
 Inter-judge agreement was 76.7\% with Cohen's $\kappa$~=~0.29 (fair agreement on the Landis--Koch scale); the disagreement is concentrated in cases where Claude returns ``ambiguous'' and gpt-4o returns ``truly contradictory''---i.e., the two judges agree on direction (majority is substantive disagreement) but Claude is more conservative on borderline cases.
 Both lower bounds on the truly-contradictory proportion (56\% Claude; 74\% gpt-4o) exclude a pure-cosmetic interpretation. Representative side-by-side examples of substantive (versus cosmetic) divergence for this and the structured-extraction task appear in Box~1.
-Half of the divergences in the same Claude outputs that show BERTScore F1~$>$~0.97 are therefore substantive disagreements about the underlying scientific claim, not surface-level rephrasings: BERTScore alone cannot tell a cosmetic variation from a reversed direction of effect or a confidence interval that no longer overlaps the original.
+The majority of the divergences in the same outputs that show BERTScore F1~$>$~0.97 are therefore substantive disagreements about the underlying scientific claim, not surface-level rephrasings: BERTScore alone cannot tell a cosmetic variation from a reversed direction of effect or a confidence interval that no longer overlaps the original.
 }
 
 \DIFadd{We do not duplicate the companion paper's detailed pairwise reproducibility, silver-standard validation, and meta-analytic propagation tables here, citing instead the aggregate finding\mbox{%DIFAUXCMD
@@ -559,6 +559,8 @@ The original }\DIFaddend GPT-4 experiments used the \texttt{gpt-4-0613} snapshot
 Multi-turn and RAG experiments include only two API providers; extending to others would }\DIFdelend \DIFaddbegin \DIFadd{, which may differ from current production behaviour; we partly mitigated this by running a current-snapshot subset (}\texttt{\DIFadd{gpt-4o-2024-11-20}}\DIFadd{) on the multi-turn extension, on HumanEval and GSM8K, and on the PubMed PM\textsubscript{2.5} probe, confirming that the qualitative local--API pattern persists at a current snapshot.
 The multi-turn refinement task now covers four API stacks (Claude, Gemini, gpt-4o, DeepSeek), but RAG coverage remains restricted to Claude and Gemini and extending the RAG regime to additional providers would further }\DIFaddend strengthen generality.
 Sample sizes (10--30 \DIFdelbegin \DIFdel{abstracts per model }\DIFdelend \DIFaddbegin \DIFadd{problems per model per revision task}\DIFaddend ) are well-powered for the large observed effects ($d$~$>$~1.6) but may miss subtler phenomena.
+\DIFaddbegin \DIFadd{The applied-impact validation in §2.7 uses two independent LLM-as-judge providers (Claude Opus 4.7 and gpt-4o) rather than human raters; while the cross-provider design directly addresses the standard ``LLM-on-LLM'' bias concern and the convergence of both judges on the majority verdict is consistent with substantive divergence, a multi-rater human validation against a domain-expert silver standard on a larger sample is the natural next methodological step and is in preparation as a dedicated follow-up paper.
+}\DIFaddend 
 
 \DIFdelbegin \DIFdel{Indeed, preliminary evidence }\DIFdelend \DIFaddbegin \DIFadd{The Together AI quasi-isolation result also has scope limits that we wish to make explicit.
 The probe demonstrates that cloud deployment is }\emph{\DIFadd{not a sufficient cause}} \DIFadd{of LLM non-determinism: an open-weight model served by a cloud endpoint can recover near-local reproducibility.
