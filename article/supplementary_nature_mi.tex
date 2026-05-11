@@ -909,7 +909,16 @@ Extended Data Table~\ref{tab:per_field_metrics} (auto-generated from the same JS
 
 These results resolve the apparent contradiction Reviewer~1 identified between ``textual not semantic'' (BERTScore F1${>}$0.97 across the board) and ``affects substantive content'' (the 67\% \texttt{key\_result} divergence rate originally reported in Extended Data Table~7). The resolution is that \emph{BERTScore is structurally unable to discriminate the substantive payload divergence concentrated in conclusion-relevant fields from the cosmetic textual variation distributed across all fields} when one operates on extracted-JSON fields of moderate length. EMR can; NED partly can. The three-level reproducibility framework (bitwise $\rightarrow$ structural $\rightarrow$ semantic) that the manuscript proposes is therefore not redundant: any single metric, including a state-of-the-art semantic-similarity metric, would mislead on this corpus and at this granularity.
 
-\input{../analysis/tables/table_per_field_metrics.tex}
+% Robust include: works both locally (compiled from article/) and on Overleaf (compiled from root)
+\IfFileExists{../analysis/tables/table_per_field_metrics.tex}{%
+  \input{../analysis/tables/table_per_field_metrics.tex}%
+}{%
+  \IfFileExists{analysis/tables/table_per_field_metrics.tex}{%
+    \input{analysis/tables/table_per_field_metrics.tex}%
+  }{%
+    \textit{[Per-field metrics table file missing — expected at \texttt{analysis/tables/table\_per\_field\_metrics.tex}]}%
+  }%
+}
 
 
 \end{document}
