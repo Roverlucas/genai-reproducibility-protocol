@@ -1,0 +1,14 @@
+{
+  "n_cases": 30,
+  "claude_opus_4_7": {
+    "truly_contradictory": 22,
+    "ambiguous": 5,
+    "semantically_equivalent": 3
+  },
+  "gpt_4o": {
+    "truly_contradictory": 27,
+    "semantically_equivalent": 3
+  },
+  "cohens_kappa": 0.29292929292929326,
+  "agreement_rate": 0.7666666666666667
+}

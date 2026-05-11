@@ -1,7 +1,7 @@
 % Nature Communications — Article
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL submission_revision_v1/ncomms_main_post_T5.tex   Sun May 10 22:14:27 2026
-%DIF ADD article/ncomms_main.tex                          Mon May 11 09:32:24 2026
+%DIF ADD article/ncomms_main.tex                          Mon May 11 09:50:25 2026
 % "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs
 %  Undermines Scientific Reproducibility"
 %
@@ -163,8 +163,8 @@ Yet despite this attention to training-time reproducibility, the reproducibility
 This gap matters because inference is the stage at which LLMs interact with research data and produce the outputs that enter scientific records, policy documents, and clinical workflows.
 Existing experiment-tracking tools such as MLflow\cite{zaharia2018accelerating} were designed for training pipelines and numerical metrics, not for inference-time text-generation provenance.
 
-We conducted 4,104 controlled experiments \DIFdelbegin \DIFdel{across eight models and }\DIFdelend \DIFaddbegin \DIFadd{in the original analysis and an additional 2,900 experiments in revision (7,004 in total) across nine deployment stacks, eight models, }\DIFaddend five independent API providers\DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{, and six task families spanning structured extraction, scientific summarisation, multi-turn refinement, retrieval-augmented generation, code generation (HumanEval), and mathematical reasoning (GSM8K).
-We }\DIFaddend found that even under temperature~$=$~0 with fixed random seeds, API-served models reproduce their own outputs only 22.1\% of the time \DIFaddbegin \DIFadd{on the original two tasks}\DIFaddend , while locally deployed open-weight models achieve 95.6\% exact \DIFdelbegin \DIFdel{reproducibility, a gap exceeding four-fold }\DIFdelend \DIFaddbegin \DIFadd{reproducibility---a ratio of approximately $4\times$ in point estimates }\DIFaddend (95\% bootstrap CI\DIFdelbegin \DIFdel{for the ratio}\DIFdelend : 2.48--3.61$\times$)\DIFaddbegin \DIFadd{, with the revision experiments confirming the gap extends to code, math, and out-of-AI/ML domains}\DIFaddend .
+We conducted \DIFdelbegin \DIFdel{4,104 }\DIFdelend \DIFaddbegin \DIFadd{7,004 }\DIFaddend controlled experiments across \DIFdelbegin \DIFdel{eight models and }\DIFdelend \DIFaddbegin \DIFadd{nine deployment stacks, eight models, }\DIFaddend five independent API providers\DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{, and six task families: structured extraction, scientific summarisation, multi-turn refinement, retrieval-augmented generation, code generation (HumanEval), and mathematical reasoning (GSM8K). The original analysis contributed 4,104 of these and the major-revision additions contributed the remaining 2,900.
+We }\DIFaddend found that even under temperature~$=$~0 with fixed random seeds, API-served models reproduce their own outputs only 22.1\% of the time \DIFdelbegin \DIFdel{, while locally }\DIFdelend \DIFaddbegin \DIFadd{on the original two tasks. Locally }\DIFaddend deployed open-weight models achieve 95.6\% exact reproducibility \DIFdelbegin \DIFdel{, a gap exceeding four-fold }\DIFdelend \DIFaddbegin \DIFadd{on the same tasks---a ratio of approximately $4\times$ in point estimates }\DIFaddend (95\% bootstrap CI\DIFdelbegin \DIFdel{for the ratio}\DIFdelend : 2.48--3.61$\times$)\DIFaddbegin \DIFadd{, with the revision experiments confirming the gap extends to code, math, and out-of-AI/ML domains}\DIFaddend .
 This non-determinism is invisible to users: outputs are semantically equivalent (BERTScore F1~$>$~0.97) but textually different, meaning researchers cannot detect the variation by reading outputs.
 The phenomenon is not confined to single queries.
 As LLMs move into agentic pipelines that design experiments and generate hypotheses\cite{xin2025agentic}, this hidden variation compounds at every step.
@@ -177,7 +177,7 @@ We therefore frame results per stack rather than per model: identifiers such as 
 Here, we make \DIFdelbegin \DIFdel{four }\DIFdelend \DIFaddbegin \DIFadd{five }\DIFaddend contributions.
 First, we reveal and quantify hidden non-determinism across all five major API providers tested (OpenAI, Anthropic, Google, DeepSeek, Perplexity), showing that it is a general property of cloud-served LLM APIs rather than a provider-specific anomaly.
 Second, we show that this non-determinism persists and amplifies in multi-turn and retrieval-augmented generation (RAG) workflows, where Claude Sonnet~4.5 produces zero exact matches across 50 RAG runs.
-Third, we demonstrate that cloud deployment \emph{per se} does not cause non-determinism: the same LLaMA~3 8B weights served via two stacks (local Ollama versus Together AI's cloud endpoint) achieve near-identical exact match rates, implicating production-infrastructure complexity (tensor parallelism, speculative decoding, dynamic batching) rather than the cloud medium and confirming that the deployment stack, not the model in isolation, is the carrier of variation.
+Third, we demonstrate that cloud deployment \emph{per se} does not cause non-determinism: the same LLaMA~3 8B weights served via two stacks (local Ollama versus Together AI's cloud endpoint) achieve near-identical exact match rates\DIFdelbegin \DIFdel{, implicating }\DIFdelend \DIFaddbegin \DIFadd{. This implicates }\DIFaddend production-infrastructure \DIFdelbegin \DIFdel{complexity (tensor }\DIFdelend \DIFaddbegin \DIFadd{complexity---tensor }\DIFaddend parallelism, speculative decoding, dynamic \DIFdelbegin \DIFdel{batching) rather }\DIFdelend \DIFaddbegin \DIFadd{batching---rather }\DIFaddend than the cloud medium \DIFdelbegin \DIFdel{and confirming }\DIFdelend \DIFaddbegin \DIFadd{itself, and confirms }\DIFaddend that the deployment stack, not the model in isolation, is the carrier of variation.
 Fourth, we \DIFaddbegin \DIFadd{extend these findings to three new task families (HumanEval code generation, GSM8K math reasoning, and a 10-abstract PubMed PM\textsubscript{2.5} probe) and to two additional API stacks for multi-turn refinement (gpt-4o and DeepSeek), confirming that the local--API reproducibility gap persists in high-stakes regimes where small textual differences alter functionality or numerical correctness.
 Fifth, we }\DIFaddend provide a lightweight provenance protocol grounded in \DIFaddbegin \DIFadd{the }\DIFaddend W3C \DIFdelbegin \DIFdel{PROV\mbox{%DIFAUXCMD
 \cite{w3cprov2013}}\hskip0pt%DIFAUXCMD
@@ -352,9 +352,11 @@ API-DeepSeek reaches 0.660 }[\DIFadd{0.46,\,0.85}]\DIFadd{, API-Gemini 0.490 }[\
 API-Claude collapses to EMR~$=$~0.010 }[\DIFadd{0.00,\,0.03}] \DIFadd{on the 10 PM\textsubscript{2.5} abstracts---matching the 0.020 }[\DIFadd{0.00,\,0.05}] \DIFadd{observed on AI/ML summarisation in our original analysis and confirming that the deployment-stack signature of non-determinism is domain-transferable.
 }
 
-\DIFadd{To probe whether the resulting textual divergence is cosmetic or substantive, we ran a blinded LLM-as-judge protocol on 10 newly sampled non-identical output pairs from the PM\textsubscript{2.5} corpus---6 Claude Sonnet 4.5 cases and 4 GPT-4.1 cases, stratified by disagreement kind (direction, magnitude, CI overlap, mixed) and distinct from the 23 study-level cases analysed in the companion paper.
-Each pair was scored by Claude Opus 4.7 against three pre-registered criteria (direction of the reported effect, magnitude within $\pm$20\%, and overlap of confidence intervals) under a blind comparison setup, with verdicts }\emph{\DIFadd{truly\_contradictory}}\DIFadd{, }\emph{\DIFadd{semantically\_equivalent}}\DIFadd{, or }\emph{\DIFadd{ambiguous}} \DIFadd{(cost: USD~0.28; full prompts in Supplementary Section~S12).
-The judge classified 5 of the 10 pairs as truly contradictory (Wilson 95\% CI 24--76\%), 3 as semantically equivalent (11--60\%), and 2 as ambiguous (6--51\%); the sample is small (n=10), so the proportion estimates carry wide intervals, but the lower bound on the truly-contradictory share excludes a pure-cosmetic interpretation. Representative side-by-side examples of substantive (versus cosmetic) divergence for this and the structured-extraction task appear in Box~1.
+\DIFadd{To probe whether the resulting textual divergence is cosmetic or substantive, we ran a blinded two-judge LLM-as-judge protocol on 30 newly sampled non-identical output pairs from the PM\textsubscript{2.5} corpus (18 Claude Sonnet 4.5 and 12 GPT-4.1 cases, stratified by disagreement kind---direction, magnitude, CI overlap, mixed---and distinct from the 23 study-level cases analysed in the companion paper).
+Each pair was scored by two independent judges---Claude Opus 4.7 and gpt-4o---against three pre-registered criteria (direction of the reported effect, magnitude within $\pm$20\%, and overlap of confidence intervals) under a blind comparison setup, with verdicts }\emph{\DIFadd{truly\_contradictory}}\DIFadd{, }\emph{\DIFadd{semantically\_equivalent}}\DIFadd{, or }\emph{\DIFadd{ambiguous}} \DIFadd{(cost: USD~1.30; full prompts in Supplementary Section~S12).
+Claude Opus 4.7 classified 22 of the 30 pairs as truly contradictory (Wilson 95\% CI 56--86\%), 3 as semantically equivalent (3--26\%), and 5 as ambiguous (7--34\%). gpt-4o classified 27 as truly contradictory (74--97\%) and 3 as semantically equivalent (3--26\%), using none of the ambiguous category.
+Inter-judge agreement was 76.7\% with Cohen's $\kappa$~=~0.29 (fair agreement on the Landis--Koch scale); the disagreement is concentrated in cases where Claude returns ``ambiguous'' and gpt-4o returns ``truly contradictory''---i.e., the two judges agree on direction (majority is substantive disagreement) but Claude is more conservative on borderline cases.
+Both lower bounds on the truly-contradictory proportion (56\% Claude; 74\% gpt-4o) exclude a pure-cosmetic interpretation. Representative side-by-side examples of substantive (versus cosmetic) divergence for this and the structured-extraction task appear in Box~1.
 Half of the divergences in the same Claude outputs that show BERTScore F1~$>$~0.97 are therefore substantive disagreements about the underlying scientific claim, not surface-level rephrasings: BERTScore alone cannot tell a cosmetic variation from a reversed direction of effect or a confidence interval that no longer overlaps the original.
 }
 
@@ -898,7 +900,9 @@ Run Card schema and W3C PROV graph example for a single experimental group.
 \footnotesize
 \setlength{\tabcolsep}{4pt}
 \caption{\textbf{\DIFaddFL{Exact match rate (EMR) with 95\% bootstrap CI per deployment stack on the revision tasks.}}
-\DIFaddFL{T5 = HumanEval (code); T6 = GSM8K (math); T3-ext = multi-turn refinement extended to gpt-4o and DeepSeek; T14 = 10 PubMed PM\textsubscript{2.5} abstracts (Task~2 extraction schema). 10\,000 percentile bootstrap resamples.}}
+\DIFaddFL{T5 = HumanEval (code); T6 = GSM8K (math); T3-ext = multi-turn refinement extended to gpt-4o and DeepSeek; T14 = 10 PubMed PM\textsubscript{2.5} abstracts (Task~2 extraction schema). 10\,000 percentile bootstrap resamples. The local-vs-API local--API effect size is reported as Cliff's $\delta$ (last row), pooling per-problem EMRs across the three local stacks versus the four API stacks for each task; $|\delta|{>}0.474$ corresponds to a large effect by Romano }\emph{\DIFaddFL{et~al.}}\DIFaddFL{\mbox{%DIFAUXCMD
+\cite{romano2006appropriate}}\hskip0pt%DIFAUXCMD
+.}}
 \label{tab:revision_emr}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}lcccc@{}}
@@ -914,10 +918,16 @@ L-Gemma2                  & 1.000 [1.00,\,1.00] & 1.000 [1.00,\,1.00] & ---     
 L-LLaMA3                  & 0.920 [0.85,\,0.97] & 0.947 [0.89,\,0.99] & ---                 & 1.000 [1.00,\,1.00] \\
 L-Mistral                 & 0.840 [0.77,\,0.91] & 0.920 [0.87,\,0.97] & ---                 & 0.960 [0.88,\,1.00] \\
 C-LLaMA3 (Together AI)    & 1.000 [1.00,\,1.00] & 1.000 [1.00,\,1.00] & ---                 & 1.000 [1.00,\,1.00] \\
+\midrule
+\textbf{Cliff's $\delta$ (local vs API)} & \textbf{$+0.625$ large} & \textbf{$+0.266$ small} & ---$^{\ast}$ & \textbf{$+0.787$ large} \\
 \bottomrule
 \end{tabular}%
 }
-\end{table*}
+\par\smallskip\raggedright\footnotesize
+\DIFaddFL{$^{\ast}$Cliff's $\delta$ not computable for T3-ext: no local stacks were evaluated under the multi-turn extension batch (the original multi-turn results for local stacks live in Fig.~\ref{fig:multiturn}). Interpretation thresholds following Romano }\emph{\DIFaddFL{et~al.}}\DIFaddFL{\mbox{%DIFAUXCMD
+\cite{romano2006appropriate}}\hskip0pt%DIFAUXCMD
+: $|\delta|{<}0.147$ negligible, $[0.147, 0.33)$ small, $[0.33, 0.474)$ medium, $\geq 0.474$ large.
+}\end{table*}
 
 \DIFaddend \end{appendices}
 

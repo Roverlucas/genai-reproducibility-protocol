@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0084__est0__r1-vs-r10",
+  "verdict": "truly_contradictory",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "different",
+  "criterion_c_ci_overlap": "disjoint",
+  "rationale": "Although both extractions indicate a positive direction, the point estimates (1.6 vs 1.016) differ by far more than 20% relative to their average, and their 95% CIs (0.9\u20132.4 vs 1.009\u20131.024) do not overlap meaningfully in a comparable way.",
+  "randomization_seed": 2685633206,
+  "presented_x_run_id": 10,
+  "presented_y_run_id": 1,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"different\",\n  \"criterion_c_ci_overlap\": \"disjoint\",\n  \"verdict\": \"truly_contradictory\",\n  \"rationale\": \"Although both extractions indicate a positive direction, the point estimates (1.6 vs 1.016) differ by far more than 20% relative to their average, and their 95% CIs (0.9\u20132.4 vs 1.009\u20131.024) do not overlap meaningfully in a comparable way.\"\n}",
+  "input_tokens": 913,
+  "output_tokens": 177,
+  "cost_usd": 0.02697,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778503550.585074
+}

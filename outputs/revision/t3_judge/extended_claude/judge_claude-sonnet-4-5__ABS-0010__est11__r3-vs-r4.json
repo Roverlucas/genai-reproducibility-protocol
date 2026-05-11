@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0010__est11__r3-vs-r4",
+  "verdict": "ambiguous",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "same",
+  "criterion_c_ci_overlap": "overlap",
+  "rationale": "Both estimates are null with overlapping CIs and similar magnitudes, but Extraction Y specifies a female-stratified PM2.5 subgroup while Extraction X gives no such qualifier, so it is unclear whether they refer to the same effect estimate.",
+  "randomization_seed": 600850629,
+  "presented_x_run_id": 4,
+  "presented_y_run_id": 3,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"same\",\n  \"criterion_c_ci_overlap\": \"overlap\",\n  \"verdict\": \"ambiguous\",\n  \"rationale\": \"Both estimates are null with overlapping CIs and similar magnitudes, but Extraction Y specifies a female-stratified PM2.5 subgroup while Extraction X gives no such qualifier, so it is unclear whether they refer to the same effect estimate.\"\n}",
+  "input_tokens": 937,
+  "output_tokens": 167,
+  "cost_usd": 0.02658,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778503593.085545
+}

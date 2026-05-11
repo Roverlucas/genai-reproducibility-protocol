@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0010__est11__r4-vs-r5",
+  "verdict": "semantically_equivalent",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "same",
+  "criterion_c_ci_overlap": "overlap",
+  "rationale": "Both extractions report a null effect direction with overlapping CIs and effect estimates within 20% of each other.",
+  "randomization_seed": 1803745524,
+  "presented_x_run_id": 5,
+  "presented_y_run_id": 4,
+  "raw_response": "```json\n{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"same\",\n  \"criterion_c_ci_overlap\": \"overlap\",\n  \"verdict\": \"semantically_equivalent\",\n  \"rationale\": \"Both extractions report a null effect direction with overlapping CIs and effect estimates within 20% of each other.\"\n}\n```",
+  "input_tokens": 607,
+  "output_tokens": 76,
+  "cost_usd": 0.0022775,
+  "judge_model": "gpt-4o",
+  "timestamp": 1778503685.13964
+}

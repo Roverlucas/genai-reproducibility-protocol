@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0010__est11__r4-vs-r5",
+  "verdict": "ambiguous",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "same",
+  "criterion_c_ci_overlap": "overlap",
+  "rationale": "Both estimates are null with overlapping CIs and similar magnitudes, but Extraction X specifies a female-stratified estimate while Extraction Y appears to report an overall estimate, so they likely refer to different subgroups rather than the same row.",
+  "randomization_seed": 1803745524,
+  "presented_x_run_id": 5,
+  "presented_y_run_id": 4,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"same\",\n  \"criterion_c_ci_overlap\": \"overlap\",\n  \"verdict\": \"ambiguous\",\n  \"rationale\": \"Both estimates are null with overlapping CIs and similar magnitudes, but Extraction X specifies a female-stratified estimate while Extraction Y appears to report an overall estimate, so they likely refer to different subgroups rather than the same row.\"\n}",
+  "input_tokens": 937,
+  "output_tokens": 161,
+  "cost_usd": 0.02613,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778503624.35495
+}

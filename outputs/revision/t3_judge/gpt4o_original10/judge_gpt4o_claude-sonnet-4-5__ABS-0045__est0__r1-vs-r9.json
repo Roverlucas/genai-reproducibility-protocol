@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0045__est0__r1-vs-r9",
+  "verdict": "truly_contradictory",
+  "criterion_a_direction": "different",
+  "criterion_b_magnitude": "different",
+  "criterion_c_ci_overlap": "disjoint",
+  "rationale": "The directions of effect are different (X: negative, Y: positive), the magnitudes differ significantly, and the confidence intervals do not overlap.",
+  "randomization_seed": 2913446864,
+  "presented_x_run_id": 9,
+  "presented_y_run_id": 1,
+  "raw_response": "```json\n{\n  \"criterion_a_direction\": \"different\",\n  \"criterion_b_magnitude\": \"different\",\n  \"criterion_c_ci_overlap\": \"disjoint\",\n  \"verdict\": \"truly_contradictory\",\n  \"rationale\": \"The directions of effect are different (X: negative, Y: positive), the magnitudes differ significantly, and the confidence intervals do not overlap.\"\n}\n```",
+  "input_tokens": 610,
+  "output_tokens": 84,
+  "cost_usd": 0.002365,
+  "judge_model": "gpt-4o",
+  "timestamp": 1778503651.4409862
+}

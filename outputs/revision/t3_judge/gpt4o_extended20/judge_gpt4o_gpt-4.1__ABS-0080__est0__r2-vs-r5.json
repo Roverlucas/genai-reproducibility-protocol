@@ -1,0 +1,17 @@
+{
+  "case_id": "gpt-4.1__ABS-0080__est0__r2-vs-r5",
+  "verdict": "truly_contradictory",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "different",
+  "criterion_c_ci_overlap": "disjoint",
+  "rationale": "The direction of effect is the same (positive) in both extractions, but the magnitude differs significantly and the confidence intervals do not overlap.",
+  "randomization_seed": 1705062441,
+  "presented_x_run_id": 5,
+  "presented_y_run_id": 2,
+  "raw_response": "```json\n{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"different\",\n  \"criterion_c_ci_overlap\": \"disjoint\",\n  \"verdict\": \"truly_contradictory\",\n  \"rationale\": \"The direction of effect is the same (positive) in both extractions, but the magnitude differs significantly and the confidence intervals do not overlap.\"\n}\n```",
+  "input_tokens": 602,
+  "output_tokens": 83,
+  "cost_usd": 0.002335,
+  "judge_model": "gpt-4o",
+  "timestamp": 1778503679.057358
+}

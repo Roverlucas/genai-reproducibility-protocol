@@ -1,0 +1,17 @@
+{
+  "case_id": "claude-sonnet-4-5__ABS-0084__est0__r1-vs-r7",
+  "verdict": "truly_contradictory",
+  "criterion_a_direction": "same",
+  "criterion_b_magnitude": "different",
+  "criterion_c_ci_overlap": "disjoint",
+  "rationale": "Although both estimates are above 1.0 (same direction), the magnitudes differ vastly (1.016 vs 1.6), far exceeding \u00b120%, and their 95% CIs ([1.009, 1.024] vs [0.9, 2.4]) do not overlap.",
+  "randomization_seed": 1856469348,
+  "presented_x_run_id": 1,
+  "presented_y_run_id": 7,
+  "raw_response": "{\n  \"criterion_a_direction\": \"same\",\n  \"criterion_b_magnitude\": \"different\",\n  \"criterion_c_ci_overlap\": \"disjoint\",\n  \"verdict\": \"truly_contradictory\",\n  \"rationale\": \"Although both estimates are above 1.0 (same direction), the magnitudes differ vastly (1.016 vs 1.6), far exceeding \u00b120%, and their 95% CIs ([1.009, 1.024] vs [0.9, 2.4]) do not overlap.\"\n}",
+  "input_tokens": 913,
+  "output_tokens": 174,
+  "cost_usd": 0.026745,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778503615.0284579
+}

@@ -1,0 +1,20 @@
+{
+  "humaneval": {
+    "cliff_delta": 0.2657407407407407,
+    "interp": "small",
+    "n_local": 90,
+    "n_api": 120
+  },
+  "gsm8k": {
+    "cliff_delta": 0.625,
+    "interp": "large",
+    "n_local": 90,
+    "n_api": 120
+  },
+  "pubmed_pm25": {
+    "cliff_delta": 0.7875,
+    "interp": "large",
+    "n_local": 30,
+    "n_api": 40
+  }
+}

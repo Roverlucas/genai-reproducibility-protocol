@@ -1,0 +1,17 @@
+{
+  "case_id": "gpt-4.1__ABS-0032__est0__r1-vs-r8",
+  "verdict": "truly_contradictory",
+  "criterion_a_direction": "different",
+  "criterion_b_magnitude": "different",
+  "criterion_c_ci_overlap": "disjoint",
+  "rationale": "Extraction X reports a point estimate of 1.61 with CI crossing 1.0 (null direction), while Extraction Y reports 1.0161 with CI entirely above 1.0 (positive direction). The magnitudes differ by ~50% relative to their average, and the CIs do not overlap.",
+  "randomization_seed": 2946458062,
+  "presented_x_run_id": 1,
+  "presented_y_run_id": 8,
+  "raw_response": "{\n  \"criterion_a_direction\": \"different\",\n  \"criterion_b_magnitude\": \"different\",\n  \"criterion_c_ci_overlap\": \"disjoint\",\n  \"verdict\": \"truly_contradictory\",\n  \"rationale\": \"Extraction X reports a point estimate of 1.61 with CI crossing 1.0 (null direction), while Extraction Y reports 1.0161 with CI entirely above 1.0 (positive direction). The magnitudes differ by ~50% relative to their average, and the CIs do not overlap.\"\n}",
+  "input_tokens": 940,
+  "output_tokens": 182,
+  "cost_usd": 0.02775,
+  "judge_model": "claude-opus-4-7",
+  "timestamp": 1778503541.866036
+}
