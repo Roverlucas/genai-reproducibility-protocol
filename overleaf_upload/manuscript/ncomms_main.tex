@@ -184,7 +184,7 @@ If each step introduces independent non-deterministic variation, end-to-end repr
 
 \subsection{Coding and math reasoning extend the reproducibility gap to high-stakes outputs}\label{subsec:codemath}
 
-To test whether the reproducibility gap extends to high-stakes domains in which small textual differences alter functionality or numerical correctness, we ran HumanEval (code generation, 30 problems stratified from the 164-problem benchmark\cite{chen2021humaneval}) and GSM8K (math word problems, 30 problems sampled from the test split\cite{cobbe2021gsm8k}) under our standard C1 greedy decoding (temperature~$=$~0, fixed seed where supported) with five repetitions per problem across all eight deployment stacks with full coverage (Extended Data Table~\ref{tab:revision_emr}; full per-stack per-task EMR with 95\% bootstrap CIs in Supplementary Section~S11).
+To test whether the reproducibility gap extends to high-stakes domains in which small textual differences alter functionality or numerical correctness, we ran HumanEval (code generation, 30 problems stratified from the 164-problem benchmark\cite{chen2021humaneval}) and GSM8K (math word problems, 30 problems sampled from the test split\cite{cobbe2021gsm8k}) under our standard C1 greedy decoding (temperature~$=$~0, fixed seed where supported) with five repetitions per problem across all eight deployment stacks with full coverage (Table~\ref{tab:revision_emr}; full per-stack per-task EMR with 95\% bootstrap CIs in Supplementary Section~S11).
 
 On HumanEval, three deployment stacks (L-Gemma2, API-Gemini, and the Together AI quasi-isolation probe C-LLaMA3) achieve perfect EMR~$=$~1.000 [1.00,\,1.00] across all 150 runs per stack.
 L-LLaMA3 reaches EMR~$=$~0.947 [0.89,\,0.99] and L-Mistral 0.920 [0.87,\,0.97], while API-DeepSeek and API-GPT4 (gpt-4o-2024-11-20) plateau at 0.837 [0.72,\,0.93] and 0.837 [0.75,\,0.92], respectively.
@@ -247,7 +247,7 @@ Beyond AI/ML benchmarks, the most consequential setting for LLM-based extraction
 A reproducibility gap that survives the move from AI/ML abstracts to clinical-epidemiological abstracts is therefore directly relevant to how LLMs are now being deployed in living systematic reviews and regulatory submissions.
 We tested transfer to this setting with a focused out-of-domain probe: 10 PubMed abstracts on fine particulate matter (PM\textsubscript{2.5}) and respiratory or cardiovascular health, drawn from the corpus of our companion paper\cite{rover2026evidence}, processed under our standard C1 structured-extraction condition (temperature~$=$~0, fixed seed where supported, five repetitions) across all eight deployment stacks with full coverage.
 
-The pattern observed on AI/ML abstracts replicates with no qualitative change (Extended Data Table~\ref{tab:revision_emr}).
+The pattern observed on AI/ML abstracts replicates with no qualitative change (Table~\ref{tab:revision_emr}).
 Two local stacks (L-Gemma2 and L-LLaMA3) and the Together AI quasi-isolation probe (C-LLaMA3) all achieve perfect EMR~$=$~1.000 [1.00,\,1.00]; L-Mistral attains 0.960 [0.88,\,1.00].
 API-DeepSeek reaches 0.660 [0.46,\,0.85], API-Gemini 0.490 [0.26,\,0.72], and API-GPT4 0.420 [0.27,\,0.58].
 API-Claude collapses to EMR~$=$~0.010 [0.00,\,0.03] on the 10 PM\textsubscript{2.5} abstracts---matching the 0.020 [0.00,\,0.05] observed on AI/ML summarisation in our original analysis and confirming that the deployment-stack signature of non-determinism is domain-transferable.
@@ -765,6 +765,7 @@ Run Card schema and W3C PROV graph example for a single experimental group.
 \medskip\noindent\textbf{Extended Data Table~8.}
 Exact match rate per deployment stack on the revision tasks introduced during major revision: HumanEval (code generation), GSM8K (math reasoning), the multi-turn refinement extension to gpt-4o and DeepSeek (R3.3), and the 10-abstract PubMed PM\textsubscript{2.5} cross-domain probe (R3.5). Cells marked ``---'' indicate stacks not run on that task in revision. 95\% bootstrap CIs from 10{,}000 percentile resamples.
 
+\setcounter{table}{7}% Align table number with Extended Data Table 8 stub above
 \begin{table*}[h]
 \centering
 \footnotesize

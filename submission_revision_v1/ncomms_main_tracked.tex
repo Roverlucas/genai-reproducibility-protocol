@@ -1,7 +1,7 @@
 % Nature Communications — Article
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL submission_revision_v1/ncomms_main_post_T5.tex   Sun May 10 22:14:27 2026
-%DIF ADD article/ncomms_main.tex                          Mon May 11 18:41:02 2026
+%DIF ADD article/ncomms_main.tex                          Mon May 11 18:46:02 2026
 % "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs
 %  Undermines Scientific Reproducibility"
 %
@@ -304,7 +304,7 @@ If each step introduces independent non-deterministic variation, end-to-end repr
 \cite{chen2021humaneval}}\hskip0pt%DIFAUXCMD
 ) and GSM8K (math word problems, 30 problems sampled from the test split\mbox{%DIFAUXCMD
 \cite{cobbe2021gsm8k}}\hskip0pt%DIFAUXCMD
-) under our standard C1 greedy decoding (temperature~$=$~0, fixed seed where supported) with five repetitions per problem across all eight deployment stacks with full coverage (Extended Data Table~\ref{tab:revision_emr}; full per-stack per-task EMR with 95\% bootstrap CIs in Supplementary Section~S11).
+) under our standard C1 greedy decoding (temperature~$=$~0, fixed seed where supported) with five repetitions per problem across all eight deployment stacks with full coverage (Table~\ref{tab:revision_emr}; full per-stack per-task EMR with 95\% bootstrap CIs in Supplementary Section~S11).
 }
 
 \DIFadd{On HumanEval, three deployment stacks (L-Gemma2, API-Gemini, and the Together AI quasi-isolation probe C-LLaMA3) achieve perfect EMR~$=$~1.000 }[\DIFadd{1.00,\,1.00}] \DIFadd{across all 150 runs per stack.
@@ -375,7 +375,7 @@ We tested transfer to this setting with a focused out-of-domain probe: 10 PubMed
 , processed under our standard C1 structured-extraction condition (temperature~$=$~0, fixed seed where supported, five repetitions) across all eight deployment stacks with full coverage.
 }
 
-\DIFadd{The pattern observed on AI/ML abstracts replicates with no qualitative change (Extended Data Table~\ref{tab:revision_emr}).
+\DIFadd{The pattern observed on AI/ML abstracts replicates with no qualitative change (Table~\ref{tab:revision_emr}).
 Two local stacks (L-Gemma2 and L-LLaMA3) and the Together AI quasi-isolation probe (C-LLaMA3) all achieve perfect EMR~$=$~1.000 }[\DIFadd{1.00,\,1.00}]\DIFadd{; L-Mistral attains 0.960 }[\DIFadd{0.88,\,1.00}]\DIFadd{.
 API-DeepSeek reaches 0.660 }[\DIFadd{0.46,\,0.85}]\DIFadd{, API-Gemini 0.490 }[\DIFadd{0.26,\,0.72}]\DIFadd{, and API-GPT4 0.420 }[\DIFadd{0.27,\,0.58}]\DIFadd{.
 API-Claude collapses to EMR~$=$~0.010 }[\DIFadd{0.00,\,0.03}] \DIFadd{on the 10 PM\textsubscript{2.5} abstracts---matching the 0.020 }[\DIFadd{0.00,\,0.05}] \DIFadd{observed on AI/ML summarisation in our original analysis and confirming that the deployment-stack signature of non-determinism is domain-transferable.
@@ -926,7 +926,8 @@ Run Card schema and W3C PROV graph example for a single experimental group.
 \DIFadd{Exact match rate per deployment stack on the revision tasks introduced during major revision: HumanEval (code generation), GSM8K (math reasoning), the multi-turn refinement extension to gpt-4o and DeepSeek (R3.3), and the 10-abstract PubMed PM\textsubscript{2.5} cross-domain probe (R3.5). Cells marked ``---'' indicate stacks not run on that task in revision. 95\% bootstrap CIs from 10}{\DIFadd{,}}\DIFadd{000 percentile resamples.
 }
 
-\begin{table*}[h]
+\DIFadd{\setcounter{table}{7}%DIF >  Align table number with Extended Data Table 8 stub above
+}\begin{table*}[h]
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt}
