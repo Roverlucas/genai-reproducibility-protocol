@@ -1,7 +1,7 @@
 % Nature Communications — Article
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL submission_revision_v1/ncomms_main_post_T5.tex   Sun May 10 22:14:27 2026
-%DIF ADD article/ncomms_main.tex                          Mon May 11 18:08:51 2026
+%DIF ADD article/ncomms_main.tex                          Mon May 11 18:12:48 2026
 % "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs
 %  Undermines Scientific Reproducibility"
 %
@@ -91,6 +91,24 @@
 \let\sout@orig\sout %DIF PREAMBLE
 \renewcommand{\sout}[1]{\ifmmode\text{\sout@orig{\ensuremath{#1}}}\else\sout@orig{#1}\fi} %DIF PREAMBLE
 \makeatother %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}[1][]{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}[1][]{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+\lstset{extendedchars=\true,inputencoding=utf8}
+
 %DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
@@ -140,7 +158,7 @@
 %DIFDELCMD < A quasi-isolation experiment in which the same LLaMA~3 8B weights are served by two different stacks attributes the cause to production infrastructure complexity rather than cloud deployment itself, showing the problem is solvable.
 %DIFDELCMD < We provide a lightweight provenance protocol ($<$1\% overhead) grounded in W3C PROV that makes this hidden variation detectable and auditable, offering practical infrastructure for reproducible LLM-based research.}
 %DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \abstract{Large language model APIs serve research in medicine, climate science, and engineering under settings documented as deterministic. We show this guarantee fails in practice. Across 7{,}004 experiments on nine \emph{deployment stacks} (weights, provider, infrastructure, API) and six task families (extraction, summarisation, multi-turn refinement, RAG, code, math), API-served stacks reproduce their own outputs as little as 1\% under temperature-zero greedy decoding with fixed seeds, while local stacks reach 92--100\%. The variation is invisible: outputs appear semantically equivalent (BERTScore F1~$>$~0.97) while differing textually, yet two blinded LLM judges (Claude Opus 4.7, gpt-4o) classify the majority of divergences (73--90\%) as truly contradictory. The gap widens in high-stakes regimes (multi-turn, RAG, code, math). A quasi-isolation experiment with identical LLaMA~3~8B weights served by two stacks implicates production infrastructure rather than cloud deployment itself. We provide a W3C PROV-based provenance protocol ($<$1\% overhead) that makes this hidden variation detectable and auditable.}
+\DIFdelend \DIFaddbegin \abstract{Large language model APIs serve research in medicine, climate science, and engineering under settings documented as deterministic. We show this guarantee fails in practice. Across 7{,}004 experiments on nine \emph{deployment stacks} (weights, provider, infrastructure, API) and six task families (extraction, summarisation, multi-turn refinement, RAG, code, math), API-served stacks reproduce their own outputs as little as 1\% under temperature-zero greedy decoding with fixed seeds, while local stacks reach 92--100\%. The variation is invisible: outputs appear semantically equivalent (BERTScore F1~$>$~0.97) but diverge textually, yet two blinded LLM judges (Claude Opus 4.7, gpt-4o) classify the majority (73--90\%) as truly contradictory. The gap widens in high-stakes regimes (multi-turn, RAG, code, math). A quasi-isolation experiment with identical LLaMA~3~8B weights on two stacks implicates production infrastructure rather than cloud deployment. We release a W3C PROV-based provenance protocol ($<$1\% overhead) making this hidden variation auditable.}
 \DIFaddend 
 
 \keywords{Reproducibility, Large language models, Non-determinism, Provenance, API inference}
