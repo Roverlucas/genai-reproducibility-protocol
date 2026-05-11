@@ -18,7 +18,7 @@
 | Repository visibility (review) | Private — reviewer link supplied via Editorial Manager |
 | Repository visibility (post-publication) | Public on acceptance |
 | Versioned release for this manuscript | Tag `v1.1-natcomms-revision1` (created at submission of revised manuscript) |
-| Persistent archive (snapshot) | Zenodo DOI — to be minted on acceptance from `v1.1-natcomms-revision1` tag (Zenodo–GitHub integration enabled) |
+| Persistent archive (snapshot) | Figshare DOI [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) (CC-BY 4.0); GitHub release tag `v1.1-natcomms-revision1` is mirrored on Figshare |
 | Reviewer data archive (private) | Figshare reviewer link — see Data Availability for the URL provided to the editorial office (excluded from the published version) |
 | License (code) | MIT (LICENSE file at repository root) |
 | License (data and manuscript artefacts) | CC-BY 4.0 |
@@ -201,7 +201,7 @@ Run-level reproducibility evidence is preserved per run in `outputs/runs/<run_id
 | Item | Response |
 |------|----------|
 | Long-term hosting | GitHub (https://github.com/Roverlucas/genai-reproducibility-protocol). Repository made public on acceptance |
-| Persistent archival | Zenodo–GitHub integration. The release tag `v1.1-natcomms-revision1` will be archived to Zenodo and a DOI minted at acceptance; the DOI will be inserted into the Code Availability and Data Availability statements during proof |
+| Persistent archival | Figshare (DOI: [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373), CC-BY 4.0). The GitHub release tag `v1.1-natcomms-revision1` is mirrored on Figshare. The deposit is available privately to reviewers via the share URL in the Cover Letter and will be made public at acceptance |
 | Issue tracking | GitHub Issues. Bug reports and reproduction questions are accepted from the broader community |
 | Versioning | Semantic versioning. Future protocol changes will not overwrite the manuscript tag |
 | Author commitment | Lucas Rover (corresponding author) commits to maintain the repository for ≥5 years post-publication, in accordance with the funding institution's data-management policy (UTFPR) |
@@ -213,7 +213,7 @@ Run-level reproducibility evidence is preserved per run in `outputs/runs/<run_id
 
 | Item | Status | Action |
 |------|--------|--------|
-| Zenodo DOI | ⚠ TBD | Mint after acceptance; insert into Code Availability and Data Availability statements at proof stage |
+| Figshare DOI | ☑ | [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) — already minted (CC-BY 4.0); private reviewer share URL: https://figshare.com/s/3d17327cef1ae99ed37c |
 | Final run count (4,104 + revision additions) | ⚠ TBD | Update Table 1 and §1 (CODE_SOFTWARE_CHECKLIST) once T1 HumanEval + T1 GSM8K complete |
 | Pass@1 results (HumanEval) | ⚠ TBD | Pending T1 execution completion |
 | Final tagged release `v1.1-natcomms-revision1` | ⚠ TBD | Created at the moment the revised manuscript is uploaded |

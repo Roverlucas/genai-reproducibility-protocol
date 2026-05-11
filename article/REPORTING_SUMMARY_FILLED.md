@@ -56,12 +56,13 @@ https://github.com/Roverlucas/genai-reproducibility-protocol
 ### Data availability statement
 ```
 All 4,104 experimental records, provenance metadata (Run Cards in JSON
-format), PROV-JSON provenance graphs, and input abstracts are available
-to reviewers during peer review via the project repository at
-https://github.com/Roverlucas/genai-reproducibility-protocol. Upon
-publication, an archived snapshot with a persistent DOI will be deposited
-in Zenodo under a CC-BY 4.0 licence. Source data for all figures and
-tables are included in the repository. No restrictions on data
+format), PROV-JSON provenance graphs, and input abstracts are deposited
+on Figshare with persistent DOI 10.6084/m9.figshare.31653373 (CC-BY 4.0).
+The Figshare deposit mirrors the project GitHub repository at
+https://github.com/Roverlucas/genai-reproducibility-protocol (release
+tag v1.1-natcomms-revision1). Reviewer access during peer review is via
+the private Figshare share URL provided in the Cover Letter. Source data
+for all figures and tables are included. No restrictions on data
 availability apply.
 ```
 
@@ -171,4 +172,4 @@ The Software and code blocks in §2 are extended to include the following revisi
 
 ### Data availability (revised)
 
-The Data Availability statement in §3 also covers `outputs/revision/runs/` and `data/inputs/revision/`. A Zenodo DOI minted from release tag `v1.1-natcomms-revision1` will be inserted at acceptance.
+The Data Availability statement in §3 also covers `outputs/revision/runs/` and `data/inputs/revision/`. The Figshare DOI [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) (CC-BY 4.0) is already minted and is referenced in the Data Availability and Code Availability statements; the GitHub release tag `v1.1-natcomms-revision1` is mirrored on Figshare. Private reviewer share URL: https://figshare.com/s/3d17327cef1ae99ed37c

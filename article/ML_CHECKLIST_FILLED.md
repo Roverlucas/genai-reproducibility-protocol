@@ -116,7 +116,7 @@ The Methods now define the **unit of analysis as a deployment stack** — the tu
 
 ### R-4. Updates to the ML Checklist sections
 
-- **Section 1 (Code and Data):** No change to checks; the same repository now also hosts the revision artefacts under `outputs/revision/`, `data/inputs/revision/`, `analysis/revision/`, and `src/tasks/`. Reviewer access is via the same private link until acceptance, after which the repository becomes public and a Zenodo DOI is minted from the tagged release `v1.1-natcomms-revision1`.
+- **Section 1 (Code and Data):** No change to checks; the same repository now also hosts the revision artefacts under `outputs/revision/`, `data/inputs/revision/`, `analysis/revision/`, and `src/tasks/`. Reviewer access is via the private Figshare share URL provided in the Cover Letter; the GitHub release tag `v1.1-natcomms-revision1` is mirrored on Figshare (DOI: [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373), CC-BY 4.0).
 - **Section 2A (Data sources):** Methods §Input data and Supplementary §S2/§S3 updated to list the additional datasets — HumanEval (MIT-licensed), GSM8K (MIT-licensed) and the 10 PubMed PM2.5 abstracts (drawn from the sister paper, Rover & Tadano, RSM under review).
 - **Section 2B (Train/test/validation):** Still N/A — this remains an inference-reproducibility study with no model training. HumanEval and GSM8K are used as evaluation prompts only, not as training data.
 - **Section 2C (Dataset bias):** Discussion §Limitations now includes an explicit cross-domain caveat — the revision tested coding (HumanEval), mathematical reasoning (GSM8K), and a small health-domain probe (T14). Cross-language generalisation and large-scale clinical applications remain out of scope.
@@ -135,4 +135,4 @@ Revision additions: 51 new tests covering HumanEval loader, GSM8K loader, pass@1
 
 - ⚠ **TBD — Pass@1 per stack (HumanEval):** awaits T1 batch completion (orchestrator `run_revision_full.sh`).
 - ⚠ **TBD — Final EMR per stack on T14:** PubMed PM2.5 still in flight at the time of writing this checklist; current runs in `outputs/revision/runs/`.
-- ⚠ **TBD — Zenodo DOI:** to be minted at acceptance and inserted into Section 1, the manuscript Data Availability and Code Availability statements, and the corresponding citation block.
+- ☑ **Figshare DOI:** [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) — already minted (CC-BY 4.0). Inserted into Section 1, the manuscript Data Availability and Code Availability statements, and the corresponding citation block. Private reviewer share URL: https://figshare.com/s/3d17327cef1ae99ed37c
