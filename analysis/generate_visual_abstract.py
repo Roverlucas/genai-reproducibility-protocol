@@ -249,10 +249,10 @@ def draw_visual_abstract():
                   fontsize=14, fontweight="bold", color=DARK_TEXT)
 
     stats = [
-        ("4,104",  "total runs"),
-        ("9",      "deployments"),
-        ("7",      "execution environments"),
-        ("4",      "tasks"),
+        ("7,004",  "total runs"),
+        ("9",      "deployment stacks"),
+        ("6",      "task families"),
+        ("3.1×",   "local-API gap"),
         ("<1%",    "overhead"),
     ]
 

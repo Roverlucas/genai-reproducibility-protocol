@@ -58,7 +58,7 @@
 %% Abstract (~150 words, unreferenced)
 %%=============================================================%%
 
-\abstract{Large language model APIs serve research in medicine, climate science, and engineering under settings documented as deterministic. We show this guarantee fails in practice. Across 7{,}004 experiments on nine \emph{deployment stacks} (weights, provider, infrastructure, API) and six task families (extraction, summarisation, multi-turn refinement, RAG, code, math), API-served stacks reproduce their own outputs as little as 1\% under temperature-zero greedy decoding with fixed seeds, while local stacks reach 92--100\%. The variation is invisible: outputs appear semantically equivalent (BERTScore F1~$>$~0.97) but diverge textually, yet two blinded LLM judges (Claude Opus 4.7, gpt-4o) classify the majority (73--90\%) as truly contradictory. The gap widens in high-stakes regimes (multi-turn, RAG, code, math). A quasi-isolation experiment with identical LLaMA~3~8B weights on two stacks implicates production infrastructure rather than cloud deployment. We release a W3C PROV-based provenance protocol ($<$1\% overhead) making this hidden variation auditable.}
+\abstract{Large language model APIs serve research in medicine, climate science, and engineering under settings documented as deterministic. We show this guarantee fails in practice. Across 7{,}004 experiments on nine \emph{deployment stacks} (weights, provider, infrastructure, API) and six task families (extraction, summarisation, multi-turn refinement, RAG, code, math), API-served stacks reproduce their own outputs as little as 1\% under temperature-zero greedy decoding with fixed seeds, while local-stack averages reach 93--98\%. The variation is invisible: outputs appear semantically equivalent (BERTScore F1~$>$~0.97) but diverge textually, yet two blinded LLM judges (Claude Opus 4.7, gpt-4o) classify the majority (73--90\%) as truly contradictory. The gap widens in high-stakes regimes (multi-turn, RAG, code, math). A quasi-isolation experiment with identical LLaMA~3~8B weights on two stacks implicates production infrastructure rather than cloud deployment. We release a W3C PROV-based provenance protocol ($<$1\% overhead) making this hidden variation auditable.}
 
 \keywords{Reproducibility, Large language models, Non-determinism, Provenance, API inference}
 
@@ -84,8 +84,8 @@ Yet despite this attention to training-time reproducibility, the reproducibility
 This gap matters because inference is the stage at which LLMs interact with research data and produce the outputs that enter scientific records, policy documents, and clinical workflows.
 Existing experiment-tracking tools such as MLflow\cite{zaharia2018accelerating} were designed for training pipelines and numerical metrics, not for inference-time text-generation provenance.
 
-We conducted 7{,}004 controlled experiments across nine deployment stacks, eight models, five independent API providers, and six task families: structured extraction, scientific summarisation, multi-turn refinement, retrieval-augmented generation, code generation (HumanEval), and mathematical reasoning (GSM8K). The original analysis contributed 4{,}104 of these and the major-revision additions contributed the remaining 2{,}900.
-We found that even under temperature~$=$~0 with fixed random seeds, API-served models reproduce their own outputs only 22.1\% of the time on the original two tasks. Locally deployed open-weight models achieve 95.6\% exact reproducibility on the same tasks---a ratio of approximately $4\times$ in point estimates (95\% bootstrap CI: 2.48--3.61$\times$), with the revision experiments confirming the gap extends to code, math, and out-of-AI/ML domains.
+We conducted 7{,}004 controlled experiments across nine deployment stacks, eight models (counting OpenAI's GPT-4 family---gpt-4-0613 from the original analysis plus the revision-batch gpt-4o-2024-11-20 snapshot---as a single model, and LLaMA~3 8B once despite being served on two stacks), five independent API providers, and six task families: structured extraction, scientific summarisation, multi-turn refinement, retrieval-augmented generation, code generation (HumanEval), and mathematical reasoning (GSM8K). The original analysis contributed 4{,}104 of these and the major-revision additions contributed the remaining 2{,}900.
+We found that even under temperature~$=$~0 with fixed random seeds, API-served models reproduce their own outputs only 22.1\% of the time on the original two tasks (averaged across GPT-4 and Claude Sonnet 4.5, the two API stacks with full Tasks~1--4 coverage). Locally deployed open-weight models achieve 95.6\% exact reproducibility on the same tasks---a ratio of approximately $4\times$ in point estimates ($3.1\times$ under the balanced 10-abstract subsample, 95\% bootstrap CI: 2.48--3.61$\times$; Extended Data Table~4), with the revision experiments confirming the gap extends to code, math, and out-of-AI/ML domains.
 This non-determinism is invisible to users: outputs are semantically equivalent (BERTScore F1~$>$~0.97) but textually different, meaning researchers cannot detect the variation by reading outputs.
 The phenomenon is not confined to single queries.
 As LLMs move into agentic pipelines that design experiments and generate hypotheses\cite{xin2025agentic}, this hidden variation compounds at every step.
@@ -123,14 +123,14 @@ API-served models tell a starkly different story.
 Under the same greedy decoding with fixed seeds, GPT-4 achieves EMR~$=$~0.443 [0.32,\,0.57] for extraction and 0.230 [0.16,\,0.30] for summarisation.
 Claude Sonnet~4.5 achieves 0.190 [0.05,\,0.40] and 0.020 [0.00,\,0.05], respectively; across 50 pairwise comparisons, effectively no two summarisation outputs were character-identical.
 Perplexity Sonar falls further to EMR~$=$~0.100 for extraction and 0.010 for summarisation.
-The overall local average EMR is 0.956 versus 0.221 for API models, meaning that fewer than one in four API output pairs are identical under conditions documented as deterministic.
+The overall local average EMR is 0.956 versus 0.221 for API models (averaged across GPT-4 and Claude Sonnet 4.5, the two API stacks with full Tasks~1--4 coverage; the four-stack average across all API entries in Table~1 is 0.319), meaning that fewer than one in four API output pairs are identical under conditions documented as deterministic.
 This gap survives Holm--Bonferroni correction across 68 hypothesis tests (51 significant at $\alpha$~$=$~0.05; Supplementary Section~S9) and is confirmed by large Cliff's delta effect sizes ($\delta$~$=$~0.784--0.896), paired $t$-test (Cohen's $d$~$>$~1.6), and a balanced 10-abstract subsample analysis that controls for sample-size differences between models (local EMR~$=$~0.953 vs.\ API EMR~$=$~0.304, 3.1$\times$ gap; Extended Data Table~4).
 A chat-format control experiment (200 runs) confirmed that the prompt format (completion versus chat API) does not contribute to the observed variation (Supplementary Section~S7).
 
 
 \subsection{Non-determinism varies substantially across providers}\label{subsec:providers}
 
-The five API providers span a wide reproducibility range, with an 80-fold difference between the most and least reproducible (Fig.~\ref{fig:heatmap}).
+The five API providers span a wide reproducibility range, with an 80-fold difference between the most and least reproducible (DeepSeek Chat extraction EMR~$=$~0.800 vs Perplexity Sonar extraction EMR~$=$~0.010; Fig.~\ref{fig:heatmap}).
 DeepSeek Chat achieves the highest API reproducibility (EMR~$=$~0.800 for extraction, 0.760 for summarisation), approaching local-model performance.
 GPT-4 occupies an intermediate position (EMR~$=$~0.443 for extraction, 0.230 for summarisation), with the extraction--summarisation gap suggesting that task output structure mediates reproducibility, as JSON-constrained outputs leave less room for lexical variation than free-text summaries.
 Claude Sonnet~4.5 (0.190/0.020) and Perplexity Sonar (0.100/0.010) occupy the low end, while Gemini~2.5 Pro (evaluated on multi-turn and RAG tasks only) achieves EMR~$=$~0.010--0.070.
@@ -196,7 +196,7 @@ API-DeepSeek drops to 0.370 [0.26,\,0.49] and API-GPT4 to 0.267 [0.17,\,0.37], w
 Because GSM8K answers reduce to a single integer at the end of a derivation, a single-digit edit anywhere along the chain---an intermediate rounding, a sign flip, a re-ordered subtraction---is sufficient to change the final answer, so the textual gap upper-bounds the numerical-reproducibility gap.
 
 Two cross-cutting patterns emerge.
-First, the local-to-API gap widens, not narrows, on tasks where reproducibility is most consequential: the smallest API EMR observed on HumanEval and GSM8K (0.393 and 0.063, respectively, both for the Claude stack) is the smallest single-task EMR reported anywhere in this manuscript.
+First, on tasks where reproducibility is most consequential the worst-case API stack becomes substantially less reproducible, not more: the smallest API EMR observed on HumanEval and GSM8K (0.393 and 0.063, respectively, both for the Claude stack) is the smallest single-task EMR reported anywhere in this manuscript. The aggregate Cliff's $\delta$ on HumanEval is $+0.266$ (small)---smaller than the $\delta$ on Tasks~1--2 (0.784--0.896, large)---because API-Gemini achieves perfect EMR (1.000) on this structured benchmark; the local--API gap is therefore driven by the worst-case API stacks rather than uniformly distributed across all API stacks, an observation that strengthens rather than weakens the deployment-stack framing.
 Second, the relative ordering of stacks remains stable from extraction and summarisation through code and math (L-Gemma2 $\geq$ C-LLaMA3 $\geq$ L-LLaMA3 $\geq$ L-Mistral $\gg$ API-DeepSeek $\geq$ API-GPT4 $\gg$ API-Claude), even though API-Gemini ranks at the top on the structured-output regimes of HumanEval and GSM8K and at the bottom on free-text multi-turn refinement.
 These results confirm that the deployment stack, not the task category, governs reproducibility: open-weight, single-GPU, integer-arithmetic execution environments deliver near-perfect bitwise reproducibility on code and math, while production-scale serving stacks remain stochastic even on tasks whose output spaces are narrowly constrained.
 
@@ -213,7 +213,7 @@ A researcher reading two outputs from the same prompt would judge them equivalen
 Yet this hidden variation has practical consequences that extend beyond surface-level differences.
 A field-level divergence analysis of GPT-4 structured extraction outputs reveals that 100\% of non-identical output pairs (24 of 30 abstract groups) differ in at least one conclusion-relevant field: objective, method, or key result (Extended Data Table~7).
 The \texttt{key\_result} field diverges in 67\% of groups, and \texttt{method} in 57\%, meaning the textual variation is not limited to formatting or filler words but affects the substantive content that researchers would use for downstream analysis (Box~1, shown after Fig.~\ref{fig:overview}).
-Per-field reproducibility metrics (Supplementary Section~S10b, ``Per-field reproducibility on structured extraction'') sharpen this picture: across the API stacks where outputs actually diverge, EMR drops by an average of 0.23 between conclusion-relevant fields ($\overline{\text{EMR}}=0.455$) and metadata fields ($\overline{\text{EMR}}=0.684$), corresponding to a paired Cohen's $d=+1.41$ (very large effect). BERTScore F1 is flat across the same comparison ($\overline{\text{conclusion}}=0.978$ vs $\overline{\text{metadata}}=0.979$, paired $d=-0.10$), confirming that aggregate semantic-similarity metrics are structurally unable to detect the substantive payload divergence concentrated in the fields that drive downstream conclusions. The most striking single-stack illustration is Gemini~2.5 Pro on RAG extraction, \texttt{key\_result} field: EMR~=~0.10 (the field changes content in 90\% of pairs) while BERTScore F1 remains 0.969 on the same pairs.
+Per-field reproducibility metrics (Supplementary Section~S13, ``Per-field reproducibility on structured extraction'') sharpen this picture: across the API stacks where outputs actually diverge, EMR drops by an average of 0.23 between conclusion-relevant fields ($\overline{\text{EMR}}=0.455$) and metadata fields ($\overline{\text{EMR}}=0.684$), corresponding to a paired Cohen's $d=+1.41$ (very large effect). BERTScore F1 is flat across the same comparison ($\overline{\text{conclusion}}=0.978$ vs $\overline{\text{metadata}}=0.979$, paired $d=-0.10$), confirming that aggregate semantic-similarity metrics are structurally unable to detect the substantive payload divergence concentrated in the fields that drive downstream conclusions. The most striking single-stack illustration is Gemini~2.5 Pro on RAG extraction, \texttt{key\_result} field: EMR~=~0.10 (the field changes content in 90\% of pairs) while BERTScore F1 remains 0.969 on the same pairs.
 For automated evidence synthesis pipelines, where outputs are parsed programmatically rather than read by humans, even minor lexical differences can propagate to different extracted values, different aggregated statistics, and ultimately different conclusions.
 
 The implications extend beyond individual studies.
@@ -363,8 +363,8 @@ Perplexity Sonar & API  & 10 & 0.100 & 0.010 \\
   \textbf{Centre:} EMR under greedy decoding for eight deployment stacks,
   illustrating the local--API reproducibility gap
   (local stacks green, EMR~$\geq$~0.840; API stacks red, EMR~$\leq$~0.800).
-  \textbf{Right:} Key statistics: 4{,}104 experiments, 9 deployment stacks, 7 execution environments,
-  4 tasks, $<$1\% protocol overhead.
+  \textbf{Right:} Key statistics: 7{,}004 experiments, 9 deployment stacks, 6 task families,
+  3.1$\times$ local--API gap (balanced subsample), $<$1\% protocol overhead.
   }\label{fig:overview}
 \end{figure*}
 
@@ -440,7 +440,7 @@ Although the semantic preservation we observe (BERTScore F1~$>$~0.97) suggests t
 
 The provenance protocol we provide offers a practical path forward.
 Grounded in W3C PROV\cite{w3cprov2013} and adding less than 1\% overhead (Extended Data Table~6), it creates auditable records linking every output to its generation context.
-Its key property is \emph{differential diagnosis}: when all hashes match except the output hash, the divergence is automatically attributed to the generation process, a result confirmed across all 4{,}104 runs (Supplementary Section~S4).
+Its key property is \emph{differential diagnosis}: when all hashes match except the output hash, the divergence is automatically attributed to the generation process, a result verified by the protocol-minimality ablation across 1{,}864 runs (Supplementary Section~S6) and consistent with the full 4{,}104-run analysis.
 This implements what recent editorials have advocated\cite{editorial2024framework} and extends Model Cards\cite{mitchell2019model} and Datasheets\cite{gebru2021datasheets} to the inference layer.
 We propose a minimum reporting standard (model identity, parameters, reproducibility metrics, deployment mode, and output hashes) that our protocol automates at negligible cost (Supplementary Information).
 
@@ -538,7 +538,7 @@ Weights hashes recorded via the Ollama API.
 \textbf{API-Perplexity} = (Sonar / Perplexity / production cluster + retrieval / Perplexity API).
 
 \textbf{Quasi-isolation probe stack}:
-\textbf{C-LLaMA3} = (LLaMA~3 8B INT4\cite{grattafiori2024llama3} / Together AI / multi-GPU cloud / OpenAI-compatible API), pairing with L-LLaMA3 to isolate cloud serving from production-infrastructure complexity.
+\textbf{C-LLaMA3} = (LLaMA~3 8B Q4\_0 (INT4)\cite{grattafiori2024llama3} / Together AI / multi-GPU cloud / OpenAI-compatible API), pairing with L-LLaMA3 to isolate cloud serving from production-infrastructure complexity. Both L-LLaMA3 and C-LLaMA3 use the same Q4\_0 INT4 quantisation of the LLaMA~3 8B weights; the only difference is the serving infrastructure.
 
 
 \subsection{Tasks}\label{subsec:tasks}
@@ -560,7 +560,7 @@ A separate cross-domain probe (\textbf{Task~T14}, 10 PubMed abstracts on PM\text
 
 Thirty widely cited AI/ML abstracts (including Transformer, BERT, GPT-3, T5, and Chain-of-Thought\cite{vaswani2017attention,devlin2019bert,brown2020language,raffel2020exploring,wei2022chain}), varying in length (74--227 words) and technical complexity, are used for Tasks~1--4.
 Revision tasks use established public benchmarks and a curated PubMed sample:
-HumanEval problem identifiers (30 stratified) for Task~5, GSM8K test-split identifiers (30 sampled) for Task~6, and 10 PubMed abstracts with DOIs for Task~T14 (full lists and DOIs in Supplementary Section~S2 and the new Section~S2-bis).
+HumanEval problem identifiers (30 stratified) for Task~5, GSM8K test-split identifiers (30 sampled) for Task~6, and 10 PubMed abstracts with DOIs for Task~T14 (full lists and DOIs in Supplementary Section~S2 (original 30 abstracts) and Section~S11 (revision-batch identifiers)).
 
 
 \subsection{Experimental conditions}\label{subsec:conditions}
@@ -605,7 +605,7 @@ Protocol overhead: logging time (ms), storage (KB), and overhead ratio (\%).
 
 All EMR values accompanied by 95\% bootstrap confidence intervals (10{,}000 resamples, percentile method, per-abstract EMR)\cite{efron1993introduction}.
 Primary comparisons: Wilcoxon signed-rank test (non-parametric) and paired $t$-test (parametric), with Holm--Bonferroni correction across 68 hypothesis tests.
-Effect sizes: Cohen's $d$ (parametric) and Cliff's delta\cite{romano2006appropriate} (non-parametric).
+Effect sizes: Cohen's $d$ for paired $t$-tests on EMR (parametric), Cliff's delta\cite{romano2006appropriate} for non-parametric rank-based comparisons, and Cohen's $h$ for Fisher's exact tests on perfect-reproducibility proportions (Supplementary Section~S9.5).
 Power analysis confirms $>$0.95 for all primary comparisons at the observed effect sizes ($d$~$>$~1.6)\cite{cohen1988statistical}.
 Balanced 10-abstract subsample analysis confirms robustness (local EMR~$=$~0.953 vs.\ API EMR~$=$~0.304, 3.1$\times$).
 
@@ -791,7 +791,7 @@ C-LLaMA3 (Together AI)    & 1.000 [1.00,\,1.00] & 1.000 [1.00,\,1.00] & ---     
 \end{tabular}%
 }
 \par\smallskip\raggedright\footnotesize
-$^{\ast}$Cliff's $\delta$ not computable for T3-ext: no local stacks were evaluated under the multi-turn extension batch (the original multi-turn results for local stacks live in Fig.~\ref{fig:multiturn}). Interpretation thresholds following Romano \emph{et~al.}\cite{romano2006appropriate}: $|\delta|{<}0.147$ negligible, $[0.147, 0.33)$ small, $[0.33, 0.474)$ medium, $\geq 0.474$ large.
+$^{\ast}$Cliff's $\delta$ not computed for T3-ext: this row reports only the revision-batch additions (gpt-4o and DeepSeek). For local-vs-API comparisons on multi-turn refinement, see Fig.~\ref{fig:multiturn} (Task~3 in the original analysis, with local stacks Gemma~2 9B, Mistral~7B, and LLaMA~3 8B). Interpretation thresholds following Romano \emph{et~al.}\cite{romano2006appropriate}: $|\delta|{<}0.147$ negligible, $[0.147, 0.33)$ small, $[0.33, 0.474)$ medium, $\geq 0.474$ large.
 \end{table*}
 
 \end{appendices}
@@ -816,7 +816,7 @@ Large language models in medicine.
 \bibitem{thakkar2026llm}
 Thakkar, N. \emph{et al.}
 A large-scale randomized study of large language model feedback in peer review.
-\emph{Nat. Mach. Intell.} \textbf{8}, online (2026).
+\emph{Nat. Mach. Intell.} \textbf{8} (2026). Advance online publication.
 
 \bibitem{xin2025agentic}
 Xin, H., Kitchin, J.~R. \& Kulik, H.~J.
