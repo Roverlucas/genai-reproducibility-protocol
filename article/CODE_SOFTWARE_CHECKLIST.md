@@ -214,9 +214,9 @@ Run-level reproducibility evidence is preserved per run in `outputs/runs/<run_id
 | Item | Status | Action |
 |------|--------|--------|
 | Figshare DOI | ☑ | [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) — already minted (CC-BY 4.0); private reviewer share URL: https://figshare.com/s/3d17327cef1ae99ed37c |
-| Final run count (4,104 + revision additions) | ⚠ TBD | Update Table 1 and §1 (CODE_SOFTWARE_CHECKLIST) once T1 HumanEval + T1 GSM8K complete |
-| Pass@1 results (HumanEval) | ⚠ TBD | Pending T1 execution completion |
-| Final tagged release `v1.1-natcomms-revision1` | ⚠ TBD | Created at the moment the revised manuscript is uploaded |
+| Final run count (4,104 original + 2,900 revision = 7,004) | ☑ | Reported in manuscript Table 1, Methods §Tasks, and Extended Data Table 8 |
+| Pass@1 results (HumanEval) | ☑ | Reported in Methods §"Coding and math reasoning" and Extended Data Table 8 |
+| Final tagged release `v1.1-natcomms-revision1` | ☑ | Created on GitHub at commit `d60ca2d` (origin/main); referenced in Data Availability and Code Availability statements |
 | Reviewer figshare link | ☑ Provided to editorial office; not in the public manuscript | https://figshare.com/s/3d17327cef1ae99ed37c (private; for reviewers only) |
 
 ---

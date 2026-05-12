@@ -133,6 +133,6 @@ Revision additions: 51 new tests covering HumanEval loader, GSM8K loader, pass@1
 
 ### R-6. Items still pending final number insertion
 
-- ⚠ **TBD — Pass@1 per stack (HumanEval):** awaits T1 batch completion (orchestrator `run_revision_full.sh`).
-- ⚠ **TBD — Final EMR per stack on T14:** PubMed PM2.5 still in flight at the time of writing this checklist; current runs in `outputs/revision/runs/`.
+- ☑ **Pass@1 per stack (HumanEval):** reported in manuscript Methods §"Coding and math reasoning" and Extended Data Table 8; per-problem outputs in `outputs/revision/runs/`.
+- ☑ **Final EMR per stack on T14 (PubMed PM2.5):** reported in manuscript §"Applied impact in evidence synthesis" and Extended Data Table 8 (Task T14 column); per-abstract runs in `outputs/revision/runs/`.
 - ☑ **Figshare DOI:** [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) — already minted (CC-BY 4.0). Inserted into Section 1, the manuscript Data Availability and Code Availability statements, and the corresponding citation block. Private reviewer share URL: https://figshare.com/s/3d17327cef1ae99ed37c

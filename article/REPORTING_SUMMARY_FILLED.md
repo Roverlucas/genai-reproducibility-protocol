@@ -147,7 +147,7 @@ The revised manuscript reports the original 4,104 runs **plus** new revision run
 | T4 multi-turn extension | 10 × 5 × 2 | 100 |
 | T14 PubMed PM2.5 | 10 × 5 × 8 | 400 |
 
-Final per-task and per-stack run counts are reported in the revised Table 1 and Supplementary Table S7 once the orchestrator completes (final numbers flagged ⚠ TBD in `STATUS.md`).
+Final per-task and per-stack run counts are reported in the revised Table 1, Extended Data Table 8, and Supplementary §S11. Total: 4,104 original + 2,900 revision = **7,004 logged generative-AI runs**.
 
 ### Number of replicates (revised)
 

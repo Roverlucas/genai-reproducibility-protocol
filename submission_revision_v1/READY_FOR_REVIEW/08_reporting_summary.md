@@ -2,8 +2,9 @@
 ## "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility"
 
 > Use this guide to fill in the official Nature PDF form (open in Adobe Acrobat Reader).
-> Corresponding author: Lucas Rover
-> Date: 11-03-2026
+> Corresponding author: Lucas Rover (ORCID: 0000-0001-6641-9224)
+> Coauthors: Hugo Valadares Siqueira (0000-0002-1278-4602); Eduardo Tadeu Bacalhau (0000-0002-3936-0375); Anibal Tavares de Azevedo (0000-0003-1678-7795); Yara de Souza Tadano (0000-0002-3975-3419)
+> Date: 11-05-2026
 
 ---
 
@@ -55,12 +56,13 @@ https://github.com/Roverlucas/genai-reproducibility-protocol
 ### Data availability statement
 ```
 All 4,104 experimental records, provenance metadata (Run Cards in JSON
-format), PROV-JSON provenance graphs, and input abstracts are available
-to reviewers during peer review via the project repository at
-https://github.com/Roverlucas/genai-reproducibility-protocol. Upon
-publication, an archived snapshot with a persistent DOI will be deposited
-in Zenodo under a CC-BY 4.0 licence. Source data for all figures and
-tables are included in the repository. No restrictions on data
+format), PROV-JSON provenance graphs, and input abstracts are deposited
+on Figshare with persistent DOI 10.6084/m9.figshare.31653373 (CC-BY 4.0).
+The Figshare deposit mirrors the project GitHub repository at
+https://github.com/Roverlucas/genai-reproducibility-protocol (release
+tag v1.1-natcomms-revision1). Reviewer access during peer review is via
+the private Figshare share URL provided in the Cover Letter. Source data
+for all figures and tables are included. No restrictions on data
 availability apply.
 ```
 
@@ -145,7 +147,7 @@ The revised manuscript reports the original 4,104 runs **plus** new revision run
 | T4 multi-turn extension | 10 × 5 × 2 | 100 |
 | T14 PubMed PM2.5 | 10 × 5 × 8 | 400 |
 
-Final per-task and per-stack run counts are reported in the revised Table 1 and Supplementary Table S7 once the orchestrator completes (final numbers flagged ⚠ TBD in `STATUS.md`).
+Final per-task and per-stack run counts are reported in the revised Table 1, Extended Data Table 8, and Supplementary §S11. Total: 4,104 original + 2,900 revision = **7,004 logged generative-AI runs**.
 
 ### Number of replicates (revised)
 
@@ -170,4 +172,4 @@ The Software and code blocks in §2 are extended to include the following revisi
 
 ### Data availability (revised)
 
-The Data Availability statement in §3 also covers `outputs/revision/runs/` and `data/inputs/revision/`. A Zenodo DOI minted from release tag `v1.1-natcomms-revision1` will be inserted at acceptance.
+The Data Availability statement in §3 also covers `outputs/revision/runs/` and `data/inputs/revision/`. The Figshare DOI [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) (CC-BY 4.0) is already minted and is referenced in the Data Availability and Code Availability statements; the GitHub release tag `v1.1-natcomms-revision1` is mirrored on Figshare. Private reviewer share URL: https://figshare.com/s/3d17327cef1ae99ed37c

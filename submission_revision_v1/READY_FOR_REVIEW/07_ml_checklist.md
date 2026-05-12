@@ -2,8 +2,9 @@
 ## "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility"
 
 > Use this guide to fill in the official Nature PDF form.
-> Corresponding author: Lucas Rover
-> Date: 11-03-2026
+> Corresponding author: Lucas Rover (ORCID: 0000-0001-6641-9224)
+> Coauthors: Hugo Valadares Siqueira (0000-0002-1278-4602); Eduardo Tadeu Bacalhau (0000-0002-3936-0375); Anibal Tavares de Azevedo (0000-0003-1678-7795); Yara de Souza Tadano (0000-0002-3975-3419)
+> Date: 11-05-2026
 
 ---
 
@@ -115,7 +116,7 @@ The Methods now define the **unit of analysis as a deployment stack** — the tu
 
 ### R-4. Updates to the ML Checklist sections
 
-- **Section 1 (Code and Data):** No change to checks; the same repository now also hosts the revision artefacts under `outputs/revision/`, `data/inputs/revision/`, `analysis/revision/`, and `src/tasks/`. Reviewer access is via the same private link until acceptance, after which the repository becomes public and a Zenodo DOI is minted from the tagged release `v1.1-natcomms-revision1`.
+- **Section 1 (Code and Data):** No change to checks; the same repository now also hosts the revision artefacts under `outputs/revision/`, `data/inputs/revision/`, `analysis/revision/`, and `src/tasks/`. Reviewer access is via the private Figshare share URL provided in the Cover Letter; the GitHub release tag `v1.1-natcomms-revision1` is mirrored on Figshare (DOI: [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373), CC-BY 4.0).
 - **Section 2A (Data sources):** Methods §Input data and Supplementary §S2/§S3 updated to list the additional datasets — HumanEval (MIT-licensed), GSM8K (MIT-licensed) and the 10 PubMed PM2.5 abstracts (drawn from the sister paper, Rover & Tadano, RSM under review).
 - **Section 2B (Train/test/validation):** Still N/A — this remains an inference-reproducibility study with no model training. HumanEval and GSM8K are used as evaluation prompts only, not as training data.
 - **Section 2C (Dataset bias):** Discussion §Limitations now includes an explicit cross-domain caveat — the revision tested coding (HumanEval), mathematical reasoning (GSM8K), and a small health-domain probe (T14). Cross-language generalisation and large-scale clinical applications remain out of scope.
@@ -132,6 +133,6 @@ Revision additions: 51 new tests covering HumanEval loader, GSM8K loader, pass@1
 
 ### R-6. Items still pending final number insertion
 
-- ⚠ **TBD — Pass@1 per stack (HumanEval):** awaits T1 batch completion (orchestrator `run_revision_full.sh`).
-- ⚠ **TBD — Final EMR per stack on T14:** PubMed PM2.5 still in flight at the time of writing this checklist; current runs in `outputs/revision/runs/`.
-- ⚠ **TBD — Zenodo DOI:** to be minted at acceptance and inserted into Section 1, the manuscript Data Availability and Code Availability statements, and the corresponding citation block.
+- ☑ **Pass@1 per stack (HumanEval):** reported in manuscript Methods §"Coding and math reasoning" and Extended Data Table 8; per-problem outputs in `outputs/revision/runs/`.
+- ☑ **Final EMR per stack on T14 (PubMed PM2.5):** reported in manuscript §"Applied impact in evidence synthesis" and Extended Data Table 8 (Task T14 column); per-abstract runs in `outputs/revision/runs/`.
+- ☑ **Figshare DOI:** [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) — already minted (CC-BY 4.0). Inserted into Section 1, the manuscript Data Availability and Code Availability statements, and the corresponding citation block. Private reviewer share URL: https://figshare.com/s/3d17327cef1ae99ed37c

@@ -307,7 +307,8 @@ Margin:                                                $41.62 USD ✅
 - [x] ORCIDs populated in manuscript title page, cover letter, and all checklists (LR 0000-0001-6641-9224; HVS 0000-0002-1278-4602; ETB 0000-0002-3936-0375; ATA 0000-0003-1678-7795; YST 0000-0002-3975-3419)
 - [ ] **All 5 coauthors signed off** (HUMAN — Lucas + HVS + ETB + ATA + YST)
 - [ ] **ORCID linked on MTS account** (HUMAN — at MTS upload, just attach the IDs already in manuscript)
-- [ ] **Zenodo release tag v1.1-natcomms-revision1 created** (HUMAN — at upload time)
+- [x] **GitHub tag `v1.1-natcomms-revision1` created** (annotated tag at commit `d60ca2d` on `origin/main`)
+- [x] **Figshare deposit live** (DOI 10.6084/m9.figshare.31653373; private reviewer URL in cover letter)
 - [ ] **Cover letter date filled in** (HUMAN — at upload time)
 
 ---
