@@ -6,40 +6,50 @@ Lucas Rover, Hugo Valadares Siqueira, Eduardo Tadeu Bacalhau, Anibal Tavares de 
 
 UTFPR --- Universidade Tecnológica Federal do Paraná
 
-**Status:** Submitted to *Nature Communications* (March 2026) | Major Revision (May 2026) | Revision package ready for resubmission
+**Status:** Submitted to *Nature Communications* (March 2026) | Major Revision (May 2026) | **Revision package finalised 2026-05-13** — awaiting coauthor sign-off and MTS upload
+
+[![Figshare DOI](https://img.shields.io/badge/Figshare-10.6084%2Fm9.figshare.31653373-blue)](https://doi.org/10.6084/m9.figshare.31653373)
+[![OSF (companion)](https://img.shields.io/badge/OSF%20(companion)-10.17605%2FOSF.IO%2FVR934-blue)](https://doi.org/10.17605/OSF.IO/VR934)
+[![Release tag](https://img.shields.io/badge/Tag-v1.1--natcomms--revision1-green)](https://github.com/Roverlucas/genai-reproducibility-protocol/tree/v1.1-natcomms-revision1)
+[![License: code](https://img.shields.io/badge/Code-MIT-yellow)](LICENSE)
+[![License: data](https://img.shields.io/badge/Data-CC--BY--4.0-orange)](LICENSE)
 
 ## Overview
 
 This repository contains the reference implementation, experimental data, analysis scripts, and manuscript for a study demonstrating that API-served large language models fail to reproduce their own outputs under documented "deterministic" settings. We provide a lightweight provenance protocol grounded in W3C PROV that makes this invisible variation visible, auditable, and attributable.
 
-**Headline finding (original + revision):** Across 7,004 controlled experiments on nine *deployment stacks* — tuples of (weights, provider, infrastructure, API) — and six task families (extraction, summarisation, multi-turn refinement, RAG, code generation, math reasoning), API-served stacks reproduce their own outputs as little as 1% of the time under temperature-zero greedy decoding with fixed seeds, while local stacks reach 92–100%.
+**Headline finding (original + revision):** Across 7,004 controlled experiments on nine *deployment stacks* — tuples of (weights, provider, infrastructure, API) — and six task families (extraction, summarisation, multi-turn refinement, RAG, code generation, math reasoning), API-served stacks reproduce their own outputs as little as 1% of the time under temperature-zero greedy decoding with fixed seeds, while local-stack averages reach 93–98%.
+
+**Companion paper (OSF preregistration 2026-05-12):** Rover, L. & de Souza Tadano, Y. *Reproducibility of Pollution–Health Evidence Synthesis using LLM-Assisted Screening and Extraction.* OSF (2026). https://doi.org/10.17605/OSF.IO/VR934. Quantifies the empirical impact of the phenomenon documented in this paper on a 500-abstract evidence base in environmental health (23 study-level effect estimates appear/disappear depending on which run is used). Available for parallel editorial consideration at *Nature Communications*.
 
 ## Repository Structure
 
 ```
 ├── article/                          # Manuscript and submission materials
-│   ├── ncomms_main.tex               # Main manuscript (Nature Communications, revised)
+│   ├── ncomms_main.tex               # Revised manuscript (Nature Communications, 28p)
 │   ├── ncomms_main.pdf
-│   ├── ncomms_cover_letter.tex       # Original cover letter (March 2026 submission)
-│   ├── supplementary_nature_mi.tex   # Supplementary (S1-S12, incl. revision additions)
+│   ├── supplementary_nature_mi.tex   # Supplementary Information (S1–S13, 23p)
 │   ├── supplementary_nature_mi.pdf
 │   ├── CODE_SOFTWARE_CHECKLIST.md    # Nature Code/Software submission checklist
 │   ├── ML_CHECKLIST_FILLED.md        # Machine Learning checklist
 │   ├── REPORTING_SUMMARY_FILLED.md   # Reporting Summary
-│   ├── references.bib                # Bibliography
-│   ├── sn-jnl.cls                    # Springer Nature template
-│   ├── figures/                      # Publication figures (PDF, 600 DPI)
-│   └── (Portuguese versions also present)
+│   ├── references.bib                # Bibliography (56 entries, 0 orphan)
+│   ├── sn-jnl.cls + sn-nature.bst    # Springer Nature template
+│   └── figures/                      # 6 publication figures (PDF, 600 DPI)
 ├── response_letter/                  # Major revision response materials
-│   ├── 01_point_by_point_response.tex   # Verbatim quotes + responses for 15 R1 + 6 R3 items
-│   ├── 01_point_by_point_response.pdf   # (15 pages)
-│   ├── 02_changes_log.md             # Granular change log per reviewer point
-│   ├── 03_revised_cover_letter.tex   # Cover letter for resubmission
-│   └── 03_revised_cover_letter.pdf
+│   ├── 01_point_by_point_response.tex   # 22 verbatim revquote blocks (R1.1–R1.15, R3.1–R3.6)
+│   ├── 01_point_by_point_response.pdf   # 15 pages
+│   ├── 03_revised_cover_letter.tex   # Cover letter for resubmission (May, 2026)
+│   └── 03_revised_cover_letter.pdf   # 3 pages
 ├── submission_revision_v1/           # Complete resubmission package
-│   ├── ncomms_main_tracked.tex       # latexdiff (track changes)
-│   ├── ncomms_main_tracked.pdf
-│   └── READY_FOR_REVIEW/             # 10 final documents for coauthor review
+│   ├── ncomms_main_tracked.tex       # latexdiff (track changes vs T5-snapshot)
+│   ├── ncomms_main_tracked.pdf       # 30 pages with diff highlights
+│   └── READY_FOR_REVIEW/             # 10 final documents (5 PDFs + 5 md notes)
+├── overleaf_upload/                  # Submission ZIPs (rebuilt 2026-05-12)
+│   ├── manuscript.zip                # Overleaf-ready (.tex + figures + bib + cls)
+│   ├── response_letter.zip
+│   ├── overleaf_complete.zip         # Both above combined
+│   └── submission_mts.zip            # Final PDFs for Editorial Manager upload
 ├── src/                              # Reference implementation
 │   ├── protocol/                     # Core protocol (logger, hasher, run/prompt cards, PROV)
 │   ├── models/                       # Model runners (llama, gpt4, claude, gemini)
@@ -80,15 +90,15 @@ This repository contains the reference implementation, experimental data, analys
 │   └── revision/                     # NEW: revision-batch analyses
 ├── tests/                            # 102 tests (51 original + 51 revision)
 ├── run_experiments.py                # Original experiment runner
-├── run_revision_experiments.py       # NEW: unified revision pipeline
-├── run_revision_full.sh              # NEW: resumable orchestrator
-├── run_t3_validation.py              # NEW: T3 LLM-judge runner
-├── continue_after_caminho_a.sh       # NEW: autonomous continuation
-├── analyze_revision_results.py       # NEW: post-hoc analysis
-├── REVISION_PLAN.md                  # NEW: revision strategy plan
-├── STATUS.md                         # NEW: current state checkpoint
+├── run_revision_experiments.py       # Unified revision pipeline
+├── run_revision_full.sh              # Resumable orchestrator (~$25 budget guard)
+├── run_t3_validation.py              # T3 LLM-judge runner (Claude Opus)
+├── run_t3_extended.py                # T3 extended LLM-judge runner (gpt-4o)
+├── analyze_revision_results.py       # Post-hoc revision analysis
+├── REVISION_PLAN.md                  # Revision strategy (archival, 2026-05-08)
+├── STATUS.md                         # Current state checkpoint
 ├── requirements.txt
-└── LICENSE                           # CC-BY 4.0 (data) + MIT (code)
+└── LICENSE                           # MIT (code) + CC-BY 4.0 (data via Figshare)
 ```
 
 ## Key Results
