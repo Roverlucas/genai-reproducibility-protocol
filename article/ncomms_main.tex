@@ -166,16 +166,18 @@ Table~\ref{tab:mech_summary} summarises the mechanism-by-stack mapping at-a-glan
 \begin{table}[h]
 \caption{\textbf{At-a-glance mechanism activation by deployment-stack class.} Reads alongside the cloud-vs-infrastructure inference argument: Together AI strips the production-serving cluster while retaining cloud-network and FP arithmetic factors, isolating production-serving complexity as the residual driver of variation in closed APIs. ``mitigated'' = single-GPU integer-arithmetic execution or quasi-isolation by design; ``active'' = documented or strongly likely from public information. See Methods Table~\ref{tab:mechanisms} for the per-mechanism, per-stack breakdown.}\label{tab:mech_summary}
 \footnotesize
-\begin{tabular}{@{}p{4.2cm}ccc@{}}
+\setlength{\tabcolsep}{4pt}
+\noindent\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}p{3.6cm}p{2.9cm}p{2.9cm}p{3.6cm}@{}}
 \toprule
-\textbf{Stack class} & \textbf{FP/quant arithmetic} & \textbf{Cloud-network factors} & \textbf{Production-serving complexity} \\
- & (FP non-associativity, BF16/FP16) & (latency, multi-tenancy, routing) & (tensor par., FlashAttn., dyn.\ batching, spec.\ decoding) \\
+\textbf{Stack class} & \textbf{FP/quant arithmetic}\newline {\scriptsize (FP non-assoc., BF16/FP16)} & \textbf{Cloud-network factors}\newline {\scriptsize (latency, multi-tenancy, routing)} & \textbf{Production-serving complexity}\newline {\scriptsize (tensor par., FlashAttn., dyn.\ batching, spec.\ decoding)} \\
 \midrule
 Local (Ollama, single-GPU)        & mitigated (Q4 int) & ---            & ---                 \\
 Together AI (cloud quasi-iso)     & active             & active         & mitigated by design \\
 Closed APIs (GPT-4 / Claude / Gemini / DeepSeek / Perplexity) & likely active & active & likely active \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 
