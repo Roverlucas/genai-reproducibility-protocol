@@ -603,6 +603,8 @@ The following 15-item checklist is designed for self-assessment of reproducibili
 \section{Statistical Test Results}
 \label{sec:s9}
 
+\textit{\textbf{Section at a glance.} Of 68 pre-registered pairwise tests (Fisher's exact, Mann--Whitney $U$, Brunner--Munzel, plus paired follow-ups), \textbf{51 remain significant after Holm--Bonferroni control at $\alpha=0.05$}. Cliff's $\delta$ effect sizes for the local--API contrasts fall in the range \textbf{0.784--0.896 (large to very large, Romano--Vargha--Delaney bands)}, indicating that the EMR gap is not a borderline effect but a categorical separation between the two stack classes. The remainder of this section reports the procedure, the per-comparison results, and the effect-size table that supports this summary.}}
+
 \subsection{Methodology}
 
 We applied the Holm--Bonferroni sequential rejection procedure to control the family-wise error rate at $\alpha = 0.05$ across all pairwise comparisons. The test battery comprised 68 individual tests:
@@ -765,6 +767,8 @@ Excludes 200 chat-format control runs (see Section~\ref{sec:s7}). Including cont
 %%=============================================================%%
 \section{Revision-Batch Tasks and Experimental Coverage}\label{sec:s11}
 
+\textit{\textbf{Section at a glance.} The major revision adds \textbf{2{,}900 new controlled experiments} (alongside the original 4{,}104, total 7{,}004) covering three new task families---\textbf{HumanEval (code), GSM8K (math), and a cross-domain PubMed PM\textsubscript{2.5} extraction probe}---plus a multi-turn extension to gpt-4o and DeepSeek. The headline finding is that the local--API reproducibility gap \textbf{persists and widens precisely on high-stakes tasks where small textual differences alter functionality or numerical correctness}: Claude Sonnet~4.5 reaches EMR~$=$~0.063 [0.03, 0.10] on GSM8K math reasoning and 0.010 [0.00, 0.03] on PubMed PM\textsubscript{2.5} extraction, while local stacks maintain EMR~$\geq$~0.92 in every revision task. The pattern is \emph{domain-transferable}, not corpus-specific.}
+
 This section documents the new experiments added during the major revision, addressing the editor's request and Reviewers 1 and 3.
 
 \subsection{Task families added in revision}
@@ -816,6 +820,8 @@ The OpenAI stack in the revision batch resolves to \texttt{gpt-4o-2024-11-20} (m
 %% S12 — LLM-as-judge protocol for PM2.5 triangulation (R3.6)
 %%=============================================================%%
 \section{LLM-as-Judge Triangulation Protocol}\label{sec:s12}
+
+\textit{\textbf{Section at a glance.} A blinded \textbf{two-judge LLM-as-judge protocol} (Claude Opus~4.7 from Anthropic and gpt-4o from OpenAI---two distinct training families) classified \textbf{30 newly sampled disagreement cases} against three pre-registered criteria (direction, magnitude $\pm$20\,\%, CI overlap). \textbf{Both judges classify the majority as truly contradictory}: Claude 22/30 (Wilson 95\,\% CI 56--86\,\%); gpt-4o 27/30 (74--97\,\%). Inter-judge \textbf{Cohen's $\kappa = 0.29$ (fair agreement, Landis--Koch)}. Both judges' lower bounds exclude a pure-cosmetic interpretation under BERTScore~F1~$>$~0.97 on the same outputs, and the convergence of two independent provider families addresses the residual ``LLM-on-LLM'' concern more directly than a single-judge design would. \textbf{The in-paper protocol is self-sufficient to support the truly-contradictory claim}; the companion paper is cited only as larger-corpus context.}
 
 This section documents the in-paper triangulation of the applied PM\textsubscript{2.5} divergence claim. The validation is layered with the companion paper (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}) to preserve that paper's contributions while providing self-contained evidence within the present manuscript.
 
@@ -882,6 +888,8 @@ A dedicated methodological extension applying multi-rater human validation again
 %% S10b — Per-field reproducibility analysis (R1.5)
 %%=============================================================%%
 \section{Per-field reproducibility on structured extraction}\label{sec:s10b}
+
+\textit{\textbf{Section at a glance.} Computing every reproducibility metric \emph{per JSON output field} reveals an unexpected stronger argument: \textbf{paired Cohen's $d = +1.41$ EMR gap} between conclusion-relevant fields ($\overline{\text{EMR}} = 0.455$) and metadata fields ($\overline{\text{EMR}} = 0.684$)---a very large effect. \textbf{BERTScore~F1 is structurally saturated} across both groups (0.978 vs 0.979, paired $d = -0.10$, effectively null). The most striking single-stack case is Gemini~2.5~Pro RAG on \texttt{key\_result}: EMR~$=$~0.10 (the field changes 90\,\% of the time) while BERTScore~F1 remains 0.969. \textbf{BERTScore alone is structurally unable to discriminate substantive payload divergence from cosmetic textual variation} on extracted-JSON fields of moderate length; the three-level reproducibility framework (bitwise $\to$ structural $\to$ semantic) we propose is necessary.}
 
 This section quantifies how the local--API reproducibility gap distributes across the five fields returned by the structured-extraction task (Task~2): \emph{objective}, \emph{method}, and \emph{key\_result} (conclusion-relevant payload) versus \emph{model\_or\_system} and \emph{benchmark} (metadata identifiers). It addresses Reviewer~1's request (R1.5) to resolve the apparent tension between high aggregate BERTScore and the assertion that divergences affect substantive content.
 

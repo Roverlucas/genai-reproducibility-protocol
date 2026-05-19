@@ -77,6 +77,36 @@ Yours sincerely,
 on behalf of all authors \\
 \href{mailto:lucasrover@alunos.utfpr.edu.br}{lucasrover@alunos.utfpr.edu.br}
 
+\bigskip
+\hrule
+\bigskip
+
+\section*{Navigation index: reviewer points by topic}
+
+\noindent For editorial convenience, the table below maps each reviewer point to its thematic cluster. Points sharing a row are addressed in cross-referenced responses.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{6.5cm}p{8.5cm}}
+\hline
+\textbf{Thematic cluster} & \textbf{Reviewer points} \\
+\hline
+Deployment-stack reframe (unit of analysis) & R1.1, R3.2 \\
+Expansion to coding, math, out-of-AI/ML domains & R1.8, R3.1, R3.4 \\
+Field-level reproducibility: textual vs.\ substantive divergence & R1.5, R1.6 \\
+Applied PM\textsubscript{2.5} evidence-synthesis impact and validation & R1.9, R3.6 \\
+Multi-turn extension to gpt-4o and DeepSeek & R3.3 \\
+Mechanism mapping per deployment stack & R3.5 \\
+Cloud deployment vs.\ production-serving infrastructure & R1.4 \\
+Protocol scope (client-side observability) & R1.10 \\
+Concrete divergence examples (Box~1) & R1.12 \\
+Provider-specific clarifications (parameters, Perplexity, seeds, captions, docs) & R1.2, R1.3, R1.7, R1.11, R1.13, R1.14, R1.15 \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent Co-reviewer R2 (Early Career Researcher training) provided no independent comments.
+
 \newpage
 %==============================================================
 \section*{Response to Reviewer 1}
@@ -229,7 +259,14 @@ The local-to-API gap is therefore not a summarisation-task artefact. It widens p
 The applied experiment (line 270--277) is crucial for the paper's central claim, in particular the argument about the downstream effect textual non determinism has on automated processing and ultimately affect scientific work that depends on these methods. Could the authors clarify why this part is not given greater emphasis within the overall study given its importance for demonstrating downstream impact?
 \end{revquote}
 
-\response{We agree the applied PM\textsubscript{2.5}/respiratory health analysis warrants prominent placement and we have promoted it to a dedicated Results subsection, ``Applied impact in evidence synthesis: an out-of-AI/ML probe'' (manuscript lines 246--264). The section reports the 10-abstract PubMed PM\textsubscript{2.5} extraction probe (Claude EMR~=~0.010, mirroring the 0.020 observed on AI/ML summarisation, see R3.4) and the in-paper two-judge LLM-judge triangulation of 30 newly sampled cases (see R3.6, verdicts Claude 22/3/5; gpt-4o 27/3/0). To avoid duplicate publication with our companion paper (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}), the present manuscript reports only aggregate statistics, the propagation finding (up to 23 study-level effect estimates appear or disappear depending solely on which LLM run is used), and the triangulation outcome, with full per-abstract data and analysis pipeline residing in the companion paper, which is cited.} \done
+\response{We agree the applied PM\textsubscript{2.5}/respiratory health analysis warrants prominent placement and we have promoted it to a dedicated Results subsection, ``Applied impact in evidence synthesis: an out-of-AI/ML probe'' (manuscript lines 246--264). The new subsection is substantively supported by \emph{two layers of self-contained in-paper evidence}:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Direct out-of-AI/ML reproducibility probe.} 10 PubMed PM\textsubscript{2.5} abstracts under our standard C1 single-turn extraction protocol, 5 reps $\times$ 8 stacks. Claude Sonnet~4.5 EMR~=~0.010 [0.00, 0.03], mirroring the 0.020 EMR observed on the original AI/ML summarisation task (see R3.4 for the full per-stack table).
+  \item \textbf{Independent two-judge LLM-as-judge triangulation on 30 newly sampled cases.} A blinded protocol with Claude Opus~4.7 (Anthropic) and gpt-4o (OpenAI) against three pre-registered criteria. Verdicts: Claude 22/30 \emph{truly contradictory} (Wilson 95\,\% CI 56--86\%), gpt-4o 27/30 (74--97\%); inter-judge $\kappa$~=~0.29 (see R3.6 for full protocol and per-case verdicts). Both judges' lower bounds exclude a pure-cosmetic interpretation under BERTScore~F1~$>$~0.97 on the same outputs.
+\end{itemize}
+
+These two in-paper layers are self-sufficient to support the propagation claim. For larger-corpus context only, our companion paper (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}) reports a 500-abstract analysis at the same site, in which up to 23 study-level effect estimates appear or disappear depending solely on which LLM run is used. We reference this aggregate figure in the manuscript as additional larger-corpus evidence but the substantive argument is carried by the two in-paper layers above; the companion paper's detailed per-abstract data, silver-standard validation, and meta-analytic per-run analyses are not reproduced here, both to avoid duplicate publication and because they are not load-bearing for the present manuscript's argument.} \done
 
 \changes{New Results subsection ``Applied impact in evidence synthesis: an out-of-AI/ML probe'' (manuscript lines 246--264); new Extended Data Table~8 (label \texttt{tab:revision\_emr}) reporting per-stack EMR on the 10-abstract probe; in-paper LLM-judge triangulation verdicts (5/3/2) reported in-line. Companion paper cited but its detailed pairwise, silver-standard, and meta-analytic tables are not reproduced here.}
 
@@ -403,15 +440,15 @@ While the paper lists six potential mechanisms for non-determinism, the manuscri
 The use of specific model snapshots (e.g., gpt-4-0613) means the exact EMR values may be ``point-in-time'' estimates that change as providers update their underlying infrastructure. Since the authors found high BERTScore F1 $>0.97$ despite low EMR, they should include a human evaluation or LLM-as-a-judge step to confirm if the 23 ``disappearing'' effect estimates in the PM\textsubscript{2.5} study are truly contradictory or just semantically varied.
 \end{revquote}
 
-\response{We thank the Reviewer for this important request and provide validation through a complementary triangulation strategy that preserves the integrity of our companion paper (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}):
+\response{We thank the Reviewer for this important request and provide validation through a multi-layered protocol in which the in-paper triangulation is the primary, self-contained evidence:
 
 \begin{itemize}[leftmargin=*]
-  \item \textbf{Companion-paper validation (cited, not duplicated).} The 500-abstract analysis underlying the 23-effect finding is presented in detail in our companion paper (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}), which independently performs systematic pairwise reproducibility analysis, silver-standard validation against an independent reasoning model (DeepSeek-R1), and meta-analytic propagation across 6 LLMs $\times$ 10 runs. To preserve that paper's contributions and avoid duplicate publication, the present manuscript does not reproduce its detailed tables; it cites them and reports only the aggregate propagation finding (23 study-level effect estimates).
-  \item \textbf{Independent in-paper triangulation with two judges.} For a self-contained validation within the present manuscript, we ran a blinded two-judge LLM-as-judge protocol on a \emph{new} sample of \emph{30} cases drawn from the same corpus but \emph{distinct} from the 23 effects analysed in the companion paper. The two judges---Claude Opus~4.7 and gpt-4o---scored each pair independently against three pre-registered criteria: (a)~same direction of the reported effect (positive/null/negative); (b)~same magnitude within $\pm 20\%$; (c)~same 95\,\% confidence interval coverage. \textbf{Verdict counts}: Claude Opus 4.7 returned 22 \emph{truly contradictory} (Wilson 95\% CI 56--86\%), 3 \emph{semantically equivalent}, and 5 \emph{ambiguous}. gpt-4o returned 27 \emph{truly contradictory} (74--97\%), 3 \emph{semantically equivalent}, and 0 \emph{ambiguous}. \textbf{Inter-judge agreement: 76.7\,\% with Cohen's $\kappa$~=~0.29 (fair agreement, Landis--Koch).} Both judges classify the majority as substantive contradiction; the disagreement is concentrated in the ``ambiguous'' category where Claude is more conservative than gpt-4o. The lower bound on the truly-contradictory proportion (56\% Claude; 74\% gpt-4o) excludes a pure-cosmetic interpretation under BERTScore~F1~$>$~0.97. Total cost: USD~1.30 (Claude Opus on Anthropic + gpt-4o on OpenAI).
-  \item \textbf{Point-in-time caveat addressed.} We also acknowledge that exact EMR values can drift as providers update infrastructure, and we note this in the revised Limitations. The gpt-4o snapshot used here (gpt-4o-2024-11-20 served via OpenAI Chat Completions) confirms the qualitative pattern persists at a current snapshot: gpt-4o single-turn extraction EMR = 0.42 on PubMed, 0.84 on HumanEval, 0.27 on GSM8K --- all dramatically below the corresponding local-stack performance.
+  \item \textbf{Primary in-paper validation: independent two-judge LLM-as-judge on 30 new cases.} For a self-contained validation within the present manuscript, we ran a blinded two-judge LLM-as-judge protocol on a \emph{new} sample of \emph{30} cases drawn from the same corpus but \emph{distinct} from the 23 effects analysed in the companion paper. The two judges---Claude Opus~4.7 (Anthropic) and gpt-4o (OpenAI), two distinct training families---scored each pair independently against three pre-registered criteria: (a)~same direction of the reported effect (positive/null/negative); (b)~same magnitude within $\pm 20\%$; (c)~same 95\,\% confidence interval coverage. \textbf{Verdict counts}: Claude Opus 4.7 returned 22 \emph{truly contradictory} (Wilson 95\% CI 56--86\%), 3 \emph{semantically equivalent}, and 5 \emph{ambiguous}. gpt-4o returned 27 \emph{truly contradictory} (74--97\%), 3 \emph{semantically equivalent}, and 0 \emph{ambiguous}. \textbf{Inter-judge agreement: 76.7\,\% with Cohen's $\kappa$~=~0.29 (fair agreement, Landis--Koch).} Both judges classify the majority as substantive contradiction; the disagreement is concentrated in the ``ambiguous'' category where Claude is more conservative than gpt-4o. The lower bound on the truly-contradictory proportion (56\% Claude; 74\% gpt-4o) excludes a pure-cosmetic interpretation under BERTScore~F1~$>$~0.97 on the same outputs. The convergence of two independent provider families addresses the ``LLM-on-LLM'' bias concern more directly than a single-judge design would. Total cost: USD~1.30. \textbf{This in-paper protocol is self-sufficient to support the truly-contradictory claim and directly satisfies the Reviewer's ``human evaluation \emph{or} LLM-as-a-judge'' requirement.}
+  \item \textbf{Additional larger-corpus context (companion paper, cited only).} For broader-corpus support beyond the in-paper 30-case finding, our companion paper (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}) independently performs a 500-abstract systematic pairwise reproducibility analysis, silver-standard validation against an independent reasoning model (DeepSeek-R1), and meta-analytic propagation across 6 LLMs $\times$ 10 runs. We reference its aggregate finding (up to 23 study-level effect estimates appear or disappear depending solely on which LLM run is used) in the manuscript as larger-corpus context, but we do not reproduce its detailed tables here---both to avoid duplicate publication and because the in-paper 30-case finding above is already self-contained.
+  \item \textbf{Point-in-time caveat addressed.} We acknowledge that exact EMR values can drift as providers update infrastructure, and we note this in the revised Limitations. The gpt-4o snapshot used here (gpt-4o-2024-11-20 served via OpenAI Chat Completions) confirms the qualitative pattern persists at a current snapshot: gpt-4o single-turn extraction EMR = 0.42 on PubMed, 0.84 on HumanEval, 0.27 on GSM8K --- all dramatically below the corresponding local-stack performance.
 \end{itemize}
 
-This combined protocol provides validation in three layers: (i)~the large-corpus systematic analysis in our companion paper (cited only); (ii)~the independent in-paper two-judge LLM-as-judge triangulation (Claude Opus 4.7 + gpt-4o, N=30, inter-judge $\kappa$=0.29) that directly satisfies the ``human evaluation \emph{or} LLM-as-a-judge'' requirement of this comment; and (iii)~a current-snapshot drift check via gpt-4o-2024-11-20.
+This protocol provides validation in three layers in order of weight bearing: (i)~the primary in-paper two-judge LLM-as-judge triangulation (Claude Opus 4.7 + gpt-4o, N=30, $\kappa$=0.29), self-sufficient and directly addressing the Reviewer's request; (ii)~larger-corpus context via the companion paper (cited only); and (iii)~a current-snapshot drift check via gpt-4o-2024-11-20.
 
 We note explicitly that we did \emph{not} run a human-rater validation for the present resubmission. The Reviewer's request offered ``human evaluation \emph{or} LLM-as-a-judge'' as a disjunction, and our two-judge LLM-as-judge protocol with cross-provider validation (Claude Opus 4.7 from Anthropic and gpt-4o from OpenAI---two distinct training families) addresses the ``LLM-on-LLM'' bias concern more directly than a single-judge design would. A dedicated methodological extension applying multi-rater human validation against a domain-expert silver standard to a larger sample is in preparation as a follow-up paper; an extension we will report in due course.} \done
 

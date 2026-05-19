@@ -1,10 +1,31 @@
-# Revision Status — Submission-Ready Checkpoint
+# Revision Status — VF4 Coautor-Feedback Checkpoint
 
-**Last update:** 2026-05-13
+**Last update:** 2026-05-19
 **Manuscript:** *Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility*
 **Target journal:** *Nature Communications* (NCOMMS-2026-XXXXX, Major Revision)
 **Editor:** Dr. Marcel Bigorajski (Associate Editor)
-**Decision deadline:** ~2026-06-12 (≈30 days margin)
+**Decision deadline:** ~2026-06-12 (≈24 days margin)
+
+---
+
+## VF4 — Coautor feedback applied (2026-05-19)
+
+Following one coautor's structural feedback on the VF3 bundle (sent 2026-05-12), six surgical improvements were applied. No factual claims changed; only emphasis, organization, and reader-navigation:
+
+| Point | File | Change |
+|-------|------|--------|
+| P3.1 | `01_point_by_point_response.tex` | R1.9 and R3.6 rewritten: in-paper two-judge LLM-as-judge on 30 new cases now leads as primary evidence; companion paper rebased as "additional larger-corpus context, not load-bearing" |
+| P3.2 | `01_point_by_point_response.tex` | New navigation index (10 thematic clusters × 21 reviewer points) inserted after cover note |
+| P4.2 | `03_revised_cover_letter.tex` | Flat 11-item list regrouped into 4 macro-clusters: (A) Conceptual reframes, (B) Experimental expansion, (C) Validations & metrics, (D) Editorial infrastructure |
+| P4.1 | `03_revised_cover_letter.tex` | New paragraph justifying joint-publication impact: self-contained cause+consequence story + extension of NC reproducibility leadership to LLM research |
+| P1.1 | `ncomms_main.tex` | New compact Stack×Mechanisms summary table (`tab:mech_summary`, 3×3) inserted in Results §"Cloud deployment does not preclude reproducibility"; cross-ref to Methods Table 2 detailed |
+| P2.1 | `supplementary_nature_mi.tex` | "Section at a glance" italic-bold executive summaries at the start of S9 (Holm-Bonferroni 51/68; Cliff's δ 0.78–0.90), S11 (2,900 new runs, domain-transferable), S12 (73–90% truly contradictory, κ=0.29), S13 (paired Cohen's d=+1.41, BERTScore saturated) |
+
+**Compilation status:** `pdflatex` not available locally — VF4 PDFs need to be regenerated via Overleaf upload of `~/Desktop/overleaf_complete_VF4.zip` before MTS submission.
+
+---
+
+## VF3 — Initial coautor-review snapshot (2026-05-13)
 
 ---
 
@@ -61,6 +82,19 @@
 ---
 
 ## 📦 Deliverable bundles on `~/Desktop/`
+
+### VF4 (current, 2026-05-19, .tex only — needs Overleaf compile)
+
+| File | Size | Purpose |
+|------|------|---------|
+| `manuscript_VF4.zip` | 204 KB | Overleaf source upload (manuscript + supplementary + figures + cls/bst) |
+| `response_letter_VF4.zip` | 23 KB | Overleaf source for point-by-point + cover |
+| `overleaf_complete_VF4.zip` | 228 KB | Both above combined — **upload this single ZIP** |
+| `submission_mts_VF4.zip` | — | **Not yet generated** — needs PDFs from Overleaf first |
+
+**Next step:** upload `overleaf_complete_VF4.zip` to Overleaf, compile all 4 .tex files (2 passes each for main and SI), download PDFs, then build `submission_mts_VF4.zip` with files renamed `_VF4.pdf`.
+
+### VF3 (previous, 2026-05-13, included PDFs)
 
 | File | Size | Purpose |
 |------|------|---------|
