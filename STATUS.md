@@ -1,10 +1,11 @@
-# Revision Status — VF4 Coautor-Feedback Checkpoint
+# Revision Status — VF4 RESUBMITTED to Nature Communications
 
 **Last update:** 2026-05-19
 **Manuscript:** *Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility*
 **Target journal:** *Nature Communications* (NCOMMS-2026-XXXXX, Major Revision)
 **Editor:** Dr. Marcel Bigorajski (Associate Editor)
-**Decision deadline:** ~2026-06-12 (≈24 days margin)
+**Decision deadline (original):** ~2026-06-12 (submitted **24 days ahead of deadline**)
+**Status:** ✅ **RESUBMITTED 2026-05-19** — awaiting editorial decision
 
 ---
 
