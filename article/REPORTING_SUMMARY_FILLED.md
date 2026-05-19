@@ -1,10 +1,10 @@
-# Nature Portfolio Reporting Summary — FILLED GUIDE
+# Nature Portfolio Reporting Summary — FILLED (VF4)
 ## "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility"
 
-> Use this guide to fill in the official Nature PDF form (open in Adobe Acrobat Reader).
+> Filled responses for the Nature Portfolio Reporting Summary form, VF4 (2026-05-19).
 > Corresponding author: Lucas Rover (ORCID: 0000-0001-6641-9224)
 > Coauthors: Hugo Valadares Siqueira (0000-0002-1278-4602); Eduardo Tadeu Bacalhau (0000-0002-3936-0375); Anibal Tavares de Azevedo (0000-0003-1678-7795); Yara de Souza Tadano (0000-0002-3975-3419)
-> Date: 11-05-2026
+> Date last updated: 19-05-2026
 
 ---
 
@@ -14,16 +14,16 @@
 
 | # | Item | Status | Where in manuscript |
 |---|------|--------|-------------------|
-| 1 | Exact sample size (n) for each group | **Confirmed** | Table 1 (main text): n per model per task. Supplementary Table S7: full coverage matrix with exact run counts (e.g., 30 abstracts × 5 reps = 150 runs). Methods §Input data. |
-| 2 | Statement on distinct vs repeated samples | **Confirmed** | Methods §Experimental conditions: 5 repetitions of the same prompt per abstract (repeated measures). Each abstract is a distinct input. |
+| 1 | Exact sample size (n) for each group | **Confirmed** | Table 2 (main text): n per deployment stack per task. Supplementary Table S7: full coverage matrix (e.g., 30 abstracts × 5 reps = 150 runs). **Revised total: 7,004 runs** (4,104 original + 2,900 revision additions). Methods §Tasks and §Input data. |
+| 2 | Statement on distinct vs repeated samples | **Confirmed** | Methods §Experimental conditions: 5 repetitions of the same prompt per item (repeated measures). Each abstract / HumanEval problem / GSM8K problem is a distinct input. |
 | 3 | Statistical test(s) used, one- or two-sided | **Confirmed** | Methods §Statistical analysis: Fisher's exact test (two-sided), Mann–Whitney U (two-sided), Wilcoxon signed-rank (two-sided), bootstrap CIs (10,000 resamples, percentile method). Holm–Bonferroni correction across 68 tests. All tests two-sided. |
-| 4 | Description of all covariates tested | **Confirmed** | Methods §Experimental conditions: temperature (0.0, 0.3, 0.7), seed (fixed vs variable), deployment mode (local vs API), task type, prompt format (chat vs completion). **Clarification (Revision T13):** *Deployment mode* refers to whether a model is served locally (single-GPU Ollama on Apple M4) or via a remote cloud API. It is a **stack-level covariate fixed for the lifetime of each experimental group, not a per-run varying parameter.** It is distinct from *decoding mode* (greedy at $t=0$, fixed across deterministic conditions C1–C2) and from *prompt format* (controlled in Supplementary §S7 with the chat-format control experiment). |
-| 5 | Assumptions or corrections | **Confirmed** | Methods §Statistical analysis: Holm–Bonferroni correction for 68 multiple comparisons. Non-parametric tests chosen (no normality assumption). Bootstrap percentile method for CIs. Supplementary Section S9 details full correction procedure. |
-| 6 | Central tendency and variation/uncertainty | **Confirmed** | All EMR values reported with 95% bootstrap CIs in brackets (e.g., 0.443 [0.32, 0.57]). Table 1, Extended Data Tables 1–5. |
-| 7 | Test statistic, CI, effect sizes, df, P values | **Confirmed** | Cohen's d > 1.6 (paired t-test), Cliff's delta 0.784–0.896, Cohen's h 0.40–3.14. P values exact where possible. Supplementary Table S5 (Holm–Bonferroni results for all 68 tests). |
+| 4 | Description of all covariates tested | **Confirmed** | Methods §Experimental conditions: temperature (0.0, 0.3, 0.7), seed (fixed vs variable), deployment mode (local vs API), task type, prompt format (chat vs completion). **Clarification (Revision T13):** *Deployment mode* refers to whether a stack is served locally (single-GPU Ollama on Apple M4) or via a remote cloud API. It is a **stack-level covariate fixed for the lifetime of each experimental group, not a per-run varying parameter.** It is distinct from *decoding mode* (greedy at $t=0$, fixed across deterministic conditions C1–C2) and from *prompt format* (controlled in Supplementary §S7 with the chat-format control experiment). |
+| 5 | Assumptions or corrections | **Confirmed** | Methods §Statistical analysis: Holm–Bonferroni correction for 68 multiple comparisons. Non-parametric tests chosen (no normality assumption). Bootstrap percentile method for CIs. Supplementary §S9 details the full correction procedure. |
+| 6 | Central tendency and variation/uncertainty | **Confirmed** | All EMR values reported with 95% bootstrap CIs in brackets (e.g., 0.443 [0.32, 0.57]). Table 2, Extended Data Tables 1–8. |
+| 7 | Test statistic, CI, effect sizes, df, P values | **Confirmed** | Cliff's δ 0.784–0.896 (large to very large); Cohen's d > 1.6 (paired); Cohen's h 0.40–3.14. **Per-field paired Cohen's d = +1.41** (R1.5 revision — conclusion-relevant vs metadata fields). P values exact where possible. Supplementary §S9 (Holm–Bonferroni results for all 68 tests). |
 | 8 | Bayesian analysis priors/MCMC | **n/a** | No Bayesian analysis performed. |
-| 9 | Hierarchical/complex designs | **n/a** | No hierarchical models. Bootstrap CIs computed at the per-abstract level, then aggregated. |
-| 10 | Effect size estimates | **Confirmed** | Cliff's delta (non-parametric effect size) for local vs API: 0.784–0.896. Cohen's d > 1.6. Cohen's h for Fisher comparisons: 0.40–3.14. Reported in Results and Supplementary Section S9. |
+| 9 | Hierarchical/complex designs | **n/a** | No hierarchical models. Bootstrap CIs computed at the per-item level, then aggregated. |
+| 10 | Effect size estimates | **Confirmed** | Cliff's δ (non-parametric) for local vs API: 0.784–0.896. Cohen's d > 1.6 (paired). Cohen's h 0.40–3.14 (Fisher). **Per-field Cohen's d = +1.41** (revision addition). Reported in Results and Supplementary §S9. |
 
 ---
 
@@ -32,20 +32,25 @@
 ### Data collection
 ```
 All experiments conducted using custom Python scripts (Python 3.14.3).
-Local models: Ollama v0.15.5 serving LLaMA 3 8B, Mistral 7B, Gemma 2 9B.
-API models: OpenAI Python SDK v1.59.9 (GPT-4); urllib-based runners for
-Anthropic (Claude Sonnet 4.5), Google (Gemini 2.5 Pro), DeepSeek Chat,
-Perplexity Sonar, Together AI. All API payloads documented in Supplementary
-Section S4. Data collection scripts available in the project repository.
+Local stacks: Ollama v0.15.5 serving LLaMA 3 8B, Mistral 7B, Gemma 2 9B.
+API stacks: OpenAI Python SDK v1.59.9 (GPT-4 gpt-4-0613 and
+gpt-4o-2024-11-20); urllib-based runners for Anthropic (Claude Sonnet 4.5),
+Google (Gemini 2.5 Pro), DeepSeek Chat, Perplexity Sonar, Together AI
+(LLaMA 3 8B INT4 quasi-isolation probe). Revision-batch loaders for
+HumanEval and GSM8K via standard benchmark formats. All API payloads
+documented in Supplementary §S4. Data collection scripts available in
+the project repository.
 ```
 
 ### Data analysis
 ```
 Python 3.14.3 with: scipy (statistical tests), scikit-learn (metrics),
-rouge-score (ROUGE-L), bert-score (BERTScore), matplotlib and seaborn
-(figures), json and hashlib (provenance hashing). Bootstrap CIs computed
-with custom script (10,000 resamples). All analysis scripts available in
-the project repository at:
+rouge-score (ROUGE-L), bert-score (BERTScore F1, roberta-large),
+matplotlib and seaborn (figures), json and hashlib (provenance hashing).
+Bootstrap CIs computed with custom script (10,000 resamples, percentile
+method). Two-judge LLM-as-judge triangulation via Claude Opus 4.7 and
+gpt-4o (analysis/t3_judge/). Per-field analysis
+(analysis/bertscore_per_field.py). All analysis scripts available at:
 https://github.com/Roverlucas/genai-reproducibility-protocol
 ```
 
@@ -55,11 +60,13 @@ https://github.com/Roverlucas/genai-reproducibility-protocol
 
 ### Data availability statement
 ```
-All 4,104 experimental records, provenance metadata (Run Cards in JSON
-format), PROV-JSON provenance graphs, and input abstracts are deposited
-on Figshare with persistent DOI 10.6084/m9.figshare.31653373 (CC-BY 4.0).
-The Figshare deposit mirrors the project GitHub repository at
-https://github.com/Roverlucas/genai-reproducibility-protocol (release
+All 7,004 experimental records (4,104 original + 2,900 revision),
+provenance metadata (Run Cards in JSON format), W3C PROV-JSON provenance
+graphs, input abstracts (30 AI/ML + 10 PubMed PM2.5), HumanEval and
+GSM8K problem identifiers, and two-judge LLM-as-judge verdicts are
+deposited on Figshare with persistent DOI 10.6084/m9.figshare.31653373
+(CC-BY 4.0). The Figshare deposit mirrors the project GitHub repository
+at https://github.com/Roverlucas/genai-reproducibility-protocol (release
 tag v1.1-natcomms-revision1). Reviewer access during peer review is via
 the private Figshare share URL provided in the Cover Letter. Source data
 for all figures and tables are included. No restrictions on data
@@ -90,11 +97,11 @@ availability apply.
 
 | Field | Response |
 |-------|----------|
-| **Sample size** | 30 scientific abstracts × 8 models × 4 tasks × up to 5 conditions × 5 repetitions = 4,104 total runs (3,904 unique + 200 chat-format controls). Sample size was determined by the need to achieve sufficient statistical power for detecting large effects (Cohen's d > 1.6). The balanced subsample analysis (Extended Data Table 4) confirms robustness with n = 10 abstracts. |
-| **Data exclusions** | One Claude API run excluded due to API timeout returning empty output (49 of 50 runs retained). GPT-4 C1 summarization limited to 3 abstracts (8 runs) due to API quota exhaustion. All exclusions documented in Supplementary Table S7 and noted in figure/table legends. No post-hoc exclusions of completed runs. |
-| **Replication** | Every experimental condition was replicated 5 times per abstract (or 3 times for temperature sweep conditions C3). Replication is the core subject of the study. All 4,104 runs are available in the repository for independent verification. Bootstrap CIs (10,000 resamples) quantify sampling uncertainty. |
-| **Randomization** | Not applicable in the traditional sense. All models received identical inputs in identical order. Seed values for variable-seed condition (C2): {42, 123, 456, 789, 1024}. No randomization of input order was needed as each abstract is processed independently. |
-| **Blinding** | Not applicable. The study compares computational outputs across known model identities. Blinding is not meaningful in this context as the analysis is fully automated (metric computation via scripts) with no subjective assessment. |
+| **Sample size** | **Total 7,004 logged generative-AI runs** across 9 deployment stacks and 6 task families (4,104 original + 2,900 revision additions). Original protocol: 30 AI/ML abstracts × 8 stacks × up to 4 tasks × up to 5 conditions × 5 reps. Revision: 30 HumanEval problems × 5 reps × 8 stacks; 30 GSM8K × 5 × 8; 10 PubMed PM2.5 × 5 × 8; multi-turn extension to gpt-4o and DeepSeek (50 runs each). Sample size determined to achieve power for detecting large effects (Cohen's d > 1.6). Balanced 10-abstract subsample (Extended Data Table 4) confirms robustness. |
+| **Data exclusions** | One Claude API run excluded due to API timeout returning empty output (49/50 retained). GPT-4 C1 summarisation limited to 3 abstracts (8 runs) due to API quota exhaustion at original-submission time. All exclusions documented in Supplementary Table S7 and noted in figure/table legends. No post-hoc exclusions of completed runs. |
+| **Replication** | Every experimental condition replicated 5 times per item (or 3 times for temperature sweep conditions). Replication is the core subject of the study — reproducibility under fixed deterministic settings. All 7,004 runs available in the repository (Figshare DOI 10.6084/m9.figshare.31653373) for independent verification. Bootstrap CIs (10,000 resamples) quantify sampling uncertainty. |
+| **Randomization** | Not applicable in the traditional sense. All stacks received identical inputs in identical order. Seed values for variable-seed condition (C2): {42, 123, 456, 789, 1024}. Two-judge LLM-as-judge sampling (R3.6): wave 1 seed=42 (10 cases), wave 2 seed=4242 (20 cases), stratified across stack and disagreement kind. |
+| **Blinding** | Two-judge LLM-as-judge protocol (R3.6 revision) used blinded comparison: each judge scored pair (A, B) with stack/run identifiers withheld, against three pre-registered criteria (direction, magnitude ±20%, CI overlap). For the rest of the study, blinding is not meaningful — automated metric computation across known stack identities. |
 
 ---
 

@@ -1,43 +1,45 @@
-# Changes Log — NatComms Major Revision
+# Changes Log — NatComms Major Revision (VF4)
 
 **Manuscript:** Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility
 **Original submission:** 2026-03-12
-**Revision compiled:** 2026-05-10 (technical work complete, awaiting coauthor sign-off)
+**Revision compiled:** 2026-05-13 (VF3 sent to coauthors)
+**VF4 (coauthor feedback applied):** 2026-05-19
 **Editor deadline:** 2026-06-12
 
-This document tracks every change applied to the manuscript and supplementary material, mapped to the reviewer comment that motivated it.
+This document tracks every change applied to the manuscript and supplementary material, mapped to the reviewer comment that motivated it. The VF4 section at the end records the second round of coauthor feedback applied after VF3.
 
 Status legend: ✅ DONE · 🟡 PARTIAL · ⏳ PENDING-EXTERNAL
 
 ---
 
-## Files in submission package
+## Files in submission package (VF4 — final)
 
-| File | Path | Status |
-|------|------|--------|
-| Revised manuscript (clean) | `submission_revision_v1/READY_FOR_REVIEW/01_revised_manuscript_clean.pdf` | ✅ 27 p, 590 KB |
-| Revised manuscript (track changes) | `submission_revision_v1/READY_FOR_REVIEW/02_revised_manuscript_tracked.pdf` | ✅ 27 p, 627 KB (latexdiff vs post-T5 snapshot) |
-| Supplementary | `submission_revision_v1/READY_FOR_REVIEW/03_supplementary.pdf` | ✅ 18 p, 358 KB (incl. §S11, §S12) |
-| Point-by-point response | `submission_revision_v1/READY_FOR_REVIEW/04_point_by_point_response.pdf` | ✅ 15 p, 391 KB (verbatim quotes for 15 R1 + 6 R3 items) |
-| Cover letter | `submission_revision_v1/READY_FOR_REVIEW/05_cover_letter.pdf` | ✅ 2 p, 169 KB |
-| Changes log (this file) | `submission_revision_v1/READY_FOR_REVIEW/06_changes_log.md` | ✅ |
-| ML checklist | `submission_revision_v1/READY_FOR_REVIEW/07_ml_checklist.md` | ✅ updated with revision additions |
-| Reporting Summary | `submission_revision_v1/READY_FOR_REVIEW/08_reporting_summary.md` | ✅ T13 deployment-mode clarification + revision additions |
-| Code/Software checklist (new for revision) | `submission_revision_v1/READY_FOR_REVIEW/09_code_software_checklist.md` | ✅ created |
+| File (MTS upload name) | Status |
+|------------------------|--------|
+| `01_revised_manuscript.pdf` | ✅ 28 p, 646 KB |
+| `02_revised_manuscript_tracked.pdf` | ✅ 28 p, 723 KB (latexdiff vs original Nature MI submission, 2026-03-03) |
+| `03_revised_supplementary.pdf` | ✅ 22 p, 456 KB (incl. §S11 revision-batch, §S12 LLM-as-judge, §S13 per-field) |
+| `04_point_by_point_response.pdf` | ✅ 15 p, 421 KB (navigation index + 15 R1 + 6 R3 items) |
+| `05_cover_letter.pdf` | ✅ 3 p, 197 KB (4 macroclusters + joint-publication impact justification) |
+| `06_changes_log.pdf` (this file) | ✅ generated from markdown |
+| `07_reporting_summary.pdf` | ✅ Nature form, all fields populated for VF4 |
+| `08_machine-learning-checklist.pdf` | ✅ Nature form V1.1, all sections completed for VF4 |
+| `09_code_software_checklist.pdf` | ✅ generated from markdown (Code/Software checklist explicitly requested by editor in revision letter) |
 
 ---
 
 ## Latex source snapshots
 
-- **Original submission (PDF only):** `submission_nature_comms/01_Manuscript.pdf`
-- **Post-T5 reframe snapshot (baseline for track changes):** `submission_revision_v1/ncomms_main_post_T5.tex` (894 lines)
-- **Final revised .tex:** `article/ncomms_main.tex` (1064 lines, +170 lines vs baseline)
-- **Track-changes .tex (auto-generated):** `submission_revision_v1/ncomms_main_tracked.tex` (via `latexdiff`)
+- **Original submission (PDF + tex commit `fb0be76`):** `article/nature_mi_main.tex` (835 lines, before Nature Comms rebrand)
+- **Post-T5 reframe snapshot (VF1 baseline):** `submission_revision_v1/ncomms_main_post_T5.tex` (894 lines)
+- **VF3 .tex:** state at commit `e2e16b0` (2026-05-13)
+- **VF4 .tex (final):** `article/ncomms_main.tex` (~1100 lines)
+- **Track-changes .tex (VF4 vs original submission, auto-generated):** `submission_revision_v1/ncomms_main_tracked_VF4.tex` — 1354 lines, 301 DIFadd / 182 DIFdel blocks
 
 Regenerate track changes with:
 ```
-latexdiff submission_revision_v1/ncomms_main_post_T5.tex article/ncomms_main.tex \
-  > submission_revision_v1/ncomms_main_tracked.tex
+latexdiff article/nature_mi_main.tex@fb0be76 article/ncomms_main.tex \
+  > submission_revision_v1/ncomms_main_tracked_VF4.tex
 ```
 
 ---
@@ -289,27 +291,79 @@ Margin:                                                $41.62 USD ✅
 
 ---
 
-## Verification checklist (pre-submission)
+## VF4 — Second round of coauthor feedback applied (2026-05-19)
+
+After VF3 was distributed to the four coauthors on 2026-05-13, one coauthor returned six structural suggestions. None changed factual content; all six target presentation, emphasis, and editorial navigation. Plus three audit-driven fixes caught during compilation review.
+
+### Six surgical improvements (commit `bfd9663`, 2026-05-19)
+
+| # | Item | File | Change |
+|---|------|------|--------|
+| **P3.1** | R1.9 + R3.6 framing: companion paper rebased from "load-bearing" to "additional larger-corpus context" | `01_point_by_point_response.tex` | Both responses now lead with the in-paper two-judge LLM-as-judge on 30 new cases as primary substantive evidence; companion paper (Rover & Tadano, OSF VR934) cited only as larger-corpus context |
+| **P3.2** | Navigation index inserted on page 1 of the point-by-point | `01_point_by_point_response.tex` | Compact table mapping 10 thematic clusters to all 21 reviewer points (R1.1–R1.15 + R3.1–R3.6) for editorial navigation |
+| **P4.2** | Cover-letter flat 11-item list regrouped into four macro-clusters | `03_revised_cover_letter.tex` | (A) Conceptual reframes (3 items), (B) Experimental expansion (3 items), (C) Validations & metrics (4 items), (D) Editorial infrastructure (1 item) |
+| **P4.1** | Joint-publication impact justified explicitly | `03_revised_cover_letter.tex` | New paragraph: (i) the two works form a self-contained cause+consequence reproducibility story; (ii) co-publishing extends Nature Communications' leadership on reproducibility into LLM-based research |
+| **P1.1** | Compact Stack×Mechanisms summary table promoted to Results | `ncomms_main.tex` | New Table 1 (3 rows × 4 cols, footnotes for parenthetical examples) inserted in Results §"Cloud deployment does not preclude reproducibility"; full 6×5 detailed table remains in Methods (Table 3) |
+| **P2.1** | "Section at a glance" executive italics added to SI long sections | `supplementary_nature_mi.tex` | One paragraph in italic-bold at the start of S9 (Holm-Bonferroni 51/68; Cliff's δ 0.78–0.90), S11 (2,900 new runs; domain-transferable), S12 (73–90% truly contradictory; κ=0.29), S13 (paired Cohen's d=+1.41; BERTScore saturated) |
+
+### Varredura fix (commit `16f1784`, 2026-05-19)
+
+| Item | File | Change |
+|------|------|--------|
+| Cover-note item 5 framing leftover from VF3 | `01_point_by_point_response.tex` | Item 5 of the cover-note enumeration ("Applied evidence-synthesis impact and validation") still led with "To preserve the contributions of our companion paper..."; rewritten to match the new P3.1 framing in the detailed R1.9/R3.6 responses |
+
+### Audit-driven fixes after first VF4 compilation (commit `01f4924`, 2026-05-19)
+
+| Issue caught | File | Fix |
+|--------------|------|-----|
+| Cover-letter PDF rendered `[leftmargin=*]` and `[leftmargin=*,resume]` as literal text after each cluster heading | `03_revised_cover_letter.tex` | Added missing `\usepackage{enumitem}` to preamble (the regrouped enumerations needed it; the original flat enumerate did not) |
+| SI introductory paragraph still claimed "Sections S1–S10" while the TOC and content covered S1–S13 | `supplementary_nature_mi.tex` | Updated range to "Sections S1–S13" with explicit enumeration of the new sections (S11 revision-batch tasks, S12 two-judge LLM-as-judge triangulation protocol, S13 per-field reproducibility analysis) |
+
+### Date marker filled (commit `eab2727`, 2026-05-19)
+
+| Item | File | Change |
+|------|------|--------|
+| `\date{Revision submitted: TBD ...}` placeholder | `01_point_by_point_response.tex` | `\date{Revision submitted: May, 2026 — Original submission: 2026-03-12}` |
+
+### Table 1 layout fix after audit of compiled PDF (commits `c3675a3` → `0874292`, 2026-05-19)
+
+| Issue caught | File | Fix |
+|--------------|------|-----|
+| Audit of compiled PDF (`-15`) showed Table 1 right-truncated: header "Production-serving complexity" cut off; first attempt with `\resizebox`+`\newline` caused the table to silently disappear from output (cross-reference rendered as `Table ??`) | `ncomms_main.tex` | Final layout: explicit column widths `p{3.2}/p{2.8}/p{2.5}/p{3.0}cm`, `\tabcolsep=3pt`, superscript footnote markers (a/b/c/\*) instead of inline parenthetical examples in headers, all examples on a `\scriptsize` line below `\bottomrule`. Renders correctly in PDF `-15` (regenerated 2026-05-19 16:38) |
+
+### Tracked manuscript regenerated against original submission (commit `66e75d0`, 2026-05-19)
+
+Previous VF3 tracked PDF used the post-T5 snapshot as baseline (only the reframe and downstream changes were visible). The VF4 tracked PDF (`02_revised_manuscript_tracked.pdf`, 723 KB) uses the **original Nature Comms submission state** (commit `fb0be76`, 2026-03-03) as baseline so the editor and reviewers see every change since the first round: title rewrite, 4,104→7,004 experiments, deployment-stack reframe, new contributions, W3C PROV expanded definition, US→UK spelling, and all revision additions.
+
+Stats: 1354 lines, 301 added blocks, 182 deleted blocks.
+
+---
+
+## Verification checklist (pre-submission, VF4)
 
 - [x] All 15 R1 + 6 R3 reviewer points have a `revquote` + `response` + `changes` block
+- [x] Navigation index on point-by-point page 1 (VF4 addition)
 - [x] All ⏳ and 🟡 tasks have been promoted to ✅
-- [x] Track changes generated via latexdiff
-- [x] Response letter PDF compiles cleanly
-- [x] All Extended Data tables/figures referenced in main text resolve
+- [x] Track changes generated via latexdiff (vs original submission, not vs T5 snapshot)
+- [x] Response letter PDF compiles cleanly (cover letter `enumitem` fix included)
+- [x] All Extended Data tables/figures referenced in main text resolve (including new Table 1 compact summary)
 - [x] All new citations added to bibitems resolve
 - [x] LaTeX compiles without errors (clean + tracked + supplementary)
-- [x] Companion paper status uniformly "submitted"
+- [x] Companion paper status uniformly "in preparation, OSF preregistered"
+- [x] Companion paper framed as "additional larger-corpus context, not load-bearing"
 - [x] No GHOST numbers (3,010 or 7,114) remaining
 - [x] Stack naming uniformly lowercase (gpt-4o, deepseek-chat, claude-sonnet-4-5)
-- [x] T3 verdicts 5/3/2 in manuscript + supplementary + response
+- [x] Two-judge LLM-as-judge verdicts: Claude 22/3/5, gpt-4o 27/3/0 across manuscript + supplementary + response
 - [x] Abstract 148 words (NatComms limit ≤150)
-- [x] All editorial checklists (Code, ML, Reporting) updated
+- [x] All three editorial checklists (Code, ML, Reporting) updated for VF4 totals (7,004 experiments; 9 deployment stacks; 6 task families)
 - [x] ORCIDs populated in manuscript title page, cover letter, and all checklists (LR 0000-0001-6641-9224; HVS 0000-0002-1278-4602; ETB 0000-0002-3936-0375; ATA 0000-0003-1678-7795; YST 0000-0002-3975-3419)
-- [ ] **All 5 coauthors signed off** (HUMAN — Lucas + HVS + ETB + ATA + YST)
-- [ ] **ORCID linked on MTS account** (HUMAN — at MTS upload, just attach the IDs already in manuscript)
-- [x] **GitHub tag `v1.1-natcomms-revision1` created** (annotated tag at commit `d60ca2d` on `origin/main`)
+- [x] **GitHub tag `v1.1-natcomms-revision1` created** (annotated tag on `origin/main`)
 - [x] **Figshare deposit live** (DOI 10.6084/m9.figshare.31653373; private reviewer URL in cover letter)
-- [ ] **Cover letter date filled in** (HUMAN — at upload time)
+- [x] **Cover letter date filled in** ("May, 2026")
+- [x] **Code/Software submission checklist** prepared (explicitly requested by editor in major-revision letter)
+- [ ] **All 5 coauthors sign off on VF4** (HUMAN — Lucas + HVS + ETB + ATA + YST)
+- [ ] **ORCID linked on MTS account** (HUMAN — at MTS upload, just attach the IDs already in manuscript)
+- [ ] **Final `git push` of 8 VF4 commits** (HUMAN — via @devops at submission time)
 
 ---
 
