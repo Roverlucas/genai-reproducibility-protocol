@@ -28,7 +28,7 @@
 
 | Item | Answer | Details |
 |------|--------|---------|
-| **A.** All data sources listed in paper | ☑ Yes | Methods §Input data; Supplementary Section S2 (Table S1 lists all 30 abstracts with citations); Supplementary Section S3 (RAG contexts) |
+| **A.** All data sources listed in paper | ☑ Yes | Methods §Input data; Supplementary Section S2 (Table S1 lists all 30 abstracts with citations); Supplementary Section S3 (RAG contexts); Supplementary §S11 lists the HumanEval (MIT) and GSM8K (MIT) problem identifiers and the 10 PubMed PM2.5 abstracts (with DOIs) used for the code, mathematics, and cross-domain tasks. |
 | **B.** Train/test/validation datasets publicly available with links | ☑ Yes | All 30 input abstracts and RAG contexts available at GitHub repo (data/inputs/abstracts.json, data/inputs/rag_contexts.json). No train/test split — this is an inference reproducibility study, not a training study. |
 | **C.** Reported and discussed potential dataset biases; mitigation strategies used | ☑ Yes | Discussion §Limitations: corpus limited to 30 English-language AI/ML abstracts; other domains/languages may show different effects. Balanced subsample analysis (Extended Data Table 4) controls for sample-size differences. |
 | **D.** Data cleaning and preprocessing steps clearly described | ☑ Yes | Methods §Input data and §Tasks. No preprocessing applied to abstracts — used verbatim. Supplementary Section S4 documents exact API payloads. |
@@ -41,7 +41,7 @@
 | Item | Answer | Details |
 |------|--------|---------|
 | **A.** Model architecture | N/A — We do not propose a new model. We evaluate 8 existing LLMs: LLaMA 3 8B (Transformer decoder), Mistral 7B (Transformer decoder), Gemma 2 9B (Transformer decoder), GPT-4 (proprietary), Claude Sonnet 4.5 (proprietary), Gemini 2.5 Pro (proprietary), DeepSeek Chat (Transformer decoder), Perplexity Sonar (proprietary + retrieval). |
-| **B.** A Model Card is provided | ☐ No | We do not train or release a model. We provide a "Run Card" (provenance record) for each of the 4,104 inference runs, which extends the Model Card concept to the inference layer (Methods §Protocol design). |
+| **B.** A Model Card is provided | ☐ No | We do not train or release a model. We provide a "Run Card" (provenance record) for each of the 7,004 inference runs, which extends the Model Card concept to the inference layer (Methods §Protocol design). |
 | **C.** Data split into train/validation/test | ☐ No | Not applicable — this is an inference reproducibility study, not a training or prediction study. No model training was performed. |
 | **D.** Method of data splitting clearly stated | ☐ No | Not applicable — no data splitting. All 30 abstracts are used as inputs for all models under identical conditions. |
 | **E.** Data splitting mimics real-world applications | ☐ No | Not applicable — no data splitting performed. |
@@ -54,7 +54,7 @@
 
 | Item | Answer | Details |
 |------|--------|---------|
-| **A.** Performance metrics described and justified | ☑ Yes | Methods §Metrics: Exact Match Rate (EMR), Normalized Edit Distance (NED), ROUGE-L F1, BERTScore F1. Three-level framework justified in Results §Semantic analysis. |
+| **A.** Performance metrics described and justified | ☑ Yes | Methods §Metrics: Exact Match Rate (EMR), Normalized Edit Distance (NED), ROUGE-L F1, BERTScore F1; Pass@1 (HumanEval, sandboxed execution with timeout) and final-answer accuracy (GSM8K) for the code and mathematics tasks. Three-level framework justified in Results §Semantic analysis. |
 | **B.** Cross-validation included | ☐ No | Not applicable — no predictive model. Robustness verified via 10,000-resample bootstrap CIs and balanced 10-abstract subsample analysis (Extended Data Table 4). |
 | **C.** Community-accepted benchmark datasets/tasks used | ☐ No | Not applicable in the traditional sense. We designed a novel experimental protocol for inference reproducibility. The 30 abstracts are drawn from highly cited ML papers (Supplementary Section S2). BERTScore and ROUGE-L are community-standard NLP metrics. |
 | **D.** Baseline comparisons to simple/trivial models | ☐ No | Not applicable — we do not propose a predictive model. The "baseline" is the local deployment (near-perfect reproducibility), against which API deployments are compared. The Together AI quasi-isolation serves as a controlled baseline (same weights, different infrastructure). |
@@ -69,7 +69,7 @@
 | Item | Answer | Details |
 |------|--------|---------|
 | **A.** Hardware/computing resources reported | ☑ Yes | Methods §Models and infrastructure: Apple M4 (24 GB RAM) for local models via Ollama v0.15.5. API models accessed via respective cloud endpoints. |
-| **B.** Computational costs reported | ☑ Yes | Methods §Protocol overhead: <1% logging overhead (~25 ms per run, ~4 KB storage per run). Total 4,104 runs. Extended Data Table 6 provides detailed overhead breakdown. |
+| **B.** Computational costs reported | ☑ Yes | Methods §Protocol overhead: <1% logging overhead (~25 ms per run, ~4 KB storage per run) across all 7,004 runs. Extended Data Table 6 provides detailed overhead breakdown. |
 
 ---
 
@@ -95,7 +95,7 @@ This section documents the experimental and analytical extensions added during t
 | T14 | Cross-domain (health) | 10 PubMed PM2.5 abstracts | 10 abstracts | 5 | 8 deployment stacks | Light cross-domain probe (epidemiology / air pollution); corpus drawn from sister paper RSM submission |
 | D8 (drift) | Stack drift check | Subset of original tasks | subset | 5 | gpt-4o-2024-11-20 | Snapshot-drift control versus original gpt-4-0613 results |
 
-All new runs follow the same Run Card and Prompt Card schema as the original 4,104 runs, the same SHA-256 canonicalisation, and the same W3C PROV-JSON serialization. Records are written to `outputs/revision/runs/` (currently 808 records; final count finalised after T1 completion — flagged TBD in `STATUS.md`).
+All new runs follow the same Run Card and Prompt Card schema as the Tasks 1–4 runs, the same SHA-256 canonicalisation, and the same W3C PROV-JSON serialization. Records are written to `outputs/revision/runs/` (2,900 records; per-task and per-stack counts reported in manuscript Table 4 and Supplementary §S11).
 
 ### R-2. New deployment stacks introduced
 
@@ -116,7 +116,7 @@ The Methods now define the **unit of analysis as a deployment stack** — the tu
 
 ### R-4. Updates to the ML Checklist sections
 
-- **Section 1 (Code and Data):** No change to checks; the same repository now also hosts the revision artefacts under `outputs/revision/`, `data/inputs/revision/`, `analysis/revision/`, and `src/tasks/`. Reviewer access is via the private Figshare share URL provided in the Cover Letter; the GitHub release tag `v1.1-natcomms-revision1` is mirrored on Figshare (DOI: [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373), CC-BY 4.0).
+- **Section 1 (Code and Data):** No change to checks; the same repository now also hosts the revision artefacts under `outputs/revision/`, `data/inputs/revision/`, `analysis/revision/`, and `src/tasks/`. Reviewer access is via the private Figshare share URL provided in the Cover Letter; the GitHub release tag `v1.1` is mirrored on Figshare (DOI: [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373), CC-BY 4.0).
 - **Section 2A (Data sources):** Methods §Input data and Supplementary §S2/§S3 updated to list the additional datasets — HumanEval (MIT-licensed), GSM8K (MIT-licensed) and the 10 PubMed PM2.5 abstracts (drawn from the sister paper, Rover & Tadano, RSM under review).
 - **Section 2B (Train/test/validation):** Still N/A — this remains an inference-reproducibility study with no model training. HumanEval and GSM8K are used as evaluation prompts only, not as training data.
 - **Section 2C (Dataset bias):** Discussion §Limitations now includes an explicit cross-domain caveat — the revision tested coding (HumanEval), mathematical reasoning (GSM8K), and a small health-domain probe (T14). Cross-language generalisation and large-scale clinical applications remain out of scope.
@@ -131,8 +131,8 @@ Original suite: 51 tests passing (`tests/test_core.py`).
 Revision additions: 51 new tests covering HumanEval loader, GSM8K loader, pass@1 sandbox, and cost estimator (`tests/test_humaneval_loader.py`, `tests/test_gsm8k_loader.py`, `tests/test_pass_at_1.py`, `tests/test_cost_estimator.py`).
 **Total: 102 tests, all passing on Python 3.14.3** (`python -m pytest tests/ -q`).
 
-### R-6. Items still pending final number insertion
+### R-6. Final numbers (inserted)
 
-- ☑ **Pass@1 per stack (HumanEval):** reported in manuscript Methods §"Coding and math reasoning" and Extended Data Table 8; per-problem outputs in `outputs/revision/runs/`.
-- ☑ **Final EMR per stack on T14 (PubMed PM2.5):** reported in manuscript §"Applied impact in evidence synthesis" and Extended Data Table 8 (Task T14 column); per-abstract runs in `outputs/revision/runs/`.
+- ☑ **Pass@1 per stack (HumanEval):** reported in manuscript Methods §"Coding and math reasoning" and Table 4; per-problem outputs in `outputs/revision/runs/`.
+- ☑ **Final EMR per stack on T14 (PubMed PM2.5):** reported in manuscript §"Applied impact in evidence synthesis" and Table 4 (Task T14 column); per-abstract runs in `outputs/revision/runs/`.
 - ☑ **Figshare DOI:** [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) — already minted (CC-BY 4.0). Inserted into Section 1, the manuscript Data Availability and Code Availability statements, and the corresponding citation block. Private reviewer share URL: https://figshare.com/s/3d17327cef1ae99ed37c

@@ -44,7 +44,7 @@ Same Prompt, Different Answer:\\Hidden Non-Determinism in LLM APIs Undermines Sc
 \begin{document}
 \maketitle
 
-\noindent This document provides Supplementary Information for the main manuscript. Sections S1--S10 contain full prompt templates, input descriptions, protocol analyses, statistical details, and experimental coverage data referenced in the main text.
+\noindent This document provides Supplementary Information for the main manuscript. Sections S1--S13 contain full prompt templates, input descriptions, protocol analyses, statistical details, experimental coverage data, the code, mathematics, and cross-domain task details (S11), the two-judge LLM-as-judge triangulation protocol (S12), and the per-field reproducibility analysis (S13), referenced in the main text.
 
 \tableofcontents
 \newpage
@@ -193,7 +193,7 @@ The context passages were curated to satisfy two criteria: (1)~domain relevance 
 
 Each context passage is approximately 150--300 words in length and is drawn from survey papers, textbook descriptions, or related work sections of the cited papers. The exact text of all 30 context passages, along with SHA-256 hashes verifying their integrity, is available in the project repository at \texttt{data/inputs/rag\_contexts.json}.
 
-The key finding for RAG tasks is that context augmentation does not substantially improve API reproducibility: GPT-4 achieves EMR = 0.230 on RAG extraction (compared to 0.443 on standard extraction under C1), and Gemini 2.5 Pro achieves EMR = 0.070. Local models maintain near-perfect reproducibility regardless of context augmentation (see main text, Table~5).
+The key finding for RAG tasks is that context augmentation does not substantially improve API reproducibility: GPT-4 achieves EMR = 0.230 on RAG extraction (compared to 0.443 on standard extraction under C1), and Gemini 2.5 Pro achieves EMR = 0.070. Local models maintain near-perfect reproducibility regardless of context augmentation (see main text, Table~1).
 
 
 %% ============================================================
@@ -203,7 +203,7 @@ The key finding for RAG tasks is that context augmentation does not substantiall
 To address potential ``apples-to-oranges'' concerns regarding differences in API request structures across providers, we document the exact JSON payload structures sent to each of the seven inference endpoints. All payloads were constructed deterministically and logged as part of the Run Card. Hyperlinks to the official API references for each provider are listed in Table~\ref{tab:apidocs}.
 
 \paragraph{Comparability across providers.}
-Providers expose overlapping but not identical parameter surfaces (Reviewer 1, item 2). What is comparable across stacks is therefore not parameter \emph{equality} but the operational claim that we used the \emph{maximum determinism configuration each provider documents}: temperature zero is universally exposed; the seed parameter is supported by OpenAI (advisory) and Gemini, absent from the Anthropic Messages API surface, and not exposed by DeepSeek's OpenAI-compatible Chat Completions interface or by Perplexity Sonar. Our \texttt{seed\_status} Run Card field records this asymmetry per stack as \texttt{sent}, \texttt{logged-only-not-sent}, or \texttt{not-supported}. The precise per-stack parameter set for every payload is in the listings below.
+Providers expose overlapping but not identical parameter surfaces. What is comparable across stacks is therefore not parameter \emph{equality} but the operational claim that we used the \emph{maximum determinism configuration each provider documents}: temperature zero is universally exposed; the seed parameter is supported by OpenAI (advisory) and Gemini, absent from the Anthropic Messages API surface, and not exposed by DeepSeek's OpenAI-compatible Chat Completions interface or by Perplexity Sonar. Our \texttt{seed\_status} Run Card field records this asymmetry per stack as \texttt{sent}, \texttt{logged-only-not-sent}, or \texttt{not-supported}. The precise per-stack parameter set for every payload is in the listings below.
 
 \begin{table}[H]
 \centering
@@ -603,6 +603,8 @@ The following 15-item checklist is designed for self-assessment of reproducibili
 \section{Statistical Test Results}
 \label{sec:s9}
 
+\textit{\textbf{Section at a glance.} Of 68 pre-registered pairwise tests (Fisher's exact, Mann--Whitney $U$, Brunner--Munzel, plus paired follow-ups), \textbf{51 remain significant after Holm--Bonferroni control at $\alpha=0.05$}. Cliff's $\delta$ effect sizes for the local--API contrasts fall in the range \textbf{0.784--0.896 (large to very large, Romano--Vargha--Delaney bands)}, indicating that the EMR gap is not a borderline effect but a categorical separation between the two stack classes. The remainder of this section reports the procedure, the per-comparison results, and the effect-size table that supports this summary.}
+
 \subsection{Methodology}
 
 We applied the Holm--Bonferroni sequential rejection procedure to control the family-wise error rate at $\alpha = 0.05$ across all pairwise comparisons. The test battery comprised 68 individual tests:
@@ -619,10 +621,10 @@ We applied the Holm--Bonferroni sequential rejection procedure to control the fa
 The Holm--Bonferroni method orders all $m = 68$ $p$-values from smallest to largest and rejects hypothesis $H_{(k)}$ if $p_{(k)} \leq \alpha / (m - k + 1)$ for all $k' \leq k$. This provides strong control of the family-wise error rate without assuming independence among tests.
 
 \paragraph{Scope of the FWER family.}\label{par:fwer-scope}
-The 68-test family corresponds to the pre-specified comparisons on Tasks~1--2 (extraction and summarisation) in the original analysis. The revision-batch results (HumanEval, GSM8K, PubMed PM\textsubscript{2.5}, and the multi-turn extension to gpt-4o and DeepSeek) are reported descriptively with 95\% bootstrap confidence intervals; they are not included in the Holm--Bonferroni family because the qualitative comparisons of interest (local-vs.-API gap, Claude-as-outlier pattern) are confirmatory rather than exploratory under the framework established by the original analysis, and adding them post hoc would inflate the family-wise error rate of the pre-specified tests. Readers wishing to apply a unified correction across the full design can use the per-stack per-task EMR with 95\% CIs reported in the revised manuscript (Extended Data Table~8, ``Exact match rate (EMR) with 95\% bootstrap CI per deployment stack on the revision tasks'').
+The 68-test family corresponds to the pre-specified comparisons on Tasks~1--2 (extraction and summarisation). The code, mathematics, and cross-domain results (HumanEval, GSM8K, PubMed PM\textsubscript{2.5}, and the multi-turn extension to gpt-4o and DeepSeek) are reported descriptively with 95\% bootstrap confidence intervals; they are not included in the Holm--Bonferroni family because the qualitative comparisons of interest (local-vs.-API gap, Claude-as-outlier pattern) are confirmatory rather than exploratory under the pre-specified framework, and adding them post hoc would inflate the family-wise error rate of the pre-specified tests. Readers wishing to apply a unified correction across the full design can use the per-stack per-task EMR with 95\% CIs reported in the main manuscript (Table~4, ``Exact match rate (EMR) with 95\% bootstrap CI per deployment stack on the code, mathematics, and cross-domain tasks'').
 
 \paragraph{Bootstrap behaviour at the EMR boundary.}\label{par:bootstrap-boundary}
-The percentile bootstrap was selected for consistency across the original and revision analyses, but it is known to produce degenerate intervals when the empirical estimate sits at the boundary of the EMR support (0 or 1). For groups with EMR${=}$1.000 the percentile CI collapses to [1.00,\,1.00]; for groups with EMR${=}$0.000 it collapses to [0.00,\,0.00]. These ``zero-width'' intervals understate uncertainty by design and are reported as such in the tables. Bias-corrected and accelerated (BCa) intervals would marginally widen the boundary CIs but do not change any of the qualitative conclusions in this paper.
+The percentile bootstrap was selected for consistency across all analyses, but it is known to produce degenerate intervals when the empirical estimate sits at the boundary of the EMR support (0 or 1). For groups with EMR${=}$1.000 the percentile CI collapses to [1.00,\,1.00]; for groups with EMR${=}$0.000 it collapses to [0.00,\,0.00]. These ``zero-width'' intervals understate uncertainty by design and are reported as such in the tables. Bias-corrected and accelerated (BCa) intervals would marginally widen the boundary CIs but do not change any of the qualitative conclusions in this paper.
 
 \subsection{Summary Results}
 
@@ -761,28 +763,30 @@ Excludes 200 chat-format control runs (see Section~\ref{sec:s7}). Including cont
 
 
 %%=============================================================%%
-%% S11 — Revision-batch task details (R1.8, R3.1, R3.3, R3.4)
+%% S11 — Code, mathematics, and cross-domain task details
 %%=============================================================%%
-\section{Revision-Batch Tasks and Experimental Coverage}\label{sec:s11}
+\section{Code, Mathematics, and Cross-Domain Tasks: Experimental Coverage}\label{sec:s11}
 
-This section documents the new experiments added during the major revision, addressing the editor's request and Reviewers 1 and 3.
+\textit{\textbf{Section at a glance.} Beyond Tasks~1--4, the study includes \textbf{2{,}900 further controlled experiments} (total 7{,}004) covering three additional task families---\textbf{HumanEval (code), GSM8K (math), and a cross-domain PubMed PM\textsubscript{2.5} extraction probe}---plus a multi-turn extension to gpt-4o and DeepSeek. The headline finding is that the local--API reproducibility gap \textbf{persists and widens precisely on high-stakes tasks where small textual differences alter functionality or numerical correctness}: Claude Sonnet~4.5 reaches EMR~$=$~0.063 [0.03, 0.10] on GSM8K math reasoning and 0.010 [0.00, 0.03] on PubMed PM\textsubscript{2.5} extraction, while local stacks maintain EMR~$\geq$~0.92 in every one of these tasks. The pattern is \emph{domain-transferable}, not corpus-specific.}
 
-\subsection{Task families added in revision}
+This section documents the code, mathematics, and cross-domain experiments and their coverage.
 
-Three new task families and one targeted extension were added under the same C1 condition ($t{=}0$, fixed seed = 42, 5 repetitions per problem):
+\subsection{Additional task families}
+
+Three additional task families and one targeted extension were evaluated under the same C1 condition ($t{=}0$, fixed seed = 42, 5 repetitions per problem):
 
 \begin{description}[leftmargin=*]
   \item[\textbf{HumanEval (code generation)}.] We sampled 30 problems stratified by docstring length (proxy for difficulty) from the canonical 164-problem benchmark of Chen et al.\ (2021). Each problem provides a Python function signature with a docstring; the model must emit a syntactically valid function body. Repetitions are SHA-256 hashed and compared at the source-code level (EMR), along with NED, ROUGE-L, and BERTScore F1. The 30-problem subset is fixed and cached at \texttt{data/inputs/revision/humaneval.jsonl}.
   \item[\textbf{GSM8K (math reasoning)}.] We sampled 30 problems uniformly at random (seed = 42) from the 1{,}319-problem test split of Cobbe et al.\ (2021). Each problem provides a grade-school math word problem with a chain-of-thought solution terminated by \texttt{\#\#\#\#\ <integer>}. We hash and compare the full output (chain-of-thought plus answer). Cached at \texttt{data/inputs/revision/gsm8k\_test.jsonl}.
-  \item[\textbf{PubMed PM\textsubscript{2.5}/respiratory health (out-of-AI/ML structured extraction)}.] Ten abstracts on fine particulate matter and respiratory outcomes were drawn from the companion-paper corpus (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}). They are independent of the 30 AI/ML abstracts used in the original analysis. The extraction prompt is identical in form to Task 2 but applied to a different scientific domain to test cross-domain transfer of the reproducibility gap. Cached at \texttt{data/inputs/revision/pubmed\_pm25\_t14.json}.
-  \item[\textbf{Multi-turn extension to gpt-4o and DeepSeek Chat}.] The three-turn refinement protocol from Task 3 was applied to the gpt-4o and DeepSeek Chat stacks (10 abstracts $\times$ 5 reps each, 50 runs per stack) to test universality of the near-zero multi-turn EMR previously reported only for Claude and Gemini.
+  \item[\textbf{PubMed PM\textsubscript{2.5}/respiratory health (out-of-AI/ML structured extraction)}.] Ten abstracts on fine particulate matter and respiratory outcomes were drawn from the companion-paper corpus (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}). They are independent of the 30 AI/ML abstracts used for Tasks~1--4. The extraction prompt is identical in form to Task 2 but applied to a different scientific domain to test cross-domain transfer of the reproducibility gap. Cached at \texttt{data/inputs/revision/pubmed\_pm25\_t14.json}.
+  \item[\textbf{Multi-turn extension to gpt-4o and DeepSeek Chat}.] The three-turn refinement protocol from Task 3 was applied to the gpt-4o and DeepSeek Chat stacks (10 abstracts $\times$ 5 reps each, 50 runs per stack) to test universality of the near-zero multi-turn EMR observed for Claude and Gemini.
 \end{description}
 
-\subsection{Revision run totals}
+\subsection{Run totals for the additional tasks}
 
 \begin{table}[H]
 \centering
-\caption{Revision-batch run counts. All runs are under C1 ($t = 0$, seed = 42, 5 reps).}
+\caption{Run counts for the code, mathematics, and cross-domain tasks. All runs are under C1 ($t = 0$, seed = 42, 5 reps).}
 \label{tab:revision-runs}
 \small
 \begin{tabular}{@{}lcr@{}}
@@ -794,28 +798,30 @@ GSM8K (30 problems)           & 8 & 1{,}200 \\
 PubMed PM\textsubscript{2.5} (10 abstracts) & 8 & 400 \\
 Multi-turn extension (10 abstracts) & 2 (gpt-4o, deepseek-chat) & 100 \\
 \midrule
-\textbf{Revision total}       &   & \textbf{2{,}900} \\
+\textbf{Subtotal}             &   & \textbf{2{,}900} \\
 \midrule
-Combined (original 4{,}104 + revision 2{,}900) & & \textbf{7{,}004} \\
+Combined total (4{,}104 + 2{,}900) & & \textbf{7{,}004} \\
 \bottomrule
 \end{tabular}
 \par\smallskip\raggedright\footnotesize
-All 2{,}900 revision runs use the Run Card protocol (Methods §Protocol design); per-run JSONs are deposited in \texttt{outputs/revision/runs/}.
+All 2{,}900 runs use the Run Card protocol (Methods §Protocol design); per-run JSONs are deposited in \texttt{outputs/revision/runs/}.
 \end{table}
 
 \subsection{Reproducibility infrastructure}
 
-The unified revision runner is \texttt{run\_revision\_experiments.py}, with the resumable orchestrator \texttt{run\_revision\_full.sh}. The pipeline shares the existing Run Card + PROV instrumentation (Methods §Protocol design) and supports checkpoint-based resume across sessions. Code-generation outputs are evaluated in a sandboxed subprocess (5-second wall clock, POSIX resource limits) for pass@1; the sandbox is documented at \texttt{src/tasks/pass\_at\_1.py}.
+A unified runner with a resumable orchestrator executes these tasks. The pipeline shares the existing Run Card + PROV instrumentation (Methods §Protocol design) and supports checkpoint-based resume across sessions. Code-generation outputs are evaluated in a sandboxed subprocess (5-second wall clock, POSIX resource limits) for pass@1; the sandbox is documented at \texttt{src/tasks/pass\_at\_1.py}.
 
 \subsection{Snapshot governance}
 
-The OpenAI stack in the revision batch resolves to \texttt{gpt-4o-2024-11-20} (most recent snapshot at the time of measurement). The original analysis used \texttt{gpt-4-0613}; both are reported and the snapshot identifier is logged per run for point-in-time auditability (R3.6).
+The OpenAI stack for the code, mathematics, and cross-domain tasks resolves to \texttt{gpt-4o-2024-11-20} (most recent snapshot at the time of measurement). Tasks~1--4 used \texttt{gpt-4-0613}; both are reported and the snapshot identifier is logged per run for point-in-time auditability.
 
 
 %%=============================================================%%
-%% S12 — LLM-as-judge protocol for PM2.5 triangulation (R3.6)
+%% S12 — LLM-as-judge protocol for PM2.5 triangulation
 %%=============================================================%%
 \section{LLM-as-Judge Triangulation Protocol}\label{sec:s12}
+
+\textit{\textbf{Section at a glance.} A blinded \textbf{two-judge LLM-as-judge protocol} (Claude Opus~4.7 from Anthropic and gpt-4o from OpenAI---two distinct training families) classified \textbf{30 newly sampled disagreement cases} against three pre-registered criteria (direction, magnitude $\pm$20\,\%, CI overlap). \textbf{Both judges classify the majority as truly contradictory}: Claude 22/30 (Wilson 95\,\% CI 56--86\,\%); gpt-4o 27/30 (74--97\,\%). Inter-judge \textbf{Cohen's $\kappa = 0.29$ (fair agreement, Landis--Koch)}. Both judges' lower bounds exclude a pure-cosmetic interpretation under BERTScore~F1~$>$~0.97 on the same outputs, and the convergence of two independent provider families addresses the residual ``LLM-on-LLM'' concern more directly than a single-judge design would. \textbf{The in-paper protocol is self-sufficient to support the truly-contradictory claim}; the companion paper is cited only as larger-corpus context.}
 
 This section documents the in-paper triangulation of the applied PM\textsubscript{2.5} divergence claim. The validation is layered with the companion paper (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}) to preserve that paper's contributions while providing self-contained evidence within the present manuscript.
 
@@ -873,17 +879,19 @@ To preserve the contributions of the companion paper (Rover \& de Souza Tadano, 
 
 \subsection{Future work: multi-rater human validation}\label{sec:s12-future-work}
 
-The Reviewer~3 (item~6) request was for ``human evaluation \emph{or} LLM-as-a-judge'' to confirm whether the PM\textsubscript{2.5} divergences are truly contradictory or merely semantically varied. We satisfy this with the cross-provider two-judge LLM-as-judge protocol described above (Claude Opus 4.7 from Anthropic and gpt-4o from OpenAI). The convergence of two judges from distinct training families directly addresses the standard ``LLM-on-LLM'' bias concern that a single-judge design would expose.
+To confirm whether the PM\textsubscript{2.5} divergences are truly contradictory or merely semantically varied, we conducted a cross-provider two-judge LLM-as-judge analysis (Claude Opus 4.7 from Anthropic and gpt-4o from OpenAI). The convergence of two judges from distinct training families directly addresses the standard ``LLM-on-LLM'' bias concern that a single-judge design would expose.
 
 A dedicated methodological extension applying multi-rater human validation against a domain-expert silver standard on a larger sample is in preparation as a follow-up paper. That paper will (i) increase the sample to $\geq$50 cases, (ii) recruit two or more external epidemiologists not on the present author list, (iii) compute Fleiss' $\kappa$ across humans, LLM judges, and the existing silver standards, and (iv) test whether the human-rater verdict distribution differs from the LLM-judge verdict distribution under formal hypothesis testing. The infrastructure for that work---blinded case packages, rating forms, and the $\kappa$ analysis pipeline---is already deposited in the project repository (\texttt{human\_validation/}) and is reusable by independent groups.
 
 
 %%=============================================================%%
-%% S10b — Per-field reproducibility analysis (R1.5)
+%% S10b — Per-field reproducibility analysis
 %%=============================================================%%
 \section{Per-field reproducibility on structured extraction}\label{sec:s10b}
 
-This section quantifies how the local--API reproducibility gap distributes across the five fields returned by the structured-extraction task (Task~2): \emph{objective}, \emph{method}, and \emph{key\_result} (conclusion-relevant payload) versus \emph{model\_or\_system} and \emph{benchmark} (metadata identifiers). It addresses Reviewer~1's request (R1.5) to resolve the apparent tension between high aggregate BERTScore and the assertion that divergences affect substantive content.
+\textit{\textbf{Section at a glance.} Computing every reproducibility metric \emph{per JSON output field} reveals an unexpected stronger argument: \textbf{paired Cohen's $d = +1.41$ EMR gap} between conclusion-relevant fields ($\overline{\text{EMR}} = 0.455$) and metadata fields ($\overline{\text{EMR}} = 0.684$)---a very large effect. \textbf{BERTScore~F1 is structurally saturated} across both groups (0.978 vs 0.979, paired $d = -0.10$, effectively null). The most striking single-stack case is Gemini~2.5~Pro RAG on \texttt{key\_result}: EMR~$=$~0.10 (the field changes 90\,\% of the time) while BERTScore~F1 remains 0.969. \textbf{BERTScore alone is structurally unable to discriminate substantive payload divergence from cosmetic textual variation} on extracted-JSON fields of moderate length; the three-level reproducibility framework (bitwise $\to$ structural $\to$ semantic) we propose is necessary.}
+
+This section quantifies how the local--API reproducibility gap distributes across the five fields returned by the structured-extraction task (Task~2): \emph{objective}, \emph{method}, and \emph{key\_result} (conclusion-relevant payload) versus \emph{model\_or\_system} and \emph{benchmark} (metadata identifiers). It resolves the apparent tension between high aggregate BERTScore and the assertion that divergences affect substantive content.
 
 \subsection{Protocol}
 
@@ -903,22 +911,126 @@ Across the six API stacks where outputs actually diverge (i.e., excluding the th
 
 \subsection{Per-stack per-field table}
 
-Extended Data Table~\ref{tab:per_field_metrics} (auto-generated from the same JSON file) reports per-stack per-field EMR, NED, ROUGE-L F1, and BERTScore F1 with 95\% bootstrap CIs across 13 stacks and 5 fields. The pattern from the aggregate above is visible at the stack level: API stacks where outputs diverge show conclusion-field EMR drops of 0.15--0.25 relative to metadata fields, while BERTScore is flat to within $\pm 0.02$ across field types for every stack.
+Table~\ref{tab:per_field_metrics} (auto-generated from the same JSON file) reports per-stack per-field EMR, NED, ROUGE-L F1, and BERTScore F1 with 95\% bootstrap CIs across 13 stacks and 5 fields. The pattern from the aggregate above is visible at the stack level: API stacks where outputs diverge show conclusion-field EMR drops of 0.15--0.25 relative to metadata fields, while BERTScore is flat to within $\pm 0.02$ across field types for every stack.
 
 \subsection{Interpretation}
 
-These results resolve the apparent contradiction Reviewer~1 identified between ``textual not semantic'' (BERTScore F1${>}$0.97 across the board) and ``affects substantive content'' (the 67\% \texttt{key\_result} divergence rate originally reported in Extended Data Table~7). The resolution is that \emph{BERTScore is structurally unable to discriminate the substantive payload divergence concentrated in conclusion-relevant fields from the cosmetic textual variation distributed across all fields} when one operates on extracted-JSON fields of moderate length. EMR can; NED partly can. The three-level reproducibility framework (bitwise $\rightarrow$ structural $\rightarrow$ semantic) that the manuscript proposes is therefore not redundant: any single metric, including a state-of-the-art semantic-similarity metric, would mislead on this corpus and at this granularity.
+These results resolve the apparent contradiction between ``textual not semantic'' (BERTScore F1${>}$0.97 across the board) and ``affects substantive content'' (the 67\% \texttt{key\_result} divergence rate reported in Extended Data Table~7). The resolution is that \emph{BERTScore is structurally unable to discriminate the substantive payload divergence concentrated in conclusion-relevant fields from the cosmetic textual variation distributed across all fields} when one operates on extracted-JSON fields of moderate length. EMR can; NED partly can. The three-level reproducibility framework (bitwise $\rightarrow$ structural $\rightarrow$ semantic) that the manuscript proposes is therefore not redundant: any single metric, including a state-of-the-art semantic-similarity metric, would mislead on this corpus and at this granularity.
 
-% Robust include: works both locally (compiled from article/) and on Overleaf (compiled from root)
-\IfFileExists{../analysis/tables/table_per_field_metrics.tex}{%
-  \input{../analysis/tables/table_per_field_metrics.tex}%
-}{%
-  \IfFileExists{analysis/tables/table_per_field_metrics.tex}{%
-    \input{analysis/tables/table_per_field_metrics.tex}%
-  }{%
-    \textit{[Per-field metrics table file missing — expected at \texttt{analysis/tables/table\_per\_field\_metrics.tex}]}%
-  }%
+% Per-field reproducibility metrics — inlined for a self-contained submission (longtable spans pages with repeated header).
+{\scriptsize
+\setlength{\tabcolsep}{4pt}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+\begin{longtable}{@{}p{3.2cm}lcccc@{}}
+\caption{Per-field reproducibility on the structured extraction task. Each cell reports the mean across abstracts with 95\% percentile bootstrap CIs ($n_{\text{boot}}{=}10{,}000$). Pairwise comparisons within an abstract's repetitions, skipping pairs where at least one repetition omitted the field. Conclusion-relevant fields (\emph{objective}, \emph{method}, \emph{key\_result}) exhibit substantially lower exact-match rates than metadata fields (\emph{model\_or\_system}, \emph{benchmark}) on API stacks where outputs actually diverge (see API-only aggregate at the foot of the table). BERTScore~F1, by contrast, remains saturated above 0.94 for both groups---precisely the saturation effect that motivates the manuscript's three-level reproducibility framework: high semantic similarity does not imply textual identity on the fields that drive downstream conclusions.}\label{tab:per_field_metrics}\\
+\toprule
+\textbf{Stack} & \textbf{Field} & \textbf{EMR} & \textbf{NED} & \textbf{ROUGE-L F1} & \textbf{BERTScore F1} \\
+\midrule
+\endfirsthead
+\multicolumn{6}{l}{\textit{Table~\ref{tab:per_field_metrics} continued from previous page}}\\
+\toprule
+\textbf{Stack} & \textbf{Field} & \textbf{EMR} & \textbf{NED} & \textbf{ROUGE-L F1} & \textbf{BERTScore F1} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{6}{r}{\textit{(continued on next page)}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+  GPT-4 & objective & 0.773\,[0.66,\,0.87] & 0.062\,[0.03,\,0.10] & 0.947\,[0.91,\,0.98] & 0.991\,[0.98,\,1.00] \\
+   & method & 0.667\,[0.55,\,0.78] & 0.088\,[0.04,\,0.14] & 0.926\,[0.88,\,0.96] & 0.987\,[0.98,\,0.99] \\
+   & key\_result & 0.637\,[0.53,\,0.74] & 0.058\,[0.02,\,0.10] & 0.952\,[0.92,\,0.98] & 0.993\,[0.99,\,1.00] \\
+   & model\_or\_system & 0.904\,[0.83,\,0.97] & 0.022\,[0.00,\,0.05] & 0.962\,[0.93,\,0.99] & 0.994\,[0.99,\,1.00] \\
+   & benchmark & 0.904\,[0.82,\,0.97] & 0.032\,[0.00,\,0.07] & 0.967\,[0.93,\,1.00] & 0.995\,[0.99,\,1.00] \\
+  \midrule
+  Claude Sonnet 4.5 & objective & 0.607\,[0.41,\,0.80] & 0.091\,[0.02,\,0.18] & 0.919\,[0.85,\,0.98] & 0.988\,[0.98,\,1.00] \\
+   & method & 0.390\,[0.21,\,0.61] & 0.168\,[0.11,\,0.22] & 0.838\,[0.77,\,0.91] & 0.973\,[0.96,\,0.98] \\
+   & key\_result & 0.510\,[0.34,\,0.69] & 0.118\,[0.04,\,0.20] & 0.885\,[0.80,\,0.96] & 0.981\,[0.97,\,0.99] \\
+   & model\_or\_system & 0.871\,[0.61,\,1.00] & 0.052\,[0.00,\,0.16] & 0.922\,[0.77,\,1.00] & 0.991\,[0.97,\,1.00] \\
+   & benchmark & 0.738\,[0.55,\,0.93] & 0.105\,[0.03,\,0.20] & 0.919\,[0.84,\,0.98] & 0.992\,[0.98,\,1.00] \\
+  \midrule
+  DeepSeek Chat & objective & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & method & 0.840\,[0.72,\,0.96] & 0.027\,[0.00,\,0.06] & 0.979\,[0.96,\,1.00] & 0.996\,[0.99,\,1.00] \\
+   & key\_result & 0.960\,[0.88,\,1.00] & 0.007\,[0.00,\,0.02] & 0.994\,[0.98,\,1.00] & 0.999\,[1.00,\,1.00] \\
+   & model\_or\_system & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & benchmark & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+  \midrule
+  Perplexity Sonar & objective & 0.330\,[0.21,\,0.46] & 0.188\,[0.12,\,0.26] & 0.827\,[0.78,\,0.87] & 0.973\,[0.97,\,0.98] \\
+   & method & 0.170\,[0.08,\,0.29] & 0.277\,[0.23,\,0.33] & 0.714\,[0.65,\,0.78] & 0.956\,[0.94,\,0.97] \\
+   & key\_result & 0.270\,[0.18,\,0.37] & 0.213\,[0.14,\,0.28] & 0.798\,[0.75,\,0.86] & 0.970\,[0.96,\,0.98] \\
+   & model\_or\_system & 0.511\,[0.29,\,0.73] & 0.307\,[0.12,\,0.53] & 0.626\,[0.41,\,0.81] & 0.946\,[0.90,\,0.98] \\
+   & benchmark & 0.300\,[0.14,\,0.44] & 0.395\,[0.26,\,0.56] & 0.617\,[0.44,\,0.76] & 0.942\,[0.90,\,0.97] \\
+  \midrule
+  LLaMA 3 8B & objective & 0.987\,[0.96,\,1.00] & 0.005\,[0.00,\,0.01] & 0.996\,[0.99,\,1.00] & 0.999\,[1.00,\,1.00] \\
+   & method & 0.987\,[0.96,\,1.00] & 0.005\,[0.00,\,0.02] & 0.996\,[0.99,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & key\_result & 0.985\,[0.95,\,1.00] & 0.004\,[0.00,\,0.01] & 0.996\,[0.99,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & model\_or\_system & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & benchmark & 0.978\,[0.93,\,1.00] & 0.011\,[0.00,\,0.03] & 0.993\,[0.98,\,1.00] & 0.999\,[1.00,\,1.00] \\
+  \midrule
+  Mistral 7B & objective & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & method & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & key\_result & 0.960\,[0.88,\,1.00] & 0.002\,[0.00,\,0.00] & 0.999\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & model\_or\_system & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & benchmark & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+  \midrule
+  Gemma 2 9B & objective & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & method & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & key\_result & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & model\_or\_system & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & benchmark & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+  \midrule
+  LLaMA 3 8B (Together) & objective & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & method & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & key\_result & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & model\_or\_system & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & benchmark & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+  \midrule
+  Gemini 2.5 Pro (RAG) & objective & 0.440\,[0.22,\,0.67] & 0.170\,[0.07,\,0.27] & 0.843\,[0.74,\,0.94] & 0.976\,[0.96,\,0.99] \\
+   & method & 0.270\,[0.11,\,0.47] & 0.223\,[0.13,\,0.33] & 0.777\,[0.66,\,0.87] & 0.975\,[0.96,\,0.99] \\
+   & key\_result & 0.100\,[0.04,\,0.16] & 0.244\,[0.15,\,0.34] & 0.775\,[0.69,\,0.86] & 0.969\,[0.96,\,0.98] \\
+   & model\_or\_system & 0.720\,[0.52,\,0.92] & 0.142\,[0.03,\,0.28] & 0.832\,[0.67,\,0.96] & 0.977\,[0.95,\,1.00] \\
+   & benchmark & 0.470\,[0.29,\,0.64] & 0.168\,[0.08,\,0.27] & 0.816\,[0.72,\,0.90] & 0.976\,[0.96,\,0.99] \\
+  \midrule
+  Claude Sonnet 4.5 (RAG) & objective & 0.040\,[0.00,\,0.09] & 0.289\,[0.22,\,0.36] & 0.720\,[0.65,\,0.79] & 0.956\,[0.94,\,0.97] \\
+   & method & 0.070\,[0.00,\,0.20] & 0.296\,[0.23,\,0.36] & 0.696\,[0.61,\,0.78] & 0.959\,[0.95,\,0.97] \\
+   & key\_result & 0.110\,[0.03,\,0.23] & 0.245\,[0.17,\,0.31] & 0.785\,[0.73,\,0.84] & 0.969\,[0.96,\,0.98] \\
+   & model\_or\_system & 0.490\,[0.23,\,0.76] & 0.244\,[0.10,\,0.39] & 0.772\,[0.63,\,0.91] & 0.972\,[0.96,\,0.99] \\
+   & benchmark & 0.300\,[0.18,\,0.42] & 0.255\,[0.17,\,0.34] & 0.762\,[0.66,\,0.85] & 0.967\,[0.95,\,0.98] \\
+  \midrule
+  LLaMA 3 8B (RAG) & objective & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & method & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & key\_result & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & model\_or\_system & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & benchmark & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+  \midrule
+  Mistral 7B (RAG) & objective & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & method & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & key\_result & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & model\_or\_system & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & benchmark & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+  \midrule
+  Gemma 2 9B (RAG) & objective & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & method & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & key\_result & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & model\_or\_system & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+   & benchmark & 1.000\,[1.00,\,1.00] & 0.000\,[0.00,\,0.00] & 1.000\,[1.00,\,1.00] & 1.000\,[1.00,\,1.00] \\
+  \midrule
+  \multicolumn{6}{@{}l}{\textbf{API-only aggregate (n=6 stacks where EMR$<$1)}} \\
+  \multicolumn{2}{@{}l}{\textit{objective}} & 0.532 & 0.133 & 0.876 & 0.981 \\
+  \multicolumn{2}{@{}l}{\textit{method}} & 0.401 & 0.180 & 0.822 & 0.974 \\
+  \multicolumn{2}{@{}l}{\textit{key\_result}} & 0.431 & 0.147 & 0.865 & 0.980 \\
+  \multicolumn{2}{@{}l}{\textit{model\_or\_system}} & 0.749 & 0.128 & 0.852 & 0.980 \\
+  \multicolumn{2}{@{}l}{\textit{benchmark}} & 0.619 & 0.159 & 0.847 & 0.979 \\
+  \midrule
+  \multicolumn{2}{@{}l}{\textit{Conclusion-relevant avg}} & 0.455 & 0.154 & 0.854 & 0.978 \\
+  \multicolumn{2}{@{}l}{\textit{Metadata avg}} & 0.684 & 0.144 & 0.850 & 0.979 \\
+  \multicolumn{2}{@{}l}{$\Delta$ (metadata $-$ conclusion)} & 0.229 & -0.010 & -0.005 & 0.001 \\
+\end{longtable}
 }
+
+\vspace{0.5em}
+\par\noindent\textbf{Hypothesis verdict.} A natural hypothesis is that BERTScore~F1 would be \emph{lower} on conclusion-relevant fields than on metadata fields. On the API-only aggregate ($n{=}6$ stacks), BERTScore~F1 is 0.978 for conclusion-relevant fields and 0.979 for metadata fields ($\Delta{=}+0.0010$, paired benchmark vs.\ key\_result Cohen's $d{=}-0.10$); the metric is therefore saturated on both groups and \emph{cannot} discriminate between them, which is itself an important finding---BERTScore obscures rather than reveals the substantive divergence. EMR, by contrast, shows a sharp separation: 0.455 (conclusion-relevant) vs.\ 0.684 (metadata), $\Delta{=}+0.229$, paired Cohen's $d{=}+1.41$. This validates the manuscript's claim that the divergence concentrates on the substantive payload (\emph{objective}, \emph{method}, \emph{key\_result}) and supports adopting a multi-metric three-level framework rather than relying on aggregate BERTScore alone.
 
 
 \end{document}

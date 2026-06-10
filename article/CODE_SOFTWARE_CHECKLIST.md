@@ -17,8 +17,8 @@
 | Public repository | https://github.com/Roverlucas/genai-reproducibility-protocol |
 | Repository visibility (review) | Private — reviewer link supplied via Editorial Manager |
 | Repository visibility (post-publication) | Public on acceptance |
-| Versioned release for this manuscript | Tag `v1.1-natcomms-revision1` (created at submission of revised manuscript) |
-| Persistent archive (snapshot) | Figshare DOI [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) (CC-BY 4.0); GitHub release tag `v1.1-natcomms-revision1` is mirrored on Figshare |
+| Versioned release for this manuscript | Tag `v1.1` (created at submission of revised manuscript) |
+| Persistent archive (snapshot) | Figshare DOI [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) (CC-BY 4.0); GitHub release tag `v1.1` is mirrored on Figshare |
 | Reviewer data archive (private) | Figshare reviewer link — see Data Availability for the URL provided to the editorial office (excluded from the published version) |
 | License (code) | MIT (LICENSE file at repository root) |
 | License (data and manuscript artefacts) | CC-BY 4.0 |
@@ -80,10 +80,10 @@ External SDKs called via `urllib` (no extra pip dependency): Anthropic Messages 
 
 | Item | Path | Notes |
 |------|------|-------|
-| Original input corpus (30 ML/AI abstracts) | `data/inputs/abstracts.json` | Used for Tasks 1–4 in the original submission |
-| Revision input corpus (10 PubMed PM2.5 abstracts, T14) | `data/inputs/revision/` | Cross-domain extension introduced in the revision |
-| Original run records (4,104 PROV-instrumented runs) | `outputs/runs/` | One JSON per run; aggregated in `outputs/all_runs.json` |
-| Revision run records (T1+T4+T14, in progress) | `outputs/revision/runs/` | Currently 808 records; final count documented in revised manuscript Table 1 (TBD pending T1 completion) |
+| AI/ML input corpus (30 abstracts) | `data/inputs/abstracts.json` | Used for Tasks 1–4 |
+| Cross-domain input corpus (10 PubMed PM2.5 abstracts, T14) | `data/inputs/revision/` | Out-of-AI/ML extension |
+| Run records for Tasks 1–4 (4,104 PROV-instrumented runs) | `outputs/runs/` | One JSON per run; aggregated in `outputs/all_runs.json` |
+| Run records for the code/math/cross-domain tasks (2,900 runs; T1+T4+T14) | `outputs/revision/runs/` | Complete; per-task and per-stack counts reported in manuscript Table 4 and Supplementary §S11 |
 | Run Cards (human-readable provenance) | `outputs/run_cards/`, `outputs/revision/run_cards/` | One per run |
 | W3C PROV-JSON provenance graphs | `outputs/prov/` | Validated against W3C PROV-JSON serialization |
 | Aggregated metrics | `analysis/expanded_metrics.json`, `analysis/bootstrap_cis.json`, `analysis/bertscore_per_field_results.json`, `analysis/revision/*.json` | Inputs for figure/table generators |
@@ -114,7 +114,7 @@ Step-by-step protocol to reproduce all results in the revised manuscript:
    ```bash
    git clone https://github.com/Roverlucas/genai-reproducibility-protocol.git
    cd genai-reproducibility-protocol
-   git checkout v1.1-natcomms-revision1
+   git checkout v1.1
    ```
 2. **Create the environment and install pinned dependencies:**
    ```bash
@@ -201,7 +201,7 @@ Run-level reproducibility evidence is preserved per run in `outputs/runs/<run_id
 | Item | Response |
 |------|----------|
 | Long-term hosting | GitHub (https://github.com/Roverlucas/genai-reproducibility-protocol). Repository made public on acceptance |
-| Persistent archival | Figshare (DOI: [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373), CC-BY 4.0). The GitHub release tag `v1.1-natcomms-revision1` is mirrored on Figshare. The deposit is available privately to reviewers via the share URL in the Cover Letter and will be made public at acceptance |
+| Persistent archival | Figshare (DOI: [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373), CC-BY 4.0). The GitHub release tag `v1.1` is mirrored on Figshare. The deposit is available privately to reviewers via the share URL in the Cover Letter and will be made public at acceptance |
 | Issue tracking | GitHub Issues. Bug reports and reproduction questions are accepted from the broader community |
 | Versioning | Semantic versioning. Future protocol changes will not overwrite the manuscript tag |
 | Author commitment | Lucas Rover (corresponding author) commits to maintain the repository for ≥5 years post-publication, in accordance with the funding institution's data-management policy (UTFPR) |
@@ -214,9 +214,9 @@ Run-level reproducibility evidence is preserved per run in `outputs/runs/<run_id
 | Item | Status | Action |
 |------|--------|--------|
 | Figshare DOI | ☑ | [10.6084/m9.figshare.31653373](https://doi.org/10.6084/m9.figshare.31653373) — already minted (CC-BY 4.0); private reviewer share URL: https://figshare.com/s/3d17327cef1ae99ed37c |
-| Final run count (4,104 original + 2,900 revision = 7,004) | ☑ | Reported in manuscript Table 1, Methods §Tasks, and Extended Data Table 8 |
-| Pass@1 results (HumanEval) | ☑ | Reported in Methods §"Coding and math reasoning" and Extended Data Table 8 |
-| Final tagged release `v1.1-natcomms-revision1` | ☑ | Created on GitHub at commit `d60ca2d` (origin/main); referenced in Data Availability and Code Availability statements |
+| Final run count (4,104 original + 2,900 revision = 7,004) | ☑ | Reported in manuscript Table 1, Methods §Tasks, and Table 4 (revision tasks) |
+| Pass@1 results (HumanEval) | ☑ | Reported in Methods §"Coding and math reasoning" and Table 4 |
+| Final tagged release `v1.1` | ☑ | Created on GitHub at commit `d60ca2d` (origin/main); referenced in Data Availability and Code Availability statements |
 | Reviewer figshare link | ☑ Provided to editorial office; not in the public manuscript | https://figshare.com/s/3d17327cef1ae99ed37c (private; for reviewers only) |
 
 ---
