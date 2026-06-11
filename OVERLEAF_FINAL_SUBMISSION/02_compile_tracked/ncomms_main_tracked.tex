@@ -1,7 +1,7 @@
 % Nature Communications — Article
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL ncomms_main_ORIGINAL_presubmission.tex   Mon May 25 17:37:24 2026
-%DIF ADD ncomms_main_NEW_current.tex              Thu Jun 11 11:29:41 2026
+%DIF ADD ncomms_main_NEW_current.tex              Thu Jun 11 11:37:45 2026
 % "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs
 %  Undermines Scientific Reproducibility"
 %
@@ -340,7 +340,7 @@ The \texttt{key\_result} field diverges in 67\% of groups, and \texttt{method} i
 
 The implications extend beyond individual studies.
 Recent work has shown that LLMs used as evaluators of empathic communication are sensitive to subtle input variations\cite{kumar2026reliable}, and psychometric assessments of LLM behavio\DIFaddbegin \DIFadd{u}\DIFaddend r reveal consistency patterns that depend on model architecture and fine-tuning approach\cite{serapiogarcía2025psychometric}.
-Non-determinism is therefore not a technical curiosity but a property that interacts with how LLMs are deployed as measurement instruments, one that current evaluation frameworks do not account for.
+Non-determinism is therefore \DIFdelbegin \DIFdel{not }\DIFdelend \DIFaddbegin \DIFadd{more than }\DIFaddend a technical curiosity\DIFdelbegin \DIFdel{but a property that }\DIFdelend \DIFaddbegin \DIFadd{: it }\DIFaddend interacts with how LLMs are deployed as measurement instruments, \DIFdelbegin \DIFdel{one }\DIFdelend \DIFaddbegin \DIFadd{in a way }\DIFaddend that current evaluation frameworks do not account for.
 For the growing body of work that uses LLMs as annotators, evaluators, or data extractors, our results indicate that the ``instrument'' itself introduces measurement noise that is \DIFdelbegin \DIFdel{uncharacterized }\DIFdelend \DIFaddbegin \DIFadd{uncharacterised }\DIFaddend and unreported in standard methodology sections.
 
 
@@ -614,7 +614,7 @@ A }\DIFaddend meta-analytic propagation analysis \DIFdelbegin \DIFdel{reveals th
 This confirms that the hidden non-determinism documented in the present study is not confined to AI/ML benchmarks but propagates into applied health research where it can alter the composition of evidence available for clinical guidelines and regulatory decisions.
 
 \DIFdelbegin \DIFdel{In summary, the }\DIFdelend \DIFaddbegin \DIFadd{The }\DIFaddend ``deterministic'' settings offered by major LLM API providers do not deliver determinism in practice, creating a hidden reproducibility gap that spans five providers, persists across multi-turn and RAG workflows, and remains invisible because semantic equivalence \DIFdelbegin \DIFdel{masks textual divergence}\DIFdelend \DIFaddbegin \DIFadd{under aggregate metrics masks textual---and sometimes substantive---divergence}\DIFaddend .
-Our quasi-isolation experiment attributes the cause to production infrastructure complexity rather than cloud deployment itself.
+Our quasi-isolation experiment \DIFdelbegin \DIFdel{attributes the cause to production infrastructure complexityrather than cloud deployment itself}\DIFdelend \DIFaddbegin \DIFadd{is consistent with production-infrastructure complexity, rather than the cloud medium, as the source}\DIFaddend .
 The lightweight provenance protocol we provide, grounded in W3C PROV and requiring less than 1\% overhead, makes this variation visible, auditable, and attributable, offering an actionable path toward reproducible LLM-based research.
 As large language models become embedded in clinical decision support, environmental monitoring, engineering design, and automated data analysis, the inability to reproduce a model's output is not merely an academic inconvenience but a threat to the trustworthiness of systems that depend on it.
 Without explicit provenance tracking, the reliability of any LLM-based pipeline built on API inference cannot be assumed; it must be measured, documented, and continuously monitored.
@@ -1003,7 +1003,7 @@ Exact match rate per deployment stack on the \DIFdelbegin \DIFdel{revision tasks
 \caption{\DIFdelbeginFL \textbf{\DIFdelFL{Exact match rate (EMR) with 95\% bootstrap CI per deployment stack on the revision tasks.}}
 %DIFAUXCMD
 \DIFdelendFL \DIFaddbeginFL \textbf{\DIFaddFL{Exact match rate (EMR) with 95\% bootstrap CI per deployment stack on the code, mathematics, and cross-domain tasks.}}
-\DIFaddendFL T5 = HumanEval (code); T6 = GSM8K (math); T3-ext = multi-turn refinement extended to gpt-4o and DeepSeek; T14 = 10 PubMed PM\textsubscript{2.5} abstracts (Task~2 extraction schema). 10\,000 percentile bootstrap resamples. \DIFaddbeginFL \DIFaddFL{The local-vs-API local--API effect size is reported as Cliff's $\delta$ (last row), pooling per-problem EMRs across the three local stacks versus the four API stacks for each task; $|\delta|{>}0.474$ corresponds to a large effect by Romano }\emph{\DIFaddFL{et~al.}}\DIFaddFL{\mbox{%DIFAUXCMD
+\DIFaddendFL T5 = HumanEval (code); T6 = GSM8K (math); T3-ext = multi-turn refinement extended to gpt-4o and DeepSeek; T14 = 10 PubMed PM\textsubscript{2.5} abstracts (Task~2 extraction schema). 10\,000 percentile bootstrap resamples. \DIFaddbeginFL \DIFaddFL{The local--API effect size is reported as Cliff's $\delta$ (last row), pooling per-problem EMRs across the three local stacks versus the four API stacks for each task; $|\delta|{>}0.474$ corresponds to a large effect by Romano }\emph{\DIFaddFL{et~al.}}\DIFaddFL{\mbox{%DIFAUXCMD
 \cite{romano2006appropriate}}\hskip0pt%DIFAUXCMD
 .}\DIFaddendFL }
 \label{tab:revision_emr}
