@@ -9,6 +9,12 @@
 
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
 
+% allow long URLs to break at any character (no xurl available)
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z}
+\makeatother
+\setlength{\emergencystretch}{2em}
+
 \begin{document}
 
 \begin{flushright}
@@ -73,9 +79,7 @@ This revision is substantial. We have addressed every point raised by Reviewers 
 
 The companion paper (Rover \& de Souza Tadano, 2026; OSF: \href{https://doi.org/10.17605/OSF.IO/VR934}{doi.org/10.17605/OSF.IO/VR934}) reports the full 500-abstract PM\textsubscript{2.5}/respiratory-health analysis. To avoid duplicate publication, the present manuscript reports only the aggregate propagation finding (23 effects appear/disappear depending on which run is used) as larger-corpus context, with full per-abstract data, silver-standard validation, and meta-analytic propagation residing in the companion manuscript, openly accessible at \href{https://doi.org/10.17605/OSF.IO/VR934}{doi.org/10.17605/OSF.IO/VR934}. The substantive evidence in the present manuscript is carried by the in-paper two-judge LLM-as-judge protocol on 30 new cases and the 10-abstract PubMed PM\textsubscript{2.5} probe; the companion paper is supporting context, not load-bearing.
 
-The companion paper has not yet been submitted to any journal. Given the strong methodological complementarity between the two works---this one establishing the hidden non-determinism phenomenon and a provenance protocol that detects it; the companion paper quantifying its empirical impact on a 500-abstract evidence base in environmental health---\textbf{we would be very glad to submit the companion manuscript to \emph{Nature Communications} for parallel editorial consideration}, should you wish to evaluate the two as a coherent contribution.
-
-Publishing the pair together at \emph{Nature Communications} would maximise the journal's impact in two concrete ways: \emph{(i)~the two works form a self-contained reproducibility story---methodological diagnosis (cause) and applied quantification (consequence)---and cross-citation between them within a single editorial venue amplifies both the methodological reach (this manuscript) and the policy-relevant impact (the companion paper) in ways neither paper achieves in isolation; (ii)~\emph{Nature Communications} has visibly led the conversation on reproducibility in computational science, and co-publishing the diagnosis with the applied-impact quantification would extend that leadership into LLM-based research, an area in which the field currently lacks an authoritative joint reference.} The companion paper has been openly preregistered at OSF (\href{https://doi.org/10.17605/OSF.IO/VR934}{doi.org/10.17605/OSF.IO/VR934}) for immediate editorial review, and we welcome the opportunity to position the pair within the same editorial venue.
+The companion paper has not yet been submitted elsewhere and is openly preregistered at OSF (\href{https://doi.org/10.17605/OSF.IO/VR934}{doi.org/10.17605/OSF.IO/VR934}). Given the natural complementarity between the two works---the present manuscript diagnoses the hidden non-determinism and provides a protocol to detect it, while the companion paper quantifies its applied impact on a 500-abstract environmental-health evidence base---we would welcome the opportunity to have both considered at \emph{Nature Communications}, should the editors find that of interest. The present manuscript, in any case, stands on its own.
 
 A point-by-point response addressing every reviewer comment is provided as a separate document, together with the revised manuscript with all changes marked. Track changes were generated via \texttt{latexdiff} between the submitted version and the revised version. We hope the revisions meet the high standard you and the reviewers have set.
 
