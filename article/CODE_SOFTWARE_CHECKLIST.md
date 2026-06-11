@@ -4,7 +4,7 @@
 > Reference policy: Nature code & software submission policy (https://www.nature.com/documents/nr-software-policy.pdf).
 > Corresponding author: Lucas Rover (ORCID: 0000-0001-6641-9224)
 > Coauthors: Hugo Valadares Siqueira (0000-0002-1278-4602); Eduardo Tadeu Bacalhau (0000-0002-3936-0375); Anibal Tavares de Azevedo (0000-0003-1678-7795); Yara de Souza Tadano (0000-0002-3975-3419)
-> Manuscript ID: NCOMMS-2026-XXXXX (Major Revision, Nature Communications)
+> Manuscript ID: NCOMMS-26-021731A (Major Revision, Nature Communications)
 > Revision date: 2026-05-11
 
 ---

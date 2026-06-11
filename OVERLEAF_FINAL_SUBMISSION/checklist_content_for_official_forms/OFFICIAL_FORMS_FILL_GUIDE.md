@@ -1,7 +1,7 @@
 # Fill guide for the official Nature XFA forms
 
 > Single-blind submission to **Nature Communications** → use the real corresponding-author name (NOT "DBPR"/"DAPR").
-> Manuscript number: NCOMMS-2026-XXXXX (insert the real one from the MTS).
+> Manuscript number: NCOMMS-26-021731A.
 > Open each official form in **Adobe Acrobat Reader** (XFA forms show "Please wait" elsewhere), type the content below, save, upload.
 
 ---
