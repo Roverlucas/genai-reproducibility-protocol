@@ -37,7 +37,7 @@
 
 \title{\textbf{Supplementary Information}\\[6pt]
 Same Prompt, Different Answer:\\Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility}
-\author{Lucas Rover, Hugo Valadares Siqueira, Eduardo Tadeu Bacalhau, Anibal Tavares de Azevedo \& Yara de Souza Tadano\\
+\author{Lucas Rover, Hugo Valadares Siqueira, Eduardo Tadeu Bacalhau,\\ Anibal Tavares de Azevedo \& Yara de Souza Tadano\\
 \small UTFPR -- Universidade Tecnol\'ogica Federal do Paran\'a}
 \date{}
 
@@ -845,7 +845,7 @@ Each judge issues one verdict per case from \{\texttt{truly\_contradictory}, \te
 
 \subsection{Cost and provenance}
 
-Total cost across 30 cases $\times$ 2 judges = 60 LLM-as-judge calls: USD~0.28 (Claude Opus 4.7 on Anthropic API; mean 929 input + 137 output tokens per case at \$15/MTok input, \$75/MTok output) + USD~1.02 (gpt-4o on OpenAI API; mean 1{,}100 input + 145 output tokens per case at \$2.50/MTok input, \$10/MTok output) = USD~1.30. Per-case judge records (input prompt SHA-256, model identifier, randomisation seed, raw response, parsed verdict, token counts, cost) are deposited as PROV-style JSON at \texttt{outputs/revision/t3\_judge/} (subdirectories \texttt{extended\_claude/}, \texttt{gpt4o\_original10/}, \texttt{gpt4o\_extended20/}). The two-judge aggregate with Cohen's $\kappa$ is at \texttt{outputs/revision/t3\_judge/t3\_extended\_kappa.json}.
+Total cost across 30 cases $\times$ 2 judges = 60 LLM-as-judge calls: USD~0.28 (Claude Opus 4.7 on Anthropic API; mean 929 input + 137 output tokens per case at \$15/MTok input, \$75/MTok output) + USD~1.02 (gpt-4o on OpenAI API; mean 1{,}100 input + 145 output tokens per case at \$2.50/MTok input, \$10/MTok output) = USD~1.30. Per-case judge records (input prompt SHA-256, model identifier, randomisation seed, raw response, parsed verdict, token counts, cost) are deposited as PROV-style JSON in the project repository, one record per case, together with the two-judge aggregate file reporting Cohen's $\kappa$.
 
 \subsection{Verdict distribution}
 
@@ -899,7 +899,7 @@ For every (stack, abstract) group with at least two valid extractions, we comput
 
 \subsection{Aggregate result}
 
-Across the six API stacks where outputs actually diverge (i.e., excluding the three local stacks with EMR${=}$1.000 on most fields), the gap between conclusion-relevant fields and metadata fields is large on EMR but absent on BERTScore. The API-only aggregate from \texttt{analysis/bertscore\_per\_field\_results.json}:
+Across the six API stacks where outputs actually diverge (i.e., excluding the three local stacks with EMR${=}$1.000 on most fields), the gap between conclusion-relevant fields and metadata fields is large on EMR but absent on BERTScore. The API-only aggregate (from the per-field BERTScore results file in the repository):
 
 \begin{itemize}[leftmargin=*]
   \item Conclusion-relevant fields ($\overline{\text{EMR}}{=}0.455$) versus metadata fields ($\overline{\text{EMR}}{=}0.684$). Paired Cohen's $d{=}+1.41$ (very large effect).

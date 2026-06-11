@@ -1,7 +1,7 @@
 % Nature Communications — Article
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL ncomms_main_ORIGINAL_presubmission.tex   Mon May 25 17:37:24 2026
-%DIF ADD ncomms_main_NEW_current.tex              Tue Jun  9 22:10:41 2026
+%DIF ADD ncomms_main_NEW_current.tex              Thu Jun 11 10:20:29 2026
 % "Same Prompt, Different Answer: Hidden Non-Determinism in LLM APIs
 %  Undermines Scientific Reproducibility"
 %
@@ -779,6 +779,66 @@ For closed-source providers, mechanism activation cannot be verified directly an
 Symbols: \checkmark, present and verifiable; ``likely'', consistent with public documentation and standard production practice; ``possible'', plausible but not confirmed; ---, absent or strongly mitigated; $\triangle$, present in principle but mitigated by design (single-GPU integer arithmetic).
 For closed-source stacks, attribution is necessarily inferential.}\label{tab:mechanisms}
 \footnotesize
+\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{@{}lccccc@{}}
+%DIFDELCMD < \toprule
+%DIFDELCMD < %%%
+\textbf{\DIFdelFL{Mechanism}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{L-LLaMA3}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{C-LLaMA3 (Together)}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{API-GPT4}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{API-Claude}} %DIFAUXCMD
+%DIFDELCMD < & %%%
+\textbf{\DIFdelFL{API-Gemini}} %DIFAUXCMD
+%DIFDELCMD < \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < %%%
+\DIFdelFL{Non-associative FP arithmetic     }%DIFDELCMD < & %%%
+\DIFdelFL{$\triangle$ }%DIFDELCMD < & %%%
+\DIFdelFL{$\triangle$ }%DIFDELCMD < & %%%
+\DIFdelFL{$\triangle$ }%DIFDELCMD < & %%%
+\DIFdelFL{$\triangle$ }%DIFDELCMD < & %%%
+\DIFdelFL{$\triangle$ }%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Mixed-precision BF16/FP16         }%DIFDELCMD < & %%%
+\DIFdelFL{--- (Q4 int)}%DIFDELCMD < & \checkmark  & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely }%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Tensor parallelism                }%DIFDELCMD < & %%%
+\DIFdelFL{---         }%DIFDELCMD < & \checkmark  & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely }%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{FlashAttention kernel             }%DIFDELCMD < & %%%
+\DIFdelFL{---         }%DIFDELCMD < & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely }%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Dynamic batching                  }%DIFDELCMD < & %%%
+\DIFdelFL{---         }%DIFDELCMD < & \checkmark  & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely }%DIFDELCMD < \\
+%DIFDELCMD < %%%
+\DIFdelFL{Speculative decoding              }%DIFDELCMD < & %%%
+\DIFdelFL{---         }%DIFDELCMD < & %%%
+\DIFdelFL{possible    }%DIFDELCMD < & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely      }%DIFDELCMD < & %%%
+\DIFdelFL{likely }%DIFDELCMD < \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 \textbf{Mechanism} & \textbf{L-LLaMA3} & \textbf{C-LLaMA3 (Together)} & \textbf{API-GPT4} & \textbf{API-Claude} & \textbf{API-Gemini} \\
@@ -790,8 +850,8 @@ FlashAttention kernel             & ---         & likely      & likely      & li
 Dynamic batching                  & ---         & \checkmark  & likely      & likely      & likely \\
 Speculative decoding              & ---         & possible    & likely      & likely      & likely \\
 \bottomrule
-\end{tabular}
-\end{table*}
+\end{tabular}}
+\DIFaddendFL \end{table*}
 
 
 \subsection{Protocol overhead}\label{subsec:overhead}

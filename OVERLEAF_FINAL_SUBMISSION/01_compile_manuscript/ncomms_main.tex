@@ -656,6 +656,8 @@ For closed-source providers, mechanism activation cannot be verified directly an
 Symbols: \checkmark, present and verifiable; ``likely'', consistent with public documentation and standard production practice; ``possible'', plausible but not confirmed; ---, absent or strongly mitigated; $\triangle$, present in principle but mitigated by design (single-GPU integer arithmetic).
 For closed-source stacks, attribution is necessarily inferential.}\label{tab:mechanisms}
 \footnotesize
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 \textbf{Mechanism} & \textbf{L-LLaMA3} & \textbf{C-LLaMA3 (Together)} & \textbf{API-GPT4} & \textbf{API-Claude} & \textbf{API-Gemini} \\
@@ -667,7 +669,7 @@ FlashAttention kernel             & ---         & likely      & likely      & li
 Dynamic batching                  & ---         & \checkmark  & likely      & likely      & likely \\
 Speculative decoding              & ---         & possible    & likely      & likely      & likely \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table*}
 
 
