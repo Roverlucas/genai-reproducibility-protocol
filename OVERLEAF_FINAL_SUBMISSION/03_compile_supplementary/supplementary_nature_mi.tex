@@ -191,7 +191,7 @@ For Task~4 (RAG Extraction), each of the 30 input abstracts is augmented with a 
 
 The context passages were curated to satisfy two criteria: (1)~domain relevance to the target abstract's topic (e.g., a passage about attention mechanisms for the Transformer abstract), and (2)~non-overlap with the abstract text itself, to test whether the model integrates external context consistently across repeated runs.
 
-Each context passage is approximately 150--300 words in length and is drawn from survey papers, textbook descriptions, or related work sections of the cited papers. The exact text of all 30 context passages, along with SHA-256 hashes verifying their integrity, is available in the project repository at \texttt{data/inputs/rag\_contexts.json}.
+Each context passage is approximately 150--300 words in length and is drawn from survey papers, textbook descriptions, or related work sections of the cited papers. The exact text of every context passage, together with the SHA-256 prompt hash of the augmented input, is recorded verbatim in the \texttt{retrieval\_context} field of each RAG Run Card in the deposited per-run records.
 
 The key finding for RAG tasks is that context augmentation does not substantially improve API reproducibility: on RAG extraction Claude Sonnet~4.5 achieves EMR = 0.000 and Gemini 2.5 Pro EMR = 0.070, comparable to their single-turn extraction reproducibility (RAG was evaluated on the local stacks, Claude, and Gemini; see Methods and the coverage matrix in Section~S10). Local models maintain near-perfect reproducibility regardless of context augmentation (see main text, Table~1).
 
@@ -776,11 +776,25 @@ This section documents the code, mathematics, and cross-domain experiments and t
 Three additional task families and one targeted extension were evaluated under the same C1 condition ($t{=}0$, fixed seed = 42, 5 repetitions per problem):
 
 \begin{description}[leftmargin=*]
-  \item[\textbf{HumanEval (code generation)}.] We sampled 30 problems stratified by docstring length (proxy for difficulty) from the canonical 164-problem benchmark of Chen et al.\ (2021). Each problem provides a Python function signature with a docstring; the model must emit a syntactically valid function body. Repetitions are SHA-256 hashed and compared at the source-code level (EMR), along with NED, ROUGE-L, and BERTScore F1. The 30-problem subset is fixed and cached at \texttt{data/inputs/revision/humaneval.jsonl}.
-  \item[\textbf{GSM8K (math reasoning)}.] We sampled 30 problems uniformly at random (seed = 42) from the 1{,}319-problem test split of Cobbe et al.\ (2021). Each problem provides a grade-school math word problem with a chain-of-thought solution terminated by \texttt{\#\#\#\#\ <integer>}. We hash and compare the full output (chain-of-thought plus answer). Cached at \texttt{data/inputs/revision/gsm8k\_test.jsonl}.
+  \item[\textbf{HumanEval (code generation)}.] We sampled 30 problems stratified by docstring length (proxy for difficulty) from the canonical 164-problem benchmark of Chen et al.\ (2021). Each problem provides a Python function signature with a docstring; the model must emit a syntactically valid function body. Repetitions are SHA-256 hashed and compared at the source-code level (EMR), along with NED, ROUGE-L, and BERTScore F1. The 30 sampled problem identifiers are enumerated below; the full 164-problem benchmark from which they are drawn is at \texttt{data/inputs/revision/humaneval.jsonl}.
+  \item[\textbf{GSM8K (math reasoning)}.] We sampled 30 problems uniformly at random (seed = 42) from the 1{,}319-problem test split of Cobbe et al.\ (2021). Each problem provides a grade-school math word problem with a chain-of-thought solution terminated by \texttt{\#\#\#\#\ <integer>}. We hash and compare the full output (chain-of-thought plus answer). The 30 sampled problems (internal indices GSM8K\_0000--GSM8K\_0029, drawn with seed~=~42) are deposited with the per-run records; the full 1{,}319-problem test split is at \texttt{data/inputs/revision/gsm8k\_test.jsonl}.
   \item[\textbf{PubMed PM\textsubscript{2.5}/respiratory health (out-of-AI/ML structured extraction)}.] Ten abstracts on fine particulate matter and respiratory outcomes were drawn from the companion-paper corpus (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}). They are independent of the 30 AI/ML abstracts used for Tasks~1--4. The extraction prompt is identical in form to Task 2 but applied to a different scientific domain to test cross-domain transfer of the reproducibility gap. Cached at \texttt{data/inputs/revision/pubmed\_pm25\_t14.json}.
   \item[\textbf{Multi-turn extension to gpt-4o and DeepSeek Chat}.] The three-turn refinement protocol from Task 3 was applied to the gpt-4o and DeepSeek Chat stacks (10 abstracts $\times$ 5 reps each, 50 runs per stack) to test universality of the near-zero multi-turn EMR observed for Claude and Gemini.
 \end{description}
+
+\subsection{Problem and abstract identifiers}
+
+For full reproducibility, the exact items used in each additional task are enumerated here.
+
+\textbf{HumanEval (30 canonical task identifiers):}
+HumanEval/1, /13, /20, /22, /38, /44, /47, /48, /55, /62, /65, /67, /69, /70, /72, /73, /74, /84, /89, /90, /98, /101, /102, /105, /114, /120, /132, /135, /141, /153.
+
+\textbf{GSM8K (30 problems):} sampled uniformly at random with seed~=~42 from the 1{,}319-problem test split of Cobbe et al.\ (2021) and assigned internal indices GSM8K\_0000--GSM8K\_0029; the full prompt and reference solution for each is contained in the deposited per-run Run Cards (\texttt{outputs/revision/runs/}).
+
+\textbf{PubMed PM\textsubscript{2.5}/respiratory-health probe (10 abstracts, by DOI):}
+10.1002/jat.4138; 10.1136/bmjopen-2022-070704; 10.1016/j.envpol.2019.113424; 10.3390/ijerph14090950; 10.3390/ijerph18031164; 10.1164/rccm.202107-1596OC; 10.1016/j.chpulm.2024.100053; 10.1590/1516-3180.2022.0210.R2.09082022; 10.1007/s11356-020-08542-5; 10.1186/s12940-021-00828-6.
+
+The retrieved context passages used for the RAG task (Task~4) are stored verbatim in the \texttt{retrieval\_context} field of each RAG Run Card in the deposited records.
 
 \subsection{Run totals for the additional tasks}
 
@@ -842,6 +856,41 @@ Two independent LLM judges from distinct provider families were used: Claude Opu
 \end{enumerate}
 
 Each judge issues one verdict per case from \{\texttt{truly\_contradictory}, \texttt{semantically\_equivalent}, \texttt{ambiguous}\} plus a brief rationale. The two extractions are presented as ``Extraction X'' and ``Extraction Y'' in deterministically randomised order (per-case seed derived from SHA-256 hash of the case identifier) to prevent positional bias. Each judge is blind to which stack produced which extraction and to the other judge's verdict.
+
+The verbatim system prompt given to both judges was:
+
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize,numbers=none]
+You are an expert in environmental epidemiology evaluating whether two
+extractions of effect-estimate data from the same scientific abstract are
+*materially the same* or *materially different* for evidence synthesis.
+
+You must judge against THREE pre-registered criteria:
+(a) DIRECTION: do both extractions report the same direction of effect
+    (positive / null / negative)?
+    - Ratio measures (RR, OR, HR): "positive" >1.0, "negative" <1.0,
+      "null" ~1.0 with CI overlapping 1.0.
+    - Risk differences: "positive" >0, "negative" <0.
+(b) MAGNITUDE: do the effect estimates agree within +/- 20% relative to
+    their average?
+(c) CI OVERLAP: if both 95% CIs are reported, do they share any range?
+
+Then issue ONE of three verdicts:
+  - truly_contradictory: at least one of (a), (b), (c) materially fails
+  - semantically_equivalent: all three criteria hold (textual diffs only)
+  - ambiguous: data missing or judgment uncertain
+
+Return STRICTLY as JSON:
+{ "criterion_a_direction": "same"|"different"|"ambiguous",
+  "criterion_b_magnitude":  "same"|"different"|"ambiguous",
+  "criterion_c_ci_overlap": "overlap"|"disjoint"|"ambiguous",
+  "verdict": "truly_contradictory"|"semantically_equivalent"|"ambiguous",
+  "rationale": "<one or two sentences>" }
+Do NOT add commentary outside the JSON.
+\end{lstlisting}
+
+The per-case user message supplies the source abstract and the two extractions in randomised positions (``EXTRACTION X'' / ``EXTRACTION Y'') and closes with ``Apply the three pre-registered criteria and return your verdict as JSON only.''
+
+\textbf{Decoding parameters.} The two judges were called under their respective maximally-deterministic configurations, which differ by provider surface: Claude Opus~4.7 with \texttt{max\_tokens}~=~600 and no \texttt{temperature} parameter (the Opus~4.7 surface does not accept it), and gpt-4o with \texttt{max\_tokens}~=~600, \texttt{temperature}~=~0, and \texttt{seed}~=~42. Each verdict is single-shot; the categorical verdict is read directly from the model's \texttt{verdict} field (no post-hoc re-mapping), and responses that failed JSON parsing were re-requested once. The judges are themselves API-served models subject to the non-determinism this paper documents; the cross-provider two-judge design and the agreement between two independently-sampled provider families mitigate, but do not eliminate, this reflexivity, which we flag as an inherent limitation of LLM-as-judge validation.
 
 \subsection{Cost and provenance}
 

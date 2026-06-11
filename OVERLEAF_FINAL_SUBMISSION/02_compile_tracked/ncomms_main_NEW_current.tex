@@ -596,6 +596,7 @@ Tasks~1--2 were run under all conditions for five models with full coverage; Tas
 DeepSeek and Perplexity: C1 only on Tasks~1--2.
 Together AI: C1 and C2 on Tasks~1--2.
 Tasks~1--4 under these conditions yield 4{,}104 logged runs across 9 deployments and 7 execution environments.
+Because API-served reproducibility is, by the argument of this paper, defined only relative to an infrastructure epoch, every Run Card records a UTC timestamp and we state the measurement window explicitly: Tasks~1--4 were collected in February 2026 (OpenAI stack: \texttt{gpt-4-0613}) and the code, mathematics, cross-domain, and multi-turn-extension batches in May 2026 (OpenAI stack: \texttt{gpt-4o-2024-11-20}). Per-provider windows are 2026-02-07 to 2026-05-09 for OpenAI and the local Ollama stacks, 2026-02-10 to 2026-05-09 for Anthropic, Google and DeepSeek, 2026-02-11 to 2026-05-09 for Together AI, and 2026-02-10 (single session) for Perplexity.
 
 \textbf{Code, mathematics, and cross-domain tasks.} Three further batches were logged under C1, each with five repetitions per problem and the same Run Card / Prompt Card provenance discipline as Tasks~1--4.
 (a)~Task~5 (HumanEval, 30 problems) and Task~6 (GSM8K, 30 problems) were executed on the eight deployment stacks with full Tasks~1--2 coverage (L-LLaMA3, L-Mistral, L-Gemma2, C-LLaMA3, API-GPT4 with the gpt-4o-2024-11-20 snapshot, API-Claude, API-Gemini, API-DeepSeek), yielding 30~$\times$~5~$\times$~8 = 1{,}200 runs per task.
