@@ -37,7 +37,7 @@
 
 \title{\textbf{Supplementary Information}\\[6pt]
 Same Prompt, Different Answer:\\Hidden Non-Determinism in LLM APIs Undermines Scientific Reproducibility}
-\author{Lucas Rover, Hugo Valadares Siqueira, Eduardo Tadeu Bacalhau, Anibal Tavares de Azevedo \& Yara de Souza Tadano\\
+\author{Lucas Rover, Hugo Valadares Siqueira, Eduardo Tadeu Bacalhau,\\ Anibal Tavares de Azevedo \& Yara de Souza Tadano\\
 \small UTFPR -- Universidade Tecnol\'ogica Federal do Paran\'a}
 \date{}
 
@@ -193,7 +193,7 @@ The context passages were curated to satisfy two criteria: (1)~domain relevance 
 
 Each context passage is approximately 150--300 words in length and is drawn from survey papers, textbook descriptions, or related work sections of the cited papers. The exact text of all 30 context passages, along with SHA-256 hashes verifying their integrity, is available in the project repository at \texttt{data/inputs/rag\_contexts.json}.
 
-The key finding for RAG tasks is that context augmentation does not substantially improve API reproducibility: GPT-4 achieves EMR = 0.230 on RAG extraction (compared to 0.443 on standard extraction under C1), and Gemini 2.5 Pro achieves EMR = 0.070. Local models maintain near-perfect reproducibility regardless of context augmentation (see main text, Table~1).
+The key finding for RAG tasks is that context augmentation does not substantially improve API reproducibility: on RAG extraction Claude Sonnet~4.5 achieves EMR = 0.000 and Gemini 2.5 Pro EMR = 0.070, comparable to their single-turn extraction reproducibility (RAG was evaluated on the local stacks, Claude, and Gemini; see Methods and the coverage matrix in Section~S10). Local models maintain near-perfect reproducibility regardless of context augmentation (see main text, Table~1).
 
 
 %% ============================================================
@@ -621,7 +621,7 @@ We applied the Holm--Bonferroni sequential rejection procedure to control the fa
 The Holm--Bonferroni method orders all $m = 68$ $p$-values from smallest to largest and rejects hypothesis $H_{(k)}$ if $p_{(k)} \leq \alpha / (m - k + 1)$ for all $k' \leq k$. This provides strong control of the family-wise error rate without assuming independence among tests.
 
 \paragraph{Scope of the FWER family.}\label{par:fwer-scope}
-The 68-test family corresponds to the pre-specified comparisons on Tasks~1--2 (extraction and summarisation). The code, mathematics, and cross-domain results (HumanEval, GSM8K, PubMed PM\textsubscript{2.5}, and the multi-turn extension to gpt-4o and DeepSeek) are reported descriptively with 95\% bootstrap confidence intervals; they are not included in the Holm--Bonferroni family because the qualitative comparisons of interest (local-vs.-API gap, Claude-as-outlier pattern) are confirmatory rather than exploratory under the pre-specified framework, and adding them post hoc would inflate the family-wise error rate of the pre-specified tests. Readers wishing to apply a unified correction across the full design can use the per-stack per-task EMR with 95\% CIs reported in the main manuscript (Table~4, ``Exact match rate (EMR) with 95\% bootstrap CI per deployment stack on the code, mathematics, and cross-domain tasks'').
+The 68-test family corresponds to the pre-specified comparisons on Tasks~1--2 (extraction and summarisation). The code, mathematics, and cross-domain results (HumanEval, GSM8K, PubMed PM\textsubscript{2.5}, and the multi-turn extension to gpt-4o and DeepSeek) are \emph{not} part of this pre-specified Holm--Bonferroni family, which was fixed before those batches were collected. We therefore report them descriptively---as per-stack effect sizes (Cliff's $\delta$) and EMR with 95\% bootstrap confidence intervals (main Table~4)---rather than as confirmatory hypothesis tests, and we phrase the corresponding claims accordingly (the local--API gap \emph{persists}, and on the worst-case API stacks widens, on these tasks). Readers wishing a unified multiplicity correction across the full design can apply a Benjamini--Hochberg false-discovery-rate procedure to the per-stack per-task EMR contrasts in Table~4.
 
 \paragraph{Bootstrap behaviour at the EMR boundary.}\label{par:bootstrap-boundary}
 The percentile bootstrap was selected for consistency across all analyses, but it is known to produce degenerate intervals when the empirical estimate sits at the boundary of the EMR support (0 or 1). For groups with EMR${=}$1.000 the percentile CI collapses to [1.00,\,1.00]; for groups with EMR${=}$0.000 it collapses to [0.00,\,0.00]. These ``zero-width'' intervals understate uncertainty by design and are reported as such in the tables. Bias-corrected and accelerated (BCa) intervals would marginally widen the boundary CIs but do not change any of the qualitative conclusions in this paper.
@@ -845,7 +845,7 @@ Each judge issues one verdict per case from \{\texttt{truly\_contradictory}, \te
 
 \subsection{Cost and provenance}
 
-Total cost across 30 cases $\times$ 2 judges = 60 LLM-as-judge calls: USD~0.28 (Claude Opus 4.7 on Anthropic API; mean 929 input + 137 output tokens per case at \$15/MTok input, \$75/MTok output) + USD~1.02 (gpt-4o on OpenAI API; mean 1{,}100 input + 145 output tokens per case at \$2.50/MTok input, \$10/MTok output) = USD~1.30. Per-case judge records (input prompt SHA-256, model identifier, randomisation seed, raw response, parsed verdict, token counts, cost) are deposited as PROV-style JSON at \texttt{outputs/revision/t3\_judge/} (subdirectories \texttt{extended\_claude/}, \texttt{gpt4o\_original10/}, \texttt{gpt4o\_extended20/}). The two-judge aggregate with Cohen's $\kappa$ is at \texttt{outputs/revision/t3\_judge/t3\_extended\_kappa.json}.
+Total cost across 30 cases $\times$ 2 judges = 60 LLM-as-judge calls: USD~0.28 (Claude Opus 4.7 on Anthropic API; mean 929 input + 137 output tokens per case at \$15/MTok input, \$75/MTok output) + USD~1.02 (gpt-4o on OpenAI API; mean 1{,}100 input + 145 output tokens per case at \$2.50/MTok input, \$10/MTok output) = USD~1.30. Per-case judge records (input prompt SHA-256, model identifier, randomisation seed, raw response, parsed verdict, token counts, cost) are deposited as PROV-style JSON in the project repository, one record per case, together with the two-judge aggregate file reporting Cohen's $\kappa$.
 
 \subsection{Verdict distribution}
 
@@ -868,7 +868,7 @@ ambiguous                &  5 & [0.07, 0.34] &  0 & ---           \\
 \bottomrule
 \end{tabular}
 \par\smallskip\raggedright\footnotesize
-Inter-judge agreement: 23/30 cases (76.7\%); Cohen's $\kappa$~=~0.29 (fair agreement on the Landis--Koch scale). The seven disagreements are concentrated where Claude returns \emph{ambiguous} and gpt-4o returns \emph{truly\_contradictory}, indicating direction agreement (both judges classify the majority as substantive disagreement) with Claude more conservative on borderline cases. The 30-case sample comprises 18 Claude Sonnet 4.5 and 12 GPT-4.1 cases, stratified across direction, magnitude, CI overlap, and mixed disagreement kinds; the first 10 cases (seed=42) and the additional 20 (seed=4242) are independently sampled from the companion-paper corpus and exclude the 23 study-level cases of the companion paper. Total cost: USD~0.28 (Claude Opus on 30 cases) + USD~1.02 (gpt-4o on 30 cases) = USD~1.30.
+Inter-judge agreement: 23/30 cases (76.7\%); Cohen's $\kappa$~=~0.29 (fair agreement on the Landis--Koch scale). Because $\kappa$ is depressed when one category dominates (the high-prevalence ``kappa paradox''), we also report the prevalence-adjusted bias-adjusted kappa, PABAK~$=2p_o-1=0.53$, a more appropriate summary of agreement here. The judges differ chiefly on borderline cases that Claude assigns to \emph{ambiguous} (5 cases) while gpt-4o commits to \emph{truly\_contradictory}: Claude's more conservative use of the ambiguous category (5 versus 0 for gpt-4o) accounts for the gap between the two truly-contradictory counts (22 versus 27), and the judges agree on the direction of effect. Against the null of no more than chance contradiction (H$_0$: truly-contradictory proportion $\leq 0.5$), both judges reject at $\alpha = 0.05$ (Claude 22/30, one-sided exact binomial $p = 0.008$; gpt-4o 27/30, $p < 10^{-5}$). The 30-case sample comprises 18 Claude Sonnet 4.5 and 12 GPT-4.1 cases, stratified across direction, magnitude, CI overlap, and mixed disagreement kinds; the first 10 cases (seed=42) and the additional 20 (seed=4242) are independently sampled from the companion-paper corpus and exclude the 23 study-level cases of the companion paper. Total cost: USD~0.28 (Claude Opus on 30 cases) + USD~1.02 (gpt-4o on 30 cases) = USD~1.30.
 \par\smallskip\raggedright\footnotesize
 The majority of divergences are substantive contradictions despite BERTScore F1 $>$ 0.97 on the same outputs (Claude 73\%, gpt-4o 90\%). Consistent with the per-field analysis (Section~\ref{sec:s10b}), this confirms that aggregate semantic-similarity metrics are structurally unable to detect substantive payload divergence.
 \end{table}
@@ -899,7 +899,7 @@ For every (stack, abstract) group with at least two valid extractions, we comput
 
 \subsection{Aggregate result}
 
-Across the six API stacks where outputs actually diverge (i.e., excluding the three local stacks with EMR${=}$1.000 on most fields), the gap between conclusion-relevant fields and metadata fields is large on EMR but absent on BERTScore. The API-only aggregate from \texttt{analysis/bertscore\_per\_field\_results.json}:
+Across the six API stacks where outputs actually diverge (i.e., excluding the three local stacks with EMR${=}$1.000 on most fields), the gap between conclusion-relevant fields and metadata fields is large on EMR but absent on BERTScore. The API-only aggregate (from the per-field BERTScore results file in the repository):
 
 \begin{itemize}[leftmargin=*]
   \item Conclusion-relevant fields ($\overline{\text{EMR}}{=}0.455$) versus metadata fields ($\overline{\text{EMR}}{=}0.684$). Paired Cohen's $d{=}+1.41$ (very large effect).
@@ -915,7 +915,7 @@ Table~\ref{tab:per_field_metrics} (auto-generated from the same JSON file) repor
 
 \subsection{Interpretation}
 
-These results resolve the apparent contradiction between ``textual not semantic'' (BERTScore F1${>}$0.97 across the board) and ``affects substantive content'' (the 67\% \texttt{key\_result} divergence rate reported in Extended Data Table~7). The resolution is that \emph{BERTScore is structurally unable to discriminate the substantive payload divergence concentrated in conclusion-relevant fields from the cosmetic textual variation distributed across all fields} when one operates on extracted-JSON fields of moderate length. EMR can; NED partly can. The three-level reproducibility framework (bitwise $\rightarrow$ structural $\rightarrow$ semantic) that the manuscript proposes is therefore not redundant: any single metric, including a state-of-the-art semantic-similarity metric, would mislead on this corpus and at this granularity.
+These results resolve the apparent contradiction between ``textual not semantic'' (BERTScore F1 saturated---$>$0.97 on whole outputs and $>$0.94 on every individual field) and ``affects substantive content'' (the 67\% \texttt{key\_result} divergence rate reported in Extended Data Table~7). The resolution is that \emph{BERTScore is structurally unable to discriminate the substantive payload divergence concentrated in conclusion-relevant fields from the cosmetic textual variation distributed across all fields} when one operates on extracted-JSON fields of moderate length. EMR can; NED partly can. The three-level reproducibility framework (bitwise $\rightarrow$ structural $\rightarrow$ semantic) that the manuscript proposes is therefore not redundant: any single metric, including a state-of-the-art semantic-similarity metric, would mislead on this corpus and at this granularity.
 
 % Per-field reproducibility metrics — inlined for a self-contained submission (longtable spans pages with repeated header).
 {\scriptsize
