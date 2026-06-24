@@ -149,7 +149,7 @@ This observation remains relevant as retrieval-augmented approaches become stand
 \subsection{Cloud deployment does not preclude reproducibility}\label{subsec:cloud}
 
 A natural hypothesis is that cloud deployment itself (network latency, load balancing, shared hardware) causes the non-determinism.
-To test this, we designed a quasi-isolation probe: we evaluated the same LLaMA~3 8B architecture served via Together AI's cloud endpoint (INT4 quantisation) under identical prompts, seeds, and temperature as the local deployment.
+To test this, we designed a quasi-isolation probe: we evaluated the same LLaMA~3 8B architecture served via Together AI's cloud endpoint (the INT4-quantised \texttt{Meta-Llama-3-8B-Instruct-Lite} endpoint) under identical prompts, seeds, and temperature as the local deployment.
 If cloud hosting were the driver, this deployment should exhibit API-like non-determinism.
 
 It does not.
@@ -207,7 +207,7 @@ These results confirm that the deployment stack, not the task category, governs 
 
 The same dissociation between bitwise reproducibility and semantic content documented above for code and math also governs free-text and structured generation. If API outputs varied randomly, producing nonsensical or contradictory results, the problem would be easy to detect.
 Instead, our multi-level metric analysis reveals a subtler pattern (Fig.~\ref{fig:radar}).
-Across all models and conditions, whole-output BERTScore F1 remains above 0.97 even when EMR approaches zero (at the finer per-field level it remains above 0.94; Supplementary Section~S13).
+Across all models and conditions, whole-output BERTScore F1 remains above 0.97 even when EMR approaches zero (at the finer per-field level it remains above 0.94; Supplementary Section~S14).
 ROUGE-L scores similarly remain high ($>$0.85 for all models), confirming substantial token-level overlap.
 This three-level dissociation (low bitwise identity, moderate surface divergence, high semantic preservation) defines ``hidden'' non-determinism: same meaning, different words.
 A researcher reading two outputs from the same prompt would judge them equivalent; only systematic comparison reveals that they are textually distinct.
@@ -215,7 +215,7 @@ A researcher reading two outputs from the same prompt would judge them equivalen
 Yet this hidden variation has practical consequences that extend beyond surface-level differences.
 A field-level divergence analysis of GPT-4 structured extraction outputs reveals that 100\% of non-identical output pairs (24 of 30 abstract groups) differ in at least one conclusion-relevant field: objective, method, or key result (Extended Data Table~7).
 The \texttt{key\_result} field diverges in 67\% of groups, and \texttt{method} in 57\%, meaning the textual variation is not limited to formatting or filler words but affects the substantive content that researchers would use for downstream analysis (Box~1, shown after Fig.~\ref{fig:overview}).
-Per-field reproducibility metrics (Supplementary Section~S13, ``Per-field reproducibility on structured extraction'') sharpen this picture: across the API stacks where outputs actually diverge, EMR drops by an average of 0.23 between conclusion-relevant fields ($\overline{\text{EMR}}=0.455$) and metadata fields ($\overline{\text{EMR}}=0.684$), corresponding to a paired Cohen's $d=+1.41$ (very large effect). BERTScore F1 is flat across the same comparison ($\overline{\text{conclusion}}=0.978$ vs $\overline{\text{metadata}}=0.979$, paired $d=-0.10$), confirming that aggregate semantic-similarity metrics are structurally unable to detect the substantive payload divergence concentrated in the fields that drive downstream conclusions. The most striking single-stack illustration is Gemini~2.5 Pro on RAG extraction, \texttt{key\_result} field: EMR~=~0.10 (the field changes content in 90\% of pairs) while BERTScore F1 remains 0.969 on the same pairs.
+Per-field reproducibility metrics (Supplementary Section~S14, ``Per-field reproducibility on structured extraction'') sharpen this picture: across the API stacks where outputs actually diverge, EMR drops by an average of 0.23 between conclusion-relevant fields ($\overline{\text{EMR}}=0.455$) and metadata fields ($\overline{\text{EMR}}=0.684$), corresponding to a paired Cohen's $d=+1.41$ (very large effect). BERTScore F1 is flat across the same comparison ($\overline{\text{conclusion}}=0.978$ vs $\overline{\text{metadata}}=0.979$, paired $d=-0.10$), confirming that aggregate semantic-similarity metrics are structurally unable to detect the substantive payload divergence concentrated in the fields that drive downstream conclusions. The most striking single-stack illustration is Gemini~2.5 Pro on RAG extraction, \texttt{key\_result} field: EMR~=~0.10 (the field changes content in 90\% of pairs) while BERTScore F1 remains 0.969 on the same pairs.
 For automated evidence synthesis pipelines, where outputs are parsed programmatically rather than read by humans, even minor lexical differences can propagate to different extracted values, different aggregated statistics, and ultimately different conclusions.
 
 The implications extend beyond individual studies.
@@ -245,7 +245,7 @@ The temperature--reproducibility relationship for API models depends on provider
 
 Beyond AI/ML benchmarks, the most consequential setting for LLM-based extraction is automated evidence synthesis: the systematic-review pipelines that aggregate clinical and epidemiological findings into the evidence base used for treatment guidelines and regulation.
 A reproducibility gap that survives the move from AI/ML abstracts to clinical-epidemiological abstracts is therefore directly relevant to how LLMs are now being deployed in living systematic reviews and regulatory submissions.
-We tested transfer to this setting with a focused out-of-domain probe: 10 PubMed abstracts on fine particulate matter (PM\textsubscript{2.5}) and respiratory or cardiovascular health, drawn from the corpus of our companion paper\cite{rover2026evidence}, processed under our standard C1 structured-extraction condition (temperature~$=$~0, fixed seed where supported, five repetitions) across all eight deployment stacks with full coverage.
+We tested transfer to this setting with a focused out-of-domain probe: 10 PubMed abstracts on fine particulate matter (PM\textsubscript{2.5}) and respiratory health, drawn from the corpus of our companion paper\cite{rover2026evidence}, processed under our standard C1 structured-extraction condition (temperature~$=$~0, fixed seed where supported, five repetitions) across all eight deployment stacks with full coverage (full probe design and abstract DOIs in Supplementary Section~S12).
 
 The pattern observed on AI/ML abstracts replicates with no qualitative change (Table~\ref{tab:revision_emr}).
 Two local stacks (L-Gemma2 and L-LLaMA3) and the Together AI quasi-isolation probe (C-LLaMA3) all achieve perfect EMR~$=$~1.000 [1.00,\,1.00]; L-Mistral attains 0.960 [0.88,\,1.00].
@@ -253,12 +253,13 @@ API-DeepSeek reaches 0.660 [0.46,\,0.85], API-Gemini 0.490 [0.26,\,0.72], and AP
 API-Claude collapses to EMR~$=$~0.010 [0.00,\,0.03] on the 10 PM\textsubscript{2.5} abstracts---matching the 0.020 [0.00,\,0.05] observed on AI/ML summarisation and confirming that the deployment-stack signature of non-determinism is domain-transferable.
 
 To probe whether the resulting textual divergence is cosmetic or substantive, we ran a blinded two-judge LLM-as-judge protocol on 30 newly sampled non-identical output pairs from the PM\textsubscript{2.5} corpus (18 produced by Claude Sonnet 4.5 and 12 by the OpenAI gpt-4.1 snapshot used in the companion paper---an external applied-context corpus, distinct from the gpt-4-0613 and gpt-4o stacks evaluated in the present study---stratified by disagreement kind (direction, magnitude, CI overlap, mixed) and distinct from the 23 study-level cases analysed in the companion paper).
-Each pair was scored by two independent judges---Claude Opus 4.7 and gpt-4o---against three pre-registered criteria (direction of the reported effect, magnitude within $\pm$20\%, and overlap of confidence intervals) under a blind comparison setup, with verdicts \emph{truly\_contradictory}, \emph{semantically\_equivalent}, or \emph{ambiguous} (cost: USD~1.30; full prompts in Supplementary Section~S12).
+Each pair was scored by two independent judges---Claude Opus 4.7 and gpt-4o---against three pre-registered criteria (direction of the reported effect, magnitude within $\pm$20\%, and overlap of confidence intervals) under a blind comparison setup, with verdicts \emph{truly\_contradictory}, \emph{semantically\_equivalent}, or \emph{ambiguous} (cost: USD~1.30; full prompts in Supplementary Section~S13).
 Claude Opus 4.7 classified 22 of the 30 pairs as truly contradictory (Wilson 95\% CI 56--86\%), 3 as semantically equivalent (3--26\%), and 5 as ambiguous (7--34\%). gpt-4o classified 27 as truly contradictory (74--97\%) and 3 as semantically equivalent (3--26\%), using none of the ambiguous category.
-Inter-judge agreement was 76.7\% (23 of 30 cases); Cohen's $\kappa$~=~0.29 (fair agreement on the Landis--Koch scale), a value depressed by the high prevalence of the truly-contradictory category (prevalence-adjusted bias-adjusted $\kappa$~=~0.53; Supplementary Section~S12). The judges differ chiefly on borderline cases that Claude assigns to ``ambiguous'' while gpt-4o commits to ``truly contradictory'': Claude's more conservative use of the ambiguous category (5 cases versus 0 for gpt-4o) accounts for the gap between the two truly-contradictory counts (22 versus 27), and the judges agree on the direction of effect.
+Inter-judge agreement was 76.7\% (23 of 30 cases); Cohen's $\kappa$~=~0.29 (fair agreement on the Landis--Koch scale), a value depressed by the high prevalence of the truly-contradictory category (prevalence-adjusted bias-adjusted $\kappa$~=~0.53; Supplementary Section~S13). The judges differ chiefly on borderline cases that Claude assigns to ``ambiguous'' while gpt-4o commits to ``truly contradictory'': Claude's more conservative use of the ambiguous category (5 cases versus 0 for gpt-4o) accounts for the gap between the two truly-contradictory counts (22 versus 27), and the judges agree on the direction of effect.
 Both lower bounds on the truly-contradictory proportion (56\% Claude; 74\% gpt-4o) exclude a pure-cosmetic interpretation. Representative side-by-side examples of substantive (versus cosmetic) divergence for this and the structured-extraction task appear in Box~1.
 The majority of the divergences in the same outputs that show BERTScore F1~$>$~0.97 are therefore substantive disagreements about the underlying scientific claim, not surface-level rephrasings: BERTScore alone cannot tell a cosmetic variation from a reversed direction of effect or a confidence interval that no longer overlaps the original.
 
+The two in-paper layers above---the 10-abstract probe and the blinded two-judge protocol detailed in Supplementary Section~S13---are self-sufficient to support the propagation claim; the companion analysis is cited only as larger-corpus context, and Supplementary Section~S13.5 sets out exactly what is and is not evaluated in the present proof of concept relative to the full epidemiological systematic review.
 We do not duplicate the companion paper's detailed pairwise reproducibility, silver-standard validation, and meta-analytic propagation tables here, citing instead its aggregate finding\cite{rover2026evidence} (a preregistered companion analysis, not yet peer-reviewed): across the full 500-abstract PM\textsubscript{2.5}-and-respiratory-health corpus, up to 23 study-level effect estimates appear or disappear from the evidence base depending solely on which run of the LLM is used.
 The 10-abstract probe in the present manuscript is the bridge between the methodological claim (the local--API reproducibility gap measured on AI/ML benchmarks) and the applied consequence (a shifting evidence base for a real epidemiological question).
 For regulators and guideline panels that increasingly accept LLM-assisted evidence synthesis as an input, the practical implication is direct: a systematic review that does not log the deployment stack and the run-level outputs cannot, in principle, be reproduced, and the conclusions that depend on which study-level effects are present or absent cannot be audited.
@@ -424,10 +425,9 @@ Claude Sonnet~4.5, RAG extraction, abstract 001 (same group as Example~2).
 \item[Run~B:] \texttt{"method": "The Transformer architecture using only attention mechanisms to connect encoder and decoder, \textcolor{red}{\textbf{dispensing with recurrent and convolutional neural networks entirely}}"}
 \end{itemize}
 The architectural claim is preserved, but the wording is fully reformulated; downstream tools that match \texttt{method} strings exactly would treat these as different methods.
+\medskip
+{\footnotesize Examples~1--3 are drawn from the public Run Card repository; highlighting marks the diverging spans.}
 \end{minipage}}
-\caption{\textbf{Concrete examples of divergent outputs under identical prompts, parameters, and resolved snapshots.}
-Examples~1--3 are drawn from the public Run Card repository.
-Highlighting marks the diverging spans.}\label{box:examples}
 \end{figure*}
 
 
@@ -482,7 +482,7 @@ It remains possible that throughput, multi-tenancy, and latency requirements at 
 The Together AI result is therefore offered as evidence for the \emph{weaker} claim---that the cause of API non-determinism is production serving infrastructure complexity rather than the cloud medium itself---and as a partial existence proof that closed-source providers retain the option to publish reproducibility-prioritised execution modes.
 
 Evidence from an applied domain confirms that the effects reported here have direct consequences for scientific conclusions.
-In a companion study applying six LLMs to a 500-abstract corpus of epidemiological studies on fine particulate matter (PM\textsubscript{2.5}) and respiratory health\cite{rover2026evidence}, we find that extraction EMR under identical deterministic settings drops to 0.050 (Claude), 0.150 (GPT-4.1), and 0.200 (Gemini~2.5 Pro) on the full 500-abstract corpus---consistent with, and in some cases worse than, the values reported here on the 10-abstract probe (where Claude EMR collapses further to 0.010 because the smaller corpus concentrates the within-abstract variance; the two values therefore quantify the same phenomenon at different sampling scales).
+In a companion study applying six LLMs to a 500-abstract corpus of epidemiological studies on fine particulate matter (PM\textsubscript{2.5}) and respiratory health\cite{rover2026evidence}, we find that extraction EMR under identical deterministic settings drops to 0.050 (Claude), 0.150 (GPT-4.1), and 0.200 (Gemini~2.5 Pro) on the full 500-abstract corpus---consistent with, and in some cases worse than, the values reported here on the 10-abstract probe (where Claude EMR is 0.010 [0.00,\,0.03]; the 10-abstract probe is a small subset whose point estimate sits within sampling error of the 0.050 full-corpus value, so the two quantify the same phenomenon at different sampling scales).
 A meta-analytic propagation analysis in that preregistered companion study (not yet peer-reviewed) indicates that up to 23 study-level effect estimates---each representing a distinct epidemiological finding on air pollution and respiratory outcomes---appear or disappear from the evidence base depending solely on which run of the LLM is used.
 This confirms that the hidden non-determinism documented in the present study is not confined to AI/ML benchmarks but propagates into applied health research where it can alter the composition of evidence available for clinical guidelines and regulatory decisions.
 
@@ -561,7 +561,7 @@ Weights hashes recorded via the Ollama API.
 \textbf{API-Perplexity} = (Sonar / Perplexity / production cluster + retrieval / Perplexity API).
 
 \textbf{Quasi-isolation probe stack}:
-\textbf{C-LLaMA3} = (LLaMA~3 8B Q4\_0 (INT4)\cite{grattafiori2024llama3} / Together AI / multi-GPU cloud / OpenAI-compatible API), pairing with L-LLaMA3 to isolate cloud serving from production-infrastructure complexity. Both L-LLaMA3 and C-LLaMA3 use the same Q4\_0 INT4 quantisation of the LLaMA~3 8B weights; the only difference is the serving infrastructure.
+\textbf{C-LLaMA3} = (LLaMA~3 8B Q4\_0 (INT4)\cite{grattafiori2024llama3} / Together AI / multi-GPU cloud / OpenAI-compatible API), pairing with L-LLaMA3 to isolate cloud serving from production-infrastructure complexity. Both L-LLaMA3 and C-LLaMA3 use the same INT4-quantised LLaMA~3 8B weights (local Ollama Q4\_0 and the Together AI \texttt{Lite} endpoint, respectively); they differ in serving infrastructure---single-GPU local execution versus a multi-GPU cloud cluster---whose per-mechanism consequences are detailed in Table~\ref{tab:mechanisms}.
 
 
 \subsection{Tasks}\label{subsec:tasks}
@@ -576,14 +576,14 @@ The first four are:
 Two further task families extend the evaluation to high-stakes domains where small textual differences alter functionality or numerical correctness:
 \textbf{Task~5, Code generation (HumanEval):} 30 problems sampled in a stratified manner from the 164-problem HumanEval benchmark\cite{chen2021humaneval}, prompt format \texttt{prompt + ``\textbackslash n''}, output is the function body up to the first \texttt{return} block.
 \textbf{Task~6, Math reasoning (GSM8K):} 30 problems sampled from the GSM8K test split\cite{cobbe2021gsm8k}, prompt format ``Question: \{q\}\textbackslash nAnswer:'', output is a free-form chain-of-thought derivation terminated by ``\#\#\#\# \{integer\}''.
-A separate cross-domain probe (\textbf{Task~T14}, 10 PubMed abstracts on PM\textsubscript{2.5} and respiratory or cardiovascular health drawn from the companion paper's 500-abstract corpus\cite{rover2026evidence}) was processed under Task~2's structured-extraction schema to test domain transfer outside AI/ML.
+A separate cross-domain probe (\textbf{Task~T14}, 10 PubMed abstracts on PM\textsubscript{2.5} and respiratory health drawn from the companion paper's 500-abstract corpus\cite{rover2026evidence}) was processed under Task~2's structured-extraction schema to test domain transfer outside AI/ML.
 
 
 \subsection{Input data}\label{subsec:input}
 
 Thirty widely cited AI/ML abstracts (including Transformer, BERT, GPT-3, T5, and Chain-of-Thought\cite{vaswani2017attention,devlin2019bert,brown2020language,raffel2020exploring,wei2022chain}), varying in length (74--227 words) and technical complexity, are used for Tasks~1--4.
 Tasks~5, 6, and T14 use established public benchmarks and a curated PubMed sample:
-HumanEval problem identifiers (30 stratified) for Task~5, GSM8K test-split identifiers (30 sampled) for Task~6, and 10 PubMed abstracts with DOIs for Task~T14 (full lists and DOIs in Supplementary Section~S2 (the 30 AI/ML abstracts) and Section~S11 (benchmark and PubMed identifiers)).
+HumanEval problem identifiers (30 stratified) for Task~5, GSM8K test-split identifiers (30 sampled) for Task~6, and 10 PubMed abstracts with DOIs for Task~T14 (full lists in Supplementary Section~S2 (the 30 AI/ML abstracts), Section~S11 (HumanEval and GSM8K benchmark identifiers), and Section~S12 (PubMed PM\textsubscript{2.5} DOIs)).
 
 
 \subsection{Experimental conditions}\label{subsec:conditions}
@@ -602,8 +602,8 @@ Because API-served reproducibility is, by the argument of this paper, defined on
 (a)~Task~5 (HumanEval, 30 problems) and Task~6 (GSM8K, 30 problems) were executed on the eight deployment stacks with full Tasks~1--2 coverage (L-LLaMA3, L-Mistral, L-Gemma2, C-LLaMA3, API-GPT4 with the gpt-4o-2024-11-20 snapshot, API-Claude, API-Gemini, API-DeepSeek), yielding 30~$\times$~5~$\times$~8 = 1{,}200 runs per task.
 (b)~The multi-turn refinement task (Task~3) was extended to two additional API stacks (gpt-4o-2024-11-20 and API-DeepSeek) on 10 abstracts $\times$ 5 repetitions each, contributing 100 additional runs that complete the four-API-stack coverage shown in Fig.~\ref{fig:multiturn}.
 (c)~Task~T14 (10 PubMed PM\textsubscript{2.5} abstracts under Task~2's extraction schema) was executed on the same eight deployment stacks (10~$\times$~5~$\times$~8 = 400 runs).
-A blinded two-judge LLM-as-judge analysis on 30 sampled non-identical pairs (18 Claude Sonnet 4.5 + 12 GPT-4.1) from Task~T14 was run with Claude Opus 4.7 and gpt-4o as the two judges under three pre-registered criteria (direction, magnitude $\pm$20\%, CI overlap); full prompts and per-pair verdicts are in Supplementary Section~S12.
-These batches add 1{,}200 (HumanEval) + 1{,}200 (GSM8K) + 400 (PubMed PM\textsubscript{2.5}) + 100 (multi-turn extension) = 2{,}900 logged generative-AI runs, bringing the manuscript-wide total to 7{,}004 runs across 9 deployment stacks and 6 task families. An additional 60 LLM-as-judge calls (30 Claude Opus 4.7 + 30 gpt-4o, total cost USD~1.30, see Supplementary Section~S12, ``LLM-as-Judge Triangulation Protocol'') support the applied-impact triangulation but are reported separately as they belong to the validation layer rather than the primary experimental matrix.
+A blinded two-judge LLM-as-judge analysis on 30 sampled non-identical pairs (18 Claude Sonnet 4.5 + 12 GPT-4.1) from Task~T14 was run with Claude Opus 4.7 and gpt-4o as the two judges under three pre-registered criteria (direction, magnitude $\pm$20\%, CI overlap); full prompts and per-pair verdicts are in Supplementary Section~S13.
+These batches add 1{,}200 (HumanEval) + 1{,}200 (GSM8K) + 400 (PubMed PM\textsubscript{2.5}) + 100 (multi-turn extension) = 2{,}900 logged generative-AI runs, bringing the manuscript-wide total to 7{,}004 runs across 9 deployment stacks and 6 task families. An additional 60 LLM-as-judge calls (30 Claude Opus 4.7 + 30 gpt-4o, total cost USD~1.30, see Supplementary Section~S13, ``LLM-as-Judge Triangulation Protocol'') support the applied-impact triangulation but are reported separately as they belong to the validation layer rather than the primary experimental matrix.
 
 For API models, the seed parameter is advisory (OpenAI\cite{openai2024seed}), absent (Anthropic), or empirically insufficient (Gemini); greedy decoding does not guarantee determinism\cite{ouyang2024nondeterminism}.
 
@@ -714,9 +714,10 @@ The Supplementary Information (single PDF) contains:
 (S8)~15-item reproducibility checklist;
 (S9)~Statistical test results (full Holm--Bonferroni table, 68 tests);
 (S10)~Experimental coverage matrix: runs per stack, task, and condition;
-(S11)~Code, mathematics, and cross-domain task details: HumanEval problem identifiers, GSM8K problem identifiers, gpt-4o-2024-11-20 multi-turn extension protocol, and full per-stack per-task EMR with 95\% bootstrap CIs;
-(S12)~LLM-as-judge protocol for the PubMed PM\textsubscript{2.5} probe: judge prompts, three pre-registered criteria (direction, magnitude $\pm$20\%, CI overlap), per-pair verdicts from two judges (Claude Opus 4.7: 22 truly\_contradictory / 3 semantically\_equivalent / 5 ambiguous; gpt-4o: 27 / 3 / 0; N=30), and cost log;
-(S13)~Per-field reproducibility on the structured-extraction task (per-stack per-field EMR, NED, ROUGE-L, BERTScore).
+(S11)~Code and mathematics benchmarks: HumanEval problem identifiers, GSM8K problem identifiers, the gpt-4o-2024-11-20 multi-turn extension protocol, and full per-stack per-task EMR with 95\% bootstrap CIs;
+(S12)~Cross-domain public-health probe: the 10 PubMed PM\textsubscript{2.5} abstract DOIs, task design, and the out-of-AI/ML extraction result;
+(S13)~LLM-as-judge triangulation protocol: judge prompts, three pre-registered criteria (direction, magnitude $\pm$20\%, CI overlap), per-pair verdicts from two judges (Claude Opus 4.7: 22 truly\_contradictory / 3 semantically\_equivalent / 5 ambiguous; gpt-4o: 27 / 3 / 0; N=30), and cost log;
+(S14)~Per-field reproducibility on the structured-extraction task (per-stack per-field EMR, NED, ROUGE-L, BERTScore).
 
 \bmhead{Acknowledgements}
 

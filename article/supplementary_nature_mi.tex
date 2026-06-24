@@ -44,7 +44,7 @@ Same Prompt, Different Answer:\\Hidden Non-Determinism in LLM APIs Undermines Sc
 \begin{document}
 \maketitle
 
-\noindent This document provides Supplementary Information for the main manuscript. Sections S1--S13 contain full prompt templates, input descriptions, protocol analyses, statistical details, experimental coverage data, the code, mathematics, and cross-domain task details (S11), the two-judge LLM-as-judge triangulation protocol (S12), and the per-field reproducibility analysis (S13), referenced in the main text.
+\noindent This document provides Supplementary Information for the main manuscript. Sections S1--S14 contain full prompt templates, input descriptions, protocol analyses, statistical details, experimental coverage data, the code and mathematics benchmark details (S11), the cross-domain public-health (PubMed PM\textsubscript{2.5}) probe (S12), the two-judge LLM-as-judge triangulation protocol (S13), and the per-field reproducibility analysis (S14), referenced in the main text.
 
 \tableofcontents
 \newpage
@@ -765,20 +765,19 @@ Excludes 200 chat-format control runs (see Section~\ref{sec:s7}). Including cont
 %%=============================================================%%
 %% S11 — Code, mathematics, and cross-domain task details
 %%=============================================================%%
-\section{Code, Mathematics, and Cross-Domain Tasks: Experimental Coverage}\label{sec:s11}
+\section{Code and Mathematics Benchmarks (HumanEval, GSM8K) and Multi-Turn Extension}\label{sec:s11}
 
-\textit{\textbf{Section at a glance.} Beyond Tasks~1--4, the study includes \textbf{2{,}900 further controlled experiments} (total 7{,}004) covering three additional task families---\textbf{HumanEval (code), GSM8K (math), and a cross-domain PubMed PM\textsubscript{2.5} extraction probe}---plus a multi-turn extension to gpt-4o and DeepSeek. The headline finding is that the local--API reproducibility gap \textbf{persists on high-stakes tasks where small textual differences alter functionality or numerical correctness, and on the worst-case API stacks widens further}: Claude Sonnet~4.5 reaches EMR~$=$~0.063 [0.03, 0.10] on GSM8K math reasoning and 0.010 [0.00, 0.03] on PubMed PM\textsubscript{2.5} extraction, while local stacks maintain EMR~$\geq$~0.92 throughout. The pattern is domain-transferable rather than corpus-specific.}
+\textit{\textbf{Section at a glance.} Beyond Tasks~1--4, the study includes \textbf{2{,}900 further controlled experiments} (total 7{,}004). This section documents the \textbf{AI/ML reasoning benchmarks}: HumanEval (code) and GSM8K (math), plus a multi-turn extension to gpt-4o and DeepSeek. The separate out-of-AI/ML public-health use case (the PubMed PM\textsubscript{2.5} probe) is reported in its own section, Section~\ref{sec:s11b}, so that the applied epidemiological case is not conflated with the AI/ML benchmarks. The headline finding here is that the local--API reproducibility gap \textbf{persists on high-stakes tasks where small textual differences alter functionality or numerical correctness, and on the worst-case API stacks widens further}---Claude Sonnet~4.5 reaches EMR~$=$~0.063 [0.03, 0.10] on GSM8K math reasoning, while local stacks maintain EMR~$\geq$~0.92 throughout. The pattern is domain-transferable rather than corpus-specific.}
 
-This section documents the code, mathematics, and cross-domain experiments and their coverage.
+This section documents the code, mathematics, and multi-turn experiments. For compactness, the run-accounting table below reports all 2{,}900 additional runs in one place, including the 400 runs of the PubMed PM\textsubscript{2.5} probe whose substance is described in Section~\ref{sec:s11b}.
 
 \subsection{Additional task families}
 
-Three additional task families and one targeted extension were evaluated under the same C1 condition ($t{=}0$, fixed seed = 42, 5 repetitions per problem):
+Two additional AI/ML reasoning benchmarks and one targeted extension were evaluated under the same C1 condition ($t{=}0$, fixed seed = 42, 5 repetitions per problem). (The out-of-AI/ML PubMed PM\textsubscript{2.5} probe is described separately in Section~\ref{sec:s11b}.)
 
 \begin{description}[leftmargin=*]
   \item[\textbf{HumanEval (code generation)}.] We sampled 30 problems stratified by docstring length (proxy for difficulty) from the canonical 164-problem benchmark of Chen et al.\ (2021). Each problem provides a Python function signature with a docstring; the model must emit a syntactically valid function body. Repetitions are SHA-256 hashed and compared at the source-code level (EMR), along with NED, ROUGE-L, and BERTScore F1. The 30 sampled problem identifiers are enumerated below; the full 164-problem benchmark from which they are drawn is at \texttt{data/inputs/revision/humaneval.jsonl}.
   \item[\textbf{GSM8K (math reasoning)}.] We sampled 30 problems uniformly at random (seed = 42) from the 1{,}319-problem test split of Cobbe et al.\ (2021). Each problem provides a grade-school math word problem with a chain-of-thought solution terminated by \texttt{\#\#\#\#\ <integer>}. We hash and compare the full output (chain-of-thought plus answer). The 30 sampled problems (internal indices GSM8K\_0000--GSM8K\_0029, drawn with seed~=~42) are deposited with the per-run records; the full 1{,}319-problem test split is at \texttt{data/inputs/revision/gsm8k\_test.jsonl}.
-  \item[\textbf{PubMed PM\textsubscript{2.5}/respiratory health (out-of-AI/ML structured extraction)}.] Ten abstracts on fine particulate matter and respiratory outcomes were drawn from the companion-paper corpus (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}). They are independent of the 30 AI/ML abstracts used for Tasks~1--4. The extraction prompt is identical in form to Task 2 but applied to a different scientific domain to test cross-domain transfer of the reproducibility gap. Cached at \texttt{data/inputs/revision/pubmed\_pm25\_t14.json}.
   \item[\textbf{Multi-turn extension to gpt-4o and DeepSeek Chat}.] The three-turn refinement protocol from Task 3 was applied to the gpt-4o and DeepSeek Chat stacks (10 abstracts $\times$ 5 reps each, 50 runs per stack) to test universality of the near-zero multi-turn EMR observed for Claude and Gemini.
 \end{description}
 
@@ -791,9 +790,7 @@ HumanEval/1, /13, /20, /22, /38, /44, /47, /48, /55, /62, /65, /67, /69, /70, /7
 
 \textbf{GSM8K (30 problems):} sampled uniformly at random with seed~=~42 from the 1{,}319-problem test split of Cobbe et al.\ (2021) and assigned internal indices GSM8K\_0000--GSM8K\_0029; the full prompt and reference solution for each is contained in the deposited per-run Run Cards (\texttt{outputs/revision/runs/}).
 
-\textbf{PubMed PM\textsubscript{2.5}/respiratory-health probe (10 abstracts, by DOI):}
-{\raggedright
-10.1002/jat.4138; 10.1136/bmjopen-2022-070704; 10.1016/j.envpol.2019.113424; 10.3390/ijerph14090950; 10.3390/ijerph18031164; 10.1164/rccm.202107-1596OC; 10.1016/j.chpulm.2024.100053; 10.1590/1516-3180.2022.0210.R2.09082022; 10.1007/s11356-020-08542-5; 10.1186/s12940-021-00828-6.\par}
+(The 10 PubMed PM\textsubscript{2.5} abstract DOIs are listed with the public-health probe in Section~\ref{sec:s11b}.)
 
 The retrieved context passages used for the RAG task (Task~4) are stored verbatim in the \texttt{retrieval\_context} field of each RAG Run Card in the deposited records.
 
@@ -829,6 +826,25 @@ A unified runner with a resumable orchestrator executes these tasks. The pipelin
 \subsection{Snapshot governance}
 
 The OpenAI stack for the code, mathematics, and cross-domain tasks resolves to \texttt{gpt-4o-2024-11-20} (most recent snapshot at the time of measurement). Tasks~1--4 used \texttt{gpt-4-0613}; both are reported and the snapshot identifier is logged per run for point-in-time auditability.
+
+%%=============================================================%%
+%% S11b — Cross-domain public-health probe (PubMed PM2.5)
+%%=============================================================%%
+\section{Cross-Domain Public-Health Probe (PubMed PM\textsubscript{2.5})}\label{sec:s11b}
+
+\textit{\textbf{Section at a glance.} This section reports the single \textbf{out-of-AI/ML} task in the study: a structured-extraction probe on \textbf{10 PubMed abstracts} on fine particulate matter (PM\textsubscript{2.5}) and respiratory health (8 stacks, 400 runs). It transposes the Task~2 extraction schema to an environmental-health corpus to test whether the deployment-stack reproducibility signature is \textbf{domain-transferable}. It is reported separately from the AI/ML benchmarks of Section~\ref{sec:s11} so that the applied epidemiological use case can be read as a self-contained unit. \textbf{API-Claude collapses to EMR~$=$~0.010 [0.00, 0.03]} while local and Together~AI quasi-isolation stacks maintain EMR~$\geq$~0.96; whether the divergences are substantive contradictions rather than cosmetic rephrasings is established by the blinded two-judge LLM-as-judge protocol in Section~\ref{sec:s12}.}
+
+\subsection{Task design and abstract identifiers}
+
+Ten abstracts on fine particulate matter and respiratory outcomes were drawn from the companion-paper corpus (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}). They are independent of the 30 AI/ML abstracts used for Tasks~1--4. The extraction prompt is identical in form to Task~2 but applied to a different scientific domain to test cross-domain transfer of the reproducibility gap. The probe was run under the same C1 condition ($t{=}0$, fixed seed = 42, 5 repetitions per abstract) across all eight deployment stacks (400 runs total); these runs are included in the unified accounting of Table~\ref{tab:revision-runs} in Section~\ref{sec:s11}. Cached at \texttt{data/inputs/revision/pubmed\_pm25\_t14.json}.
+
+\textbf{PubMed PM\textsubscript{2.5}/respiratory-health probe (10 abstracts, by DOI):}
+{\raggedright
+10.1002/jat.4138; 10.1136/bmjopen-2022-070704; 10.1016/j.envpol.2019.113424; 10.3390/ijerph14090950; 10.3390/ijerph18031164; 10.1164/rccm.202107-1596OC; 10.1016/j.chpulm.2024.100053; 10.1590/1516-3180.2022.0210.R2.09082022; 10.1007/s11356-020-08542-5; 10.1186/s12940-021-00828-6.\par}
+
+\subsection{Result and substantive validation}
+
+The reproducibility pattern observed on AI/ML abstracts replicates with no qualitative change: API-Claude EMR~$=$~0.010 [0.00, 0.03] versus EMR~$\geq$~0.96 for the local and Together~AI quasi-isolation stacks (the full per-stack table is the main-text subsection ``Applied impact in evidence synthesis''). Whether the resulting textual divergences are substantive contradictions rather than cosmetic rephrasings is established by the blinded two-judge LLM-as-judge protocol detailed in Section~\ref{sec:s12}; the exact boundary between this proof of concept and the full epidemiological systematic review is set out in Section~\ref{sec:s12-notreproduced}. This public-health probe is the bridge between the methodological claim (the local--API reproducibility gap measured on AI/ML benchmarks) and the applied consequence (a shifting evidence base for a real epidemiological question).
 
 
 %%=============================================================%%
@@ -923,7 +939,7 @@ Inter-judge agreement: 23/30 cases (76.7\%); Cohen's $\kappa$~=~0.29 (fair agree
 The majority of divergences are substantive contradictions despite BERTScore F1 $>$ 0.97 on the same outputs (Claude 73\%, gpt-4o 90\%). Consistent with the per-field analysis (Section~\ref{sec:s10b}), this confirms that aggregate semantic-similarity metrics are structurally unable to detect substantive payload divergence.
 \end{table}
 
-\subsection{What is \emph{not} reproduced here from the companion paper}
+\subsection{What is \emph{not} reproduced here from the companion paper}\label{sec:s12-notreproduced}
 
 To preserve the contributions of the companion paper (Rover \& de Souza Tadano, 2026, OSF: \url{https://doi.org/10.17605/OSF.IO/VR934}), the present supplementary section does \emph{not} reproduce: (i) the 6-model $\times$ 10-run pairwise disagreement matrix; (ii) the silver-standard cross-validation against DeepSeek-R1 reasoning; (iii) the random-effects per-run pooled risk-ratio table; (iv) the small-literature meta-analytic simulation; (v) the 35 individual blindage analyses; (vi) the work-saved analysis. Readers seeking these are referred to Rover \& de Souza Tadano (2026, OSF preregistration: \url{https://doi.org/10.17605/OSF.IO/VR934}).
 

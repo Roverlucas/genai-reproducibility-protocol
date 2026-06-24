@@ -28,7 +28,7 @@ This repository contains the reference implementation, experimental data, analys
 ├── article/                          # Manuscript and submission materials
 │   ├── ncomms_main.tex               # Revised manuscript (Nature Communications, 28p)
 │   ├── ncomms_main.pdf
-│   ├── supplementary_nature_mi.tex   # Supplementary Information (S1–S13, 23p)
+│   ├── supplementary_nature_mi.tex   # Supplementary Information (S1–S14, 26p)
 │   ├── supplementary_nature_mi.pdf
 │   ├── CODE_SOFTWARE_CHECKLIST.md    # Nature Code/Software submission checklist
 │   ├── ML_CHECKLIST_FILLED.md        # Machine Learning checklist
@@ -36,20 +36,6 @@ This repository contains the reference implementation, experimental data, analys
 │   ├── references.bib                # Bibliography (56 entries, 0 orphan)
 │   ├── sn-jnl.cls + sn-nature.bst    # Springer Nature template
 │   └── figures/                      # 6 publication figures (PDF, 600 DPI)
-├── response_letter/                  # Major revision response materials
-│   ├── 01_point_by_point_response.tex   # 22 verbatim revquote blocks (R1.1–R1.15, R3.1–R3.6)
-│   ├── 01_point_by_point_response.pdf   # 15 pages
-│   ├── 03_revised_cover_letter.tex   # Cover letter for resubmission (May, 2026)
-│   └── 03_revised_cover_letter.pdf   # 3 pages
-├── submission_revision_v1/           # Complete resubmission package
-│   ├── ncomms_main_tracked.tex       # latexdiff (track changes vs T5-snapshot)
-│   ├── ncomms_main_tracked.pdf       # 30 pages with diff highlights
-│   └── READY_FOR_REVIEW/             # 10 final documents (5 PDFs + 5 md notes)
-├── overleaf_upload/                  # Submission ZIPs (rebuilt 2026-05-12)
-│   ├── manuscript.zip                # Overleaf-ready (.tex + figures + bib + cls)
-│   ├── response_letter.zip
-│   ├── overleaf_complete.zip         # Both above combined
-│   └── submission_mts.zip            # Final PDFs for Editorial Manager upload
 ├── src/                              # Reference implementation
 │   ├── protocol/                     # Core protocol (logger, hasher, run/prompt cards, PROV)
 │   ├── models/                       # Model runners (llama, gpt4, claude, gemini)
@@ -175,6 +161,21 @@ BERTScore F1 saturates across all five extracted fields (Δ = 0.001, paired Cohe
 
 ### Revision total: 7,004 experiments across 9 deployment stacks and 6 task families
 
+## Mechanisms vs. experimental controls (mirror of Methods Table 3)
+
+The manuscript (Methods Table 3, *"Mapping of non-determinism mechanisms to deployment stacks"*) lists six mechanisms of distributed-inference non-determinism. This harness **cannot toggle provider-side kernels** — they are closed. What it *can* do is (a) pin every **client-side** variable so residual variation is attributable to the stack rather than to input/parameter drift, and (b) **isolate** which mechanisms are active by comparing single-GPU local serving and the Together AI quasi-isolation stack against the proprietary APIs. The table below connects each manuscript mechanism to the concrete control in this repository.
+
+| Mechanism (Methods Table 3) | How this harness pins or isolates it | Code handle |
+|---|---|---|
+| Non-associative FP arithmetic | Held constant client-side; exposed identically to all stacks | Condition `C1` (`C1_fixed_seed`): `temperature=0.0`, `seed=42` logged per run |
+| Mixed-precision BF16/FP16 | Mitigated on local stacks (Q4 integer arithmetic via Ollama); exposed on Together AI / APIs — the local-vs-cloud contrast isolates it | `--stack` selects local (`ollama`, Q4) vs `together`/API stacks |
+| Tensor parallelism | Absent on single-GPU local serving; the L-LLaMA3 vs C-LLaMA3 (Together) vs API comparison isolates it | single-GPU Ollama baseline vs `--stack together`/API |
+| FlashAttention kernel | Not invoked on the single-GPU local path; isolated by the same local/Together/API contrast | local stack baseline |
+| Dynamic batching | Eliminated by per-request local execution; present on Together AI and APIs | local (one request at a time) vs cloud `--stack` |
+| Speculative decoding | Not used locally; possible on Together, likely on APIs | local baseline vs API `--stack` |
+
+In all cases the **snapshot identifier is logged per run** (`gpt-4-0613`, `gpt-4o-2024-11-20`, etc.) for point-in-time auditability, and the seed handling is recorded via `seed_status` (e.g. `logged-only-not-sent-to-api` for the Anthropic surface, which accepts no seed). The Together AI quasi-isolation stack (`C-LLaMA3`) and the local single-GPU stacks (`L-*`) are therefore the *controls* that let the analysis attribute residual variation to mechanisms 2–6; the harness flags above hold mechanism 1 and all client-side parameters fixed. See `run_experiments.py` (conditions `C1_fixed_seed` / `C2_var_seed`) and `run_revision_experiments.py --condition C1 --stack <stack>`.
+
 ## Reproducing the Experiments
 
 ### Prerequisites
@@ -247,14 +248,6 @@ pdflatex ncomms_main.tex
 pdflatex ncomms_main.tex                       # second pass for cross-refs
 pdflatex supplementary_nature_mi.tex
 pdflatex supplementary_nature_mi.tex
-
-# Track-changes (latexdiff)
-cd ..
-latexdiff submission_revision_v1/ncomms_main_post_T5.tex article/ncomms_main.tex \
-  > submission_revision_v1/ncomms_main_tracked.tex
-cd submission_revision_v1
-pdflatex ncomms_main_tracked.tex
-pdflatex ncomms_main_tracked.tex
 ```
 
 ## Tests
@@ -270,23 +263,6 @@ Test breakdown:
 - `tests/test_humaneval_loader.py` — 8 tests (load, stratified sample, determinism)
 - `tests/test_gsm8k_loader.py` — 17 tests (loader + extractor + grade_runs)
 - `tests/test_pass_at_1.py` — 10 tests (correct, wrong, timeout, code-fence handling)
-
-## Editorial Submission Package
-
-The full Major Revision package is at `submission_revision_v1/READY_FOR_REVIEW/`:
-
-| # | Document | Pages |
-|---|----------|-------|
-| 00 | `00_README.md` (instructions for coauthors) | — |
-| 01 | `01_revised_manuscript_clean.pdf` | 27 |
-| 02 | `02_revised_manuscript_tracked.pdf` (latexdiff) | 27 |
-| 03 | `03_supplementary.pdf` (incl. §S11 + §S12 added in revision) | 18 |
-| 04 | `04_point_by_point_response.pdf` (verbatim quotes for 15 R1 + 6 R3) | 15 |
-| 05 | `05_cover_letter.pdf` | 2 |
-| 06 | `06_changes_log.md` (granular by reviewer point) | — |
-| 07 | `07_ml_checklist.md` (updated with revision additions) | — |
-| 08 | `08_reporting_summary.md` (T13 deployment-mode clarification) | — |
-| 09 | `09_code_software_checklist.md` (new for revision) | — |
 
 ## Companion Paper
 

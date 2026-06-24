@@ -41,3 +41,19 @@ figshare_upload/
 
 # Continuation log noise
 /tmp/_*.log
+
+# --- Internal working/process notes (kept local, NOT in public archive) ---
+STATUS.md
+STATUS_CONTINUATION.md
+REVISION_PLAN.md
+CRITICAL_REVIEW_PANEL.md
+FEEDBACK_YARA_CONSOLIDADO.md
+FEEDBACK_*.md
+
+# --- Submission correspondence & build staging (kept local, NOT in public archive) ---
+response_letter/
+OVERLEAF_FINAL_SUBMISSION/
+overleaf_upload/
+submission_revision_v1/
+submission_nature_mi/
+submission_nature_comms/
