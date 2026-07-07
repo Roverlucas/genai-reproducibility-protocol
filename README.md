@@ -10,7 +10,7 @@ UTFPR --- Universidade Tecnológica Federal do Paraná
 
 [![Figshare DOI](https://img.shields.io/badge/Figshare-10.6084%2Fm9.figshare.31653373-blue)](https://doi.org/10.6084/m9.figshare.31653373)
 [![OSF (companion)](https://img.shields.io/badge/OSF%20(companion)-10.17605%2FOSF.IO%2FVR934-blue)](https://doi.org/10.17605/OSF.IO/VR934)
-[![Release tag](https://img.shields.io/badge/Tag-v1.1--natcomms--revision1-green)](https://github.com/Roverlucas/genai-reproducibility-protocol/tree/v1.1-natcomms-revision1)
+[![Release tag](https://img.shields.io/badge/Tag-v1.1-green)](https://github.com/Roverlucas/genai-reproducibility-protocol/tree/v1.1)
 [![License: code](https://img.shields.io/badge/Code-MIT-yellow)](LICENSE)
 [![License: data](https://img.shields.io/badge/Data-CC--BY--4.0-orange)](LICENSE-DATA)
 
